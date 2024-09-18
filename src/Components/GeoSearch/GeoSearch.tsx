@@ -32,6 +32,7 @@ export const GeoSearch: React.FC = () => {
         className="geo-search"
         options={options}
         labelText="Enter your address to get started"
+        // @ts-expect-error We need to update the JFCL onChange props to match react-select
         onInputChange={(value: string) => {
           requester.changeSearchRequest(value);
           return value;
