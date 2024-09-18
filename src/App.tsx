@@ -1,4 +1,6 @@
+import { Button } from "@justfixnyc/component-library";
 import "./App.scss";
+import { GeoSearch } from "./Components/GeoSearch/GeoSearch";
 
 function App() {
   return (
@@ -18,6 +20,11 @@ function App() {
           habitasse platea dictumst. Pellentesque eget cursus neque, in
           pellentesque mi.
         </p>
+
+
+
+        <GeoSearch />
+        <Button labelText="See if you are eligible" size="small"/>
       </div>
     </>
   );
