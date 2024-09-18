@@ -1,0 +1,31 @@
+
+@import "colors.scss";
+@import "variables.scss";
+
+#header {
+    position: fixed;
+    top: 0;
+    background-color: $OFF_BLACK;
+    border-bottom: 1px solid #D2D2D2;
+
+    height: $headerH;
+    width: 100%;
+    padding-left: 1rem; // 16px
+    display: flex;
+    align-items: center;
+    text-wrap: nowrap;
+    z-index: 100;
+
+    h1 {
+      color: $OFF_WHITE_100;
+      font-size: 1.25rem; // 20px
+      font-weight: 600;
+      letter-spacing: 0.8px;
+    }
+}
+
+#main {
+  margin-top: $headerH;
+  padding-top: 2.25rem; // 36px
+  padding-left: 3rem; // 48px
+}

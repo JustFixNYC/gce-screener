@@ -1,0 +1,13 @@
+@import "@justfixnyc/component-library/dist/src/assets/index.css";
+@import "colors.scss";
+@import "variables.scss";
+@import "mixins.scss";
+
+body {
+  font-family: "Degular";
+}
+
+h2 {
+  @include h3_desktop;
+  margin: 0;
+}
