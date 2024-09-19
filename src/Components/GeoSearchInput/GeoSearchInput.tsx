@@ -4,9 +4,9 @@ import {
   GeoSearchRequester,
   GeoSearchFeature,
 } from "@justfixnyc/geosearch-requester";
-import './GeoSearch.scss';
+import './GeoSearchInput.scss';
 
-export const GeoSearch: React.FC = () => {
+export const GeoSearchInput: React.FC = () => {
   // const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState<GeoSearchFeature[]>([]);
   const requester = new GeoSearchRequester({
