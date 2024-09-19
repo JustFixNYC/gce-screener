@@ -1,0 +1,7 @@
+# Prevent default Netlify 404 page from appearing on page refresh.
+# Note: this redirect rule must come AFTER any other rule to prevent overriding
+# See https://stackoverflow.com/a/64842020 for more details
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200
