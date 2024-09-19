@@ -1,8 +1,21 @@
 import { Button } from "@justfixnyc/component-library";
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import "./Home.scss";
+import { Dispatch, SetStateAction, useState } from "react";
+import { useNavigate } from "react-router";
 
-export const Home = () => {
+type HomeProps = {
+  setAddress: Dispatch<
+    SetStateAction<{ value: string; label: string } | undefined>
+  >;
+};
+
+export const Home: React.FC<HomeProps> = ({ setAddress }) => {
+  const navigate = useNavigate();
+  const [localAddress, setLocalAddress] = useState<{
+    value: string;
+    label: string;
+  }>();
   return (
     <div className="wrapper">
       <div className="main-content">
@@ -19,8 +32,17 @@ export const Home = () => {
         </p>
 
         <div className="geo-search-form">
-          <GeoSearchInput />
-          <Button labelText="See if you are eligible" size="small" />
+          <GeoSearchInput onChange={(value) => setLocalAddress(value)} />
+
+          <Button
+            labelText="See if you are eligible"
+            size="small"
+            onClick={() => {
+              console.log("submit");
+              setAddress(localAddress);
+              navigate("/form");
+            }}
+          />
         </div>
       </div>
       <div id="legal-footer">

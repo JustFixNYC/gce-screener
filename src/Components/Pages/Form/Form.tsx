@@ -1,7 +1,14 @@
 import { Button, RadioButton } from "@justfixnyc/component-library";
 import "./Form.scss";
+import { useNavigate } from "react-router";
 
-export const Form = () => {
+type FormProps = {
+  address: {value: string, label: string} | undefined
+}
+
+export const Form: React.FC<FormProps> = ({address}) => {
+  const navigate = useNavigate()
+
   return (
     <>
       <Button
@@ -9,6 +16,7 @@ export const Form = () => {
         labelIcon="chevronLeft"
         size="small"
         variant="secondary"
+        onClick={() => navigate('/home')}
       />
       <h2>Screener Survey</h2>
       <p>
@@ -16,7 +24,7 @@ export const Form = () => {
         the laws and find out if you're covered.
       </p>
 
-      <div className="address">7 Renaissance Court, Brooklyn</div>
+      <div className="address">{address?.label}</div>
 
       <fieldset className="form-step">
         <p className="form-step-number">Question 1 of 5</p>
