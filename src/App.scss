@@ -35,6 +35,10 @@
   margin-top: $headerH;
   padding-top: 2.25rem; // 36px
   padding-left: 3rem; // 48px
+
+  #content {
+    height: 100%;
+  }
 }
 
 #footer {

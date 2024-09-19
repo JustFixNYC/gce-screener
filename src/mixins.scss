@@ -6,3 +6,21 @@
   font-weight: 600;
   line-height: 100%; /* 36px */
 }
+
+@mixin body_large_desktop {
+  font-family: 'Degular', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem; // 24px
+  line-height: 120%; // 28.8px
+  letter-spacing: 0.72px;
+}
+
+@mixin small_text_desktop {
+  font-family: 'Degular', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.14rem; // 14px
+  line-height: 130%; // 28.8px
+  letter-spacing: 0.42px;
+}
