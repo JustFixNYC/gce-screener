@@ -1,7 +1,9 @@
 import { Button, RadioButton } from "@justfixnyc/component-library";
 import "./Form.scss";
+import { useNavigate } from "react-router";
 
 export const Form = () => {
+  const navigate = useNavigate()
   return (
     <>
       <Button
@@ -9,6 +11,7 @@ export const Form = () => {
         labelIcon="chevronLeft"
         size="small"
         variant="secondary"
+        onClick={() => navigate("home")}
       />
       <h2>Screener Survey</h2>
       <p>

@@ -1,8 +1,11 @@
 import { Button } from "@justfixnyc/component-library";
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import "./Home.scss";
+import { useNavigate } from "react-router";
 
 export const Home = () => {
+  const navigate = useNavigate()
+
   return (
     <div className="wrapper">
       <div className="main-content">
@@ -20,7 +23,9 @@ export const Home = () => {
 
         <div className="geo-search-form">
           <GeoSearchInput />
-          <Button labelText="See if you are eligible" size="small" />
+          <Button labelText="See if you are eligible" size="small" onClick={() => {
+            navigate("form")
+          }}/>
         </div>
       </div>
       <div id="legal-footer">
