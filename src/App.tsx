@@ -1,33 +1,33 @@
-import { Button } from "@justfixnyc/component-library";
 import "./App.scss";
-import { GeoSearch } from "./Components/GeoSearch/GeoSearch";
+import { Routes, Route, Outlet } from "react-router";
+import { Home } from "./Components/Pages/Home/Home";
+import { Form } from "./Components/Pages/Form/Form";
 
 function App() {
   return (
-    <>
-      <header id="header">
-        <h1>Good Cause Eviction</h1>
-      </header>
-      <div id="main">
-        <h2>What is Good Cause Eviction?</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tellus
-          lacus, pharetra dictum bibendum eu, ornare non mauris. Fusce pretium
-          laoreet magna, ac dictum enim dictum sit amet. Vivamus sit amet augue
-          ut metus auctor eleifend. Mauris tincidunt auctor lorem a ultricies.
-          Aenean enim magna, semper ac arcu volutpat, mattis convallis nibh.
-          Mauris efficitur augue quam, ut pharetra felis vehicula sed. In hac
-          habitasse platea dictumst. Pellentesque eget cursus neque, in
-          pellentesque mi.
-        </p>
-
-
-
-        <GeoSearch />
-        <Button labelText="See if you are eligible" size="small"/>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="form" element={<Form />} />
+        <Route path="*" element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
 
+const Layout = () => {
+  return (
+    <div id="container">
+      <header id="header">
+        <h1>Good Cause Eviction</h1>
+      </header>
+
+      <div id="main">
+        <div id="content">
+          <Outlet />
+        </div>
+      </div>
+    </div>
+  );
+};
 export default App;
