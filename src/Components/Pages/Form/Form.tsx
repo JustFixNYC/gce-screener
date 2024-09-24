@@ -68,10 +68,6 @@ export const Form = () => {
         description="If you are above or below, based on the number of rooms in your
           apartment, that impacts something something... . . ."
       >
-        <p className="form-step-number">Question 2 of 5</p>
-
-        <p className="form-step-question"></p>
-
         <div className="radio-options">
           <RadioButton
             className="radio-button"
@@ -87,6 +83,100 @@ export const Form = () => {
           ></RadioButton>
         </div>
       </FormStep>
+
+      <FormStep
+        step={3}
+        total={5}
+        question="Does your landlord live in the building?"
+      >
+        <div className="radio-options">
+          <RadioButton
+            className="radio-button"
+            name="landlord"
+            labelText="Yes"
+            id="landlord-yes"
+          ></RadioButton>
+          <RadioButton
+            className="radio-button"
+            name="landlord"
+            labelText="No"
+            id="landlord-no"
+          ></RadioButton>
+          <RadioButton
+            className="radio-button"
+            name="landlord"
+            labelText="I'm not sure"
+            id="landlord-not-sure"
+          ></RadioButton>
+        </div>
+      </FormStep>
+
+      <FormStep
+        step={4}
+        total={5}
+        question="Is your apartment rent-stabilized?"
+      >
+        <div className="radio-options">
+          <RadioButton
+            className="radio-button"
+            name="rent-stabilized"
+            labelText="Yes"
+            id="rent-stabilized-yes"
+          ></RadioButton>
+          <RadioButton
+            className="radio-button"
+            name="rent-stabilized"
+            labelText="No"
+            id="rent-stabilized-no"
+          ></RadioButton>
+          <RadioButton
+            className="radio-button"
+            name="rent-stabilized"
+            labelText="I'm not sure"
+            id="rent-stabilized-not-sure"
+          ></RadioButton>
+        </div>
+      </FormStep>
+
+      <FormStep
+        step={5}
+        total={5}
+        question="Which housing type is your apartment associated with?"
+      >
+        <div className="radio-options">
+          <RadioButton
+            className="radio-button"
+            name="housing-type"
+            labelText="NYCHA/Public Housing"
+            id="housing-type-nycha"
+          ></RadioButton>
+          <RadioButton
+            className="radio-button"
+            name="housing-type"
+            labelText="Subsidized/Income Restricted"
+            id="housing-type-subsidized"
+          ></RadioButton>
+          <RadioButton
+            className="radio-button"
+            name="housing-type"
+            labelText="Manufactured Housing"
+            id="housing-type-manufactured"
+          ></RadioButton>
+          <RadioButton
+            className="radio-button"
+            name="housing-type"
+            labelText="None of these?"
+            id="housing-type-none"
+          ></RadioButton>
+          <RadioButton
+            className="radio-button"
+            name="housing-type"
+            labelText="I'm not sure"
+            id="housing-type-not-sure"
+          ></RadioButton>
+        </div>
+      </FormStep>
+
       <Button labelText="Submit" labelIcon="check" />
     </>
   );
