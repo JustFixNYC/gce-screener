@@ -19,7 +19,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
 
 
   const handleSubmit = () => {
-    console.log("~~~ submit");
+    navigate("/results")
   };
 
   const handleOnChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -273,7 +273,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
         </FormStep>
       </form>
 
-      <Button labelText="Submit" labelIcon="check" onSubmit={handleSubmit} />
+      <Button labelText="Submit!" labelIcon="check" onClick={handleSubmit} />
     </>
   );
 };

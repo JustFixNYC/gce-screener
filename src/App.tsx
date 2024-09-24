@@ -3,6 +3,7 @@ import { Routes, Route, Outlet } from "react-router";
 import { Home } from "./Components/Pages/Home/Home";
 import { Form } from "./Components/Pages/Form/Form";
 import { useState } from "react";
+import { Results } from "./Components/Pages/Results/Results";
 
 export type FormFields = {
   bedrooms: "studio" | "0" | "1" | "2" | "3" | "4+" | null;
@@ -40,11 +41,17 @@ function App() {
           <Route
             index
             element={<Home address={address} onSelectAddress={setAddress} />}
-          />
+          />v
           <Route
             path="form"
             element={
               <Form address={address} fields={fields} setFields={setFields} />
+            }
+          />
+          <Route
+            path="results"
+            element={
+              <Results address={address} fields={fields} setFields={setFields} />
             }
           />
           <Route
