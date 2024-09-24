@@ -4,9 +4,13 @@ import {
   GeoSearchRequester,
   GeoSearchFeature,
 } from "@justfixnyc/geosearch-requester";
-import './GeoSearchInput.scss';
+import "./GeoSearchInput.scss";
 
-export const GeoSearchInput: React.FC = () => {
+type GeoSearchInputProps = {
+  onChange: (address: { value: string; label: string }) => void;
+};
+
+export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({ onChange }) => {
   // const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState<GeoSearchFeature[]>([]);
   const requester = new GeoSearchRequester({
@@ -32,11 +36,12 @@ export const GeoSearchInput: React.FC = () => {
         className="geo-search"
         options={options}
         labelText="Enter your address to get started"
-        // @ts-expect-error We need to update the JFCL onChange props to match react-select
         onInputChange={(value: string) => {
           requester.changeSearchRequest(value);
           return value;
         }}
+        // @ts-expect-error We need to update the JFCL onChange props to match react-select
+        onChange={onChange}
       />
     </>
   );
