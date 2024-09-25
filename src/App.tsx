@@ -4,6 +4,7 @@ import { Home } from "./Components/Pages/Home/Home";
 import { Form } from "./Components/Pages/Form/Form";
 import { useState } from "react";
 import { Results } from "./Components/Pages/Results/Results";
+import { APIDocs } from "./Components/Pages/APIDocs/APIDocs";
 
 export type FormFields = {
   bedrooms: "studio" | "0" | "1" | "2" | "3" | "4+" | null;
@@ -41,7 +42,8 @@ function App() {
           <Route
             index
             element={<Home address={address} onSelectAddress={setAddress} />}
-          />v
+          />
+          v
           <Route
             path="form"
             element={
@@ -50,10 +52,9 @@ function App() {
           />
           <Route
             path="results"
-            element={
-              <Results address={address} fields={fields} />
-            }
+            element={<Results address={address} fields={fields} />}
           />
+          <Route path="api_docs" element={<APIDocs />} />
           <Route
             path="*"
             element={<Home address={address} onSelectAddress={setAddress} />}
