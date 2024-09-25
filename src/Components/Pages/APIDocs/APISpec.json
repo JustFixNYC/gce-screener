@@ -1,0 +1,134 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "JustFix API",
+    "description": "Api for accessing housing data maintained by JustFix.",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://demo-api.justfix.org/api"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "Building": {
+        "properties": {
+          "bbl": {
+            "type": "string",
+            "example": "3071980006",
+            "description": "Borough-Block-Lot of property, 10-digit zero-padded"
+          },
+          "unitsres": {
+            "type": "integer",
+            "example": 45,
+            "description": "Number of residential units"
+          },
+          "wow_portfolio_units": {
+            "type": "integer",
+            "example": "56",
+            "description": "Total number of residential units across properties in this WOW portfolio."
+          },
+          "wow_portfolio_bbls": {
+            "type": "integer",
+            "example": "3",
+            "description": "Total number of properties in this WOW portfolio."
+          },
+          "bldgclass": {
+            "type": "string",
+            "example": "D8",
+            "description": "Building class code (PLUTO)"
+          },
+          "bldgclass_desc": {
+            "type": "string",
+            "example": "ELEVATOR APARTMENTS: Luxury Type Miscellaneous",
+            "description": "Building class description"
+          },
+          "eligible_bldgclass": {
+            "type": "boolean",
+            "example": "TRUE",
+            "description": "Whether or not the property's building class is eligible for Good Cause"
+          },
+          "yearbuilt": {
+            "type": "integer",
+            "example": 1957,
+            "description": "Year the property was built (PLUTO)"
+          },
+          "latest_nb_co": {
+            "type": "string",
+            "example": "2014-03-16",
+            "description": "Most recent date of Certificate of Occupancy issued for a new building"
+          },
+          "post_hstpa_rs_units": {
+            "type": "integer",
+            "example": 45,
+            "description": "Most recent non-zero number of registered rent stabilized units for 2019-2023."
+          },
+          "is_nycha": {
+            "type": "boolean",
+            "example": "FALSE",
+            "description": "Whether or not the property appears in list of NYCHA properties"
+          },
+          "is_subsidized": {
+            "type": "boolean",
+            "example": "FALSE",
+            "description": "Whether or not the property appears in Furman Center's Subsidized Housing Database as having LIHTC, HUD project-based subsidy or financing, HPD programs, Mitchel-Lama, or NYCHA"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/gce/eligibility": {
+      "get": {
+        "summary": "Returns data for determining the eligibility for Good Cause Eviction protections for the requested property (BBL).",
+        "parameters": [
+          {
+            "name": "bbl",
+            "in": "query",
+            "description": "BBL of the property, in 10-digit zero-padded format",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "3071980006"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data for determining GCE eligibility. Returns empty list if the BBL does not have any residential units in PLUTO.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Building"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. BBL should be a 10-digit padded BBL."
+          }
+        }
+      }
+    }
+  }
+}
