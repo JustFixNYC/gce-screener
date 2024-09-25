@@ -51,7 +51,7 @@ function App() {
           <Route
             path="results"
             element={
-              <Results address={address} fields={fields} setFields={setFields} />
+              <Results address={address} fields={fields} />
             }
           />
           <Route
