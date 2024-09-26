@@ -7,16 +7,10 @@
   },
   "servers": [
     {
-      "url": "https://demo-api.justfix.org/api"
+      "url": "https://demo-wowserver.justfix.org/api"
     }
   ],
   "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
-      }
-    },
     "schemas": {
       "Building": {
         "properties": {
