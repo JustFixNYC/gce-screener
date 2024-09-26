@@ -1,0 +1,31 @@
+@import "../../../colors.scss";
+@import "../../../mixins.scss";
+
+
+.confirmation__wrapper {
+  text-align: center;
+
+  .confirmation__subheader {
+    @include body_large_desktop();
+  }
+
+  .img-wrapper {
+    display: inline-block;
+    border: 1px solid $GREY_400;
+    border-radius: 16px;
+    padding: 2rem; //32px
+  }
+
+  .confirmation__address {
+    @include body_large_desktop();
+  }
+
+  .confirmation__buttons {
+    display: inline-flex;
+    margin-top: 2rem; //32px
+
+    .confirmation__button:first-of-type {
+      margin-right: 1rem; //16px
+    }
+  }
+}

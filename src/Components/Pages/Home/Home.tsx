@@ -4,7 +4,11 @@ import "./Home.scss";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 
-export type Address = { bbl: string; address: string };
+export type Address = {
+  bbl: string;
+  address: string;
+  longLat: string;
+};
 
 type HomeProps = {
   address?: Address;
@@ -39,7 +43,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectAddress }) => {
             onClick={() => {
               if (geoAddress) {
                 onSelectAddress(geoAddress);
-                navigate("form");
+                navigate("confirm_address");
               }
             }}
           />
