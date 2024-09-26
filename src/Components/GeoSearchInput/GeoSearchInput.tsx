@@ -11,8 +11,13 @@ type GeoSearchInputProps = {
   onChange: (selectedAddress: Address) => void;
 };
 
+// Address labels from geosearch look like this: "105-47 FLATLANDS SECOND STREET, Brooklyn, NY, USA"
+// We don't need the state and country, so we'll clean up the label by removing them
+const cleanLabel = (addressLabel: string) => {
+  return addressLabel.replace(", NY, USA", "");
+};
+
 export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({ onChange }) => {
-  // const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState<GeoSearchFeature[]>([]);
   const requester = new GeoSearchRequester({
     onError: (e) => {
@@ -27,7 +32,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({ onChange }) => {
   const options = results.map((result) => {
     return {
       value: result.properties.label,
-      label: result.properties.label,
+      label: cleanLabel(result.properties.label),
     };
   });
 
@@ -45,14 +50,17 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({ onChange }) => {
         onChange={({ value }) => {
           const selectedAddress = results.find(
             (result) => result.properties.label === value
-          )?.properties;
+          );
 
-          console.log("selectedAddress", selectedAddress);
+          const longLat = (
+            selectedAddress?.geometry as { coordinates: number[] }
+          ).coordinates.join();
 
           if (selectedAddress) {
             onChange({
-              bbl: selectedAddress?.addendum.pad.bbl,
-              address: selectedAddress?.label,
+              bbl: selectedAddress?.properties.addendum.pad.bbl,
+              address: cleanLabel(selectedAddress?.properties.label),
+              longLat: longLat,
             });
           }
         }}

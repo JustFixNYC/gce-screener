@@ -5,6 +5,7 @@ import { Form } from "./Components/Pages/Form/Form";
 import { useState } from "react";
 import { Results } from "./Components/Pages/Results/Results";
 import { APIDocs } from "./Components/Pages/APIDocs/APIDocs";
+import { ConfirmAddress } from "./Components/Pages/ConfirmAddress/ConfirmAddress";
 
 export type FormFields = {
   bedrooms: "studio" | "0" | "1" | "2" | "3" | "4+" | null;
@@ -43,7 +44,12 @@ function App() {
             index
             element={<Home address={address} onSelectAddress={setAddress} />}
           />
-          v
+          <Route
+            path="confirm_address"
+            element={
+              <ConfirmAddress address={address} />
+            }
+          />
           <Route
             path="form"
             element={
