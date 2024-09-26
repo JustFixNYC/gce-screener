@@ -3,7 +3,9 @@
 
 
 .confirmation__wrapper {
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
   .confirmation__subheader {
     @include body_large_desktop();
