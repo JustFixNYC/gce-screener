@@ -4,15 +4,16 @@ import "./Home.scss";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 
-export type Address = { value: string; label: string };
+export type Address = { bbl: string; address: string };
 
 type HomeProps = {
   address?: Address;
   onSelectAddress: (address: Address) => void;
 };
+
 export const Home: React.FC<HomeProps> = ({ onSelectAddress }) => {
   const navigate = useNavigate();
-  const [geoAddress, setAddress] = useState<{ value: string; label: string }>();
+  const [geoAddress, setAddress] = useState<Address>();
 
   return (
     <div className="wrapper">

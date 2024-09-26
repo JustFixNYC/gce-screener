@@ -7,7 +7,6 @@ import { Address } from "../Home/Home";
 // import { useState } from "react";
 import { FormFields } from "../../../App";
 
-
 type FormProps = {
   address?: Address;
   fields: FormFields;
@@ -17,9 +16,8 @@ type FormProps = {
 export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
   const navigate = useNavigate();
 
-
   const handleSubmit = () => {
-    navigate("/results")
+    navigate(`/results`);
   };
 
   const handleOnChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -47,7 +45,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
         the laws and find out if you're covered.
       </p>
 
-      <div className="address">{address?.label}</div>
+      <div className="address">{address?.address}</div>
       <form>
         <FormStep
           step={1}

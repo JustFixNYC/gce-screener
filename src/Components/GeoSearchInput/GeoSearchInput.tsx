@@ -5,9 +5,10 @@ import {
   GeoSearchFeature,
 } from "@justfixnyc/geosearch-requester";
 import "./GeoSearchInput.scss";
+import { Address } from "../Pages/Home/Home";
 
 type GeoSearchInputProps = {
-  onChange: (address: { value: string; label: string }) => void;
+  onChange: (selectedAddress: Address) => void;
 };
 
 export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({ onChange }) => {
@@ -25,8 +26,8 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({ onChange }) => {
 
   const options = results.map((result) => {
     return {
-      value: result.properties.addendum.pad.bbl,
-      label: result.properties.name,
+      value: result.properties.label,
+      label: result.properties.label,
     };
   });
 
@@ -41,7 +42,20 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({ onChange }) => {
           return value;
         }}
         // @ts-expect-error We need to update the JFCL onChange props to match react-select
-        onChange={onChange}
+        onChange={({ value }) => {
+          const selectedAddress = results.find(
+            (result) => result.properties.label === value
+          )?.properties;
+
+          console.log("selectedAddress", selectedAddress);
+
+          if (selectedAddress) {
+            onChange({
+              bbl: selectedAddress?.addendum.pad.bbl,
+              address: selectedAddress?.label,
+            });
+          }
+        }}
       />
     </>
   );

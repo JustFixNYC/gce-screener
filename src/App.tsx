@@ -1,6 +1,6 @@
 import "./App.scss";
 import { Routes, Route, Outlet } from "react-router";
-import { Home } from "./Components/Pages/Home/Home";
+import { Address, Home } from "./Components/Pages/Home/Home";
 import { Form } from "./Components/Pages/Form/Form";
 import { useState } from "react";
 import { Results } from "./Components/Pages/Results/Results";
@@ -29,7 +29,7 @@ const initialFields: FormFields = {
 };
 
 function App() {
-  const [address, setAddress] = useState<{ value: string; label: string }>();
+  const [address, setAddress] = useState<Address>();
   const [fields, setFields] = useState<FormFields>(initialFields);
   return (
     <>
