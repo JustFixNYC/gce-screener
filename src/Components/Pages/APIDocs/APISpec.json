@@ -78,11 +78,6 @@
       }
     }
   },
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
   "paths": {
     "/gce/eligibility": {
       "get": {
@@ -101,7 +96,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Data for determining GCE eligibility. Returns empty list if the BBL does not have any residential units in PLUTO.",
+            "description": "Data for determining GCE eligibility. Returns empty list if the BBL does not appear in the current version of PLUTO.",
             "content": {
               "application/json": {
                 "schema": {
