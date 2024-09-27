@@ -35,10 +35,6 @@ function App() {
   const [fields, setFields] = useState<FormFields>(initialFields);
   return (
     <>
-      <br />
-      <br />
-      {/* <pre>ADDRESS: {JSON.stringify(address, null, 2)}</pre>
-      <pre>FIELDS: {JSON.stringify(fields, null, 2)}</pre> */}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route

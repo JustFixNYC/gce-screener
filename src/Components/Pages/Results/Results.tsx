@@ -132,7 +132,7 @@ export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
 
         <div className="eligibility__table__footer">
           Is something not quite right?
-          <Link to="/form">Back to Screener</Link>
+          <div className="eligibility__table__footer__link"><Icon icon="arrowLeft" /><Link to="/form">Back to Screener</Link></div>
         </div>
       </div>
     </div>

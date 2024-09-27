@@ -28,7 +28,7 @@ export const ConfirmAddress: React.FC<ConfirmAddressProps> = ({ address }) => {
         Let's make sure we have the right address
       </p>
       <div className="img-wrapper">
-        <img src={mapImageURL} />
+        <img className="img-wrapper__img" src={mapImageURL} />
         <p>YOUR ADDRESS</p>
         <p className="confirmation__address">{address?.address}</p>
       </div>

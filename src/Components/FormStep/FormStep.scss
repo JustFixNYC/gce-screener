@@ -1,7 +1,30 @@
 @import "../../colors.scss";
+@import "../../mixins.scss";
 
 .form-step {
   border: 1px solid $GREY_400;
   border-radius: 1rem;
   padding: 1.5rem; //24px
+  margin-bottom: 1.5rem; // 24px
+
+  .form-step-number {
+    margin-top: 0;
+    margin-bottom: 0.625rem; // 10px
+  }
+
+  .form-step-question {
+    margin-top: 0;
+    margin-bottom: 0.625rem; //10px
+    @include body_large_desktop();
+  }
+
+  .form-step-description {
+    margin: 0;
+    @include small_text_desktop();
+  }
+
+  .form-step-input {
+    margin-top: 1.5rem; //24px
+  }
+
 }

@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3rem; //48px
 }
 
 .eligibility__header {
@@ -32,11 +33,14 @@
   @include h3_desktop();
   display: flex;
   align-items: center;
+  margin: 1.5rem 0; //24px
 }
 
 .eligibility__subheader {
   max-width: 40rem; //640px
   text-align: center;
+  margin-top: 0;
+  margin-bottom: 3.75rem; //60px
 }
 
 .eligibility__table {
@@ -60,12 +64,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1.5rem; //24px
 
+  .eligibility__table__footer__link {
+    margin-top: 0.625rem; //10px
+  }
   a {
     color: black;
+    margin-left: 0.625rem; //10px
   }
 }
-
 
 .eligibility__row {
   display: flex;

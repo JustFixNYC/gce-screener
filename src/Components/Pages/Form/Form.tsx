@@ -1,4 +1,4 @@
-import { Button, RadioButton } from "@justfixnyc/component-library";
+import { Button, Icon, RadioButton } from "@justfixnyc/component-library";
 import "./Form.scss";
 import { useNavigate } from "react-router";
 import { FormStep } from "../../FormStep/FormStep";
@@ -6,6 +6,7 @@ import { FormStep } from "../../FormStep/FormStep";
 import { Address } from "../Home/Home";
 // import { useState } from "react";
 import { FormFields } from "../../../App";
+import { Link } from "react-router-dom";
 
 type FormProps = {
   address?: Address;
@@ -31,20 +32,19 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
   };
 
   return (
-    <>
-      <Button
-        labelText="Back"
-        labelIcon="chevronLeft"
-        size="small"
-        variant="secondary"
-        onClick={() => navigate("home")}
-      />
-      <h2>Screener Survey</h2>
-      <p>
+    <div className="form__wrapper">
+      <div className="form__navHeader">
+        <Link to="home">Home</Link>
+        <Icon icon="caretRight" className="form__navHeader__caret"/> {address?.address}
+      </div>
+
+      <h2 className="form__header">Screener Survey</h2>
+
+      <p className="form__subheader">
         We'll use this information from this 5-question survey to run through
         the laws and find out if you're covered.
       </p>
-      <div className="address">{address?.address}</div>
+
       <form>
         <FormStep
           step={1}
@@ -269,8 +269,19 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
           </div>
         </FormStep>
       </form>
-
-      <Button labelText="Submit" labelIcon="check" onClick={handleSubmit} disabled={Object.values(fields).includes(null)}/>
-    </>
+      <div className="form__buttons">
+        <Button
+          labelText="Back"
+          labelIcon="chevronLeft"
+          variant="secondary"
+          onClick={() => navigate("home")}
+        />
+        <Button
+          labelText="Next"
+          onClick={handleSubmit}
+          disabled={Object.values(fields).includes(null)}
+        />
+      </div>
+    </div>
   );
 };

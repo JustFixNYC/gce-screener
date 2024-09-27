@@ -1,6 +1,23 @@
 @import "../../../mixins.scss";
 @import "../../../colors.scss";
 
+.form__wrapper {
+  position: relative;
+  padding-top: calc(70px + 3rem);
+}
+
+.form__navHeader {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 1.5rem 3rem; //24px 48px
+  border-bottom: 1px solid #000;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: -3rem;
+}
+
 .address {
   @include h3_desktop;
 }
@@ -10,5 +27,17 @@
 
   .radio-button {
     margin-right: 1rem;
+    margin-bottom: 0;
   }
+}
+
+.form__subheader {
+  margin-bottom: 3rem; //48px
+}
+
+.form__buttons {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0; //48px
+  gap: 0.625rem; //10px
 }
