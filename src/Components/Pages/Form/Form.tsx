@@ -44,7 +44,6 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
         We'll use this information from this 5-question survey to run through
         the laws and find out if you're covered.
       </p>
-
       <div className="address">{address?.address}</div>
       <form>
         <FormStep
@@ -109,7 +108,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
               name="rent"
               labelText="Less than $5,846"
               id="rent-less-than-5846"
-              data-value="<5846"
+              data-value="$5,846"
               onChange={handleOnChange}
             ></RadioButton>
             <RadioButton
@@ -117,7 +116,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
               name="rent"
               labelText="$5,847 - $6,005"
               id="rent-5847-6005"
-              data-value="5847-6005"
+              data-value="$6,005"
               onChange={handleOnChange}
             ></RadioButton>
             <RadioButton
@@ -125,7 +124,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
               name="rent"
               labelText="$6,006 - $6,742"
               id="rent-6006-6742"
-              data-value="6006-6742"
+              data-value="$6,742"
               onChange={handleOnChange}
             ></RadioButton>
             <RadioButton
@@ -133,7 +132,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
               name="rent"
               labelText="$6,743 - $8,413"
               id="rent-6743-8413"
-              data-value="6743-8413"
+              data-value="$8,413"
               onChange={handleOnChange}
             ></RadioButton>
             <RadioButton
@@ -141,7 +140,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
               name="rent"
               labelText="$8,413 - $9,065"
               id="rent-8413-9065"
-              data-value="8413-9065"
+              data-value="$9,065"
               onChange={handleOnChange}
             ></RadioButton>
             <RadioButton
@@ -149,7 +148,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
               name="rent"
               labelText="More than $9,066"
               id="rent-9066"
-              data-value=">9066"
+              data-value="$9,066"
               onChange={handleOnChange}
             ></RadioButton>
           </div>
@@ -271,7 +270,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
         </FormStep>
       </form>
 
-      <Button labelText="Submit!" labelIcon="check" onClick={handleSubmit} />
+      <Button labelText="Submit" labelIcon="check" onClick={handleSubmit} disabled={Object.values(fields).includes(null)}/>
     </>
   );
 };

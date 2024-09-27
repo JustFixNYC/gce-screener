@@ -11,7 +11,7 @@ type Criteria =
 
 type CriteriaData = FormFields & BuildingEligibilityInfo;
 
-type Determination = "eligible" | "ineligible" | "unknown";
+export type Determination = "eligible" | "ineligible" | "unknown";
 
 export type CriteriaEligibility = {
   criteria: Criteria;
@@ -21,7 +21,7 @@ export type CriteriaEligibility = {
   moreInfo?: React.ReactNode;
 };
 
-type EligibilityResults = {
+export type EligibilityResults = {
   rent: CriteriaEligibility;
   rentRegulation: CriteriaEligibility;
   portfolioSize?: CriteriaEligibility;
@@ -81,7 +81,7 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
   const { bedrooms, rent } = criteriaData;
   const rentCutoffs = {
     studio: "$5,846",
-    "1": "$6,005 ",
+    "1": "$6,005",
     "2": "$6,742",
     "3": "$8,413",
     "4+": "$9,065",
@@ -98,17 +98,17 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
       than {rentCutoffs[bedrooms]}
     </>
   );
-
+console.log({rent})
   if (bedrooms === "studio") {
-    determination = rent === "A" ? "eligible" : "ineligible";
+    determination = rent === "$5,846" ? "eligible" : "ineligible";
   } else if (bedrooms === "1") {
-    determination = ["A", "B"].includes(rent) ? "eligible" : "ineligible";
+    determination = ["$5,846", "$6,005"].includes(rent) ? "eligible" : "ineligible";
   } else if (bedrooms === "2") {
-    determination = ["A", "B", "C"].includes(rent) ? "eligible" : "ineligible";
+    determination = ["$5,846", "$6,005", "$6,742"].includes(rent) ? "eligible" : "ineligible";
   } else if (bedrooms === "3") {
-    determination = !["D", "E"].includes(rent) ? "eligible" : "ineligible";
+    determination = !["$9,065", ">$9,065"].includes(rent) ? "eligible" : "ineligible";
   } else {
-    determination = rent !== "E" ? "eligible" : "ineligible";
+    determination = rent !== ">$9,065" ? "eligible" : "ineligible";
   }
 
   const userValue = (

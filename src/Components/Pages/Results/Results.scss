@@ -1,0 +1,116 @@
+@import "../../../mixins.scss";
+@import "../../../colors.scss";
+
+.eligibility__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eligibility__header {
+  @include eyebrow_small_desktop();
+}
+
+.covered-pill {
+  font-size: 1.125rem; // 18px
+  padding: 6px 12px;
+  margin: 0.625rem; //10px
+  color: $WHITE;
+  border-radius: 19px;
+  line-height: 1.125rem;
+  background-color: $GREEN;
+
+  &.covered-pill--ineligible {
+    background-color: $RED;
+  }
+  &.covered-pill--unknown {
+    background-color: $YELLOW;
+  }
+}
+
+.eligibility__result {
+  @include h3_desktop();
+  display: flex;
+  align-items: center;
+}
+
+.eligibility__subheader {
+  max-width: 40rem; //640px
+  text-align: center;
+}
+
+.eligibility__table {
+  border-radius: 16px;
+  border: 1px solid $GREY_NEW;
+  width: 1000px;
+}
+
+.eligibility__table__header {
+  border-bottom: 1px solid $GREY_NEW;
+  display: flex;
+  padding: 1.5rem 0; //24px
+
+  .eligibility__table__header-requirement {
+    margin-left: 6rem;
+    width: 400px;
+  }
+}
+
+.eligibility__table__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  a {
+    color: black;
+  }
+}
+
+
+.eligibility__row {
+  display: flex;
+  border-bottom: 1px solid $GREY_NEW;
+  align-items: center;
+  padding: 1.25rem 0;
+
+  .eligibility__row__icon {
+    padding: 0 2rem;
+    font-size: 2rem; //32px
+
+    .eligible {
+      color: $GREEN;
+    }
+    .ineligible {
+      color: $RED;
+    }
+    .unknown {
+      color: $YELLOW;
+    }
+  }
+
+  .eligibility__row__info {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+
+  .eligibility__row__criteria {
+    @include body_large_desktop();
+  }
+
+  .eligibility__row__requirement {
+    @include small_text_desktop();
+  }
+
+  .eligibility__row__userValue {
+    @include body_standard_desktop();
+    width: 400px;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+  .eligibility__row__moreInfo {
+    text-decoration: underline;
+  }
+}

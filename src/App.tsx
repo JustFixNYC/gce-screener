@@ -6,10 +6,11 @@ import { useState } from "react";
 import { Results } from "./Components/Pages/Results/Results";
 import { APIDocs } from "./Components/Pages/APIDocs/APIDocs";
 import { ConfirmAddress } from "./Components/Pages/ConfirmAddress/ConfirmAddress";
+import { Link } from "react-router-dom";
 
 export type FormFields = {
   bedrooms: "studio" | "1" | "2" | "3" | "4+" | null;
-  rent: "A" | "B" | "C" | "D" | "E" | null;
+  rent: "$5,846" | "$6,005" | "$6,742" | "$8,413" | "$9,065" | ">$9,065" | null;
   landlord: "yes" | "no" | "maybe" | null;
   rentStabilized: "yes" | "no" | "maybe" | null;
   housingType:
@@ -75,7 +76,7 @@ const Layout = () => {
   return (
     <div id="container">
       <header id="header">
-        <h1>Good Cause Eviction</h1>
+        <h1><Link to="/" className="header__link">Good Cause Eviction</Link></h1>
       </header>
 
       <div id="main">
