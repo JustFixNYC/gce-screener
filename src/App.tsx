@@ -8,7 +8,7 @@ import { APIDocs } from "./Components/Pages/APIDocs/APIDocs";
 import { ConfirmAddress } from "./Components/Pages/ConfirmAddress/ConfirmAddress";
 
 export type FormFields = {
-  bedrooms: "studio" | "0" | "1" | "2" | "3" | "4+" | null;
+  bedrooms: "studio" | "1" | "2" | "3" | "4+" | null;
   rent: "A" | "B" | "C" | "D" | "E" | null;
   landlord: "yes" | "no" | "maybe" | null;
   rentStabilized: "yes" | "no" | "maybe" | null;
