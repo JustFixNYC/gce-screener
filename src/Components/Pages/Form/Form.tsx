@@ -274,7 +274,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
           labelText="Back"
           labelIcon="chevronLeft"
           variant="secondary"
-          onClick={() => navigate("home")}
+          onClick={() => navigate("/confirm_address")}
         />
         <Button
           labelText="Next"
