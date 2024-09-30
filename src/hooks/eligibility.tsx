@@ -175,19 +175,19 @@ function eligibilityRentRegulated(
 function eligibilityBuildingClass(
   criteriaData: CriteriaData
 ): CriteriaEligibility {
-  const { bldgclass, bldgclass_desc } = criteriaData;
+  const { bldgclass, bldgclass_desc, housingType } = criteriaData;
   const criteria = "buildingClass";
   const requirement = (
     <>Your building must not be a condo, co-op, or other exempt category.</>
   );
-  let determination: Determination = "eligible";
+  let determination: Determination;
   let bldgTypeName = "";
 
-  // should remove null from type for all form fields, since required
-  if (bldgclass === null) return { criteria, requirement };
-
-  if (bldgclass === undefined) {
-    bldgTypeName = "is missing class information";
+  if (housingType === "manufactured") {
+    bldgTypeName = "manufactured housing";
+    determination = "ineligible";
+  } else if (bldgclass === null || bldgclass === undefined) {
+    bldgTypeName = "missing class information";
     determination = "unknown";
   } else if (bldgclass.match(/^R/g)) {
     bldgTypeName = "a condo";
@@ -207,13 +207,15 @@ function eligibilityBuildingClass(
   } else if (bldgclass.match(/^I/g)) {
     bldgTypeName = "classified as a health facility";
     determination = "ineligible";
+  } else {
+    determination = "eligible";
   }
 
   const userValue =
     bldgTypeName === "" ? (
       <>Your building is not an exempted type.</>
     ) : (
-      <>Your building is {bldgTypeName}, and exempt.</>
+      <>Your building is {bldgTypeName}, and is exempt.</>
     );
   const moreInfo = !!bldgclass && (
     <>
@@ -232,8 +234,8 @@ function eligibilityBuildingClass(
 
 function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
   const { latest_nb_co, yearbuilt } = criteriaData;
-  const cutoffDate = new Date("2009-01-01");
-  const earliestCODataYear = 2000;
+  const cutoffYear = 2009;
+  const cutoffDate = new Date(cutoffYear, 1, 1);
   const criteria = "yearBuilt";
   const requirement = (
     <>
@@ -261,9 +263,9 @@ function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
         new Date(yearbuilt, 1, 1) >= cutoffDate ? "unknown" : "eligible";
       userValue = (
         <>
-          There is no certificate of occupancy for your building since{" "}
-          {earliestCODataYear}, but other data indicates it was built in{" "}
-          {yearbuilt}.
+          There is no recorded certificate of occupancy for your building since{" "}
+          {cutoffYear}, {determination === "unknown" ? "but" : "and"} other data
+          indicates it was built in {yearbuilt}.
         </>
       );
     }
@@ -308,9 +310,9 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
     } else {
       userValue = (
         <>
-          You don't know if you live in subsidized or public housing, and there
-          no indication from public data that your building is public housing or
-          subsidized.
+          You're not sure if you live in subsidized or public housing, and there
+          is no indication from public data that your building is public housing
+          or subsidized.
         </>
       );
     }
