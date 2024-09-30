@@ -126,13 +126,22 @@ export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
         {eligibilityResults?.buildingClass && (
           <CriteriaResult {...eligibilityResults.buildingClass} />
         )}
+        {eligibilityResults?.yearBuilt && (
+          <CriteriaResult {...eligibilityResults.yearBuilt} />
+        )}
+        {eligibilityResults?.subsidy && (
+          <CriteriaResult {...eligibilityResults.subsidy} />
+        )}
         {eligibilityResults?.portfolioSize && (
           <CriteriaResult {...eligibilityResults.portfolioSize} />
         )}
 
         <div className="eligibility__table__footer">
           Is something not quite right?
-          <div className="eligibility__table__footer__link"><Icon icon="arrowLeft" /><Link to="/form">Back to Screener</Link></div>
+          <div className="eligibility__table__footer__link">
+            <Icon icon="arrowLeft" />
+            <Link to="/form">Back to Screener</Link>
+          </div>
         </div>
       </div>
     </div>

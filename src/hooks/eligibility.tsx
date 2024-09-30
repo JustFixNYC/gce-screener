@@ -94,19 +94,25 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
 
   const requirement = (
     <>
-      For a {bedrooms} {bedrooms !== "studio" && "bedroom"}, rent must be less
-      than {rentCutoffs[bedrooms]}
+      For a {bedrooms}
+      {bedrooms !== "studio" && " bedroom"}, rent must be less than{" "}
+      {rentCutoffs[bedrooms]}
     </>
   );
-console.log({rent})
   if (bedrooms === "studio") {
     determination = rent === "$5,846" ? "eligible" : "ineligible";
   } else if (bedrooms === "1") {
-    determination = ["$5,846", "$6,005"].includes(rent) ? "eligible" : "ineligible";
+    determination = ["$5,846", "$6,005"].includes(rent)
+      ? "eligible"
+      : "ineligible";
   } else if (bedrooms === "2") {
-    determination = ["$5,846", "$6,005", "$6,742"].includes(rent) ? "eligible" : "ineligible";
+    determination = ["$5,846", "$6,005", "$6,742"].includes(rent)
+      ? "eligible"
+      : "ineligible";
   } else if (bedrooms === "3") {
-    determination = !["$9,065", ">$9,065"].includes(rent) ? "eligible" : "ineligible";
+    determination = !["$9,065", ">$9,065"].includes(rent)
+      ? "eligible"
+      : "ineligible";
   } else {
     determination = rent !== ">$9,065" ? "eligible" : "ineligible";
   }
@@ -224,6 +230,109 @@ function eligibilityBuildingClass(
   };
 }
 
+function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
+  const { latest_nb_co, yearbuilt } = criteriaData;
+  const cutoffDate = new Date("2009-01-01");
+  const earliestCODataYear = 2000;
+  const criteria = "yearBuilt";
+  const requirement = (
+    <>
+      Your building must have received its certificate of occupancy before 2009.
+    </>
+  );
+  let determination: Determination;
+  let userValue: React.ReactNode;
+  let moreInfo: React.ReactNode;
+
+  const dateOptions: Intl.DateTimeFormatOptions = {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  };
+
+  if (latest_nb_co === undefined || latest_nb_co === null) {
+    if (yearbuilt === undefined || yearbuilt === null) {
+      determination = "unknown";
+      userValue = (
+        <>There is no public data available for when your building was built.</>
+      );
+    } else {
+      determination =
+        new Date(yearbuilt, 1, 1) >= cutoffDate ? "unknown" : "eligible";
+      userValue = (
+        <>
+          There is no certificate of occupancy for your building since{" "}
+          {earliestCODataYear}, but other data indicates it was built in{" "}
+          {yearbuilt}.
+        </>
+      );
+    }
+  } else {
+    const coDate = new Date(latest_nb_co);
+    determination = coDate >= cutoffDate ? "ineligible" : "eligible";
+    userValue = (
+      <>
+        Your building was issued a certificate of occupancy on{" "}
+        {coDate.toLocaleDateString("en-US", dateOptions)}.
+      </>
+    );
+  }
+
+  return {
+    criteria,
+    determination,
+    requirement,
+    userValue,
+    moreInfo,
+  };
+}
+
+function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
+  const { housingType, is_nycha, is_subsidized } = criteriaData;
+  const criteria = "subsidy";
+  const requirement = <>You must not live in subsidized or public housing.</>;
+  let determination: Determination;
+  let userValue: React.ReactNode;
+  let moreInfo: React.ReactNode;
+
+  if (housingType == "not-sure" || housingType === null) {
+    determination = "unknown";
+    if (is_nycha || is_subsidized) {
+      userValue = (
+        <>
+          You don't know if you live in subsidized or public housing, but
+          available data indicates that your building is{" "}
+          {is_nycha ? "public housing" : "subsidized"}.
+        </>
+      );
+    } else {
+      userValue = (
+        <>
+          You don't know if you live in subsidized or public housing, and there
+          no indication from public data that your building is public housing or
+          subsidized.
+        </>
+      );
+    }
+  } else if (housingType === "public" || housingType === "subsidized") {
+    determination = "ineligible";
+    userValue = <>You reported that you live in {housingType} housing.</>;
+  } else {
+    determination = "eligible";
+    userValue = (
+      <>You reported that you do not live in public of subsidized housing.</>
+    );
+  }
+
+  return {
+    criteria,
+    determination,
+    requirement,
+    userValue,
+    moreInfo,
+  };
+}
+
 export function useEligibility(
   formFields: FormFields,
   bldgData?: BuildingEligibilityInfo
@@ -235,5 +344,7 @@ export function useEligibility(
     buildingClass: eligibilityBuildingClass(criteriaData),
     rent: eligibilityRent(criteriaData),
     rentRegulation: eligibilityRentRegulated(criteriaData),
+    yearBuilt: eligibilityYearBuilt(criteriaData),
+    subsidy: eligibilitySubsidy(criteriaData),
   };
 }
