@@ -99,8 +99,6 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
           step={2}
           total={5}
           question="What is the total monthly rent for your entire unit?"
-          description="If you are above or below, based on the number of rooms in your
-            apartment, that impacts something something... . . ."
         >
           <div className="radio-options">
             <RadioButton
