@@ -22,7 +22,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectAddress }) => {
   return (
     <div className="wrapper">
       <div className="main-content">
-        <h2>Learn if you're covered by Good Cause Eviction</h2>
+        <h2>Learn if you're covered by Good Cause Eviction in NYC</h2>
         <p className="content-p">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tellus
           lacus, pharetra dictum bibendum eu, ornare non mauris. Fusce pretium
