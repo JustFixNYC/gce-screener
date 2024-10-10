@@ -8,7 +8,7 @@ import {
 } from "../../../hooks/eligibility";
 import { Address } from "../Home/Home";
 import "./Results.scss";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getDetermination } from "../../../helpers";
 
 const CRITERIA_LABELS = {
@@ -74,6 +74,7 @@ type ResultsProps = {
 };
 export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
   const bbl = address?.bbl || "3082320055";
+  const [searchParams] = useSearchParams();
 
   const { data: bldgData } = useGetBuildingEligibilityInfo(bbl);
 
@@ -132,7 +133,7 @@ export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
 
         <div className="eligibility__table__footer">
           Is something not quite right?
-          <div className="eligibility__table__footer__link"><Icon icon="arrowLeft" /><Link to="/form">Back to Screener</Link></div>
+          <div className="eligibility__table__footer__link"><Icon icon="arrowLeft" /><Link to={`/form?x${searchParams.toString()}}`}>Back to Screener</Link></div>
         </div>
       </div>
     </div>

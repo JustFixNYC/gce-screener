@@ -1,7 +1,7 @@
 import { Button } from "@justfixnyc/component-library";
 import { Address } from "../Home/Home";
 import "./ConfirmAddress.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 type ConfirmAddressProps = {
   address?: Address;
@@ -20,6 +20,7 @@ export const ConfirmAddress: React.FC<ConfirmAddressProps> = ({ address }) => {
   const mapImageURL = `https://api.mapbox.com/styles/v1/${styleToken}/static/${marker}/${longLat},${zoom},${bearing},${pitch}/${size}?access_token=${accessToken}`;
 
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   return (
     <div className="confirmation__wrapper">
@@ -39,12 +40,12 @@ export const ConfirmAddress: React.FC<ConfirmAddressProps> = ({ address }) => {
           labelIcon="chevronLeft"
           variant="secondary"
           onClick={() => {
-            navigate("/home");
+            navigate(`/home?${searchParams.toString()}`);
           }}
         />
         <Button className="confirmation__button" labelText="Looks good!"
           onClick={() => {
-            navigate("/form");
+            navigate(`/form?${searchParams.toString()}`);
           }}/>
       </div>
     </div>

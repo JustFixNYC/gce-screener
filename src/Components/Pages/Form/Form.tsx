@@ -2,11 +2,9 @@ import { Button, Icon, RadioButton } from "@justfixnyc/component-library";
 import "./Form.scss";
 import { useNavigate } from "react-router";
 import { FormStep } from "../../FormStep/FormStep";
-// import { useState } from "react";
 import { Address } from "../Home/Home";
-// import { useState } from "react";
 import { FormFields } from "../../../App";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 type FormProps = {
   address?: Address;
@@ -16,9 +14,12 @@ type FormProps = {
 
 export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
   const navigate = useNavigate();
-
+  const [searchParams] = useSearchParams();
+  const initialFields = searchParams.get('fields');
+  console.log('initialFields', initialFields)
   const handleSubmit = () => {
-    navigate(`/results`);
+    searchParams.set("fields", new URLSearchParams(fields).toString());
+    navigate(`/results?${searchParams.toString()}`);
   };
 
   const handleOnChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -35,7 +36,8 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
     <div className="form__wrapper">
       <div className="form__navHeader">
         <Link to="home">Home</Link>
-        <Icon icon="caretRight" className="form__navHeader__caret"/> {address?.address}
+        <Icon icon="caretRight" className="form__navHeader__caret" />{" "}
+        {address?.address}
       </div>
 
       <h2 className="form__header">Screener Survey</h2>
@@ -274,7 +276,9 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
           labelText="Back"
           labelIcon="chevronLeft"
           variant="secondary"
-          onClick={() => navigate("/confirm_address")}
+          onClick={() =>
+            navigate(`/confirm_address?${searchParams.toString()}`)
+          }
         />
         <Button
           labelText="Next"

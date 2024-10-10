@@ -3,6 +3,7 @@ import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import "./Home.scss";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export type Address = {
   bbl: string;
@@ -18,7 +19,10 @@ type HomeProps = {
 export const Home: React.FC<HomeProps> = ({ onSelectAddress }) => {
   const navigate = useNavigate();
   const [geoAddress, setAddress] = useState<Address>();
-
+  const [searchParams] = useSearchParams();
+  const address = searchParams.get("address");
+  // const bbl = searchParams.get("bbl");
+  // const longLat = searchParams.get("longLat");
   return (
     <div className="wrapper">
       <div className="main-content">
@@ -35,7 +39,12 @@ export const Home: React.FC<HomeProps> = ({ onSelectAddress }) => {
         </p>
 
         <div className="geo-search-form">
-          <GeoSearchInput onChange={setAddress} />
+          <div>Selected Address: {address}</div>
+          <GeoSearchInput
+            onChange={(address) => {
+              setAddress(address);
+            }}
+          />
           <Button
             labelText="See if you are eligible"
             size="small"
@@ -43,7 +52,11 @@ export const Home: React.FC<HomeProps> = ({ onSelectAddress }) => {
             onClick={() => {
               if (geoAddress) {
                 onSelectAddress(geoAddress);
-                navigate("confirm_address");
+                console.log(searchParams.toString());
+                searchParams.set("address", geoAddress.address);
+                searchParams.set("bbl", geoAddress.bbl);
+                searchParams.set("longLat", geoAddress.longLat);
+                navigate(`confirm_address?${searchParams.toString()}`);
               }
             }}
           />
