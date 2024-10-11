@@ -78,7 +78,10 @@ function eligibilityPortfolioSize(
 }
 
 function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
-  const { bedrooms, rent } = criteriaData;
+  const { bedrooms, rent: rentString } = criteriaData;
+
+  const rent = parseFloat(rentString || "");
+
   const rentCutoffs = {
     studio: "$5,846",
     "1": "$6,005",
@@ -100,21 +103,15 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
     </>
   );
   if (bedrooms === "studio") {
-    determination = rent === "$5,846" ? "eligible" : "ineligible";
+    determination = rent < 5846 ? "eligible" : "ineligible";
   } else if (bedrooms === "1") {
-    determination = ["$5,846", "$6,005"].includes(rent)
-      ? "eligible"
-      : "ineligible";
+    determination = rent < 6005 ? "eligible" : "ineligible";
   } else if (bedrooms === "2") {
-    determination = ["$5,846", "$6,005", "$6,742"].includes(rent)
-      ? "eligible"
-      : "ineligible";
+    determination = rent < 6742 ? "eligible" : "ineligible";
   } else if (bedrooms === "3") {
-    determination = !["$9,065", ">$9,065"].includes(rent)
-      ? "eligible"
-      : "ineligible";
+    determination = rent < 8413 ? "eligible" : "ineligible";
   } else {
-    determination = rent !== ">$9,065" ? "eligible" : "ineligible";
+    determination = rent < 9065 ? "eligible" : "ineligible";
   }
 
   const userValue = (

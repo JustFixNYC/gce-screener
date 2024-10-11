@@ -12,19 +12,8 @@
     margin-bottom: 0.625rem; // 10px
   }
 
-  .form-step-question {
-    margin-top: 0;
-    margin-bottom: 0.625rem; //10px
-    @include body_large_desktop();
-  }
-
   .form-step-description {
     margin: 0;
     @include small_text_desktop();
   }
-
-  .form-step-input {
-    margin-top: 1.5rem; //24px
-  }
-
 }

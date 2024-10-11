@@ -1,9 +1,36 @@
 @import "../../../mixins.scss";
 @import "../../../colors.scss";
 
+$inputTopMargin: 1.5rem; //24px
+
 .form__wrapper {
   position: relative;
   padding-top: calc(70px + 3rem);
+
+
+  .jfcl-input-header__label {
+    margin-top: 0;
+    margin-bottom: 0;
+    @include body_large_desktop;
+  }
+
+  .jfcl-input-header__helper_text {
+    @include small_text_desktop;
+    margin-top: .625rem; // 10px
+    margin-bottom: 0;
+  }
+
+  .jfcl-text-input {
+    margin-bottom: 0;
+  }
+
+  .jfcl-text-input__input {
+    margin-top: $inputTopMargin;
+  }
+
+  #rent-input {
+    width: 19.375rem; // 310px
+  }
 }
 
 .form__navHeader {
@@ -24,6 +51,7 @@
 
 .radio-options {
   display: flex;
+  margin-top:$inputTopMargin;
 
   .radio-button {
     margin-right: 1rem;
