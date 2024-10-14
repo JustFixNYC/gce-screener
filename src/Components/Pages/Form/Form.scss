@@ -54,6 +54,7 @@ $inputTopMargin: 1.5rem; //24px
   margin-top:$inputTopMargin;
 
   .radio-button {
+    min-width: 5.625rem; // 90px
     margin-right: 1rem;
     margin-bottom: 0;
   }
