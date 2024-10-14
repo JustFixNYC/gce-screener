@@ -112,7 +112,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
           <TextInput
             labelText="What is the total monthly rent for your entire unit?"
             id="rent-input"
-            type="number"
+            type="money"
             name="rent"
             onChange={handleInputChange}
           />
