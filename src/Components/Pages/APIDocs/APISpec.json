@@ -44,20 +44,20 @@
             "example": "ELEVATOR APARTMENTS: Luxury Type Miscellaneous",
             "description": "Building class description"
           },
-          "eligible_bldgclass": {
-            "type": "boolean",
-            "example": "TRUE",
-            "description": "Whether or not the property's building class is eligible for Good Cause"
-          },
           "yearbuilt": {
             "type": "integer",
             "example": 1957,
             "description": "Year the property was built (PLUTO)"
           },
-          "latest_nb_co": {
+          "latest_co": {
             "type": "string",
             "example": "2014-03-16",
-            "description": "Most recent date of Certificate of Occupancy issued for a new building"
+            "description": "Most recent date of Certificate of Occupancy issued for the property"
+          },
+          "co_bin": {
+            "type": "string",
+            "example": "2130453",
+            "description": "The BIN (Building Identification Number) associated with the latest Certificate of Occupancy"
           },
           "post_hstpa_rs_units": {
             "type": "integer",

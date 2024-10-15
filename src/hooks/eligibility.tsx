@@ -231,7 +231,7 @@ function eligibilityBuildingClass(
 }
 
 function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
-  const { latest_nb_co, yearbuilt } = criteriaData;
+  const { latest_co, yearbuilt } = criteriaData;
   const cutoffYear = 2009;
   const cutoffDate = new Date(cutoffYear, 1, 1);
   const criteria = "yearBuilt";
@@ -250,7 +250,7 @@ function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
     year: "numeric",
   };
 
-  if (latest_nb_co === undefined || latest_nb_co === null) {
+  if (latest_co === undefined || latest_co === null) {
     if (yearbuilt === undefined || yearbuilt === null) {
       determination = "unknown";
       userValue = (
@@ -268,7 +268,7 @@ function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
       );
     }
   } else {
-    const coDate = new Date(latest_nb_co);
+    const coDate = new Date(latest_co);
     determination = coDate >= cutoffDate ? "ineligible" : "eligible";
     userValue = (
       <>
