@@ -173,7 +173,7 @@ function eligibilityRentRegulated(
 function eligibilityBuildingClass(
   criteriaData: CriteriaData
 ): CriteriaEligibility {
-  const { bldgclass, bldgclass_desc, housingType } = criteriaData;
+  const { bldgclass, bldgclass_desc, bbl } = criteriaData;
   const criteria = "buildingClass";
   const requirement = (
     <>Your building must not be a condo, co-op, or other exempt category.</>
@@ -181,7 +181,8 @@ function eligibilityBuildingClass(
   let determination: Determination;
   let bldgTypeName = "";
 
-  if (housingType === "manufactured") {
+  if (bbl === "5013920002") {
+    // Goethals Park in Staten Island, only manufactured housing site in NYC
     bldgTypeName = "manufactured housing";
     determination = "ineligible";
   } else if (bldgclass === null || bldgclass === undefined) {
