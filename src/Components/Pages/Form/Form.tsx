@@ -181,12 +181,12 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
         </FormStep>
 
         <FormStep step={5} total={5}>
-          <FormGroup legendText="Which housing type is your apartment associated with?">
+          <FormGroup legendText="Is your apartment associated with any of the following?">
             <div className="radio-options">
               <SelectButton
                 className="radio-button"
                 name="housingType"
-                labelText="NYCHA/Public Housing"
+                labelText="NYCHA - PACT/RAD"
                 id="housing-type-public"
                 data-value="public"
                 onChange={handleRadioChange}
@@ -194,7 +194,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
               <SelectButton
                 className="radio-button"
                 name="housingType"
-                labelText="Subsidized/Income Restricted"
+                labelText="Other subsidized housing"
                 id="housing-type-subsidized"
                 data-value="subsidized"
                 onChange={handleRadioChange}
@@ -202,15 +202,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
               <SelectButton
                 className="radio-button"
                 name="housingType"
-                labelText="Manufactured Housing"
-                id="housing-type-manufactured"
-                data-value="manufactured"
-                onChange={handleRadioChange}
-              ></SelectButton>
-              <SelectButton
-                className="radio-button"
-                name="housingType"
-                labelText="None of these?"
+                labelText="None of these"
                 id="housing-type-none"
                 data-value="none"
                 onChange={handleRadioChange}

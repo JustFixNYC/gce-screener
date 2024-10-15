@@ -16,7 +16,6 @@ export type FormFields = {
   housingType:
     | "public"
     | "subsidized"
-    | "manufactured"
     | "none"
     | "not-sure"
     | null;
