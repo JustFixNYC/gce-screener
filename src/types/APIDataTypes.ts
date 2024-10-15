@@ -5,7 +5,6 @@ export type BuildingEligibilityInfo = {
   wow_portfolio_bbls?: number,
   bldgclass?: string,
   bldgclass_desc?: string,
-  eligible_bldgclass?: true,
   yearbuilt?: number,
   latest_co?: string,
   co_bin?: string,

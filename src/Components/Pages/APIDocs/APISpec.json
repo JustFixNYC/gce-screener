@@ -44,11 +44,6 @@
             "example": "ELEVATOR APARTMENTS: Luxury Type Miscellaneous",
             "description": "Building class description"
           },
-          "eligible_bldgclass": {
-            "type": "boolean",
-            "example": "TRUE",
-            "description": "Whether or not the property's building class is eligible for Good Cause"
-          },
           "yearbuilt": {
             "type": "integer",
             "example": 1957,
