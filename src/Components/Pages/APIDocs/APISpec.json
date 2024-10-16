@@ -73,6 +73,11 @@
             "type": "boolean",
             "example": "FALSE",
             "description": "Whether or not the property appears in Furman Center's Subsidized Housing Database as having LIHTC, HUD project-based subsidy or financing, HPD programs, Mitchel-Lama, or NYCHA"
+          },
+          "subsidy_name": {
+            "type": "string",
+            "example": "Article XI",
+            "description": "Name of the subsidy program the building has, from Furman Center's Subsidized Housing Database and Article XI data"
           }
         }
       }
