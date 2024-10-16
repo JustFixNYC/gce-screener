@@ -6,15 +6,10 @@ import {
 } from "@justfixnyc/geosearch-requester";
 import "./GeoSearchInput.scss";
 import { Address } from "../Pages/Home/Home";
+import { formatGeosearchAddress } from "../../helpers";
 
 type GeoSearchInputProps = {
   onChange: (selectedAddress: Address) => void;
-};
-
-// Address labels from geosearch look like this: "105-47 FLATLANDS SECOND STREET, Brooklyn, NY, USA"
-// We don't need the state and country, so we'll clean up the label by removing them
-const cleanLabel = (addressLabel: string) => {
-  return addressLabel.replace(", NY, USA", "");
 };
 
 export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({ onChange }) => {
@@ -31,8 +26,8 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({ onChange }) => {
 
   const options = results.map((result) => {
     return {
-      value: result.properties.label,
-      label: cleanLabel(result.properties.label),
+      value: formatGeosearchAddress(result.properties),
+      label: formatGeosearchAddress(result.properties),
     };
   });
 
@@ -50,7 +45,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({ onChange }) => {
         // @ts-expect-error We need to update the JFCL onChange props to match react-select
         onChange={({ value }) => {
           const selectedAddress = results.find(
-            (result) => result.properties.label === value
+            (result) => formatGeosearchAddress(result.properties) === value
           );
 
           const longLat = (
@@ -60,7 +55,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({ onChange }) => {
           if (selectedAddress) {
             onChange({
               bbl: selectedAddress?.properties.addendum.pad.bbl,
-              address: cleanLabel(selectedAddress?.properties.label),
+              address: formatGeosearchAddress(selectedAddress?.properties),
               longLat: longLat,
             });
           }

@@ -1,11 +1,22 @@
+import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { EligibilityResults, Determination } from "./hooks/eligibility";
 
-// Address labels from geosearch look like this: "105-47 FLATLANDS SECOND STREET, Brooklyn, NY, USA"
-// We don't need the state and country, so we'll clean up the label by removing them
-export const cleanLabel = (addressLabel: string) => {
-  return addressLabel.replace(", NY, USA", "");
-};
+function toTitleCase(x: string) {
+  return x.replace(
+    /\w\S*/g,
+    (text: string) =>
+      text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+  );
+}
 
+export const formatGeosearchAddress = (
+  properties: GeoSearchProperties | undefined
+): string =>
+  properties
+    ? `${toTitleCase(properties.name)}, ${properties.borough}, ${
+        properties.postalcode
+      }`
+    : "";
 
 export const getDetermination = (
   eligibilityResults?: EligibilityResults
