@@ -53,7 +53,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
         {address?.address}
       </div>
 
-      <h2 className="form__header">Screener Survey</h2>
+      <h2>Screener Survey</h2>
 
       <p className="form__subheader">
         We'll use this information from this 5-question survey to run through

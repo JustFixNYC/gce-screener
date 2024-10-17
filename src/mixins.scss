@@ -8,11 +8,19 @@
 }
 
 @mixin h3_desktop {
-  font-family: Degular;
   font-size: 36px;
   font-style: normal;
   font-weight: 600;
   line-height: 100%; /* 36px */
+}
+
+@mixin page_header {
+  font-family: Degular;
+  font-size: 3.25rem; // 52px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 52px */
+  letter-spacing: 1.56px;
 }
 
 @mixin body_large_desktop {
@@ -35,7 +43,7 @@
 
 @mixin eyebrow_small_desktop {
   font-family: "Suisse Int'l Mono";
-  font-size: 16px;
+  font-size: 1rem; // 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 115%; /* 18.4px */

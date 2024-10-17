@@ -23,7 +23,7 @@ export const ConfirmAddress: React.FC<ConfirmAddressProps> = ({ address }) => {
 
   return (
     <div className="confirmation__wrapper">
-      <h2>Before we get started</h2>
+      <h2>Confirm your address</h2>
       <p className="confirmation__subheader">
         Let's make sure we have the right address
       </p>
