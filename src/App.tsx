@@ -1,8 +1,8 @@
 import "./App.scss";
-import { Routes, Route, Outlet } from "react-router";
+import { Routes, Route, Outlet, useLocation } from "react-router";
 import { Address, Home } from "./Components/Pages/Home/Home";
 import { Form } from "./Components/Pages/Form/Form";
-import { useState } from "react";
+import { ReactNode, useLayoutEffect, useState } from "react";
 import { Results } from "./Components/Pages/Results/Results";
 import { APIDocs } from "./Components/Pages/APIDocs/APIDocs";
 import { ConfirmAddress } from "./Components/Pages/ConfirmAddress/ConfirmAddress";
@@ -29,40 +29,51 @@ const initialFields: FormFields = {
   housingType: null,
 };
 
+const Wrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const location = useLocation();
+
+  useLayoutEffect(() => {
+    // Scroll to the top of the page when the route changes
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [location.pathname]);
+
+  return children;
+};
+
 function App() {
   const [address, setAddress] = useState<Address>();
   const [fields, setFields] = useState<FormFields>(initialFields);
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={<Home address={address} onSelectAddress={setAddress} />}
-          />
-          <Route
-            path="confirm_address"
-            element={
-              <ConfirmAddress address={address} />
-            }
-          />
-          <Route
-            path="form"
-            element={
-              <Form address={address} fields={fields} setFields={setFields} />
-            }
-          />
-          <Route
-            path="results"
-            element={<Results address={address} fields={fields} />}
-          />
-          <Route path="api_docs" element={<APIDocs />} />
-          <Route
-            path="*"
-            element={<Home address={address} onSelectAddress={setAddress} />}
-          />
-        </Route>
-      </Routes>
+      <Wrapper>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route
+              index
+              element={<Home address={address} onSelectAddress={setAddress} />}
+            />
+            <Route
+              path="confirm_address"
+              element={<ConfirmAddress address={address} />}
+            />
+            <Route
+              path="form"
+              element={
+                <Form address={address} fields={fields} setFields={setFields} />
+              }
+            />
+            <Route
+              path="results"
+              element={<Results address={address} fields={fields} />}
+            />
+            <Route path="api_docs" element={<APIDocs />} />
+            <Route
+              path="*"
+              element={<Home address={address} onSelectAddress={setAddress} />}
+            />
+          </Route>
+        </Routes>
+      </Wrapper>
     </>
   );
 }
