@@ -1,62 +1,62 @@
 @import "../../../mixins.scss";
 @import "../../../colors.scss";
 
+$resulsTablePadding: 36px;
+$resultsTableW: 1000px;
+
 .eligibility__wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3rem; //48px
-}
-
-.eligibility__header {
-  @include eyebrow_small_desktop();
 }
 
 .covered-pill {
-  font-size: 1.125rem; // 18px
-  padding: 6px 12px;
-  margin: 0.625rem; //10px
+  display: inline-flex;
+  padding: 0px 18px 4px;
   color: $WHITE;
-  border-radius: 19px;
-  line-height: 1.125rem;
+  border-radius: 44px;
   background-color: $GREEN;
+  white-space: nowrap;
+  height: calc(1em + 4px);
 
   &.covered-pill--ineligible {
     background-color: $RED;
   }
+
   &.covered-pill--unknown {
     background-color: $YELLOW;
+    color: $OFF_BLACK;
   }
 }
 
 .eligibility__result {
-  @include h3_desktop();
   display: flex;
-  align-items: center;
-  margin: 1.5rem 0; //24px
+  flex-direction: column;
+  margin: 2.625rem 0; //42px
+  gap: 4px;
+  width: $resultsTableW + 2 * $resulsTablePadding;
 }
 
-.eligibility__subheader {
-  max-width: 40rem; //640px
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 3.75rem; //60px
-}
 
 .eligibility__table {
   border-radius: 16px;
   border: 1px solid $GREY_NEW;
-  width: 1000px;
+  padding: $resulsTablePadding;
+  width: $resultsTableW;
 }
 
 .eligibility__table__header {
-  border-bottom: 1px solid $GREY_NEW;
   display: flex;
-  padding: 1.5rem 0; //24px
+  padding-bottom: $resulsTablePadding;
+  flex-direction: column;
+  gap: 10px;
 
-  .eligibility__table__header-requirement {
-    margin-left: 6rem;
-    width: 400px;
+  .eligibility__table__header-title {
+    @include eyebrow_small_desktop;
+  }
+
+  .eligibility__table__header-subtitle {
+    @include h3_desktop;
   }
 }
 
@@ -64,11 +64,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem; //24px
+  padding: $resulsTablePadding 0 0;
+  @include body_large_desktop;
 
   .eligibility__table__footer__link {
+    @include body_standard_desktop;
     margin-top: 0.625rem; //10px
   }
+
   a {
     color: black;
     margin-left: 0.625rem; //10px
@@ -79,11 +82,11 @@
   display: flex;
   border-bottom: 1px solid $GREY_NEW;
   align-items: center;
-  padding: 1.25rem 0;
+  padding: 24px 0;
 
   .eligibility__row__icon {
     padding: 0 2rem;
-    font-size: 2rem; //32px
+    font-size: 1.875rem; //30px
 
     .eligible {
       color: $GREEN;
@@ -102,23 +105,36 @@
     width: 400px;
     padding-right: 1rem;
     box-sizing: border-box;
+    gap: 10px;
   }
 
   .eligibility__row__criteria {
-    @include body_large_desktop();
+    @include eyebrow_small_desktop;
   }
 
   .eligibility__row__requirement {
-    @include small_text_desktop();
+    @include body_standard_desktop;
   }
 
   .eligibility__row__userValue {
-    @include body_standard_desktop();
+    @include body_standard_desktop;
     width: 400px;
-    padding-right: 1rem;
+    margin: 0 1.25rem; // 20px
     box-sizing: border-box;
   }
   .eligibility__row__moreInfo {
     text-decoration: underline;
+  }
+}
+
+.eligibility__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.625rem 0; //42px
+
+  .eligibility__footer__header{
+    @include h3_desktop;
+    margin: 0 0 $resulsTablePadding 0;
   }
 }

@@ -18,6 +18,6 @@ body {
 }
 
 h2 {
-  @include h3_desktop;
+  @include page_header;
   margin: 0;
 }

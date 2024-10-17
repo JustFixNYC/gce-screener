@@ -1,4 +1,4 @@
-import { Icon } from "@justfixnyc/component-library";
+import { Button, Icon } from "@justfixnyc/component-library";
 import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
 import { FormFields } from "../../../App";
 import {
@@ -10,6 +10,7 @@ import { Address } from "../Home/Home";
 import "./Results.scss";
 import { Link } from "react-router-dom";
 import { getDetermination } from "../../../helpers";
+import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 
 const CRITERIA_LABELS = {
   portfolioSize: "Landlord portfolio size",
@@ -20,7 +21,7 @@ const CRITERIA_LABELS = {
   yearBuilt: "Year built",
 };
 
-const EligibilityIcon: React.FC<{ determination: Determination }> = ({
+const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
   determination,
 }) => {
   switch (determination) {
@@ -29,42 +30,41 @@ const EligibilityIcon: React.FC<{ determination: Determination }> = ({
     case "ineligible":
       return <Icon icon="ban" className={determination} />;
     default:
-      return <Icon icon="circleExclamation" className={determination} />;
+      return <Icon icon="circleExclamation" className="unknown" />;
   }
 };
 
-const CriteriaResult: React.FC<CriteriaEligibility> = (props) => (
-  <div className="eligibility__row">
-    <span className="eligibility__row__icon">
-      {props?.determination && (
+const CriteriaResult: React.FC<CriteriaEligibility> = (props) => {
+  return (
+    <div className="eligibility__row">
+      <span className="eligibility__row__icon">
         <EligibilityIcon determination={props?.determination} />
-      )}
-    </span>
+      </span>
 
-    <div className="eligibility__row__info">
-      <span className="eligibility__row__criteria">
-        {CRITERIA_LABELS[props?.criteria]}
-      </span>
-      <span className="eligibility__row__requirement">
-        {props?.requirement}
-      </span>
+      <div className="eligibility__row__info">
+        <span className="eligibility__row__criteria">
+          {CRITERIA_LABELS[props?.criteria]}
+        </span>
+        <span className="eligibility__row__requirement">
+          {props?.requirement}
+        </span>
+      </div>
+      <span className="eligibility__row__userValue">{props?.userValue}</span>
+      <span className="eligibility__row__moreInfo">More info</span>
     </div>
-    <span className="eligibility__row__userValue">{props?.userValue}</span>
-    <span className="eligibility__row__moreInfo">More info</span>
-  </div>
-);
-
+  );
+};
 const CoveredPill: React.FC<{ determination: Determination }> = ({
   determination,
 }) => {
   const className = `covered-pill covered-pill--${determination}`;
 
   if (determination === "eligible") {
-    return <span className={className}>COVERED</span>;
+    return <span className={className}>covered</span>;
   } else if (determination === "ineligible") {
-    return <span className={className}>NOT COVERED</span>;
+    return <span className={className}>not covered</span>;
   } else {
-    return <span className={className}>UNSURE</span>;
+    return <span className={className}>might be covered</span>;
   }
 };
 
@@ -82,68 +82,93 @@ export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
   const determination = getDetermination(eligibilityResults);
 
   return (
-    <div className="eligibility__wrapper">
-      <h2 className="eligibility__header">Eligibility</h2>
-      <p className="eligibility__result">
-        {determination === "unknown" && (
-          <>
-            We are <CoveredPill determination={determination} /> of if you are
-            covered by Good Cause Eviction Law
-          </>
-        )}
-        {determination === "eligible" && (
-          <>
-            You are <CoveredPill determination={determination} /> by Good Cause
-            Eviction law
-          </>
-        )}
-        {determination === "ineligible" && (
-          <>
-            You are <CoveredPill determination={determination} /> by Good Cause
-            Eviction law
-          </>
-        )}
-      </p>
-      <p className="eligibility__subheader">
-        To be eligible for coverage under the new Good Cause Eviction law, your
-        living situation must meet all of the required criteria:
-      </p>
+    <>
+      <div className="eligibility__wrapper">
+        <h2 className="eligibility__result">
+          {determination === "unknown" && (
+            <>
+              <span>
+                You <CoveredPill determination={determination} />
+              </span>
+              <span>by Good Cause Eviction Law</span>
+            </>
+          )}
+          {determination === "eligible" && (
+            <>
+              <span>
+                You are <CoveredPill determination={determination} />
+              </span>
+              <span>by Good Cause Eviction law</span>
+            </>
+          )}
+          {determination === "ineligible" && (
+            <>
+              <span>
+                You are <CoveredPill determination={determination} />{" "}
+              </span>
+              <span>by Good Cause Eviction law</span>
+            </>
+          )}
+        </h2>
 
-      <div className="eligibility__table">
-        <div className="eligibility__table__header">
-          <div className="eligibility__table__header-requirement">
-            REQUIREMENT
+        <div className="eligibility__table">
+          <div className="eligibility__table__header">
+            <div className="eligibility__table__header-title">
+              COVERAGE RESULTS
+            </div>
+            {determination === "eligible" && (
+              <div className="eligibility__table__header-subtitle">
+                You meet all of the required criteria.
+              </div>
+            )}
+            {determination === "ineligible" && (
+              <div className="eligibility__table__header-subtitle">
+                You don’t meet all of the requirements.
+              </div>
+            )}
+            {determination === "unknown" && (
+              <div className="eligibility__table__header-subtitle">
+                There are still some things you need to verify.
+              </div>
+            )}
           </div>
-          <div className="eligibility__table__header-yourhome">YOUR HOME</div>
+
+          {eligibilityResults?.rent && (
+            <CriteriaResult {...eligibilityResults.rent} />
+          )}
+          {eligibilityResults?.rentRegulation && (
+            <CriteriaResult {...eligibilityResults.rentRegulation} />
+          )}
+          {eligibilityResults?.buildingClass && (
+            <CriteriaResult {...eligibilityResults.buildingClass} />
+          )}
+          {eligibilityResults?.yearBuilt && (
+            <CriteriaResult {...eligibilityResults.yearBuilt} />
+          )}
+          {eligibilityResults?.subsidy && (
+            <CriteriaResult {...eligibilityResults.subsidy} />
+          )}
+          {eligibilityResults?.portfolioSize && (
+            <CriteriaResult {...eligibilityResults.portfolioSize} />
+          )}
+
+          <div className="eligibility__table__footer">
+            Is something not quite right?
+            <div className="eligibility__table__footer__link">
+              <Icon icon="arrowLeft" />
+              <Link to="/form">Back to Screener</Link>
+            </div>
+          </div>
         </div>
 
-        {eligibilityResults?.rent && (
-          <CriteriaResult {...eligibilityResults.rent} />
-        )}
-        {eligibilityResults?.rentRegulation && (
-          <CriteriaResult {...eligibilityResults.rentRegulation} />
-        )}
-        {eligibilityResults?.buildingClass && (
-          <CriteriaResult {...eligibilityResults.buildingClass} />
-        )}
-        {eligibilityResults?.yearBuilt && (
-          <CriteriaResult {...eligibilityResults.yearBuilt} />
-        )}
-        {eligibilityResults?.subsidy && (
-          <CriteriaResult {...eligibilityResults.subsidy} />
-        )}
-        {eligibilityResults?.portfolioSize && (
-          <CriteriaResult {...eligibilityResults.portfolioSize} />
-        )}
-
-        <div className="eligibility__table__footer">
-          Is something not quite right?
-          <div className="eligibility__table__footer__link">
-            <Icon icon="arrowLeft" />
-            <Link to="/form">Back to Screener</Link>
-          </div>
+        <div className="eligibility__footer">
+          <h3 className="eligibility__footer__header">
+            Help others understand their coverage
+          </h3>
+          <Button labelText="Share this screener" />
         </div>
       </div>
-    </div>
+      <LegalDisclaimer />
+    </>
   );
 };
