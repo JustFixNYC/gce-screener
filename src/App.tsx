@@ -7,6 +7,7 @@ import {
   redirect,
 } from "react-router";
 import { Home } from "./Components/Pages/Home/Home";
+
 import { Form } from "./Components/Pages/Form/Form";
 import { Results } from "./Components/Pages/Results/Results";
 import { APIDocs } from "./Components/Pages/APIDocs/APIDocs";
@@ -18,18 +19,19 @@ export type FormFields = {
   rent: string | null;
   landlord: "yes" | "no" | "maybe" | null;
   rentStabilized: "yes" | "no" | "maybe" | null;
-  housingType: "public" | "subsidized" | "none" | "not-sure" | null;
+  housingType:
+    | "public"
+    | "subsidized"
+    | "none"
+    | "not-sure"
+    | null;
 };
 
 const Layout = () => {
   return (
     <div id="container">
       <header id="header">
-        <h1>
-          <Link to="/" className="header__link">
-            Good Cause Eviction
-          </Link>
-        </h1>
+        <h1><Link to="/" className="header__link">Good Cause Eviction</Link></h1>
       </header>
 
       <div id="main">

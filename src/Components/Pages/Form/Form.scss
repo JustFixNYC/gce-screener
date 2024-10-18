@@ -15,7 +15,7 @@ $inputTopMargin: 1.5rem; //24px
   }
 
   .jfcl-input-header__helper_text {
-    @include small_text_desktop;
+    @include body_standard_desktop;
     margin-top: .625rem; // 10px
     margin-bottom: 0;
   }
@@ -49,7 +49,19 @@ $inputTopMargin: 1.5rem; //24px
   @include h3_desktop;
 }
 
+.radio-options {
+  display: flex;
+  margin-top:$inputTopMargin;
+
+  .radio-button {
+    min-width: 5.625rem; // 90px
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+}
+
 .form__subheader {
+  @include body_large_desktop;
   margin-bottom: 3rem; //48px
 }
 

@@ -97,7 +97,7 @@ export const Results: React.FC = () => {
           {determination === "unknown" && (
             <>
               <span>
-                You <CoveredPill determination={determination} />
+                Your apartment <CoveredPill determination={determination} />
               </span>
               <span>by Good Cause Eviction Law</span>
             </>
@@ -105,7 +105,7 @@ export const Results: React.FC = () => {
           {determination === "eligible" && (
             <>
               <span>
-                You are <CoveredPill determination={determination} />
+                Your apartment is <CoveredPill determination={determination} />
               </span>
               <span>by Good Cause Eviction law</span>
             </>
@@ -113,7 +113,7 @@ export const Results: React.FC = () => {
           {determination === "ineligible" && (
             <>
               <span>
-                You are <CoveredPill determination={determination} />{" "}
+                Your apartment is <CoveredPill determination={determination} />{" "}
               </span>
               <span>by Good Cause Eviction law</span>
             </>
@@ -127,12 +127,12 @@ export const Results: React.FC = () => {
             </div>
             {determination === "eligible" && (
               <div className="eligibility__table__header-subtitle">
-                You meet all of the required criteria.
+                Your apartment meets all of the required criteria.
               </div>
             )}
             {determination === "ineligible" && (
               <div className="eligibility__table__header-subtitle">
-                You don’t meet all of the requirements.
+                Your apartment doesn’t meet all of the requirements.
               </div>
             )}
             {determination === "unknown" && (

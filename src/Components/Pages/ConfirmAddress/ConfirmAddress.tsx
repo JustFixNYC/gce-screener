@@ -2,23 +2,24 @@ import { Button } from "@justfixnyc/component-library";
 import { Address } from "../Home/Home";
 import "./ConfirmAddress.scss";
 import { useNavigate } from "react-router-dom";
-import { useSessionStorage } from "../../../hooks/useSessionStorage";
 
-export const ConfirmAddress: React.FC = () => {
-  const navigate = useNavigate();
-  const [address] = useSessionStorage<Address>('address');
+type ConfirmAddressProps = {
+  address?: Address;
+};
 
+export const ConfirmAddress: React.FC<ConfirmAddressProps> = ({ address }) => {
   const styleToken = import.meta.env.VITE_MAPBOX_STYLE_TOKEN;
   const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
   const longLat = address?.longLat;
   const zoom = "15.25";
   const bearing = "0";
   const pitch = "0";
-  const size = "381x212";
+  const size = "634x352";
   const marker = `pin-s+000(${longLat})`;
 
   const mapImageURL = `https://api.mapbox.com/styles/v1/${styleToken}/static/${marker}/${longLat},${zoom},${bearing},${pitch}/${size}?access_token=${accessToken}`;
 
+  const navigate = useNavigate();
 
   return (
     <div className="confirmation__wrapper">

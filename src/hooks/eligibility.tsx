@@ -37,32 +37,32 @@ function eligibilityPortfolioSize(
     criteriaData;
 
   const criteria = "portfolioSize";
-  const requirement = <>Landlord must own more than 10 units</>;
+  const requirement = <>Landlord must own more than 10 apartments</>;
   let determination: Determination;
   let userValue: React.ReactNode;
 
   if (unitsres === undefined) {
     determination = "unknown";
-    userValue = <>No data available for number of units in your building.</>;
+    userValue = <>No data available for number of apartments in your building.</>;
   } else if (unitsres > 10) {
     determination = "eligible";
-    userValue = <>Your building has more than 10 units</>;
+    userValue = <>Your building has more than 10 apartments</>;
   } else if (landlord === "yes") {
     determination = "ineligible";
-    userValue = <>Your building has 10 or fewer units and is owner-occupied</>;
+    userValue = <>Your building has 10 or fewer apartments and is owner-occupied</>;
   } else {
     determination = "unknown";
     if (wow_portfolio_units !== undefined && wow_portfolio_units > 10) {
       userValue = (
         <>
-          Your building has only {unitsres} units, but your landlord may own{" "}
+          Your building has only {unitsres} apartments, but your landlord may own{" "}
           {wow_portfolio_bbls! - 1} other buildings
         </>
       );
     } else {
       userValue = (
         <>
-          Your building has only {unitsres} units, but your landlord may own
+          Your building has only {unitsres} apartments, but your landlord may own
           other buildings
         </>
       );
