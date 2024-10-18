@@ -13,18 +13,11 @@ import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { useState } from "react";
 import { RadioGroup } from "../../RadioGroup/RadioGroup";
-
-type FormFields = {
-  bedrooms: "studio" | "1" | "2" | "3" | "4+" | null;
-  rent: "$5,846" | "$6,005" | "$6,742" | "$8,413" | "$9,065" | ">$9,065" | null;
-  landlord: "yes" | "no" | "maybe" | null;
-  rentStabilized: "yes" | "no" | "maybe" | null;
-  housingType: "public" | "subsidized" | "none" | "not-sure" | null;
-};
+import { FormFields } from "../../../App";
 
 const initialFields: FormFields = {
   bedrooms: null,
-  rent: null,
+  rent: "",
   landlord: null,
   rentStabilized: null,
   housingType: null,
@@ -32,10 +25,7 @@ const initialFields: FormFields = {
 
 export const Form: React.FC = () => {
   const [address] = useSessionStorage<Address>("address");
-  const [fields, setFields] = useSessionStorage<FormFields>(
-    "fields",
-    initialFields
-  );
+  const [fields, setFields] = useSessionStorage<FormFields>("fields");
   const [localFields, setLocalFields] = useState<FormFields>(
     fields || initialFields
   );
@@ -134,6 +124,7 @@ export const Form: React.FC = () => {
             id="rent-input"
             type="money"
             name="rent"
+            value={localFields["rent"] || ""}
             onChange={handleInputChange}
           />
         </FormStep>

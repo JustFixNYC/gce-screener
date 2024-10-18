@@ -48,7 +48,6 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
 
   return (
     <>
-      <pre>{JSON.stringify(initialAddress, null)}</pre>
       <Dropdown
         className="geo-search"
         options={options}
