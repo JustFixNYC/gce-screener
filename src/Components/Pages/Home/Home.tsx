@@ -24,7 +24,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectAddress }) => {
     <div className="wrapper">
       <div className="main-content">
         <h2>Learn if you're covered by Good Cause Eviction in NYC</h2>
-        <p className="content-p">
+        <p className="content-p body-desktop-large">
           If you’re covered by the law, you have a right to stay in your home
           when your lease ends, and there are limits to how much your landlord
           can increase your rent. This tool will show you which of the law's
@@ -34,7 +34,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectAddress }) => {
         <div className="geo-search-form">
           <GeoSearchInput onChange={setAddress} />
           <Button
-            labelText="See if you are eligible"
+            labelText="See if you are covered"
             size="small"
             disabled={!geoAddress}
             onClick={() => {

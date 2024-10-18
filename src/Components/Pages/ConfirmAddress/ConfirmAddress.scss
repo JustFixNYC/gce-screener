@@ -1,15 +1,16 @@
 @import "../../../colors.scss";
 @import "../../../mixins.scss";
 
-
 .confirmation__wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2.25rem; //36px
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.25rem; //36px
 
   .confirmation__subheader {
-    @include body_large_desktop();
+    @include body_large_desktop;
+    width: 682px;
+    text-align: center;
   }
 
   .img-wrapper {
@@ -20,13 +21,13 @@
     text-align: center;
 
     .img-wrapper__img {
-      width: 381px;
-      height: 212px;
+      width: 634px;
+      height: 352px;
     }
   }
 
   .confirmation__address {
-    @include body_large_desktop();
+    @include body_large_desktop;
   }
 
   .confirmation__buttons {

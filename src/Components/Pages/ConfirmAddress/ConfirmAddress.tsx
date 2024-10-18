@@ -14,7 +14,7 @@ export const ConfirmAddress: React.FC<ConfirmAddressProps> = ({ address }) => {
   const zoom = "15.25";
   const bearing = "0";
   const pitch = "0";
-  const size = "381x212";
+  const size = "634x352";
   const marker = `pin-s+000(${longLat})`;
 
   const mapImageURL = `https://api.mapbox.com/styles/v1/${styleToken}/static/${marker}/${longLat},${zoom},${bearing},${pitch}/${size}?access_token=${accessToken}`;
