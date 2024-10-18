@@ -1,0 +1,12 @@
+$inputTopMargin: 1.5rem; //24px
+
+.radio-options {
+  display: flex;
+  margin-top: $inputTopMargin;
+
+  .radio-button {
+    min-width: 5.625rem; // 90px
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+}

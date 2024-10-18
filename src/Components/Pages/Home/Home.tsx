@@ -1,9 +1,10 @@
+import { useState } from "react";
+import { useNavigate } from "react-router";
 import { Button } from "@justfixnyc/component-library";
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
-import "./Home.scss";
-import { useNavigate } from "react-router";
-import { useState } from "react";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
+import { useSessionStorage } from "../../../hooks/useSessionStorage";
+import "./Home.scss";
 
 export type Address = {
   bbl: string;
@@ -11,14 +12,10 @@ export type Address = {
   longLat: string;
 };
 
-type HomeProps = {
-  address?: Address;
-  onSelectAddress: (address: Address) => void;
-};
-
-export const Home: React.FC<HomeProps> = ({ onSelectAddress }) => {
+export const Home: React.FC = () => {
   const navigate = useNavigate();
-  const [geoAddress, setAddress] = useState<Address>();
+  const [address, setAddress] = useSessionStorage<Address>("address");
+  const [geoAddress, setGeoAddress] = useState<Address>();
 
   return (
     <div className="wrapper">
@@ -32,16 +29,16 @@ export const Home: React.FC<HomeProps> = ({ onSelectAddress }) => {
         </p>
 
         <div className="geo-search-form">
-          <GeoSearchInput onChange={setAddress} />
+          <GeoSearchInput initialAddress={address} onChange={setGeoAddress} />
           <Button
             labelText="See if you are eligible"
             size="small"
-            disabled={!geoAddress}
+            disabled={!geoAddress && !address}
             onClick={() => {
               if (geoAddress) {
-                onSelectAddress(geoAddress);
-                navigate("confirm_address");
+                setAddress(geoAddress);
               }
+              navigate("confirm_address");
             }}
           />
         </div>
