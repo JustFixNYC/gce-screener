@@ -2,14 +2,12 @@ import {
   Button,
   FormGroup,
   Icon,
-  SelectButton,
   TextInput,
 } from "@justfixnyc/component-library";
 import "./Form.scss";
 import { useNavigate } from "react-router";
 import { FormStep } from "../../FormStep/FormStep";
 import { Address } from "../Home/Home";
-import { FormFields } from "../../../App";
 import { Link } from "react-router-dom";
 import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
@@ -39,27 +37,28 @@ export const Form: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
+    setFields(localFields);
     navigate(`/results`);
   };
 
   const handleRadioChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const fieldName = e.target.name;
-    const value = e.target.dataset.value;
+    const value = e.target.dataset.value || null;
     const updatedFields = {
-      ...fields,
+      ...localFields,
       [fieldName]: value,
     };
-    setFields(updatedFields);
+    setLocalFields(updatedFields as FormFields);
   };
 
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const fieldName = e.target.name;
     const value = e.target.value;
     const updatedFields = {
-      ...fields,
+      ...localFields,
       [fieldName]: value,
     };
-    setFields(updatedFields);
+    setLocalFields(updatedFields as FormFields);
   };
 
   const rsHelperText = !bldgData
@@ -98,59 +97,30 @@ export const Form: React.FC = () => {
       <p className="form__subheader">
         We'll use your answers to help learn if you're covered.
       </p>
-
       <form>
         <FormStep step={1} total={5}>
           <FormGroup legendText="How many bedrooms are in your apartment?">
-            <div className="radio-options">
-              <SelectButton
-                className="radio-button"
-                name="bedrooms"
-                labelText="Studio"
-                id="bedrooms-studio"
-                data-value="studio"
-                onChange={handleRadioChange}
-              ></SelectButton>
-              <SelectButton
-                className="radio-button"
-                name="bedrooms"
-                labelText="1"
-                id="bedrooms-1"
-                data-value="1"
-                onChange={handleRadioChange}
-              ></SelectButton>
-              <SelectButton
-                className="radio-button"
-                name="bedrooms"
-                labelText="2"
-                id="bedrooms-2"
-                data-value="2"
-                onChange={handleRadioChange}
-              ></SelectButton>
-              <SelectButton
-                className="radio-button"
-                name="bedrooms"
-                labelText="3"
-                id="bedrooms-3"
-                data-value="3"
-                onChange={handleRadioChange}
-              ></SelectButton>
-              <SelectButton
-                className="radio-button"
-                name="bedrooms"
-                labelText="4+"
-                id="bedrooms-4"
-                data-value="4+"
-                onChange={handleRadioChange}
-              ></SelectButton>
-            </div>
+            <RadioGroup
+              fields={localFields}
+              radioGroup={{
+                name: "bedrooms",
+                options: [
+                  { label: "Studio", value: "studio" },
+                  { label: "1", value: "1" },
+                  { label: "2", value: "2" },
+                  { label: "3", value: "3" },
+                  { label: "4+", value: "4+" },
+                ],
+              }}
+              onChange={handleRadioChange}
+            />
           </FormGroup>
         </FormStep>
 
         <FormStep step={2} total={5}>
           <TextInput
-            labelText="What is the total monthly rent for your entire apartment?"
-            helperText="Please provide the total rent of your apartment, not just the portion of rent that you pay."
+            labelText="What is the total monthly rent for your entire unit?"
+            helperText="Please provide the total rent of your unit, not just the portion of rent that you pay."
             id="rent-input"
             type="money"
             name="rent"
@@ -161,32 +131,18 @@ export const Form: React.FC = () => {
 
         <FormStep step={3} total={5}>
           <FormGroup legendText="Does your landlord live in the building?">
-            <div className="radio-options">
-              <SelectButton
-                className="radio-button"
-                name="landlord"
-                labelText="Yes"
-                id="landlord-yes"
-                data-value="yes"
-                onChange={handleRadioChange}
-              ></SelectButton>
-              <SelectButton
-                className="radio-button"
-                name="landlord"
-                labelText="No"
-                id="landlord-no"
-                data-value="no"
-                onChange={handleRadioChange}
-              ></SelectButton>
-              <SelectButton
-                className="radio-button"
-                name="landlord"
-                labelText="I'm not sure"
-                id="landlord-not-sure"
-                data-value="not-sure"
-                onChange={handleRadioChange}
-              ></SelectButton>
-            </div>
+            <RadioGroup
+              fields={localFields}
+              radioGroup={{
+                name: "landlord",
+                options: [
+                  { label: "Yes", value: "yes" },
+                  { label: "No", value: "no" },
+                  { label: "I'm not sure", value: "not-sure" },
+                ],
+              }}
+              onChange={handleRadioChange}
+            />
           </FormGroup>
         </FormStep>
 
@@ -195,32 +151,18 @@ export const Form: React.FC = () => {
             legendText="Is your apartment rent-stabilized?"
             helperText={rsHelperText}
           >
-            <div className="radio-options">
-              <SelectButton
-                className="radio-button"
-                name="rentStabilized"
-                labelText="Yes"
-                id="rent-stabilized-yes"
-                data-value="yes"
-                onChange={handleRadioChange}
-              ></SelectButton>
-              <SelectButton
-                className="radio-button"
-                name="rentStabilized"
-                labelText="No"
-                id="rent-stabilized-no"
-                data-value="no"
-                onChange={handleRadioChange}
-              ></SelectButton>
-              <SelectButton
-                className="radio-button"
-                name="rentStabilized"
-                labelText="I'm not sure"
-                id="rent-stabilized-not-sure"
-                data-value="not-sure"
-                onChange={handleRadioChange}
-              ></SelectButton>
-            </div>
+            <RadioGroup
+              fields={localFields}
+              radioGroup={{
+                name: "rentStabilized",
+                options: [
+                  { label: "Yes", value: "yes" },
+                  { label: "No", value: "no" },
+                  { label: "I'm not sure", value: "not-sure" },
+                ],
+              }}
+              onChange={handleRadioChange}
+            />
           </FormGroup>
         </FormStep>
 
@@ -229,40 +171,19 @@ export const Form: React.FC = () => {
             legendText="Is your apartment associated with any of the following?"
             helperText={subsidyHelperText}
           >
-            <div className="radio-options">
-              <SelectButton
-                className="radio-button"
-                name="housingType"
-                labelText="NYCHA"
-                id="housing-type-public"
-                data-value="public"
-                onChange={handleRadioChange}
-              ></SelectButton>
-              <SelectButton
-                className="radio-button"
-                name="housingType"
-                labelText="Subsidized housing"
-                id="housing-type-subsidized"
-                data-value="subsidized"
-                onChange={handleRadioChange}
-              ></SelectButton>
-              <SelectButton
-                className="radio-button"
-                name="housingType"
-                labelText="None of these"
-                id="housing-type-none"
-                data-value="none"
-                onChange={handleRadioChange}
-              ></SelectButton>
-              <SelectButton
-                className="radio-button"
-                name="housingType"
-                labelText="I'm not sure"
-                id="housing-type-not-sure"
-                data-value="not-sure"
-                onChange={handleRadioChange}
-              ></SelectButton>
-            </div>
+            <RadioGroup
+              fields={localFields}
+              radioGroup={{
+                name: "housingType",
+                options: [
+                  { label: "NYCHA", value: "public" },
+                  { label: "Subsidized housing", value: "subsidized" },
+                  { label: "None of these", value: "none" },
+                  { label: "I'm not sure", value: "not-sure" },
+                ],
+              }}
+              onChange={handleRadioChange}
+            />
           </FormGroup>
         </FormStep>
       </form>
@@ -276,7 +197,7 @@ export const Form: React.FC = () => {
         <Button
           labelText="Next"
           onClick={handleSubmit}
-          disabled={Object.values(fields).includes(null)}
+          disabled={!localFields || !Object.values(localFields).every(Boolean)}
         />
       </div>
     </div>
