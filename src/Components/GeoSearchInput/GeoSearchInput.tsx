@@ -36,7 +36,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({ onChange }) => {
       <Dropdown
         className="geo-search"
         options={options}
-        labelText="Enter your address to get started"
+        labelText="Enter your building address to get started"
         filterOption={null}
         onInputChange={(value: string) => {
           requester.changeSearchRequest(value);

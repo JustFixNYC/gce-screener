@@ -137,8 +137,8 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
 
         <FormStep step={2} total={5}>
           <TextInput
-            labelText="What is the total monthly rent for your entire unit?"
-            helperText="Please provide the total rent of your unit, not just the portion of rent that you pay."
+            labelText="What is the total monthly rent for your entire apartment?"
+            helperText="Please provide the total rent of your apartment, not just the portion of rent that you pay."
             id="rent-input"
             type="money"
             name="rent"
