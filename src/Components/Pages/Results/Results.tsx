@@ -8,9 +8,10 @@ import {
 } from "../../../hooks/eligibility";
 import { Address } from "../Home/Home";
 import "./Results.scss";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import { getDetermination } from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
+import { useEffect } from "react";
 
 const CRITERIA_LABELS = {
   portfolioSize: "Landlord portfolio size",
@@ -68,11 +69,19 @@ const CoveredPill: React.FC<{ determination: Determination }> = ({
   }
 };
 
-type ResultsProps = {
-  address?: Address;
-  fields: FormFields;
-};
-export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
+export const Results: React.FC = () => {
+  const {address, fields} = useLoaderData() as {address: Address, fields: FormFields};
+  const [, setSearchParams] = useSearchParams();
+
+  console.log({address, fields})
+  useEffect(() => {
+    // save session state in params
+    if (address && fields) {
+      setSearchParams({ address: JSON.stringify(address), fields: JSON.stringify(fields) }, {replace: true});
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const bbl = address?.bbl || "3082320055";
 
   const { data: bldgData } = useGetBuildingEligibilityInfo(bbl);
