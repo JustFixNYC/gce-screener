@@ -28,6 +28,7 @@
 
   .confirmation__address {
     @include body_large_desktop;
+    margin-bottom: 0;
   }
 
   .confirmation__buttons {
