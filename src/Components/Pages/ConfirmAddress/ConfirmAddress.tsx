@@ -25,27 +25,30 @@ export const ConfirmAddress: React.FC<ConfirmAddressProps> = ({ address }) => {
     <div className="confirmation__wrapper">
       <h2>Confirm your address</h2>
       <p className="confirmation__subheader">
-        Let's make sure we have the right address
+        We’ll use info about your building from public data sources to help
+        learn if you're covered
       </p>
       <div className="img-wrapper">
         <img className="img-wrapper__img" src={mapImageURL} />
-        <p>YOUR ADDRESS</p>
         <p className="confirmation__address">{address?.address}</p>
       </div>
       <div className="confirmation__buttons">
         <Button
           className="confirmation__button"
-          labelText="Search new address"
+          labelText="Back"
           labelIcon="chevronLeft"
           variant="secondary"
           onClick={() => {
             navigate("/home");
           }}
         />
-        <Button className="confirmation__button" labelText="Looks good!"
+        <Button
+          className="confirmation__button"
+          labelText="Next"
           onClick={() => {
             navigate("/form");
-          }}/>
+          }}
+        />
       </div>
     </div>
   );

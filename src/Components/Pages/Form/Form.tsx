@@ -70,8 +70,8 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
     ? "Based on our data, it looks like your building is part of NYCHA"
     : bldgData.is_subsidized
     ? `Based on our data, it looks like your building receives ${bldgData.subsidy_name} subsidy`
-    : "By subsidized we mean that your apartment is affordable housing available to people with a specific income level." +
-      " This does not include vouchers that can be used anywhere to cover some or all of the your rent.";
+    : "If your apartment is kept affordable for people based on their income level, then you live in what’s called “subsidized housing.”" +
+      " Your apartment is not considered subsidized if you receive a housing voucher that can be used anywhere.";
 
   return (
     <div className="form__wrapper">
@@ -84,8 +84,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
       <h2>Screener Survey</h2>
 
       <p className="form__subheader">
-        We'll use this information from this 5-question survey to run through
-        the laws and find out if you're covered.
+        We'll use your answers to help learn if you're covered.
       </p>
 
       <form>
