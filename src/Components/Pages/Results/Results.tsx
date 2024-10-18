@@ -88,7 +88,7 @@ export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
           {determination === "unknown" && (
             <>
               <span>
-                You're apartment <CoveredPill determination={determination} />
+                Your apartment <CoveredPill determination={determination} />
               </span>
               <span>by Good Cause Eviction Law</span>
             </>
@@ -96,8 +96,7 @@ export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
           {determination === "eligible" && (
             <>
               <span>
-                You're apartment is{" "}
-                <CoveredPill determination={determination} />
+                Your apartment is <CoveredPill determination={determination} />
               </span>
               <span>by Good Cause Eviction law</span>
             </>
@@ -105,8 +104,7 @@ export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
           {determination === "ineligible" && (
             <>
               <span>
-                You're apartment is{" "}
-                <CoveredPill determination={determination} />{" "}
+                Your apartment is <CoveredPill determination={determination} />{" "}
               </span>
               <span>by Good Cause Eviction law</span>
             </>
@@ -120,12 +118,12 @@ export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
             </div>
             {determination === "eligible" && (
               <div className="eligibility__table__header-subtitle">
-                You're apartment meets all of the required criteria.
+                Your apartment meets all of the required criteria.
               </div>
             )}
             {determination === "ineligible" && (
               <div className="eligibility__table__header-subtitle">
-                You're apartment doesn’t meet all of the requirements.
+                Your apartment doesn’t meet all of the requirements.
               </div>
             )}
             {determination === "unknown" && (
