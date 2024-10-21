@@ -52,7 +52,7 @@ export const Form: React.FC<FormProps> = ({ address, fields, setFields }) => {
 
   const rsHelperText = !bldgData
     ? undefined
-    : bldgData.post_hstpa_rs_units >= bldgData.unitsres
+    : bldgData.unitsres > 0 && bldgData.post_hstpa_rs_units >= bldgData.unitsres
     ? "Our data shows that all apartments in your building are registered as rent stabilized."
     : new Date(bldgData.end_421a) > new Date()
     ? "Your building appears to receive the 421a tax exemption. This means your apartment is rent stabilized."
