@@ -12,6 +12,30 @@
   ],
   "components": {
     "schemas": {
+      "AcrisProperty": {
+        "properties": {
+          "bbl": {
+            "type": "string",
+            "example": "3071980006",
+            "description": "Borough-Block-Lot of the associated property, 10-digit zero-padded"
+          },
+          "doc_id": {
+            "type": "string",
+            "example": "2022030100595001",
+            "description": "ACRIS document ID, used to link to document details."
+          },
+          "doc_date": {
+            "type": "string",
+            "example": "2022-02-24",
+            "description": "Date associated with the ACRIS document."
+          },
+          "unitsres": {
+            "type": "integer",
+            "example": 45,
+            "description": "Number of residential units in the associated property"
+          }
+        }
+      },
       "Building": {
         "properties": {
           "bbl": {
@@ -49,7 +73,7 @@
             "example": 1957,
             "description": "Year the property was built (PLUTO)"
           },
-          "latest_co": {
+          "co_issued": {
             "type": "string",
             "example": "2014-03-16",
             "description": "Most recent date of Certificate of Occupancy issued for the property"
@@ -78,6 +102,13 @@
             "type": "string",
             "example": "Article XI",
             "description": "Name of the subsidy program the building has, from Furman Center's Subsidized Housing Database and Article XI data"
+          },
+          "acris_data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AcrisProperty"
+            },
+            "description": "Array of properties that appear in mortgages/agrements alongside the search address property"
           }
         }
       }
