@@ -9,7 +9,7 @@ import {
 import { Address } from "../Home/Home";
 import "./Results.scss";
 import { Link } from "react-router-dom";
-import { getDetermination } from "../../../helpers";
+import { getDetermination, splitBBL } from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 
 const CRITERIA_LABELS = {
@@ -80,6 +80,8 @@ export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
   const eligibilityResults = useEligibility(fields, bldgData);
 
   const determination = getDetermination(eligibilityResults);
+
+  const { boro, block, lot } = splitBBL(bbl);
 
   return (
     <>
@@ -167,6 +169,39 @@ export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
           </h3>
           <Button labelText="Share this screener" />
         </div>
+
+        {bldgData?.acris_data && (
+          <div className="eligibility__footer">
+            <h3 className="eligibility__footer__header">
+              Properties that appear with your own in joint
+              mortgages/agreements:
+            </h3>
+            <a
+              href={`http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough=${boro}&block=${block}&lot=${lot}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              See all documents on ACRIS
+            </a>
+            {bldgData.acris_data.map((row, i) => (
+              <div key={i}>
+                <ul>
+                  <li>bbl: {row.bbl}</li>
+                  <li>apartments: {row.unitsres}</li>
+                  <li>
+                    <a
+                      href={`https://a836-acris.nyc.gov/DS/DocumentSearch/DocumentImageView?doc_id=${row.doc_id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      See document on ACRIS
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <LegalDisclaimer />
     </>
