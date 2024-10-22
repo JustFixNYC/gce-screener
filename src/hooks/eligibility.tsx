@@ -173,7 +173,7 @@ function eligibilityRentRegulated(
 function eligibilityBuildingClass(
   criteriaData: CriteriaData
 ): CriteriaEligibility {
-  const { bldgclass, bldgclass_desc, bbl } = criteriaData;
+  const { bldgclass, bbl } = criteriaData;
   const criteria = "buildingClass";
   const requirement = (
     <>Your building must not be a condo, co-op, or other exempt category.</>
@@ -218,7 +218,7 @@ function eligibilityBuildingClass(
     );
   const moreInfo = !!bldgclass && (
     <>
-      Your building class is {bldgclass}: {bldgclass_desc}
+      Your building class is {bldgclass}
     </>
   );
 
