@@ -43,10 +43,10 @@
             "example": "3071980006",
             "description": "Borough-Block-Lot of the associated property, 10-digit zero-padded"
           },
-          "distance_m": {
+          "distance_ft": {
             "type": "number",
             "example": "103.59",
-            "description": "Distance from the user's building to this property."
+            "description": "Distance from the user's building to this property, in feet."
           },
           "match_name": {
             "type": "boolean",

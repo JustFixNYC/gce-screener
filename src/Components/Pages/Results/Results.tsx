@@ -9,7 +9,12 @@ import {
 import { Address } from "../Home/Home";
 import "./Results.scss";
 import { Link } from "react-router-dom";
-import { getDetermination, splitBBL } from "../../../helpers";
+import {
+  formatDistance,
+  getDetermination,
+  prioritizeBldgs,
+  splitBBL,
+} from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 
 const CRITERIA_LABELS = {
@@ -200,6 +205,54 @@ export const Results: React.FC<ResultsProps> = ({ address, fields }) => {
                 </ul>
               </div>
             ))}
+          </div>
+        )}
+
+        {bldgData?.wow_data && (
+          <div className="eligibility__footer">
+            <h3 className="eligibility__footer__header">
+              Other properties that may be owned by your landlord:
+            </h3>
+            <a
+              href={`http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough=${boro}&block=${block}&lot=${lot}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              See all documents on ACRIS
+            </a>
+            {bldgData.wow_data.sort(prioritizeBldgs).map((row, i) => {
+              const { boro, block, lot } = splitBBL(row.bbl);
+              return (
+                <div key={i}>
+                  <ul>
+                    <li>bbl: {row.bbl}</li>
+                    <li>apartments: {row.unitsres}</li>
+                    <li>distance: {formatDistance(row.distance_ft)}</li>
+                    <li>
+                      same primary contact name:{" "}
+                      {row.match_name ? "true" : "false"}
+                    </li>
+                    <li>
+                      same primary contact business address (full):{" "}
+                      {row.match_bizaddr_unit ? "true" : "false"}
+                    </li>
+                    <li>
+                      same primary contact business address (excluding unit):{" "}
+                      {row.match_bizaddr_nounit ? "true" : "false"}
+                    </li>
+                    <li>
+                      <a
+                        href={`http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough=${boro}&block=${block}&lot=${lot}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        See documents on ACRIS
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         )}
       </div>
