@@ -36,6 +36,40 @@
           }
         }
       },
+      "WOWProperty": {
+        "properties": {
+          "bbl": {
+            "type": "string",
+            "example": "3071980006",
+            "description": "Borough-Block-Lot of the associated property, 10-digit zero-padded"
+          },
+          "distance_m": {
+            "type": "number",
+            "example": "103.59",
+            "description": "Distance from the user's building to this property."
+          },
+          "match_name": {
+            "type": "boolean",
+            "example": "true",
+            "description": "Whether the primary contact name on the user's building's HPD registration exactly matches with this property."
+          },
+          "match_bizaddr_unit": {
+            "type": "boolean",
+            "example": "false",
+            "description": "Whether the primary contact business address on the user's building's HPD registration exactly matches with this property, including the unit number."
+          },
+          "match_bizaddr_nounit": {
+            "type": "boolean",
+            "example": "true",
+            "description": "Whether the primary contact business address on the user's building's HPD registration exactly matches with this property, excluding the unit number."
+          },
+          "unitsres": {
+            "type": "integer",
+            "example": 45,
+            "description": "Number of residential units in the associated property"
+          }
+        }
+      },
       "Building": {
         "properties": {
           "bbl": {
@@ -103,7 +137,14 @@
             "items": {
               "$ref": "#/components/schemas/AcrisProperty"
             },
-            "description": "Array of properties that appear in mortgages/agrements alongside the search address property"
+            "description": "Array of properties that appear in mortgages/agreements alongside the search address property."
+          },
+          "wow_data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WOWProperty"
+            },
+            "description": "Array of properties within the search address property's WOW portfolio, with additional fields for prioritization."
           }
         }
       }
