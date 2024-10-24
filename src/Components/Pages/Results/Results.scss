@@ -34,7 +34,7 @@ $resultsTableW: 1000px;
   flex-direction: column;
   margin: 2.625rem 0; //42px
   gap: 4px;
-  width: $resultsTableW + 2 * $resulsTablePadding;
+  max-width: $resultsTableW + 2 * $resulsTablePadding;
 }
 
 
@@ -42,7 +42,7 @@ $resultsTableW: 1000px;
   border-radius: 16px;
   border: 1px solid $GREY_NEW;
   padding: $resulsTablePadding;
-  width: $resultsTableW;
+  max-width: $resultsTableW;
 }
 
 .eligibility__table__header {
@@ -84,9 +84,16 @@ $resultsTableW: 1000px;
   align-items: center;
   padding: 24px 0;
 
+  @media (max-width: 772px){
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
   .eligibility__row__icon {
     padding: 0 2rem;
     font-size: 1.875rem; //30px
+    width: 1.875rem; //30px
 
     .eligible {
       color: $GREEN;
@@ -102,10 +109,16 @@ $resultsTableW: 1000px;
   .eligibility__row__info {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     width: 400px;
     padding-right: 1rem;
     box-sizing: border-box;
     gap: 10px;
+
+    @media (max-width: 772px){
+      width: 100%;
+    }
+
   }
 
   .eligibility__row__criteria {
@@ -118,12 +131,17 @@ $resultsTableW: 1000px;
 
   .eligibility__row__userValue {
     @include body_standard_desktop;
-    width: 400px;
     margin: 0 1.25rem; // 20px
     box-sizing: border-box;
+    flex-grow: 1;
+
+    @media (max-width: 772px){
+      margin: 0;
+    }
   }
   .eligibility__row__moreInfo {
     text-decoration: underline;
+    white-space: nowrap;
   }
 }
 
