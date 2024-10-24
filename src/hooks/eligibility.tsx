@@ -80,8 +80,7 @@ function eligibilityPortfolioSize(
 function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
   const { bedrooms, rent: rentString } = criteriaData;
 
-  // Take out commas in case the user included them in their rent amount
-  const rent = parseFloat(rentString?.replace(/,/g, "") || "");
+  const rent = parseFloat(rentString || "");
 
   const rentCutoffs = {
     studio: "$5,846",

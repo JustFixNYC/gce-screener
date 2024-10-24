@@ -49,17 +49,6 @@ $inputTopMargin: 1.5rem; //24px
   @include h3_desktop;
 }
 
-.radio-options {
-  display: flex;
-  margin-top:$inputTopMargin;
-
-  .radio-button {
-    min-width: 5.625rem; // 90px
-    margin-right: 1rem;
-    margin-bottom: 0;
-  }
-}
-
 .form__subheader {
   @include body_large_desktop;
   margin-bottom: 3rem; //48px
