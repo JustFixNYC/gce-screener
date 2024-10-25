@@ -12,9 +12,11 @@
   "dependencies": {
     "@justfixnyc/component-library": "0.51.4",
     "@justfixnyc/geosearch-requester": "^1.0.3-alpha.0",
+    "@rollbar/react": "^0.12.0-beta",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
+    "rollbar": "^2.26.4",
     "swagger-ui-react": "^5.17.14",
     "swr": "^2.2.5"
   },
