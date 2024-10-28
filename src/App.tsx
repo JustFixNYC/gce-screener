@@ -32,11 +32,11 @@ const Layout = () => {
         </h1>
       </header>
 
-      <div id="main">
+      <main id="main">
         <div id="content">
           <Outlet />
         </div>
-      </div>
+      </main>
       <ScrollRestoration />
     </div>
   );
