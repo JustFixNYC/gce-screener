@@ -27,11 +27,11 @@ const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
 }) => {
   switch (determination) {
     case "eligible":
-      return <Icon icon="check" className={determination} />;
+      return <Icon icon="check" className={determination} title="Pass" />;
     case "ineligible":
-      return <Icon icon="ban" className={determination} />;
+      return <Icon icon="ban" className={determination} title="Fail" />;
     default:
-      return <Icon icon="circleExclamation" className="unknown" />;
+      return <Icon icon="circleExclamation" className="unknown" title="Unsure" />;
   }
 };
 
