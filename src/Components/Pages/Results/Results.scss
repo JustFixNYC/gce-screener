@@ -5,9 +5,15 @@ $resulsTablePadding: 36px;
 $resultsTableW: 1000px;
 
 .eligibility__wrapper {
-  display: flex;
-  flex-direction: column;
   align-items: center;
+}
+
+.eligibility__loading {
+  margin: 3rem 0;
+}
+
+.eligibility__error {
+  margin: 3rem 0;
 }
 
 .covered-pill {

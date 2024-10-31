@@ -84,7 +84,7 @@ export const Results: React.FC = () => {
 
   const bbl = address?.bbl || "3082320055";
 
-  const { data: bldgData } = useGetBuildingEligibilityInfo(bbl);
+  const { data: bldgData, isLoading, error } = useGetBuildingEligibilityInfo(bbl);
 
   const eligibilityResults = useEligibility(fields, bldgData);
 
@@ -92,94 +92,109 @@ export const Results: React.FC = () => {
 
   return (
     <>
-      <div className="eligibility__wrapper">
-        <h2 className="eligibility__result">
-          {determination === "unknown" && (
-            <>
-              <span>
-                Your apartment <CoveredPill determination={determination} />
-              </span>
-              <span>by Good Cause Eviction Law</span>
-            </>
-          )}
-          {determination === "eligible" && (
-            <>
-              <span>
-                Your apartment is <CoveredPill determination={determination} />
-              </span>
-              <span>by Good Cause Eviction law</span>
-            </>
-          )}
-          {determination === "ineligible" && (
-            <>
-              <span>
-                Your apartment is <CoveredPill determination={determination} />{" "}
-              </span>
-              <span>by Good Cause Eviction law</span>
-            </>
-          )}
-        </h2>
-
-        <div className="eligibility__table">
-          <div className="eligibility__table__header">
-            <div className="eligibility__table__header-title">
-              COVERAGE RESULTS
+      <div className="wrapper eligibility__wrapper">
+        <div className="main-content">
+          {error && (
+            <div className="eligibility__error">
+              There was an error loading your results, please try again in a few
+              minutes.
             </div>
-            {determination === "eligible" && (
-              <div className="eligibility__table__header-subtitle">
-                Your apartment meets all of the required criteria.
-              </div>
-            )}
-            {determination === "ineligible" && (
-              <div className="eligibility__table__header-subtitle">
-                Your apartment doesn’t meet all of the requirements.
-              </div>
-            )}
-            {determination === "unknown" && (
-              <div className="eligibility__table__header-subtitle">
-                There are still some things you need to verify.
-              </div>
-            )}
-          </div>
+          )}
+          {isLoading && (
+            <div className="eligibility__loading">Loading your results...</div>
+          )}
+          {bldgData &&
+            <>
+              <h2 className="eligibility__result">
+                {determination === "unknown" && (
+                  <>
+                    <span>
+                      Your apartment <CoveredPill determination={determination} />
+                    </span>
+                    <span>by Good Cause Eviction Law</span>
+                  </>
+                )}
+                {determination === "eligible" && (
+                  <>
+                    <span>
+                      Your apartment is <CoveredPill determination={determination} />
+                    </span>
+                    <span>by Good Cause Eviction law</span>
+                  </>
+                )}
+                {determination === "ineligible" && (
+                  <>
+                    <span>
+                      Your apartment is <CoveredPill determination={determination} />{" "}
+                    </span>
+                    <span>by Good Cause Eviction law</span>
+                  </>
+                )}
+              </h2>
 
-          <ul className="eligibility__table__list">
-            {eligibilityResults?.rent && (
-              <CriteriaResult {...eligibilityResults.rent} />
-            )}
-            {eligibilityResults?.rentRegulation && (
-              <CriteriaResult {...eligibilityResults.rentRegulation} />
-            )}
-            {eligibilityResults?.buildingClass && (
-              <CriteriaResult {...eligibilityResults.buildingClass} />
-            )}
-            {eligibilityResults?.yearBuilt && (
-              <CriteriaResult {...eligibilityResults.yearBuilt} />
-            )}
-            {eligibilityResults?.subsidy && (
-              <CriteriaResult {...eligibilityResults.subsidy} />
-            )}
-            {eligibilityResults?.portfolioSize && (
-              <CriteriaResult {...eligibilityResults.portfolioSize} />
-            )}
-          </ul>
+              <div className="eligibility__table">
+                <div className="eligibility__table__header">
+                  <div className="eligibility__table__header-title">
+                    COVERAGE RESULTS
+                  </div>
+                  {determination === "eligible" && (
+                    <div className="eligibility__table__header-subtitle">
+                      Your apartment meets all of the required criteria.
+                    </div>
+                  )}
+                  {determination === "ineligible" && (
+                    <div className="eligibility__table__header-subtitle">
+                      Your apartment doesn’t meet all of the requirements.
+                    </div>
+                  )}
+                  {determination === "unknown" && (
+                    <div className="eligibility__table__header-subtitle">
+                      There are still some things you need to verify.
+                    </div>
+                  )}
+                </div>
 
-          <div className="eligibility__table__footer">
-            Is something not quite right?
-            <div className="eligibility__table__footer__link">
-              <Icon icon="arrowLeft" />
-              <Link to="/form">Back to Screener</Link>
-            </div>
-          </div>
+                <ul className="eligibility__table__list">
+                  {eligibilityResults?.rent && (
+                    <CriteriaResult {...eligibilityResults.rent} />
+                  )}
+                  {eligibilityResults?.rentRegulation && (
+                    <CriteriaResult {...eligibilityResults.rentRegulation} />
+                  )}
+                  {eligibilityResults?.buildingClass && (
+                    <CriteriaResult {...eligibilityResults.buildingClass} />
+                  )}
+                  {eligibilityResults?.yearBuilt && (
+                    <CriteriaResult {...eligibilityResults.yearBuilt} />
+                  )}
+                  {eligibilityResults?.subsidy && (
+                    <CriteriaResult {...eligibilityResults.subsidy} />
+                  )}
+                  {eligibilityResults?.portfolioSize && (
+                    <CriteriaResult {...eligibilityResults.portfolioSize} />
+                  )}
+                </ul>
+
+                <div className="eligibility__table__footer">
+                  Is something not quite right?
+                  <div className="eligibility__table__footer__link">
+                    <Icon icon="arrowLeft" />
+                    <Link to="/form">Back to Screener</Link>
+                  </div>
+                </div>
+              </div>
+
+              <div className="eligibility__footer">
+                <h3 className="eligibility__footer__header">
+                  Help others understand their coverage
+                </h3>
+                <Button labelText="Share this screener" />
+              </div>
+            </>
+          }
         </div>
-
-        <div className="eligibility__footer">
-          <h3 className="eligibility__footer__header">
-            Help others understand their coverage
-          </h3>
-          <Button labelText="Share this screener" />
-        </div>
+        <LegalDisclaimer />
       </div>
-      <LegalDisclaimer />
     </>
   );
 };
