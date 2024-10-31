@@ -73,7 +73,6 @@ export const Results: React.FC = () => {
   const {address, fields} = useLoaderData() as {address: Address, fields: FormFields};
   const [, setSearchParams] = useSearchParams();
 
-  console.log({address, fields})
   useEffect(() => {
     // save session state in params
     if (address && fields) {

@@ -32,6 +32,7 @@ export const apiFetcher = async (url: string) => {
     throw error;
   }
   try {
+    await new Promise(resolve => setTimeout(resolve, 20000))
     return await res.json();
   } catch (e) {
     if (e instanceof Error) {
