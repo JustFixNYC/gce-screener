@@ -27,17 +27,17 @@ const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
 }) => {
   switch (determination) {
     case "eligible":
-      return <Icon icon="check" className={determination} />;
+      return <Icon icon="check" className={determination} title="Pass" />;
     case "ineligible":
-      return <Icon icon="ban" className={determination} />;
+      return <Icon icon="ban" className={determination} title="Fail" />;
     default:
-      return <Icon icon="circleExclamation" className="unknown" />;
+      return <Icon icon="circleExclamation" className="unknown" title="Unsure" />;
   }
 };
 
 const CriteriaResult: React.FC<CriteriaEligibility> = (props) => {
   return (
-    <div className="eligibility__row">
+    <li className="eligibility__row">
       <span className="eligibility__row__icon">
         <EligibilityIcon determination={props?.determination} />
       </span>
@@ -52,7 +52,7 @@ const CriteriaResult: React.FC<CriteriaEligibility> = (props) => {
       </div>
       <span className="eligibility__row__userValue">{props?.userValue}</span>
       <span className="eligibility__row__moreInfo">More info</span>
-    </div>
+    </li>
   );
 };
 const CoveredPill: React.FC<{ determination: Determination }> = ({
@@ -142,24 +142,26 @@ export const Results: React.FC = () => {
             )}
           </div>
 
-          {eligibilityResults?.rent && (
-            <CriteriaResult {...eligibilityResults.rent} />
-          )}
-          {eligibilityResults?.rentRegulation && (
-            <CriteriaResult {...eligibilityResults.rentRegulation} />
-          )}
-          {eligibilityResults?.buildingClass && (
-            <CriteriaResult {...eligibilityResults.buildingClass} />
-          )}
-          {eligibilityResults?.yearBuilt && (
-            <CriteriaResult {...eligibilityResults.yearBuilt} />
-          )}
-          {eligibilityResults?.subsidy && (
-            <CriteriaResult {...eligibilityResults.subsidy} />
-          )}
-          {eligibilityResults?.portfolioSize && (
-            <CriteriaResult {...eligibilityResults.portfolioSize} />
-          )}
+          <ul className="eligibility__table__list">
+            {eligibilityResults?.rent && (
+              <CriteriaResult {...eligibilityResults.rent} />
+            )}
+            {eligibilityResults?.rentRegulation && (
+              <CriteriaResult {...eligibilityResults.rentRegulation} />
+            )}
+            {eligibilityResults?.buildingClass && (
+              <CriteriaResult {...eligibilityResults.buildingClass} />
+            )}
+            {eligibilityResults?.yearBuilt && (
+              <CriteriaResult {...eligibilityResults.yearBuilt} />
+            )}
+            {eligibilityResults?.subsidy && (
+              <CriteriaResult {...eligibilityResults.subsidy} />
+            )}
+            {eligibilityResults?.portfolioSize && (
+              <CriteriaResult {...eligibilityResults.portfolioSize} />
+            )}
+          </ul>
 
           <div className="eligibility__table__footer">
             Is something not quite right?

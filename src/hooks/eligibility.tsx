@@ -55,15 +55,15 @@ function eligibilityPortfolioSize(
     if (wow_portfolio_units !== undefined && wow_portfolio_units > 10) {
       userValue = (
         <>
-          Your building has only {unitsres} apartments, but your landlord may own{" "}
-          {wow_portfolio_bbls! - 1} other buildings
+          {`Your building has only ${unitsres} apartments, but your landlord may own
+          ${wow_portfolio_bbls! - 1} other buildings`}
         </>
       );
     } else {
       userValue = (
         <>
-          Your building has only {unitsres} apartments, but your landlord may own
-          other buildings
+          {`Your building has only ${unitsres} apartments, but your landlord may own
+          other buildings`}
         </>
       );
     }
@@ -97,9 +97,9 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
 
   const requirement = (
     <>
-      For a {bedrooms}
-      {bedrooms !== "studio" && " bedroom"}, rent must be less than{" "}
-      {rentCutoffs[bedrooms]}
+      {`For a ${bedrooms}
+      ${bedrooms !== "studio" && " bedroom"}, rent must be less than
+      ${rentCutoffs[bedrooms]}`}
     </>
   );
   if (bedrooms === "studio") {
@@ -116,8 +116,8 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
 
   const userValue = (
     <>
-      Your rent is {determination === "eligible" ? "less" : "more"} than{" "}
-      {rentCutoffs[bedrooms]}.
+      {`Your rent is ${determination === "eligible" ? "less" : "more"} than
+      ${rentCutoffs[bedrooms]}.`}
     </>
   );
 
@@ -213,11 +213,11 @@ function eligibilityBuildingClass(
     bldgTypeName === "" ? (
       <>Your building is not an exempted type.</>
     ) : (
-      <>Your building is {bldgTypeName}, and is exempt.</>
+      <>{`Your building is ${bldgTypeName}, and is exempt.`}</>
     );
   const moreInfo = !!bldgclass && (
     <>
-      Your building class is {bldgclass}
+      {`Your building class is ${bldgclass}`}
     </>
   );
 
@@ -261,9 +261,9 @@ function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
         new Date(yearbuilt, 1, 1) >= cutoffDate ? "unknown" : "eligible";
       userValue = (
         <>
-          There is no recorded certificate of occupancy for your building since{" "}
-          {cutoffYear}, {determination === "unknown" ? "but" : "and"} other data
-          indicates it was built in {yearbuilt}.
+          {`There is no recorded certificate of occupancy for your building since
+          ${cutoffYear}, ${determination === "unknown" ? "but" : "and"} other data
+          indicates it was built in {yearbuilt}.`}
         </>
       );
     }
@@ -272,8 +272,8 @@ function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
     determination = coDate >= cutoffDate ? "ineligible" : "eligible";
     userValue = (
       <>
-        Your building was issued a certificate of occupancy on{" "}
-        {coDate.toLocaleDateString("en-US", dateOptions)}.
+        {`Your building was issued a certificate of occupancy on
+        ${coDate.toLocaleDateString("en-US", dateOptions)}.`}
       </>
     );
   }
@@ -300,9 +300,9 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
     if (is_nycha || is_subsidized) {
       userValue = (
         <>
-          You don't know if you live in subsidized or public housing, but
-          available data indicates that your building is{" "}
-          {is_nycha ? "public housing" : "subsidized"}.
+          {`You don't know if you live in subsidized or public housing, but
+          available data indicates that your building is
+          ${is_nycha ? "public housing" : "subsidized"}.`}
         </>
       );
     } else {
@@ -316,7 +316,7 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
     }
   } else if (housingType === "public" || housingType === "subsidized") {
     determination = "ineligible";
-    userValue = <>You reported that you live in {housingType} housing.</>;
+    userValue = <>{`You reported that you live in ${housingType} housing.`}</>;
   } else {
     determination = "eligible";
     userValue = (

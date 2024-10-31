@@ -28,7 +28,7 @@ export const ConfirmAddress: React.FC = () => {
         learn if you're covered
       </p>
       <div className="img-wrapper">
-        <img className="img-wrapper__img" src={mapImageURL} />
+        <img className="img-wrapper__img" src={mapImageURL} alt="Map showing location of the entered address."/>
         <p className="confirmation__address">{address?.address}</p>
       </div>
       <div className="confirmation__buttons">
