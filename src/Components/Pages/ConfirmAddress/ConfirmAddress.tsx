@@ -1,16 +1,15 @@
 import { Button } from "@justfixnyc/component-library";
 import { Address } from "../Home/Home";
 import "./ConfirmAddress.scss";
-import { useNavigate } from "react-router-dom";
-import { useSessionStorage } from "../../../hooks/useSessionStorage";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
-  const [address] = useSessionStorage<Address>('address');
+  const {address} = useLoaderData() as {address: Address};
 
   const styleToken = import.meta.env.VITE_MAPBOX_STYLE_TOKEN;
   const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
-  const longLat = address?.longLat;
+  const longLat = address.longLat;
   const zoom = "15.25";
   const bearing = "0";
   const pitch = "0";
@@ -24,12 +23,12 @@ export const ConfirmAddress: React.FC = () => {
     <div className="confirmation__wrapper">
       <h2>Confirm your address</h2>
       <p className="confirmation__subheader">
-        We’ll use info about your building from public data sources to help
+        We'll use info about your building from public data sources to help
         learn if you're covered
       </p>
       <div className="img-wrapper">
         <img className="img-wrapper__img" src={mapImageURL} alt="Map showing location of the entered address."/>
-        <p className="confirmation__address">{address?.address}</p>
+        <p className="confirmation__address">{address.address}</p>
       </div>
       <div className="confirmation__buttons">
         <Button

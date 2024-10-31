@@ -5,7 +5,7 @@ import {
   TextInput,
 } from "@justfixnyc/component-library";
 import "./Form.scss";
-import { useNavigate } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import { FormStep } from "../../FormStep/FormStep";
 import { Address } from "../Home/Home";
 import { Link } from "react-router-dom";
@@ -24,13 +24,13 @@ const initialFields: FormFields = {
 };
 
 export const Form: React.FC = () => {
-  const [address] = useSessionStorage<Address>("address");
+  const {address} = useLoaderData() as {address: Address};
   const [fields, setFields] = useSessionStorage<FormFields>("fields");
   const [localFields, setLocalFields] = useState<FormFields>(
     fields || initialFields
   );
 
-  const bbl = address?.bbl || "3082320055";
+  const bbl = address.bbl;
 
   const { data: bldgData } = useGetBuildingEligibilityInfo(bbl);
 

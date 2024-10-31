@@ -81,7 +81,7 @@ export const Results: React.FC = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const bbl = address?.bbl || "3082320055";
+  const bbl = address.bbl;
 
   const { data: bldgData, isLoading, error } = useGetBuildingEligibilityInfo(bbl);
 

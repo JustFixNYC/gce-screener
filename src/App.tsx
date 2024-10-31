@@ -57,8 +57,20 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route path="confirm_address" element={<ConfirmAddress />} />
-      <Route path="form" element={<Form />} />
+      <Route path="confirm_address" element={<ConfirmAddress />} loader={() => {
+        const sessionAddress = window.sessionStorage.getItem("address");
+        if (!isJsonString(sessionAddress)) {
+          return redirect("/");
+        }
+        return {address: JSON.parse(sessionAddress as string)}
+      }}/>
+      <Route path="form" element={<Form />} loader={() => {
+        const sessionAddress = window.sessionStorage.getItem("address");
+        if (!isJsonString(sessionAddress)) {
+          return redirect("/");
+        }
+        return {address: JSON.parse(sessionAddress as string)}
+      }}/>
       <Route
         path="results"
         element={<Results />}
