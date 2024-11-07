@@ -1,16 +1,14 @@
 import { useEffect } from "react";
-import { useLoaderData, useNavigate, useSearchParams } from "react-router-dom";
-import { Button, Icon } from "@justfixnyc/component-library";
+import { useLoaderData, useSearchParams } from "react-router-dom";
+import { Icon } from "@justfixnyc/component-library";
 
 import { Address } from "../Home/Home";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
-import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
 import { BackToResults } from "../../BreadCrumbs/BreadCrumbs";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { FormFields } from "../../../App";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import "./PortfolioSize.scss";
-import JFCLLinkInternal from "../../JFCLLinkInternal";
 
 export const PortfolioSize: React.FC = () => {
   const { address, fields } = useLoaderData() as {
@@ -30,15 +28,13 @@ export const PortfolioSize: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const navigate = useNavigate();
+  // const bbl = address.bbl;
 
-  const bbl = address.bbl;
-
-  const {
-    data: bldgData,
-    isLoading,
-    error,
-  } = useGetBuildingEligibilityInfo(bbl);
+  // const {
+  //   data: bldgData,
+  //   isLoading,
+  //   error,
+  // } = useGetBuildingEligibilityInfo(bbl);
 
   return (
     <>
