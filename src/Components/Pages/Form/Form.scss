@@ -6,7 +6,8 @@ $inputTopMargin: 1.5rem; //24px
 .form__wrapper {
   position: relative;
   padding-top: calc(70px + 3rem);
-
+  padding-left: 3rem; // 48px
+  padding-right: 3rem; // 48px
 
   .jfcl-input-header__label {
     margin-top: 0;
@@ -16,7 +17,7 @@ $inputTopMargin: 1.5rem; //24px
 
   .jfcl-input-header__helper_text {
     @include body_standard_desktop;
-    margin-top: .625rem; // 10px
+    margin-top: 0.625rem; // 10px
     margin-bottom: 0;
   }
 
@@ -31,18 +32,6 @@ $inputTopMargin: 1.5rem; //24px
   #rent-input {
     max-width: 19.375rem; // 310px
   }
-}
-
-.form__navHeader {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  padding: 1.5rem 3rem; //24px 48px
-  border-bottom: 1px solid #000;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: -3rem;
 }
 
 .address {

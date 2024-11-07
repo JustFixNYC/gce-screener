@@ -1,19 +1,15 @@
-import {
-  Button,
-  FormGroup,
-  Icon,
-  TextInput,
-} from "@justfixnyc/component-library";
-import "./Form.scss";
+import { useState } from "react";
+import { Button, FormGroup, TextInput } from "@justfixnyc/component-library";
 import { useLoaderData, useNavigate } from "react-router";
+
 import { FormStep } from "../../FormStep/FormStep";
 import { Address } from "../Home/Home";
-import { Link } from "react-router-dom";
 import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
-import { useState } from "react";
 import { RadioGroup } from "../../RadioGroup/RadioGroup";
 import { FormFields } from "../../../App";
+import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
+import "./Form.scss";
 
 const initialFields: FormFields = {
   bedrooms: null,
@@ -24,7 +20,7 @@ const initialFields: FormFields = {
 };
 
 export const Form: React.FC = () => {
-  const {address} = useLoaderData() as {address: Address};
+  const { address } = useLoaderData() as { address: Address };
   const [fields, setFields] = useSessionStorage<FormFields>("fields");
   const [localFields, setLocalFields] = useState<FormFields>(
     fields || initialFields
@@ -86,11 +82,16 @@ export const Form: React.FC = () => {
 
   return (
     <div className="form__wrapper">
-      <div className="form__navHeader">
-        <Link to="home">Home</Link>
-        <Icon icon="caretRight" className="form__navHeader__caret" />{" "}
-        {address?.address}
-      </div>
+      <BreadCrumbs
+        crumbs={[
+          { path: "/home", name: "Home" },
+          {
+            path: "/confirm_address",
+            name: address?.address || "Your address",
+          },
+          { path: "/form", name: "Screener survey" },
+        ]}
+      />
 
       <h2>Screener Survey</h2>
 

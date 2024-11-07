@@ -1,0 +1,152 @@
+@import "../../mixins.scss";
+@import "../../colors.scss";
+
+$contentBoxPadding: 36px;
+$contentBoxWidth: 781px;
+$contentPWidth: 677px;
+$videoEmbedW: 623px;
+
+.content-box {
+  border-radius: 4px;
+  border: 2px solid $GREY_NEW;
+  width: $contentBoxWidth;
+  margin: 36px 0;
+}
+
+.content-box__header {
+  display: flex;
+  padding: $contentBoxPadding;
+  flex-direction: column;
+  gap: 10px;
+
+  .content-box__header-title {
+    @include eyebrow_small_desktop;
+  }
+
+  .content-box__header-subtitle {
+    @include h3_desktop;
+  }
+}
+
+.content-box__section,
+.content-box__footer {
+  display: flex;
+  padding: $contentBoxPadding;
+  border-top: 1px solid $GREY_NEW;
+
+  .eligibility__icon {
+    font-size: 1.875rem; //30px
+    width: 1.875rem; //30px
+    margin-right: 36px;
+
+    .eligible {
+      color: $GREEN;
+    }
+    .ineligible {
+      color: $RED;
+    }
+    .unknown {
+      color: $YELLOW;
+    }
+  }
+
+  .content-box__section__content {
+    display: flex;
+    flex-direction: column;
+
+    .content-box__section__step {
+      @include eyebrow_small_desktop;
+    }
+
+    .content-box__section__header {
+      @include body_large_desktop;
+      margin-bottom: 0.875rem; // 14px
+    }
+
+    .content-box__section__video {
+      width: $videoEmbedW;
+      background-color: black;
+      align-self: center;
+      margin-top: 30px;
+    }
+
+    p {
+      max-width: $contentPWidth;
+      margin: 0;
+      &.bold {
+        font-weight: 700;
+      }
+    }
+
+    .jfcl-button,
+    .jfcl-link {
+      margin-top: 1.875rem; // 30px
+      &:only-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.content-box__section__content .content-box__section__acris-buildings {
+  margin-top: 1.875rem; //30px
+
+  ul {
+    margin: 0 0 1.5rem 0; // 24px
+    padding: 0;
+    list-style: none;
+  }
+
+  details {
+    border: 1px solid $GREY_NEW;
+    padding: 0.75rem 1.5rem; // 12px 24px
+
+    summary {
+      display: flex;
+      list-style: none;
+      font-weight: 600;
+      .chevronIcon {
+        margin-left: auto;
+      }
+    }
+
+    &[open] {
+      padding-bottom: 1.125rem; // 18px
+      summary .chevronIcon {
+        transform: scale(-1, -1);
+      }
+    }
+  }
+
+  li {
+    @include body_standard_desktop;
+  }
+}
+
+.content-box__section__content .content-box__section__acris-links {
+  p {
+    font-weight: 600;
+    margin-top: 1.875rem; // 30px
+  }
+  ul {
+    margin: 0 0 1.5rem 0; // 24px
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    margin-top: 0.75rem; // 12px
+  }
+}
+
+.content-box__footer {
+  justify-content: center;
+
+  .content-box__section__content {
+    align-items: center;
+    justify-content: center;
+
+    button {
+      margin: 0;
+    }
+  }
+}

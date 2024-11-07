@@ -1,7 +1,5 @@
 import useSWR from "swr";
-import {
-  BuildingEligibilityInfo,
-} from "../types/APIDataTypes";
+import { BuildingEligibilityInfo } from "../types/APIDataTypes";
 import { apiFetcher } from "./helpers";
 
 type BuildingInfoSWRResponse = {
@@ -10,7 +8,9 @@ type BuildingInfoSWRResponse = {
   error: Error | undefined;
 };
 
-export function useGetBuildingEligibilityInfo(bbl: string): BuildingInfoSWRResponse {
+export function useGetBuildingEligibilityInfo(
+  bbl: string
+): BuildingInfoSWRResponse {
   const { data, error, isLoading } = useSWR(
     `/gce/eligibility?bbl=${bbl}`,
     apiFetcher,
@@ -18,7 +18,7 @@ export function useGetBuildingEligibilityInfo(bbl: string): BuildingInfoSWRRespo
       revalidateIfStale: false,
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
-    },
+    }
   );
 
   return {

@@ -1,5 +1,5 @@
 @mixin body_standard_desktop {
-  font-family: 'Degular', Arial, Helvetica, sans-serif;
+  font-family: "Degular", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 1.125rem; // 18px
@@ -24,7 +24,7 @@
 }
 
 @mixin body_large_desktop {
-  font-family: 'Degular', Arial, Helvetica, sans-serif;
+  font-family: "Degular", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 1.5rem; // 24px
@@ -33,7 +33,7 @@
 }
 
 @mixin small_text_desktop {
-  font-family: 'Degular', Arial, Helvetica, sans-serif;
+  font-family: "Degular", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 0.875rem; // 14px
@@ -48,5 +48,15 @@
   font-weight: 400;
   line-height: 115%; /* 18.4px */
   letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+@mixin eyebrow_large_desktop {
+  font-family: "Suisse Int'l Mono";
+  font-size: 1.125rem; // 18px
+  font-style: normal;
+  font-weight: 400;
+  line-height: 115%; /* 20.7px */
+  letter-spacing: 0.54px;
   text-transform: uppercase;
 }
