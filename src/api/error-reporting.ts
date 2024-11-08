@@ -6,10 +6,7 @@
  * reject with a `TypeError` on network failure, which is awfully ambiguous.
  */
 export class NetworkError extends Error {
-  constructor(
-    message: string,
-    readonly shouldReport: boolean = false,
-  ) {
+  constructor(message: string, readonly shouldReport: boolean = false) {
     super(message);
   }
 }
@@ -30,7 +27,7 @@ export class HTTPError extends NetworkError {
       // because it's our "fault" as a client--i.e., we should change
       // our client-side code to never make the request in the
       // first place.
-      response.status >= 400 && response.status < 500,
+      response.status >= 400 && response.status < 500
     );
     this.statusText = response.statusText;
     this.status = response.status;

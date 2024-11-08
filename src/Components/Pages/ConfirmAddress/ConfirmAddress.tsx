@@ -5,7 +5,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 
 export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
-  const {address} = useLoaderData() as {address: Address};
+  const { address } = useLoaderData() as { address: Address };
 
   const styleToken = import.meta.env.VITE_MAPBOX_STYLE_TOKEN;
   const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
@@ -18,7 +18,6 @@ export const ConfirmAddress: React.FC = () => {
 
   const mapImageURL = `https://api.mapbox.com/styles/v1/${styleToken}/static/${marker}/${longLat},${zoom},${bearing},${pitch}/${size}?access_token=${accessToken}`;
 
-
   return (
     <div className="confirmation__wrapper">
       <h2>Confirm your address</h2>
@@ -27,7 +26,11 @@ export const ConfirmAddress: React.FC = () => {
         learn if you're covered
       </p>
       <div className="img-wrapper">
-        <img className="img-wrapper__img" src={mapImageURL} alt="Map showing location of the entered address."/>
+        <img
+          className="img-wrapper__img"
+          src={mapImageURL}
+          alt="Map showing location of the entered address."
+        />
         <p className="confirmation__address">{address.address}</p>
       </div>
       <div className="confirmation__buttons">

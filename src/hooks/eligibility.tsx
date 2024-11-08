@@ -43,13 +43,17 @@ function eligibilityPortfolioSize(
 
   if (unitsres === undefined) {
     determination = "unknown";
-    userValue = <>No data available for number of apartments in your building.</>;
+    userValue = (
+      <>No data available for number of apartments in your building.</>
+    );
   } else if (unitsres > 10) {
     determination = "eligible";
     userValue = <>Your building has more than 10 apartments</>;
   } else if (landlord === "yes") {
     determination = "ineligible";
-    userValue = <>Your building has 10 or fewer apartments and is owner-occupied</>;
+    userValue = (
+      <>Your building has 10 or fewer apartments and is owner-occupied</>
+    );
   } else {
     determination = "unknown";
     if (wow_portfolio_units !== undefined && wow_portfolio_units > 10) {
@@ -145,7 +149,7 @@ function eligibilityRentRegulated(
   if (rentStabilized === "yes") {
     determination = "ineligible";
     userValue = <>Your apartment is rent regulated.</>;
-    moreInfo = <>Rent regulation provides you even strong protections.</>;
+    moreInfo = <>Rent stabilization provides you even strong protections.</>;
   } else if (rentStabilized === "no") {
     determination = "eligible";
     userValue = <>Your apartment is not rent regulated.</>;
@@ -215,11 +219,7 @@ function eligibilityBuildingClass(
     ) : (
       <>{`Your building is ${bldgTypeName}, and is exempt.`}</>
     );
-  const moreInfo = !!bldgclass && (
-    <>
-      {`Your building class is ${bldgclass}`}
-    </>
-  );
+  const moreInfo = !!bldgclass && <>{`Your building class is ${bldgclass}`}</>;
 
   return {
     criteria,
@@ -262,8 +262,10 @@ function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
       userValue = (
         <>
           {`There is no recorded certificate of occupancy for your building since
-          ${cutoffYear}, ${determination === "unknown" ? "but" : "and"} other data
-          indicates it was built in {yearbuilt}.`}
+          ${cutoffYear}, ${
+            determination === "unknown" ? "but" : "and"
+          } other data
+          indicates it was built in ${yearbuilt}.`}
         </>
       );
     }

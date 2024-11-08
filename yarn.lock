@@ -450,10 +450,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@justfixnyc/component-library@0.51.7":
-  version "0.51.7"
-  resolved "https://registry.yarnpkg.com/@justfixnyc/component-library/-/component-library-0.51.7.tgz#d773c0c9a22e22ce774350b34e9390be2843522c"
-  integrity sha512-XSEFfy05ukep8NrNw4UnhQoTlNTsib5ZJDiR02GGvPFXo8mlWLwLLiTCAtRVIhGWwtgXGCDqJ6vdG8pynGxuhA==
+"@justfixnyc/component-library@0.52.8":
+  version "0.52.8"
+  resolved "https://registry.yarnpkg.com/@justfixnyc/component-library/-/component-library-0.52.8.tgz#fae3cad2428e8c352812eecea7b7e674ce36b3e4"
+  integrity sha512-PmC/uI+idJ0RaweVALS6d1KuJ3az77X/UxqBu5N8r8Wq6T/HkaBzEzxqr9eZ87NdBV+sBwByJGgI7zue7Sp4oQ==
   dependencies:
     "@awesome.me/kit-dd32553919" "^1.0.13"
     "@babel/runtime" "^7.12.5"
@@ -1401,7 +1401,7 @@ chownr@^1.1.1:
 
 classnames@^2.5.1:
   version "2.5.1"
-  resolved "https://registry.npmjs.org/classnames/-/classnames-2.5.1.tgz"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.5.1.tgz#ba774c614be0f016da105c858e7159eae8e7687b"
   integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
 
 client-only@^0.0.1:
@@ -2438,6 +2438,11 @@ prelude-ls@^1.2.1:
   version "1.2.1"
   resolved "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
+
+prettier@^2.2.1:
+  version "2.8.8"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
+  integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
 
 prismjs@^1.27.0:
   version "1.29.0"

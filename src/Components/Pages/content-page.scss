@@ -1,0 +1,47 @@
+@import "../../mixins.scss";
+@import "../../colors.scss";
+
+$eligibilityTablePaddingH: 36px;
+$contentBoxWidth: 781px;
+
+.headline-section,
+.content-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 3rem; // 48px
+  padding-right: 3rem; // 48px
+}
+
+.headline-section {
+  position: relative;
+  padding-top: 70px;
+  padding-bottom: 2.5rem; // 40px
+  background-color: $OFF_WHITE_200;
+
+  .headline-section__content {
+    width: $contentBoxWidth;
+    .headline-section__page-type {
+      @include eyebrow_large_desktop;
+      padding-top: 30px;
+    }
+
+    .headline-section__title {
+      display: flex;
+      flex-direction: column;
+      margin: 2.625rem 0; //42px
+      gap: 4px;
+      max-width: calc($contentBoxWidth + 50px);
+      width: max-content;
+    }
+
+    .headline-section__subtitle {
+      @include body_large_desktop;
+      margin-bottom: 2.25rem; // 36px
+    }
+  }
+}
+
+.content-section {
+  background-color: $OFF_WHITE_NEW;
+}

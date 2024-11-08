@@ -19,7 +19,7 @@ export const apiFetcher = async (url: string) => {
   if (!(contentType && /^application\/json/.test(contentType))) {
     throw new NetworkError(
       `Expected JSON response but got ${contentType} from ${res.url}`,
-      true,
+      true
     );
   }
 

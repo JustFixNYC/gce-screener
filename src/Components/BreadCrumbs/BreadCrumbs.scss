@@ -1,0 +1,31 @@
+@import "../../colors.scss";
+
+.breadCrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 1.5rem 0; //24px
+  position: absolute;
+  width: 100%;
+  top: 0;
+  .breadCrumbs__crumb,
+  .breadCrumbs__last-crumb {
+    font-size: 1.125rem; // 18px
+  }
+  .breadCrumbs__crumb {
+    font-weight: 500;
+    color: $GREY_700;
+    &:not(:hover) {
+      text-decoration: none;
+    }
+  }
+  .breadCrumbs__last-crumb {
+    font-weight: 600;
+  }
+}
+
+.back-to-results.jfcl-link {
+  .jfcl-link__icon {
+    margin: 0 0.75rem 0 0; // 12px
+  }
+}
