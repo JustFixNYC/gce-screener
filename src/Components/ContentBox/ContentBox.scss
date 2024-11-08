@@ -107,6 +107,7 @@ $videoEmbedW: 623px;
 
     summary {
       display: flex;
+      align-items: center;
       list-style: none;
       @include body_standard_desktop;
       font-weight: 600;

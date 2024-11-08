@@ -40,6 +40,7 @@ export const AcrisAccordions: React.FC<BuildingEligibilityInfo> = (props) => {
           <details>
             <summary>
               {bldg.addr}
+              <span className="apartments-pill">{`${bldg.unitsres} apartments`}</span>
               <Icon icon="chevronDown" className="chevron-icon" />
             </summary>
             <div className="content-box__section__acris-links">
