@@ -45,7 +45,6 @@ export const AcrisAccordions: React.FC<BuildingEligibilityInfo> = (props) => {
   return (
     <ul>
       {props.wow_data?.slice(0, MAX_PROPERTIES).map((bldg, i) => {
-        console.log(bldg);
         return (
           <li key={i}>
             <details>
@@ -156,7 +155,7 @@ export const PortfolioSize: React.FC = () => {
                   }}
                 >
                   <iframe
-                    src="https://www.loom.com/embed/1eadf80cb4484fc1be1bb45fdc1eb73a?sid=8df0a71d-c2e9-4a76-9059-1b54cd96a601"
+                    src="https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119"
                     style={{
                       position: "absolute",
                       top: "0",
