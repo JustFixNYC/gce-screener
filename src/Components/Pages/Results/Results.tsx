@@ -164,7 +164,7 @@ const EligibilityNextSteps: React.FC<{
               are not rent regulated. You told us that you are unsure of your
               rent regulation status.
             </p>
-            <JFCLLinkInternal href="/rent_stabilization">
+            <JFCLLinkInternal to="/rent_stabilization">
               Lean how to find out
             </JFCLLinkInternal>
           </div>
@@ -185,7 +185,7 @@ const EligibilityNextSteps: React.FC<{
                 more than 10 units. Your building has only ${bldgData.unitsres} apartments, but
                 your landlord may own other buildings.`}
             </p>
-            <JFCLLinkInternal href="/portfolio_size">
+            <JFCLLinkInternal to="/portfolio_size">
               Lean how to find out
             </JFCLLinkInternal>
           </div>
@@ -227,7 +227,7 @@ const potentialGoodCauseProtections = (
           the tenant does not have a lease, giving notice that the tenancy will
           end.
         </p>
-        <JFCLLinkExternal href="">
+        <JFCLLinkExternal href="" className="disabled">
           Learn about lease renewal rights
         </JFCLLinkExternal>
       </div>
@@ -249,7 +249,7 @@ const potentialGoodCauseProtections = (
           increase of more than 8.82% could be found unreasonable by the court
           if the rent was increased after April 20, 2024.
         </p>
-        <JFCLLinkExternal href="">
+        <JFCLLinkExternal href="" className="disabled">
           Learn about rent increase rights
         </JFCLLinkExternal>
       </div>
@@ -274,7 +274,7 @@ const coveredGoodCauseProtections = (
             if the tenant does not have a lease, giving notice that the tenancy
             will end.
           </p>
-          <JFCLLinkExternal href="">
+          <JFCLLinkExternal href="" className="disabled">
             Learn about lease renewal rights
           </JFCLLinkExternal>
         </div>
@@ -297,7 +297,7 @@ const coveredGoodCauseProtections = (
             rent increase of more than 8.82% could be found unreasonable by the
             court if the rent was increased after April 20, 2024.
           </p>
-          <JFCLLinkExternal href="">
+          <JFCLLinkExternal href="" className="disabled">
             Learn about rent increase rights
           </JFCLLinkExternal>
         </div>
@@ -324,6 +324,7 @@ const coveredGoodCauseProtections = (
             labelText="Print my coverage results"
             labelIcon="print"
             variant="secondary"
+            className="disabled"
           />
         </div>
       </div>
@@ -332,80 +333,59 @@ const coveredGoodCauseProtections = (
 );
 
 const rentStabilizedProtections = (
-  <>
-    <ContentBox
-      headerTitle="EXERCISING YOUR RIGHTS"
-      headerSubtitle="Your right to limited rent increases"
-    >
-      <div className="content-box__section">
-        <div className="content-box__section__content">
-          <p>
-            For rent-stabilized leases being renewed between October 1, 2024 and
-            September 30, 2025 the legal rent may be increased at the following
-            levels: for a one-year renewal there is a 2.75% increase, or for a
-            two-year renewal there is a 5.25% increase.
-          </p>
+  <ContentBox
+    headerTitle="EXERCISING YOUR RIGHTS"
+    headerSubtitle="Your right to limited rent increases"
+  >
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <div className="content-box__section__header">
+          Your right to limited rent increases
         </div>
+        <p>
+          For rent-stabilized leases being renewed between October 1, 2024 and
+          September 30, 2025 the legal rent may be increased at the following
+          levels: for a one-year renewal there is a 2.75% increase, or for a
+          two-year renewal there is a 5.25% increase.
+        </p>
+        <JFCLLinkExternal href="" className="disabled">
+          Learn about rent increase rights
+        </JFCLLinkExternal>
       </div>
+    </div>
 
-      <div className="content-box__footer">
-        <div className="content-box__section__content">
-          <div className="content-box__section__header">
-            Learn more about your rights
-          </div>
-          <JFCLLinkExternal href="">Met Council on Housing</JFCLLinkExternal>
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <div className="content-box__section__header">
+          Your right to a lease renewal
         </div>
+        <p>
+          If you are rent-stabilized your landlord cannot simply decide they
+          don’t want you as a tenant anymore, they are limited to certain
+          reasons for evicting you.
+        </p>
+        <JFCLLinkExternal href="" className="disabled">
+          Learn about lease renewal rights
+        </JFCLLinkExternal>
       </div>
-    </ContentBox>
+    </div>
 
-    <ContentBox
-      headerTitle="EXERCISING YOUR RIGHTS"
-      headerSubtitle="Your right to a lease renewal"
-    >
-      <div className="content-box__section">
-        <div className="content-box__section__content">
-          <p>
-            If you are rent-stabilized your landlord cannot simply decide they
-            don’t want you as a tenant anymore, they are limited to certain
-            reasons for evicting you.
-          </p>
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <div className="content-box__section__header">
+          Your right to succession
         </div>
+        <p>
+          If you are the immediate family member of a rent-stabilized tenant and
+          have been living with them immediately prior to their moving or
+          passing away, you might be entitled to take over the lease.
+        </p>
+        <JFCLLinkExternal href="" className="disabled">
+          Learn about succession rights
+        </JFCLLinkExternal>
       </div>
-
-      <div className="content-box__footer">
-        <div className="content-box__section__content">
-          <div className="content-box__section__header">
-            Learn more about your rights
-          </div>
-          <JFCLLinkExternal href="">Met Council on Housing</JFCLLinkExternal>
-        </div>
-      </div>
-    </ContentBox>
-
-    <ContentBox
-      headerTitle="EXERCISING YOUR RIGHTS"
-      headerSubtitle="Your right to succession"
-    >
-      <div className="content-box__section">
-        <div className="content-box__section__content">
-          <p>
-            If you are the immediate family member of a rent-stabilized tenant
-            and have been living with them immediately prior to their moving or
-            passing away, you might be entitled to take over the lease.
-          </p>
-        </div>
-      </div>
-
-      <div className="content-box__footer">
-        <div className="content-box__section__content">
-          <div className="content-box__section__header">
-            Learn more about your rights
-          </div>
-          <JFCLLinkExternal href="">Met Council on Housing</JFCLLinkExternal>
-        </div>
-      </div>
-    </ContentBox>
-  </>
+    </div>
+  </ContentBox>
 );
 
 const EligibilityResultHeadline: React.FC<{
@@ -526,11 +506,8 @@ export const Results: React.FC = () => {
               </h2>
 
               <div className="headline-section__subtitle">
-                {determination === "ineligible" &&
-                  eligibilityResults.rentRegulation.determination !==
-                    "ineligible" && (
-                    <>Your apartment doesn’t meet all of the requirements.</>
-                  )}
+                based on the data we have about your apartment and the
+                information you’ve provided.
               </div>
             </>
           )}
@@ -574,6 +551,7 @@ export const Results: React.FC = () => {
             <Button
               labelText="Share this screener"
               labelIcon="squareArrowUpRight"
+              className="disabled"
             />
           </div>
         </div>

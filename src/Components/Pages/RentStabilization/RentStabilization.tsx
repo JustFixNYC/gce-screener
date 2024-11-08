@@ -72,9 +72,12 @@ export const RentStabilization: React.FC = () => {
                 After submitting your request, if you get an email the next day
                 saying your apt doesn't have a registration on file, that means
                 you're apartment has never been rent stabilized, and therefore
-                you meet the rent regulation criteria for Good Cause Eviction
+                you meet the rent regulation criteria for Good Cause Eviction.
               </p>
-              <JFCLLinkExternal href="https://portal.hcr.ny.gov/app/ask">
+              <JFCLLinkExternal
+                href="https://portal.hcr.ny.gov/app/ask"
+                className="disabled"
+              >
                 Fill out the form
               </JFCLLinkExternal>
             </div>
@@ -92,7 +95,10 @@ export const RentStabilization: React.FC = () => {
                 document showing the rents that your landlord has registered
                 since 1984.
               </p>
-              <JFCLLinkExternal href="https://app.justfix.org/rh">
+              <JFCLLinkExternal
+                href="https://app.justfix.org/rh"
+                className="disabled"
+              >
                 Start my request
               </JFCLLinkExternal>
             </div>
@@ -101,7 +107,7 @@ export const RentStabilization: React.FC = () => {
           <div className="content-box__footer">
             <div className="content-box__section__content">
               <div className="content-box__section__header">
-                Learn more about your rights
+                When you find out your rent stabilization status:
               </div>
               <Button
                 labelText="Re-take the screener survey"

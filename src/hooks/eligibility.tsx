@@ -265,7 +265,7 @@ function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
           ${cutoffYear}, ${
             determination === "unknown" ? "but" : "and"
           } other data
-          indicates it was built in {yearbuilt}.`}
+          indicates it was built in ${yearbuilt}.`}
         </>
       );
     }

@@ -16,6 +16,9 @@ import {
 import { acrisDocTypeFull, urlAcrisBbl, urlAcrisDoc } from "../../../helpers";
 import "./PortfolioSize.scss";
 
+const LOOM_EMBED_URL =
+  "https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119";
+
 type ACRISLinksProps = {
   bbl: string;
   unitsres: number;
@@ -132,13 +135,13 @@ export const PortfolioSize: React.FC = () => {
 
         <ContentBox
           headerTitle="WHAT YOU CAN DO"
-          headerSubtitle="How to find other apartments your landlord might own"
+          headerSubtitle="How to find other apartments your landlord owns"
         >
           <div className="content-box__section">
             <div className="content-box__section__content">
               <div className="content-box__section__step">Before you begin</div>
               <div className="content-box__section__header">
-                Learn how to find the information you will be looking for
+                Learn how to find your landlord's name and signature
               </div>
               <p>
                 Use this video as a guide to help you understand how to search
@@ -155,7 +158,7 @@ export const PortfolioSize: React.FC = () => {
                   }}
                 >
                   <iframe
-                    src="https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119"
+                    src={LOOM_EMBED_URL}
                     style={{
                       position: "absolute",
                       top: "0",
@@ -193,10 +196,10 @@ export const PortfolioSize: React.FC = () => {
             <div className="content-box__section__content">
               <div className="content-box__section__step">Step 2</div>
               <div className="content-box__section__header">
-                Scan potentially related buildings
+                Review potentially related buildings
               </div>
               <p>
-                Start scanning potentially related buildings to see if the
+                Start reviewing potentially related buildings to see if the
                 landlord name and/or signature matches the one on your
                 building’s mortgage agreement.
               </p>

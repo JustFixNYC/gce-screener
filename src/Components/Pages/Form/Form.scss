@@ -1,11 +1,12 @@
 @import "../../../mixins.scss";
 @import "../../../colors.scss";
+@import "../../ContentBox/ContentBox.scss";
 
 $inputTopMargin: 1.5rem; //24px
 
 .form__wrapper {
   position: relative;
-  padding-top: calc(70px + 3rem);
+  padding-top: calc(70px + 1rem); // TODO: use var for breadcrumbs height
   padding-left: 3rem; // 48px
   padding-right: 3rem; // 48px
 
@@ -41,6 +42,7 @@ $inputTopMargin: 1.5rem; //24px
 .form__subheader {
   @include body_large_desktop;
   margin-bottom: 3rem; //48px
+  max-width: $contentBoxWidth;
 }
 
 .form__buttons {

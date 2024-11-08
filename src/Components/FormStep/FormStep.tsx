@@ -14,9 +14,7 @@ export const FormStep: React.FC<FormStepProps> = ({
 }) => {
   return (
     <fieldset className="form-step">
-      <p className="form-step-number">
-        {step} of {total}
-      </p>
+      <p className="form-step-number">{`${step} of ${total}`}</p>
       {children}
     </fieldset>
   );
