@@ -5,7 +5,7 @@ type AcrisProperty = {
   unitsres: number;
 };
 
-type AcrisDocument = {
+export type AcrisDocument = {
   doc_id: string;
   doc_type: string;
 };
@@ -18,6 +18,7 @@ export type WowBuildings = {
   match_bizaddr_unit: boolean;
   match_bizaddr_nounit: boolean;
   unitsres: number;
+  acris_docs: AcrisDocument[];
 };
 
 export type BuildingEligibilityInfo = {

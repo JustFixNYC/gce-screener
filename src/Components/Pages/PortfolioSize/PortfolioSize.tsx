@@ -9,11 +9,20 @@ import { ContentBox } from "../../ContentBox/ContentBox";
 import { FormFields } from "../../../App";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
-import { BuildingEligibilityInfo } from "../../../types/APIDataTypes";
+import {
+  AcrisDocument,
+  BuildingEligibilityInfo,
+} from "../../../types/APIDataTypes";
 import { acrisDocTypeFull, urlAcrisBbl, urlAcrisDoc } from "../../../helpers";
 import "./PortfolioSize.scss";
 
-export const AcrisLinks: React.FC<BuildingEligibilityInfo> = (props) => (
+type ACRISLinksProps = {
+  bbl: string;
+  unitsres: number;
+  acris_docs: AcrisDocument[];
+};
+
+export const AcrisLinks: React.FC<ACRISLinksProps> = (props) => (
   <>
     <ul>
       {props.acris_docs.map((docInfo, i) => (
@@ -35,20 +44,23 @@ export const AcrisAccordions: React.FC<BuildingEligibilityInfo> = (props) => {
   const MAX_PROPERTIES = 5;
   return (
     <ul>
-      {props.wow_data?.slice(0, MAX_PROPERTIES).map((bldg, i) => (
-        <li key={i}>
-          <details>
-            <summary>
-              {bldg.addr}
-              <span className="apartments-pill">{`${bldg.unitsres} apartments`}</span>
-              <Icon icon="chevronDown" className="chevron-icon" />
-            </summary>
-            <div className="content-box__section__acris-links">
-              <AcrisLinks {...props} />
-            </div>
-          </details>
-        </li>
-      ))}
+      {props.wow_data?.slice(0, MAX_PROPERTIES).map((bldg, i) => {
+        console.log(bldg);
+        return (
+          <li key={i}>
+            <details>
+              <summary>
+                {bldg.addr}
+                <span className="apartments-pill">{`${bldg.unitsres} apartments`}</span>
+                <Icon icon="chevronDown" className="chevron-icon" />
+              </summary>
+              <div className="content-box__section__acris-links">
+                <AcrisLinks {...bldg} />
+              </div>
+            </details>
+          </li>
+        );
+      })}
     </ul>
   );
 };
