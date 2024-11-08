@@ -25,6 +25,7 @@ import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import JFCLLinkInternal from "../../JFCLLinkInternal";
 import "./Results.scss";
+import { BuildingEligibilityInfo } from "../../../types/APIDataTypes";
 
 const CRITERIA_LABELS = {
   portfolioSize: "Landlord portfolio size",
@@ -93,78 +94,6 @@ const CoveredPill: React.FC<{ determination: Determination }> = ({
   }
 };
 
-const EligibilityNextSteps: React.FC<{
-  eligibilityResults: EligibilityResults | undefined;
-  navigate: NavigateFunction;
-}> = ({ eligibilityResults, navigate }) => {
-  return (
-    <ContentBox
-      headerTitle="What this means for you"
-      headerSubtitle="There are still some things you need to verify"
-    >
-      {eligibilityResults?.rentRegulation.determination === "unknown" && (
-        <div className="content-box__section">
-          <span className="eligibility__icon">
-            <EligibilityIcon determination="unknown" />
-          </span>
-          <div className="content-box__section__content">
-            <div className="content-box__section__header">
-              We need to know if your apartment is rent stabilized.
-            </div>
-            <p>
-              The Good Cause Eviction law only covers tenants whose apartments
-              are not rent regulated. You told us that you are unsure of your
-              rent regulation status.
-            </p>
-            <JFCLLinkInternal href="/rent_stabilization">
-              Lean how to find out
-            </JFCLLinkInternal>
-          </div>
-        </div>
-      )}
-
-      {eligibilityResults &&
-        eligibilityResults.portfolioSize &&
-        eligibilityResults?.portfolioSize.determination === "unknown" && (
-          <div className="content-box__section">
-            <span className="eligibility__icon">
-              <EligibilityIcon determination="unknown" />
-            </span>
-            <div className="content-box__section__content">
-              <div className="content-box__section__header">
-                We need to know if your landlord owns more than 10 units.
-              </div>
-              <p>
-                Good Cause Eviction law only covers tenants whose landlord owns
-                more than 10 units. Your building has only 8 apartments, but
-                your landlord may own other buildings.
-              </p>
-              <JFCLLinkInternal href="/portfolio_size">
-                Lean how to find out
-              </JFCLLinkInternal>
-            </div>
-          </div>
-        )}
-
-      <div className="content-box__footer">
-        <div className="content-box__section__content">
-          <div className="content-box__section__header">
-            Have you learned new information about your apartment?
-          </div>
-          <Button
-            labelText="Re-take the Screener Survey"
-            labelIcon="arrowsRotateReverse"
-            variant="secondary"
-            onClick={() => {
-              navigate("/form");
-            }}
-          />
-        </div>
-      </div>
-    </ContentBox>
-  );
-};
-
 const EligibilityCriteriaTable: React.FC<{
   eligibilityResults: EligibilityResults | undefined;
 }> = ({ eligibilityResults }) => (
@@ -200,7 +129,89 @@ const EligibilityCriteriaTable: React.FC<{
   </div>
 );
 
-const potentialProtections = (
+const EligibilityNextSteps: React.FC<{
+  bldgData: BuildingEligibilityInfo;
+  eligibilityResults: EligibilityResults;
+  navigate: NavigateFunction;
+}> = ({ bldgData, eligibilityResults, navigate }) => {
+  const portfolioSizeUnknown =
+    eligibilityResults?.portfolioSize?.determination === "unknown";
+  const rentRegulationUnknown =
+    eligibilityResults?.rentRegulation?.determination === "unknown";
+  const steps = [portfolioSizeUnknown, rentRegulationUnknown].filter(
+    Boolean
+  ).length;
+  return (
+    <ContentBox
+      headerTitle="What this means for you"
+      headerSubtitle={
+        steps == 1
+          ? "There is still one thing you need to verify"
+          : `There are still ${steps} things you need to verify`
+      }
+    >
+      {rentRegulationUnknown && (
+        <div className="content-box__section">
+          <span className="eligibility__icon">
+            <EligibilityIcon determination="unknown" />
+          </span>
+          <div className="content-box__section__content">
+            <div className="content-box__section__header">
+              We need to know if your apartment is rent stabilized.
+            </div>
+            <p>
+              The Good Cause Eviction law only covers tenants whose apartments
+              are not rent regulated. You told us that you are unsure of your
+              rent regulation status.
+            </p>
+            <JFCLLinkInternal href="/rent_stabilization">
+              Lean how to find out
+            </JFCLLinkInternal>
+          </div>
+        </div>
+      )}
+
+      {portfolioSizeUnknown && (
+        <div className="content-box__section">
+          <span className="eligibility__icon">
+            <EligibilityIcon determination="unknown" />
+          </span>
+          <div className="content-box__section__content">
+            <div className="content-box__section__header">
+              We need to know if your landlord owns more than 10 units.
+            </div>
+            <p>
+              {`Good Cause Eviction law only covers tenants whose landlord owns
+                more than 10 units. Your building has only ${bldgData.unitsres} apartments, but
+                your landlord may own other buildings.`}
+            </p>
+            <JFCLLinkInternal href="/portfolio_size">
+              Lean how to find out
+            </JFCLLinkInternal>
+          </div>
+        </div>
+      )}
+
+      <div className="content-box__footer">
+        <div className="content-box__section__content">
+          <div className="content-box__section__header">
+            Have you learned new information about your apartment?
+          </div>
+          <Button
+            labelText="Re-take the Screener Survey"
+            labelIcon="arrowsRotateReverse"
+            variant="secondary"
+            onClick={() => {
+              navigate("/form");
+            }}
+          />
+        </div>
+      </div>
+    </ContentBox>
+  );
+};
+
+const potentialGoodCauseProtections = (
   <ContentBox
     headerTitle="WHY GOOD CAUSE MATTERS"
     headerSubtitle="Protections you might have"
@@ -208,24 +219,39 @@ const potentialProtections = (
     <div className="content-box__section">
       <div className="content-box__section__content">
         <div className="content-box__section__header">
-          Your landlord cannot end your tenancy without a “good cause” reason.
+          Your right to a lease renewal
         </div>
         <p>
-          You can find out if your apartment is rent stabilized by checking your
-          lease. Lorem ipsum dolor sit amet.
+          Your landlord will need to provide a good cause reason for ending a
+          tenancy. This includes evicting tenants, not renewing a lease, or, if
+          the tenant does not have a lease, giving notice that the tenancy will
+          end.
         </p>
+        <JFCLLinkExternal href="">
+          Learn about lease renewal rights
+        </JFCLLinkExternal>
       </div>
     </div>
     <div className="content-box__section">
       <div className="content-box__section__content">
         <div className="content-box__section__header">
-          You can challenge rent increases above a certain level if they are
-          evicted for nonpayment of rent.
+          Your right to limited rent increases
         </div>
         <p>
-          You can find out if your apartment is rent stabilized by checking your
-          lease. Lorem ipsum dolor sit amet.
+          Your landlord is not allowed to increase your rent at a rate higher
+          than the local standard. The local rent standard is set every year at
+          the rate of inflation plus 5%, with a maximum of 10% total.
         </p>
+        <br />
+        <p>
+          As of May 1, 2024, the rate of inflation for the New York City area is
+          3.82%, meaning that the current local rent standard is 8.82%. A rent
+          increase of more than 8.82% could be found unreasonable by the court
+          if the rent was increased after April 20, 2024.
+        </p>
+        <JFCLLinkExternal href="">
+          Learn about rent increase rights
+        </JFCLLinkExternal>
       </div>
     </div>
   </ContentBox>
@@ -234,56 +260,46 @@ const potentialProtections = (
 const coveredGoodCauseProtections = (
   <>
     <ContentBox
-      headerTitle="EXERCISING YOUR RIGHTS"
-      headerSubtitle="Your right to a lease renewal"
+      headerTitle="KNOW YOUR RIGHTS"
+      headerSubtitle="Protections you have"
     >
       <div className="content-box__section">
         <div className="content-box__section__content">
+          <div className="content-box__section__header">
+            Your right to a lease renewal
+          </div>
           <p>
             Your landlord will need to provide a good cause reason for ending a
             tenancy. This includes evicting tenants, not renewing a lease, or,
             if the tenant does not have a lease, giving notice that the tenancy
             will end.
           </p>
+          <JFCLLinkExternal href="">
+            Learn about lease renewal rights
+          </JFCLLinkExternal>
         </div>
       </div>
 
-      <div className="content-box__footer">
-        <div className="content-box__section__content">
-          <div className="content-box__section__header">
-            Learn more about your rights
-          </div>
-          <JFCLLinkExternal href="">NYC.gov</JFCLLinkExternal>
-        </div>
-      </div>
-    </ContentBox>
-
-    <ContentBox
-      headerTitle="EXERCISING YOUR RIGHTS"
-      headerSubtitle="Your right to limited rent increases"
-    >
       <div className="content-box__section">
         <div className="content-box__section__content">
+          <div className="content-box__section__header">
+            Your right to limited rent increases
+          </div>
           <p>
             Your landlord is not allowed to increase your rent at a rate higher
             than the local standard. The local rent standard is set every year
             at the rate of inflation plus 5%, with a maximum of 10% total.
           </p>
+          <br />
           <p>
             As of May 1, 2024, the rate of inflation for the New York City area
             is 3.82%, meaning that the current local rent standard is 8.82%. A
             rent increase of more than 8.82% could be found unreasonable by the
             court if the rent was increased after April 20, 2024.
           </p>
-        </div>
-      </div>
-
-      <div className="content-box__footer">
-        <div className="content-box__section__content">
-          <div className="content-box__section__header">
-            Learn more about your rights
-          </div>
-          <JFCLLinkExternal href="">NYC.gov</JFCLLinkExternal>
+          <JFCLLinkExternal href="">
+            Learn about rent increase rights
+          </JFCLLinkExternal>
         </div>
       </div>
     </ContentBox>
@@ -305,7 +321,7 @@ const coveredGoodCauseProtections = (
       <div className="content-box__footer">
         <div className="content-box__section__content">
           <Button
-            labelText="Print results"
+            labelText="Print my coverage results"
             labelIcon="print"
             variant="secondary"
           />
@@ -510,17 +526,11 @@ export const Results: React.FC = () => {
               </h2>
 
               <div className="headline-section__subtitle">
-                {determination === "eligible" && (
-                  <>Your apartment meets all of the required criteria.</>
-                )}
                 {determination === "ineligible" &&
                   eligibilityResults.rentRegulation.determination !==
                     "ineligible" && (
                     <>Your apartment doesn’t meet all of the requirements.</>
                   )}
-                {determination === "unknown" && (
-                  <>There are still some things you need to verify.</>
-                )}
               </div>
             </>
           )}
@@ -543,8 +553,9 @@ export const Results: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          {determination === "unknown" && (
+          {determination === "unknown" && bldgData && eligibilityResults && (
             <EligibilityNextSteps
+              bldgData={bldgData}
               eligibilityResults={eligibilityResults}
               navigate={navigate}
             />
@@ -552,7 +563,7 @@ export const Results: React.FC = () => {
 
           {isRentStabilized && rentStabilizedProtections}
 
-          {determination === "unknown" && potentialProtections}
+          {determination === "unknown" && potentialGoodCauseProtections}
 
           {determination === "eligible" && coveredGoodCauseProtections}
 

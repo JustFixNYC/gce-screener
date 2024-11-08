@@ -11,6 +11,7 @@ $videoEmbedW: 623px;
   border: 2px solid $GREY_NEW;
   width: $contentBoxWidth;
   margin: 36px 0;
+  background-color: $WHITE;
 }
 
 .content-box__header {
@@ -56,6 +57,7 @@ $videoEmbedW: 623px;
 
     .content-box__section__step {
       @include eyebrow_small_desktop;
+      margin-bottom: 0.25rem; // 4px
     }
 
     .content-box__section__header {
@@ -67,10 +69,11 @@ $videoEmbedW: 623px;
       width: $videoEmbedW;
       background-color: black;
       align-self: center;
-      margin-top: 30px;
+      margin-top: 1.875rem; // 30px
     }
 
     p {
+      @include body_standard_desktop;
       max-width: $contentPWidth;
       margin: 0;
       &.bold {
@@ -91,35 +94,40 @@ $videoEmbedW: 623px;
 .content-box__section__content .content-box__section__acris-buildings {
   margin-top: 1.875rem; //30px
 
-  ul {
+  & > ul {
     margin: 0 0 1.5rem 0; // 24px
     padding: 0;
     list-style: none;
+    border-bottom: 1px solid $GREY_NEW;
   }
 
   details {
     border: 1px solid $GREY_NEW;
-    padding: 0.75rem 1.5rem; // 12px 24px
+    border-bottom: none;
 
     summary {
       display: flex;
       list-style: none;
+      @include body_standard_desktop;
       font-weight: 600;
-      .chevronIcon {
+      cursor: pointer;
+      padding: 0.75rem 1.5rem; // 12px 24px
+
+      .chevron-icon {
         margin-left: auto;
       }
     }
 
     &[open] {
       padding-bottom: 1.125rem; // 18px
-      summary .chevronIcon {
+      summary .chevron-icon {
         transform: scale(-1, -1);
       }
     }
-  }
 
-  li {
-    @include body_standard_desktop;
+    .content-box__section__acris-links {
+      padding: 0 1.5rem; // 24px
+    }
   }
 }
 
@@ -134,6 +142,7 @@ $videoEmbedW: 623px;
     list-style: none;
   }
   li {
+    @include body_standard_desktop;
     margin-top: 0.75rem; // 12px
   }
 }

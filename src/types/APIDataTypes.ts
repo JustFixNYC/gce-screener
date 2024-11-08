@@ -5,6 +5,21 @@ type AcrisProperty = {
   unitsres: number;
 };
 
+type AcrisDocument = {
+  doc_id: string;
+  doc_type: string;
+};
+
+export type WowBuildings = {
+  bbl: string;
+  addr: string;
+  distance_ft: number;
+  match_name: boolean;
+  match_bizaddr_unit: boolean;
+  match_bizaddr_nounit: boolean;
+  unitsres: number;
+};
+
 export type BuildingEligibilityInfo = {
   bbl: string;
   unitsres: number;
@@ -20,5 +35,7 @@ export type BuildingEligibilityInfo = {
   subsidy_name: string;
   end_421a: string;
   end_j51: string;
+  acris_docs: AcrisDocument[];
   acris_data: AcrisProperty[] | null;
+  wow_data: WowBuildings[] | null;
 };
