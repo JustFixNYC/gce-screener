@@ -180,14 +180,31 @@ const EligibilityNextSteps: React.FC<{
             <div className="content-box__section__header">
               We need to know if your landlord owns more than 10 units.
             </div>
-            <p>
-              {`Good Cause Eviction law only covers tenants whose landlord owns
+            {bldgData.wow_portfolio_units > bldgData.unitsres ? (
+              <>
+                <p>
+                  {`Good Cause Eviction law only covers tenants whose landlord owns
                 more than 10 units. Your building has only ${bldgData.unitsres} apartments, but
                 your landlord may own other buildings.`}
-            </p>
-            <JFCLLinkInternal to="/portfolio_size">
-              Lean how to find out
-            </JFCLLinkInternal>
+                </p>
+
+                <JFCLLinkInternal to="/portfolio_size">
+                  Lean how to find out
+                </JFCLLinkInternal>
+              </>
+            ) : (
+              <>
+                <p>
+                  {`Good Cause Eviction law only covers tenants whose landlord owns
+                more than 10 units. Your building has only ${bldgData.unitsres} apartments.`}
+                </p>
+                <br />
+                <p>
+                  We are unable to find other apartments your landlord might own
+                  in our records.
+                </p>
+              </>
+            )}
           </div>
         </div>
       )}

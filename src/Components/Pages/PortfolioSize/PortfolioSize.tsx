@@ -22,32 +22,39 @@ const LOOM_EMBED_URL =
 type ACRISLinksProps = {
   bbl: string;
   unitsres: number;
-  acris_docs: AcrisDocument[];
+  acris_docs: AcrisDocument[] | null;
 };
 
-export const AcrisLinks: React.FC<ACRISLinksProps> = (props) => (
-  <>
-    <ul>
-      {props.acris_docs.map((docInfo, i) => (
-        <li key={i}>
-          Document:{" "}
-          <JFCLLinkExternal href={urlAcrisDoc(docInfo.doc_id)}>
-            {`${acrisDocTypeFull(docInfo.doc_type)}`}
-          </JFCLLinkExternal>
-        </li>
-      ))}
-    </ul>
-    <JFCLLinkExternal href={urlAcrisBbl(props.bbl)}>
-      View all documents in ACRIS
-    </JFCLLinkExternal>
-  </>
-);
+export const AcrisLinks: React.FC<ACRISLinksProps> = ({ bbl, acris_docs }) => {
+  return (
+    <>
+      <ul>
+        {acris_docs &&
+          acris_docs.map((docInfo, i) => (
+            <li key={i}>
+              Document:{" "}
+              <JFCLLinkExternal href={urlAcrisDoc(docInfo.doc_id)}>
+                {acrisDocTypeFull(docInfo.doc_type)}
+              </JFCLLinkExternal>
+            </li>
+          ))}
+      </ul>
+      <JFCLLinkExternal href={urlAcrisBbl(bbl)}>
+        View all documents in ACRIS
+      </JFCLLinkExternal>
+    </>
+  );
+};
 
 export const AcrisAccordions: React.FC<BuildingEligibilityInfo> = (props) => {
   const MAX_PROPERTIES = 5;
+  // TODO: decide how to handle these cases, for now exclude. might also want to exclude if no acris_docs, but for now leave in.
+  const wowProperties = props.wow_data
+    ?.filter((bldg) => bldg.unitsres > 0)
+    .slice(0, MAX_PROPERTIES);
   return (
     <ul>
-      {props.wow_data?.slice(0, MAX_PROPERTIES).map((bldg, i) => {
+      {wowProperties?.map((bldg, i) => {
         return (
           <li key={i}>
             <details>
