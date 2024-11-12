@@ -1,7 +1,7 @@
 @import "../../../mixins.scss";
 @import "../../../colors.scss";
+@import "../../../variables.scss";
 @import "../content-page.scss";
-@import "../../ContentBox/ContentBox.scss";
 
 $eligibilityTablePaddingH: 36px;
 
@@ -168,5 +168,6 @@ $eligibilityTablePaddingH: 36px;
   .eligibility__footer__header {
     @include h3_desktop;
     margin: 0 0 $eligibilityTablePaddingH 0;
+    text-align: center;
   }
 }

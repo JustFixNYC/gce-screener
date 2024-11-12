@@ -1,15 +1,14 @@
 @import "../../mixins.scss";
 @import "../../colors.scss";
+@import "../../variables.scss";
 
-$contentBoxPadding: 36px;
-$contentBoxWidth: 781px;
 $contentPWidth: 677px;
 $videoEmbedW: 623px;
 
 .content-box {
-  border-radius: 4px;
+  border-radius: 8px;
   border: 2px solid $GREY_NEW;
-  width: $contentBoxWidth;
+  max-width: $contentBoxWidth;
   margin: 36px 0;
   background-color: $WHITE;
 }

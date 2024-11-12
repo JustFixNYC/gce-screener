@@ -91,7 +91,8 @@ export const Form: React.FC = () => {
               path: "/confirm_address",
               name: address?.address || "Your address",
             },
-            { path: "/form", name: "Screener survey" },
+            { path: "/form", name: "Screener survey", active: true },
+            { path: "/results", name: "Coverage result" },
           ]}
         />
 
