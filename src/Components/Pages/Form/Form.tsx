@@ -57,20 +57,19 @@ export const Form: React.FC = () => {
     setLocalFields(updatedFields as FormFields);
   };
 
-  // TODO: temporarily disabled for this round of playbook ux testing
-  // const rsHelperText = !bldgData
-  //   ? undefined
-  //   : bldgData.unitsres > 0 && bldgData.post_hstpa_rs_units >= bldgData.unitsres
-  //   ? "Our data shows that all apartments in your building are registered as rent stabilized."
-  //   : new Date(bldgData.end_421a) > new Date()
-  //   ? "Your building appears to receive the 421a tax exemption. This means your apartment is rent stabilized."
-  //   : new Date(bldgData.end_j51) > new Date()
-  //   ? "Your building appears to receive the J51 tax exemption. This means your apartment is rent stabilized."
-  //   : bldgData.post_hstpa_rs_units > 0
-  //   ? "Our data shows that some apartments in your building are registered as rent stabilized."
-  //   : bldgData.yearbuilt < 1974 && bldgData.unitsres >= 6
-  //   ? "Based on the size and age of your building, your apartment might be rent stabilized."
-  //   : undefined;
+  const rsHelperText = !bldgData
+    ? undefined
+    : bldgData.unitsres > 0 && bldgData.post_hstpa_rs_units >= bldgData.unitsres
+    ? "Our data shows that all apartments in your building are registered as rent stabilized."
+    : new Date(bldgData.end_421a) > new Date()
+    ? "Your building appears to receive the 421a tax exemption. This means your apartment is rent stabilized."
+    : new Date(bldgData.end_j51) > new Date()
+    ? "Your building appears to receive the J51 tax exemption. This means your apartment is rent stabilized."
+    : bldgData.post_hstpa_rs_units > 0
+    ? "Our data shows that some apartments in your building are registered as rent stabilized."
+    : bldgData.yearbuilt < 1974 && bldgData.unitsres >= 6
+    ? "Based on the size and age of your building, your apartment might be rent stabilized."
+    : undefined;
 
   const subsidyHelperText = !bldgData
     ? undefined
@@ -154,7 +153,7 @@ export const Form: React.FC = () => {
           <FormStep step={4} total={5}>
             <FormGroup
               legendText="Is your apartment rent-stabilized?"
-              // helperText={rsHelperText}
+              helperText={rsHelperText}
             >
               <RadioGroup
                 fields={localFields}
