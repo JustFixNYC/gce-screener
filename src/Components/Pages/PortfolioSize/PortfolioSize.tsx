@@ -34,7 +34,9 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({ bbl, acris_docs }) => {
             <li key={i}>
               Document:{" "}
               <JFCLLinkExternal href={urlAcrisDoc(docInfo.doc_id)}>
-                {acrisDocTypeFull(docInfo.doc_type)}
+                {`${acrisDocTypeFull(
+                  docInfo.doc_type
+                )} (${docInfo.doc_date.slice(0, 4)})`}
               </JFCLLinkExternal>
             </li>
           ))}

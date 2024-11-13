@@ -8,6 +8,7 @@ type AcrisProperty = {
 export type AcrisDocument = {
   doc_id: string;
   doc_type: string;
+  doc_date: string;
 };
 
 export type WowBuildings = {
