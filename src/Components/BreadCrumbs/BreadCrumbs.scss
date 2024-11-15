@@ -2,14 +2,14 @@
 
 .breadCrumbs {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   align-items: center;
   padding: 1.5rem 0; //24px
   position: absolute;
-  width: 100%;
   top: 0;
   .breadCrumbs__crumb,
-  .breadCrumbs__last-crumb {
+  .breadCrumbs__crumb__active {
     font-size: 1.125rem; // 18px
   }
   .breadCrumbs__crumb {
@@ -19,7 +19,7 @@
       text-decoration: none;
     }
   }
-  .breadCrumbs__last-crumb {
+  .breadCrumbs__crumb__active {
     font-weight: 600;
   }
 }

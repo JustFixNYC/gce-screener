@@ -4,7 +4,7 @@ import { Button } from "@justfixnyc/component-library";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
-import { BackToResults } from "../../BreadCrumbs/BreadCrumbs";
+import { BackLink } from "../../JFCLLinkInternal";
 import "./RentStabilization.scss";
 
 export const RentStabilization: React.FC = () => {
@@ -14,7 +14,7 @@ export const RentStabilization: React.FC = () => {
     <div className="rent-stabilization__wrapper">
       <div className="headline-section">
         <div className="headline-section__content">
-          <BackToResults />
+          <BackLink to="/results">Back to coverage result</BackLink>
           <div className="headline-section__page-type">Guide</div>
           <h2 className="headline-section__title">
             Find out if your apartment is rent stabilized
@@ -120,7 +120,7 @@ export const RentStabilization: React.FC = () => {
           </div>
         </ContentBox>
         <div className="eligibility__footer">
-          <BackToResults />
+          <BackLink to="/results">Back to coverage result</BackLink>
         </div>
         <LegalDisclaimer />
       </div>

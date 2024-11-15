@@ -56,12 +56,21 @@
   max-width: 37rem; // 592px;
 }
 
-.legal-header {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: normal;
+#legal-footer {
+  margin-top: 1.5rem; // 24px
+  .legal-header {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: normal;
+  }
 }
 
 .disabled {
   pointer-events: none;
+}
+
+.back-link.jfcl-link {
+  .jfcl-link__icon {
+    margin: 0 0.75rem 0 0; // 12px
+  }
 }
