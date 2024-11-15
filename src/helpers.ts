@@ -76,6 +76,11 @@ export const prioritizeBldgs = (a: WowBuildings, b: WowBuildings) => {
   return b.distance_ft - a.distance_ft;
 };
 
+export const urlCountyClerkBbl = (bbl: string) => {
+  const { block, lot } = splitBBL(bbl);
+  return `https://www.richmondcountyclerk.com/Search/ShowResultsBlocks/0?Block=${block}&Lot=8${lot}`;
+};
+
 export const urlAcrisBbl = (bbl: string) => {
   const { boro, block, lot } = splitBBL(bbl);
   return `http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough=${boro}&block=${block}&lot=${lot}`;
