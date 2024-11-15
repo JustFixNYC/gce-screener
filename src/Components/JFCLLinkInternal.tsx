@@ -6,16 +6,26 @@ import classNames from "classnames";
 // Creating a version of React Router's Link component styled like our Component
 // library's Internal Link.
 
-const JFCLLinkInternal: React.FC<{
+type JFCLLinkInternal = {
   to: To;
   children: React.ReactNode;
   className?: string | undefined;
-}> = (props) => {
-  return (
-    <Link to={props.to} className={classNames(props.className, "jfcl-link")}>
-      {props.children} <Icon icon="arrowRight" className="jfcl-link__icon" />
-    </Link>
-  );
 };
+
+const JFCLLinkInternal: React.FC<JFCLLinkInternal> = (props) => (
+  <Link to={props.to} className={classNames(props.className, "jfcl-link")}>
+    {props.children} <Icon icon="arrowRight" className="jfcl-link__icon" />
+  </Link>
+);
+
+export const BackLink: React.FC<JFCLLinkInternal> = (props) => (
+  <Link
+    to={props.to}
+    className={classNames(props.className, "jfcl-link back-link")}
+  >
+    <Icon icon="chevronLeft" className="jfcl-link__icon" />
+    {props.children}
+  </Link>
+);
 
 export default JFCLLinkInternal;

@@ -1,11 +1,11 @@
 @import "../../colors.scss";
 @import "../../mixins.scss";
-@import "../ContentBox/ContentBox.scss";
+@import "../../variables.scss";
 
 .form-step {
   border-radius: 4px;
   border: 1px solid $GREY_NEW;
-  width: $contentBoxWidth;
+  max-width: $contentBoxWidth;
   background-color: $WHITE;
 
   padding: 1.5rem; //24px

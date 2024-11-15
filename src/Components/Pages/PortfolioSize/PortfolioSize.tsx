@@ -4,10 +4,10 @@ import { Icon } from "@justfixnyc/component-library";
 
 import { Address } from "../Home/Home";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
-import { BackToResults } from "../../BreadCrumbs/BreadCrumbs";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { FormFields } from "../../../App";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
+import { BackLink } from "../../JFCLLinkInternal";
 import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
 import {
   AcrisDocument,
@@ -117,7 +117,7 @@ export const PortfolioSize: React.FC = () => {
     <div className="portfolios-size__wrapper">
       <div className="headline-section">
         <div className="headline-section__content">
-          <BackToResults />
+          <BackLink to="/results">Back to Coverage Result</BackLink>
           {error && (
             <div className="eligibility__error">
               There was an error loading your results, please try again in a few
@@ -231,7 +231,7 @@ export const PortfolioSize: React.FC = () => {
           </div>
         </ContentBox>
         <div className="eligibility__footer">
-          <BackToResults />
+          <BackLink to="/results">Back to coverage result</BackLink>
         </div>
         <LegalDisclaimer />
       </div>
