@@ -47,6 +47,11 @@
             "type": "string",
             "example": "AGMT",
             "description": "ACRIS document type (AGMT, MTGE, AL&R)"
+          },
+          "doc_date": {
+            "type": "string",
+            "example": "2011-01-20",
+            "description": "Date (document or recorded) of the ACRIS document"
           }
         }
       },
