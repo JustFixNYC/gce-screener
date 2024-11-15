@@ -4,16 +4,21 @@ import { Icon } from "@justfixnyc/component-library";
 
 import { Address } from "../Home/Home";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
-import { BackToResults } from "../../BreadCrumbs/BreadCrumbs";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { FormFields } from "../../../App";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
+import { BackLink } from "../../JFCLLinkInternal";
 import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
 import {
   AcrisDocument,
   BuildingEligibilityInfo,
 } from "../../../types/APIDataTypes";
-import { acrisDocTypeFull, urlAcrisBbl, urlAcrisDoc } from "../../../helpers";
+import {
+  acrisDocTypeFull,
+  urlAcrisBbl,
+  urlAcrisDoc,
+  urlCountyClerkBbl,
+} from "../../../helpers";
 import "./PortfolioSize.scss";
 
 const LOOM_EMBED_URL =
@@ -26,11 +31,12 @@ type ACRISLinksProps = {
 };
 
 export const AcrisLinks: React.FC<ACRISLinksProps> = ({ bbl, acris_docs }) => {
+  const isStatenIsland = bbl[0] === "5";
   return (
     <>
-      <ul>
-        {acris_docs &&
-          acris_docs.map((docInfo, i) => (
+      {acris_docs && (
+        <ul>
+          {acris_docs.map((docInfo, i) => (
             <li key={i}>
               Document:{" "}
               <JFCLLinkExternal href={urlAcrisDoc(docInfo.doc_id)}>
@@ -40,10 +46,17 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({ bbl, acris_docs }) => {
               </JFCLLinkExternal>
             </li>
           ))}
-      </ul>
-      <JFCLLinkExternal href={urlAcrisBbl(bbl)}>
-        View all documents in ACRIS
-      </JFCLLinkExternal>
+        </ul>
+      )}
+      {isStatenIsland ? (
+        <JFCLLinkExternal href={urlCountyClerkBbl(bbl)}>
+          View all documents from Richmond County Clerk
+        </JFCLLinkExternal>
+      ) : (
+        <JFCLLinkExternal href={urlAcrisBbl(bbl)}>
+          View all documents in ACRIS
+        </JFCLLinkExternal>
+      )}
     </>
   );
 };
@@ -106,7 +119,7 @@ export const PortfolioSize: React.FC = () => {
     <div className="portfolios-size__wrapper">
       <div className="headline-section">
         <div className="headline-section__content">
-          <BackToResults />
+          <BackLink to="/results">Back to Coverage Result</BackLink>
           {error && (
             <div className="eligibility__error">
               There was an error loading your results, please try again in a few
@@ -220,7 +233,7 @@ export const PortfolioSize: React.FC = () => {
           </div>
         </ContentBox>
         <div className="eligibility__footer">
-          <BackToResults />
+          <BackLink to="/results">Back to coverage result</BackLink>
         </div>
         <LegalDisclaimer />
       </div>

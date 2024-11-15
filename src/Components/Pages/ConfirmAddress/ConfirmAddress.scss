@@ -1,46 +1,59 @@
 @import "../../../colors.scss";
 @import "../../../mixins.scss";
+@import "../../../variables.scss";
+
+$mapBoxPadding: 1.5rem; // 24px
+$mapImgWidth: calc($contentBoxWidth - (2 * $mapBoxPadding)); // 838px
+$mapImgHeight: 356px;
 
 .confirmation__wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2.25rem; //36px
+  .headline-section {
+    background-color: $OFF_WHITE_NEW;
+    padding-bottom: 0;
 
-  h2 {
-    text-align: center;
-  }
-
-  .confirmation__subheader {
-    @include body_large_desktop;
-    max-width: 42.625rem; //682px;
-    text-align: center;
-  }
-
-  .img-wrapper {
-    display: inline-block;
-    border: 1px solid $GREY_400;
-    border-radius: 16px;
-    padding: 2rem; //32px
-    text-align: center;
-    max-width: 40rem; //634px
-
-    .img-wrapper__img {
-      width: 100%;
+    .headline-section__content {
+      // width: calc($mapImgWidth + (2 * 1.5rem));
+      .headline-section__subtitle {
+        margin-bottom: 0;
+      }
     }
   }
 
-  .confirmation__address {
-    @include body_large_desktop;
-    margin-bottom: 0;
+  .content-box {
+    padding: $mapBoxPadding;
+
+    .img-wrapper,
+    .img-wrapper__img {
+      border-radius: 4px;
+      width: 100%;
+      height: $mapImgHeight;
+    }
+    .img-wrapper {
+      background-color: $GREY_NEW;
+    }
+    .img-wrapper__img {
+      object-fit: cover;
+    }
+
+    .confirmation__address {
+      @include body_large_desktop;
+      margin: 1.5rem 0 0 0; // 24px
+      text-align: center;
+      font-size: 2.25rem; // 36px;
+      font-weight: 600;
+      line-height: 100%; // 36px;
+    }
   }
 
   .confirmation__buttons {
+    align-self: center;
     display: inline-flex;
-    margin-top: 2rem; //32px
+    margin: 0.75rem 0 1.5rem 0; // 12px 0 24px 0
 
-    .confirmation__button:first-of-type {
-      margin-right: 1rem; //16px
+    .confirmation__back {
+      margin-right: 0.625rem; //10px
+      padding: 0.75rem 1.5rem 0.75rem 0; // 12px 24px 12px 0;
+      align-self: center;
     }
   }
 }

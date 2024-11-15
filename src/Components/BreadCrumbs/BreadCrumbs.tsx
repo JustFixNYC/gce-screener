@@ -3,36 +3,34 @@ import { Icon } from "@justfixnyc/component-library";
 import "./BreadCrumbs.scss";
 
 interface BreadCrumbs {
-  crumbs: { path?: string; name?: string }[];
+  crumbs: { path?: string; name?: string; active?: boolean }[];
 }
 export const BreadCrumbs: React.FC<BreadCrumbs> = ({ crumbs }) => {
   const crumbpath = crumbs.flatMap((crumb, index, array) => {
+    const CrumbElement = crumb.active ? (
+      <span key={index} className="breadCrumbs__crumb__active">
+        {crumb.name}
+      </span>
+    ) : (
+      <Link
+        key={index}
+        to={crumb.path ?? "/"}
+        className="jfcl-link breadCrumbs__crumb"
+      >
+        {crumb.name}
+      </Link>
+    );
+
     if (index !== array.length - 1) {
       return [
-        <Link
-          key={index}
-          to={crumb.path ?? "/"}
-          className="jfcl-link breadCrumbs__crumb"
-        >
-          {crumb.name}
-        </Link>,
+        CrumbElement,
         <span key={index + "caret"} className="breadCrumbs__caret">
           <Icon icon="caretRight" />
         </span>,
       ];
+    } else {
+      return CrumbElement;
     }
-    return (
-      <span key={index} className="breadCrumbs__last-crumb">
-        {crumb.name}
-      </span>
-    );
   });
   return <div className="breadCrumbs">{crumbpath}</div>;
 };
-
-export const BackToResults: React.FC = () => (
-  <Link to="/results" className="jfcl-link back-to-results">
-    <Icon icon="chevronLeft" className="jfcl-link__icon" />
-    Back to coverage result
-  </Link>
-);

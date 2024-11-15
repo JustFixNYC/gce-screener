@@ -12,7 +12,7 @@ export function useGetBuildingEligibilityInfo(
   bbl: string
 ): BuildingInfoSWRResponse {
   const { data, error, isLoading } = useSWR(
-    `/gce/eligibility?bbl=${bbl}`,
+    `/gce/screener?bbl=${bbl}`,
     apiFetcher,
     {
       revalidateIfStale: false,
