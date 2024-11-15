@@ -29,7 +29,7 @@ export type BuildingEligibilityInfo = {
   wow_portfolio_bbls: number;
   bldgclass: string;
   yearbuilt: number;
-  latest_co: string;
+  co_issued: string;
   co_bin: string;
   post_hstpa_rs_units: number;
   is_nycha: boolean;

@@ -231,53 +231,29 @@ function eligibilityBuildingClass(
 }
 
 function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
-  const { latest_co, yearbuilt } = criteriaData;
+  const { co_issued } = criteriaData;
   const cutoffYear = 2009;
   const cutoffDate = new Date(cutoffYear, 1, 1);
-  const criteria = "yearBuilt";
-  const requirement = (
-    <>
-      Your building must have received its certificate of occupancy before 2009.
-    </>
-  );
-  let determination: Determination;
-  let userValue: React.ReactNode;
-  let moreInfo: React.ReactNode;
-
-  const dateOptions: Intl.DateTimeFormatOptions = {
+  const latestCoDate = new Date(co_issued);
+  const latestCoDateFormatted = latestCoDate.toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
-  };
+  });
+  const criteria = "yearBuilt";
+  const requirement =
+    "Your building must have received its certificate of occupancy before 2009.";
+  let determination: Determination;
+  let userValue: React.ReactNode;
 
-  if (latest_co === undefined || latest_co === null) {
-    if (yearbuilt === undefined || yearbuilt === null) {
-      determination = "unknown";
-      userValue = (
-        <>There is no public data available for when your building was built.</>
-      );
-    } else {
-      determination =
-        new Date(yearbuilt, 1, 1) >= cutoffDate ? "unknown" : "eligible";
-      userValue = (
-        <>
-          {`There is no recorded certificate of occupancy for your building since
-          ${cutoffYear}, ${
-            determination === "unknown" ? "but" : "and"
-          } other data
-          indicates it was built in ${yearbuilt}.`}
-        </>
-      );
-    }
+  if (co_issued === null || latestCoDate < cutoffDate) {
+    determination = "eligible";
+    userValue =
+      "Your building has not received a certificate of occupancy since 2009";
   } else {
-    const coDate = new Date(latest_co);
-    determination = coDate >= cutoffDate ? "ineligible" : "eligible";
-    userValue = (
-      <>
-        {`Your building was issued a certificate of occupancy on
-        ${coDate.toLocaleDateString("en-US", dateOptions)}.`}
-      </>
-    );
+    determination = "ineligible";
+
+    userValue = `Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`;
   }
 
   return {
@@ -285,7 +261,6 @@ function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
     determination,
     requirement,
     userValue,
-    moreInfo,
   };
 }
 
