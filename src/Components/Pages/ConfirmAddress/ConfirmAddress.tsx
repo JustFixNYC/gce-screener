@@ -5,10 +5,12 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { BackLink } from "../../JFCLLinkInternal";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
+import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
 
 export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
   const { address } = useLoaderData() as { address: Address };
+  useGetBuildingEligibilityInfo(address.bbl);
 
   const styleToken = import.meta.env.VITE_MAPBOX_STYLE_TOKEN;
   const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
@@ -59,6 +61,7 @@ export const ConfirmAddress: React.FC = () => {
             </div>
             <h3 className="confirmation__address">{address.address}</h3>
           </ContentBox>
+
           <div className="confirmation__buttons">
             <BackLink to="/home" className="confirmation__back">
               Back

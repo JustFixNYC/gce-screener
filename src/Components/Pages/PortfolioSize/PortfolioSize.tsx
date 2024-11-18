@@ -24,71 +24,6 @@ import "./PortfolioSize.scss";
 const LOOM_EMBED_URL =
   "https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119";
 
-type ACRISLinksProps = {
-  bbl: string;
-  unitsres: number;
-  acris_docs: AcrisDocument[] | null;
-};
-
-export const AcrisLinks: React.FC<ACRISLinksProps> = ({ bbl, acris_docs }) => {
-  const isStatenIsland = bbl[0] === "5";
-  return (
-    <>
-      {acris_docs && (
-        <ul>
-          {acris_docs.map((docInfo, i) => (
-            <li key={i}>
-              Document:{" "}
-              <JFCLLinkExternal href={urlAcrisDoc(docInfo.doc_id)}>
-                {`${acrisDocTypeFull(
-                  docInfo.doc_type
-                )} (${docInfo.doc_date.slice(0, 4)})`}
-              </JFCLLinkExternal>
-            </li>
-          ))}
-        </ul>
-      )}
-      {isStatenIsland ? (
-        <JFCLLinkExternal href={urlCountyClerkBbl(bbl)}>
-          View all documents from Richmond County Clerk
-        </JFCLLinkExternal>
-      ) : (
-        <JFCLLinkExternal href={urlAcrisBbl(bbl)}>
-          View all documents in ACRIS
-        </JFCLLinkExternal>
-      )}
-    </>
-  );
-};
-
-export const AcrisAccordions: React.FC<BuildingEligibilityInfo> = (props) => {
-  const MAX_PROPERTIES = 5;
-  // TODO: decide how to handle these cases, for now exclude. might also want to exclude if no acris_docs, but for now leave in.
-  const wowProperties = props.wow_data
-    ?.filter((bldg) => bldg.unitsres > 0)
-    .slice(0, MAX_PROPERTIES);
-  return (
-    <ul>
-      {wowProperties?.map((bldg, i) => {
-        return (
-          <li key={i}>
-            <details>
-              <summary>
-                {bldg.addr}
-                <span className="apartments-pill">{`${bldg.unitsres} apartments`}</span>
-                <Icon icon="chevronDown" className="chevron-icon" />
-              </summary>
-              <div className="content-box__section__acris-links">
-                <AcrisLinks {...bldg} />
-              </div>
-            </details>
-          </li>
-        );
-      })}
-    </ul>
-  );
-};
-
 export const PortfolioSize: React.FC = () => {
   const { address, fields } = useLoaderData() as {
     address: Address;
@@ -238,5 +173,70 @@ export const PortfolioSize: React.FC = () => {
         <LegalDisclaimer />
       </div>
     </div>
+  );
+};
+
+type ACRISLinksProps = {
+  bbl: string;
+  unitsres: number;
+  acris_docs: AcrisDocument[] | null;
+};
+
+export const AcrisLinks: React.FC<ACRISLinksProps> = ({ bbl, acris_docs }) => {
+  const isStatenIsland = bbl[0] === "5";
+  return (
+    <>
+      {acris_docs && (
+        <ul>
+          {acris_docs.map((docInfo, i) => (
+            <li key={i}>
+              Document:{" "}
+              <JFCLLinkExternal href={urlAcrisDoc(docInfo.doc_id)}>
+                {`${acrisDocTypeFull(
+                  docInfo.doc_type
+                )} (${docInfo.doc_date.slice(0, 4)})`}
+              </JFCLLinkExternal>
+            </li>
+          ))}
+        </ul>
+      )}
+      {isStatenIsland ? (
+        <JFCLLinkExternal href={urlCountyClerkBbl(bbl)}>
+          View all documents from Richmond County Clerk
+        </JFCLLinkExternal>
+      ) : (
+        <JFCLLinkExternal href={urlAcrisBbl(bbl)}>
+          View all documents in ACRIS
+        </JFCLLinkExternal>
+      )}
+    </>
+  );
+};
+
+export const AcrisAccordions: React.FC<BuildingEligibilityInfo> = (props) => {
+  const MAX_PROPERTIES = 5;
+  // TODO: decide how to handle these cases, for now exclude. might also want to exclude if no acris_docs, but for now leave in.
+  const wowProperties = props.wow_data
+    ?.filter((bldg) => bldg.unitsres > 0)
+    .slice(0, MAX_PROPERTIES);
+  return (
+    <ul>
+      {wowProperties?.map((bldg, i) => {
+        return (
+          <li key={i}>
+            <details>
+              <summary>
+                {bldg.addr}
+                <span className="apartments-pill">{`${bldg.unitsres} apartments`}</span>
+                <Icon icon="chevronDown" className="chevron-icon" />
+              </summary>
+              <div className="content-box__section__acris-links">
+                <AcrisLinks {...bldg} />
+              </div>
+            </details>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
