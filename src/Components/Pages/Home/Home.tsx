@@ -5,6 +5,7 @@ import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import "./Home.scss";
+import { FormFields } from "../../../App";
 
 export type Address = {
   bbl: string;
@@ -15,6 +16,7 @@ export type Address = {
 export const Home: React.FC = () => {
   const navigate = useNavigate();
   const [address, setAddress] = useSessionStorage<Address>("address");
+  const [, , removeFormFields] = useSessionStorage<FormFields>("fields");
   const [geoAddress, setGeoAddress] = useState<Address>();
 
   return (
@@ -38,6 +40,7 @@ export const Home: React.FC = () => {
               if (geoAddress) {
                 setAddress(geoAddress);
               }
+              removeFormFields();
               navigate("confirm_address");
             }}
           />

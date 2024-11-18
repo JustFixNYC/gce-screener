@@ -3,7 +3,7 @@ import React from "react";
 export const useSessionStorage = <T,>(
   keyName: string,
   defaultValue?: T
-): [T | undefined, (newValue: T) => void] => {
+): [T | undefined, (newValue: T) => void, () => void] => {
   const [storedValue, setStoredValue] = React.useState<T | undefined>(() => {
     try {
       const value = window.sessionStorage.getItem(keyName);
@@ -27,5 +27,13 @@ export const useSessionStorage = <T,>(
     }
   };
 
-  return [storedValue, setValue];
+  const removeValue = (): void => {
+    try {
+      window.sessionStorage.removeItem(keyName);
+    } catch (error) {
+      window.console.error(error);
+    }
+  };
+
+  return [storedValue, setValue, removeValue];
 };
