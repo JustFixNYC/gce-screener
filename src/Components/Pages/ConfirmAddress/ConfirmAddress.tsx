@@ -57,6 +57,8 @@ export const ConfirmAddress: React.FC = () => {
                 className="img-wrapper__img"
                 src={mapImageURL}
                 alt="Map showing location of the entered address."
+                width={width}
+                height={height}
               />
             </div>
             <h3 className="confirmation__address">{address.address}</h3>
