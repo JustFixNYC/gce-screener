@@ -5,12 +5,12 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { BackLink } from "../../JFCLLinkInternal";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
-import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
+import { useGetBuildingData } from "../../../api/hooks";
 
 export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
   const { address } = useLoaderData() as { address: Address };
-  useGetBuildingEligibilityInfo(address.bbl);
+  useGetBuildingData(address.bbl);
 
   const styleToken = import.meta.env.VITE_MAPBOX_STYLE_TOKEN;
   const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;

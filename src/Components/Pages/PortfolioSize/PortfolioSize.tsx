@@ -8,10 +8,10 @@ import { ContentBox } from "../../ContentBox/ContentBox";
 import { FormFields } from "../../../App";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { BackLink } from "../../JFCLLinkInternal";
-import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
+import { useGetBuildingData } from "../../../api/hooks";
 import {
   AcrisDocument,
-  BuildingEligibilityInfo,
+  BuildingData,
 } from "../../../types/APIDataTypes";
 import {
   acrisDocTypeFull,
@@ -48,7 +48,7 @@ export const PortfolioSize: React.FC = () => {
     data: bldgData,
     isLoading,
     error,
-  } = useGetBuildingEligibilityInfo(bbl);
+  } = useGetBuildingData(bbl);
 
   return (
     <div className="portfolios-size__wrapper">
@@ -213,7 +213,7 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({ bbl, acris_docs }) => {
   );
 };
 
-export const AcrisAccordions: React.FC<BuildingEligibilityInfo> = (props) => {
+export const AcrisAccordions: React.FC<BuildingData> = (props) => {
   const MAX_PROPERTIES = 5;
   // TODO: decide how to handle these cases, for now exclude. might also want to exclude if no acris_docs, but for now leave in.
   const wowProperties = props.wow_data

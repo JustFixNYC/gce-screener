@@ -22,7 +22,7 @@ export type WowBuildings = {
   acris_docs: AcrisDocument[];
 };
 
-export type BuildingEligibilityInfo = {
+export type BuildingData = {
   bbl: string;
   unitsres: number;
   wow_portfolio_units: number;

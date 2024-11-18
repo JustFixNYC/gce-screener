@@ -1,14 +1,14 @@
 import useSWR from "swr";
-import { BuildingEligibilityInfo } from "../types/APIDataTypes";
+import { BuildingData } from "../types/APIDataTypes";
 import { apiFetcher } from "./helpers";
 
 type BuildingInfoSWRResponse = {
-  data: BuildingEligibilityInfo | undefined;
+  data: BuildingData | undefined;
   isLoading: boolean;
   error: Error | undefined;
 };
 
-export function useGetBuildingEligibilityInfo(
+export function useGetBuildingData(
   bbl: string
 ): BuildingInfoSWRResponse {
   const { data, error, isLoading } = useSWR(

@@ -4,7 +4,7 @@ import { useLoaderData, useNavigate } from "react-router";
 
 import { FormStep } from "../../FormStep/FormStep";
 import { Address } from "../Home/Home";
-import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
+import { useGetBuildingData } from "../../../api/hooks";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { RadioGroup } from "../../RadioGroup/RadioGroup";
 import { FormFields } from "../../../App";
@@ -28,7 +28,7 @@ export const Form: React.FC = () => {
 
   const bbl = address.bbl;
 
-  const { data: bldgData } = useGetBuildingEligibilityInfo(bbl);
+  const { data: bldgData } = useGetBuildingData(bbl);
 
   const navigate = useNavigate();
 
