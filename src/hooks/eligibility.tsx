@@ -1,5 +1,5 @@
 import { FormFields } from "../App";
-import { BuildingEligibilityInfo } from "../types/APIDataTypes";
+import { BuildingData } from "../types/APIDataTypes";
 
 type Criteria =
   | "portfolioSize"
@@ -9,7 +9,7 @@ type Criteria =
   | "rentRegulation"
   | "yearBuilt";
 
-type CriteriaData = FormFields & BuildingEligibilityInfo;
+type CriteriaData = FormFields & BuildingData;
 
 export type Determination = "eligible" | "ineligible" | "unknown";
 
@@ -312,7 +312,7 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
 
 export function useEligibility(
   formFields: FormFields,
-  bldgData?: BuildingEligibilityInfo
+  bldgData?: BuildingData
 ): EligibilityResults | undefined {
   if (!bldgData) return undefined;
   const criteriaData: CriteriaData = { ...formFields, ...bldgData };

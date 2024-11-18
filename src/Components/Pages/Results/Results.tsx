@@ -8,8 +8,8 @@ import {
 import { Button, Icon } from "@justfixnyc/component-library";
 import classNames from "classnames";
 
-import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
-import { BuildingEligibilityInfo } from "../../../types/APIDataTypes";
+import { useGetBuildingData } from "../../../api/hooks";
+import { BuildingData } from "../../../types/APIDataTypes";
 import { FormFields } from "../../../App";
 import {
   CriteriaEligibility,
@@ -54,7 +54,7 @@ export const Results: React.FC = () => {
     data: bldgData,
     isLoading,
     error,
-  } = useGetBuildingEligibilityInfo(bbl);
+  } = useGetBuildingData(bbl);
 
   const eligibilityResults = useEligibility(fields, bldgData);
 
@@ -257,7 +257,7 @@ const EligibilityCriteriaTable: React.FC<{
 );
 
 const EligibilityNextSteps: React.FC<{
-  bldgData: BuildingEligibilityInfo;
+  bldgData: BuildingData;
   eligibilityResults: EligibilityResults;
   navigate: NavigateFunction;
 }> = ({ bldgData, eligibilityResults, navigate }) => {
