@@ -70,7 +70,7 @@ export const ConfirmAddress: React.FC = () => {
               className="confirmation__button"
               labelText="Next"
               onClick={() => {
-                navigate("form");
+                navigate("/form");
               }}
             />
           </div>
