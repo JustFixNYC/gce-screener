@@ -9,6 +9,7 @@ import { Button, Icon } from "@justfixnyc/component-library";
 import classNames from "classnames";
 
 import { useGetBuildingEligibilityInfo } from "../../../api/hooks";
+import { BuildingEligibilityInfo } from "../../../types/APIDataTypes";
 import { FormFields } from "../../../App";
 import {
   CriteriaEligibility,
@@ -25,7 +26,133 @@ import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import JFCLLinkInternal from "../../JFCLLinkInternal";
 import "./Results.scss";
-import { BuildingEligibilityInfo } from "../../../types/APIDataTypes";
+
+export const Results: React.FC = () => {
+  const { address, fields } = useLoaderData() as {
+    address: Address;
+    fields: FormFields;
+  };
+  const [, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  const [showTable, setShowTable] = useState(false);
+
+  useEffect(() => {
+    // save session state in params
+    if (address && fields) {
+      setSearchParams(
+        { address: JSON.stringify(address), fields: JSON.stringify(fields) },
+        { replace: true }
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const bbl = address.bbl;
+
+  const {
+    data: bldgData,
+    isLoading,
+    error,
+  } = useGetBuildingEligibilityInfo(bbl);
+
+  const eligibilityResults = useEligibility(fields, bldgData);
+
+  const determination = getDetermination(eligibilityResults);
+
+  const isRentStabilized =
+    eligibilityResults?.rentRegulation.determination === "ineligible";
+
+  return (
+    <>
+      <div className="headline-section">
+        {error && (
+          <div className="eligibility__error">
+            There was an error loading your results, please try again in a few
+            minutes.
+          </div>
+        )}
+        {isLoading && (
+          <div className="eligibility__loading">Loading your results...</div>
+        )}
+
+        <div className="headline-section__content">
+          <BreadCrumbs
+            crumbs={[
+              { path: "/home", name: "Home" },
+              {
+                path: "/confirm_address",
+                name: address?.address || "Your address",
+              },
+              { path: "/form", name: "Screener survey" },
+              { path: "/results", name: "Coverage result" },
+            ]}
+          />
+          <div className="headline-section__page-type">Coverage Result</div>
+          {bldgData && eligibilityResults && (
+            <>
+              <h2 className="headline-section__title">
+                <EligibilityResultHeadline
+                  determination={determination}
+                  eligibilityResults={eligibilityResults}
+                />
+              </h2>
+
+              <div className="headline-section__subtitle">
+                based on the data we have about your apartment and the
+                information you’ve provided.
+              </div>
+            </>
+          )}
+
+          <Button
+            labelText={showTable ? "Hide details" : "Expand criteria"}
+            labelIcon={showTable ? "eyeSlash" : "eye"}
+            onClick={() => setShowTable((prev) => !prev)}
+            size="small"
+            className={classNames(
+              "eligibility__toggle",
+              showTable ? "open" : "closed"
+            )}
+          />
+          {showTable && bldgData && (
+            <EligibilityCriteriaTable eligibilityResults={eligibilityResults} />
+          )}
+        </div>
+      </div>
+
+      <div className="content-section">
+        <div className="content-section__content">
+          {determination === "unknown" && bldgData && eligibilityResults && (
+            <EligibilityNextSteps
+              bldgData={bldgData}
+              eligibilityResults={eligibilityResults}
+              navigate={navigate}
+            />
+          )}
+
+          {isRentStabilized && rentStabilizedProtections}
+
+          {determination === "unknown" && potentialGoodCauseProtections}
+
+          {determination === "eligible" && coveredGoodCauseProtections}
+
+          <div className="eligibility__footer">
+            <h3 className="eligibility__footer__header">
+              Help others understand their coverage
+            </h3>
+            <Button
+              labelText="Share this screener"
+              labelIcon="squareArrowUpRight"
+              className="disabled"
+            />
+          </div>
+        </div>
+        <LegalDisclaimer />
+      </div>
+    </>
+  );
+};
 
 const CRITERIA_LABELS = {
   portfolioSize: "Landlord portfolio size",
@@ -449,131 +576,4 @@ const EligibilityResultHeadline: React.FC<{
       </>
     );
   }
-};
-
-export const Results: React.FC = () => {
-  const { address, fields } = useLoaderData() as {
-    address: Address;
-    fields: FormFields;
-  };
-  const [, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
-
-  const [showTable, setShowTable] = useState(false);
-
-  useEffect(() => {
-    // save session state in params
-    if (address && fields) {
-      setSearchParams(
-        { address: JSON.stringify(address), fields: JSON.stringify(fields) },
-        { replace: true }
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const bbl = address.bbl;
-
-  const {
-    data: bldgData,
-    isLoading,
-    error,
-  } = useGetBuildingEligibilityInfo(bbl);
-
-  const eligibilityResults = useEligibility(fields, bldgData);
-
-  const determination = getDetermination(eligibilityResults);
-
-  const isRentStabilized =
-    eligibilityResults?.rentRegulation.determination === "ineligible";
-
-  return (
-    <>
-      <div className="headline-section">
-        {error && (
-          <div className="eligibility__error">
-            There was an error loading your results, please try again in a few
-            minutes.
-          </div>
-        )}
-        {isLoading && (
-          <div className="eligibility__loading">Loading your results...</div>
-        )}
-
-        <div className="headline-section__content">
-          <BreadCrumbs
-            crumbs={[
-              { path: "/home", name: "Home" },
-              {
-                path: "/confirm_address",
-                name: address?.address || "Your address",
-              },
-              { path: "/form", name: "Screener survey" },
-              { path: "/results", name: "Coverage result" },
-            ]}
-          />
-          <div className="headline-section__page-type">Coverage Result</div>
-          {bldgData && eligibilityResults && (
-            <>
-              <h2 className="headline-section__title">
-                <EligibilityResultHeadline
-                  determination={determination}
-                  eligibilityResults={eligibilityResults}
-                />
-              </h2>
-
-              <div className="headline-section__subtitle">
-                based on the data we have about your apartment and the
-                information you’ve provided.
-              </div>
-            </>
-          )}
-
-          <Button
-            labelText={showTable ? "Hide details" : "Expand criteria"}
-            labelIcon={showTable ? "eyeSlash" : "eye"}
-            onClick={() => setShowTable((prev) => !prev)}
-            size="small"
-            className={classNames(
-              "eligibility__toggle",
-              showTable ? "open" : "closed"
-            )}
-          />
-          {showTable && bldgData && (
-            <EligibilityCriteriaTable eligibilityResults={eligibilityResults} />
-          )}
-        </div>
-      </div>
-
-      <div className="content-section">
-        <div className="content-section__content">
-          {determination === "unknown" && bldgData && eligibilityResults && (
-            <EligibilityNextSteps
-              bldgData={bldgData}
-              eligibilityResults={eligibilityResults}
-              navigate={navigate}
-            />
-          )}
-
-          {isRentStabilized && rentStabilizedProtections}
-
-          {determination === "unknown" && potentialGoodCauseProtections}
-
-          {determination === "eligible" && coveredGoodCauseProtections}
-
-          <div className="eligibility__footer">
-            <h3 className="eligibility__footer__header">
-              Help others understand their coverage
-            </h3>
-            <Button
-              labelText="Share this screener"
-              labelIcon="squareArrowUpRight"
-              className="disabled"
-            />
-          </div>
-        </div>
-        <LegalDisclaimer />
-      </div>
-    </>
-  );
 };
