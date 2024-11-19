@@ -1,4 +1,4 @@
-import { FormFields } from "../App";
+import { FormFields } from "../Components/Pages/Form/Form";
 import { BuildingData } from "../types/APIDataTypes";
 
 type Criteria =
@@ -49,7 +49,7 @@ function eligibilityPortfolioSize(
   } else if (unitsres > 10) {
     determination = "eligible";
     userValue = <>Your building has more than 10 apartments</>;
-  } else if (landlord === "yes") {
+  } else if (landlord === "YES") {
     determination = "ineligible";
     userValue = (
       <>Your building has 10 or fewer apartments and is owner-occupied</>
@@ -87,11 +87,11 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
   const rent = parseFloat(rentString || "");
 
   const rentCutoffs = {
-    studio: "$5,846",
+    "0": "$5,846",
     "1": "$6,005",
     "2": "$6,742",
     "3": "$8,413",
-    "4+": "$9,065",
+    "4": "$9,065",
   };
   const criteria = "rent";
   let determination: Determination;
@@ -102,11 +102,11 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
   const requirement = (
     <>
       {`For a ${bedrooms}
-      ${bedrooms !== "studio" && " bedroom"}, rent must be less than
+      ${bedrooms !== "0" && " bedroom"}, rent must be less than
       ${rentCutoffs[bedrooms]}`}
     </>
   );
-  if (bedrooms === "studio") {
+  if (bedrooms === "0") {
     determination = rent < 5846 ? "eligible" : "ineligible";
   } else if (bedrooms === "1") {
     determination = rent < 6005 ? "eligible" : "ineligible";
@@ -146,11 +146,11 @@ function eligibilityRentRegulated(
   // should remove null from type for all form fields, since required
   if (rentStabilized === null) return { criteria, requirement };
 
-  if (rentStabilized === "yes") {
+  if (rentStabilized === "YES") {
     determination = "ineligible";
     userValue = <>Your apartment is rent regulated.</>;
     moreInfo = <>Rent stabilization provides you even strong protections.</>;
-  } else if (rentStabilized === "no") {
+  } else if (rentStabilized === "NO") {
     determination = "eligible";
     userValue = <>Your apartment is not rent regulated.</>;
   } else {
@@ -272,7 +272,7 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
   let userValue: React.ReactNode;
   let moreInfo: React.ReactNode;
 
-  if (housingType == "not-sure" || housingType === null) {
+  if (housingType == "UNSURE" || housingType === null) {
     determination = "unknown";
     if (is_nycha || is_subsidized) {
       userValue = (
@@ -291,7 +291,7 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
         </>
       );
     }
-  } else if (housingType === "public" || housingType === "subsidized") {
+  } else if (housingType === "NYCHA" || housingType === "SUBSIDIZED") {
     determination = "ineligible";
     userValue = <>{`You reported that you live in ${housingType} housing.`}</>;
   } else {

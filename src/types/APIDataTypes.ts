@@ -41,3 +41,24 @@ export type BuildingData = {
   acris_data: AcrisProperty[] | null;
   wow_data: WowBuildings[] | null;
 };
+
+export type GCEUser = {
+  id: number;
+};
+
+export type GCEPostData = {
+  id?: number
+  bbl?: string;
+  house_number?: string;
+  street_name?: string;
+  borough?: string;
+  zipcode?: string;
+  address_confirmed?: boolean;
+  nycdb_results?: BuildingData;
+  form_bedrooms?: number;
+  form_rent?: number;
+  form_owner_occupied?: string;
+  form_rent_stab?: string;
+  form_subsidy?: string;
+  result_coverage_initial?: string;
+};

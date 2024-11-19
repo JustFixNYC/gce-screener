@@ -8,9 +8,9 @@ import {
 import { Button, Icon } from "@justfixnyc/component-library";
 import classNames from "classnames";
 
-import { useGetBuildingData } from "../../../api/hooks";
-import { BuildingData } from "../../../types/APIDataTypes";
-import { FormFields } from "../../../App";
+import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
+import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
+import { FormFields } from "../Form/Form";
 import {
   CriteriaEligibility,
   Determination,
@@ -28,12 +28,14 @@ import JFCLLinkInternal from "../../JFCLLinkInternal";
 import "./Results.scss";
 
 export const Results: React.FC = () => {
-  const { address, fields } = useLoaderData() as {
+  const { address, fields, user } = useLoaderData() as {
     address: Address;
     fields: FormFields;
+    user: GCEUser;
   };
   const [, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { trigger } = useSendGceData();
 
   const [showTable, setShowTable] = useState(false);
 
@@ -48,13 +50,17 @@ export const Results: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    // TODO: still need to check this
+    if (user && determination) {
+      trigger({ id: user.id, result_coverage_initial: determination });
+    }    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const bbl = address.bbl;
 
-  const {
-    data: bldgData,
-    isLoading,
-    error,
-  } = useGetBuildingData(bbl);
+  const { data: bldgData, isLoading, error } = useGetBuildingData(bbl);
 
   const eligibilityResults = useEligibility(fields, bldgData);
 

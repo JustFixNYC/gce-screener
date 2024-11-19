@@ -15,14 +15,6 @@ import { createBrowserRouter, Link, ScrollRestoration } from "react-router-dom";
 import { RentStabilization } from "./Components/Pages/RentStabilization/RentStabilization";
 import { PortfolioSize } from "./Components/Pages/PortfolioSize/PortfolioSize";
 
-export type FormFields = {
-  bedrooms: "studio" | "1" | "2" | "3" | "4+" | null;
-  rent: string | null;
-  landlord: "yes" | "no" | "maybe" | null;
-  rentStabilized: "yes" | "no" | "maybe" | null;
-  housingType: "public" | "subsidized" | "none" | "not-sure" | null;
-};
-
 const Layout = () => {
   return (
     <div id="container">
@@ -55,12 +47,16 @@ function isJsonString(str: string | null) {
   return true;
 }
 
-const LoadAddressSession = () => {
+const LoadAddressAndUserSession = () => {
   const sessionAddress = window.sessionStorage.getItem("address");
-  if (!isJsonString(sessionAddress)) {
+  const sessionUser = window.sessionStorage.getItem("user");
+  if (!isJsonString(sessionAddress) || !isJsonString(sessionUser)) {
     return redirect("/");
   }
-  return { address: JSON.parse(sessionAddress as string) };
+  return {
+    address: JSON.parse(sessionAddress as string),
+    user: JSON.parse(sessionUser as string),
+  };
 };
 
 const LoadURLSession = ({ request }: { request: Request }) => {
@@ -100,14 +96,14 @@ const router = createBrowserRouter(
       <Route
         path="confirm_address"
         element={<ConfirmAddress />}
-        loader={LoadAddressSession}
+        loader={LoadAddressAndUserSession}
       />
-      <Route path="form" element={<Form />} loader={LoadAddressSession} />
+      <Route path="form" element={<Form />} loader={LoadAddressAndUserSession} />
       <Route path="results" element={<Results />} loader={LoadURLSession} />
       <Route
         path="rent_stabilization"
         element={<RentStabilization />}
-        loader={LoadAddressSession}
+        loader={LoadAddressAndUserSession}
       />
       <Route
         path="portfolio_size"

@@ -4,12 +4,21 @@ import { useLoaderData, useNavigate } from "react-router";
 
 import { FormStep } from "../../FormStep/FormStep";
 import { Address } from "../Home/Home";
-import { useGetBuildingData } from "../../../api/hooks";
+import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { RadioGroup } from "../../RadioGroup/RadioGroup";
-import { FormFields } from "../../../App";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import "./Form.scss";
+import { cleanFormFields } from "../../../api/helpers";
+import { GCEUser } from "../../../types/APIDataTypes";
+
+export type FormFields = {
+  bedrooms: "0" | "1" | "2" | "3" | "4" | null;
+  rent: string | null;
+  landlord: "YES" | "NO" | "UNSURE" | null;
+  rentStabilized: "YES" | "NO" | "UNSURE" | null;
+  housingType: "NYCHA" | "SUBSIDIZED" | "NONE" | "UNSURE" | null;
+};
 
 const initialFields: FormFields = {
   bedrooms: null,
@@ -20,7 +29,10 @@ const initialFields: FormFields = {
 };
 
 export const Form: React.FC = () => {
-  const { address } = useLoaderData() as { address: Address };
+  const { address, user } = useLoaderData() as {
+    address: Address;
+    user: GCEUser;
+  };
   const [fields, setFields] = useSessionStorage<FormFields>("fields");
   const [localFields, setLocalFields] = useState<FormFields>(
     fields || initialFields
@@ -29,11 +41,13 @@ export const Form: React.FC = () => {
   const bbl = address.bbl;
 
   const { data: bldgData } = useGetBuildingData(bbl);
+  const { trigger } = useSendGceData();
 
   const navigate = useNavigate();
 
   const handleSubmit = () => {
     setFields(localFields);
+    trigger({ id: user.id, ...cleanFormFields(localFields) });
     navigate(`/results`);
   };
 
@@ -109,11 +123,11 @@ export const Form: React.FC = () => {
                 radioGroup={{
                   name: "bedrooms",
                   options: [
-                    { label: "Studio", value: "studio" },
+                    { label: "Studio", value: "0" },
                     { label: "1", value: "1" },
                     { label: "2", value: "2" },
                     { label: "3", value: "3" },
-                    { label: "4+", value: "4+" },
+                    { label: "4+", value: "4" },
                   ],
                 }}
                 onChange={handleRadioChange}
@@ -140,9 +154,9 @@ export const Form: React.FC = () => {
                 radioGroup={{
                   name: "landlord",
                   options: [
-                    { label: "Yes", value: "yes" },
-                    { label: "No", value: "no" },
-                    { label: "I'm not sure", value: "not-sure" },
+                    { label: "Yes", value: "YES" },
+                    { label: "No", value: "NO" },
+                    { label: "I'm not sure", value: "UNSURE" },
                   ],
                 }}
                 onChange={handleRadioChange}
@@ -160,9 +174,9 @@ export const Form: React.FC = () => {
                 radioGroup={{
                   name: "rentStabilized",
                   options: [
-                    { label: "Yes", value: "yes" },
-                    { label: "No", value: "no" },
-                    { label: "I'm not sure", value: "not-sure" },
+                    { label: "Yes", value: "YES" },
+                    { label: "No", value: "NO" },
+                    { label: "I'm not sure", value: "UNSURE" },
                   ],
                 }}
                 onChange={handleRadioChange}
@@ -180,10 +194,10 @@ export const Form: React.FC = () => {
                 radioGroup={{
                   name: "housingType",
                   options: [
-                    { label: "NYCHA or PACT/RAD", value: "public" },
-                    { label: "Subsidized housing", value: "subsidized" },
-                    { label: "None of these", value: "none" },
-                    { label: "I'm not sure", value: "not-sure" },
+                    { label: "NYCHA or PACT/RAD", value: "NYCHA" },
+                    { label: "Subsidized housing", value: "SUBSIDIZED" },
+                    { label: "None of these", value: "NONE" },
+                    { label: "I'm not sure", value: "UNSURE" },
                   ],
                 }}
                 onChange={handleRadioChange}
