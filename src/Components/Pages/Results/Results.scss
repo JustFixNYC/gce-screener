@@ -23,7 +23,7 @@ $eligibilityTablePaddingH: 36px;
   height: calc(1em + 4px);
 
   &.covered-pill--ineligible {
-    background-color: $RED;
+    background-color: $ORANGE;
   }
 
   &.covered-pill--unknown {

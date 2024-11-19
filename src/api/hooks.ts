@@ -8,9 +8,7 @@ type BuildingInfoSWRResponse = {
   error: Error | undefined;
 };
 
-export function useGetBuildingData(
-  bbl: string
-): BuildingInfoSWRResponse {
+export function useGetBuildingData(bbl: string): BuildingInfoSWRResponse {
   const { data, error, isLoading } = useSWR(
     `/gce/screener?bbl=${bbl}`,
     apiFetcher,
