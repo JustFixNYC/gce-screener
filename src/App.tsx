@@ -21,6 +21,7 @@ export type FormFields = {
   landlord: "yes" | "no" | "maybe" | null;
   rentStabilized: "yes" | "no" | "maybe" | null;
   housingType: "public" | "subsidized" | "none" | "not-sure" | null;
+  portfolioSize?: "yes" | "no" | "maybe";
 };
 
 const Layout = () => {

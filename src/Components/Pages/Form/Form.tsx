@@ -10,6 +10,7 @@ import { RadioGroup } from "../../RadioGroup/RadioGroup";
 import { FormFields } from "../../../App";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import "./Form.scss";
+import { BuildingData } from "../../../types/APIDataTypes";
 
 const initialFields: FormFields = {
   bedrooms: null,
@@ -17,6 +18,7 @@ const initialFields: FormFields = {
   landlord: null,
   rentStabilized: null,
   housingType: null,
+  portfolioSize: undefined,
 };
 
 export const Form: React.FC = () => {
@@ -57,29 +59,6 @@ export const Form: React.FC = () => {
     setLocalFields(updatedFields as FormFields);
   };
 
-  const rsHelperText = !bldgData
-    ? undefined
-    : bldgData.unitsres > 0 && bldgData.post_hstpa_rs_units >= bldgData.unitsres
-    ? "Our data shows that all apartments in your building are registered as rent stabilized."
-    : new Date(bldgData.end_421a) > new Date()
-    ? "Your building appears to receive the 421a tax exemption. This means your apartment is rent stabilized."
-    : new Date(bldgData.end_j51) > new Date()
-    ? "Your building appears to receive the J51 tax exemption. This means your apartment is rent stabilized."
-    : bldgData.post_hstpa_rs_units > 0
-    ? "Our data shows that some apartments in your building are registered as rent stabilized."
-    : bldgData.yearbuilt < 1974 && bldgData.unitsres >= 6
-    ? "Based on the size and age of your building, your apartment might be rent stabilized."
-    : undefined;
-
-  const subsidyHelperText = !bldgData
-    ? undefined
-    : bldgData.is_nycha
-    ? "Based on our data, it looks like your building is part of NYCHA"
-    : bldgData.is_subsidized
-    ? `Based on our data, it looks like your building receives ${bldgData.subsidy_name} subsidy`
-    : "If your apartment is kept affordable for people based on their income level, then you live in what’s called “subsidized housing.”" +
-      " Your apartment is not considered subsidized if you receive a housing voucher that can be used anywhere.";
-
   return (
     <div className="form__wrapper content-section">
       <div className="content-section__content">
@@ -102,7 +81,7 @@ export const Form: React.FC = () => {
           the laws and find out if you're covered.{" "}
         </p>
         <form>
-          <FormStep step={1} total={5}>
+          <FormStep step={1} total={6}>
             <FormGroup legendText="How many bedrooms are in your apartment?">
               <RadioGroup
                 fields={localFields}
@@ -121,7 +100,7 @@ export const Form: React.FC = () => {
             </FormGroup>
           </FormStep>
 
-          <FormStep step={2} total={5}>
+          <FormStep step={2} total={6}>
             <TextInput
               labelText="What is the total monthly rent for your entire apartment?"
               helperText="Please provide the total rent of your apartment, not just the portion of rent that you pay."
@@ -133,7 +112,7 @@ export const Form: React.FC = () => {
             />
           </FormStep>
 
-          <FormStep step={3} total={5}>
+          <FormStep step={3} total={6}>
             <FormGroup legendText="Does your landlord live in the building?">
               <RadioGroup
                 fields={localFields}
@@ -150,10 +129,10 @@ export const Form: React.FC = () => {
             </FormGroup>
           </FormStep>
 
-          <FormStep step={4} total={5}>
+          <FormStep step={4} total={6}>
             <FormGroup
               legendText="Is your apartment rent-stabilized?"
-              helperText={rsHelperText}
+              helperText={getRsHelperText(bldgData)}
             >
               <RadioGroup
                 fields={localFields}
@@ -170,10 +149,10 @@ export const Form: React.FC = () => {
             </FormGroup>
           </FormStep>
 
-          <FormStep step={5} total={5}>
+          <FormStep step={5} total={6}>
             <FormGroup
               legendText="Is your apartment associated with any of the following?"
-              helperText={subsidyHelperText}
+              helperText={getSubsidyHelperText(bldgData)}
             >
               <RadioGroup
                 fields={localFields}
@@ -183,6 +162,26 @@ export const Form: React.FC = () => {
                     { label: "NYCHA or PACT/RAD", value: "public" },
                     { label: "Subsidized housing", value: "subsidized" },
                     { label: "None of these", value: "none" },
+                    { label: "I'm not sure", value: "not-sure" },
+                  ],
+                }}
+                onChange={handleRadioChange}
+              />
+            </FormGroup>
+          </FormStep>
+
+          <FormStep step={6} total={6}>
+            <FormGroup
+              legendText="Does your landlord own more than 10 apartments across multiple buildings?"
+              helperText={getPortfolioSizeHelperText(bldgData)}
+            >
+              <RadioGroup
+                fields={localFields}
+                radioGroup={{
+                  name: "portfolioSize",
+                  options: [
+                    { label: "Yes", value: "yes" },
+                    { label: "No", value: "no" },
                     { label: "I'm not sure", value: "not-sure" },
                   ],
                 }}
@@ -209,4 +208,43 @@ export const Form: React.FC = () => {
       </div>
     </div>
   );
+};
+
+const getRsHelperText = (bldgData?: BuildingData): string | undefined => {
+  return !bldgData
+    ? undefined
+    : bldgData.unitsres > 0 && bldgData.post_hstpa_rs_units >= bldgData.unitsres
+    ? "Our data shows that all apartments in your building are registered as rent stabilized."
+    : new Date(bldgData.end_421a) > new Date()
+    ? "Your building appears to receive the 421a tax exemption. This means your apartment is rent stabilized."
+    : new Date(bldgData.end_j51) > new Date()
+    ? "Your building appears to receive the J51 tax exemption. This means your apartment is rent stabilized."
+    : bldgData.post_hstpa_rs_units > 0
+    ? "Our data shows that some apartments in your building are registered as rent stabilized."
+    : bldgData.yearbuilt < 1974 && bldgData.unitsres >= 6
+    ? "Based on the size and age of your building, your apartment might be rent stabilized."
+    : undefined;
+};
+
+const getSubsidyHelperText = (bldgData?: BuildingData): string | undefined => {
+  return !bldgData
+    ? undefined
+    : bldgData.is_nycha
+    ? "Based on our data, it looks like your building is part of NYCHA"
+    : bldgData.is_subsidized
+    ? `Based on our data, it looks like your building receives ${bldgData.subsidy_name} subsidy`
+    : "If your apartment is kept affordable for people based on their income level, then you live in what’s called “subsidized housing.”" +
+      " Your apartment is not considered subsidized if you receive a housing voucher that can be used anywhere.";
+};
+
+const getPortfolioSizeHelperText = (
+  bldgData?: BuildingData
+): string | undefined => {
+  return !bldgData
+    ? undefined
+    : bldgData.unitsres <= 10
+    ? `It looks like looks like there are ${bldgData.unitsres} apartments in your building. ` +
+      "Good Cause Eviction protections only apply to tenants whose landlords own more than 10 apartments, " +
+      "even if those apartments are spread across multiple buildings."
+    : undefined;
 };

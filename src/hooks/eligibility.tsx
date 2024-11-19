@@ -1,4 +1,5 @@
 import { FormFields } from "../App";
+import JFCLLinkInternal from "../Components/JFCLLinkInternal";
 import { BuildingData } from "../types/APIDataTypes";
 
 type Criteria =
@@ -7,7 +8,7 @@ type Criteria =
   | "rent"
   | "subsidy"
   | "rentRegulation"
-  | "yearBuilt";
+  | "certificateOfOccupancy";
 
 type CriteriaData = FormFields & BuildingData;
 
@@ -27,14 +28,19 @@ export type EligibilityResults = {
   portfolioSize?: CriteriaEligibility;
   buildingClass?: CriteriaEligibility;
   subsidy?: CriteriaEligibility;
-  yearBuilt?: CriteriaEligibility;
+  certificateOfOccupancy?: CriteriaEligibility;
 };
 
 function eligibilityPortfolioSize(
   criteriaData: CriteriaData
 ): CriteriaEligibility {
-  const { unitsres, wow_portfolio_units, wow_portfolio_bbls, landlord } =
-    criteriaData;
+  const {
+    unitsres,
+    wow_portfolio_units,
+    wow_portfolio_bbls,
+    landlord,
+    portfolioSize,
+  } = criteriaData;
 
   const criteria = "portfolioSize";
   const requirement = <>Landlord must own more than 10 apartments</>;
@@ -54,13 +60,33 @@ function eligibilityPortfolioSize(
     userValue = (
       <>Your building has 10 or fewer apartments and is owner-occupied</>
     );
+  } else if (portfolioSize === "yes") {
+    determination = "eligible";
+    userValue = (
+      <>
+        Your building has 10 or fewer apartments, and you reported that your
+        landlord more than 10 apartments across multiple buildings.
+      </>
+    );
+  } else if (portfolioSize === "no") {
+    determination = "ineligible";
+    userValue = (
+      <>
+        Your building has 10 or fewer apartments, and you reported that your
+        landlord does not own other buildings.
+      </>
+    );
   } else {
     determination = "unknown";
     if (wow_portfolio_units !== undefined && wow_portfolio_units > 10) {
       userValue = (
         <>
-          {`Your building has only ${unitsres} apartments, but your landlord may own
-          ${wow_portfolio_bbls! - 1} other buildings`}
+          <span>{`Your building has only ${unitsres} apartments, but your landlord may own
+          ${wow_portfolio_bbls! - 1} other buildings`}</span>
+          <br />
+          <JFCLLinkInternal to="/portfolio-size">
+            Research your landlords other buildings
+          </JFCLLinkInternal>
         </>
       );
     } else {
@@ -230,7 +256,9 @@ function eligibilityBuildingClass(
   };
 }
 
-function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
+function eligibilityCertificateOfOccupancy(
+  criteriaData: CriteriaData
+): CriteriaEligibility {
   const { co_issued } = criteriaData;
   const cutoffYear = 2009;
   const cutoffDate = new Date(cutoffYear, 1, 1);
@@ -240,7 +268,7 @@ function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
     day: "numeric",
     year: "numeric",
   });
-  const criteria = "yearBuilt";
+  const criteria = "certificateOfOccupancy";
   const requirement =
     "Your building must have received its certificate of occupancy before 2009.";
   let determination: Determination;
@@ -321,7 +349,7 @@ export function useEligibility(
     buildingClass: eligibilityBuildingClass(criteriaData),
     rent: eligibilityRent(criteriaData),
     rentRegulation: eligibilityRentRegulated(criteriaData),
-    yearBuilt: eligibilityYearBuilt(criteriaData),
+    certificateOfOccupancy: eligibilityCertificateOfOccupancy(criteriaData),
     subsidy: eligibilitySubsidy(criteriaData),
   };
 }

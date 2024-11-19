@@ -175,7 +175,7 @@ const CRITERIA_LABELS = {
   rent: "Rent",
   subsidy: "Subsidy",
   rentRegulation: "Rent stabilization",
-  yearBuilt: "Year built",
+  certificateOfOccupancy: "Certificate of Occupancy",
 };
 
 const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
@@ -250,8 +250,8 @@ const EligibilityCriteriaTable: React.FC<{
       {eligibilityResults?.buildingClass && (
         <CriteriaResult {...eligibilityResults.buildingClass} />
       )}
-      {eligibilityResults?.yearBuilt && (
-        <CriteriaResult {...eligibilityResults.yearBuilt} />
+      {eligibilityResults?.certificateOfOccupancy && (
+        <CriteriaResult {...eligibilityResults.certificateOfOccupancy} />
       )}
       {eligibilityResults?.subsidy && (
         <CriteriaResult {...eligibilityResults.subsidy} />
