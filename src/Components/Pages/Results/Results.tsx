@@ -481,7 +481,7 @@ const rentStabilizedProtections = (
           levels: for a one-year renewal there is a 2.75% increase, or for a
           two-year renewal there is a 5.25% increase.
         </p>
-        <JFCLLinkExternal href="" className="disabled">
+        <JFCLLinkExternal href="https://hcr.ny.gov/system/files/documents/2024/10/fact-sheet-26-10-2024.pdf">
           Learn about rent increase rights
         </JFCLLinkExternal>
       </div>
@@ -497,7 +497,7 @@ const rentStabilizedProtections = (
           don’t want you as a tenant anymore, they are limited to certain
           reasons for evicting you.
         </p>
-        <JFCLLinkExternal href="" className="disabled">
+        <JFCLLinkExternal href="https://rentguidelinesboard.cityofnewyork.us/resources/faqs/leases-renewal-vacancy/#landlord:~:text=If%20your%20apartment%20is%20rent,before%20the%20existing%20lease%20expires">
           Learn about lease renewal rights
         </JFCLLinkExternal>
       </div>
@@ -513,7 +513,7 @@ const rentStabilizedProtections = (
           have been living with them immediately prior to their moving or
           passing away, you might be entitled to take over the lease.
         </p>
-        <JFCLLinkExternal href="" className="disabled">
+        <JFCLLinkExternal href="https://www.metcouncilonhousing.org/help-answers/succession-rights-in-rent-stabilized-and-rent-controlled-apartments/">
           Learn about succession rights
         </JFCLLinkExternal>
       </div>
@@ -551,7 +551,7 @@ const universalProtections = (
         <p className="bold">See if you are eligible for a free attorney</p>
         <JFCLLinkExternal
           href="https://www.evictionfreenyc.org"
-          className="disabled has-label"
+          className="has-label"
         >
           Eviction Free NYC
         </JFCLLinkExternal>
