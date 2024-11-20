@@ -81,8 +81,7 @@ export const Form: React.FC = () => {
         <h2>Screener Survey</h2>
 
         <p className="form__subheader">
-          We'll use the information from this 5-question survey to run through
-          the laws and find out if you're covered.{" "}
+          We'll use your answers to help determine your coverage.
         </p>
         <form>
           <FormStep step={1} total={NUM_STEPS}>
@@ -142,7 +141,11 @@ export const Form: React.FC = () => {
           <FormStep step={4} total={NUM_STEPS}>
             <FormGroup
               legendText="Is your apartment rent-stabilized?"
-              helperElement={<InfoBox>{getRsHelperText(bldgData)}</InfoBox>}
+              helperElement={
+                getRsHelperText(bldgData) && (
+                  <InfoBox>{getRsHelperText(bldgData)}</InfoBox>
+                )
+              }
             >
               <RadioGroup
                 fields={localFields}
@@ -163,7 +166,9 @@ export const Form: React.FC = () => {
             <FormGroup
               legendText="Is your apartment associated with any of the following?"
               helperElement={
-                <InfoBox>{getSubsidyHelperText(bldgData)}</InfoBox>
+                getSubsidyHelperText(bldgData) && (
+                  <InfoBox>{getSubsidyHelperText(bldgData)}</InfoBox>
+                )
               }
             >
               <RadioGroup
