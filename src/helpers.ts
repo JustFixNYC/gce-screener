@@ -102,3 +102,6 @@ export const acrisDocTypeFull = (docType: string) => {
       return docType;
   }
 };
+
+export const formatNumber = (n: number) =>
+  new Intl.NumberFormat("en").format(n);

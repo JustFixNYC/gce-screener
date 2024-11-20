@@ -9,10 +9,7 @@ import { FormFields } from "../../../App";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { BackLink } from "../../JFCLLinkInternal";
 import { useGetBuildingData } from "../../../api/hooks";
-import {
-  AcrisDocument,
-  BuildingData,
-} from "../../../types/APIDataTypes";
+import { AcrisDocument, BuildingData } from "../../../types/APIDataTypes";
 import {
   acrisDocTypeFull,
   urlAcrisBbl,
@@ -44,11 +41,7 @@ export const PortfolioSize: React.FC = () => {
 
   const bbl = address.bbl;
 
-  const {
-    data: bldgData,
-    isLoading,
-    error,
-  } = useGetBuildingData(bbl);
+  const { data: bldgData, isLoading, error } = useGetBuildingData(bbl);
 
   return (
     <div className="portfolios-size__wrapper">

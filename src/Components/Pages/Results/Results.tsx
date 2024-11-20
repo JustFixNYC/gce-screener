@@ -20,7 +20,7 @@ import {
 import { Address } from "../Home/Home";
 import { getDetermination } from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
@@ -35,8 +35,6 @@ export const Results: React.FC = () => {
   const [, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const [showTable, setShowTable] = useState(false);
-
   useEffect(() => {
     // save session state in params
     if (address && fields) {
@@ -50,11 +48,7 @@ export const Results: React.FC = () => {
 
   const bbl = address.bbl;
 
-  const {
-    data: bldgData,
-    isLoading,
-    error,
-  } = useGetBuildingData(bbl);
+  const { data: bldgData, isLoading, error } = useGetBuildingData(bbl);
 
   const eligibilityResults = useEligibility(fields, bldgData);
 
@@ -62,6 +56,18 @@ export const Results: React.FC = () => {
 
   const isRentStabilized =
     eligibilityResults?.rentRegulation.determination === "ineligible";
+
+  const [showTable, setShowTable] = useState<boolean>();
+
+  // TODO: not sure this is right way to handle this. Should we get and store
+  // eligibility data on submission of the from on the previous page instead?
+  useLayoutEffect(() => {
+    if (determination && isRentStabilized !== undefined) {
+      setShowTable(
+        determination && determination === "ineligible" && !isRentStabilized
+      );
+    }
+  }, [determination, isRentStabilized]);
 
   return (
     <>
@@ -104,19 +110,24 @@ export const Results: React.FC = () => {
               </div>
             </>
           )}
-
-          <Button
-            labelText={showTable ? "Hide details" : "Expand criteria"}
-            labelIcon={showTable ? "eyeSlash" : "eye"}
-            onClick={() => setShowTable((prev) => !prev)}
-            size="small"
-            className={classNames(
-              "eligibility__toggle",
-              showTable ? "open" : "closed"
-            )}
-          />
-          {showTable && bldgData && (
-            <EligibilityCriteriaTable eligibilityResults={eligibilityResults} />
+          {showTable !== undefined && (
+            <>
+              <Button
+                labelText={showTable ? "Hide details" : "Expand criteria"}
+                labelIcon={showTable ? "eyeSlash" : "eye"}
+                onClick={() => setShowTable((prev) => !prev)}
+                size="small"
+                className={classNames(
+                  "eligibility__toggle",
+                  showTable ? "open" : "closed"
+                )}
+              />
+              {showTable && bldgData && (
+                <EligibilityCriteriaTable
+                  eligibilityResults={eligibilityResults}
+                />
+              )}
+            </>
           )}
         </div>
       </div>
@@ -136,6 +147,10 @@ export const Results: React.FC = () => {
           {determination === "unknown" && potentialGoodCauseProtections}
 
           {determination === "eligible" && coveredGoodCauseProtections}
+
+          {determination === "ineligible" &&
+            !isRentStabilized &&
+            universalProtections}
 
           <div className="eligibility__footer">
             <h3 className="eligibility__footer__header">
@@ -160,7 +175,7 @@ const CRITERIA_LABELS = {
   rent: "Rent",
   subsidy: "Subsidy",
   rentRegulation: "Rent stabilization",
-  yearBuilt: "Year built",
+  certificateOfOccupancy: "Certificate of Occupancy",
 };
 
 const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
@@ -169,8 +184,6 @@ const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
   switch (determination) {
     case "eligible":
       return <Icon icon="check" className={determination} title="Pass" />;
-    case "ineligible":
-      return <Icon icon="ban" className={determination} title="Fail" />;
     default:
       return (
         <Icon
@@ -203,10 +216,11 @@ const CriteriaResult: React.FC<CriteriaEligibility> = (props) => {
           {props?.requirement}
         </span>
       </div>
-      <span className="eligibility__row__userValue">{props?.userValue}</span>
+      <div className="eligibility__row__userValue">{props?.userValue}</div>
     </li>
   );
 };
+
 const CoveredPill: React.FC<{ determination: Determination }> = ({
   determination,
 }) => {
@@ -235,8 +249,8 @@ const EligibilityCriteriaTable: React.FC<{
       {eligibilityResults?.buildingClass && (
         <CriteriaResult {...eligibilityResults.buildingClass} />
       )}
-      {eligibilityResults?.yearBuilt && (
-        <CriteriaResult {...eligibilityResults.yearBuilt} />
+      {eligibilityResults?.certificateOfOccupancy && (
+        <CriteriaResult {...eligibilityResults.certificateOfOccupancy} />
       )}
       {eligibilityResults?.subsidy && (
         <CriteriaResult {...eligibilityResults.subsidy} />
@@ -358,7 +372,7 @@ const EligibilityNextSteps: React.FC<{
 const potentialGoodCauseProtections = (
   <ContentBox
     headerTitle="WHY GOOD CAUSE MATTERS"
-    headerSubtitle="Protections you might have"
+    headerSubtitle="Protections you might have under Good Cause Eviction law"
   >
     <div className="content-box__section">
       <div className="content-box__section__content">
@@ -455,9 +469,9 @@ const coveredGoodCauseProtections = (
       <div className="content-box__section">
         <div className="content-box__section__content">
           <p>
-            You can print your coverage results and show to your landlord Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
+            Assert your rights by printing your coverage results and sharing
+            with your landlord. You can use these results as an indicator that
+            your apartment is covered by Good Cause Eviction Law.
           </p>
         </div>
       </div>
@@ -526,6 +540,91 @@ const rentStabilizedProtections = (
         </p>
         <JFCLLinkExternal href="" className="disabled">
           Learn about succession rights
+        </JFCLLinkExternal>
+      </div>
+    </div>
+  </ContentBox>
+);
+
+const universalProtections = (
+  <ContentBox
+    headerTitle="KNOW YOUR RIGHTS"
+    headerSubtitle="Protections you still have as a tenant in NYC"
+  >
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <div className="content-box__section__header">
+          Your eviction protections
+        </div>
+        <p>
+          The only way your landlord can evict you is through housing court.
+          Lockouts (also known as unlawful evictions or self-help evictions) are
+          illegal. All tenants, including those in private residential programs,
+          have the right to stay in their home unless they choose to leave or
+          are evicted through a court process.
+        </p>
+        <br />
+        <p className="bold">Learn more about the eviction process</p>
+        <JFCLLinkExternal href="" className="disabled has-label">
+          Link
+        </JFCLLinkExternal>
+        <br />
+        <br />
+        <p className="bold">See if you are eligible for a free attorney</p>
+        <JFCLLinkExternal href="" className="disabled has-label">
+          Link
+        </JFCLLinkExternal>
+      </div>
+    </div>
+
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <div className="content-box__section__header">
+          Your right to a liveable home
+        </div>
+        <p>
+          Tenants have the right to live in a safe, sanitary, and
+          well-maintained apartment, including public areas of the building.
+          This right is implied in every residential lease, and any lease
+          provision that waives it is void. If your landlord is not providing
+          these conditions in your apartment or building, there are actions you
+          can take to exercise your rights.
+        </p>
+        <br />
+        <p className="bold">Learn about warranty of habitability</p>
+        <JFCLLinkExternal href="" className="disabled has-label">
+          Link
+        </JFCLLinkExternal>
+        <br />
+        <br />
+        <p className="bold">Learn how tenant associations can help</p>
+        <JFCLLinkExternal href="" className="disabled has-label">
+          Link
+        </JFCLLinkExternal>
+      </div>
+    </div>
+
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <div className="content-box__section__header">
+          Your rights if you’re being discriminated against
+        </div>
+        <p>
+          Your landlord can’t evict you based on your race, religion, gender,
+          national origin, familial status, or disability. New York State law
+          promises protection from discrimination, banning bias based on age,
+          sexual orientation, and military status.
+        </p>
+        <br />
+        <p className="bold">Learn how tenant associations can help</p>
+        <JFCLLinkExternal href="" className="disabled has-label">
+          Link
+        </JFCLLinkExternal>
+        <br />
+        <br />
+        <p className="bold">Learn how tenant associations can help</p>
+        <JFCLLinkExternal href="" className="disabled has-label">
+          Link
         </JFCLLinkExternal>
       </div>
     </div>

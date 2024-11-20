@@ -1,4 +1,5 @@
 import { FormFields } from "../App";
+import JFCLLinkInternal from "../Components/JFCLLinkInternal";
 import { BuildingData } from "../types/APIDataTypes";
 
 type Criteria =
@@ -7,7 +8,7 @@ type Criteria =
   | "rent"
   | "subsidy"
   | "rentRegulation"
-  | "yearBuilt";
+  | "certificateOfOccupancy";
 
 type CriteriaData = FormFields & BuildingData;
 
@@ -27,14 +28,35 @@ export type EligibilityResults = {
   portfolioSize?: CriteriaEligibility;
   buildingClass?: CriteriaEligibility;
   subsidy?: CriteriaEligibility;
-  yearBuilt?: CriteriaEligibility;
+  certificateOfOccupancy?: CriteriaEligibility;
 };
+
+export function useEligibility(
+  formFields: FormFields,
+  bldgData?: BuildingData
+): EligibilityResults | undefined {
+  if (!bldgData) return undefined;
+  const criteriaData: CriteriaData = { ...formFields, ...bldgData };
+  return {
+    portfolioSize: eligibilityPortfolioSize(criteriaData),
+    buildingClass: eligibilityBuildingClass(criteriaData),
+    rent: eligibilityRent(criteriaData),
+    rentRegulation: eligibilityRentRegulated(criteriaData),
+    certificateOfOccupancy: eligibilityCertificateOfOccupancy(criteriaData),
+    subsidy: eligibilitySubsidy(criteriaData),
+  };
+}
 
 function eligibilityPortfolioSize(
   criteriaData: CriteriaData
 ): CriteriaEligibility {
-  const { unitsres, wow_portfolio_units, wow_portfolio_bbls, landlord } =
-    criteriaData;
+  const {
+    unitsres,
+    wow_portfolio_units,
+    wow_portfolio_bbls,
+    landlord,
+    portfolioSize,
+  } = criteriaData;
 
   const criteria = "portfolioSize";
   const requirement = <>Landlord must own more than 10 apartments</>;
@@ -54,13 +76,32 @@ function eligibilityPortfolioSize(
     userValue = (
       <>Your building has 10 or fewer apartments and is owner-occupied</>
     );
+  } else if (portfolioSize === "yes") {
+    determination = "eligible";
+    userValue = (
+      <>
+        Your building has 10 or fewer apartments, and you reported that your
+        landlord more than 10 apartments across multiple buildings.
+      </>
+    );
+  } else if (portfolioSize === "no") {
+    determination = "ineligible";
+    userValue = (
+      <>
+        Your building has 10 or fewer apartments, and you reported that your
+        landlord does not own other buildings.
+      </>
+    );
   } else {
     determination = "unknown";
     if (wow_portfolio_units !== undefined && wow_portfolio_units > 10) {
       userValue = (
         <>
-          {`Your building has only ${unitsres} apartments, but your landlord may own
-          ${wow_portfolio_bbls! - 1} other buildings`}
+          <p>{`Your building has only ${unitsres} apartments, but your landlord may own
+          ${wow_portfolio_bbls! - 1} other buildings`}</p>
+          <JFCLLinkInternal to="/portfolio_size">
+            How to find out
+          </JFCLLinkInternal>
         </>
       );
     } else {
@@ -99,13 +140,9 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
   // should remove null from type for all form fields, since required
   if (rent === null || bedrooms === null) return { criteria };
 
-  const requirement = (
-    <>
-      {`For a ${bedrooms}
-      ${bedrooms !== "studio" && " bedroom"}, rent must be less than
-      ${rentCutoffs[bedrooms]}`}
-    </>
-  );
+  const requirement = `For a ${
+    bedrooms === "studio" ? "studio" : `${bedrooms} bedroom`
+  }, rent must be less than ${rentCutoffs[bedrooms]}`;
   if (bedrooms === "studio") {
     determination = rent < 5846 ? "eligible" : "ineligible";
   } else if (bedrooms === "1") {
@@ -138,28 +175,27 @@ function eligibilityRentRegulated(
 ): CriteriaEligibility {
   const { rentStabilized } = criteriaData;
   const criteria = "rentRegulation";
-  const requirement = <>Your apartment must not be rent regulated.</>;
+  const requirement = "Your apartment must not be rent stabilized.";
   let determination: Determination;
   let userValue: React.ReactNode;
-  let moreInfo: React.ReactNode;
 
   // should remove null from type for all form fields, since required
   if (rentStabilized === null) return { criteria, requirement };
 
   if (rentStabilized === "yes") {
     determination = "ineligible";
-    userValue = <>Your apartment is rent regulated.</>;
-    moreInfo = <>Rent stabilization provides you even strong protections.</>;
+    userValue = "Your apartment is rent regulated.";
   } else if (rentStabilized === "no") {
     determination = "eligible";
-    userValue = <>Your apartment is not rent regulated.</>;
+    userValue = "Your apartment is not rent regulated.";
   } else {
     determination = "unknown";
-    userValue = <>You don't know if your apartment is rent regulated.</>;
-    moreInfo = (
+    userValue = (
       <>
-        You can find out if you are rent regulated by requesting your rent
-        history.
+        <p>You don't know if your apartment is rent regulated.</p>
+        <JFCLLinkInternal to="/rent_stabilization">
+          How to find out
+        </JFCLLinkInternal>
       </>
     );
   }
@@ -169,7 +205,6 @@ function eligibilityRentRegulated(
     determination,
     requirement,
     userValue,
-    moreInfo,
   };
 }
 
@@ -230,7 +265,9 @@ function eligibilityBuildingClass(
   };
 }
 
-function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
+function eligibilityCertificateOfOccupancy(
+  criteriaData: CriteriaData
+): CriteriaEligibility {
   const { co_issued } = criteriaData;
   const cutoffYear = 2009;
   const cutoffDate = new Date(cutoffYear, 1, 1);
@@ -240,7 +277,7 @@ function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
     day: "numeric",
     year: "numeric",
   });
-  const criteria = "yearBuilt";
+  const criteria = "certificateOfOccupancy";
   const requirement =
     "Your building must have received its certificate of occupancy before 2009.";
   let determination: Determination;
@@ -249,10 +286,9 @@ function eligibilityYearBuilt(criteriaData: CriteriaData): CriteriaEligibility {
   if (co_issued === null || latestCoDate < cutoffDate) {
     determination = "eligible";
     userValue =
-      "Your building has not received a certificate of occupancy since 2009";
+      "There is no recorded certificate of occupancy for your building since 2009.";
   } else {
     determination = "ineligible";
-
     userValue = `Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`;
   }
 
@@ -297,7 +333,7 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
   } else {
     determination = "eligible";
     userValue = (
-      <>You reported that you do not live in public of subsidized housing.</>
+      <>You reported that you do not live in public or subsidized housing.</>
     );
   }
 
@@ -307,21 +343,5 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
     requirement,
     userValue,
     moreInfo,
-  };
-}
-
-export function useEligibility(
-  formFields: FormFields,
-  bldgData?: BuildingData
-): EligibilityResults | undefined {
-  if (!bldgData) return undefined;
-  const criteriaData: CriteriaData = { ...formFields, ...bldgData };
-  return {
-    portfolioSize: eligibilityPortfolioSize(criteriaData),
-    buildingClass: eligibilityBuildingClass(criteriaData),
-    rent: eligibilityRent(criteriaData),
-    rentRegulation: eligibilityRentRegulated(criteriaData),
-    yearBuilt: eligibilityYearBuilt(criteriaData),
-    subsidy: eligibilitySubsidy(criteriaData),
   };
 }
