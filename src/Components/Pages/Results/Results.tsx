@@ -565,14 +565,20 @@ const universalProtections = (
         </p>
         <br />
         <p className="bold">Learn more about the eviction process</p>
-        <JFCLLinkExternal href="" className="disabled has-label">
-          Link
+        <JFCLLinkExternal
+          href="https://hcr.ny.gov/eviction"
+          className="has-label"
+        >
+          NY Homes and Community Renewal
         </JFCLLinkExternal>
         <br />
         <br />
         <p className="bold">See if you are eligible for a free attorney</p>
-        <JFCLLinkExternal href="" className="disabled has-label">
-          Link
+        <JFCLLinkExternal
+          href="https://www.evictionfreenyc.org"
+          className="disabled has-label"
+        >
+          Eviction Free NYC
         </JFCLLinkExternal>
       </div>
     </div>
@@ -592,14 +598,29 @@ const universalProtections = (
         </p>
         <br />
         <p className="bold">Learn about warranty of habitability</p>
-        <JFCLLinkExternal href="" className="disabled has-label">
-          Link
+        <JFCLLinkExternal
+          href="https://nycourts.gov/courts/nyc/housing/pdfs/warrantyofhabitability.pdf"
+          className="has-label"
+        >
+          NY Courts
         </JFCLLinkExternal>
         <br />
         <br />
         <p className="bold">Learn how tenant associations can help</p>
-        <JFCLLinkExternal href="" className="disabled has-label">
-          Link
+        <JFCLLinkExternal
+          href="https://www.metcouncilonhousing.org/help-answers/forming-a-tenants-association"
+          className="has-label"
+        >
+          Met Council on Housing
+        </JFCLLinkExternal>
+        <br />
+        <br />
+        <p className="bold">Notify your landlord of repair issues</p>
+        <JFCLLinkExternal
+          href="https://app.justfix.org/loc/splash"
+          className="has-label"
+        >
+          JustFix’s Letter of Complaint
         </JFCLLinkExternal>
       </div>
     </div>
@@ -615,16 +636,36 @@ const universalProtections = (
           promises protection from discrimination, banning bias based on age,
           sexual orientation, and military status.
         </p>
+        <p>
+          Source of income discrimination the illegal practice by landlords,
+          owners, and real estate brokers of refusing to rent to current or
+          prospective tenants seeking to pay for housing with housing assistance
+          vouchers, subsidies, or other forms of public assistance.
+        </p>
         <br />
-        <p className="bold">Learn how tenant associations can help</p>
-        <JFCLLinkExternal href="" className="disabled has-label">
-          Link
+        <p className="bold">Learn more about fair housing</p>
+        <JFCLLinkExternal
+          href="https://www.nyc.gov/site/fairhousing/about/what-is-fair-housing.page"
+          className="has-label"
+        >
+          Fair Housing NYC
         </JFCLLinkExternal>
         <br />
         <br />
-        <p className="bold">Learn how tenant associations can help</p>
-        <JFCLLinkExternal href="" className="disabled has-label">
-          Link
+        <p className="bold">
+          Learn more about lawful source of income discrimination
+        </p>
+        <JFCLLinkExternal
+          href="https://www.nyc.gov/site/fairhousing/renters/lawful-source-of-income.page"
+          className="has-label"
+        >
+          Lawful source of income
+        </JFCLLinkExternal>
+        <br />
+        <br />
+        <p className="bold">Report source of income discrimination</p>
+        <JFCLLinkExternal href="https://weunlock.nyc" className="has-label">
+          Unlock NYC
         </JFCLLinkExternal>
       </div>
     </div>
