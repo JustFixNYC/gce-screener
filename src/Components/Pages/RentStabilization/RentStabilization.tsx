@@ -88,7 +88,6 @@ export const RentStabilization: React.FC = () => {
               </p>
               <JFCLLinkExternal
                 href="https://portal.hcr.ny.gov/app/ask"
-                className="disabled"
               >
                 Fill out the form
               </JFCLLinkExternal>
