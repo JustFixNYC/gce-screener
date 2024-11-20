@@ -124,13 +124,9 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
   // should remove null from type for all form fields, since required
   if (rent === null || bedrooms === null) return { criteria };
 
-  const requirement = (
-    <>
-      {`For a ${bedrooms}
-      ${bedrooms !== "studio" && " bedroom"}, rent must be less than
-      ${rentCutoffs[bedrooms]}`}
-    </>
-  );
+  const requirement = `For a ${
+    bedrooms === "studio" ? "studio" : `${bedrooms} bedroom`
+  }, rent must be less than ${rentCutoffs[bedrooms]}`;
   if (bedrooms === "studio") {
     determination = rent < 5846 ? "eligible" : "ineligible";
   } else if (bedrooms === "1") {
