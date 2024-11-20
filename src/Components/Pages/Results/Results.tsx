@@ -372,7 +372,7 @@ const EligibilityNextSteps: React.FC<{
 const potentialGoodCauseProtections = (
   <ContentBox
     headerTitle="WHY GOOD CAUSE MATTERS"
-    headerSubtitle="Protections you might have"
+    headerSubtitle="Protections you might have under Good Cause Eviction law"
   >
     <div className="content-box__section">
       <div className="content-box__section__content">
@@ -469,9 +469,9 @@ const coveredGoodCauseProtections = (
       <div className="content-box__section">
         <div className="content-box__section__content">
           <p>
-            You can print your coverage results and show to your landlord Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
+            Assert your rights by printing your coverage results and sharing
+            with your landlord. You can use these results as an indicator that
+            your apartment is covered by Good Cause Eviction Law.
           </p>
         </div>
       </div>

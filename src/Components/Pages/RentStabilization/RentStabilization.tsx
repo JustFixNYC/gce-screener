@@ -66,40 +66,31 @@ export const RentStabilization: React.FC = () => {
           <div className="content-box__section">
             <div className="content-box__section__content">
               <div className="content-box__section__header">
-                Inquire through Homes and Community Renewal
+                Request your rent history
               </div>
               <p>
-                After submitting your request, if you get an email the next day
-                saying your apt doesn't have a registration on file, that means
-                you're apartment has never been rent stabilized, and therefore
-                you meet the rent regulation criteria for Good Cause Eviction.
+                Request your rent history to help find out if your apartment is
+                rent stabilized and if you're being overcharged.
+              </p>
+              <br />
+              <p>
+                If your apartment has ever been rent stabilized, you’ll receive
+                a document showing the rents that your landlord has registered
+                since 1984.
+              </p>
+              <br />
+              <p>
+                If your apartment is not rent stabilized, you will get an email
+                the day after you submit your request, saying your apartment
+                doesn't have a registration on file. This means you're apartment
+                has never been rent stabilized, and therefore you meet the rent
+                regulation criteria for Good Cause Eviction.
               </p>
               <JFCLLinkExternal
                 href="https://portal.hcr.ny.gov/app/ask"
                 className="disabled"
               >
                 Fill out the form
-              </JFCLLinkExternal>
-            </div>
-          </div>
-
-          <div className="content-box__section">
-            <div className="content-box__section__content">
-              <div className="content-box__section__header">
-                Request your apartment’s rent history
-              </div>
-              <p>
-                Use JustFix’s rent history request tool to help find out if your
-                apartment is rent stabilized and if you're being overcharged. If
-                your apartment has ever been rent stabilized, you’ll receive a
-                document showing the rents that your landlord has registered
-                since 1984.
-              </p>
-              <JFCLLinkExternal
-                href="https://app.justfix.org/rh"
-                className="disabled"
-              >
-                Start my request
               </JFCLLinkExternal>
             </div>
           </div>

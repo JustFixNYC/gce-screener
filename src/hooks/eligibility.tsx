@@ -31,6 +31,22 @@ export type EligibilityResults = {
   certificateOfOccupancy?: CriteriaEligibility;
 };
 
+export function useEligibility(
+  formFields: FormFields,
+  bldgData?: BuildingData
+): EligibilityResults | undefined {
+  if (!bldgData) return undefined;
+  const criteriaData: CriteriaData = { ...formFields, ...bldgData };
+  return {
+    portfolioSize: eligibilityPortfolioSize(criteriaData),
+    buildingClass: eligibilityBuildingClass(criteriaData),
+    rent: eligibilityRent(criteriaData),
+    rentRegulation: eligibilityRentRegulated(criteriaData),
+    certificateOfOccupancy: eligibilityCertificateOfOccupancy(criteriaData),
+    subsidy: eligibilitySubsidy(criteriaData),
+  };
+}
+
 function eligibilityPortfolioSize(
   criteriaData: CriteriaData
 ): CriteriaEligibility {
@@ -159,7 +175,7 @@ function eligibilityRentRegulated(
 ): CriteriaEligibility {
   const { rentStabilized } = criteriaData;
   const criteria = "rentRegulation";
-  const requirement = <>Your apartment must not be rent regulated.</>;
+  const requirement = "Your apartment must not be rent stabilized.";
   let determination: Determination;
   let userValue: React.ReactNode;
 
@@ -168,10 +184,10 @@ function eligibilityRentRegulated(
 
   if (rentStabilized === "yes") {
     determination = "ineligible";
-    userValue = <>Your apartment is rent regulated.</>;
+    userValue = "Your apartment is rent regulated.";
   } else if (rentStabilized === "no") {
     determination = "eligible";
-    userValue = <>Your apartment is not rent regulated.</>;
+    userValue = "Your apartment is not rent regulated.";
   } else {
     determination = "unknown";
     userValue = (
@@ -270,10 +286,9 @@ function eligibilityCertificateOfOccupancy(
   if (co_issued === null || latestCoDate < cutoffDate) {
     determination = "eligible";
     userValue =
-      "Your building has not received a certificate of occupancy since 2009";
+      "There is no recorded certificate of occupancy for your building since 2009.";
   } else {
     determination = "ineligible";
-
     userValue = `Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`;
   }
 
@@ -318,7 +333,7 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
   } else {
     determination = "eligible";
     userValue = (
-      <>You reported that you do not live in public of subsidized housing.</>
+      <>You reported that you do not live in public or subsidized housing.</>
     );
   }
 
@@ -328,21 +343,5 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
     requirement,
     userValue,
     moreInfo,
-  };
-}
-
-export function useEligibility(
-  formFields: FormFields,
-  bldgData?: BuildingData
-): EligibilityResults | undefined {
-  if (!bldgData) return undefined;
-  const criteriaData: CriteriaData = { ...formFields, ...bldgData };
-  return {
-    portfolioSize: eligibilityPortfolioSize(criteriaData),
-    buildingClass: eligibilityBuildingClass(criteriaData),
-    rent: eligibilityRent(criteriaData),
-    rentRegulation: eligibilityRentRegulated(criteriaData),
-    certificateOfOccupancy: eligibilityCertificateOfOccupancy(criteriaData),
-    subsidy: eligibilitySubsidy(criteriaData),
   };
 }
