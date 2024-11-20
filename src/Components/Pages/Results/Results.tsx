@@ -21,7 +21,7 @@ import { Address } from "../Home/Home";
 import { getDetermination } from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { useEffect, useLayoutEffect, useState } from "react";
-import { ContentBox } from "../../ContentBox/ContentBox";
+import { ContentBox, ContentBoxProps } from "../../ContentBox/ContentBox";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import JFCLLinkInternal from "../../JFCLLinkInternal";
@@ -144,9 +144,22 @@ export const Results: React.FC = () => {
 
           {isRentStabilized && rentStabilizedProtections}
 
-          {determination === "unknown" && potentialGoodCauseProtections}
+          {determination === "unknown" && (
+            <GoodCauseProtections
+              headerTitle="KNOW YOUR RIGHTS"
+              headerSubtitle="Protections you might have under Good Cause Eviction law"
+            />
+          )}
 
-          {determination === "eligible" && coveredGoodCauseProtections}
+          {determination === "eligible" && (
+            <>
+              <GoodCauseProtections
+                headerTitle="KNOW YOUR RIGHTS"
+                headerSubtitle="Protections you have under Good Cause Eviction law"
+              />
+              {goodCauseExercisingRights}
+            </>
+          )}
 
           {determination === "ineligible" &&
             !isRentStabilized &&
@@ -369,11 +382,8 @@ const EligibilityNextSteps: React.FC<{
   );
 };
 
-const potentialGoodCauseProtections = (
-  <ContentBox
-    headerTitle="WHY GOOD CAUSE MATTERS"
-    headerSubtitle="Protections you might have under Good Cause Eviction law"
-  >
+const GoodCauseProtections = (props: Omit<ContentBoxProps, "children">) => (
+  <ContentBox {...props}>
     <div className="content-box__section">
       <div className="content-box__section__content">
         <div className="content-box__section__header">
@@ -385,11 +395,9 @@ const potentialGoodCauseProtections = (
           the tenant does not have a lease, giving notice that the tenancy will
           end.
         </p>
-        <JFCLLinkExternal href="" className="disabled">
-          Learn about lease renewal rights
-        </JFCLLinkExternal>
       </div>
     </div>
+
     <div className="content-box__section">
       <div className="content-box__section__content">
         <div className="content-box__section__header">
@@ -407,87 +415,54 @@ const potentialGoodCauseProtections = (
           increase of more than 8.82% could be found unreasonable by the court
           if the rent was increased after April 20, 2024.
         </p>
-        <JFCLLinkExternal href="" className="disabled">
-          Learn about rent increase rights
+      </div>
+    </div>
+
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <p className="bold">
+          Learn more about Good Cause Eviction Law protections
+        </p>
+        <JFCLLinkExternal href="https://housingjusticeforall.org/kyr-good-cause">
+          Housing Justice for All Good Cause Eviction fact sheet
+        </JFCLLinkExternal>
+        <JFCLLinkExternal
+          href="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction"
+          className="has-label"
+        >
+          Met Council on Housing Good Cause Eviction fact sheet
         </JFCLLinkExternal>
       </div>
     </div>
   </ContentBox>
 );
 
-const coveredGoodCauseProtections = (
-  <>
-    <ContentBox
-      headerTitle="KNOW YOUR RIGHTS"
-      headerSubtitle="Protections you have"
-    >
-      <div className="content-box__section">
-        <div className="content-box__section__content">
-          <div className="content-box__section__header">
-            Your right to a lease renewal
-          </div>
-          <p>
-            Your landlord will need to provide a good cause reason for ending a
-            tenancy. This includes evicting tenants, not renewing a lease, or,
-            if the tenant does not have a lease, giving notice that the tenancy
-            will end.
-          </p>
-          <JFCLLinkExternal href="" className="disabled">
-            Learn about lease renewal rights
-          </JFCLLinkExternal>
-        </div>
+const goodCauseExercisingRights = (
+  <ContentBox
+    headerTitle="EXERCISING YOUR RIGHTS"
+    headerSubtitle="Share your coverage with your landlord"
+  >
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <p>
+          Assert your rights by printing your coverage results and sharing with
+          your landlord. You can use these results as an indicator that your
+          apartment is covered by Good Cause Eviction Law.
+        </p>
       </div>
+    </div>
 
-      <div className="content-box__section">
-        <div className="content-box__section__content">
-          <div className="content-box__section__header">
-            Your right to limited rent increases
-          </div>
-          <p>
-            Your landlord is not allowed to increase your rent at a rate higher
-            than the local standard. The local rent standard is set every year
-            at the rate of inflation plus 5%, with a maximum of 10% total.
-          </p>
-          <br />
-          <p>
-            As of May 1, 2024, the rate of inflation for the New York City area
-            is 3.82%, meaning that the current local rent standard is 8.82%. A
-            rent increase of more than 8.82% could be found unreasonable by the
-            court if the rent was increased after April 20, 2024.
-          </p>
-          <JFCLLinkExternal href="" className="disabled">
-            Learn about rent increase rights
-          </JFCLLinkExternal>
-        </div>
+    <div className="content-box__footer">
+      <div className="content-box__section__content">
+        <Button
+          labelText="Print my coverage results"
+          labelIcon="print"
+          variant="secondary"
+          className="disabled"
+        />
       </div>
-    </ContentBox>
-
-    <ContentBox
-      headerTitle="EXERCISING YOUR RIGHTS"
-      headerSubtitle="Share your coverage with your landlord"
-    >
-      <div className="content-box__section">
-        <div className="content-box__section__content">
-          <p>
-            Assert your rights by printing your coverage results and sharing
-            with your landlord. You can use these results as an indicator that
-            your apartment is covered by Good Cause Eviction Law.
-          </p>
-        </div>
-      </div>
-
-      <div className="content-box__footer">
-        <div className="content-box__section__content">
-          <Button
-            labelText="Print my coverage results"
-            labelIcon="print"
-            variant="secondary"
-            className="disabled"
-          />
-        </div>
-      </div>
-    </ContentBox>
-  </>
+    </div>
+  </ContentBox>
 );
 
 const rentStabilizedProtections = (
