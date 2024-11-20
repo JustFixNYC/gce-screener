@@ -184,8 +184,6 @@ const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
   switch (determination) {
     case "eligible":
       return <Icon icon="check" className={determination} title="Pass" />;
-    case "ineligible":
-      return <Icon icon="ban" className={determination} title="Fail" />;
     default:
       return (
         <Icon
@@ -218,10 +216,11 @@ const CriteriaResult: React.FC<CriteriaEligibility> = (props) => {
           {props?.requirement}
         </span>
       </div>
-      <span className="eligibility__row__userValue">{props?.userValue}</span>
+      <div className="eligibility__row__userValue">{props?.userValue}</div>
     </li>
   );
 };
+
 const CoveredPill: React.FC<{ determination: Determination }> = ({
   determination,
 }) => {

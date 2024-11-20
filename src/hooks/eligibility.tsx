@@ -81,11 +81,10 @@ function eligibilityPortfolioSize(
     if (wow_portfolio_units !== undefined && wow_portfolio_units > 10) {
       userValue = (
         <>
-          <span>{`Your building has only ${unitsres} apartments, but your landlord may own
-          ${wow_portfolio_bbls! - 1} other buildings`}</span>
-          <br />
-          <JFCLLinkInternal to="/portfolio-size">
-            Research your landlords other buildings
+          <p>{`Your building has only ${unitsres} apartments, but your landlord may own
+          ${wow_portfolio_bbls! - 1} other buildings`}</p>
+          <JFCLLinkInternal to="/portfolio_size">
+            How to find out
           </JFCLLinkInternal>
         </>
       );
@@ -167,7 +166,6 @@ function eligibilityRentRegulated(
   const requirement = <>Your apartment must not be rent regulated.</>;
   let determination: Determination;
   let userValue: React.ReactNode;
-  let moreInfo: React.ReactNode;
 
   // should remove null from type for all form fields, since required
   if (rentStabilized === null) return { criteria, requirement };
@@ -175,17 +173,17 @@ function eligibilityRentRegulated(
   if (rentStabilized === "yes") {
     determination = "ineligible";
     userValue = <>Your apartment is rent regulated.</>;
-    moreInfo = <>Rent stabilization provides you even strong protections.</>;
   } else if (rentStabilized === "no") {
     determination = "eligible";
     userValue = <>Your apartment is not rent regulated.</>;
   } else {
     determination = "unknown";
-    userValue = <>You don't know if your apartment is rent regulated.</>;
-    moreInfo = (
+    userValue = (
       <>
-        You can find out if you are rent regulated by requesting your rent
-        history.
+        <p>You don't know if your apartment is rent regulated.</p>
+        <JFCLLinkInternal to="/rent_stabilization">
+          How to find out
+        </JFCLLinkInternal>
       </>
     );
   }
@@ -195,7 +193,6 @@ function eligibilityRentRegulated(
     determination,
     requirement,
     userValue,
-    moreInfo,
   };
 }
 
