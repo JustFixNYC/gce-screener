@@ -27,7 +27,6 @@ export function useGetBuildingData(bbl: string): BuildingDataSWRResponse {
   };
 }
 
-
 type Tenants2SWRResponse = {
   data: GCEUser | undefined;
   error: Error | undefined;

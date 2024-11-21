@@ -47,7 +47,7 @@ export type GCEUser = {
 };
 
 export type GCEPostData = {
-  id?: number
+  id?: number;
   bbl?: string;
   house_number?: string;
   street_name?: string;

@@ -76,7 +76,11 @@ export const ConfirmAddress: React.FC = () => {
               className="confirmation__button"
               labelText="Next"
               onClick={async () => {
-                trigger({id: user.id, address_confirmed: true, nycdb_results: bldgData});
+                trigger({
+                  id: user.id,
+                  address_confirmed: true,
+                  nycdb_results: bldgData,
+                });
                 navigate("/form");
               }}
             />

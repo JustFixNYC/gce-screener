@@ -98,7 +98,11 @@ const router = createBrowserRouter(
         element={<ConfirmAddress />}
         loader={LoadAddressAndUserSession}
       />
-      <Route path="form" element={<Form />} loader={LoadAddressAndUserSession} />
+      <Route
+        path="form"
+        element={<Form />}
+        loader={LoadAddressAndUserSession}
+      />
       <Route path="results" element={<Results />} loader={LoadURLSession} />
       <Route
         path="rent_stabilization"

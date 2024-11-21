@@ -52,7 +52,7 @@ export const Results: React.FC = () => {
     // TODO: still need to check this
     if (user && determination) {
       trigger({ id: user.id, result_coverage_initial: determination });
-    }    
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -42,7 +42,7 @@ export const Home: React.FC = () => {
     }
     removeFormFields();
     navigate("confirm_address");
-  }
+  };
 
   return (
     <div className="wrapper">
