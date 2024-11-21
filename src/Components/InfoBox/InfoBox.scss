@@ -1,0 +1,32 @@
+@import "../../colors.scss";
+@import "../../mixins.scss";
+
+.info-box {
+  display: flex;
+  padding: 0.75rem; // 12px
+  gap: 0.5rem; // 8px
+
+  margin-top: 1.125rem; // 18px;
+  max-width: 666px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  &.white {
+    background-color: $WHITE;
+    border-color: $GREY_NEW;
+  }
+  &.blue {
+    background-color: $BLUE_50;
+    border-color: $BLUE_150;
+  }
+
+  .info-box__icon-container svg {
+    margin: 0.25rem 0; // 4px
+  }
+  .info-box__content-container {
+    @include body_standard_desktop;
+    .bold {
+      font-weight: 600;
+    }
+  }
+}

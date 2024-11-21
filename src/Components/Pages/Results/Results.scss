@@ -23,7 +23,8 @@ $eligibilityTablePaddingH: 36px;
   height: calc(1em + 4px);
 
   &.covered-pill--ineligible {
-    background-color: $RED;
+    background-color: $ORANGE;
+    color: $OFF_BLACK;
   }
 
   &.covered-pill--unknown {
@@ -118,7 +119,7 @@ $eligibilityTablePaddingH: 36px;
       color: $GREEN;
     }
     .ineligible {
-      color: $RED;
+      color: $YELLOW;
     }
     .unknown {
       color: $YELLOW;
@@ -152,6 +153,10 @@ $eligibilityTablePaddingH: 36px;
     margin: 0 1.25rem; // 20px
     box-sizing: border-box;
     flex-grow: 1;
+
+    p {
+      margin: 0 0 0.625rem 0;
+    }
 
     @media (max-width: 772px) {
       margin: 0;

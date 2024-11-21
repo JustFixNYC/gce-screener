@@ -20,8 +20,8 @@ import {
 import { Address } from "../Home/Home";
 import { getDetermination } from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
-import { useEffect, useState } from "react";
-import { ContentBox } from "../../ContentBox/ContentBox";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { ContentBox, ContentBoxProps } from "../../ContentBox/ContentBox";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import JFCLLinkInternal from "../../JFCLLinkInternal";
@@ -36,8 +36,6 @@ export const Results: React.FC = () => {
   const [, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const { trigger } = useSendGceData();
-
-  const [showTable, setShowTable] = useState(false);
 
   useEffect(() => {
     // save session state in params
@@ -68,6 +66,18 @@ export const Results: React.FC = () => {
 
   const isRentStabilized =
     eligibilityResults?.rentRegulation.determination === "ineligible";
+
+  const [showTable, setShowTable] = useState<boolean>();
+
+  // TODO: not sure this is right way to handle this. Should we get and store
+  // eligibility data on submission of the from on the previous page instead?
+  useLayoutEffect(() => {
+    if (determination && isRentStabilized !== undefined) {
+      setShowTable(
+        determination && determination === "ineligible" && !isRentStabilized
+      );
+    }
+  }, [determination, isRentStabilized]);
 
   return (
     <>
@@ -110,19 +120,24 @@ export const Results: React.FC = () => {
               </div>
             </>
           )}
-
-          <Button
-            labelText={showTable ? "Hide details" : "Expand criteria"}
-            labelIcon={showTable ? "eyeSlash" : "eye"}
-            onClick={() => setShowTable((prev) => !prev)}
-            size="small"
-            className={classNames(
-              "eligibility__toggle",
-              showTable ? "open" : "closed"
-            )}
-          />
-          {showTable && bldgData && (
-            <EligibilityCriteriaTable eligibilityResults={eligibilityResults} />
+          {showTable !== undefined && (
+            <>
+              <Button
+                labelText={showTable ? "Hide details" : "Expand criteria"}
+                labelIcon={showTable ? "eyeSlash" : "eye"}
+                onClick={() => setShowTable((prev) => !prev)}
+                size="small"
+                className={classNames(
+                  "eligibility__toggle",
+                  showTable ? "open" : "closed"
+                )}
+              />
+              {showTable && bldgData && (
+                <EligibilityCriteriaTable
+                  eligibilityResults={eligibilityResults}
+                />
+              )}
+            </>
           )}
         </div>
       </div>
@@ -139,9 +154,26 @@ export const Results: React.FC = () => {
 
           {isRentStabilized && rentStabilizedProtections}
 
-          {determination === "unknown" && potentialGoodCauseProtections}
+          {determination === "unknown" && (
+            <GoodCauseProtections
+              headerTitle="KNOW YOUR RIGHTS"
+              headerSubtitle="Protections you might have under Good Cause Eviction law"
+            />
+          )}
 
-          {determination === "eligible" && coveredGoodCauseProtections}
+          {determination === "eligible" && (
+            <>
+              <GoodCauseProtections
+                headerTitle="KNOW YOUR RIGHTS"
+                headerSubtitle="Protections you have under Good Cause Eviction law"
+              />
+              {goodCauseExercisingRights}
+            </>
+          )}
+
+          {determination === "ineligible" &&
+            !isRentStabilized &&
+            universalProtections}
 
           <div className="eligibility__footer">
             <h3 className="eligibility__footer__header">
@@ -166,7 +198,7 @@ const CRITERIA_LABELS = {
   rent: "Rent",
   subsidy: "Subsidy",
   rentRegulation: "Rent stabilization",
-  yearBuilt: "Year built",
+  certificateOfOccupancy: "Certificate of Occupancy",
 };
 
 const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
@@ -175,8 +207,6 @@ const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
   switch (determination) {
     case "eligible":
       return <Icon icon="check" className={determination} title="Pass" />;
-    case "ineligible":
-      return <Icon icon="ban" className={determination} title="Fail" />;
     default:
       return (
         <Icon
@@ -209,10 +239,11 @@ const CriteriaResult: React.FC<CriteriaEligibility> = (props) => {
           {props?.requirement}
         </span>
       </div>
-      <span className="eligibility__row__userValue">{props?.userValue}</span>
+      <div className="eligibility__row__userValue">{props?.userValue}</div>
     </li>
   );
 };
+
 const CoveredPill: React.FC<{ determination: Determination }> = ({
   determination,
 }) => {
@@ -241,8 +272,8 @@ const EligibilityCriteriaTable: React.FC<{
       {eligibilityResults?.buildingClass && (
         <CriteriaResult {...eligibilityResults.buildingClass} />
       )}
-      {eligibilityResults?.yearBuilt && (
-        <CriteriaResult {...eligibilityResults.yearBuilt} />
+      {eligibilityResults?.certificateOfOccupancy && (
+        <CriteriaResult {...eligibilityResults.certificateOfOccupancy} />
       )}
       {eligibilityResults?.subsidy && (
         <CriteriaResult {...eligibilityResults.subsidy} />
@@ -361,11 +392,8 @@ const EligibilityNextSteps: React.FC<{
   );
 };
 
-const potentialGoodCauseProtections = (
-  <ContentBox
-    headerTitle="WHY GOOD CAUSE MATTERS"
-    headerSubtitle="Protections you might have"
-  >
+const GoodCauseProtections = (props: Omit<ContentBoxProps, "children">) => (
+  <ContentBox {...props}>
     <div className="content-box__section">
       <div className="content-box__section__content">
         <div className="content-box__section__header">
@@ -377,11 +405,9 @@ const potentialGoodCauseProtections = (
           the tenant does not have a lease, giving notice that the tenancy will
           end.
         </p>
-        <JFCLLinkExternal href="" className="disabled">
-          Learn about lease renewal rights
-        </JFCLLinkExternal>
       </div>
     </div>
+
     <div className="content-box__section">
       <div className="content-box__section__content">
         <div className="content-box__section__header">
@@ -399,87 +425,54 @@ const potentialGoodCauseProtections = (
           increase of more than 8.82% could be found unreasonable by the court
           if the rent was increased after April 20, 2024.
         </p>
-        <JFCLLinkExternal href="" className="disabled">
-          Learn about rent increase rights
+      </div>
+    </div>
+
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <p className="bold">
+          Learn more about Good Cause Eviction Law protections
+        </p>
+        <JFCLLinkExternal href="https://housingjusticeforall.org/kyr-good-cause">
+          Housing Justice for All Good Cause Eviction fact sheet
+        </JFCLLinkExternal>
+        <JFCLLinkExternal
+          href="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction"
+          className="has-label"
+        >
+          Met Council on Housing Good Cause Eviction fact sheet
         </JFCLLinkExternal>
       </div>
     </div>
   </ContentBox>
 );
 
-const coveredGoodCauseProtections = (
-  <>
-    <ContentBox
-      headerTitle="KNOW YOUR RIGHTS"
-      headerSubtitle="Protections you have"
-    >
-      <div className="content-box__section">
-        <div className="content-box__section__content">
-          <div className="content-box__section__header">
-            Your right to a lease renewal
-          </div>
-          <p>
-            Your landlord will need to provide a good cause reason for ending a
-            tenancy. This includes evicting tenants, not renewing a lease, or,
-            if the tenant does not have a lease, giving notice that the tenancy
-            will end.
-          </p>
-          <JFCLLinkExternal href="" className="disabled">
-            Learn about lease renewal rights
-          </JFCLLinkExternal>
-        </div>
+const goodCauseExercisingRights = (
+  <ContentBox
+    headerTitle="EXERCISING YOUR RIGHTS"
+    headerSubtitle="Share your coverage with your landlord"
+  >
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <p>
+          Assert your rights by printing your coverage results and sharing with
+          your landlord. You can use these results as an indicator that your
+          apartment is covered by Good Cause Eviction Law.
+        </p>
       </div>
+    </div>
 
-      <div className="content-box__section">
-        <div className="content-box__section__content">
-          <div className="content-box__section__header">
-            Your right to limited rent increases
-          </div>
-          <p>
-            Your landlord is not allowed to increase your rent at a rate higher
-            than the local standard. The local rent standard is set every year
-            at the rate of inflation plus 5%, with a maximum of 10% total.
-          </p>
-          <br />
-          <p>
-            As of May 1, 2024, the rate of inflation for the New York City area
-            is 3.82%, meaning that the current local rent standard is 8.82%. A
-            rent increase of more than 8.82% could be found unreasonable by the
-            court if the rent was increased after April 20, 2024.
-          </p>
-          <JFCLLinkExternal href="" className="disabled">
-            Learn about rent increase rights
-          </JFCLLinkExternal>
-        </div>
+    <div className="content-box__footer">
+      <div className="content-box__section__content">
+        <Button
+          labelText="Print my coverage results"
+          labelIcon="print"
+          variant="secondary"
+          className="disabled"
+        />
       </div>
-    </ContentBox>
-
-    <ContentBox
-      headerTitle="EXERCISING YOUR RIGHTS"
-      headerSubtitle="Share your coverage with your landlord"
-    >
-      <div className="content-box__section">
-        <div className="content-box__section__content">
-          <p>
-            You can print your coverage results and show to your landlord Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-
-      <div className="content-box__footer">
-        <div className="content-box__section__content">
-          <Button
-            labelText="Print my coverage results"
-            labelIcon="print"
-            variant="secondary"
-            className="disabled"
-          />
-        </div>
-      </div>
-    </ContentBox>
-  </>
+    </div>
+  </ContentBox>
 );
 
 const rentStabilizedProtections = (
@@ -498,7 +491,7 @@ const rentStabilizedProtections = (
           levels: for a one-year renewal there is a 2.75% increase, or for a
           two-year renewal there is a 5.25% increase.
         </p>
-        <JFCLLinkExternal href="" className="disabled">
+        <JFCLLinkExternal href="https://hcr.ny.gov/system/files/documents/2024/10/fact-sheet-26-10-2024.pdf">
           Learn about rent increase rights
         </JFCLLinkExternal>
       </div>
@@ -514,7 +507,7 @@ const rentStabilizedProtections = (
           don’t want you as a tenant anymore, they are limited to certain
           reasons for evicting you.
         </p>
-        <JFCLLinkExternal href="" className="disabled">
+        <JFCLLinkExternal href="https://rentguidelinesboard.cityofnewyork.us/resources/faqs/leases-renewal-vacancy/#landlord:~:text=If%20your%20apartment%20is%20rent,before%20the%20existing%20lease%20expires">
           Learn about lease renewal rights
         </JFCLLinkExternal>
       </div>
@@ -530,8 +523,134 @@ const rentStabilizedProtections = (
           have been living with them immediately prior to their moving or
           passing away, you might be entitled to take over the lease.
         </p>
-        <JFCLLinkExternal href="" className="disabled">
+        <JFCLLinkExternal href="https://www.metcouncilonhousing.org/help-answers/succession-rights-in-rent-stabilized-and-rent-controlled-apartments/">
           Learn about succession rights
+        </JFCLLinkExternal>
+      </div>
+    </div>
+  </ContentBox>
+);
+
+const universalProtections = (
+  <ContentBox
+    headerTitle="KNOW YOUR RIGHTS"
+    headerSubtitle="Protections you still have as a tenant in NYC"
+  >
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <div className="content-box__section__header">
+          Your eviction protections
+        </div>
+        <p>
+          The only way your landlord can evict you is through housing court.
+          Lockouts (also known as unlawful evictions or self-help evictions) are
+          illegal. All tenants, including those in private residential programs,
+          have the right to stay in their home unless they choose to leave or
+          are evicted through a court process.
+        </p>
+        <br />
+        <p className="bold">Learn more about the eviction process</p>
+        <JFCLLinkExternal
+          href="https://hcr.ny.gov/eviction"
+          className="has-label"
+        >
+          NY Homes and Community Renewal
+        </JFCLLinkExternal>
+        <br />
+        <br />
+        <p className="bold">See if you are eligible for a free attorney</p>
+        <JFCLLinkExternal
+          href="https://www.evictionfreenyc.org"
+          className="has-label"
+        >
+          Eviction Free NYC
+        </JFCLLinkExternal>
+      </div>
+    </div>
+
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <div className="content-box__section__header">
+          Your right to a liveable home
+        </div>
+        <p>
+          Tenants have the right to live in a safe, sanitary, and
+          well-maintained apartment, including public areas of the building.
+          This right is implied in every residential lease, and any lease
+          provision that waives it is void. If your landlord is not providing
+          these conditions in your apartment or building, there are actions you
+          can take to exercise your rights.
+        </p>
+        <br />
+        <p className="bold">Learn about warranty of habitability</p>
+        <JFCLLinkExternal
+          href="https://nycourts.gov/courts/nyc/housing/pdfs/warrantyofhabitability.pdf"
+          className="has-label"
+        >
+          NY Courts
+        </JFCLLinkExternal>
+        <br />
+        <br />
+        <p className="bold">Learn how tenant associations can help</p>
+        <JFCLLinkExternal
+          href="https://www.metcouncilonhousing.org/help-answers/forming-a-tenants-association"
+          className="has-label"
+        >
+          Met Council on Housing
+        </JFCLLinkExternal>
+        <br />
+        <br />
+        <p className="bold">Notify your landlord of repair issues</p>
+        <JFCLLinkExternal
+          href="https://app.justfix.org/loc/splash"
+          className="has-label"
+        >
+          JustFix’s Letter of Complaint
+        </JFCLLinkExternal>
+      </div>
+    </div>
+
+    <div className="content-box__section">
+      <div className="content-box__section__content">
+        <div className="content-box__section__header">
+          Your rights if you’re being discriminated against
+        </div>
+        <p>
+          Your landlord can’t evict you based on your race, religion, gender,
+          national origin, familial status, or disability. New York State law
+          promises protection from discrimination, banning bias based on age,
+          sexual orientation, and military status.
+        </p>
+        <p>
+          Source of income discrimination the illegal practice by landlords,
+          owners, and real estate brokers of refusing to rent to current or
+          prospective tenants seeking to pay for housing with housing assistance
+          vouchers, subsidies, or other forms of public assistance.
+        </p>
+        <br />
+        <p className="bold">Learn more about fair housing</p>
+        <JFCLLinkExternal
+          href="https://www.nyc.gov/site/fairhousing/about/what-is-fair-housing.page"
+          className="has-label"
+        >
+          Fair Housing NYC
+        </JFCLLinkExternal>
+        <br />
+        <br />
+        <p className="bold">
+          Learn more about lawful source of income discrimination
+        </p>
+        <JFCLLinkExternal
+          href="https://www.nyc.gov/site/fairhousing/renters/lawful-source-of-income.page"
+          className="has-label"
+        >
+          Lawful source of income
+        </JFCLLinkExternal>
+        <br />
+        <br />
+        <p className="bold">Report source of income discrimination</p>
+        <JFCLLinkExternal href="https://weunlock.nyc" className="has-label">
+          Unlock NYC
         </JFCLLinkExternal>
       </div>
     </div>
