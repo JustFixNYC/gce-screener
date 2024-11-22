@@ -23,15 +23,6 @@ export const Tenants2ApiFetcher = async (
   const urlBase = import.meta.env.VITE_TENANTS2_API_BASE_URL;
   const token = import.meta.env.VITE_TENANTS2_API_TOKEN;
 
-  // const body = arg
-  //   ? Object.keys(arg)
-  //       .map((k: string) => {
-  //         const key = k as keyof GCEPostData;
-  //         return `${k}=${encodeURIComponent(arg[key] as string)}`;
-  //       })
-  //       .join("&")
-  //   : "";
-
   const res = await fetch(`${urlBase}${url}`, {
     method: "POST",
     headers: {
