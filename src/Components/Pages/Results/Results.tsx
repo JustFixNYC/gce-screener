@@ -1,3 +1,4 @@
+import { useEffect, useLayoutEffect, useState } from "react";
 import {
   Link,
   NavigateFunction,
@@ -15,12 +16,12 @@ import {
   CriteriaEligibility,
   Determination,
   EligibilityResults,
+  extractDeterminations,
   useEligibility,
 } from "../../../hooks/eligibility";
 import { Address } from "../Home/Home";
 import { getDetermination } from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
-import { useEffect, useLayoutEffect, useState } from "react";
 import { ContentBox, ContentBoxProps } from "../../ContentBox/ContentBox";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
@@ -39,9 +40,13 @@ export const Results: React.FC = () => {
 
   useEffect(() => {
     // save session state in params
-    if (address && fields) {
+    if (user && address && fields) {
       setSearchParams(
-        { address: JSON.stringify(address), fields: JSON.stringify(fields) },
+        {
+          user: JSON.stringify(user),
+          address: JSON.stringify(address),
+          fields: JSON.stringify(fields),
+        },
         { replace: true }
       );
     }
@@ -49,9 +54,12 @@ export const Results: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // TODO: still need to check this
-    if (user && determination) {
-      trigger({ id: user.id, result_coverage_initial: determination });
+    if (user && determination && eligibilityResults) {
+      trigger({
+        id: user.id,
+        result_coverage: determination,
+        result_criteria: extractDeterminations(eligibilityResults),
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -61,8 +61,10 @@ const LoadAddressAndUserSession = () => {
 
 const LoadURLSession = ({ request }: { request: Request }) => {
   const url = new URL(request.url);
+  const userParam = url.searchParams.get("user");
   const addressParam = url.searchParams.get("address");
   const fieldsParam = url.searchParams.get("fields");
+  const sessionUser = window.sessionStorage.getItem("user");
   const sessionAddress = window.sessionStorage.getItem("address");
   const sessionFields = window.sessionStorage.getItem("fields");
 
@@ -71,16 +73,23 @@ const LoadURLSession = ({ request }: { request: Request }) => {
   // then put those search param values into session storage and
   // return them in the loader data.
   // otherwise, if we don't have sesson values or search params, redirect to the homepage
-  if (isJsonString(sessionAddress) && isJsonString(sessionFields)) {
+  if (
+    isJsonString(sessionUser) &&
+    isJsonString(sessionAddress) &&
+    isJsonString(sessionFields)
+  ) {
     return {
-      address: JSON.parse(sessionAddress as string), // to satisfy typescript, since JSON.parse() only takes strings
+      user: JSON.parse(sessionUser as string), // to satisfy typescript, since JSON.parse() only takes strings
+      address: JSON.parse(sessionAddress as string),
       fields: JSON.parse(sessionFields as string),
     };
-  } else if (addressParam && fieldsParam) {
+  } else if (userParam && addressParam && fieldsParam) {
     // set session values
+    window.sessionStorage.setItem("user", userParam);
     window.sessionStorage.setItem("address", addressParam);
     window.sessionStorage.setItem("fields", fieldsParam);
     return {
+      user: JSON.parse(userParam),
       address: JSON.parse(addressParam),
       fields: JSON.parse(fieldsParam),
     };

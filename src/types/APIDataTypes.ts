@@ -1,3 +1,5 @@
+import { CriteriaDeterminations } from "../hooks/eligibility";
+
 type AcrisProperty = {
   bbl: string;
   doc_id: string;
@@ -55,10 +57,11 @@ export type GCEPostData = {
   zipcode?: string;
   address_confirmed?: boolean;
   nycdb_results?: BuildingData;
-  form_bedrooms?: number;
+  form_bedrooms?: string;
   form_rent?: number;
   form_owner_occupied?: string;
   form_rent_stab?: string;
   form_subsidy?: string;
-  result_coverage_initial?: string;
+  result_coverage?: string;
+  result_criteria?: CriteriaDeterminations;
 };

@@ -47,6 +47,20 @@ export function useEligibility(
   };
 }
 
+export type CriteriaDeterminations = {
+  [key in Criteria]?: Determination;
+};
+
+export const extractDeterminations = (
+  eligibilityResults: EligibilityResults
+): CriteriaDeterminations => {
+  const criteriaDeterminations: CriteriaDeterminations = {};
+  Object.values(eligibilityResults).forEach((x) => {
+    criteriaDeterminations[x.criteria] = x.determination!;
+  });
+  return criteriaDeterminations;
+};
+
 function eligibilityPortfolioSize(
   criteriaData: CriteriaData
 ): CriteriaEligibility {
@@ -128,11 +142,11 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
   const rent = parseFloat(rentString || "");
 
   const rentCutoffs = {
-    "0": "$5,846",
+    STUDIO: "$5,846",
     "1": "$6,005",
     "2": "$6,742",
     "3": "$8,413",
-    "4": "$9,065",
+    "4+": "$9,065",
   };
   const criteria = "rent";
   let determination: Determination;
@@ -141,9 +155,9 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
   if (rent === null || bedrooms === null) return { criteria };
 
   const requirement = `For a ${
-    bedrooms === "0" ? "studio" : `${bedrooms} bedroom`
+    bedrooms === "STUDIO" ? "studio" : `${bedrooms} bedroom`
   }, rent must be less than ${rentCutoffs[bedrooms]}`;
-  if (bedrooms === "0") {
+  if (bedrooms === "STUDIO") {
     determination = rent < 5846 ? "eligible" : "ineligible";
   } else if (bedrooms === "1") {
     determination = rent < 6005 ? "eligible" : "ineligible";

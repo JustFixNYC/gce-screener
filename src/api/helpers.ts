@@ -79,7 +79,7 @@ export const cleanFormFields = ({
   rentStabilized,
   housingType,
 }: FormFields): GCEPostData => {
-  const form_bedrooms = bedrooms === null ? undefined : parseInt(bedrooms);
+  const form_bedrooms = bedrooms === null ? undefined : bedrooms;
   const form_rent = rent === null ? undefined : parseFloat(rent);
   const form_owner_occupied = landlord === null ? undefined : landlord;
   const form_rent_stab = rentStabilized === null ? undefined : rentStabilized;

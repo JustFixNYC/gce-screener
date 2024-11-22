@@ -10,12 +10,12 @@ import { RadioGroup } from "../../RadioGroup/RadioGroup";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { formatNumber } from "../../../helpers";
-import "./Form.scss";
 import { cleanFormFields } from "../../../api/helpers";
-import { GCEUser } from "../../../types/APIDataTypes";
+import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
+import "./Form.scss";
 
 export type FormFields = {
-  bedrooms: "0" | "1" | "2" | "3" | "4" | null;
+  bedrooms: "STUDIO" | "1" | "2" | "3" | "4+" | null;
   rent: string | null;
   landlord: "YES" | "NO" | "UNSURE" | null;
   rentStabilized: "YES" | "NO" | "UNSURE" | null;
@@ -105,11 +105,11 @@ export const Form: React.FC = () => {
                 radioGroup={{
                   name: "bedrooms",
                   options: [
-                    { label: "Studio", value: "0" },
+                    { label: "Studio", value: "STUDIO" },
                     { label: "1", value: "1" },
                     { label: "2", value: "2" },
                     { label: "3", value: "3" },
-                    { label: "4+", value: "4" },
+                    { label: "4+", value: "4+" },
                   ],
                 }}
                 onChange={handleRadioChange}
