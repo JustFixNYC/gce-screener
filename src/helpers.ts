@@ -1,6 +1,10 @@
 import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { EligibilityResults, Determination } from "./hooks/eligibility";
-import { WowBuildings } from "./types/APIDataTypes";
+import {
+  Coverage,
+  CriteriaDetermination,
+  WowBuildings,
+} from "./types/APIDataTypes";
 
 function toTitleCase(x: string) {
   return x.replace(
@@ -37,6 +41,29 @@ export const getDetermination = (
   } else {
     return "eligible";
   }
+};
+
+// Recodes values for database model
+export const determinationToCoverage = (
+  determination: Determination
+): Coverage => {
+  const COVERAGE: { [key in Determination]: Coverage } = {
+    eligible: "COVERED",
+    ineligible: "NOT_COVERED",
+    unknown: "UNKNOWN",
+  };
+  return COVERAGE[determination];
+};
+
+// Restructures criteria eligibility for database model
+export const extractDeterminations = (
+  eligibilityResults: EligibilityResults
+): CriteriaDetermination => {
+  const criteriaDeterminations: CriteriaDetermination = {};
+  Object.values(eligibilityResults).forEach((x) => {
+    criteriaDeterminations[x.criteria] = x.determination!;
+  });
+  return criteriaDeterminations;
 };
 
 export const splitBBL = (

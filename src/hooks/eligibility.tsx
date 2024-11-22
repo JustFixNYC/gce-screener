@@ -2,7 +2,7 @@ import { FormFields } from "../Components/Pages/Form/Form";
 import JFCLLinkInternal from "../Components/JFCLLinkInternal";
 import { BuildingData } from "../types/APIDataTypes";
 
-type Criteria =
+export type Criteria =
   | "portfolioSize"
   | "buildingClass"
   | "rent"
@@ -46,20 +46,6 @@ export function useEligibility(
     subsidy: eligibilitySubsidy(criteriaData),
   };
 }
-
-export type CriteriaDeterminations = {
-  [key in Criteria]?: Determination;
-};
-
-export const extractDeterminations = (
-  eligibilityResults: EligibilityResults
-): CriteriaDeterminations => {
-  const criteriaDeterminations: CriteriaDeterminations = {};
-  Object.values(eligibilityResults).forEach((x) => {
-    criteriaDeterminations[x.criteria] = x.determination!;
-  });
-  return criteriaDeterminations;
-};
 
 function eligibilityPortfolioSize(
   criteriaData: CriteriaData

@@ -16,11 +16,14 @@ import {
   CriteriaEligibility,
   Determination,
   EligibilityResults,
-  extractDeterminations,
   useEligibility,
 } from "../../../hooks/eligibility";
 import { Address } from "../Home/Home";
-import { getDetermination } from "../../../helpers";
+import {
+  determinationToCoverage,
+  extractDeterminations,
+  getDetermination,
+} from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { ContentBox, ContentBoxProps } from "../../ContentBox/ContentBox";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
@@ -58,7 +61,7 @@ export const Results: React.FC = () => {
       try {
         trigger({
           id: user.id,
-          result_coverage: determination,
+          result_coverage: determinationToCoverage(determination),
           result_criteria: extractDeterminations(eligibilityResults),
         });
       } catch (error) {
