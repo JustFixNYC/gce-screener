@@ -29,6 +29,19 @@ export const ConfirmAddress: React.FC = () => {
 
   const mapImageURL = `https://api.mapbox.com/styles/v1/${styleToken}/static/${marker}/${longLat},${zoom},${bearing},${pitch}/${width}x${height}?access_token=${accessToken}`;
 
+  const handleSubmit = async () => {
+    try {
+      trigger({
+        id: user.id,
+        address_confirmed: true,
+        nycdb_results: bldgData,
+      });
+    } catch (error) {
+      console.log({ "tenants2-error": error });
+    }
+    navigate("/form");
+  };
+
   return (
     <div className="confirmation__wrapper">
       <div className="headline-section">
@@ -75,14 +88,7 @@ export const ConfirmAddress: React.FC = () => {
             <Button
               className="confirmation__button"
               labelText="Next"
-              onClick={async () => {
-                trigger({
-                  id: user.id,
-                  address_confirmed: true,
-                  nycdb_results: bldgData,
-                });
-                navigate("/form");
-              }}
+              onClick={handleSubmit}
             />
           </div>
         </div>

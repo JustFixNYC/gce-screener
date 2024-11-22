@@ -55,11 +55,15 @@ export const Results: React.FC = () => {
 
   useEffect(() => {
     if (user && determination && eligibilityResults) {
-      trigger({
-        id: user.id,
-        result_coverage: determination,
-        result_criteria: extractDeterminations(eligibilityResults),
-      });
+      try {
+        trigger({
+          id: user.id,
+          result_coverage: determination,
+          result_criteria: extractDeterminations(eligibilityResults),
+        });
+      } catch (error) {
+        console.log({ "tenants2-error": error });
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

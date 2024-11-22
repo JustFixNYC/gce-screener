@@ -37,8 +37,12 @@ export const Home: React.FC = () => {
         borough: geoAddress.borough,
         zipcode: geoAddress.zipcode,
       };
-      const userResp = (await trigger(postData)) as GCEUser;
-      setUser(userResp);
+      try {
+        const userResp = (await trigger(postData)) as GCEUser;
+        setUser(userResp);
+      } catch (error) {
+        console.log({ "tenants2-error": error });
+      }
     }
     removeFormFields();
     navigate("confirm_address");

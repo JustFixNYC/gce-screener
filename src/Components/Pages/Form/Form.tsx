@@ -53,7 +53,11 @@ export const Form: React.FC = () => {
 
   const handleSubmit = () => {
     setFields(localFields);
-    trigger({ id: user.id, ...cleanFormFields(localFields) });
+    try {
+      trigger({ id: user.id, ...cleanFormFields(localFields) });
+    } catch (error) {
+      console.log({ "tenants2-error": error });
+    }
     navigate(`/results`);
   };
 
