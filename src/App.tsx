@@ -53,7 +53,6 @@ const LoadAddressAndUserSession = () => {
   if (!isJsonString(sessionAddress)) {
     return redirect("/");
   }
-  // console.log({"loader": JSON.parse(sessionUser as string)})
   return {
     address: JSON.parse(sessionAddress as string),
     user: !isJsonString(sessionUser)
