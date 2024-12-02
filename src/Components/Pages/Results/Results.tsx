@@ -20,13 +20,14 @@ import {
 } from "../../../hooks/eligibility";
 import { Address } from "../Home/Home";
 import {
+  breadCrumbAddress,
   determinationToCoverage,
   extractDeterminations,
   getDetermination,
 } from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { ContentBox, ContentBoxProps } from "../../ContentBox/ContentBox";
-import { breadCrumbAddress, BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
+import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import JFCLLinkInternal from "../../JFCLLinkInternal";
 import "./Results.scss";

@@ -4,9 +4,10 @@ import "./ConfirmAddress.scss";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { BackLink } from "../../JFCLLinkInternal";
-import { breadCrumbAddress, BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
+import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { GCEUser } from "../../../types/APIDataTypes";
+import { breadCrumbAddress } from "../../../helpers";
 
 export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
