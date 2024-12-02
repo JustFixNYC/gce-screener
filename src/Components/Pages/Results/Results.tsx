@@ -22,6 +22,7 @@ import { Address } from "../Home/Home";
 import {
   determinationToCoverage,
   extractDeterminations,
+  formatAddressShort,
   getDetermination,
 } from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
@@ -113,7 +114,7 @@ export const Results: React.FC = () => {
               { path: "/home", name: "Home" },
               {
                 path: "/confirm_address",
-                name: address?.address || "Your address",
+                name: formatAddressShort(address) || "Your address",
               },
               { path: "/form", name: "Screener survey" },
               { path: "/results", name: "Coverage result" },
