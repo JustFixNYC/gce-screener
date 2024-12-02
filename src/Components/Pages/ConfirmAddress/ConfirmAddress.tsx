@@ -12,7 +12,7 @@ export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
   const { address, user } = useLoaderData() as {
     address: Address;
-    user: GCEUser;
+    user?: GCEUser;
   };
   const { data: bldgData } = useGetBuildingData(address.bbl);
   const { trigger } = useSendGceData();
@@ -32,7 +32,7 @@ export const ConfirmAddress: React.FC = () => {
   const handleSubmit = async () => {
     try {
       trigger({
-        id: user.id,
+        id: user?.id,
         address_confirmed: true,
         nycdb_results: bldgData,
       });

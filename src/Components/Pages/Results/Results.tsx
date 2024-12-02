@@ -35,7 +35,7 @@ export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
     address: Address;
     fields: FormFields;
-    user: GCEUser;
+    user?: GCEUser;
   };
   const [, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -43,10 +43,10 @@ export const Results: React.FC = () => {
 
   useEffect(() => {
     // save session state in params
-    if (user && address && fields) {
+    if (address && fields) {
       setSearchParams(
         {
-          user: JSON.stringify(user),
+          ...(!user && { user: JSON.stringify(user) }),
           address: JSON.stringify(address),
           fields: JSON.stringify(fields),
         },
@@ -57,10 +57,10 @@ export const Results: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (user && determination && eligibilityResults) {
+    if (determination && eligibilityResults) {
       try {
         trigger({
-          id: user.id,
+          id: user?.id,
           result_coverage: determinationToCoverage(determination),
           result_criteria: extractDeterminations(eligibilityResults),
         });

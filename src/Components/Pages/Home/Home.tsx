@@ -41,11 +41,6 @@ export const Home: React.FC = () => {
         const userResp = (await trigger(postData)) as GCEUser;
         setUser(userResp);
       } catch (error) {
-        // TODO: if no user set then can't navigate to next page because of
-        // loader in App.tsx. Need to decide how to handle this. For now setting
-        // fake value so the site still works while the tenants2 integration is
-        // still a WIP
-        setUser({ id: 0 });
         console.log({ "tenants2-error": error });
       }
     }

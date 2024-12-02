@@ -50,12 +50,15 @@ function isJsonString(str: string | null) {
 const LoadAddressAndUserSession = () => {
   const sessionAddress = window.sessionStorage.getItem("address");
   const sessionUser = window.sessionStorage.getItem("user");
-  if (!isJsonString(sessionAddress) || !isJsonString(sessionUser)) {
+  if (!isJsonString(sessionAddress)) {
     return redirect("/");
   }
+  // console.log({"loader": JSON.parse(sessionUser as string)})
   return {
     address: JSON.parse(sessionAddress as string),
-    user: JSON.parse(sessionUser as string),
+    user: !isJsonString(sessionUser)
+      ? undefined
+      : JSON.parse(sessionUser as string),
   };
 };
 
@@ -72,24 +75,23 @@ const LoadURLSession = ({ request }: { request: Request }) => {
   // otherwise, if we have don't have session values but we do have search params,
   // then put those search param values into session storage and
   // return them in the loader data.
-  // otherwise, if we don't have sesson values or search params, redirect to the homepage
-  if (
-    isJsonString(sessionUser) &&
-    isJsonString(sessionAddress) &&
-    isJsonString(sessionFields)
-  ) {
+  // otherwise, if we don't have session values or search params, redirect to the homepage
+  if (isJsonString(sessionAddress) && isJsonString(sessionFields)) {
     return {
-      user: JSON.parse(sessionUser as string), // to satisfy typescript, since JSON.parse() only takes strings
+      // to satisfy typescript, since JSON.parse() only takes strings
+      user: !isJsonString(sessionUser)
+        ? undefined
+        : JSON.parse(sessionUser as string),
       address: JSON.parse(sessionAddress as string),
       fields: JSON.parse(sessionFields as string),
     };
-  } else if (userParam && addressParam && fieldsParam) {
+  } else if (addressParam && fieldsParam) {
     // set session values
-    window.sessionStorage.setItem("user", userParam);
+    if (userParam) window.sessionStorage.setItem("user", userParam);
     window.sessionStorage.setItem("address", addressParam);
     window.sessionStorage.setItem("fields", fieldsParam);
     return {
-      user: JSON.parse(userParam),
+      user: !userParam ? undefined : JSON.parse(userParam),
       address: JSON.parse(addressParam),
       fields: JSON.parse(fieldsParam),
     };

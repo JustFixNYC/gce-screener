@@ -35,7 +35,7 @@ const initialFields: FormFields = {
 export const Form: React.FC = () => {
   const { address, user } = useLoaderData() as {
     address: Address;
-    user: GCEUser;
+    user?: GCEUser;
   };
   const [fields, setFields] = useSessionStorage<FormFields>("fields");
   const [localFields, setLocalFields] = useState<FormFields>(
@@ -54,7 +54,7 @@ export const Form: React.FC = () => {
   const handleSubmit = () => {
     setFields(localFields);
     try {
-      trigger({ id: user.id, ...cleanFormFields(localFields) });
+      trigger({ id: user?.id, ...cleanFormFields(localFields) });
     } catch (error) {
       console.log({ "tenants2-error": error });
     }
