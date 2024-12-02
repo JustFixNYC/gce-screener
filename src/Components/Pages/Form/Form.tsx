@@ -7,9 +7,9 @@ import { Address } from "../Home/Home";
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { RadioGroup } from "../../RadioGroup/RadioGroup";
-import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
+import { breadCrumbAddress, BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import { InfoBox } from "../../InfoBox/InfoBox";
-import { formatAddressShort, formatNumber } from "../../../helpers";
+import { formatNumber } from "../../../helpers";
 import { cleanFormFields } from "../../../api/helpers";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import "./Form.scss";
@@ -89,7 +89,7 @@ export const Form: React.FC = () => {
             { path: "/home", name: "Home" },
             {
               path: "/confirm_address",
-              name: formatAddressShort(address) || "Your address",
+              name: breadCrumbAddress(address),
             },
             { path: "/form", name: "Screener survey", active: true },
             { path: "/results", name: "Coverage result" },

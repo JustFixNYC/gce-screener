@@ -22,12 +22,11 @@ import { Address } from "../Home/Home";
 import {
   determinationToCoverage,
   extractDeterminations,
-  formatAddressShort,
   getDetermination,
 } from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { ContentBox, ContentBoxProps } from "../../ContentBox/ContentBox";
-import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
+import { breadCrumbAddress, BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import JFCLLinkInternal from "../../JFCLLinkInternal";
 import "./Results.scss";
@@ -114,7 +113,7 @@ export const Results: React.FC = () => {
               { path: "/home", name: "Home" },
               {
                 path: "/confirm_address",
-                name: formatAddressShort(address) || "Your address",
+                name: breadCrumbAddress(address),
               },
               { path: "/form", name: "Screener survey" },
               { path: "/results", name: "Coverage result" },

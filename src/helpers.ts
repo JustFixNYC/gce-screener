@@ -5,19 +5,13 @@ import {
   CriteriaDetermination,
   WowBuildings,
 } from "./types/APIDataTypes";
-import { Address } from "./Components/Pages/Home/Home";
 
-function toTitleCase(x: string) {
+export function toTitleCase(x: string) {
   return x.replace(
     /\w\S*/g,
     (text: string) =>
       text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
   );
-}
-
-export function formatAddressShort(address?: Address) {
-  if (!address) return;
-  return toTitleCase(`${address?.houseNumber} ${address?.streetName}`);
 }
 
 export const formatGeosearchAddress = (

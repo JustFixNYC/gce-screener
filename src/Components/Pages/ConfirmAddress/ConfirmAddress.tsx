@@ -4,10 +4,9 @@ import "./ConfirmAddress.scss";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { BackLink } from "../../JFCLLinkInternal";
-import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
+import { breadCrumbAddress, BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { GCEUser } from "../../../types/APIDataTypes";
-import { formatAddressShort } from "../../../helpers";
 
 export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
@@ -52,7 +51,7 @@ export const ConfirmAddress: React.FC = () => {
               { path: "/home", name: "Home" },
               {
                 path: "/confirm_address",
-                name: formatAddressShort(address) || "Your address",
+                name: breadCrumbAddress(address),
               },
               { path: "/form", name: "Screener survey" },
               { path: "/results", name: "Coverage result" },
