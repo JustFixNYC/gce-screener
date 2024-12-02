@@ -126,9 +126,8 @@ export const Form: React.FC = () => {
               labelText="What is the total monthly rent for your entire apartment?"
               helperElement={
                 <InfoBox>
-                  Please provide the{" "}
-                  <span className="bold">total rent of your apartment</span>,
-                  not just the portion of rent that you pay.
+                  Please provide the total rent of your apartment, not just the
+                  portion of rent that you pay.
                 </InfoBox>
               }
               id="rent-input"
