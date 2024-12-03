@@ -8,6 +8,11 @@
   padding: 1.5rem 0; //24px
   position: absolute;
   top: 0;
+
+  @media print {
+    display: none;
+  }
+
   .breadCrumbs__crumb,
   .breadCrumbs__crumb__active {
     font-size: 1.125rem; // 18px

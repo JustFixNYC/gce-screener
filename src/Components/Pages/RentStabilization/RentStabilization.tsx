@@ -86,9 +86,7 @@ export const RentStabilization: React.FC = () => {
                 has never been rent stabilized, and therefore you meet the rent
                 regulation criteria for Good Cause Eviction.
               </p>
-              <JFCLLinkExternal
-                href="https://portal.hcr.ny.gov/app/ask"
-              >
+              <JFCLLinkExternal href="https://portal.hcr.ny.gov/app/ask">
                 Fill out the form
               </JFCLLinkExternal>
             </div>

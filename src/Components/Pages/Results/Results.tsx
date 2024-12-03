@@ -95,10 +95,14 @@ export const Results: React.FC = () => {
             ]}
           />
           <div className="headline-section__page-type">Coverage Result</div>
+          <div className="headline-section__page-type__print">
+            Good Cause Eviction Screener
+          </div>
           {bldgData && eligibilityResults && (
             <>
               <h2 className="headline-section__title">
                 <EligibilityResultHeadline
+                  address={address?.address}
                   determination={determination}
                   eligibilityResults={eligibilityResults}
                 />
@@ -122,11 +126,24 @@ export const Results: React.FC = () => {
                   showTable ? "open" : "closed"
                 )}
               />
-              {showTable && bldgData && (
-                <EligibilityCriteriaTable
-                  eligibilityResults={eligibilityResults}
-                />
-              )}
+              <div className="eligibility__table__container">
+                {showTable && bldgData && (
+                  <EligibilityCriteriaTable
+                    eligibilityResults={eligibilityResults}
+                  />
+                )}
+              </div>
+
+              <div className="eligibility__table__container__print">
+                <ContentBox
+                  headerTitle="Your results"
+                  headerSubtitle="Coverage criteria"
+                >
+                  <EligibilityCriteriaTable
+                    eligibilityResults={eligibilityResults}
+                  />
+                </ContentBox>
+              </div>
             </>
           )}
         </div>
@@ -234,17 +251,18 @@ const CriteriaResult: React.FC<CriteriaEligibility> = (props) => {
   );
 };
 
-const CoveredPill: React.FC<{ determination: Determination }> = ({
-  determination,
-}) => {
-  const className = `covered-pill covered-pill--${determination}`;
+const CoveredPill: React.FC<{
+  determination: Determination;
+  className: string;
+}> = ({ determination, className }) => {
+  const longClassName = `${className} ${className}--${determination}`;
 
   if (determination === "eligible") {
-    return <span className={className}>covered</span>;
+    return <span className={longClassName}>covered</span>;
   } else if (determination === "ineligible") {
-    return <span className={className}>not covered</span>;
+    return <span className={longClassName}>not covered</span>;
   } else {
-    return <span className={className}>might be covered</span>;
+    return <span className={longClassName}>might be covered</span>;
   }
 };
 
@@ -319,7 +337,7 @@ const EligibilityNextSteps: React.FC<{
               rent regulation status.
             </p>
             <JFCLLinkInternal to="/rent_stabilization">
-              Lean how to find out
+              Learn how to find out
             </JFCLLinkInternal>
           </div>
         </div>
@@ -343,7 +361,7 @@ const EligibilityNextSteps: React.FC<{
                 </p>
 
                 <JFCLLinkInternal to="/portfolio_size">
-                  Lean how to find out
+                  Learn how to find out
                 </JFCLLinkInternal>
               </>
             ) : (
@@ -648,14 +666,23 @@ const universalProtections = (
 );
 
 const EligibilityResultHeadline: React.FC<{
+  address: string;
   determination: Determination;
   eligibilityResults: EligibilityResults;
-}> = ({ determination, eligibilityResults }) => {
+}> = ({ address, determination, eligibilityResults }) => {
   if (determination === "unknown") {
     return (
       <>
-        <span>
-          Your apartment <CoveredPill determination={determination} />
+        <span className="eligibility__result">
+          Your apartment{" "}
+          <CoveredPill determination={determination} className="covered-pill" />
+        </span>
+        <span className="eligibility__result__print">
+          {address}{" "}
+          <CoveredPill
+            determination={determination}
+            className="covered-underline"
+          />
         </span>
         <span>by Good Cause Eviction Law</span>
       </>
@@ -663,8 +690,16 @@ const EligibilityResultHeadline: React.FC<{
   } else if (determination === "eligible") {
     return (
       <>
-        <span>
-          Your apartment is <CoveredPill determination={determination} />
+        <span className="eligibility__result">
+          Your apartment is{" "}
+          <CoveredPill determination={determination} className="covered-pill" />
+        </span>
+        <span className="eligibility__result__print">
+          {address} is{" "}
+          <CoveredPill
+            determination={determination}
+            className="covered-underline"
+          />
         </span>
         <span>by Good Cause Eviction law</span>
       </>
@@ -672,9 +707,16 @@ const EligibilityResultHeadline: React.FC<{
   } else if (eligibilityResults.rentRegulation.determination === "ineligible") {
     return (
       <>
-        <span>
+        <span className="eligibility__result">
           Your apartment is not covered by Good Cause Eviction law but{" "}
           <span className="covered-pill covered-pill--eligible">
+            you’re protected
+          </span>{" "}
+          by rent stabilization laws
+        </span>
+        <span className="eligibility__result__print">
+          {address} is not covered by Good Cause Eviction law but{" "}
+          <span className="covered-underline covered-underline--eligible">
             you’re protected
           </span>{" "}
           by rent stabilization laws
@@ -684,8 +726,16 @@ const EligibilityResultHeadline: React.FC<{
   } else if (determination === "ineligible") {
     return (
       <>
-        <span>
-          Your apartment is <CoveredPill determination={determination} />{" "}
+        <span className="eligibility__result">
+          Your apartment is{" "}
+          <CoveredPill determination={determination} className="covered-pill" />{" "}
+        </span>
+        <span className="eligibility__result__print">
+          {address} is{" "}
+          <CoveredPill
+            determination={determination}
+            className="covered-underline"
+          />
         </span>
         <span>by Good Cause Eviction law</span>
       </>
