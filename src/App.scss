@@ -21,6 +21,10 @@
   text-wrap: nowrap;
   z-index: 100;
 
+  @media print {
+    display: none;
+  }
+
   h1 {
     color: $OFF_WHITE_100;
     font-size: 1.25rem; // 20px

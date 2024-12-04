@@ -33,12 +33,9 @@ $eligibilityTablePaddingH: 36px;
   }
 }
 
-.eligibility__result {
-  display: flex;
-  flex-direction: column;
-  margin: 2.625rem 0; //42px
-  gap: 4px;
-  max-width: $contentBoxWidth;
+.covered-underline {
+  text-decoration: underline;
+  color: $OFF_BLACK;
 }
 
 .eligibility__toggle {
@@ -51,12 +48,22 @@ $eligibilityTablePaddingH: 36px;
   }
 }
 
-.eligibility__table {
-  border-radius: 4px;
-  border: 2px solid $GREY_NEW;
-  padding: 1.5rem $eligibilityTablePaddingH; // 24px __
-  max-width: $contentBoxWidth - (2 * $eligibilityTablePaddingH);
-  background-color: $WHITE;
+@media screen {
+  .eligibility__result__print {
+    display: none;
+  }
+
+  .eligibility__table__container__print {
+    display: none;
+  }
+
+  .eligibility__table {
+    border-radius: 4px;
+    border: 2px solid $GREY_NEW;
+    padding: 1.5rem $eligibilityTablePaddingH; // 24px __
+    max-width: $contentBoxWidth - (2 * $eligibilityTablePaddingH);
+    background-color: $WHITE;
+  }
 }
 
 .eligibility__table__header {
@@ -174,5 +181,119 @@ $eligibilityTablePaddingH: 36px;
     @include h3_desktop;
     margin: 0 0 $eligibilityTablePaddingH 0;
     text-align: center;
+  }
+}
+
+@media print {
+  .eligibility__result {
+    display: none;
+  }
+
+  .eligibility__table__container {
+    display: none;
+  }
+
+  .eligibility__table__container__print {
+    .eligibility__table {
+      border-top: 2px solid $GREY_NEW;
+      background-color: $WHITE;
+    }
+
+    .eligibility__table__header {
+      display: flex;
+      padding-bottom: $eligibilityTablePaddingH;
+      flex-direction: column;
+      gap: 10px;
+
+      .eligibility__table__header-title {
+        @include eyebrow_small_desktop;
+      }
+
+      .eligibility__table__header-subtitle {
+        @include h3_desktop;
+      }
+    }
+
+    .eligibility__table__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .eligibility__table__footer {
+      display: none;
+      //display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: $eligibilityTablePaddingH 0 0;
+      @include body_large_desktop;
+
+      .eligibility__table__footer__link {
+        @include body_standard_desktop;
+        margin-top: 0.625rem; //10px
+      }
+
+      a {
+        color: black;
+        margin-left: 0.625rem; //10px
+      }
+    }
+
+    .eligibility__row {
+      display: flex;
+      border-bottom: 1px solid $GREY_NEW;
+      align-items: center;
+      flex-direction: row;
+      text-align: left;
+
+      .eligibility__row__icon {
+        padding: 0 1.25rem; // 0 20px
+        font-size: 1.875rem; //30px
+        width: 1.875rem; //30px
+
+        .eligible {
+          color: $OFF_BLACK;
+        }
+        .ineligible {
+          color: $OFF_BLACK;
+        }
+        .unknown {
+          color: $OFF_BLACK;
+        }
+      }
+
+      .eligibility__row__info {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        width: 320px;
+        padding-right: 1rem;
+        box-sizing: border-box;
+        gap: 10px;
+      }
+
+      .eligibility__row__criteria {
+        @include eyebrow_small_desktop;
+      }
+
+      .eligibility__row__requirement {
+        @include body_standard_desktop;
+      }
+
+      .eligibility__row__userValue {
+        @include body_standard_desktop;
+        margin: 0 1.25rem; // 20px
+        box-sizing: border-box;
+        flex-grow: 1;
+
+        p {
+          margin: 0 0 0.625rem 0;
+        }
+
+        .jfcl-link {
+          display: none;
+        }
+      }
+    }
   }
 }
