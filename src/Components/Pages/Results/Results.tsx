@@ -18,12 +18,12 @@ import {
   EligibilityResults,
   useEligibility,
 } from "../../../hooks/eligibility";
-import { Address } from "../Home/Home";
 import {
   determinationToCoverage,
   extractDeterminations,
-  getDetermination,
-} from "../../../helpers";
+} from "../../../api/helpers";
+import { Address } from "../Home/Home";
+import { getDetermination } from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { ContentBox, ContentBoxProps } from "../../ContentBox/ContentBox";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";

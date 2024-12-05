@@ -54,6 +54,14 @@ export type CriteriaDetermination = {
   [key in Criteria]?: Determination;
 };
 
+export type FormAnswers = {
+  bedrooms?: string;
+  rent?: number;
+  owner_occupied?: string;
+  rent_stab?: string;
+  subsidy?: string;
+};
+
 export type GCEPostData = {
   id?: number;
   bbl?: string;
@@ -63,11 +71,7 @@ export type GCEPostData = {
   zipcode?: string;
   address_confirmed?: boolean;
   nycdb_results?: BuildingData;
-  form_bedrooms?: string;
-  form_rent?: number;
-  form_owner_occupied?: string;
-  form_rent_stab?: string;
-  form_subsidy?: string;
+  form_answers?: FormAnswers;
   result_coverage?: Coverage;
   result_criteria?: CriteriaDetermination;
 };
