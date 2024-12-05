@@ -20,7 +20,7 @@ export type FormFields = {
   landlord: "YES" | "NO" | "UNSURE" | null;
   rentStabilized: "YES" | "NO" | "UNSURE" | null;
   housingType: "NYCHA" | "SUBSIDIZED" | "NONE" | "UNSURE" | null;
-  portfolioSize?: "yes" | "no" | "maybe";
+  portfolioSize?: "YES" | "NO" | "UNSURE";
 };
 
 const initialFields: FormFields = {

@@ -76,7 +76,7 @@ function eligibilityPortfolioSize(
     userValue = (
       <>Your building has 10 or fewer apartments and is owner-occupied</>
     );
-  } else if (portfolioSize === "yes") {
+  } else if (portfolioSize === "YES") {
     determination = "eligible";
     userValue = (
       <>
@@ -84,7 +84,7 @@ function eligibilityPortfolioSize(
         landlord more than 10 apartments across multiple buildings.
       </>
     );
-  } else if (portfolioSize === "no") {
+  } else if (portfolioSize === "NO") {
     determination = "ineligible";
     userValue = (
       <>
