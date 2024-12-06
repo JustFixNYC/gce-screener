@@ -2,7 +2,7 @@ import { FormFields } from "../Components/Pages/Form/Form";
 import { Determination, EligibilityResults } from "../hooks/eligibility";
 import {
   Coverage,
-  CriteriaDetermination,
+  ResultCriteria,
   FormAnswers,
   GCEPostData,
 } from "../types/APIDataTypes";
@@ -90,9 +90,9 @@ export const determinationToCoverage = (
   determination: Determination
 ): Coverage => {
   const COVERAGE: { [key in Determination]: Coverage } = {
-    eligible: "COVERED",
-    ineligible: "NOT_COVERED",
-    unknown: "UNKNOWN",
+    ELIGIBLE: "COVERED",
+    INELIGIBLE: "NOT_COVERED",
+    UNKNOWN: "UNKNOWN",
   };
   return COVERAGE[determination];
 };
@@ -100,10 +100,13 @@ export const determinationToCoverage = (
 // Restructures criteria eligibility for database model
 export const extractDeterminations = (
   eligibilityResults: EligibilityResults
-): CriteriaDetermination => {
-  const criteriaDeterminations: CriteriaDetermination = {};
-  Object.values(eligibilityResults).forEach((x) => {
-    criteriaDeterminations[x.criteria] = x.determination!;
-  });
-  return criteriaDeterminations;
+): ResultCriteria => {
+  return {
+    rent: eligibilityResults.rent?.determination,
+    rent_stab: eligibilityResults.rentRegulation?.determination,
+    building_class: eligibilityResults.buildingClass?.determination,
+    c_of_o: eligibilityResults.certificateOfOccupancy?.determination,
+    subsidy: eligibilityResults.subsidy?.determination,
+    portfolio_size: eligibilityResults.portfolioSize?.determination,
+  };
 };

@@ -1,4 +1,4 @@
-import { Criteria, Determination } from "../hooks/eligibility";
+import { Determination } from "../hooks/eligibility";
 
 type AcrisProperty = {
   bbl: string;
@@ -50,8 +50,13 @@ export type GCEUser = {
 
 export type Coverage = "COVERED" | "NOT_COVERED" | "UNKNOWN";
 
-export type CriteriaDetermination = {
-  [key in Criteria]?: Determination;
+export type ResultCriteria = {
+  rent?: Determination;
+  rent_stab?: Determination;
+  building_class?: Determination;
+  c_of_o?: Determination;
+  subsidy?: Determination;
+  portfolio_size?: Determination;
 };
 
 export type FormAnswers = {
@@ -73,5 +78,5 @@ export type GCEPostData = {
   nycdb_results?: BuildingData;
   form_answers?: FormAnswers;
   result_coverage?: Coverage;
-  result_criteria?: CriteriaDetermination;
+  result_criteria?: ResultCriteria;
 };
