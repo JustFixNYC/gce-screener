@@ -228,7 +228,7 @@ function eligibilityBuildingClass(
     determination = "UNKNOWN";
   } else if (bldgclass.match(/^R/g)) {
     bldgTypeName = "a condo";
-    determination = "ineligible";
+    determination = "INELIGIBLE";
   } else if (["C6", "C8", "CC", "D0", "DC", "D4"].includes(bldgclass)) {
     bldgTypeName = "a co-op";
     determination = "INELIGIBLE";
