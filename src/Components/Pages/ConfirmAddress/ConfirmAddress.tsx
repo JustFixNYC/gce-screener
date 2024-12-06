@@ -5,12 +5,17 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { BackLink } from "../../JFCLLinkInternal";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
-import { useGetBuildingData } from "../../../api/hooks";
+import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
+import { GCEUser } from "../../../types/APIDataTypes";
 
 export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
-  const { address } = useLoaderData() as { address: Address };
-  useGetBuildingData(address.bbl);
+  const { address, user } = useLoaderData() as {
+    address: Address;
+    user?: GCEUser;
+  };
+  const { data: bldgData } = useGetBuildingData(address.bbl);
+  const { trigger } = useSendGceData();
 
   const styleToken = import.meta.env.VITE_MAPBOX_STYLE_TOKEN;
   const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
@@ -20,10 +25,22 @@ export const ConfirmAddress: React.FC = () => {
   const pitch = "0";
   const width = "814";
   const height = "356";
-  // const size = "634x352";
   const marker = `pin-s+000(${longLat})`;
 
   const mapImageURL = `https://api.mapbox.com/styles/v1/${styleToken}/static/${marker}/${longLat},${zoom},${bearing},${pitch}/${width}x${height}?access_token=${accessToken}`;
+
+  const handleSubmit = async () => {
+    try {
+      trigger({
+        id: user?.id,
+        address_confirmed: true,
+        nycdb_results: bldgData,
+      });
+    } catch (error) {
+      console.log({ "tenants2-error": error });
+    }
+    navigate("/form");
+  };
 
   return (
     <div className="confirmation__wrapper">
@@ -71,9 +88,7 @@ export const ConfirmAddress: React.FC = () => {
             <Button
               className="confirmation__button"
               labelText="Next"
-              onClick={() => {
-                navigate("/form");
-              }}
+              onClick={handleSubmit}
             />
           </div>
         </div>

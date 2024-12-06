@@ -23,19 +23,19 @@ export const getDetermination = (
   eligibilityResults?: EligibilityResults
 ): Determination => {
   if (!eligibilityResults) {
-    return "unknown";
+    return "UNKNOWN";
   }
 
   const determinations = Object.values(eligibilityResults).map((criteria) => {
     return criteria.determination;
   });
 
-  if (determinations.includes("ineligible")) {
-    return "ineligible";
-  } else if (determinations.includes("unknown")) {
-    return "unknown";
+  if (determinations.includes("INELIGIBLE")) {
+    return "INELIGIBLE";
+  } else if (determinations.includes("UNKNOWN")) {
+    return "UNKNOWN";
   } else {
-    return "eligible";
+    return "ELIGIBLE";
   }
 };
 

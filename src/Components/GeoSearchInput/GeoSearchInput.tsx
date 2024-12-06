@@ -80,6 +80,10 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
             onChange({
               bbl: selectedAddress?.properties.addendum.pad.bbl,
               address: formatGeosearchAddress(selectedAddress?.properties),
+              houseNumber: selectedAddress?.properties.housenumber,
+              streetName: selectedAddress?.properties.street,
+              borough: selectedAddress?.properties.borough.toUpperCase(),
+              zipcode: selectedAddress?.properties.postalcode,
               longLat: longLat,
             });
           }

@@ -1,3 +1,5 @@
+import { Determination } from "../hooks/eligibility";
+
 type AcrisProperty = {
   bbl: string;
   doc_id: string;
@@ -40,4 +42,41 @@ export type BuildingData = {
   acris_docs: AcrisDocument[];
   acris_data: AcrisProperty[] | null;
   wow_data: WowBuildings[] | null;
+};
+
+export type GCEUser = {
+  id: number;
+};
+
+export type Coverage = "COVERED" | "NOT_COVERED" | "UNKNOWN";
+
+export type ResultCriteria = {
+  rent?: Determination;
+  rent_stab?: Determination;
+  building_class?: Determination;
+  c_of_o?: Determination;
+  subsidy?: Determination;
+  portfolio_size?: Determination;
+};
+
+export type FormAnswers = {
+  bedrooms?: string;
+  rent?: number;
+  owner_occupied?: string;
+  rent_stab?: string;
+  subsidy?: string;
+};
+
+export type GCEPostData = {
+  id?: number;
+  bbl?: string;
+  house_number?: string;
+  street_name?: string;
+  borough?: string;
+  zipcode?: string;
+  address_confirmed?: boolean;
+  nycdb_results?: BuildingData;
+  form_answers?: FormAnswers;
+  result_coverage?: Coverage;
+  result_criteria?: ResultCriteria;
 };

@@ -5,7 +5,7 @@ import { Icon } from "@justfixnyc/component-library";
 import { Address } from "../Home/Home";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { ContentBox } from "../../ContentBox/ContentBox";
-import { FormFields } from "../../../App";
+import { FormFields } from "../Form/Form";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { BackLink } from "../../JFCLLinkInternal";
 import { useGetBuildingData } from "../../../api/hooks";

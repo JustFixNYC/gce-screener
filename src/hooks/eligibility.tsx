@@ -1,8 +1,8 @@
-import { FormFields } from "../App";
+import { FormFields } from "../Components/Pages/Form/Form";
 import JFCLLinkInternal from "../Components/JFCLLinkInternal";
 import { BuildingData } from "../types/APIDataTypes";
 
-type Criteria =
+export type Criteria =
   | "portfolioSize"
   | "buildingClass"
   | "rent"
@@ -12,7 +12,7 @@ type Criteria =
 
 type CriteriaData = FormFields & BuildingData;
 
-export type Determination = "eligible" | "ineligible" | "unknown";
+export type Determination = "ELIGIBLE" | "INELIGIBLE" | "UNKNOWN";
 
 export type CriteriaEligibility = {
   criteria: Criteria;
@@ -64,28 +64,28 @@ function eligibilityPortfolioSize(
   let userValue: React.ReactNode;
 
   if (unitsres === undefined) {
-    determination = "unknown";
+    determination = "UNKNOWN";
     userValue = (
       <>No data available for number of apartments in your building.</>
     );
   } else if (unitsres > 10) {
-    determination = "eligible";
+    determination = "ELIGIBLE";
     userValue = <>Your building has more than 10 apartments</>;
-  } else if (landlord === "yes") {
-    determination = "ineligible";
+  } else if (landlord === "YES") {
+    determination = "INELIGIBLE";
     userValue = (
       <>Your building has 10 or fewer apartments and is owner-occupied</>
     );
-  } else if (portfolioSize === "yes") {
-    determination = "eligible";
+  } else if (portfolioSize === "YES") {
+    determination = "ELIGIBLE";
     userValue = (
       <>
         Your building has 10 or fewer apartments, and you reported that your
         landlord more than 10 apartments across multiple buildings.
       </>
     );
-  } else if (portfolioSize === "no") {
-    determination = "ineligible";
+  } else if (portfolioSize === "NO") {
+    determination = "INELIGIBLE";
     userValue = (
       <>
         Your building has 10 or fewer apartments, and you reported that your
@@ -93,7 +93,7 @@ function eligibilityPortfolioSize(
       </>
     );
   } else {
-    determination = "unknown";
+    determination = "UNKNOWN";
     if (wow_portfolio_units !== undefined && wow_portfolio_units > 10) {
       userValue = (
         <>
@@ -128,7 +128,7 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
   const rent = parseFloat(rentString || "");
 
   const rentCutoffs = {
-    studio: "$5,846",
+    STUDIO: "$5,846",
     "1": "$6,005",
     "2": "$6,742",
     "3": "$8,413",
@@ -141,23 +141,23 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
   if (rent === null || bedrooms === null) return { criteria };
 
   const requirement = `For a ${
-    bedrooms === "studio" ? "studio" : `${bedrooms} bedroom`
+    bedrooms === "STUDIO" ? "studio" : `${bedrooms} bedroom`
   }, rent must be less than ${rentCutoffs[bedrooms]}`;
-  if (bedrooms === "studio") {
-    determination = rent < 5846 ? "eligible" : "ineligible";
+  if (bedrooms === "STUDIO") {
+    determination = rent < 5846 ? "ELIGIBLE" : "INELIGIBLE";
   } else if (bedrooms === "1") {
-    determination = rent < 6005 ? "eligible" : "ineligible";
+    determination = rent < 6005 ? "ELIGIBLE" : "INELIGIBLE";
   } else if (bedrooms === "2") {
-    determination = rent < 6742 ? "eligible" : "ineligible";
+    determination = rent < 6742 ? "ELIGIBLE" : "INELIGIBLE";
   } else if (bedrooms === "3") {
-    determination = rent < 8413 ? "eligible" : "ineligible";
+    determination = rent < 8413 ? "ELIGIBLE" : "INELIGIBLE";
   } else {
-    determination = rent < 9065 ? "eligible" : "ineligible";
+    determination = rent < 9065 ? "ELIGIBLE" : "INELIGIBLE";
   }
 
   const userValue = (
     <>
-      {`Your rent is ${determination === "eligible" ? "less" : "more"} than
+      {`Your rent is ${determination === "ELIGIBLE" ? "less" : "more"} than
       ${rentCutoffs[bedrooms]}.`}
     </>
   );
@@ -182,14 +182,14 @@ function eligibilityRentRegulated(
   // should remove null from type for all form fields, since required
   if (rentStabilized === null) return { criteria, requirement };
 
-  if (rentStabilized === "yes") {
-    determination = "ineligible";
+  if (rentStabilized === "YES") {
+    determination = "INELIGIBLE";
     userValue = "Your apartment is rent regulated.";
-  } else if (rentStabilized === "no") {
-    determination = "eligible";
+  } else if (rentStabilized === "NO") {
+    determination = "ELIGIBLE";
     userValue = "Your apartment is not rent regulated.";
   } else {
-    determination = "unknown";
+    determination = "UNKNOWN";
     userValue = (
       <>
         <p>You don't know if your apartment is rent regulated.</p>
@@ -222,30 +222,30 @@ function eligibilityBuildingClass(
   if (bbl === "5013920002") {
     // Goethals Park in Staten Island, only manufactured housing site in NYC
     bldgTypeName = "manufactured housing";
-    determination = "ineligible";
+    determination = "INELIGIBLE";
   } else if (bldgclass === null || bldgclass === undefined) {
     bldgTypeName = "missing class information";
-    determination = "unknown";
+    determination = "UNKNOWN";
   } else if (bldgclass.match(/^R/g)) {
     bldgTypeName = "a condo";
-    determination = "ineligible";
+    determination = "INELIGIBLE";
   } else if (["C6", "C8", "CC", "D0", "DC", "D4"].includes(bldgclass)) {
     bldgTypeName = "a co-op";
-    determination = "ineligible";
+    determination = "INELIGIBLE";
   } else if (bldgclass.match(/^W/g)) {
     bldgTypeName = "classified as an educational building";
-    determination = "ineligible";
+    determination = "INELIGIBLE";
   } else if (bldgclass.match(/^H/g)) {
     bldgTypeName = "classified as a hotel";
-    determination = "ineligible";
+    determination = "INELIGIBLE";
   } else if (bldgclass.match(/^M/g)) {
     bldgTypeName = "classified as a religious facility";
-    determination = "ineligible";
+    determination = "INELIGIBLE";
   } else if (bldgclass.match(/^I/g)) {
     bldgTypeName = "classified as a health facility";
-    determination = "ineligible";
+    determination = "INELIGIBLE";
   } else {
-    determination = "eligible";
+    determination = "ELIGIBLE";
   }
 
   const userValue =
@@ -284,11 +284,11 @@ function eligibilityCertificateOfOccupancy(
   let userValue: React.ReactNode;
 
   if (co_issued === null || latestCoDate < cutoffDate) {
-    determination = "eligible";
+    determination = "ELIGIBLE";
     userValue =
       "There is no recorded certificate of occupancy for your building since 2009.";
   } else {
-    determination = "ineligible";
+    determination = "INELIGIBLE";
     userValue = `Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`;
   }
 
@@ -308,8 +308,8 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
   let userValue: React.ReactNode;
   let moreInfo: React.ReactNode;
 
-  if (housingType == "not-sure" || housingType === null) {
-    determination = "unknown";
+  if (housingType == "UNSURE" || housingType === null) {
+    determination = "UNKNOWN";
     if (is_nycha || is_subsidized) {
       userValue = (
         <>
@@ -327,11 +327,11 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
         </>
       );
     }
-  } else if (housingType === "public" || housingType === "subsidized") {
-    determination = "ineligible";
+  } else if (housingType === "NYCHA" || housingType === "SUBSIDIZED") {
+    determination = "INELIGIBLE";
     userValue = <>{`You reported that you live in ${housingType} housing.`}</>;
   } else {
-    determination = "eligible";
+    determination = "ELIGIBLE";
     userValue = (
       <>You reported that you do not live in public or subsidized housing.</>
     );
