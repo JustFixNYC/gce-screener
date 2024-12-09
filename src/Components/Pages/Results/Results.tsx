@@ -19,7 +19,6 @@ import {
 } from "../../../hooks/eligibility";
 import { Address } from "../Home/Home";
 import { getDetermination } from "../../../helpers";
-import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { ContentBox, ContentBoxProps } from "../../ContentBox/ContentBox";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
@@ -176,7 +175,6 @@ export const Results: React.FC = () => {
             />
           </div>
         </div>
-        <LegalDisclaimer />
       </div>
     </>
   );
