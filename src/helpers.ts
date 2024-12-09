@@ -1,7 +1,6 @@
 import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { EligibilityResults, Determination } from "./hooks/eligibility";
 import { WowBuildings } from "./types/APIDataTypes";
-import { Address } from "./Components/Pages/Home/Home";
 
 function toTitleCase(x: string) {
   return x.replace(
