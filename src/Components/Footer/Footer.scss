@@ -1,0 +1,71 @@
+@import "../../mixins.scss";
+@import "../../colors.scss";
+@import "../../variables.scss";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $OFF_BLACK;
+  padding: 3.75rem 0 2rem 0; // 60px 0 32 0
+
+  &,
+  .jfcl-link {
+    color: $OFF_WHITE_100;
+  }
+
+  .jfcl-link {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: $OFF_WHITE_100;
+    }
+  }
+
+  .footer__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: $contentBoxWidth;
+    padding-left: 3rem; // 48px
+    padding-right: 3rem; // 48px
+    @media (max-width: 772px) {
+      padding-left: 1.5rem; // 24px
+      padding-right: 1.5rem; // 24px
+    }
+
+    .footer__page_links {
+      display: flex;
+      align-self: start;
+      gap: 6rem;
+
+      .footer__page_links__column {
+        display: flex;
+        flex-direction: column;
+        .jfcl-link {
+          @include h4_desktop;
+        }
+      }
+    }
+
+    .footer__divider {
+      align-self: stretch;
+      margin: 3rem 0 2.25rem 0; // 48px 0 36px 0
+      border-bottom: 1px solid $OFF_WHITE_100;
+    }
+
+    .footer__legal_disclaimer {
+      font-size: 1.125rem; // 18px
+    }
+
+    .footer__legal_pages {
+      display: flex;
+      align-self: start;
+      margin-top: 2.25rem; //36px
+      .jfcl-link {
+        @include eyebrow_small_desktop;
+        margin-right: 5.625rem; // 90px
+      }
+    }
+  }
+}
