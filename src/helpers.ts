@@ -1,11 +1,6 @@
 import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { EligibilityResults, Determination } from "./hooks/eligibility";
-import {
-  Coverage,
-  CriteriaDetermination,
-  WowBuildings,
-} from "./types/APIDataTypes";
-import { Address } from "./Components/Pages/Home/Home";
+import { WowBuildings } from "./types/APIDataTypes";
 
 export function toTitleCase(x: string) {
   return x.replace(
@@ -38,43 +33,20 @@ export const getDetermination = (
   eligibilityResults?: EligibilityResults
 ): Determination => {
   if (!eligibilityResults) {
-    return "unknown";
+    return "UNKNOWN";
   }
 
   const determinations = Object.values(eligibilityResults).map((criteria) => {
     return criteria.determination;
   });
 
-  if (determinations.includes("ineligible")) {
-    return "ineligible";
-  } else if (determinations.includes("unknown")) {
-    return "unknown";
+  if (determinations.includes("INELIGIBLE")) {
+    return "INELIGIBLE";
+  } else if (determinations.includes("UNKNOWN")) {
+    return "UNKNOWN";
   } else {
-    return "eligible";
+    return "ELIGIBLE";
   }
-};
-
-// Recodes values for database model
-export const determinationToCoverage = (
-  determination: Determination
-): Coverage => {
-  const COVERAGE: { [key in Determination]: Coverage } = {
-    eligible: "COVERED",
-    ineligible: "NOT_COVERED",
-    unknown: "UNKNOWN",
-  };
-  return COVERAGE[determination];
-};
-
-// Restructures criteria eligibility for database model
-export const extractDeterminations = (
-  eligibilityResults: EligibilityResults
-): CriteriaDetermination => {
-  const criteriaDeterminations: CriteriaDetermination = {};
-  Object.values(eligibilityResults).forEach((x) => {
-    criteriaDeterminations[x.criteria] = x.determination!;
-  });
-  return criteriaDeterminations;
 };
 
 export const splitBBL = (

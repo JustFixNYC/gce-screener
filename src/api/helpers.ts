@@ -1,5 +1,11 @@
 import { FormFields } from "../Components/Pages/Form/Form";
-import { GCEPostData } from "../types/APIDataTypes";
+import { Determination, EligibilityResults } from "../hooks/eligibility";
+import {
+  Coverage,
+  ResultCriteria,
+  FormAnswers,
+  GCEPostData,
+} from "../types/APIDataTypes";
 import { HTTPError, NetworkError } from "./error-reporting";
 
 export const WowApiFetcher = async (url: string) => {
@@ -69,18 +75,38 @@ export const cleanFormFields = ({
   landlord,
   rentStabilized,
   housingType,
-}: FormFields): GCEPostData => {
-  const form_bedrooms = bedrooms === null ? undefined : bedrooms;
-  const form_rent = rent === null ? undefined : parseFloat(rent);
-  const form_owner_occupied = landlord === null ? undefined : landlord;
-  const form_rent_stab = rentStabilized === null ? undefined : rentStabilized;
-  const form_subsidy = housingType === null ? undefined : housingType;
-
+}: FormFields): FormAnswers => {
   return {
-    form_bedrooms,
-    form_rent,
-    form_owner_occupied,
-    form_rent_stab,
-    form_subsidy,
+    bedrooms: bedrooms === null ? undefined : bedrooms,
+    rent: rent === null ? undefined : parseFloat(rent),
+    owner_occupied: landlord === null ? undefined : landlord,
+    rent_stab: rentStabilized === null ? undefined : rentStabilized,
+    subsidy: housingType === null ? undefined : housingType,
+  };
+};
+
+// Recodes values for database model
+export const determinationToCoverage = (
+  determination: Determination
+): Coverage => {
+  const COVERAGE: { [key in Determination]: Coverage } = {
+    ELIGIBLE: "COVERED",
+    INELIGIBLE: "NOT_COVERED",
+    UNKNOWN: "UNKNOWN",
+  };
+  return COVERAGE[determination];
+};
+
+// Restructures criteria eligibility for database model
+export const extractDeterminations = (
+  eligibilityResults: EligibilityResults
+): ResultCriteria => {
+  return {
+    rent: eligibilityResults.rent?.determination,
+    rent_stab: eligibilityResults.rentRegulation?.determination,
+    building_class: eligibilityResults.buildingClass?.determination,
+    c_of_o: eligibilityResults.certificateOfOccupancy?.determination,
+    subsidy: eligibilityResults.subsidy?.determination,
+    portfolio_size: eligibilityResults.portfolioSize?.determination,
   };
 };
