@@ -19,6 +19,7 @@ import {
   useEligibility,
 } from "../../../hooks/eligibility";
 import {
+  breadCrumbAddress,
   determinationToCoverage,
   extractDeterminations,
 } from "../../../api/helpers";
@@ -113,7 +114,7 @@ export const Results: React.FC = () => {
               { path: "/home", name: "Home" },
               {
                 path: "/confirm_address",
-                name: address?.address || "Your address",
+                name: breadCrumbAddress(address),
               },
               { path: "/form", name: "Screener survey" },
               { path: "/results", name: "Coverage result" },

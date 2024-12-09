@@ -2,7 +2,7 @@ import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { EligibilityResults, Determination } from "./hooks/eligibility";
 import { WowBuildings } from "./types/APIDataTypes";
 
-function toTitleCase(x: string) {
+export function toTitleCase(x: string) {
   return x.replace(
     /\w\S*/g,
     (text: string) =>
@@ -18,6 +18,16 @@ export const formatGeosearchAddress = (
         properties.postalcode
       }`
     : "";
+
+export function breadCrumbAddress(address?: Address, maxLength = 45) {
+  if (!address) return "Your address";
+  const addrShort = toTitleCase(
+    `${address?.houseNumber} ${address?.streetName}`
+  );
+  return addrShort.length > maxLength
+    ? `${addrShort.substring(0, maxLength)}\u2026`
+    : addrShort;
+}
 
 export const getDetermination = (
   eligibilityResults?: EligibilityResults
