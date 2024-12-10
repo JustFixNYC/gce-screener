@@ -23,7 +23,7 @@ import {
   extractDeterminations,
 } from "../../../api/helpers";
 import { Address } from "../Home/Home";
-import { getDetermination } from "../../../helpers";
+import { breadCrumbAddress, getDetermination } from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { ContentBox, ContentBoxProps } from "../../ContentBox/ContentBox";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
@@ -113,10 +113,10 @@ export const Results: React.FC = () => {
               { path: "/home", name: "Home" },
               {
                 path: "/confirm_address",
-                name: address?.address || "Your address",
+                name: breadCrumbAddress(address),
               },
               { path: "/form", name: "Screener survey" },
-              { path: "/results", name: "Coverage result" },
+              { path: "/results", name: "Coverage result", active: true },
             ]}
           />
           <div className="headline-section__page-type">Coverage Result</div>
