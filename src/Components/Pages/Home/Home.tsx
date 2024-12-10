@@ -4,19 +4,48 @@ import { Button } from "@justfixnyc/component-library";
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import "./Home.scss";
-import { FormFields } from "../../../App";
+import { FormFields } from "../Form/Form";
+import { useSendGceData } from "../../../api/hooks";
+import { GCEPostData, GCEUser } from "../../../types/APIDataTypes";
 
 export type Address = {
   bbl: string;
   address: string;
+  houseNumber: string;
+  streetName: string;
+  borough: string;
+  zipcode?: string;
   longLat: string;
 };
 
 export const Home: React.FC = () => {
   const navigate = useNavigate();
+  const [, setUser] = useSessionStorage<GCEUser>("user");
   const [address, setAddress] = useSessionStorage<Address>("address");
   const [, , removeFormFields] = useSessionStorage<FormFields>("fields");
   const [geoAddress, setGeoAddress] = useState<Address>();
+  const { trigger } = useSendGceData();
+
+  const handleAddressSearch = async () => {
+    if (geoAddress) {
+      setAddress(geoAddress);
+      const postData: GCEPostData = {
+        bbl: geoAddress.bbl,
+        house_number: geoAddress.houseNumber,
+        street_name: geoAddress.streetName,
+        borough: geoAddress.borough,
+        zipcode: geoAddress.zipcode,
+      };
+      try {
+        const userResp = (await trigger(postData)) as GCEUser;
+        setUser(userResp);
+      } catch (error) {
+        console.log({ "tenants2-error": error });
+      }
+    }
+    removeFormFields();
+    navigate("confirm_address");
+  };
 
   return (
     <div className="wrapper">
@@ -35,13 +64,7 @@ export const Home: React.FC = () => {
             labelText="See if you are covered"
             size="small"
             disabled={!geoAddress && !address}
-            onClick={() => {
-              if (geoAddress) {
-                setAddress(geoAddress);
-              }
-              removeFormFields();
-              navigate("confirm_address");
-            }}
+            onClick={handleAddressSearch}
           />
         </div>
       </div>
