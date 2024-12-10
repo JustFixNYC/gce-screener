@@ -1,3 +1,4 @@
+import { useEffect, useLayoutEffect, useState } from "react";
 import {
   Link,
   NavigateFunction,
@@ -8,19 +9,22 @@ import {
 import { Button, Icon } from "@justfixnyc/component-library";
 import classNames from "classnames";
 
-import { useGetBuildingData } from "../../../api/hooks";
-import { BuildingData } from "../../../types/APIDataTypes";
-import { FormFields } from "../../../App";
+import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
+import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
+import { FormFields } from "../Form/Form";
 import {
   CriteriaEligibility,
   Determination,
   EligibilityResults,
   useEligibility,
 } from "../../../hooks/eligibility";
+import {
+  determinationToCoverage,
+  extractDeterminations,
+} from "../../../api/helpers";
 import { Address } from "../Home/Home";
 import { getDetermination } from "../../../helpers";
 import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
-import { useEffect, useLayoutEffect, useState } from "react";
 import { ContentBox, ContentBoxProps } from "../../ContentBox/ContentBox";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
@@ -28,20 +32,41 @@ import JFCLLinkInternal from "../../JFCLLinkInternal";
 import "./Results.scss";
 
 export const Results: React.FC = () => {
-  const { address, fields } = useLoaderData() as {
+  const { address, fields, user } = useLoaderData() as {
     address: Address;
     fields: FormFields;
+    user?: GCEUser;
   };
   const [, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { trigger } = useSendGceData();
 
   useEffect(() => {
     // save session state in params
     if (address && fields) {
       setSearchParams(
-        { address: JSON.stringify(address), fields: JSON.stringify(fields) },
+        {
+          ...(!user && { user: JSON.stringify(user) }),
+          address: JSON.stringify(address),
+          fields: JSON.stringify(fields),
+        },
         { replace: true }
       );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (determination && eligibilityResults) {
+      try {
+        trigger({
+          id: user?.id,
+          result_coverage: determinationToCoverage(determination),
+          result_criteria: extractDeterminations(eligibilityResults),
+        });
+      } catch (error) {
+        console.log({ "tenants2-error": error });
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -55,7 +80,7 @@ export const Results: React.FC = () => {
   const determination = getDetermination(eligibilityResults);
 
   const isRentStabilized =
-    eligibilityResults?.rentRegulation.determination === "ineligible";
+    eligibilityResults?.rentRegulation.determination === "INELIGIBLE";
 
   const [showTable, setShowTable] = useState<boolean>();
 
@@ -64,7 +89,7 @@ export const Results: React.FC = () => {
   useLayoutEffect(() => {
     if (determination && isRentStabilized !== undefined) {
       setShowTable(
-        determination && determination === "ineligible" && !isRentStabilized
+        determination && determination === "INELIGIBLE" && !isRentStabilized
       );
     }
   }, [determination, isRentStabilized]);
@@ -151,7 +176,7 @@ export const Results: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          {determination === "unknown" && bldgData && eligibilityResults && (
+          {determination === "UNKNOWN" && bldgData && eligibilityResults && (
             <EligibilityNextSteps
               bldgData={bldgData}
               eligibilityResults={eligibilityResults}
@@ -161,14 +186,14 @@ export const Results: React.FC = () => {
 
           {isRentStabilized && rentStabilizedProtections}
 
-          {determination === "unknown" && (
+          {determination === "UNKNOWN" && (
             <GoodCauseProtections
               headerTitle="KNOW YOUR RIGHTS"
               headerSubtitle="Protections you might have under Good Cause Eviction law"
             />
           )}
 
-          {determination === "eligible" && (
+          {determination === "ELIGIBLE" && (
             <>
               <GoodCauseProtections
                 headerTitle="KNOW YOUR RIGHTS"
@@ -178,7 +203,7 @@ export const Results: React.FC = () => {
             </>
           )}
 
-          {determination === "ineligible" &&
+          {determination === "INELIGIBLE" &&
             !isRentStabilized &&
             universalProtections}
 
@@ -212,7 +237,7 @@ const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
   determination,
 }) => {
   switch (determination) {
-    case "eligible":
+    case "ELIGIBLE":
       return <Icon icon="check" className={determination} title="Pass" />;
     default:
       return (
@@ -231,8 +256,8 @@ const CriteriaResult: React.FC<CriteriaEligibility> = (props) => {
     <li className="eligibility__row">
       <span className="eligibility__row__icon">
         {props.criteria === "rentRegulation" &&
-        props.determination === "ineligible" ? (
-          <EligibilityIcon determination={"unknown"} />
+        props.determination === "INELIGIBLE" ? (
+          <EligibilityIcon determination={"UNKNOWN"} />
         ) : (
           <EligibilityIcon determination={props?.determination} />
         )}
@@ -257,10 +282,10 @@ const CoveredPill: React.FC<{
 }> = ({ determination, className }) => {
   const longClassName = `${className} ${className}--${determination}`;
 
-  if (determination === "eligible") {
-    return <span className={longClassName}>covered</span>;
-  } else if (determination === "ineligible") {
-    return <span className={longClassName}>not covered</span>;
+  if (determination === "ELIGIBLE") {
+    return <span className={className}>covered</span>;
+  } else if (determination === "INELIGIBLE") {
+    return <span className={className}>not covered</span>;
   } else {
     return <span className={longClassName}>might be covered</span>;
   }
@@ -307,9 +332,9 @@ const EligibilityNextSteps: React.FC<{
   navigate: NavigateFunction;
 }> = ({ bldgData, eligibilityResults, navigate }) => {
   const portfolioSizeUnknown =
-    eligibilityResults?.portfolioSize?.determination === "unknown";
+    eligibilityResults?.portfolioSize?.determination === "UNKNOWN";
   const rentRegulationUnknown =
-    eligibilityResults?.rentRegulation?.determination === "unknown";
+    eligibilityResults?.rentRegulation?.determination === "UNKNOWN";
   const steps = [portfolioSizeUnknown, rentRegulationUnknown].filter(
     Boolean
   ).length;
@@ -325,7 +350,7 @@ const EligibilityNextSteps: React.FC<{
       {rentRegulationUnknown && (
         <div className="content-box__section">
           <span className="eligibility__icon">
-            <EligibilityIcon determination="unknown" />
+            <EligibilityIcon determination="UNKNOWN" />
           </span>
           <div className="content-box__section__content">
             <div className="content-box__section__header">
@@ -346,7 +371,7 @@ const EligibilityNextSteps: React.FC<{
       {portfolioSizeUnknown && (
         <div className="content-box__section">
           <span className="eligibility__icon">
-            <EligibilityIcon determination="unknown" />
+            <EligibilityIcon determination="UNKNOWN" />
           </span>
           <div className="content-box__section__content">
             <div className="content-box__section__header">
@@ -670,7 +695,7 @@ const EligibilityResultHeadline: React.FC<{
   determination: Determination;
   eligibilityResults: EligibilityResults;
 }> = ({ address, determination, eligibilityResults }) => {
-  if (determination === "unknown") {
+  if (determination === "UNKNOWN") {
     return (
       <>
         <span className="eligibility__result">
@@ -687,7 +712,7 @@ const EligibilityResultHeadline: React.FC<{
         <span>by Good Cause Eviction Law</span>
       </>
     );
-  } else if (determination === "eligible") {
+  } else if (determination === "ELIGIBLE") {
     return (
       <>
         <span className="eligibility__result">
@@ -704,7 +729,7 @@ const EligibilityResultHeadline: React.FC<{
         <span>by Good Cause Eviction law</span>
       </>
     );
-  } else if (eligibilityResults.rentRegulation.determination === "ineligible") {
+  } else if (eligibilityResults.rentRegulation.determination === "INELIGIBLE") {
     return (
       <>
         <span className="eligibility__result">
@@ -723,7 +748,7 @@ const EligibilityResultHeadline: React.FC<{
         </span>
       </>
     );
-  } else if (determination === "ineligible") {
+  } else if (determination === "INELIGIBLE") {
     return (
       <>
         <span className="eligibility__result">
