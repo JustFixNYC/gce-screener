@@ -7,6 +7,7 @@ import { BackLink } from "../../JFCLLinkInternal";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { GCEUser } from "../../../types/APIDataTypes";
+import { breadCrumbAddress } from "../../../helpers";
 
 export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
@@ -51,7 +52,8 @@ export const ConfirmAddress: React.FC = () => {
               { path: "/home", name: "Home" },
               {
                 path: "/confirm_address",
-                name: address?.address || "Your address",
+                name: breadCrumbAddress(address),
+                active: true,
               },
               { path: "/form", name: "Screener survey" },
               { path: "/results", name: "Coverage result" },
