@@ -32,6 +32,15 @@ $eligibilityTablePaddingH: 36px;
     .headline-section__page-type {
       @include eyebrow_large_desktop;
       padding-top: 30px;
+      @media print {
+        display: none;
+      }
+    }
+    .headline-section__page-type__print {
+      @include eyebrow_large_desktop;
+      @media screen {
+        display: none;
+      }
     }
 
     .headline-section__title {
@@ -39,11 +48,23 @@ $eligibilityTablePaddingH: 36px;
       flex-direction: column;
       margin: 2.625rem 0; //42px
       gap: 4px;
+      @media print {
+        margin: 24px 0;
+      }
     }
 
     .headline-section__subtitle {
       @include body_large_desktop;
       margin-bottom: 2.25rem; // 36px
+      @media print {
+        margin-bottom: 0;
+      }
+    }
+
+    .jfcl-button {
+      @media print {
+        display: none;
+      }
     }
   }
 }
