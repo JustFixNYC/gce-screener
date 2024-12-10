@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Button } from "@justfixnyc/component-library";
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
-import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import "./Home.scss";
 import { FormFields } from "../Form/Form";
@@ -69,7 +68,6 @@ export const Home: React.FC = () => {
           />
         </div>
       </div>
-      <LegalDisclaimer />
     </div>
   );
 };

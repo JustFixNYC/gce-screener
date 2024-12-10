@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@justfixnyc/component-library";
 
-import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { BackLink } from "../../JFCLLinkInternal";
@@ -110,7 +109,6 @@ export const RentStabilization: React.FC = () => {
         <div className="eligibility__footer">
           <BackLink to="/results">Back to coverage result</BackLink>
         </div>
-        <LegalDisclaimer />
       </div>
     </div>
   );
