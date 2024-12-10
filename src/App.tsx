@@ -14,6 +14,7 @@ import { ConfirmAddress } from "./Components/Pages/ConfirmAddress/ConfirmAddress
 import { createBrowserRouter, Link, ScrollRestoration } from "react-router-dom";
 import { RentStabilization } from "./Components/Pages/RentStabilization/RentStabilization";
 import { PortfolioSize } from "./Components/Pages/PortfolioSize/PortfolioSize";
+import { Footer } from "./Components/Footer/Footer";
 
 const Layout = () => {
   return (
@@ -31,6 +32,8 @@ const Layout = () => {
           <Outlet />
         </div>
       </main>
+
+      <Footer />
       <ScrollRestoration />
     </div>
   );

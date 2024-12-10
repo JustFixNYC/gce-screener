@@ -3,7 +3,6 @@ import { useLoaderData, useSearchParams } from "react-router-dom";
 import { Icon } from "@justfixnyc/component-library";
 
 import { Address } from "../Home/Home";
-import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { FormFields } from "../Form/Form";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
@@ -163,7 +162,6 @@ export const PortfolioSize: React.FC = () => {
         <div className="eligibility__footer">
           <BackLink to="/results">Back to coverage result</BackLink>
         </div>
-        <LegalDisclaimer />
       </div>
     </div>
   );

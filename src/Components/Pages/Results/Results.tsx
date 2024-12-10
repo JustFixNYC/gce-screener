@@ -24,7 +24,6 @@ import {
 } from "../../../api/helpers";
 import { Address } from "../Home/Home";
 import { getDetermination } from "../../../helpers";
-import { LegalDisclaimer } from "../../LegalDisclaimer/LegalDisclaimer";
 import { ContentBox, ContentBoxProps } from "../../ContentBox/ContentBox";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
@@ -218,7 +217,6 @@ export const Results: React.FC = () => {
             />
           </div>
         </div>
-        <LegalDisclaimer />
       </div>
     </>
   );
