@@ -211,7 +211,7 @@ export const Form: React.FC = () => {
                 legendText="Does your landlord own more than 10 apartments across multiple buildings?"
                 helperElement={
                   <InfoBox>
-                    {`It looks like looks like there are ${bldgData.unitsres} apartments in your building. ` +
+                    {`It looks like there are ${bldgData.unitsres} apartments in your building. ` +
                       "Good Cause Eviction protections only apply to tenants whose landlords own more than 10 apartments, " +
                       "even if those apartments are spread across multiple buildings."}
                   </InfoBox>

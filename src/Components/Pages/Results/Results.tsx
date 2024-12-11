@@ -278,7 +278,7 @@ const CoveredPill: React.FC<{
   determination: Determination;
   className: string;
 }> = ({ determination, className }) => {
-  const longClassName = `${className} ${className}--${determination}`;
+  const longClassName = `${className} ${className}--${determination.toLowerCase()}`;
 
   if (determination === "ELIGIBLE") {
     return <span className={className}>covered</span>;
