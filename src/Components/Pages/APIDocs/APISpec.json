@@ -12,30 +12,6 @@
   ],
   "components": {
     "schemas": {
-      "ACRISProperty": {
-        "properties": {
-          "bbl": {
-            "type": "string",
-            "example": "3071980006",
-            "description": "Borough-Block-Lot of the associated property, 10-digit zero-padded"
-          },
-          "doc_id": {
-            "type": "string",
-            "example": "2022030100595001",
-            "description": "ACRIS document ID, used to link to document details."
-          },
-          "doc_date": {
-            "type": "string",
-            "example": "2022-02-24",
-            "description": "Date associated with the ACRIS document."
-          },
-          "unitsres": {
-            "type": "integer",
-            "example": 45,
-            "description": "Number of residential units in the associated property"
-          }
-        }
-      },
       "ACRISDocument": {
         "properties": {
           "doc_id": {
@@ -51,48 +27,63 @@
           "doc_date": {
             "type": "string",
             "example": "2011-01-20",
-            "description": "Date (document or recorded) of the ACRIS document"
+            "description": "Date (document or recorded) of the ACRIS document."
           }
         }
       },
-      "WOWProperty": {
+      "RelatedProperty": {
         "properties": {
           "bbl": {
             "type": "string",
             "example": "3071980006",
-            "description": "Borough-Block-Lot of the associated property, 10-digit zero-padded"
+            "description": "Borough-Block-Lot of the related property, 10-digit zero-padded."
+          },
+          "address": {
+            "type": "string",
+            "example": "339 EAST 12TH STREET, Manhattan, 10003",
+            "description": "Street address of the related property."
+          },
+          "unitsres": {
+            "type": "integer",
+            "example": 45,
+            "description": "Number of residential units in the associated property."
+          },
+          "match_ownername": {
+            "type": "boolean",
+            "example": "true",
+            "description": "Whether the property is matched with the search address via common corporate owner name in PLUTO data."
+          },
+          "match_multidoc": {
+            "type": "boolean",
+            "example": "true",
+            "description": "Whether the property is matched with the search address via multi-property ACRIS document."
+          },
+          "match_wow": {
+            "type": "boolean",
+            "example": "true",
+            "description": "Whether the property is matched with the search address via WOW portfolio."
+          },
+          "wow_match_name": {
+            "type": "boolean",
+            "example": "true",
+            "description": "Whether the primary contact name on the user's building's HPD registration exactly matches with this property."
+          },
+          "wow_match_bizaddr_unit": {
+            "type": "boolean",
+            "example": "false",
+            "description": "Whether the primary contact business address on the user's building's HPD registration exactly matches with this property, including the unit number."
           },
           "distance_ft": {
             "type": "number",
             "example": "103.59",
             "description": "Distance from the user's building to this property, in feet."
           },
-          "match_name": {
-            "type": "boolean",
-            "example": "true",
-            "description": "Whether the primary contact name on the user's building's HPD registration exactly matches with this property."
-          },
-          "match_bizaddr_unit": {
-            "type": "boolean",
-            "example": "false",
-            "description": "Whether the primary contact business address on the user's building's HPD registration exactly matches with this property, including the unit number."
-          },
-          "match_bizaddr_nounit": {
-            "type": "boolean",
-            "example": "true",
-            "description": "Whether the primary contact business address on the user's building's HPD registration exactly matches with this property, excluding the unit number."
-          },
-          "unitsres": {
-            "type": "integer",
-            "example": 45,
-            "description": "Number of residential units in the associated property"
-          },
           "acris_docs": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ACRISDocument"
             },
-            "description": "Array of up to 5 ACRIS document IDs, in order by date"
+            "description": "Array of up t 5 ACRIS documents, with DOC ID, type, and date."
           }
         }
       },
@@ -126,17 +117,17 @@
           "yearbuilt": {
             "type": "integer",
             "example": 1957,
-            "description": "Year the property was built (PLUTO)"
+            "description": "Year the property was built (PLUTO)."
           },
           "co_issued": {
             "type": "string",
             "example": "2014-03-16",
-            "description": "Most recent date of Certificate of Occupancy issued for the property"
+            "description": "Most recent date of Certificate of Occupancy issued for the property."
           },
           "co_bin": {
             "type": "string",
             "example": "2130453",
-            "description": "The BIN (Building Identification Number) associated with the latest Certificate of Occupancy"
+            "description": "The BIN (Building Identification Number) associated with the latest Certificate of Occupancy."
           },
           "post_hstpa_rs_units": {
             "type": "integer",
@@ -146,7 +137,7 @@
           "is_nycha": {
             "type": "boolean",
             "example": "FALSE",
-            "description": "Whether or not the property appears in list of NYCHA properties"
+            "description": "Whether or not the property appears in list of NYCHA properties."
           },
           "is_subsidized": {
             "type": "boolean",
@@ -156,33 +147,21 @@
           "subsidy_name": {
             "type": "string",
             "example": "Article XI",
-            "description": "Name of the subsidy program the building has, from Furman Center's Subsidized Housing Database and Article XI data"
+            "description": "Name of the subsidy program the building has, from Furman Center's Subsidized Housing Database and Article XI data."
           },
           "acris_docs": {
             "type": "array",
-            "items": "string",
-            "example": [
-              "2021121300683017",
-              "2021121300683018",
-              "2021121300683016",
-              "2016120901123004",
-              "2016120901123005"
-            ],
-            "description": "Array of up to 5 ACRIS document IDs, in order by date"
+            "items": {
+              "$ref": "#/components/schemas/ACRISDocument"
+            },
+            "description": "Array of up to 5 ACRIS documents for the search address."
           },
-          "acris_data": {
+          "related_properties": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ACRISProperty"
+              "$ref": "#/components/schemas/RelatedProperty"
             },
-            "description": "Array of properties that appear in ACRIS documents (MTGE,AGMT,AL&R) alongside the search address property"
-          },
-          "wow_data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/WOWProperty"
-            },
-            "description": "Array of properties within the search address property's WOW portfolio, with additional fields for prioritization."
+            "description": "Array of properties that are related to the search address to be reviewed for common ownership. Includes bbl, number of units, and ACRIS documents for each related property."
           }
         }
       }

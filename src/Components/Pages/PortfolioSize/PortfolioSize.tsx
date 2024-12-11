@@ -207,17 +207,17 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({ bbl, acris_docs }) => {
 export const AcrisAccordions: React.FC<BuildingData> = (props) => {
   const MAX_PROPERTIES = 5;
   // TODO: decide how to handle these cases, for now exclude. might also want to exclude if no acris_docs, but for now leave in.
-  const wowProperties = props.wow_data
+  const relatedProperties = props.related_properties
     ?.filter((bldg) => bldg.unitsres > 0)
     .slice(0, MAX_PROPERTIES);
   return (
     <ul>
-      {wowProperties?.map((bldg, i) => {
+      {relatedProperties?.map((bldg, i) => {
         return (
           <li key={i}>
             <details>
               <summary>
-                {bldg.addr}
+                {bldg.address}
                 <span className="apartments-pill">{`${bldg.unitsres} apartments`}</span>
                 <Icon icon="chevronDown" className="chevron-icon" />
               </summary>

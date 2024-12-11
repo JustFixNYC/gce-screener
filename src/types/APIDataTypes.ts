@@ -1,11 +1,6 @@
 import { Determination } from "../hooks/eligibility";
 
-type AcrisProperty = {
-  bbl: string;
-  doc_id: string;
-  doc_date: string;
-  unitsres: number;
-};
+// WOW API
 
 export type AcrisDocument = {
   doc_id: string;
@@ -13,14 +8,16 @@ export type AcrisDocument = {
   doc_date: string;
 };
 
-export type WowBuildings = {
+export type RelatedProperty = {
   bbl: string;
-  addr: string;
-  distance_ft: number;
-  match_name: boolean;
-  match_bizaddr_unit: boolean;
-  match_bizaddr_nounit: boolean;
+  address: string;
   unitsres: number;
+  match_wow: boolean;
+  match_ownername: boolean;
+  match_multidoc: boolean;
+  distance_ft: number;
+  wow_match_name: boolean;
+  wow_match_bizaddr_unit: boolean;
   acris_docs: AcrisDocument[];
 };
 
@@ -40,9 +37,10 @@ export type BuildingData = {
   end_421a: string;
   end_j51: string;
   acris_docs: AcrisDocument[];
-  acris_data: AcrisProperty[] | null;
-  wow_data: WowBuildings[] | null;
+  related_properties: RelatedProperty[];
 };
+
+// Tenants2 API
 
 export type GCEUser = {
   id: number;

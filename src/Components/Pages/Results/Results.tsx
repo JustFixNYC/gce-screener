@@ -375,7 +375,7 @@ const EligibilityNextSteps: React.FC<{
             <div className="content-box__section__header">
               We need to know if your landlord owns more than 10 units.
             </div>
-            {bldgData.wow_portfolio_units > bldgData.unitsres ? (
+            {bldgData.related_properties.length ? (
               <>
                 <p>
                   {`Good Cause Eviction law only covers tenants whose landlord owns
