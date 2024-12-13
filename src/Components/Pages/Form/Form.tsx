@@ -222,9 +222,9 @@ export const Form: React.FC = () => {
                   radioGroup={{
                     name: "portfolioSize",
                     options: [
-                      { label: "Yes", value: "yes" },
-                      { label: "No", value: "no" },
-                      { label: "I'm not sure", value: "not-sure" },
+                      { label: "Yes", value: "YES" },
+                      { label: "No", value: "NO" },
+                      { label: "I'm not sure", value: "UNSURE" },
                     ],
                   }}
                   onChange={handleRadioChange}
