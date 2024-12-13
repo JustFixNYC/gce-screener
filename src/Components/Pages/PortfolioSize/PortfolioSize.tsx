@@ -135,7 +135,7 @@ export const PortfolioSize: React.FC = () => {
                 this is by searching real estate documents for your building’s
                 landlord’s name and signature.
               </p>
-              <div className="content-box__section__search-buildings">
+              <div className="content-box__section__search-building">
                 <AcrisLinks
                   {...bldgData}
                   address={address.address}
