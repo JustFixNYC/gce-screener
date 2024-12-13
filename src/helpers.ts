@@ -1,6 +1,6 @@
 import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { EligibilityResults, Determination } from "./hooks/eligibility";
-import { WowBuildings } from "./types/APIDataTypes";
+import { RelatedProperty } from "./types/APIDataTypes";
 import { Address } from "./Components/Pages/Home/Home";
 
 function toTitleCase(x: string) {
@@ -78,12 +78,10 @@ export const formatDistance = (distance_ft: number): string => {
   }
 };
 
-export const prioritizeBldgs = (a: WowBuildings, b: WowBuildings) => {
-  if (a.match_name !== b.match_name) return a.match_name ? -1 : 1;
-  if (a.match_bizaddr_unit !== b.match_bizaddr_unit)
-    return a.match_bizaddr_unit ? -1 : 1;
-  if (a.match_bizaddr_nounit !== b.match_bizaddr_nounit)
-    return a.match_bizaddr_nounit ? -1 : 1;
+export const prioritizeBldgs = (a: RelatedProperty, b: RelatedProperty) => {
+  if (a.wow_match_name !== b.wow_match_name) return a.wow_match_name ? -1 : 1;
+  if (a.wow_match_bizaddr_unit !== b.wow_match_bizaddr_unit)
+    return a.wow_match_bizaddr_unit ? -1 : 1;
   return b.distance_ft - a.distance_ft;
 };
 

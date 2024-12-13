@@ -22,6 +22,10 @@ $inputTopMargin: 1.5rem; //24px
     margin-bottom: 0;
   }
 
+  .info-box__content-container {
+    @include body_standard_desktop;
+  }
+
   .jfcl-text-input {
     margin-bottom: 0;
   }

@@ -1,29 +1,62 @@
 @import "../content-page.scss";
 @import "../../../colors.scss";
 
-.portfolios-size__wrapper {
+#portfolio-size-guide {
   .headline-section {
     padding-top: 2.5rem; // 40px
   }
-}
 
-.apartments-pill {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.375rem 0.625rem; // 6px 10px
-  border-radius: 14px; // 12px in figma but looks wrong
-  border: 1px solid $OFF_BLACK;
-  background-color: $OFF_BLACK;
+  .acris-links {
+    border: 1px solid $GREY_NEW;
+    padding: 1.125rem 1.5rem; // 18px 24px
+    .acris-links__header {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      @include body_standard_desktop;
+      font-weight: 600;
+      cursor: pointer;
 
-  margin-left: 0.5rem; // 8px
+      .acris-links__pill {
+        margin-left: 0.5rem; // 8px
+      }
+    }
 
-  color: $OFF_WHITE_100;
-  text-align: center;
-  font-size: 0.875rem; // 14px
-  font-style: normal;
-  font-weight: 600;
-  line-height: 100%; // 14px
-  letter-spacing: 1.12px;
-  text-transform: uppercase;
+    .acris-links__content {
+      .info-box {
+        margin: 1.125rem 0; // 18px
+      }
+      p {
+        font-weight: 600;
+        margin-top: 1.875rem; // 30px
+      }
+      ul {
+        margin: 0 0 1.5rem 0; // 24px
+        padding: 0;
+        list-style: none;
+      }
+      li {
+        @include body_standard_desktop;
+        margin-top: 0.75rem; // 12px
+      }
+    }
+  }
+
+  .content-box__section__search-building,
+  .content-box__section__related-buildings {
+    margin-top: 1.875rem; //30px
+  }
+
+  .content-box__section__related-buildings {
+    & > ul {
+      margin: 0 0 1.5rem 0; // 24px
+      padding: 0;
+      list-style: none;
+      border-bottom: 1px solid $GREY_NEW;
+
+      .acris-links {
+        border-bottom: none;
+      }
+    }
+  }
 }

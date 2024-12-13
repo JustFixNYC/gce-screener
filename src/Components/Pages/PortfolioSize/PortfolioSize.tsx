@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
-import { Icon } from "@justfixnyc/component-library";
 
 import { Address } from "../Home/Home";
 import { ContentBox } from "../../ContentBox/ContentBox";
+import { Accordion } from "../../Accordion/Accordion";
 import { FormFields } from "../Form/Form";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { BackLink } from "../../JFCLLinkInternal";
@@ -11,14 +11,16 @@ import { useGetBuildingData } from "../../../api/hooks";
 import { AcrisDocument, BuildingData } from "../../../types/APIDataTypes";
 import {
   acrisDocTypeFull,
+  prioritizeBldgs,
   urlAcrisBbl,
   urlAcrisDoc,
   urlCountyClerkBbl,
 } from "../../../helpers";
 import "./PortfolioSize.scss";
+import { InfoBox } from "../../InfoBox/InfoBox";
 
-const LOOM_EMBED_URL =
-  "https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119";
+// const LOOM_EMBED_URL =
+//   "https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119";
 
 export const PortfolioSize: React.FC = () => {
   const { address, fields } = useLoaderData() as {
@@ -43,7 +45,7 @@ export const PortfolioSize: React.FC = () => {
   const { data: bldgData, isLoading, error } = useGetBuildingData(bbl);
 
   return (
-    <div className="portfolios-size__wrapper">
+    <div id="portfolio-size-guide">
       <div className="headline-section">
         <div className="headline-section__content">
           <BackLink to="/results">Back to Coverage Result</BackLink>
@@ -106,7 +108,7 @@ export const PortfolioSize: React.FC = () => {
                     height: "0",
                   }}
                 >
-                  <iframe
+                  {/* <iframe
                     src={LOOM_EMBED_URL}
                     style={{
                       position: "absolute",
@@ -115,7 +117,7 @@ export const PortfolioSize: React.FC = () => {
                       width: "100%",
                       height: "100%",
                     }}
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
@@ -133,10 +135,12 @@ export const PortfolioSize: React.FC = () => {
                 this is by searching real estate documents for your building’s
                 landlord’s name and signature.
               </p>
-              <div className="content-box__section__acris-links">
-                <p>Start here:</p>
-                {isLoading && <>Loading document links...</>}
-                {bldgData && <AcrisLinks {...bldgData} />}
+              <div className="content-box__section__search-buildings">
+                <AcrisLinks
+                  {...bldgData}
+                  address={address.address}
+                  info="You only need to find your building’s landlord’s signature on one of the documents below"
+                />
               </div>
             </div>
           </div>
@@ -152,7 +156,7 @@ export const PortfolioSize: React.FC = () => {
                 landlord name and/or signature matches the one on your
                 building’s mortgage agreement.
               </p>
-              <div className="content-box__section__acris-buildings">
+              <div className="content-box__section__related-buildings">
                 {isLoading && <>Loading document links...</>}
                 {bldgData && <AcrisAccordions {...bldgData} />}
               </div>
@@ -168,39 +172,74 @@ export const PortfolioSize: React.FC = () => {
 };
 
 type ACRISLinksProps = {
-  bbl: string;
-  unitsres: number;
-  acris_docs: AcrisDocument[] | null;
+  bbl?: string;
+  address?: string;
+  unitsres?: number;
+  acris_docs?: AcrisDocument[];
+  info?: string;
+  accordion?: boolean;
+  open?: boolean;
 };
 
-export const AcrisLinks: React.FC<ACRISLinksProps> = ({ bbl, acris_docs }) => {
-  const isStatenIsland = bbl[0] === "5";
-  return (
-    <>
-      {acris_docs && (
-        <ul>
-          {acris_docs.map((docInfo, i) => (
-            <li key={i}>
-              Document:{" "}
-              <JFCLLinkExternal href={urlAcrisDoc(docInfo.doc_id)}>
-                {`${acrisDocTypeFull(
-                  docInfo.doc_type
-                )} (${docInfo.doc_date.slice(0, 4)})`}
-              </JFCLLinkExternal>
-            </li>
-          ))}
-        </ul>
+export const AcrisLinks: React.FC<ACRISLinksProps> = ({
+  bbl,
+  address,
+  unitsres,
+  acris_docs,
+  info,
+  accordion = false,
+  open = false,
+}) => {
+  const isStatenIsland = bbl ? bbl[0] === "5" : false;
+
+  const header = (
+    <div className="acris-links__header">
+      <span className="acris-links__address">{address}</span>
+      <span className="acris-links__pill pill">{`${unitsres} apartments`}</span>
+    </div>
+  );
+
+  const content = (
+    <div className="acris-links__content">
+      {info && <InfoBox color="blue">{info}</InfoBox>}
+      {!bbl && <>Loading document links...</>}
+      {bbl && (
+        <>
+          {acris_docs && (
+            <ul>
+              {acris_docs.map((docInfo, i) => (
+                <li key={i}>
+                  <JFCLLinkExternal href={urlAcrisDoc(docInfo.doc_id)}>
+                    {`${acrisDocTypeFull(
+                      docInfo.doc_type
+                    )} (${docInfo.doc_date.slice(0, 4)})`}
+                  </JFCLLinkExternal>
+                </li>
+              ))}
+            </ul>
+          )}
+          {isStatenIsland ? (
+            <JFCLLinkExternal href={urlCountyClerkBbl(bbl)}>
+              View all documents from Richmond County Clerk
+            </JFCLLinkExternal>
+          ) : (
+            <JFCLLinkExternal href={urlAcrisBbl(bbl)}>
+              View all documents in ACRIS
+            </JFCLLinkExternal>
+          )}
+        </>
       )}
-      {isStatenIsland ? (
-        <JFCLLinkExternal href={urlCountyClerkBbl(bbl)}>
-          View all documents from Richmond County Clerk
-        </JFCLLinkExternal>
-      ) : (
-        <JFCLLinkExternal href={urlAcrisBbl(bbl)}>
-          View all documents in ACRIS
-        </JFCLLinkExternal>
-      )}
-    </>
+    </div>
+  );
+  return accordion ? (
+    <Accordion summary={header} open={open} className="acris-links">
+      {content}
+    </Accordion>
+  ) : (
+    <div className="acris-links">
+      {header}
+      {content}
+    </div>
   );
 };
 
@@ -209,22 +248,19 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
   // TODO: decide how to handle these cases, for now exclude. might also want to exclude if no acris_docs, but for now leave in.
   const relatedProperties = props.related_properties
     ?.filter((bldg) => bldg.unitsres > 0)
+    .sort(prioritizeBldgs)
     .slice(0, MAX_PROPERTIES);
+
   return (
     <ul>
       {relatedProperties?.map((bldg, i) => {
         return (
           <li key={i}>
-            <details>
-              <summary>
-                {bldg.address}
-                <span className="apartments-pill">{`${bldg.unitsres} apartments`}</span>
-                <Icon icon="chevronDown" className="chevron-icon" />
-              </summary>
-              <div className="content-box__section__acris-links">
-                <AcrisLinks {...bldg} />
-              </div>
-            </details>
+            <AcrisLinks
+              {...bldg}
+              info="You only need to find your building’s landlord’s signature on one of the documents below"
+              accordion
+            />
           </li>
         );
       })}
