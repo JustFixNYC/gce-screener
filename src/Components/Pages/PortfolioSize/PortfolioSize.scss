@@ -23,9 +23,6 @@
     }
 
     .acris-links__content {
-      .info-box {
-        margin: 1.125rem 0; // 18px
-      }
       p {
         font-weight: 600;
         margin-top: 1.875rem; // 30px
@@ -45,6 +42,10 @@
   .content-box__section__search-building,
   .content-box__section__related-buildings {
     margin-top: 1.875rem; //30px
+  }
+
+  .content-box__section__search-building .acris-links__content .info-box {
+    margin-top: 1.125rem; // 18px
   }
 
   .content-box__section__related-buildings {

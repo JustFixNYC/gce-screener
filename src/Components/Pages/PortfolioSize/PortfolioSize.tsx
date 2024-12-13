@@ -69,8 +69,8 @@ export const PortfolioSize: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content"></div>
         <ContentBox
-          headerTitle="Why you need to know"
-          headerSubtitle="Good Cause Eviction covers tenants whose landlords own more than 10 apartments"
+          title="Why you need to know"
+          subtitle="Good Cause Eviction covers tenants whose landlords own more than 10 apartments"
         >
           <div className="content-box__section">
             <div className="content-box__section__content">
@@ -85,8 +85,8 @@ export const PortfolioSize: React.FC = () => {
         </ContentBox>
 
         <ContentBox
-          headerTitle="WHAT YOU CAN DO"
-          headerSubtitle="How to find other apartments your landlord owns"
+          title="WHAT YOU CAN DO"
+          subtitle="How to find other apartments your landlord owns"
         >
           <div className="content-box__section">
             <div className="content-box__section__content">

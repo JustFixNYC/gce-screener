@@ -28,8 +28,8 @@ export const RentStabilization: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content"></div>
         <ContentBox
-          headerTitle="Why you need to know"
-          headerSubtitle="Good Cause Eviction Law does not cover rent stabilized apartments"
+          title="Why you need to know"
+          subtitle="Good Cause Eviction Law does not cover rent stabilized apartments"
         >
           <div className="content-box__section">
             <div className="content-box__section__content">
@@ -43,8 +43,8 @@ export const RentStabilization: React.FC = () => {
         </ContentBox>
 
         <ContentBox
-          headerTitle="WHAT YOU CAN DO"
-          headerSubtitle="How to find out if your apartment is rent stabilized"
+          title="WHAT YOU CAN DO"
+          subtitle="How to find out if your apartment is rent stabilized"
         >
           <div className="content-box__section">
             <div className="content-box__section__content">
