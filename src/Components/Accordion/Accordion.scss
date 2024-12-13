@@ -1,0 +1,24 @@
+@import "../../colors.scss";
+@import "../../mixins.scss";
+
+.accordion {
+  summary {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    @include body_standard_desktop;
+    font-weight: 600;
+    cursor: pointer;
+
+    .accordion__chevron {
+      margin-left: auto;
+    }
+  }
+
+  &[open] {
+    padding-bottom: 1.125rem; // 18px
+    summary .accordion__chevron {
+      transform: scale(-1, -1);
+    }
+  }
+}
