@@ -31,7 +31,8 @@ $videoEmbedW: 623px;
 .content-box__section,
 .content-box__footer {
   display: flex;
-  padding: $contentBoxPadding;
+  flex-direction: column;
+  padding: 1.5rem 2.25rem; // 24px 36px
   border-top: 1px solid $GREY_NEW;
 
   .eligibility__icon {
@@ -50,7 +51,16 @@ $videoEmbedW: 623px;
     }
   }
 
-  .content-box__section__content {
+  .content-box__section__header {
+    @include body_large_desktop;
+  }
+
+  .accordion__content {
+    margin-top: 1.125rem; // 18px
+  }
+
+  .content-box__section__content,
+  .accordion__content {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -92,6 +102,10 @@ $videoEmbedW: 623px;
       }
     }
   }
+}
+
+.accordion.content-box__section[open] {
+  padding-bottom: 2rem; // 32px
 }
 
 .content-box__footer {

@@ -1,29 +1,28 @@
 import { ReactNode } from "react";
 import "./ContentBox.scss";
+import { Accordion } from "../Accordion/Accordion";
 
 export type ContentBoxProps = {
-  headerTitle?: ReactNode;
-  headerSubtitle?: ReactNode;
+  title?: ReactNode;
+  subtitle?: ReactNode;
   children: ReactNode;
 };
 
 export const ContentBox: React.FC<ContentBoxProps> = ({
-  headerTitle,
-  headerSubtitle,
+  title,
+  subtitle,
   children,
 }) => {
-  //   const arrayChildren = Children.toArray(children);
   return (
     <div className="content-box">
-      {headerTitle && (
+      {title && (
         <div className="content-box__header">
-          <div className="content-box__header-title">{headerTitle}</div>
-          {headerSubtitle && (
-            <div className="content-box__header-subtitle">{headerSubtitle}</div>
+          <div className="content-box__header-title">{title}</div>
+          {subtitle && (
+            <div className="content-box__header-subtitle">{subtitle}</div>
           )}
         </div>
       )}
-      {/* {Children.map(arrayChildren, (child, index) => {})} */}
       {children}
     </div>
   );
@@ -34,21 +33,35 @@ export type ContentBoxItemProps = {
   step?: number;
   icon?: ReactNode;
   children?: ReactNode;
+  accordion?: boolean;
+  open?: boolean;
 };
 
 export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
   title,
-  step,
   icon,
+  accordion = true,
+  open = false,
   children,
 }) => {
-  return (
-    <div className="content-box__section">
+  const headerSection = (
+    <>
       {icon && <span className="eligibility__icon">{icon}</span>}
-      {step && (
-        <div className="content-box__section__step">{`step ${step}`}</div>
-      )}
       {title && <div className="content-box__section__header">{title}</div>}
+    </>
+  );
+
+  return accordion ? (
+    <Accordion
+      summary={headerSection}
+      className="content-box__section"
+      open={open}
+    >
+      {children}
+    </Accordion>
+  ) : (
+    <div className="content-box__section">
+      {headerSection}
       {children}
     </div>
   );
