@@ -1,7 +1,7 @@
-import { Icon } from "@justfixnyc/component-library";
-import "./InfoBox.scss";
 import { ReactNode } from "react";
 import classNames from "classnames";
+import { Icon } from "@justfixnyc/component-library";
+import "./InfoBox.scss";
 
 type InfoBoxProps = {
   children: ReactNode;

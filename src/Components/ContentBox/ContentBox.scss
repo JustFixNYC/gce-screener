@@ -53,6 +53,7 @@ $videoEmbedW: 623px;
   .content-box__section__content {
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     .content-box__section__step {
       @include eyebrow_small_desktop;
@@ -90,63 +91,6 @@ $videoEmbedW: 623px;
         margin-top: 0;
       }
     }
-  }
-}
-
-.content-box__section__content .content-box__section__acris-buildings {
-  margin-top: 1.875rem; //30px
-
-  & > ul {
-    margin: 0 0 1.5rem 0; // 24px
-    padding: 0;
-    list-style: none;
-    border-bottom: 1px solid $GREY_NEW;
-  }
-
-  details {
-    border: 1px solid $GREY_NEW;
-    border-bottom: none;
-
-    summary {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      @include body_standard_desktop;
-      font-weight: 600;
-      cursor: pointer;
-      padding: 0.75rem 1.5rem; // 12px 24px
-
-      .chevron-icon {
-        margin-left: auto;
-      }
-    }
-
-    &[open] {
-      padding-bottom: 1.125rem; // 18px
-      summary .chevron-icon {
-        transform: scale(-1, -1);
-      }
-    }
-
-    .content-box__section__acris-links {
-      padding: 0 1.5rem; // 24px
-    }
-  }
-}
-
-.content-box__section__content .content-box__section__acris-links {
-  p {
-    font-weight: 600;
-    margin-top: 1.875rem; // 30px
-  }
-  ul {
-    margin: 0 0 1.5rem 0; // 24px
-    padding: 0;
-    list-style: none;
-  }
-  li {
-    @include body_standard_desktop;
-    margin-top: 0.75rem; // 12px
   }
 }
 

@@ -20,6 +20,6 @@
 
   .form-step-description {
     margin: 0;
-    @include small_text_desktop();
+    @include small_text_desktop;
   }
 }
