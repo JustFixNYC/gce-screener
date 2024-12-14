@@ -1,20 +1,23 @@
 import { ReactNode } from "react";
 import "./ContentBox.scss";
 import { Accordion } from "../Accordion/Accordion";
+import classNames from "classnames";
 
 export type ContentBoxProps = {
   title?: ReactNode;
   subtitle?: ReactNode;
+  className?: string;
   children: ReactNode;
 };
 
 export const ContentBox: React.FC<ContentBoxProps> = ({
   title,
   subtitle,
+  className,
   children,
 }) => {
   return (
-    <div className="content-box">
+    <div className={classNames("content-box", className)}>
       {title && (
         <div className="content-box__header">
           <div className="content-box__header-title">{title}</div>
@@ -35,6 +38,7 @@ export type ContentBoxItemProps = {
   children?: ReactNode;
   accordion?: boolean;
   open?: boolean;
+  className?: string;
 };
 
 export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
@@ -42,25 +46,24 @@ export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
   icon,
   accordion = true,
   open = false,
+  className,
   children,
 }) => {
   const headerSection = (
     <>
-      {icon && <span className="eligibility__icon">{icon}</span>}
+      {icon}
       {title && <div className="content-box__section__header">{title}</div>}
     </>
   );
 
+  const containerClass = classNames("content-box__section", className);
+
   return accordion ? (
-    <Accordion
-      summary={headerSection}
-      className="content-box__section"
-      open={open}
-    >
+    <Accordion summary={headerSection} className={containerClass} open={open}>
       {children}
     </Accordion>
   ) : (
-    <div className="content-box__section">
+    <div className={containerClass}>
       {headerSection}
       {children}
     </div>

@@ -24,7 +24,7 @@ import {
 } from "../../../api/helpers";
 import { Address } from "../Home/Home";
 import { breadCrumbAddress, getDetermination } from "../../../helpers";
-import { ContentBox } from "../../ContentBox/ContentBox";
+import { ContentBox, ContentBoxItem } from "../../ContentBox/ContentBox";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import JFCLLinkInternal from "../../JFCLLinkInternal";
 import {
@@ -232,7 +232,7 @@ const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
 }) => {
   switch (determination) {
     case "ELIGIBLE":
-      return <Icon icon="check" className={determination} title="Pass" />;
+      return <Icon icon="check" className="eligible" title="Pass" />;
     default:
       return (
         <Icon
@@ -342,62 +342,64 @@ const EligibilityNextSteps: React.FC<{
       }
     >
       {rentRegulationUnknown && (
-        <div className="content-box__section">
-          <span className="eligibility__icon">
-            <EligibilityIcon determination="UNKNOWN" />
-          </span>
-          <div className="content-box__section__content">
-            <div className="content-box__section__header">
-              We need to know if your apartment is rent stabilized.
-            </div>
-            <p>
-              The Good Cause Eviction law only covers tenants whose apartments
-              are not rent regulated. You told us that you are unsure of your
-              rent regulation status.
-            </p>
-            <JFCLLinkInternal to="/rent_stabilization">
-              Learn how to find out
-            </JFCLLinkInternal>
-          </div>
-        </div>
+        <ContentBoxItem
+          title="We need to know if your apartment is rent stabilized."
+          icon={
+            <span className="eligibility__icon">
+              <EligibilityIcon determination="UNKNOWN" />
+            </span>
+          }
+          className="next-step"
+          open
+        >
+          <p>
+            The Good Cause Eviction law only covers tenants whose apartments are
+            not rent regulated. You told us that you are unsure of your rent
+            regulation status.
+          </p>
+          <JFCLLinkInternal to="/rent_stabilization">
+            Learn how to find out
+          </JFCLLinkInternal>
+        </ContentBoxItem>
       )}
 
       {portfolioSizeUnknown && (
-        <div className="content-box__section">
-          <span className="eligibility__icon">
-            <EligibilityIcon determination="UNKNOWN" />
-          </span>
-          <div className="content-box__section__content">
-            <div className="content-box__section__header">
-              We need to know if your landlord owns more than 10 units.
-            </div>
-            {bldgData.related_properties.length ? (
-              <>
-                <p>
-                  {`Good Cause Eviction law only covers tenants whose landlord owns
+        <ContentBoxItem
+          title="We need to know if your landlord owns more than 10 units."
+          icon={
+            <span className="eligibility__icon">
+              <EligibilityIcon determination="UNKNOWN" />
+            </span>
+          }
+          className="next-step"
+          open
+        >
+          {bldgData.related_properties.length ? (
+            <>
+              <p>
+                {`Good Cause Eviction law only covers tenants whose landlord owns
                 more than 10 units. Your building has only ${bldgData.unitsres} apartments, but
                 your landlord may own other buildings.`}
-                </p>
+              </p>
 
-                <JFCLLinkInternal to="/portfolio_size">
-                  Learn how to find out
-                </JFCLLinkInternal>
-              </>
-            ) : (
-              <>
-                <p>
-                  {`Good Cause Eviction law only covers tenants whose landlord owns
+              <JFCLLinkInternal to="/portfolio_size">
+                Learn how to find out
+              </JFCLLinkInternal>
+            </>
+          ) : (
+            <>
+              <p>
+                {`Good Cause Eviction law only covers tenants whose landlord owns
                 more than 10 units. Your building has only ${bldgData.unitsres} apartments.`}
-                </p>
-                <br />
-                <p>
-                  We are unable to find other apartments your landlord might own
-                  in our records.
-                </p>
-              </>
-            )}
-          </div>
-        </div>
+              </p>
+              <br />
+              <p>
+                We are unable to find other apartments your landlord might own
+                in our records.
+              </p>
+            </>
+          )}
+        </ContentBoxItem>
       )}
 
       <div className="content-box__footer">

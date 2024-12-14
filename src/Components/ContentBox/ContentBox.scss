@@ -35,22 +35,6 @@ $videoEmbedW: 623px;
   padding: 1.5rem 2.25rem; // 24px 36px
   border-top: 1px solid $GREY_NEW;
 
-  .eligibility__icon {
-    font-size: 1.875rem; //30px
-    width: 1.875rem; //30px
-    margin-right: 36px;
-
-    .eligible {
-      color: $GREEN;
-    }
-    .ineligible {
-      color: $RED;
-    }
-    .unknown {
-      color: $YELLOW;
-    }
-  }
-
   .content-box__section__header {
     @include body_large_desktop;
   }
