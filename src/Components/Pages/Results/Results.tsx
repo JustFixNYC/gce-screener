@@ -117,20 +117,7 @@ export const Results: React.FC = () => {
             <EligibilityCriteriaTable eligibilityResults={eligibilityResults} />
           )}
         </div>
-
-        {/* <div className="eligibility__table__container__print">
-              <ContentBox title="Your results" subtitle="Coverage criteria">
-                <EligibilityCriteriaTable
-                  eligibilityResults={eligibilityResults}
-                />
-              </ContentBox>
-            </div> */}
       </Header>
-
-      {/* TODO: add to header if we need to keep this */}
-      {/* <div className="headline-section__page-type__print">
-            Good Cause Eviction Screener
-          </div> */}
 
       <div className="content-section">
         <div className="content-section__content">
