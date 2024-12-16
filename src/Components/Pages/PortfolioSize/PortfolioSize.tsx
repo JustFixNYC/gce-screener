@@ -2,7 +2,11 @@ import { useEffect } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 
 import { Address } from "../Home/Home";
-import { ContentBox } from "../../ContentBox/ContentBox";
+import {
+  ContentBox,
+  ContentBoxFooter,
+  ContentBoxItem,
+} from "../../ContentBox/ContentBox";
 import { Accordion } from "../../Accordion/Accordion";
 import { FormFields } from "../Form/Form";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
@@ -66,104 +70,95 @@ export const PortfolioSize: React.FC = () => {
           title="Why you need to know"
           subtitle="Good Cause Eviction covers tenants whose landlords own more than 10 apartments"
         >
-          <div className="content-box__section">
-            <div className="content-box__section__content">
-              <p>
-                If you are able to find that your landlord owns more than 10
-                total apartments across multiple buildings, this means that you
-                meet the Landlord Portfolio Size criteria for Good Cause
-                Eviction Law.
-              </p>
-            </div>
-          </div>
+          <ContentBoxItem accordion={false}>
+            <p>
+              If you are able to find that your landlord owns more than 10 total
+              apartments across multiple buildings, this means that you meet the
+              Landlord Portfolio Size criteria for Good Cause Eviction Law.
+            </p>
+          </ContentBoxItem>
         </ContentBox>
 
         <ContentBox
           title="WHAT YOU CAN DO"
           subtitle="How to find other apartments your landlord owns"
         >
-          <div className="content-box__section">
-            <div className="content-box__section__content">
-              <div className="content-box__section__step">Before you begin</div>
-              <div className="content-box__section__header">
-                Learn how to find your landlord's name and signature
-              </div>
-              <p>
-                Use this video as a guide to help you understand how to search
-                the databases for the information that will help you understand
-                if your landlord owns other apartments.
-              </p>
-              <div className="content-box__section__video">
-                {/* Loom embed code: */}
-                <div
-                  style={{
-                    position: "relative",
-                    paddingBottom: "56.25%",
-                    height: "0",
-                  }}
-                >
-                  {/* <iframe
-                    src={LOOM_EMBED_URL}
-                    style={{
-                      position: "absolute",
-                      top: "0",
-                      left: "0",
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  /> */}
-                </div>
-              </div>
+          <ContentBoxItem
+            title="Confirm your landlord’s name and signature"
+            step={1}
+          >
+            <p>
+              Before we can find out if your landlord owns other apartments, we
+              need to confirm your building’s landlord. The best way to do this
+              is by searching real estate documents for your building’s
+              landlord’s name and signature.
+            </p>
+            <VideoEmbed url="" />
+            <div className="content-box__section__search-building">
+              <AcrisLinks
+                {...bldgData}
+                address={address.address}
+                info="You only need to find your building’s landlord’s signature on one of the documents below"
+              />
             </div>
-          </div>
+          </ContentBoxItem>
 
-          <div className="content-box__section">
-            <div className="content-box__section__content">
-              <div className="content-box__section__step">Step 1</div>
-              <div className="content-box__section__header">
-                Confirm your landlord’s name and signature
-              </div>
-              <p>
-                Before we can find out if your landlord owns other apartments,
-                we need to confirm your building’s landlord. The best way to do
-                this is by searching real estate documents for your building’s
-                landlord’s name and signature.
-              </p>
-              <div className="content-box__section__search-building">
-                <AcrisLinks
-                  {...bldgData}
-                  address={address.address}
-                  info="You only need to find your building’s landlord’s signature on one of the documents below"
-                />
-              </div>
+          <ContentBoxItem
+            title="Find other buildings your landlord might own"
+            step={2}
+          >
+            <p>
+              Review documents below to find your landlord’s name or signature
+              to see if they own more than 10 units across multiple buildings.
+            </p>
+            <br />
+            <p>
+              {`Your building has ${bldgData?.unitsres} apartments. You only need to confirm that your ` +
+                `landlord owns ${10 - bldgData!.unitsres} additional ${
+                  10 - bldgData!.unitsres == 1 ? "apartment" : "apartments"
+                } across other buildings.`}
+            </p>
+            <VideoEmbed url="" />
+            <div className="content-box__section__related-buildings">
+              {isLoading && <>Loading document links...</>}
+              {bldgData && <AcrisAccordions {...bldgData} />}
             </div>
-          </div>
+          </ContentBoxItem>
 
-          <div className="content-box__section">
-            <div className="content-box__section__content">
-              <div className="content-box__section__step">Step 2</div>
-              <div className="content-box__section__header">
-                Review potentially related buildings
-              </div>
-              <p>
-                Start reviewing potentially related buildings to see if the
-                landlord name and/or signature matches the one on your
-                building’s mortgage agreement.
-              </p>
-              <div className="content-box__section__related-buildings">
-                {isLoading && <>Loading document links...</>}
-                {bldgData && <AcrisAccordions {...bldgData} />}
-              </div>
-            </div>
-          </div>
+          <ContentBoxFooter
+            title="Have you found more buildings owned by your landlord?"
+            subtitle="Adjust your survey answers and receive an updated coverage result"
+            link={<BackLink to="/form">Back to survey</BackLink>}
+          />
         </ContentBox>
-        <div className="eligibility__footer">
-          <BackLink to="/results">Back to coverage result</BackLink>
-        </div>
       </div>
     </div>
   );
 };
+
+const VideoEmbed: React.FC<{ url: string }> = ({ url }) => (
+  <div className="content-box__section__video">
+    {/* Loom embed code: */}
+    <div
+      style={{
+        position: "relative",
+        paddingBottom: "56.25%",
+        height: "0",
+      }}
+    >
+      <iframe
+        src={url}
+        style={{
+          position: "absolute",
+          top: "0",
+          left: "0",
+          width: "100%",
+          height: "100%",
+        }}
+      />
+    </div>
+  </div>
+);
 
 type ACRISLinksProps = {
   bbl?: string;

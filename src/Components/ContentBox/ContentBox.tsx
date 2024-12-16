@@ -43,6 +43,7 @@ export type ContentBoxItemProps = {
 
 export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
   title,
+  step,
   icon,
   accordion = true,
   open = false,
@@ -52,11 +53,20 @@ export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
   const headerSection = (
     <>
       {icon}
-      {title && <div className="content-box__section__header">{title}</div>}
+      <div className="content-box__section__header-container">
+        {step && (
+          <div className="content-box__section__step">{`Step ${step}`}</div>
+        )}
+        {title && <div className="content-box__section__header">{title}</div>}
+      </div>
     </>
   );
 
-  const containerClass = classNames("content-box__section", className);
+  const containerClass = classNames(
+    "content-box__section",
+    !title && "no-title",
+    className
+  );
 
   return accordion ? (
     <Accordion summary={headerSection} className={containerClass} open={open}>
@@ -66,6 +76,28 @@ export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
     <div className={containerClass}>
       {headerSection}
       {children}
+    </div>
+  );
+};
+
+export type ContentBoxFooterProps = {
+  title: string;
+  subtitle?: string;
+  className?: string;
+  link?: ReactNode;
+};
+
+export const ContentBoxFooter: React.FC<ContentBoxFooterProps> = ({
+  title,
+  subtitle,
+  className,
+  link,
+}) => {
+  return (
+    <div className={classNames("content-box__footer", className)}>
+      <div className="content-box__footer__title">{title}</div>
+      <p className="content-box__footer__subtitle">{subtitle}</p>
+      <div className="content-box__footer__link">{link}</div>
     </div>
   );
 };
