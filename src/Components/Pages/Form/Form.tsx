@@ -7,11 +7,11 @@ import { Address } from "../Home/Home";
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { RadioGroup } from "../../RadioGroup/RadioGroup";
-import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import { InfoBox } from "../../InfoBox/InfoBox";
-import { breadCrumbAddress, formatNumber } from "../../../helpers";
+import { formatNumber } from "../../../helpers";
 import { cleanFormFields } from "../../../api/helpers";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
+import { Header } from "../../Header/Header";
 import "./Form.scss";
 
 export type FormFields = {
@@ -82,25 +82,13 @@ export const Form: React.FC = () => {
   };
 
   return (
-    <div className="form__wrapper content-section">
-      <div className="content-section__content">
-        <BreadCrumbs
-          crumbs={[
-            { path: "/home", name: "Home" },
-            {
-              path: "/confirm_address",
-              name: breadCrumbAddress(address),
-            },
-            { path: "/form", name: "Screener survey", active: true },
-            { path: "/results", name: "Coverage result" },
-          ]}
-        />
-
-        <h2>Screener Survey</h2>
-
-        <p className="form__subheader">
-          We'll use your answers to help determine your coverage.
-        </p>
+    <div id="survey-page">
+      <Header
+        title="Survey"
+        subtitle="We'll use your answers to help determine your coverage"
+        address={address}
+      />
+      <div className="content-section">
         <form>
           <FormStep step={1} total={NUM_STEPS}>
             <FormGroup legendText="How many bedrooms are in your apartment?">

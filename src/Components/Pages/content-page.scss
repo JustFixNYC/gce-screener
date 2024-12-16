@@ -21,14 +21,19 @@ $eligibilityTablePaddingH: 36px;
 .headline-section {
   position: relative;
   padding-top: 70px;
-  padding-bottom: 2.5rem; // 40px
+  padding-bottom: 3rem; // 48px
   background-color: $OFF_WHITE_200;
+  border-bottom: 1px solid $OFF_BLACK;
 
   .headline-section__content {
+    width: 100%;
     max-width: $contentBoxWidth;
-    @media (max-width: 772px) {
-      width: 100%;
+    margin-top: 3rem; // 48px
+
+    .headline-section__back-link {
+      margin-bottom: 0.75rem; // 12px
     }
+
     .headline-section__page-type {
       @include eyebrow_large_desktop;
       padding-top: 30px;
@@ -46,7 +51,6 @@ $eligibilityTablePaddingH: 36px;
     .headline-section__title {
       display: flex;
       flex-direction: column;
-      margin: 2.625rem 0; //42px
       gap: 4px;
       @media print {
         margin: 24px 0;
@@ -55,7 +59,7 @@ $eligibilityTablePaddingH: 36px;
 
     .headline-section__subtitle {
       @include body_large_desktop;
-      margin-bottom: 2.25rem; // 36px
+      margin-top: 1.125rem; // 18px
       @media print {
         margin-bottom: 0;
       }
@@ -71,6 +75,7 @@ $eligibilityTablePaddingH: 36px;
 
 .content-section {
   background-color: $OFF_WHITE_NEW;
+  padding-top: 3rem; // 48px
 
   .content-section__content {
     max-width: $contentBoxWidth;

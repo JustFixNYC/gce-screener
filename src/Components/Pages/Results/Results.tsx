@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   Link,
   NavigateFunction,
@@ -7,7 +7,6 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { Button, Icon } from "@justfixnyc/component-library";
-import classNames from "classnames";
 
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
@@ -23,9 +22,8 @@ import {
   extractDeterminations,
 } from "../../../api/helpers";
 import { Address } from "../Home/Home";
-import { breadCrumbAddress, getDetermination } from "../../../helpers";
+import { getDetermination } from "../../../helpers";
 import { ContentBox, ContentBoxItem } from "../../ContentBox/ContentBox";
-import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import JFCLLinkInternal from "../../JFCLLinkInternal";
 import {
   GoodCauseExercisingRights,
@@ -33,6 +31,7 @@ import {
   RentStabilizedProtections,
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
+import { Header } from "../../Header/Header";
 import "./Results.scss";
 
 export const Results: React.FC = () => {
@@ -86,21 +85,23 @@ export const Results: React.FC = () => {
   const isRentStabilized =
     eligibilityResults?.rentRegulation.determination === "INELIGIBLE";
 
-  const [showTable, setShowTable] = useState<boolean>();
-
-  // TODO: not sure this is right way to handle this. Should we get and store
-  // eligibility data on submission of the from on the previous page instead?
-  useLayoutEffect(() => {
-    if (determination && isRentStabilized !== undefined) {
-      setShowTable(
-        determination && determination === "INELIGIBLE" && !isRentStabilized
-      );
-    }
-  }, [determination, isRentStabilized]);
-
   return (
-    <>
-      <div className="headline-section">
+    <div id="results-page">
+      <Header
+        title={
+          bldgData && eligibilityResults ? (
+            <EligibilityResultHeadline
+              address={address?.address}
+              determination={determination}
+              eligibilityResults={eligibilityResults}
+            />
+          ) : (
+            "Loading your results..."
+          )
+        }
+        subtitle="We'll use your answers to help determine your coverage"
+        address={address}
+      >
         {error && (
           <div className="eligibility__error">
             There was an error loading your results, please try again in a few
@@ -111,69 +112,25 @@ export const Results: React.FC = () => {
           <div className="eligibility__loading">Loading your results...</div>
         )}
 
-        <div className="headline-section__content">
-          <BreadCrumbs
-            crumbs={[
-              { path: "/home", name: "Home" },
-              {
-                path: "/confirm_address",
-                name: breadCrumbAddress(address),
-              },
-              { path: "/form", name: "Screener survey" },
-              { path: "/results", name: "Coverage result", active: true },
-            ]}
-          />
-          <div className="headline-section__page-type">Coverage Result</div>
-          <div className="headline-section__page-type__print">
-            Good Cause Eviction Screener
-          </div>
-          {bldgData && eligibilityResults && (
-            <>
-              <h2 className="headline-section__title">
-                <EligibilityResultHeadline
-                  address={address?.address}
-                  determination={determination}
-                  eligibilityResults={eligibilityResults}
-                />
-              </h2>
-
-              <div className="headline-section__subtitle">
-                based on the data we have about your apartment and the
-                information you’ve provided.
-              </div>
-            </>
-          )}
-          {showTable !== undefined && (
-            <>
-              <Button
-                labelText={showTable ? "Hide details" : "Expand criteria"}
-                labelIcon={showTable ? "eyeSlash" : "eye"}
-                onClick={() => setShowTable((prev) => !prev)}
-                size="small"
-                className={classNames(
-                  "eligibility__toggle",
-                  showTable ? "open" : "closed"
-                )}
-              />
-              <div className="eligibility__table__container">
-                {showTable && bldgData && (
-                  <EligibilityCriteriaTable
-                    eligibilityResults={eligibilityResults}
-                  />
-                )}
-              </div>
-
-              <div className="eligibility__table__container__print">
-                <ContentBox title="Your results" subtitle="Coverage criteria">
-                  <EligibilityCriteriaTable
-                    eligibilityResults={eligibilityResults}
-                  />
-                </ContentBox>
-              </div>
-            </>
+        <div className="eligibility__table__container">
+          {bldgData && (
+            <EligibilityCriteriaTable eligibilityResults={eligibilityResults} />
           )}
         </div>
-      </div>
+
+        {/* <div className="eligibility__table__container__print">
+              <ContentBox title="Your results" subtitle="Coverage criteria">
+                <EligibilityCriteriaTable
+                  eligibilityResults={eligibilityResults}
+                />
+              </ContentBox>
+            </div> */}
+      </Header>
+
+      {/* TODO: add to header if we need to keep this */}
+      {/* <div className="headline-section__page-type__print">
+            Good Cause Eviction Screener
+          </div> */}
 
       <div className="content-section">
         <div className="content-section__content">
@@ -214,7 +171,7 @@ export const Results: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -289,6 +246,15 @@ const EligibilityCriteriaTable: React.FC<{
   eligibilityResults: EligibilityResults | undefined;
 }> = ({ eligibilityResults }) => (
   <div className="eligibility__table">
+    <div className="eligibility__table__header">
+      <span className="eligibility__table__header__title">
+        How we determined your coverage
+      </span>
+      <p>
+        Assessment of coverage is based on the publicly available data about
+        your building and the information you’ve provided.
+      </p>
+    </div>
     <ul className="eligibility__table__list">
       {eligibilityResults?.rent && (
         <CriteriaResult {...eligibilityResults.rent} />
@@ -329,6 +295,7 @@ const EligibilityNextSteps: React.FC<{
     eligibilityResults?.portfolioSize?.determination === "UNKNOWN";
   const rentRegulationUnknown =
     eligibilityResults?.rentRegulation?.determination === "UNKNOWN";
+  console.log([portfolioSizeUnknown, rentRegulationUnknown]);
   const steps = [portfolioSizeUnknown, rentRegulationUnknown].filter(
     Boolean
   ).length;
@@ -374,7 +341,7 @@ const EligibilityNextSteps: React.FC<{
           className="next-step"
           open
         >
-          {bldgData.related_properties.length ? (
+          {bldgData.related_properties ? (
             <>
               <p>
                 {`Good Cause Eviction law only covers tenants whose landlord owns

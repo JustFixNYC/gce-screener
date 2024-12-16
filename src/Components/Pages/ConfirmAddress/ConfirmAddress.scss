@@ -6,19 +6,7 @@ $mapBoxPadding: 1.5rem; // 24px
 $mapImgWidth: calc($contentBoxWidth - (2 * $mapBoxPadding)); // 838px
 $mapImgHeight: 356px;
 
-.confirmation__wrapper {
-  .headline-section {
-    background-color: $OFF_WHITE_NEW;
-    padding-bottom: 0;
-
-    .headline-section__content {
-      // width: calc($mapImgWidth + (2 * 1.5rem));
-      .headline-section__subtitle {
-        margin-bottom: 0;
-      }
-    }
-  }
-
+#confirm-address-page {
   .content-box {
     padding: $mapBoxPadding;
 
