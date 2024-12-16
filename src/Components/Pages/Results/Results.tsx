@@ -24,10 +24,15 @@ import {
 } from "../../../api/helpers";
 import { Address } from "../Home/Home";
 import { breadCrumbAddress, getDetermination } from "../../../helpers";
-import { ContentBox, ContentBoxProps } from "../../ContentBox/ContentBox";
+import { ContentBox, ContentBoxItem } from "../../ContentBox/ContentBox";
 import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
-import JFCLLinkExternal from "../../JFCLLinkExternal";
 import JFCLLinkInternal from "../../JFCLLinkInternal";
+import {
+  GoodCauseExercisingRights,
+  GoodCauseProtections,
+  RentStabilizedProtections,
+  UniversalProtections,
+} from "../../KYRContent/KYRContent";
 import "./Results.scss";
 
 export const Results: React.FC = () => {
@@ -159,10 +164,7 @@ export const Results: React.FC = () => {
               </div>
 
               <div className="eligibility__table__container__print">
-                <ContentBox
-                  headerTitle="Your results"
-                  headerSubtitle="Coverage criteria"
-                >
+                <ContentBox title="Your results" subtitle="Coverage criteria">
                   <EligibilityCriteriaTable
                     eligibilityResults={eligibilityResults}
                   />
@@ -183,28 +185,22 @@ export const Results: React.FC = () => {
             />
           )}
 
-          {isRentStabilized && rentStabilizedProtections}
-
+          {isRentStabilized && <RentStabilizedProtections />}
           {determination === "UNKNOWN" && (
-            <GoodCauseProtections
-              headerTitle="KNOW YOUR RIGHTS"
-              headerSubtitle="Protections you might have under Good Cause Eviction law"
-            />
-          )}
-
-          {determination === "ELIGIBLE" && (
             <>
-              <GoodCauseProtections
-                headerTitle="KNOW YOUR RIGHTS"
-                headerSubtitle="Protections you have under Good Cause Eviction law"
-              />
-              {goodCauseExercisingRights}
+              <GoodCauseProtections subtitle="Protections you might have under Good Cause Eviction law" />
+              <UniversalProtections />
             </>
           )}
-
-          {determination === "INELIGIBLE" &&
-            !isRentStabilized &&
-            universalProtections}
+          {determination === "ELIGIBLE" && (
+            <>
+              <GoodCauseProtections />
+              <GoodCauseExercisingRights />
+            </>
+          )}
+          {determination === "INELIGIBLE" && !isRentStabilized && (
+            <UniversalProtections />
+          )}
 
           <div className="eligibility__footer">
             <h3 className="eligibility__footer__header">
@@ -236,7 +232,7 @@ const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
 }) => {
   switch (determination) {
     case "ELIGIBLE":
-      return <Icon icon="check" className={determination} title="Pass" />;
+      return <Icon icon="check" className="eligible" title="Pass" />;
     default:
       return (
         <Icon
@@ -338,70 +334,72 @@ const EligibilityNextSteps: React.FC<{
   ).length;
   return (
     <ContentBox
-      headerTitle="What this means for you"
-      headerSubtitle={
+      title="What this means for you"
+      subtitle={
         steps == 1
           ? "There is still one thing you need to verify"
           : `There are still ${steps} things you need to verify`
       }
     >
       {rentRegulationUnknown && (
-        <div className="content-box__section">
-          <span className="eligibility__icon">
-            <EligibilityIcon determination="UNKNOWN" />
-          </span>
-          <div className="content-box__section__content">
-            <div className="content-box__section__header">
-              We need to know if your apartment is rent stabilized.
-            </div>
-            <p>
-              The Good Cause Eviction law only covers tenants whose apartments
-              are not rent regulated. You told us that you are unsure of your
-              rent regulation status.
-            </p>
-            <JFCLLinkInternal to="/rent_stabilization">
-              Learn how to find out
-            </JFCLLinkInternal>
-          </div>
-        </div>
+        <ContentBoxItem
+          title="We need to know if your apartment is rent stabilized."
+          icon={
+            <span className="eligibility__icon">
+              <EligibilityIcon determination="UNKNOWN" />
+            </span>
+          }
+          className="next-step"
+          open
+        >
+          <p>
+            The Good Cause Eviction law only covers tenants whose apartments are
+            not rent regulated. You told us that you are unsure of your rent
+            regulation status.
+          </p>
+          <JFCLLinkInternal to="/rent_stabilization">
+            Learn how to find out
+          </JFCLLinkInternal>
+        </ContentBoxItem>
       )}
 
       {portfolioSizeUnknown && (
-        <div className="content-box__section">
-          <span className="eligibility__icon">
-            <EligibilityIcon determination="UNKNOWN" />
-          </span>
-          <div className="content-box__section__content">
-            <div className="content-box__section__header">
-              We need to know if your landlord owns more than 10 units.
-            </div>
-            {bldgData.related_properties.length ? (
-              <>
-                <p>
-                  {`Good Cause Eviction law only covers tenants whose landlord owns
+        <ContentBoxItem
+          title="We need to know if your landlord owns more than 10 units."
+          icon={
+            <span className="eligibility__icon">
+              <EligibilityIcon determination="UNKNOWN" />
+            </span>
+          }
+          className="next-step"
+          open
+        >
+          {bldgData.related_properties.length ? (
+            <>
+              <p>
+                {`Good Cause Eviction law only covers tenants whose landlord owns
                 more than 10 units. Your building has only ${bldgData.unitsres} apartments, but
                 your landlord may own other buildings.`}
-                </p>
+              </p>
 
-                <JFCLLinkInternal to="/portfolio_size">
-                  Learn how to find out
-                </JFCLLinkInternal>
-              </>
-            ) : (
-              <>
-                <p>
-                  {`Good Cause Eviction law only covers tenants whose landlord owns
+              <JFCLLinkInternal to="/portfolio_size">
+                Learn how to find out
+              </JFCLLinkInternal>
+            </>
+          ) : (
+            <>
+              <p>
+                {`Good Cause Eviction law only covers tenants whose landlord owns
                 more than 10 units. Your building has only ${bldgData.unitsres} apartments.`}
-                </p>
-                <br />
-                <p>
-                  We are unable to find other apartments your landlord might own
-                  in our records.
-                </p>
-              </>
-            )}
-          </div>
-        </div>
+              </p>
+              <br />
+              <p>
+                We are unable to find other apartments your landlord might own
+                in our records.
+              </p>
+            </>
+          )}
+        </ContentBoxItem>
       )}
 
       <div className="content-box__footer">
@@ -422,271 +420,6 @@ const EligibilityNextSteps: React.FC<{
     </ContentBox>
   );
 };
-
-const GoodCauseProtections = (props: Omit<ContentBoxProps, "children">) => (
-  <ContentBox {...props}>
-    <div className="content-box__section">
-      <div className="content-box__section__content">
-        <div className="content-box__section__header">
-          Your right to a lease renewal
-        </div>
-        <p>
-          Your landlord will need to provide a good cause reason for ending a
-          tenancy. This includes evicting tenants, not renewing a lease, or, if
-          the tenant does not have a lease, giving notice that the tenancy will
-          end.
-        </p>
-      </div>
-    </div>
-
-    <div className="content-box__section">
-      <div className="content-box__section__content">
-        <div className="content-box__section__header">
-          Your right to limited rent increases
-        </div>
-        <p>
-          Your landlord is not allowed to increase your rent at a rate higher
-          than the local standard. The local rent standard is set every year at
-          the rate of inflation plus 5%, with a maximum of 10% total.
-        </p>
-        <br />
-        <p>
-          As of May 1, 2024, the rate of inflation for the New York City area is
-          3.82%, meaning that the current local rent standard is 8.82%. A rent
-          increase of more than 8.82% could be found unreasonable by the court
-          if the rent was increased after April 20, 2024.
-        </p>
-      </div>
-    </div>
-
-    <div className="content-box__section">
-      <div className="content-box__section__content">
-        <p className="bold">
-          Learn more about Good Cause Eviction Law protections
-        </p>
-        <JFCLLinkExternal href="https://housingjusticeforall.org/kyr-good-cause">
-          Housing Justice for All Good Cause Eviction fact sheet
-        </JFCLLinkExternal>
-        <JFCLLinkExternal
-          href="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction"
-          className="has-label"
-        >
-          Met Council on Housing Good Cause Eviction fact sheet
-        </JFCLLinkExternal>
-      </div>
-    </div>
-  </ContentBox>
-);
-
-const goodCauseExercisingRights = (
-  <ContentBox
-    headerTitle="EXERCISING YOUR RIGHTS"
-    headerSubtitle="Share your coverage with your landlord"
-  >
-    <div className="content-box__section">
-      <div className="content-box__section__content">
-        <p>
-          Assert your rights by printing your coverage results and sharing with
-          your landlord. You can use these results as an indicator that your
-          apartment is covered by Good Cause Eviction Law.
-        </p>
-      </div>
-    </div>
-
-    <div className="content-box__footer">
-      <div className="content-box__section__content">
-        <Button
-          labelText="Print my coverage results"
-          labelIcon="print"
-          variant="secondary"
-          className="disabled"
-        />
-      </div>
-    </div>
-  </ContentBox>
-);
-
-const rentStabilizedProtections = (
-  <ContentBox
-    headerTitle="EXERCISING YOUR RIGHTS"
-    headerSubtitle="Your right to limited rent increases"
-  >
-    <div className="content-box__section">
-      <div className="content-box__section__content">
-        <div className="content-box__section__header">
-          Your right to limited rent increases
-        </div>
-        <p>
-          For rent-stabilized leases being renewed between October 1, 2024 and
-          September 30, 2025 the legal rent may be increased at the following
-          levels: for a one-year renewal there is a 2.75% increase, or for a
-          two-year renewal there is a 5.25% increase.
-        </p>
-        <JFCLLinkExternal href="https://hcr.ny.gov/system/files/documents/2024/10/fact-sheet-26-10-2024.pdf">
-          Learn about rent increase rights
-        </JFCLLinkExternal>
-      </div>
-    </div>
-
-    <div className="content-box__section">
-      <div className="content-box__section__content">
-        <div className="content-box__section__header">
-          Your right to a lease renewal
-        </div>
-        <p>
-          If you are rent-stabilized your landlord cannot simply decide they
-          don’t want you as a tenant anymore, they are limited to certain
-          reasons for evicting you.
-        </p>
-        <JFCLLinkExternal href="https://rentguidelinesboard.cityofnewyork.us/resources/faqs/leases-renewal-vacancy/#landlord:~:text=If%20your%20apartment%20is%20rent,before%20the%20existing%20lease%20expires">
-          Learn about lease renewal rights
-        </JFCLLinkExternal>
-      </div>
-    </div>
-
-    <div className="content-box__section">
-      <div className="content-box__section__content">
-        <div className="content-box__section__header">
-          Your right to succession
-        </div>
-        <p>
-          If you are the immediate family member of a rent-stabilized tenant and
-          have been living with them immediately prior to their moving or
-          passing away, you might be entitled to take over the lease.
-        </p>
-        <JFCLLinkExternal href="https://www.metcouncilonhousing.org/help-answers/succession-rights-in-rent-stabilized-and-rent-controlled-apartments/">
-          Learn about succession rights
-        </JFCLLinkExternal>
-      </div>
-    </div>
-  </ContentBox>
-);
-
-const universalProtections = (
-  <ContentBox
-    headerTitle="KNOW YOUR RIGHTS"
-    headerSubtitle="Protections you still have as a tenant in NYC"
-  >
-    <div className="content-box__section">
-      <div className="content-box__section__content">
-        <div className="content-box__section__header">
-          Your eviction protections
-        </div>
-        <p>
-          The only way your landlord can evict you is through housing court.
-          Lockouts (also known as unlawful evictions or self-help evictions) are
-          illegal. All tenants, including those in private residential programs,
-          have the right to stay in their home unless they choose to leave or
-          are evicted through a court process.
-        </p>
-        <br />
-        <p className="bold">Learn more about the eviction process</p>
-        <JFCLLinkExternal
-          href="https://hcr.ny.gov/eviction"
-          className="has-label"
-        >
-          NY Homes and Community Renewal
-        </JFCLLinkExternal>
-        <br />
-        <br />
-        <p className="bold">See if you are eligible for a free attorney</p>
-        <JFCLLinkExternal
-          href="https://www.evictionfreenyc.org"
-          className="has-label"
-        >
-          Eviction Free NYC
-        </JFCLLinkExternal>
-      </div>
-    </div>
-
-    <div className="content-box__section">
-      <div className="content-box__section__content">
-        <div className="content-box__section__header">
-          Your right to a liveable home
-        </div>
-        <p>
-          Tenants have the right to live in a safe, sanitary, and
-          well-maintained apartment, including public areas of the building.
-          This right is implied in every residential lease, and any lease
-          provision that waives it is void. If your landlord is not providing
-          these conditions in your apartment or building, there are actions you
-          can take to exercise your rights.
-        </p>
-        <br />
-        <p className="bold">Learn about warranty of habitability</p>
-        <JFCLLinkExternal
-          href="https://nycourts.gov/courts/nyc/housing/pdfs/warrantyofhabitability.pdf"
-          className="has-label"
-        >
-          NY Courts
-        </JFCLLinkExternal>
-        <br />
-        <br />
-        <p className="bold">Learn how tenant associations can help</p>
-        <JFCLLinkExternal
-          href="https://www.metcouncilonhousing.org/help-answers/forming-a-tenants-association"
-          className="has-label"
-        >
-          Met Council on Housing
-        </JFCLLinkExternal>
-        <br />
-        <br />
-        <p className="bold">Notify your landlord of repair issues</p>
-        <JFCLLinkExternal
-          href="https://app.justfix.org/loc/splash"
-          className="has-label"
-        >
-          JustFix’s Letter of Complaint
-        </JFCLLinkExternal>
-      </div>
-    </div>
-
-    <div className="content-box__section">
-      <div className="content-box__section__content">
-        <div className="content-box__section__header">
-          Your rights if you’re being discriminated against
-        </div>
-        <p>
-          Your landlord can’t evict you based on your race, religion, gender,
-          national origin, familial status, or disability. New York State law
-          promises protection from discrimination, banning bias based on age,
-          sexual orientation, and military status.
-        </p>
-        <p>
-          Source of income discrimination the illegal practice by landlords,
-          owners, and real estate brokers of refusing to rent to current or
-          prospective tenants seeking to pay for housing with housing assistance
-          vouchers, subsidies, or other forms of public assistance.
-        </p>
-        <br />
-        <p className="bold">Learn more about fair housing</p>
-        <JFCLLinkExternal
-          href="https://www.nyc.gov/site/fairhousing/about/what-is-fair-housing.page"
-          className="has-label"
-        >
-          Fair Housing NYC
-        </JFCLLinkExternal>
-        <br />
-        <br />
-        <p className="bold">
-          Learn more about lawful source of income discrimination
-        </p>
-        <JFCLLinkExternal
-          href="https://www.nyc.gov/site/fairhousing/renters/lawful-source-of-income.page"
-          className="has-label"
-        >
-          Lawful source of income
-        </JFCLLinkExternal>
-        <br />
-        <br />
-        <p className="bold">Report source of income discrimination</p>
-        <JFCLLinkExternal href="https://weunlock.nyc" className="has-label">
-          Unlock NYC
-        </JFCLLinkExternal>
-      </div>
-    </div>
-  </ContentBox>
-);
 
 const EligibilityResultHeadline: React.FC<{
   address: string;

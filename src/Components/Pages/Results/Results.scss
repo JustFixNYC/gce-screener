@@ -297,3 +297,31 @@ $eligibilityTablePaddingH: 36px;
     }
   }
 }
+
+.next-step {
+  --icon-size: 2.75rem; // 44px;
+  --icon-margin: 1.5rem; // 24px;
+
+  .eligibility__icon {
+    font-size: 1.875rem; //30px
+    margin-right: var(--icon-margin);
+
+    .eligible {
+      color: $GREEN;
+    }
+    .ineligible {
+      color: $RED;
+    }
+    .unknown {
+      color: $YELLOW;
+    }
+
+    svg {
+      width: var(--icon-size);
+      height: var(--icon-size);
+    }
+  }
+  .accordion__content {
+    margin-left: calc(var(--icon-size) + var(--icon-margin));
+  }
+}

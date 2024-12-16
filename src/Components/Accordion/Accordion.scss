@@ -2,12 +2,11 @@
 @import "../../mixins.scss";
 
 .accordion {
+  padding: 0;
   summary {
     display: flex;
     align-items: center;
     list-style: none;
-    @include body_standard_desktop;
-    font-weight: 600;
     cursor: pointer;
 
     .accordion__chevron {
@@ -16,7 +15,6 @@
   }
 
   &[open] {
-    padding-bottom: 1.125rem; // 18px
     summary .accordion__chevron {
       transform: scale(-1, -1);
     }

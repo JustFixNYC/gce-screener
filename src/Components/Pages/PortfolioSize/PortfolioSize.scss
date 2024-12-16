@@ -8,7 +8,12 @@
 
   .acris-links {
     border: 1px solid $GREY_NEW;
-    padding: 1.125rem 1.5rem; // 18px 24px
+
+    .accordion__summary,
+    & > .acris-links__header {
+      padding: 1.125rem 1.5rem; // 18px 24px
+    }
+
     .acris-links__header {
       display: flex;
       align-items: center;
@@ -22,10 +27,13 @@
       }
     }
 
+    .accordion__content {
+      padding: 0;
+    }
+
     .acris-links__content {
-      .info-box {
-        margin: 1.125rem 0; // 18px
-      }
+      padding: 0 1.5rem 1.125rem 1.5rem; // 0 24px 18px 24px
+
       p {
         font-weight: 600;
         margin-top: 1.875rem; // 30px

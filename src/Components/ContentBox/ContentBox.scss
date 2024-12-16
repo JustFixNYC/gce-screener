@@ -31,29 +31,30 @@ $videoEmbedW: 623px;
 .content-box__section,
 .content-box__footer {
   display: flex;
-  padding: $contentBoxPadding;
+  flex-direction: column;
+  padding: 1.5rem 2.25rem; // 24px 36px
   border-top: 1px solid $GREY_NEW;
 
-  .eligibility__icon {
-    font-size: 1.875rem; //30px
-    width: 1.875rem; //30px
-    margin-right: 36px;
-
-    .eligible {
-      color: $GREEN;
-    }
-    .ineligible {
-      color: $RED;
-    }
-    .unknown {
-      color: $YELLOW;
-    }
+  .accordion__summary {
+    padding: 1.5rem 2.25rem; // 24px 36px
   }
 
-  .content-box__section__content {
+  &.accordion[open] .accordion__summary {
+    padding: 1.5rem 2.25rem 1.125rem 2.25rem; // 24px 36px 18px 36px
+  }
+
+  .content-box__section__header {
+    @include body_large_desktop;
+  }
+
+  .accordion__content {
+    padding: 0 2.25rem 2rem 2.25rem; // 0 36px 32px 36px
+  }
+
+  .content-box__section__content,
+  .accordion__content {
     display: flex;
     flex-direction: column;
-    width: 100%;
 
     .content-box__section__step {
       @include eyebrow_small_desktop;
