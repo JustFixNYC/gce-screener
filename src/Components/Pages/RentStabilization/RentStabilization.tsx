@@ -7,7 +7,6 @@ import {
 } from "../../ContentBox/ContentBox";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { BackLink } from "../../JFCLLinkInternal";
-import "./RentStabilization.scss";
 import { Address } from "../Home/Home";
 import { Header } from "../../Header/Header";
 
