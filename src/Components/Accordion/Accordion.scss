@@ -2,6 +2,7 @@
 @import "../../mixins.scss";
 
 .accordion {
+  padding: 0;
   summary {
     display: flex;
     align-items: center;

@@ -35,19 +35,26 @@ $videoEmbedW: 623px;
   padding: 1.5rem 2.25rem; // 24px 36px
   border-top: 1px solid $GREY_NEW;
 
+  .accordion__summary {
+    padding: 1.5rem 2.25rem; // 24px 36px
+  }
+
+  &.accordion[open] .accordion__summary {
+    padding: 1.5rem 2.25rem 1.125rem 2.25rem; // 24px 36px 18px 36px
+  }
+
   .content-box__section__header {
     @include body_large_desktop;
   }
 
   .accordion__content {
-    margin-top: 1.125rem; // 18px
+    padding: 0 2.25rem 2rem 2.25rem; // 0 36px 32px 36px
   }
 
   .content-box__section__content,
   .accordion__content {
     display: flex;
     flex-direction: column;
-    width: 100%;
 
     .content-box__section__step {
       @include eyebrow_small_desktop;
@@ -86,10 +93,6 @@ $videoEmbedW: 623px;
       }
     }
   }
-}
-
-.accordion.content-box__section[open] {
-  padding-bottom: 2rem; // 32px
 }
 
 .content-box__footer {
