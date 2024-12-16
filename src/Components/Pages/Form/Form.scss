@@ -4,12 +4,7 @@
 
 $inputTopMargin: 1.5rem; //24px
 
-.form__wrapper {
-  position: relative;
-  padding-top: calc(70px + 1rem); // TODO: use var for breadcrumbs height
-  padding-left: 3rem; // 48px
-  padding-right: 3rem; // 48px
-
+#survey-page {
   .jfcl-input-header__label {
     margin-top: 0;
     margin-bottom: 0;

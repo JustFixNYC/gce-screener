@@ -18,6 +18,7 @@ import {
 } from "../../../helpers";
 import "./PortfolioSize.scss";
 import { InfoBox } from "../../InfoBox/InfoBox";
+import { Header } from "../../Header/Header";
 
 // const LOOM_EMBED_URL =
 //   "https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119";
@@ -45,26 +46,19 @@ export const PortfolioSize: React.FC = () => {
   const { data: bldgData, isLoading, error } = useGetBuildingData(bbl);
 
   return (
-    <div id="portfolio-size-guide">
-      <div className="headline-section">
-        <div className="headline-section__content">
-          <BackLink to="/results">Back to Coverage Result</BackLink>
-          {error && (
-            <div className="eligibility__error">
-              There was an error loading your results, please try again in a few
-              minutes.
-            </div>
-          )}
-          <div className="headline-section__page-type">Guide</div>
-          <h2 className="headline-section__title">
-            Finding out if your landlord owns other apartments
-          </h2>
-          <div className="headline-section__subtitle">
-            Everything you need to know about researching your landlord’s other
-            potential properties.
+    <div id="portfolio-size-page">
+      <Header
+        title="Find out if your landlord owns other apartments"
+        address={address}
+        isGuide
+      >
+        {error && (
+          <div className="eligibility__error">
+            There was an error loading your results, please try again in a few
+            minutes.
           </div>
-        </div>
-      </div>
+        )}
+      </Header>
 
       <div className="content-section">
         <div className="content-section__content"></div>

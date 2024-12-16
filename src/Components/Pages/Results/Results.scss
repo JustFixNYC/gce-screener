@@ -66,18 +66,23 @@ $eligibilityTablePaddingH: 36px;
   }
 }
 
+.eligibility__table {
+  margin-top: 3rem; // 48px
+}
+
 .eligibility__table__header {
   display: flex;
-  padding-bottom: $eligibilityTablePaddingH;
   flex-direction: column;
-  gap: 10px;
+  padding: 1.125rem 1.125rem 2.25rem 1.125rem; // 20px 20px 36px 20px;
+  gap: 0.75rem; // 12px
+  border-bottom: 1px solid $GREY_NEW;
 
-  .eligibility__table__header-title {
-    @include eyebrow_small_desktop;
+  span {
+    @include body_large_desktop;
   }
-
-  .eligibility__table__header-subtitle {
-    @include h3_desktop;
+  p {
+    @include body_standard_desktop;
+    margin: 0;
   }
 }
 

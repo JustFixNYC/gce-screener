@@ -37,7 +37,7 @@ export type BuildingData = {
   end_421a: string;
   end_j51: string;
   acris_docs: AcrisDocument[];
-  related_properties: RelatedProperty[];
+  related_properties: RelatedProperty[] | null;
 };
 
 // Tenants2 API

@@ -3,7 +3,7 @@ import { EligibilityResults, Determination } from "./hooks/eligibility";
 import { RelatedProperty } from "./types/APIDataTypes";
 import { Address } from "./Components/Pages/Home/Home";
 
-function toTitleCase(x: string) {
+export function toTitleCase(x: string) {
   return x.replace(
     /\w\S*/g,
     (text: string) =>

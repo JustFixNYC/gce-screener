@@ -1,13 +1,13 @@
-import { Button } from "@justfixnyc/component-library";
-import { Address } from "../Home/Home";
-import "./ConfirmAddress.scss";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { Button } from "@justfixnyc/component-library";
+
+import { Address } from "../Home/Home";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { BackLink } from "../../JFCLLinkInternal";
-import { BreadCrumbs } from "../../BreadCrumbs/BreadCrumbs";
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { GCEUser } from "../../../types/APIDataTypes";
-import { breadCrumbAddress } from "../../../helpers";
+import { Header } from "../../Header/Header";
+import "./ConfirmAddress.scss";
 
 export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
@@ -44,29 +44,12 @@ export const ConfirmAddress: React.FC = () => {
   };
 
   return (
-    <div className="confirmation__wrapper">
-      <div className="headline-section">
-        <div className="headline-section__content">
-          <BreadCrumbs
-            crumbs={[
-              { path: "/home", name: "Home" },
-              {
-                path: "/confirm_address",
-                name: breadCrumbAddress(address),
-                active: true,
-              },
-              { path: "/form", name: "Screener survey" },
-              { path: "/results", name: "Coverage result" },
-            ]}
-          />
-
-          <h2 className="headline-section__title">Confirm your address</h2>
-          <div className="headline-section__subtitle">
-            We'll use info about your building from public data sources to help
-            learn if you're covered
-          </div>
-        </div>
-      </div>
+    <div id="confirm-address-page">
+      <Header
+        title="Confirm your address"
+        subtitle="We'll use info about your building from public data sources to help learn if you're covered"
+        address={address}
+      />
 
       <div className="content-section">
         <div className="content-section__content">
