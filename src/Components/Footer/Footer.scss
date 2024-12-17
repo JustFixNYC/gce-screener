@@ -34,26 +34,6 @@
       padding-right: 1.5rem; // 24px
     }
 
-    .footer__page_links {
-      display: flex;
-      align-self: start;
-      gap: 6rem;
-
-      .footer__page_links__column {
-        display: flex;
-        flex-direction: column;
-        .jfcl-link {
-          @include h4_desktop;
-        }
-      }
-    }
-
-    .footer__divider {
-      align-self: stretch;
-      margin: 3rem 0 2.25rem 0; // 48px 0 36px 0
-      border-bottom: 1px solid $OFF_WHITE_100;
-    }
-
     .footer__legal_disclaimer {
       font-size: 1.125rem; // 18px
     }
