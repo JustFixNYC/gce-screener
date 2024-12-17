@@ -5,13 +5,15 @@ import {
   ContentBoxProps,
 } from "../ContentBox/ContentBox";
 import JFCLLinkExternal from "../JFCLLinkExternal";
-import { Button } from "@justfixnyc/component-library";
 
-type ContentBoxHeaderProps = Omit<ContentBoxProps, "children">;
+type KYRContentBoxProps = Omit<ContentBoxProps, "children"> & {
+  children?: React.ReactNode;
+};
 
-export const UniversalProtections: React.FC<ContentBoxHeaderProps> = ({
+export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
   title = "UNIVERSAL TENANT RIGHTS",
   subtitle: headerSubtitle = "Protections that all New Yorkers have",
+  children,
 }) => (
   <ContentBox title={title} subtitle={headerSubtitle}>
     <ContentBoxItem title="Your eviction protections">
@@ -116,12 +118,14 @@ export const UniversalProtections: React.FC<ContentBoxHeaderProps> = ({
         Unlock NYC
       </JFCLLinkExternal>
     </ContentBoxItem>
+    {children}
   </ContentBox>
 );
 
-export const GoodCauseProtections: React.FC<ContentBoxHeaderProps> = ({
+export const GoodCauseProtections: React.FC<KYRContentBoxProps> = ({
   title = "KNOW YOUR RIGHTS",
-  subtitle = "Protections you have under Good Cause Eviction law",
+  subtitle = "Protections you have under Good Cause Eviction",
+  children,
 }) => (
   <ContentBox title={title} subtitle={subtitle}>
     <ContentBoxItem title="Your right to a lease renewal">
@@ -159,40 +163,55 @@ export const GoodCauseProtections: React.FC<ContentBoxHeaderProps> = ({
         Met Council on Housing Good Cause Eviction fact sheet
       </JFCLLinkExternal>
     </ContentBoxItem>
+    {children}
   </ContentBox>
 );
 
-export const GoodCauseExercisingRights: React.FC<ContentBoxHeaderProps> = ({
-  title = "EXERCISING YOUR RIGHTS",
-  subtitle: headerSubtitle = "Share your coverage with your landlord",
+export const GoodCauseExercisingRights: React.FC<KYRContentBoxProps> = ({
+  title = "KNOW YOUR RIGHTS",
+  subtitle = "How to assert your rights",
+  children,
 }) => (
-  <ContentBox title={title} subtitle={headerSubtitle}>
-    <div className="content-box__section">
-      <div className="content-box__section__content">
-        <p>
-          Assert your rights by printing your coverage results and sharing with
-          your landlord. You can use these results as an indicator that your
-          apartment is covered by Good Cause Eviction Law.
-        </p>
-      </div>
-    </div>
-
-    <div className="content-box__footer">
-      <div className="content-box__section__content">
-        <Button
-          labelText="Print my coverage results"
-          labelIcon="print"
-          variant="secondary"
-          className="disabled"
-        />
-      </div>
-    </div>
+  <ContentBox title={title} subtitle={subtitle}>
+    <ContentBoxItem title="Share your coverage with your landlord">
+      <p>
+        Assert your rights by printing your coverage results and sharing with
+        your landlord. You can use these results as an indicator that your
+        apartment is covered by Good Cause Eviction Law.
+      </p>
+      {/* TODO: add email/download/print coverage result buttons */}
+    </ContentBoxItem>
+    <ContentBoxItem title="Organize with your neighbors">
+      <p>
+        Since your apartment is covered by Good Cause Eviction, there is a good
+        chance other apartments in your building are covered as well. Organizing
+        with your neighbors can help you assert your rights as a group.
+      </p>
+      <JFCLLinkExternal href="">
+        Tenant Organizing Toolkit from Housing Justice for All
+      </JFCLLinkExternal>
+    </ContentBoxItem>
+    <ContentBoxItem title="Reach out to Met Council on Housing">
+      <p>
+        The Met Council on Housing helps organize tenants to stand up not only
+        for their individual rights, but also for changes to housing policies.
+        You can visit the website, or use their hotline to get answers to your
+        rights as a tenant, and understand your options for dealing with a
+        housing situation.
+      </p>
+      <JFCLLinkExternal href="">Met Council on Housing</JFCLLinkExternal>
+      <JFCLLinkExternal href="">
+        Call Met Council on Housing Hotline
+      </JFCLLinkExternal>
+    </ContentBoxItem>
+    {children}
   </ContentBox>
 );
 
-export const RentStabilizedProtections: React.FC<ContentBoxHeaderProps> = ({
-  title = "EXERCISING YOUR RIGHTS",
-  subtitle = "Your right to limited rent increases",
+export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
+  title = "KNOW YOUR RIGHTS",
+  subtitle = "Protections you have as a rent stabilized tenant",
+  children,
 }) => (
   <ContentBox title={title} subtitle={subtitle}>
     <ContentBoxItem title="Your right to limited rent increases">
@@ -228,5 +247,49 @@ export const RentStabilizedProtections: React.FC<ContentBoxHeaderProps> = ({
         Learn about succession rights
       </JFCLLinkExternal>
     </ContentBoxItem>
+    {children}
+  </ContentBox>
+);
+
+export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
+  title = "KNOW YOUR RIGHTS",
+  subtitle = "Protections you have if you live in NYCHA housing",
+  children,
+}) => (
+  <ContentBox title={title} subtitle={subtitle}>
+    <ContentBoxItem title="Your right to limited rent increases">
+      <p>
+        For rent-stabilized leases being renewed between October 1, 2024 and
+        September 30, 2025 the legal rent may be increased at the following
+        levels: for a one-year renewal there is a 2.75% increase, or for a
+        two-year renewal there is a 5.25% increase.
+      </p>
+      <JFCLLinkExternal href="https://hcr.ny.gov/system/files/documents/2024/10/fact-sheet-26-10-2024.pdf">
+        Learn about rent increase rights
+      </JFCLLinkExternal>
+    </ContentBoxItem>
+
+    <ContentBoxItem title="Your right to a lease renewal">
+      <p>
+        If you are rent-stabilized your landlord cannot simply decide they don’t
+        want you as a tenant anymore, they are limited to certain reasons for
+        evicting you.
+      </p>
+      <JFCLLinkExternal href="https://rentguidelinesboard.cityofnewyork.us/resources/faqs/leases-renewal-vacancy/#landlord:~:text=If%20your%20apartment%20is%20rent,before%20the%20existing%20lease%20expires">
+        Learn about lease renewal rights
+      </JFCLLinkExternal>
+    </ContentBoxItem>
+
+    <ContentBoxItem title="Your right to succession">
+      <p>
+        If you are the immediate family member of a rent-stabilized tenant and
+        have been living with them immediately prior to their moving or passing
+        away, you might be entitled to take over the lease.
+      </p>
+      <JFCLLinkExternal href="https://www.metcouncilonhousing.org/help-answers/succession-rights-in-rent-stabilized-and-rent-controlled-apartments/">
+        Learn about succession rights
+      </JFCLLinkExternal>
+    </ContentBoxItem>
+    {children}
   </ContentBox>
 );

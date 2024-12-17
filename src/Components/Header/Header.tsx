@@ -9,6 +9,7 @@ type HeaderProps = {
   pageType?: string;
   address?: Address;
   isGuide?: boolean;
+  showBreadcrumbs?: boolean;
   children?: React.ReactNode;
 };
 
@@ -18,12 +19,13 @@ export const Header: React.FC<HeaderProps> = ({
   title,
   subtitle,
   isGuide = false,
+  showBreadcrumbs = true,
   children,
 }) => {
   return (
     <div className="headline-section">
       <div className="headline-section__content">
-        <BreadCrumbs address={address} />
+        {showBreadcrumbs && <BreadCrumbs address={address} />}
         {isGuide && (
           <div className="headline-section__back-link">
             <BackLink to="/results">Back to Coverage Result</BackLink>

@@ -128,19 +128,17 @@ export const Results: React.FC = () => {
           {isRentStabilized && <RentStabilizedProtections />}
           {determination === "UNKNOWN" && (
             <>
-              <GoodCauseProtections subtitle="Protections you might have under Good Cause Eviction law" />
+              <GoodCauseProtections subtitle="Protections you might have under Good Cause Eviction" />
               <UniversalProtections />
             </>
           )}
           {determination === "ELIGIBLE" && (
             <>
-              <GoodCauseProtections />
               <GoodCauseExercisingRights />
+              <GoodCauseProtections />
             </>
           )}
-          {determination === "INELIGIBLE" && !isRentStabilized && (
-            <UniversalProtections />
-          )}
+          <UniversalProtections />
 
           <div className="eligibility__footer">
             <h3 className="eligibility__footer__header">
