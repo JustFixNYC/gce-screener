@@ -2,6 +2,7 @@
 @import "../../colors.scss";
 
 .geo-search {
+  width: 100%;
   // the focus outline shifts the layout a bit, so trying to counter this (still a bit of flicker, but better)
   .jfcl-dropdown__control {
     margin-bottom: 2px;

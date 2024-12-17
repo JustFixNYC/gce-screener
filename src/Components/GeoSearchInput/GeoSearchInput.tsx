@@ -11,13 +11,25 @@ import { formatGeosearchAddress } from "../../helpers";
 type GeoSearchInputProps = {
   initialAddress?: Address;
   onChange: (selectedAddress: Address) => void;
+  invalid: boolean;
+  setInvalid: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
   initialAddress,
   onChange,
+  invalid,
+  setInvalid,
 }) => {
   const [results, setResults] = useState<GeoSearchFeature[]>([]);
+  const [isFocused, setIsFocused] = useState(false);
+
+  const placeholder = (
+    <>
+      <Icon icon="locationDot" />
+      Enter your address
+    </>
+  );
 
   const requester = useMemo(
     () =>
@@ -47,16 +59,18 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
   });
 
   return (
-    <>
+    <div className="geo-search">
       <Dropdown
         className="geo-search"
         options={options}
-        placeholder={
-          <>
-            <Icon icon="locationDot" />
-            Enter your address
-          </>
-        }
+        placeholder={!isFocused && placeholder}
+        invalid={!isFocused && invalid}
+        invalidText="You must enter an address"
+        onFocus={() => {
+          setInvalid(false);
+          setIsFocused(true);
+        }}
+        onBlur={() => setIsFocused(false)}
         filterOption={null}
         onInputChange={(value: string) => {
           requester.changeSearchRequest(value);
@@ -89,6 +103,6 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
           }
         }}
       />
-    </>
+    </div>
   );
 };
