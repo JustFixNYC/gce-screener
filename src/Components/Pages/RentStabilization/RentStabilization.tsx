@@ -1,114 +1,87 @@
-import { useNavigate } from "react-router-dom";
-import { Button } from "@justfixnyc/component-library";
+import { useLoaderData } from "react-router-dom";
 
-import { ContentBox } from "../../ContentBox/ContentBox";
+import {
+  ContentBox,
+  ContentBoxFooter,
+  ContentBoxItem,
+} from "../../ContentBox/ContentBox";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { BackLink } from "../../JFCLLinkInternal";
-import "./RentStabilization.scss";
+import { Address } from "../Home/Home";
+import { Header } from "../../Header/Header";
 
 export const RentStabilization: React.FC = () => {
-  const navigate = useNavigate();
+  const { address } = useLoaderData() as {
+    address: Address;
+  };
 
   return (
-    <div className="rent-stabilization__wrapper">
-      <div className="headline-section">
-        <div className="headline-section__content">
-          <BackLink to="/results">Back to coverage result</BackLink>
-          <div className="headline-section__page-type">Guide</div>
-          <h2 className="headline-section__title">
-            Find out if your apartment is rent stabilized
-          </h2>
-          <div className="headline-section__subtitle">
-            Everything you need to know if you are unsure if your apartment is
-            rent stabilized.
-          </div>
-        </div>
-      </div>
+    <div id="rent-stabilization-page">
+      <Header
+        title="Find out if your apartment is rent stabilized"
+        address={address}
+        isGuide
+      />
 
       <div className="content-section">
         <div className="content-section__content"></div>
         <ContentBox
           title="Why you need to know"
-          subtitle="Good Cause Eviction Law does not cover rent stabilized apartments"
+          subtitle="Good Cause Eviction only applies to tenants who are not rent stabilized."
         >
-          <div className="content-box__section">
-            <div className="content-box__section__content">
-              <p>
-                If your apartment is rent stabilized, you are not covered by
-                Good Cause Eviction law because you already have stronger
-                existing protections through rent stabilization law.
-              </p>
-            </div>
-          </div>
+          <ContentBoxItem accordion={false}>
+            <p>
+              If your apartment is rent stabilized, you are not covered by Good
+              Cause Eviction law because you already have stronger existing
+              protections through rent stabilization law.
+            </p>
+          </ContentBoxItem>
         </ContentBox>
 
         <ContentBox
           title="WHAT YOU CAN DO"
           subtitle="How to find out if your apartment is rent stabilized"
         >
-          <div className="content-box__section">
-            <div className="content-box__section__content">
-              <div className="content-box__section__header">
-                Check your lease
-              </div>
-              <p>
-                You can find out if your apartment is rent stabilized by
-                checking your lease. If your lease says you're apartment is rent
-                stabilized, then it's safe to say it is! We still recommend
-                requesting your rent history to be extra certain (see below),
-                especially if your lease does not mention anything about rent
-                stabilization.
-              </p>
-            </div>
-          </div>
+          <ContentBoxItem title="Request your rent history">
+            <p>
+              Request your rent history to help find out if your apartment is
+              rent stabilized and if you're being overcharged.
+            </p>
+            <br />
+            <p>
+              If your apartment has ever been rent stabilized, you’ll receive a
+              document showing the rents that your landlord has registered since
+              1984.
+            </p>
+            <br />
+            <p>
+              If your apartment is not rent stabilized, you will get an email
+              the day after you submit your request, saying your apartment
+              doesn't have a registration on file. This means your apartment has
+              never been rent stabilized, and therefore you may be eligible for
+              Good Cause Eviction coverage.
+            </p>
+            <JFCLLinkExternal href="https://portal.hcr.ny.gov/app/ask">
+              Fill out the form
+            </JFCLLinkExternal>
+          </ContentBoxItem>
 
-          <div className="content-box__section">
-            <div className="content-box__section__content">
-              <div className="content-box__section__header">
-                Request your rent history
-              </div>
-              <p>
-                Request your rent history to help find out if your apartment is
-                rent stabilized and if you're being overcharged.
-              </p>
-              <br />
-              <p>
-                If your apartment has ever been rent stabilized, you’ll receive
-                a document showing the rents that your landlord has registered
-                since 1984.
-              </p>
-              <br />
-              <p>
-                If your apartment is not rent stabilized, you will get an email
-                the day after you submit your request, saying your apartment
-                doesn't have a registration on file. This means you're apartment
-                has never been rent stabilized, and therefore you meet the rent
-                regulation criteria for Good Cause Eviction.
-              </p>
-              <JFCLLinkExternal href="https://portal.hcr.ny.gov/app/ask">
-                Fill out the form
-              </JFCLLinkExternal>
-            </div>
-          </div>
-
-          <div className="content-box__footer">
-            <div className="content-box__section__content">
-              <div className="content-box__section__header">
-                When you find out your rent stabilization status:
-              </div>
-              <Button
-                labelText="Re-take the screener survey"
-                labelIcon="arrowsRotateReverse"
-                onClick={() => {
-                  navigate("/form");
-                }}
-              />
-            </div>
-          </div>
+          <ContentBoxItem title="Attend a walk-in Clinic hosted by the Met Council on Housing ">
+            <p>
+              Met Council on Housing’s free clinic offers tenants assistance
+              with understanding their rent stabilization status and
+              landlord-tenant disputes.
+            </p>
+            <JFCLLinkExternal href="https://portal.hcr.ny.gov/app/ask">
+              Tenants’ Rights Walk-In Clinic
+            </JFCLLinkExternal>
+          </ContentBoxItem>
+          <ContentBoxFooter
+            title="Have you confirmed your rent stabilization status?"
+            subtitle="Adjust your survey answers and receive an updated coverage result"
+            link={<BackLink to="/form">Back to survey</BackLink>}
+          />
         </ContentBox>
-        <div className="eligibility__footer">
-          <BackLink to="/results">Back to coverage result</BackLink>
-        </div>
       </div>
     </div>
   );

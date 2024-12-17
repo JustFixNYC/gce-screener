@@ -1,11 +1,5 @@
 import { useEffect } from "react";
-import {
-  Link,
-  NavigateFunction,
-  useLoaderData,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import { Button, Icon } from "@justfixnyc/component-library";
 
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
@@ -23,8 +17,12 @@ import {
 } from "../../../api/helpers";
 import { Address } from "../Home/Home";
 import { getDetermination } from "../../../helpers";
-import { ContentBox, ContentBoxItem } from "../../ContentBox/ContentBox";
-import JFCLLinkInternal from "../../JFCLLinkInternal";
+import {
+  ContentBox,
+  ContentBoxFooter,
+  ContentBoxItem,
+} from "../../ContentBox/ContentBox";
+import JFCLLinkInternal, { BackLink } from "../../JFCLLinkInternal";
 import {
   GoodCauseExercisingRights,
   GoodCauseProtections,
@@ -41,7 +39,6 @@ export const Results: React.FC = () => {
     user?: GCEUser;
   };
   const [, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
   const { trigger } = useSendGceData();
 
   useEffect(() => {
@@ -125,7 +122,6 @@ export const Results: React.FC = () => {
             <EligibilityNextSteps
               bldgData={bldgData}
               eligibilityResults={eligibilityResults}
-              navigate={navigate}
             />
           )}
 
@@ -276,13 +272,11 @@ const EligibilityCriteriaTable: React.FC<{
 const EligibilityNextSteps: React.FC<{
   bldgData: BuildingData;
   eligibilityResults: EligibilityResults;
-  navigate: NavigateFunction;
-}> = ({ bldgData, eligibilityResults, navigate }) => {
+}> = ({ bldgData, eligibilityResults }) => {
   const portfolioSizeUnknown =
     eligibilityResults?.portfolioSize?.determination === "UNKNOWN";
   const rentRegulationUnknown =
     eligibilityResults?.rentRegulation?.determination === "UNKNOWN";
-  console.log([portfolioSizeUnknown, rentRegulationUnknown]);
   const steps = [portfolioSizeUnknown, rentRegulationUnknown].filter(
     Boolean
   ).length;
@@ -355,22 +349,11 @@ const EligibilityNextSteps: React.FC<{
           )}
         </ContentBoxItem>
       )}
-
-      <div className="content-box__footer">
-        <div className="content-box__section__content">
-          <div className="content-box__section__header">
-            Have you learned new information about your apartment?
-          </div>
-          <Button
-            labelText="Re-take the Screener Survey"
-            labelIcon="arrowsRotateReverse"
-            variant="secondary"
-            onClick={() => {
-              navigate("/form");
-            }}
-          />
-        </div>
-      </div>
+      <ContentBoxFooter
+        title="Update your coverage result"
+        subtitle="Adjust your survey answers and receive an updated coverage result"
+        link={<BackLink to="/form">Back to survey</BackLink>}
+      />
     </ContentBox>
   );
 };

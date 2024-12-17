@@ -23,7 +23,7 @@ export const BackLink: React.FC<JFCLLinkInternal> = (props) => (
     to={props.to}
     className={classNames(props.className, "jfcl-link back-link")}
   >
-    <Icon icon="chevronLeft" className="jfcl-link__icon" />
+    <Icon icon="arrowLeft" className="jfcl-link__icon" />
     {props.children}
   </Link>
 );
