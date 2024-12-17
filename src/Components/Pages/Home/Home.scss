@@ -1,22 +1,59 @@
 @import "../../../mixins.scss";
+@import "../../../variables.scss";
+@import "../../../colors.scss";
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding-left: 3rem; // 48px
-  padding-right: 3rem; // 48px
-}
-
-.main-content {
-  flex-grow: 1;
-  margin-top: 2.25rem; //36px
-
-  .content-p {
-    @include body_large_desktop;
+#home-page {
+  .geo-search-form {
+    display: inline-flex;
+    gap: 1.5rem; // 24px
+    width: 100%;
+    max-width: $contentBoxWidth;
+    margin-top: 3rem; // 48px
+    .jfcl-dropdown {
+      width: 100%;
+    }
   }
-  .jfcl-input-header__label {
-    @include body_large_desktop;
-    font-weight: 600;
+
+  .content-section {
+    padding: 4.5rem 0; // 72px
+    &.home__about-law {
+      border-bottom: 1px solid $OFF_BLACK;
+      .callout-box {
+        margin-top: 3rem; // 48px
+      }
+    }
+    h3 {
+      @include h3_desktop;
+      margin: 0 0 1rem 0; // 16px
+    }
+    p {
+      @include body_large_desktop;
+      margin: 0;
+    }
+    .callout-box {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem; // 24px
+      padding: 2.25rem; // 36px
+      background-color: $OFF_WHITE_200;
+      border-radius: 4px;
+
+      .callout-box__header {
+        @include body_large_desktop;
+      }
+      p {
+        @include body_standard_desktop;
+        margin: 0;
+      }
+    }
+    .about-project__orgs-container {
+      display: flex;
+      gap: 2.25rem; // 36px;
+      .callout-box {
+        width: 100%;
+        height: fit-content;
+        margin-top: 2.25rem; // 36px;
+      }
+    }
   }
 }

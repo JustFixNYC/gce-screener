@@ -1,3 +1,26 @@
+@import "../../mixins.scss";
+@import "../../colors.scss";
+
 .geo-search {
-  margin-bottom: 1rem; //16px
+  // the focus outline shifts the layout a bit, so trying to counter this (still a bit of flicker, but better)
+  .jfcl-dropdown__control {
+    margin-bottom: 2px;
+    &.jfcl-dropdown__control--is-focused {
+      margin-bottom: 0;
+    }
+  }
+
+  .jfcl-dropdown__value-container {
+    padding: 1.125rem; // 18px
+  }
+  .jfcl-dropdown__placeholder {
+    @include body_large_desktop;
+    svg {
+      color: $OFF_BLACK;
+      margin-right: 1.5rem; // 24px
+    }
+  }
+  .jfcl-dropdown__indicators {
+    display: none;
+  }
 }
