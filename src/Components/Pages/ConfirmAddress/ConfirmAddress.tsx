@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { Button } from "@justfixnyc/component-library";
 
 import { Address } from "../Home/Home";
@@ -8,6 +8,8 @@ import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
 import "./ConfirmAddress.scss";
+import { toTitleCase } from "../../../helpers";
+import { InfoBox } from "../../InfoBox/InfoBox";
 
 export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
@@ -24,8 +26,8 @@ export const ConfirmAddress: React.FC = () => {
   const zoom = "15.25";
   const bearing = "0";
   const pitch = "0";
-  const width = "814";
-  const height = "356";
+  const width = "425";
+  const height = "223";
   const marker = `pin-s+000(${longLat})`;
 
   const mapImageURL = `https://api.mapbox.com/styles/v1/${styleToken}/static/${marker}/${longLat},${zoom},${bearing},${pitch}/${width}x${height}?access_token=${accessToken}`;
@@ -54,16 +56,35 @@ export const ConfirmAddress: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           <ContentBox>
-            <div className="img-wrapper">
-              <img
-                className="img-wrapper__img"
-                src={mapImageURL}
-                alt="Map showing location of the entered address."
-                width={width}
-                height={height}
-              />
+            {bldgData?.unitsres === 0 && (
+              <InfoBox color="blue">
+                <span>
+                  City data shows that there aren’t any residential units at
+                  this address.
+                </span>
+                <Link to="/">Search new address</Link>
+              </InfoBox>
+            )}
+            <div className="map-address-container">
+              <div className="img-wrapper">
+                <img
+                  className="img-wrapper__img"
+                  src={mapImageURL}
+                  alt="Map showing location of the entered address."
+                  width={width}
+                  height={height}
+                />
+              </div>
+              <div className="address-container">
+                <div className="your-address">Your Address</div>
+                <h3 className="address-part-1">{`${
+                  address.houseNumber
+                } ${toTitleCase(address.streetName)}`}</h3>
+                <div className="address-part-2">{`${toTitleCase(
+                  address.borough
+                )}, New York ${address.zipcode}`}</div>
+              </div>
             </div>
-            <h3 className="confirmation__address">{address.address}</h3>
           </ContentBox>
 
           <div className="confirmation__buttons">
