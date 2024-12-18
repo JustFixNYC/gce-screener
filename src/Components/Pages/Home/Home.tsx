@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Button } from "@justfixnyc/component-library";
+
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
-import "./Home.scss";
 import { FormFields } from "../Form/Form";
 import { useSendGceData } from "../../../api/hooks";
 import { GCEPostData, GCEUser } from "../../../types/APIDataTypes";
+import { Header } from "../../Header/Header";
+import JFCLLinkInternal from "../../JFCLLinkInternal";
+import "./Home.scss";
 
 export type Address = {
   bbl: string;
@@ -48,24 +51,72 @@ export const Home: React.FC = () => {
   };
 
   return (
-    <div className="wrapper">
-      <div className="main-content">
-        <h2>Learn if you're covered by Good Cause Eviction in NYC</h2>
-        <p className="content-p body-desktop-large">
-          If you’re covered by the law, you have a right to stay in your home
-          when your lease ends, and there are limits to how much your landlord
-          can increase your rent. This tool will show you which of the law's
-          requirements you meet and what you can do to assert your rights.
-        </p>
-
+    <div id="home-page">
+      <Header title="Learn if you're covered by Good Cause Eviction law in NYC">
         <div className="geo-search-form">
           <GeoSearchInput initialAddress={address} onChange={setGeoAddress} />
-          <Button
-            labelText="See if you are covered"
-            size="small"
-            disabled={!geoAddress && !address}
-            onClick={handleAddressSearch}
-          />
+          <Button labelText="Get started" onClick={handleAddressSearch} />
+        </div>
+      </Header>
+
+      <div className="content-section home__about-law">
+        <div className="content-section__content">
+          <h3>About the law</h3>
+          <p>
+            Good Cause Eviction went into effect on April 20th, 2024. If you are
+            covered by the law, you now have a right to remain in your home as
+            long as you pay rent and follow the terms of your lease. There are
+            also limits to how much your rent can be increased.
+          </p>
+          <div className="callout-box">
+            <span className="callout-box__header">
+              You’re protected, even if you aren’t covered
+            </span>
+            <p>
+              All NYC tenants are protected by certain rights, even if they are
+              not covered by the new Good Cause Eviction legislation.
+            </p>
+            <JFCLLinkInternal to="">
+              Learn more about tenants’ rights in NYC
+            </JFCLLinkInternal>
+          </div>
+        </div>
+      </div>
+      <div className="content-section home__about-project">
+        <div className="content-section__content">
+          <h3>About the project</h3>
+          <p>
+            To be covered by Good Cause Eviction, your apartment must meet
+            certain requirements. If you live in New York City, you can use this
+            tool to see which of the law's requirements you meet and what you
+            can do to assert your rights.
+          </p>
+          <br />
+          <p>
+            This project is a collaboration between JustFix and Housing Justice
+            for All
+          </p>
+          <div className="about-project__orgs-container">
+            <div className="callout-box">
+              <span className="callout-box__header">JustFix</span>
+              <p>
+                A non-profit that builds free tools for tenants to exercise
+                their rights to a livable home.
+              </p>
+              <JFCLLinkInternal to="">Learn more</JFCLLinkInternal>
+            </div>
+            <div className="callout-box">
+              <span className="callout-box__header">
+                Housing Justice for All
+              </span>
+              <p>
+                A statewide coalition of over 80 groups representing tenants and
+                homeless New Yorkers, united in the fight for housing as a human
+                right.
+              </p>
+              <JFCLLinkInternal to="">Learn more</JFCLLinkInternal>
+            </div>
+          </div>
         </div>
       </div>
     </div>

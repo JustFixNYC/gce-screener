@@ -7,9 +7,9 @@ import { BackLink } from "../../JFCLLinkInternal";
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
-import "./ConfirmAddress.scss";
 import { toTitleCase } from "../../../helpers";
 import { InfoBox } from "../../InfoBox/InfoBox";
+import "./ConfirmAddress.scss";
 
 export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
