@@ -17,10 +17,6 @@
     .info-box__content-container {
       @include body_standard_desktop;
     }
-    &.orange {
-      display: flex;
-      max-width: $contentBoxWidth;
-    }
   }
 
   .jfcl-text-input {
