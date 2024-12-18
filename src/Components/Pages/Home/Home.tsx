@@ -76,7 +76,7 @@ export const Home: React.FC = () => {
               All NYC tenants are protected by certain rights, even if they are
               not covered by the new Good Cause Eviction legislation.
             </p>
-            <JFCLLinkInternal to="">
+            <JFCLLinkInternal to="/tenant_rights">
               Learn more about tenants’ rights in NYC
             </JFCLLinkInternal>
           </div>

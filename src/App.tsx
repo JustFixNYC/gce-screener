@@ -15,6 +15,7 @@ import { createBrowserRouter, Link, ScrollRestoration } from "react-router-dom";
 import { RentStabilization } from "./Components/Pages/RentStabilization/RentStabilization";
 import { PortfolioSize } from "./Components/Pages/PortfolioSize/PortfolioSize";
 import { Footer } from "./Components/Footer/Footer";
+import { TenantRights } from "./Components/Pages/TenantRights/TenantRights";
 
 const Layout = () => {
   return (
@@ -127,6 +128,7 @@ const router = createBrowserRouter(
         element={<PortfolioSize />}
         loader={LoadURLSession}
       />
+      <Route path="tenant_rights" element={<TenantRights />} />
       <Route path="api_docs" element={<APIDocs />} />
       <Route path="*" element={<Home />} />
     </Route>
