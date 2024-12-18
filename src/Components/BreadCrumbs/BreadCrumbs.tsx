@@ -12,7 +12,6 @@ type BreadCrumbs = {
 
 export const BreadCrumbs: React.FC<BreadCrumbs> = ({ address }) => {
   const location = useLocation();
-  console.log(location);
   const crumbs = makeBreadCrumbs(location.pathname, address);
 
   const crumbpath = crumbs.flatMap((crumb, index, array) => {

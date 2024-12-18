@@ -5,10 +5,16 @@
 #home-page {
   .geo-search-form {
     display: inline-flex;
+    align-items: end;
     gap: 1.5rem; // 24px
     width: 100%;
+    height: 6.25rem; // 100px
     max-width: $contentBoxWidth;
-    margin-top: 3rem; // 48px
+    margin-top: 0.875rem; // 14px
+
+    .jfcl-input-header__label {
+      display: none;
+    }
     .jfcl-dropdown {
       width: 100%;
     }

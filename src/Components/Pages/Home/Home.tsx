@@ -27,25 +27,32 @@ export const Home: React.FC = () => {
   const [address, setAddress] = useSessionStorage<Address>("address");
   const [, , removeFormFields] = useSessionStorage<FormFields>("fields");
   const [geoAddress, setGeoAddress] = useState<Address>();
+  const [inputInvalid, setInputInvalid] = useState(false);
   const { trigger } = useSendGceData();
 
+  console.log({ inputInvalid });
+
   const handleAddressSearch = async () => {
-    if (geoAddress) {
-      setAddress(geoAddress);
-      const postData: GCEPostData = {
-        bbl: geoAddress.bbl,
-        house_number: geoAddress.houseNumber,
-        street_name: geoAddress.streetName,
-        borough: geoAddress.borough,
-        zipcode: geoAddress.zipcode,
-      };
-      try {
-        const userResp = (await trigger(postData)) as GCEUser;
-        setUser(userResp);
-      } catch (error) {
-        console.log({ "tenants2-error": error });
-      }
+    if (!geoAddress) {
+      console.log("no-address");
+      setInputInvalid(true);
+      return;
     }
+    setAddress(geoAddress);
+    const postData: GCEPostData = {
+      bbl: geoAddress.bbl,
+      house_number: geoAddress.houseNumber,
+      street_name: geoAddress.streetName,
+      borough: geoAddress.borough,
+      zipcode: geoAddress.zipcode,
+    };
+    try {
+      const userResp = (await trigger(postData)) as GCEUser;
+      setUser(userResp);
+    } catch (error) {
+      console.log({ "tenants2-error": error });
+    }
+
     removeFormFields();
     navigate("confirm_address");
   };
@@ -54,7 +61,12 @@ export const Home: React.FC = () => {
     <div id="home-page">
       <Header title="Learn if you're covered by Good Cause Eviction law in NYC">
         <div className="geo-search-form">
-          <GeoSearchInput initialAddress={address} onChange={setGeoAddress} />
+          <GeoSearchInput
+            initialAddress={address}
+            onChange={setGeoAddress}
+            invalid={inputInvalid}
+            setInvalid={setInputInvalid}
+          />
           <Button labelText="Get started" onClick={handleAddressSearch} />
         </div>
       </Header>
