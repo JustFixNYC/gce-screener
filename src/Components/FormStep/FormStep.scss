@@ -4,12 +4,16 @@
 
 .form-step {
   border-radius: 4px;
-  border: 1px solid $GREY_NEW;
   max-width: $contentBoxWidth;
   background-color: $WHITE;
-
   padding: 1.5rem; //24px
   margin: 0 0 1.5rem 0; // 24px
+  border: 1px solid $GREY_NEW;
+  scroll-margin-top: 3.75rem; // 60px
+
+  &.invalid {
+    border: 2px solid $INVALID_COLOR;
+  }
 
   .form-step-number {
     margin-top: 0;

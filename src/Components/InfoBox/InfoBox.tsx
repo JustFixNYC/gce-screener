@@ -5,7 +5,7 @@ import "./InfoBox.scss";
 
 type InfoBoxProps = {
   children: ReactNode;
-  color?: "white" | "blue";
+  color?: "white" | "blue" | "orange";
 };
 
 export const InfoBox: React.FC<InfoBoxProps> = ({

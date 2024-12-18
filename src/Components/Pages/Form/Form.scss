@@ -1,52 +1,36 @@
 @import "../../../mixins.scss";
-@import "../../../colors.scss";
 @import "../../../variables.scss";
-
-$inputTopMargin: 1.5rem; //24px
 
 #survey-page {
   .jfcl-input-header__label {
-    margin-top: 0;
-    margin-bottom: 0;
     @include body_large_desktop;
+    margin: 0 0 1.125rem 0; // 18px
   }
 
-  .jfcl-input-header__helper_text {
-    @include body_standard_desktop;
-    margin-top: 0.625rem; // 10px
-    margin-bottom: 0;
+  .jfcl-input-header__label + .info-box {
+    margin-top: 0;
   }
 
-  .info-box__content-container {
-    @include body_standard_desktop;
+  .info-box {
+    margin-top: 1.125rem; // 18px
+    margin-bottom: 1.5rem; // 24px
+    .info-box__content-container {
+      @include body_standard_desktop;
+    }
   }
 
   .jfcl-text-input {
     margin-bottom: 0;
   }
 
-  .jfcl-text-input__wrapper {
-    margin-top: $inputTopMargin;
-  }
-
   #rent-input {
     max-width: 19.375rem; // 310px
   }
-}
 
-.address {
-  @include h3_desktop;
-}
-
-.form__subheader {
-  @include body_large_desktop;
-  margin-bottom: 3rem; //48px
-  max-width: $contentBoxWidth;
-}
-
-.form__buttons {
-  display: flex;
-  justify-content: center;
-  margin: 3rem 0; //48px
-  gap: 0.625rem; //10px
+  .form__buttons {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0; //48px
+    gap: 0.625rem; //10px
+  }
 }
