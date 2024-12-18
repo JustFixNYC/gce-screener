@@ -5,328 +5,236 @@
 
 $eligibilityTablePaddingH: 36px;
 
-.eligibility__loading {
-  margin: 3rem 0;
-}
-
-.eligibility__error {
-  margin: 3rem 0;
-}
-
-.covered-pill {
-  display: inline-flex;
-  padding: 0px 18px 4px;
-  color: $WHITE;
-  border-radius: 44px;
-  background-color: $GREEN;
-  white-space: nowrap;
-  height: calc(1em + 4px);
-
-  &.covered-pill--ineligible {
-    background-color: $ORANGE;
-    color: $OFF_BLACK;
+#results-page {
+  .eligibility__loading,
+  .eligibility__error {
+    margin: 3rem 0;
   }
 
-  &.covered-pill--unknown {
-    background-color: $YELLOW;
-    color: $OFF_BLACK;
-  }
-}
+  .covered-pill {
+    display: inline-flex;
+    padding: 0px 18px 4px;
+    color: $WHITE;
+    border-radius: 44px;
+    background-color: $GREEN;
+    white-space: nowrap;
+    height: calc(1em + 4px);
 
-.covered-underline {
-  text-decoration: underline;
-  color: $OFF_BLACK;
-}
+    &.covered-pill--ineligible {
+      background-color: $ORANGE;
+      color: $OFF_BLACK;
+    }
 
-.eligibility__toggle {
-  align-self: flex-start;
-  &.open {
-    margin-bottom: 2.25rem; // 36px
+    &.covered-pill--unknown {
+      background-color: $YELLOW;
+      color: $OFF_BLACK;
+    }
   }
-  &.closed {
-    margin-bottom: 0.8125rem; // 13px
+
+  .eligibility__table,
+  .protections-on-next-page__print {
+    border-radius: 4px;
+    border: 2px solid $GREY_NEW;
+    padding: 1.5rem $eligibilityTablePaddingH; // 24px
+    margin-top: 3rem; // 48px
+    max-width: $contentBoxWidth - (2 * $eligibilityTablePaddingH);
+    background-color: $WHITE;
+  }
+
+  .eligibility__table__header {
+    display: flex;
+    flex-direction: column;
+    padding: 1.125rem 1.125rem 2.25rem 1.125rem; // 20px 20px 36px 20px;
+    gap: 0.75rem; // 12px
+    border-bottom: 1px solid $GREY_NEW;
+
+    span {
+      @include body_large_desktop;
+    }
+    p {
+      @include body_standard_desktop;
+      margin: 0;
+    }
+  }
+
+  .eligibility__table__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .eligibility__table__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $eligibilityTablePaddingH 0 0;
+    @include body_large_desktop;
+
+    .eligibility__table__footer__link {
+      @include body_standard_desktop;
+      margin-top: 0.625rem; //10px
+    }
+
+    a {
+      color: black;
+      margin-left: 0.625rem; //10px
+    }
+  }
+
+  .eligibility__row {
+    display: flex;
+    border-bottom: 1px solid $GREY_NEW;
+    align-items: center;
+    padding: 20px 0;
+
+    .eligibility__row__icon {
+      padding: 0 1.25rem; // 0 20px
+      font-size: 1.875rem; //30px
+      width: 1.875rem; //30px
+    }
+
+    .eligibility__row__info {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      width: 320px;
+      padding-right: 1rem;
+      box-sizing: border-box;
+      gap: 10px;
+    }
+
+    .eligibility__row__criteria {
+      @include eyebrow_small_desktop;
+    }
+
+    .eligibility__row__requirement {
+      @include body_standard_desktop;
+    }
+
+    .eligibility__row__userValue {
+      @include body_standard_desktop;
+      margin: 0 1.25rem; // 20px
+      box-sizing: border-box;
+      flex-grow: 1;
+
+      p {
+        margin: 0 0 0.625rem 0;
+      }
+    }
+  }
+
+  .eligible {
+    color: $GREEN;
+  }
+  .ineligible {
+    color: $YELLOW;
+  }
+  .unknown {
+    color: $YELLOW;
+  }
+
+  .eligibility__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2.625rem 0; //42px
+
+    .eligibility__footer__header {
+      @include h3_desktop;
+      margin: 0 0 $eligibilityTablePaddingH 0;
+      text-align: center;
+    }
+  }
+
+  .next-step {
+    --icon-size: 2.75rem; // 44px;
+    --icon-margin: 1.5rem; // 24px;
+
+    .eligibility__icon {
+      font-size: 1.875rem; //30px
+      margin-right: var(--icon-margin);
+
+      svg {
+        width: var(--icon-size);
+        height: var(--icon-size);
+      }
+    }
+    .accordion__content {
+      margin-left: calc(var(--icon-size) + var(--icon-margin));
+    }
   }
 }
 
 @media screen {
-  .eligibility__result__print {
-    display: none;
-  }
-
-  .eligibility__table__container__print {
-    display: none;
-  }
-
-  .eligibility__table {
-    border-radius: 4px;
-    border: 2px solid $GREY_NEW;
-    padding: 1.5rem $eligibilityTablePaddingH; // 24px __
-    max-width: $contentBoxWidth - (2 * $eligibilityTablePaddingH);
-    background-color: $WHITE;
-  }
-}
-
-.eligibility__table {
-  margin-top: 3rem; // 48px
-}
-
-.eligibility__table__header {
-  display: flex;
-  flex-direction: column;
-  padding: 1.125rem 1.125rem 2.25rem 1.125rem; // 20px 20px 36px 20px;
-  gap: 0.75rem; // 12px
-  border-bottom: 1px solid $GREY_NEW;
-
-  span {
-    @include body_large_desktop;
-  }
-  p {
-    @include body_standard_desktop;
-    margin: 0;
-  }
-}
-
-.eligibility__table__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.eligibility__table__footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: $eligibilityTablePaddingH 0 0;
-  @include body_large_desktop;
-
-  .eligibility__table__footer__link {
-    @include body_standard_desktop;
-    margin-top: 0.625rem; //10px
-  }
-
-  a {
-    color: black;
-    margin-left: 0.625rem; //10px
-  }
-}
-
-.eligibility__row {
-  display: flex;
-  border-bottom: 1px solid $GREY_NEW;
-  align-items: center;
-  padding: 20px 0;
-
   @media (max-width: 772px) {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-  }
-
-  .eligibility__row__icon {
-    padding: 0 1.25rem; // 0 20px
-    font-size: 1.875rem; //30px
-    width: 1.875rem; //30px
-
-    .eligible {
-      color: $GREEN;
+    .eligibility__row {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
     }
-    .ineligible {
-      color: $YELLOW;
-    }
-    .unknown {
-      color: $YELLOW;
-    }
-  }
-
-  .eligibility__row__info {
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    width: 320px;
-    padding-right: 1rem;
-    box-sizing: border-box;
-    gap: 10px;
-
-    @media (max-width: 772px) {
+    .eligibility__row__info {
       width: 100%;
     }
-  }
-
-  .eligibility__row__criteria {
-    @include eyebrow_small_desktop;
-  }
-
-  .eligibility__row__requirement {
-    @include body_standard_desktop;
-  }
-
-  .eligibility__row__userValue {
-    @include body_standard_desktop;
-    margin: 0 1.25rem; // 20px
-    box-sizing: border-box;
-    flex-grow: 1;
-
-    p {
-      margin: 0 0 0.625rem 0;
-    }
-
-    @media (max-width: 772px) {
+    .eligibility__row__userValue {
       margin: 0;
     }
   }
-}
 
-.eligibility__footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2.625rem 0; //42px
-
-  .eligibility__footer__header {
-    @include h3_desktop;
-    margin: 0 0 $eligibilityTablePaddingH 0;
-    text-align: center;
+  .protections-on-next-page__print {
+    display: none;
+  }
+  .divider__print {
+    display: none;
   }
 }
 
 @media print {
-  .eligibility__result {
-    display: none;
-  }
-
-  .eligibility__table__container {
-    display: none;
-  }
-
-  .eligibility__table__container__print {
-    .eligibility__table {
-      border-top: 2px solid $GREY_NEW;
-      background-color: $WHITE;
+  #results-page {
+    .eligibility__result .covered-pill {
+      background-color: unset;
+      padding: unset;
+      text-decoration: underline;
+      text-underline-offset: 0.5rem;
+      color: $OFF_BLACK;
     }
 
-    .eligibility__table__header {
-      display: flex;
-      padding-bottom: $eligibilityTablePaddingH;
-      flex-direction: column;
-      gap: 10px;
-
-      .eligibility__table__header-title {
-        @include eyebrow_small_desktop;
+    .eligibility__row {
+      &:last-of-type {
+        border-bottom: unset;
       }
-
-      .eligibility__table__header-subtitle {
-        @include h3_desktop;
-      }
-    }
-
-    .eligibility__table__list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
     }
 
     .eligibility__table__footer {
       display: none;
-      //display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: $eligibilityTablePaddingH 0 0;
-      @include body_large_desktop;
+    }
 
-      .eligibility__table__footer__link {
-        @include body_standard_desktop;
-        margin-top: 0.625rem; //10px
+    .protections-on-next-page__print {
+      @include h3_desktop;
+      text-align: center;
+    }
+
+    .content-box {
+      border: unset;
+      .accordion__chevron {
+        display: none;
       }
-
-      a {
+      .content-box__footer {
+        display: none;
+      }
+    }
+    .eligibility__row__icon,
+    .eligibility__icon {
+      svg {
         color: black;
-        margin-left: 0.625rem; //10px
       }
     }
 
-    .eligibility__row {
-      display: flex;
-      border-bottom: 1px solid $GREY_NEW;
-      align-items: center;
-      flex-direction: row;
-      text-align: left;
-
-      .eligibility__row__icon {
-        padding: 0 1.25rem; // 0 20px
-        font-size: 1.875rem; //30px
-        width: 1.875rem; //30px
-
-        .eligible {
-          color: $OFF_BLACK;
-        }
-        .ineligible {
-          color: $OFF_BLACK;
-        }
-        .unknown {
-          color: $OFF_BLACK;
-        }
-      }
-
-      .eligibility__row__info {
-        display: flex;
-        flex-direction: column;
-        flex-shrink: 0;
-        width: 320px;
-        padding-right: 1rem;
-        box-sizing: border-box;
-        gap: 10px;
-      }
-
-      .eligibility__row__criteria {
-        @include eyebrow_small_desktop;
-      }
-
-      .eligibility__row__requirement {
-        @include body_standard_desktop;
-      }
-
-      .eligibility__row__userValue {
-        @include body_standard_desktop;
-        margin: 0 1.25rem; // 20px
-        box-sizing: border-box;
-        flex-grow: 1;
-
-        p {
-          margin: 0 0 0.625rem 0;
-        }
-
-        .jfcl-link {
-          display: none;
-        }
-      }
-    }
-  }
-}
-
-.next-step {
-  --icon-size: 2.75rem; // 44px;
-  --icon-margin: 1.5rem; // 24px;
-
-  .eligibility__icon {
-    font-size: 1.875rem; //30px
-    margin-right: var(--icon-margin);
-
-    .eligible {
-      color: $GREEN;
-    }
-    .ineligible {
-      color: $RED;
-    }
-    .unknown {
-      color: $YELLOW;
+    .divider__print {
+      border-bottom: 1px solid black;
     }
 
-    svg {
-      width: var(--icon-size);
-      height: var(--icon-size);
+    .eligibility__footer {
+      display: none;
     }
-  }
-  .accordion__content {
-    margin-left: calc(var(--icon-size) + var(--icon-margin));
   }
 }

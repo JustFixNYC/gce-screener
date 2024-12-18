@@ -71,6 +71,34 @@ export const Results: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handlePrintAccordions = (event: MediaQueryListEvent) => {
+    let accordions: NodeListOf<HTMLDetailsElement>;
+    if (event.matches) {
+      accordions = document.body.querySelectorAll("details:not([open])");
+      accordions.forEach((e) => {
+        e.setAttribute("open", "");
+        e.dataset.wasclosed = "";
+      });
+    } else {
+      accordions = document.body.querySelectorAll("details[data-wasclosed]");
+      accordions.forEach((e) => {
+        e.removeAttribute("open");
+        delete e.dataset.wasclosed;
+      });
+    }
+  };
+
+  useEffect(() => {
+    window
+      .matchMedia("print")
+      .addEventListener("change", handlePrintAccordions);
+    return () => {
+      window
+        .matchMedia("print")
+        .removeEventListener("change", handlePrintAccordions);
+    };
+  }, []);
+
   const bbl = address.bbl;
 
   const { data: bldgData, isLoading, error } = useGetBuildingData(bbl);
@@ -88,7 +116,6 @@ export const Results: React.FC = () => {
         title={
           bldgData && eligibilityResults ? (
             <EligibilityResultHeadline
-              address={address?.address}
               determination={determination}
               eligibilityResults={eligibilityResults}
             />
@@ -96,7 +123,6 @@ export const Results: React.FC = () => {
             "Loading your results..."
           )
         }
-        subtitle="We'll use your answers to help determine your coverage"
         address={address}
       >
         {error && (
@@ -113,6 +139,9 @@ export const Results: React.FC = () => {
           {bldgData && (
             <EligibilityCriteriaTable eligibilityResults={eligibilityResults} />
           )}
+        </div>
+        <div className="protections-on-next-page__print">
+          View tenant protection information on following pages
         </div>
       </Header>
 
@@ -215,9 +244,9 @@ const CoveredPill: React.FC<{
   const longClassName = `${className} ${className}--${determination.toLowerCase()}`;
 
   if (determination === "ELIGIBLE") {
-    return <span className={className}>covered</span>;
+    return <span className={longClassName}>covered</span>;
   } else if (determination === "INELIGIBLE") {
-    return <span className={className}>not covered</span>;
+    return <span className={longClassName}>not covered</span>;
   } else {
     return <span className={longClassName}>might be covered</span>;
   }
@@ -261,7 +290,7 @@ const EligibilityCriteriaTable: React.FC<{
       Is something not quite right?
       <div className="eligibility__table__footer__link">
         <Icon icon="arrowLeft" />
-        <Link to="/form">Back to Screener</Link>
+        <Link to="/form">Back to survey</Link>
       </div>
     </div>
   </div>
@@ -279,88 +308,90 @@ const EligibilityNextSteps: React.FC<{
     Boolean
   ).length;
   return (
-    <ContentBox
-      title="What this means for you"
-      subtitle={
-        steps == 1
-          ? "There is still one thing you need to verify"
-          : `There are still ${steps} things you need to verify`
-      }
-    >
-      {rentRegulationUnknown && (
-        <ContentBoxItem
-          title="We need to know if your apartment is rent stabilized."
-          icon={
-            <span className="eligibility__icon">
-              <EligibilityIcon determination="UNKNOWN" />
-            </span>
-          }
-          className="next-step"
-          open
-        >
-          <p>
-            The Good Cause Eviction law only covers tenants whose apartments are
-            not rent regulated. You told us that you are unsure of your rent
-            regulation status.
-          </p>
-          <JFCLLinkInternal to="/rent_stabilization">
-            Learn how to find out
-          </JFCLLinkInternal>
-        </ContentBoxItem>
-      )}
+    <>
+      <ContentBox
+        title="What this means for you"
+        subtitle={
+          steps == 1
+            ? "There is still one thing you need to verify"
+            : `There are still ${steps} things you need to verify`
+        }
+      >
+        {rentRegulationUnknown && (
+          <ContentBoxItem
+            title="We need to know if your apartment is rent stabilized."
+            icon={
+              <span className="eligibility__icon">
+                <EligibilityIcon determination="UNKNOWN" />
+              </span>
+            }
+            className="next-step"
+            open
+          >
+            <p>
+              The Good Cause Eviction law only covers tenants whose apartments
+              are not rent regulated. You told us that you are unsure of your
+              rent regulation status.
+            </p>
+            <JFCLLinkInternal to="/rent_stabilization">
+              Learn how to find out
+            </JFCLLinkInternal>
+          </ContentBoxItem>
+        )}
 
-      {portfolioSizeUnknown && (
-        <ContentBoxItem
-          title="We need to know if your landlord owns more than 10 units."
-          icon={
-            <span className="eligibility__icon">
-              <EligibilityIcon determination="UNKNOWN" />
-            </span>
-          }
-          className="next-step"
-          open
-        >
-          {bldgData.related_properties ? (
-            <>
-              <p>
-                {`Good Cause Eviction law only covers tenants whose landlord owns
+        {portfolioSizeUnknown && (
+          <ContentBoxItem
+            title="We need to know if your landlord owns more than 10 units."
+            icon={
+              <span className="eligibility__icon">
+                <EligibilityIcon determination="UNKNOWN" />
+              </span>
+            }
+            className="next-step"
+            open
+          >
+            {bldgData.related_properties ? (
+              <>
+                <p>
+                  {`Good Cause Eviction law only covers tenants whose landlord owns
                 more than 10 units. Your building has only ${bldgData.unitsres} apartments, but
                 your landlord may own other buildings.`}
-              </p>
+                </p>
 
-              <JFCLLinkInternal to="/portfolio_size">
-                Learn how to find out
-              </JFCLLinkInternal>
-            </>
-          ) : (
-            <>
-              <p>
-                {`Good Cause Eviction law only covers tenants whose landlord owns
+                <JFCLLinkInternal to="/portfolio_size">
+                  Learn how to find out
+                </JFCLLinkInternal>
+              </>
+            ) : (
+              <>
+                <p>
+                  {`Good Cause Eviction law only covers tenants whose landlord owns
                 more than 10 units. Your building has only ${bldgData.unitsres} apartments.`}
-              </p>
-              <br />
-              <p>
-                We are unable to find other apartments your landlord might own
-                in our records.
-              </p>
-            </>
-          )}
-        </ContentBoxItem>
-      )}
-      <ContentBoxFooter
-        title="Update your coverage result"
-        subtitle="Adjust your survey answers and receive an updated coverage result"
-        link={<BackLink to="/form">Back to survey</BackLink>}
-      />
-    </ContentBox>
+                </p>
+                <br />
+                <p>
+                  We are unable to find other apartments your landlord might own
+                  in our records.
+                </p>
+              </>
+            )}
+          </ContentBoxItem>
+        )}
+        <ContentBoxFooter
+          title="Update your coverage result"
+          subtitle="Adjust your survey answers and receive an updated coverage result"
+          link={<BackLink to="/form">Back to survey</BackLink>}
+        />
+      </ContentBox>
+      <div className="divider__print" />
+    </>
   );
 };
 
 const EligibilityResultHeadline: React.FC<{
-  address: string;
   determination: Determination;
   eligibilityResults: EligibilityResults;
-}> = ({ address, determination, eligibilityResults }) => {
+}> = ({ determination, eligibilityResults }) => {
   if (determination === "UNKNOWN") {
     return (
       <>
@@ -368,49 +399,28 @@ const EligibilityResultHeadline: React.FC<{
           Your apartment{" "}
           <CoveredPill determination={determination} className="covered-pill" />
         </span>
-        <span className="eligibility__result__print">
-          {address}{" "}
-          <CoveredPill
-            determination={determination}
-            className="covered-underline"
-          />
-        </span>
-        <span>by Good Cause Eviction Law</span>
+        <span>by Good Cause Eviction</span>
       </>
     );
   } else if (determination === "ELIGIBLE") {
     return (
       <>
         <span className="eligibility__result">
-          Your apartment is{" "}
+          Your apartment is likely{" "}
           <CoveredPill determination={determination} className="covered-pill" />
         </span>
-        <span className="eligibility__result__print">
-          {address} is{" "}
-          <CoveredPill
-            determination={determination}
-            className="covered-underline"
-          />
-        </span>
-        <span>by Good Cause Eviction law</span>
+        <span>by Good Cause Eviction</span>
       </>
     );
   } else if (eligibilityResults.rentRegulation.determination === "INELIGIBLE") {
     return (
       <>
         <span className="eligibility__result">
-          Your apartment is not covered by Good Cause Eviction law but{" "}
+          Your apartment is protected by{" "}
           <span className="covered-pill covered-pill--eligible">
-            you’re protected
-          </span>{" "}
-          by rent stabilization laws
-        </span>
-        <span className="eligibility__result__print">
-          {address} is not covered by Good Cause Eviction law but{" "}
-          <span className="covered-underline covered-underline--eligible">
-            you’re protected
-          </span>{" "}
-          by rent stabilization laws
+            rent stabilization
+          </span>
+          , which provides stronger protections than Good Cause Eviction
         </span>
       </>
     );
@@ -418,17 +428,10 @@ const EligibilityResultHeadline: React.FC<{
     return (
       <>
         <span className="eligibility__result">
-          Your apartment is{" "}
+          Your apartment is likely{" "}
           <CoveredPill determination={determination} className="covered-pill" />{" "}
         </span>
-        <span className="eligibility__result__print">
-          {address} is{" "}
-          <CoveredPill
-            determination={determination}
-            className="covered-underline"
-          />
-        </span>
-        <span>by Good Cause Eviction law</span>
+        <span>by Good Cause Eviction</span>
       </>
     );
   }
