@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button, FormGroup, TextInput } from "@justfixnyc/component-library";
 import { useLoaderData, useNavigate } from "react-router";
 
@@ -20,16 +20,16 @@ export type FormFields = {
   landlord: "YES" | "NO" | "UNSURE" | null;
   rentStabilized: "YES" | "NO" | "UNSURE" | null;
   housingType: "NYCHA" | "SUBSIDIZED" | "NONE" | "UNSURE" | null;
-  portfolioSize?: "YES" | "NO" | "UNSURE";
+  portfolioSize?: "YES" | "NO" | "UNSURE" | null;
 };
 
 const initialFields: FormFields = {
   bedrooms: null,
-  rent: "",
+  rent: null,
   landlord: null,
   rentStabilized: null,
   housingType: null,
-  portfolioSize: undefined,
+  portfolioSize: null,
 };
 
 export const Form: React.FC = () => {
@@ -41,6 +41,7 @@ export const Form: React.FC = () => {
   const [localFields, setLocalFields] = useState<FormFields>(
     fields || initialFields
   );
+  const [showErrors, setShowErrors] = useState(false);
 
   const bbl = address.bbl;
 
@@ -49,9 +50,28 @@ export const Form: React.FC = () => {
 
   const NUM_STEPS = !bldgData ? 5 : bldgData?.unitsres > 10 ? 5 : 6;
 
+  const formStepRefs = [
+    useRef<HTMLFieldSetElement | null>(null),
+    useRef<HTMLFieldSetElement | null>(null),
+    useRef<HTMLFieldSetElement | null>(null),
+    useRef<HTMLFieldSetElement | null>(null),
+    useRef<HTMLFieldSetElement | null>(null),
+    useRef<HTMLFieldSetElement | null>(null),
+  ];
+
   const navigate = useNavigate();
 
   const handleSubmit = () => {
+    const firstUnansweredIndex = Object.values(localFields).findIndex(
+      (x) => x === null
+    );
+    if (firstUnansweredIndex >= 0 && firstUnansweredIndex <= NUM_STEPS - 1) {
+      setShowErrors(true);
+      formStepRefs[firstUnansweredIndex].current?.scrollIntoView({
+        behavior: "smooth",
+      });
+      return;
+    }
     setFields(localFields);
     try {
       trigger({ id: user?.id, form_answers: cleanFormFields(localFields) });
@@ -90,8 +110,17 @@ export const Form: React.FC = () => {
       />
       <div className="content-section">
         <form>
-          <FormStep step={1} total={NUM_STEPS}>
-            <FormGroup legendText="How many bedrooms are in your apartment?">
+          <FormStep
+            step={1}
+            total={NUM_STEPS}
+            fieldsetRef={formStepRefs[0]}
+            invalid={showErrors && localFields.bedrooms === null}
+          >
+            <FormGroup
+              legendText="How many bedrooms are in your apartment?"
+              invalid={showErrors && localFields.bedrooms === null}
+              invalidText="Please select one"
+            >
               <RadioGroup
                 fields={localFields}
                 radioGroup={{
@@ -109,16 +138,22 @@ export const Form: React.FC = () => {
             </FormGroup>
           </FormStep>
 
-          <FormStep step={2} total={NUM_STEPS}>
+          <FormStep
+            step={2}
+            total={NUM_STEPS}
+            fieldsetRef={formStepRefs[1]}
+            invalid={showErrors && localFields.rent === null}
+          >
             <TextInput
               labelText="What is the total monthly rent for your entire apartment?"
               helperElement={
                 <InfoBox>
-                  Please provide the{" "}
-                  <span className="bold">total rent of your apartment</span>,
-                  not just the portion of rent that you pay.
+                  Please provide the total rent of your apartment, not just the
+                  portion of rent that you pay.
                 </InfoBox>
               }
+              invalid={showErrors && localFields.rent === null}
+              invalidText="Enter your total rent amount"
               id="rent-input"
               type="money"
               name="rent"
@@ -127,8 +162,17 @@ export const Form: React.FC = () => {
             />
           </FormStep>
 
-          <FormStep step={3} total={NUM_STEPS}>
-            <FormGroup legendText="Does your landlord live in the building?">
+          <FormStep
+            step={3}
+            total={NUM_STEPS}
+            fieldsetRef={formStepRefs[2]}
+            invalid={showErrors && localFields.landlord === null}
+          >
+            <FormGroup
+              legendText="Does your landlord live in the building?"
+              invalid={showErrors && localFields.landlord === null}
+              invalidText="Please select one"
+            >
               <RadioGroup
                 fields={localFields}
                 radioGroup={{
@@ -144,7 +188,12 @@ export const Form: React.FC = () => {
             </FormGroup>
           </FormStep>
 
-          <FormStep step={4} total={NUM_STEPS}>
+          <FormStep
+            step={4}
+            total={NUM_STEPS}
+            fieldsetRef={formStepRefs[3]}
+            invalid={showErrors && localFields.rentStabilized === null}
+          >
             <FormGroup
               legendText="Is your apartment rent-stabilized?"
               helperElement={
@@ -152,6 +201,8 @@ export const Form: React.FC = () => {
                   <InfoBox>{getRsHelperText(bldgData)}</InfoBox>
                 )
               }
+              invalid={showErrors && localFields.rentStabilized === null}
+              invalidText="Please select one"
             >
               <RadioGroup
                 fields={localFields}
@@ -168,7 +219,12 @@ export const Form: React.FC = () => {
             </FormGroup>
           </FormStep>
 
-          <FormStep step={5} total={NUM_STEPS}>
+          <FormStep
+            step={5}
+            total={NUM_STEPS}
+            fieldsetRef={formStepRefs[4]}
+            invalid={showErrors && localFields.housingType === null}
+          >
             <FormGroup
               legendText="Is your apartment associated with any of the following?"
               helperElement={
@@ -176,6 +232,8 @@ export const Form: React.FC = () => {
                   <InfoBox>{getSubsidyHelperText(bldgData)}</InfoBox>
                 )
               }
+              invalid={showErrors && localFields.housingType === null}
+              invalidText="Please select one"
             >
               <RadioGroup
                 fields={localFields}
@@ -194,7 +252,12 @@ export const Form: React.FC = () => {
           </FormStep>
 
           {bldgData && bldgData?.unitsres <= 10 && (
-            <FormStep step={6} total={NUM_STEPS}>
+            <FormStep
+              step={6}
+              total={NUM_STEPS}
+              fieldsetRef={formStepRefs[5]}
+              invalid={showErrors && localFields.portfolioSize === null}
+            >
               <FormGroup
                 legendText="Does your landlord own more than 10 apartments across multiple buildings?"
                 helperElement={
@@ -204,6 +267,8 @@ export const Form: React.FC = () => {
                       "even if those apartments are spread across multiple buildings."}
                   </InfoBox>
                 }
+                invalid={showErrors && localFields.portfolioSize === null}
+                invalidText="Please select one"
               >
                 <RadioGroup
                   fields={localFields}
@@ -228,14 +293,7 @@ export const Form: React.FC = () => {
             variant="secondary"
             onClick={() => navigate("/confirm_address")}
           />
-          <Button
-            labelText="Next"
-            onClick={handleSubmit}
-            disabled={
-              !localFields ||
-              Object.values(localFields).filter(Boolean).length < NUM_STEPS
-            }
-          />
+          <Button labelText="Next" onClick={handleSubmit} />
         </div>
       </div>
     </div>
