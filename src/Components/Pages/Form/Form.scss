@@ -25,6 +25,12 @@
 
   #rent-input {
     max-width: 19.375rem; // 310px
+    &::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+    appearance: textfield;
   }
 
   .form__buttons {
