@@ -165,6 +165,12 @@ export const Form: React.FC = () => {
                 name="rent"
                 value={localFields["rent"] || ""}
                 onChange={handleInputChange}
+                onWheel={(e) => {
+                  // prevents scroll incrementing value
+                  e.currentTarget.blur();
+                  e.stopPropagation();
+                  setTimeout(() => e.currentTarget.focus(), 0);
+                }}
               />
             </FormStep>
 
