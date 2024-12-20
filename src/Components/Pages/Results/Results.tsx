@@ -7,7 +7,6 @@ import {
   BuildingData,
   CoverageResult,
   CriteriaResults,
-  CriterionResult,
   GCEUser,
 } from "../../../types/APIDataTypes";
 import { FormFields } from "../Form/Form";
@@ -32,6 +31,7 @@ import {
 } from "../../KYRContent/KYRContent";
 import { Header } from "../../Header/Header";
 import "./Results.scss";
+import { CheckPlusIcon } from "../../CheckPlusIcon";
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -130,9 +130,6 @@ export const Results: React.FC = () => {
         <div className="protections-on-next-page__print">
           View tenant protection information on following pages
         </div>
-        <div className="protections-on-next-page__print">
-          View tenant protection information on following pages
-        </div>
       </Header>
 
       <div className="content-section">
@@ -140,7 +137,7 @@ export const Results: React.FC = () => {
           {coverageResult === "UNKNOWN" && bldgData && criteriaDetails && (
             <EligibilityNextSteps
               bldgData={bldgData}
-              eligibilityResults={criteriaDetails}
+              criteriaDetails={criteriaDetails}
             />
           )}
 
@@ -184,40 +181,45 @@ const CRITERIA_LABELS = {
   buildingClass: "Type of building",
   rent: "Rent",
   subsidy: "Subsidy",
-  rentRegulation: "Rent stabilization",
+  rentStabilized: "Rent stabilization",
   certificateOfOccupancy: "Certificate of Occupancy",
 };
 
-const EligibilityIcon: React.FC<{ determination?: CriterionResult }> = ({
-  determination,
-}) => {
-  switch (determination) {
-    case "ELIGIBLE":
-      return <Icon icon="check" className="eligible" title="Pass" />;
-    default:
-      return (
-        <Icon
-          icon="circleExclamation"
-          type="regular"
-          className="unknown"
-          title="Unsure"
-        />
-      );
+const EligibilityIcon: React.FC<
+  Pick<CriterionDetails, "criteria" | "determination">
+> = ({ criteria, determination }) => {
+  if (
+    ["subsidy", "rentStabilized"].includes(criteria) &&
+    determination === "INELIGIBLE"
+  ) {
+    return <CheckPlusIcon className="criteria-icon green" title="" />;
+  } else if (determination === "ELIGIBLE") {
+    return (
+      <Icon
+        icon="check"
+        type="regular"
+        className="criteria-icon green"
+        title="Eligible"
+      />
+    );
+  } else {
+    return (
+      <Icon
+        icon="circleExclamation"
+        type="regular"
+        className={`criteria-icon ${
+          determination === "INELIGIBLE" ? "orange" : "yellow"
+        }`}
+        title={determination === "INELIGIBLE" ? "Ineligible" : "Unsure"}
+      />
+    );
   }
 };
 
 const CriterionRow: React.FC<CriterionDetails> = (props) => {
   return (
     <li className="eligibility__row">
-      <span className="eligibility__row__icon">
-        {props.criteria === "rentRegulation" &&
-        props.determination === "INELIGIBLE" ? (
-          <EligibilityIcon determination={"UNKNOWN"} />
-        ) : (
-          <EligibilityIcon determination={props?.determination} />
-        )}
-      </span>
-
+      <EligibilityIcon {...props} />
       <div className="eligibility__row__info">
         <span className="eligibility__row__criteria">
           {CRITERIA_LABELS[props?.criteria]}
@@ -246,8 +248,8 @@ const CriteriaTable: React.FC<{
     </div>
     <ul className="eligibility__table__list">
       {criteria?.rent && <CriterionRow {...criteria.rent} />}
-      {criteria?.rentRegulation && (
-        <CriterionRow {...criteria.rentRegulation} />
+      {criteria?.rentStabilized && (
+        <CriterionRow {...criteria.rentStabilized} />
       )}
       {criteria?.buildingClass && <CriterionRow {...criteria.buildingClass} />}
       {criteria?.certificateOfOccupancy && (
@@ -269,15 +271,22 @@ const CriteriaTable: React.FC<{
 
 const EligibilityNextSteps: React.FC<{
   bldgData: BuildingData;
-  eligibilityResults: CriteriaDetails;
-}> = ({ bldgData, eligibilityResults }) => {
+  criteriaDetails: CriteriaDetails;
+}> = ({ bldgData, criteriaDetails }) => {
   const portfolioSizeUnknown =
-    eligibilityResults?.portfolioSize?.determination === "UNKNOWN";
-  const rentRegulationUnknown =
-    eligibilityResults?.rentRegulation?.determination === "UNKNOWN";
-  const steps = [portfolioSizeUnknown, rentRegulationUnknown].filter(
+    criteriaDetails?.portfolioSize?.determination === "UNKNOWN";
+  const rentStabilizedUnknown =
+    criteriaDetails?.rentStabilized?.determination === "UNKNOWN";
+  const steps = [portfolioSizeUnknown, rentStabilizedUnknown].filter(
     Boolean
   ).length;
+  const unsureIcon = (
+    <Icon
+      icon="circleExclamation"
+      type="regular"
+      className="criteria-icon yellow"
+    />
+  );
   return (
     <>
       <ContentBox
@@ -288,21 +297,17 @@ const EligibilityNextSteps: React.FC<{
             : `There are still ${steps} things you need to verify`
         }
       >
-        {rentRegulationUnknown && (
+        {rentStabilizedUnknown && (
           <ContentBoxItem
             title="We need to know if your apartment is rent stabilized."
-            icon={
-              <span className="eligibility__icon">
-                <EligibilityIcon determination="UNKNOWN" />
-              </span>
-            }
+            icon={unsureIcon}
             className="next-step"
             open
           >
             <p>
               The Good Cause Eviction law only covers tenants whose apartments
-              are not rent regulated. You told us that you are unsure of your
-              rent regulation status.
+              are not rent stabilized. You told us that you are unsure of your
+              rent stabilized status.
             </p>
             <JFCLLinkInternal to="/rent_stabilization">
               Learn how to find out
@@ -313,11 +318,7 @@ const EligibilityNextSteps: React.FC<{
         {portfolioSizeUnknown && (
           <ContentBoxItem
             title="We need to know if your landlord owns more than 10 units."
-            icon={
-              <span className="eligibility__icon">
-                <EligibilityIcon determination="UNKNOWN" />
-              </span>
-            }
+            icon={unsureIcon}
             className="next-step"
             open
           >
