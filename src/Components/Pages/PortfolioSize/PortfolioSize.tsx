@@ -57,7 +57,7 @@ export const PortfolioSize: React.FC = () => {
         isGuide
       >
         {error && (
-          <div className="eligibility__error">
+          <div className="data__error">
             There was an error loading your results, please try again in a few
             minutes.
           </div>

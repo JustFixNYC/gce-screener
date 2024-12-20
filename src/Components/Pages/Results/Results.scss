@@ -6,8 +6,8 @@
 $eligibilityTablePaddingH: 36px;
 
 #results-page {
-  .eligibility__loading,
-  .eligibility__error {
+  .data__loading,
+  .data__error {
     margin: 3rem 0;
   }
 
@@ -134,16 +134,19 @@ $eligibilityTablePaddingH: 36px;
     color: $YELLOW;
   }
 
-  .eligibility__footer {
+  .share-footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 2.625rem 0; //42px
 
-    .eligibility__footer__header {
+    .share-footer__header {
       @include h3_desktop;
       margin: 0 0 $eligibilityTablePaddingH 0;
       text-align: center;
+    }
+    .jfcl-button {
+      color: $OFF_WHITE_100;
     }
   }
 
@@ -234,7 +237,7 @@ $eligibilityTablePaddingH: 36px;
       border-bottom: 1px solid black;
     }
 
-    .eligibility__footer {
+    .share-footer {
       display: none;
     }
   }

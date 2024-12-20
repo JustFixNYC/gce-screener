@@ -52,7 +52,7 @@ export const Results: React.FC = () => {
     if (address && fields) {
       setSearchParams(
         {
-          ...(!user && { user: JSON.stringify(user) }),
+          ...(!!user?.id && { user: JSON.stringify(user) }),
           address: JSON.stringify(address),
           fields: JSON.stringify(fields),
         },
@@ -117,18 +117,16 @@ export const Results: React.FC = () => {
         address={address}
       >
         {error && (
-          <div className="eligibility__error">
+          <div className="data__error">
             There was an error loading your results, please try again in a few
             minutes.
           </div>
         )}
         {isLoading && (
-          <div className="eligibility__loading">Loading your results...</div>
+          <div className="data__loading">Loading your results...</div>
         )}
 
-        <div className="eligibility__table__container">
-          {bldgData && <CriteriaTable criteria={criteriaDetails} />}
-        </div>
+        {bldgData && <CriteriaTable criteria={criteriaDetails} />}
         <div className="protections-on-next-page__print">
           View tenant protection information on following pages
         </div>
@@ -160,14 +158,16 @@ export const Results: React.FC = () => {
           )}
           <UniversalProtections />
 
-          <div className="eligibility__footer">
-            <h3 className="eligibility__footer__header">
-              Help others understand their coverage
+          <div className="share-footer">
+            <h3 className="share-footer__header">
+              Help your neighbors learn if they’re covered{" "}
             </h3>
             <Button
-              labelText="Share this screener"
-              labelIcon="squareArrowUpRight"
-              className="disabled"
+              labelText="Copy the link to this website"
+              labelIcon="copy"
+              onClick={() =>
+                navigator.clipboard.writeText(window.location.href)
+              }
             />
           </div>
         </div>
