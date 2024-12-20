@@ -90,7 +90,7 @@ export const getCriteriaResults = (
 ): CriteriaResults => {
   return {
     rent: criteriaDetails?.rent?.determination,
-    rent_stab: criteriaDetails?.rentRegulation?.determination,
+    rent_stab: criteriaDetails?.rentStabilized?.determination,
     building_class: criteriaDetails?.buildingClass?.determination,
     c_of_o: criteriaDetails?.certificateOfOccupancy?.determination,
     subsidy: criteriaDetails?.subsidy?.determination,

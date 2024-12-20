@@ -88,7 +88,7 @@ $eligibilityTablePaddingH: 36px;
     align-items: center;
     padding: 20px 0;
 
-    .eligibility__row__icon {
+    .criteria-icon {
       padding: 0 1.25rem; // 0 20px
       font-size: 1.875rem; //30px
       width: 1.875rem; //30px
@@ -124,14 +124,16 @@ $eligibilityTablePaddingH: 36px;
     }
   }
 
-  .eligible {
-    color: $GREEN;
-  }
-  .ineligible {
-    color: $YELLOW;
-  }
-  .unknown {
-    color: $YELLOW;
+  svg.criteria-icon {
+    &.green {
+      color: $GREEN;
+    }
+    &.yellow {
+      color: $YELLOW;
+    }
+    &.orange {
+      color: $ORANGE;
+    }
   }
 
   .share-footer {
@@ -154,14 +156,10 @@ $eligibilityTablePaddingH: 36px;
     --icon-size: 2.75rem; // 44px;
     --icon-margin: 1.5rem; // 24px;
 
-    .eligibility__icon {
-      font-size: 1.875rem; //30px
+    .criteria-icon {
+      width: var(--icon-size);
+      height: var(--icon-size);
       margin-right: var(--icon-margin);
-
-      svg {
-        width: var(--icon-size);
-        height: var(--icon-size);
-      }
     }
     .accordion__content {
       margin-left: calc(var(--icon-size) + var(--icon-margin));
@@ -226,8 +224,7 @@ $eligibilityTablePaddingH: 36px;
         display: none;
       }
     }
-    .eligibility__row__icon,
-    .eligibility__icon {
+    .criteria-icon {
       svg {
         color: black;
       }

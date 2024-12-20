@@ -7,7 +7,7 @@ export type Criteria =
   | "buildingClass"
   | "rent"
   | "subsidy"
-  | "rentRegulation"
+  | "rentStabilized"
   | "certificateOfOccupancy";
 
 type CriteriaData = FormFields & BuildingData;
@@ -22,7 +22,7 @@ export type CriterionDetails = {
 
 export type CriteriaDetails = {
   rent: CriterionDetails;
-  rentRegulation: CriterionDetails;
+  rentStabilized: CriterionDetails;
   portfolioSize?: CriterionDetails;
   buildingClass?: CriterionDetails;
   subsidy?: CriterionDetails;
@@ -39,7 +39,7 @@ export function useCriteriaResults(
     portfolioSize: eligibilityPortfolioSize(criteriaData),
     buildingClass: eligibilityBuildingClass(criteriaData),
     rent: eligibilityRent(criteriaData),
-    rentRegulation: eligibilityRentRegulated(criteriaData),
+    rentStabilized: eligibilityRentStabilized(criteriaData),
     certificateOfOccupancy: eligibilityCertificateOfOccupancy(criteriaData),
     subsidy: eligibilitySubsidy(criteriaData),
   };
@@ -168,11 +168,11 @@ function eligibilityRent(criteriaData: CriteriaData): CriterionDetails {
   };
 }
 
-function eligibilityRentRegulated(
+function eligibilityRentStabilized(
   criteriaData: CriteriaData
 ): CriterionDetails {
   const { rentStabilized } = criteriaData;
-  const criteria = "rentRegulation";
+  const criteria = "rentStabilized";
   const requirement = "Your apartment must not be rent stabilized.";
   let determination: CriterionResult;
   let userValue: React.ReactNode;
@@ -182,15 +182,15 @@ function eligibilityRentRegulated(
 
   if (rentStabilized === "YES") {
     determination = "INELIGIBLE";
-    userValue = "Your apartment is rent regulated.";
+    userValue = "Your apartment is rent stabilized.";
   } else if (rentStabilized === "NO") {
     determination = "ELIGIBLE";
-    userValue = "Your apartment is not rent regulated.";
+    userValue = "Your apartment is not rent stabilized.";
   } else {
     determination = "UNKNOWN";
     userValue = (
       <>
-        <p>You don't know if your apartment is rent regulated.</p>
+        <p>You don't know if your apartment is rent stabilized.</p>
         <JFCLLinkInternal to="/rent_stabilization">
           How to find out
         </JFCLLinkInternal>
