@@ -32,7 +32,7 @@ export const TenantRights: React.FC = () => {
 
           <RentStabilizedProtections subtitle="Protections you have if you live in a rent stabilized apartment">
             <ContentBoxFooter
-              title="Find out if you’re covered by Good Cause Eviction"
+              title="Find out if your apartment is rent stabilized"
               link={
                 <JFCLLinkInternal to="/rent_stabilization">
                   View the guide

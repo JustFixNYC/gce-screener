@@ -1,5 +1,3 @@
-import { Determination } from "../hooks/eligibility";
-
 // WOW API
 
 export type AcrisDocument = {
@@ -46,15 +44,22 @@ export type GCEUser = {
   id: number;
 };
 
-export type Coverage = "COVERED" | "NOT_COVERED" | "UNKNOWN";
+export type CriterionResult = "ELIGIBLE" | "INELIGIBLE" | "UNKNOWN";
 
-export type ResultCriteria = {
-  rent?: Determination;
-  rent_stab?: Determination;
-  building_class?: Determination;
-  c_of_o?: Determination;
-  subsidy?: Determination;
-  portfolio_size?: Determination;
+export type CoverageResult =
+  | "COVERED"
+  | "NOT_COVERED"
+  | "UNKNOWN"
+  | "RENT_STABILIZED"
+  | "NYCHA";
+
+export type CriteriaResults = {
+  rent?: CriterionResult;
+  rent_stab?: CriterionResult;
+  building_class?: CriterionResult;
+  c_of_o?: CriterionResult;
+  subsidy?: CriterionResult;
+  portfolio_size?: CriterionResult;
 };
 
 export type FormAnswers = {
@@ -75,6 +80,6 @@ export type GCEPostData = {
   address_confirmed?: boolean;
   nycdb_results?: BuildingData;
   form_answers?: FormAnswers;
-  result_coverage?: Coverage;
-  result_criteria?: ResultCriteria;
+  result_coverage?: CoverageResult;
+  result_criteria?: CriteriaResults;
 };

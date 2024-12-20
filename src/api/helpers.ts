@@ -1,8 +1,7 @@
 import { FormFields } from "../Components/Pages/Form/Form";
-import { Determination, EligibilityResults } from "../hooks/eligibility";
+import { CriteriaDetails } from "../hooks/eligibility";
 import {
-  Coverage,
-  ResultCriteria,
+  CriteriaResults,
   FormAnswers,
   GCEPostData,
 } from "../types/APIDataTypes";
@@ -85,28 +84,16 @@ export const cleanFormFields = ({
   };
 };
 
-// Recodes values for database model
-export const determinationToCoverage = (
-  determination: Determination
-): Coverage => {
-  const COVERAGE: { [key in Determination]: Coverage } = {
-    ELIGIBLE: "COVERED",
-    INELIGIBLE: "NOT_COVERED",
-    UNKNOWN: "UNKNOWN",
-  };
-  return COVERAGE[determination];
-};
-
 // Restructures criteria eligibility for database model
-export const extractDeterminations = (
-  eligibilityResults: EligibilityResults
-): ResultCriteria => {
+export const getCriteriaResults = (
+  criteriaDetails?: CriteriaDetails
+): CriteriaResults => {
   return {
-    rent: eligibilityResults.rent?.determination,
-    rent_stab: eligibilityResults.rentRegulation?.determination,
-    building_class: eligibilityResults.buildingClass?.determination,
-    c_of_o: eligibilityResults.certificateOfOccupancy?.determination,
-    subsidy: eligibilityResults.subsidy?.determination,
-    portfolio_size: eligibilityResults.portfolioSize?.determination,
+    rent: criteriaDetails?.rent?.determination,
+    rent_stab: criteriaDetails?.rentRegulation?.determination,
+    building_class: criteriaDetails?.buildingClass?.determination,
+    c_of_o: criteriaDetails?.certificateOfOccupancy?.determination,
+    subsidy: criteriaDetails?.subsidy?.determination,
+    portfolio_size: criteriaDetails?.portfolioSize?.determination,
   };
 };

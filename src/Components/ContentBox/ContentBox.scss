@@ -87,6 +87,10 @@ $videoEmbedW: 623px;
         margin-top: 0;
       }
     }
+
+    & > .jfcl-link:first-of-type {
+      margin-top: 0;
+    }
   }
 
   &.no-title {
