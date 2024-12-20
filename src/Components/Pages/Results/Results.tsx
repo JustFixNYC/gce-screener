@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import { Button, Icon } from "@justfixnyc/component-library";
+// @ts-expect-error library is missing types
+import html2pdf from "html2pdf.js/dist/html2pdf.bundle.min.js";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import {
@@ -130,6 +134,56 @@ export const Results: React.FC = () => {
         <div className="protections-on-next-page__print">
           View tenant protection information on following pages
         </div>
+
+        <Button
+          labelText="Download result (jsPDF)"
+          onClick={() => {
+            const doc = new jsPDF({
+              orientation: "portrait",
+              unit: "px",
+              format: "letter",
+              putOnlyUsedFonts: true,
+            });
+            doc.html(document.body, {
+              callback: function (doc) {
+                doc.save();
+              },
+              autoPaging: "text", // Crucial for handling text flow across pages
+              html2canvas: {
+                allowTaint: true,
+                letterRendering: true,
+                logging: false,
+              },
+              width: 460,
+              windowWidth: 1000,
+            });
+          }}
+        />
+
+        <Button
+          labelText="Download result (html2pdf)"
+          onClick={() => {
+            const element = document.getElementById("body");
+            const options = {
+              margin: 1,
+              filename: "my-document.pdf",
+              image: { type: "jpeg", quality: 0.98 },
+              html2canvas: { scale: 2 },
+              jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+            };
+
+            html2pdf().set(options).from(element).save();
+          }}
+        />
+
+        <Button
+          labelText="Download result (html2canvas)"
+          onClick={() => {
+            html2canvas(document.body).then(function (canvas) {
+              console.log(canvas.toDataURL());
+            });
+          }}
+        />
       </Header>
 
       <div className="content-section">
