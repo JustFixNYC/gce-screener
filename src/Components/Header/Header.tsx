@@ -2,6 +2,7 @@ import React from "react";
 import { BreadCrumbs } from "../BreadCrumbs/BreadCrumbs";
 import { Address } from "../Pages/Home/Home";
 import { BackLink } from "../JFCLLinkInternal";
+import { toTitleCase } from "../../helpers";
 
 type HeaderProps = {
   title: string | React.ReactNode;
@@ -26,6 +27,11 @@ export const Header: React.FC<HeaderProps> = ({
     <div className="headline-section">
       <div className="headline-section__content">
         {showBreadcrumbs && <BreadCrumbs address={address} />}
+        <div className="headline-section__address__print">
+          {toTitleCase(
+            `${address?.houseNumber} ${address?.streetName}, ${address?.zipcode}`
+          )}
+        </div>
         {isGuide && (
           <div className="headline-section__back-link">
             <BackLink to="/results">Back to Coverage Result</BackLink>

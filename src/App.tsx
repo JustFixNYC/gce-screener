@@ -23,7 +23,7 @@ const Layout = () => {
       <header id="header">
         <h1>
           <Link to="/" className="header__link">
-            Good Cause Eviction
+            Good Cause Eviction NYC
           </Link>
         </h1>
       </header>
