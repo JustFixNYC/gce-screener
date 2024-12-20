@@ -11,22 +11,23 @@ $eligibilityTablePaddingH: 36px;
     margin: 3rem 0;
   }
 
-  .covered-pill {
+  .coverage-pill {
     display: inline-flex;
     padding: 0px 18px 4px;
-    color: $WHITE;
     border-radius: 44px;
-    background-color: $GREEN;
     white-space: nowrap;
     height: calc(1em + 4px);
 
-    &.covered-pill--ineligible {
-      background-color: $ORANGE;
+    &.green {
+      background-color: $GREEN;
+      color: $WHITE;
+    }
+    &.yellow {
+      background-color: $YELLOW;
       color: $OFF_BLACK;
     }
-
-    &.covered-pill--unknown {
-      background-color: $YELLOW;
+    &.orange {
+      background-color: $ORANGE;
       color: $OFF_BLACK;
     }
   }
@@ -190,7 +191,7 @@ $eligibilityTablePaddingH: 36px;
 
 @media print {
   #results-page {
-    .eligibility__result .covered-pill {
+    .coverage-pill {
       background-color: unset;
       padding: unset;
       text-decoration: underline;

@@ -1,6 +1,6 @@
 import { FormFields } from "../Components/Pages/Form/Form";
 import JFCLLinkInternal from "../Components/JFCLLinkInternal";
-import { BuildingData } from "../types/APIDataTypes";
+import { BuildingData, CriterionResult } from "../types/APIDataTypes";
 
 export type Criteria =
   | "portfolioSize"
@@ -12,29 +12,27 @@ export type Criteria =
 
 type CriteriaData = FormFields & BuildingData;
 
-export type Determination = "ELIGIBLE" | "INELIGIBLE" | "UNKNOWN";
-
-export type CriteriaEligibility = {
+export type CriterionDetails = {
   criteria: Criteria;
-  determination?: Determination;
+  determination?: CriterionResult;
   requirement?: React.ReactNode;
   userValue?: React.ReactNode;
   moreInfo?: React.ReactNode;
 };
 
-export type EligibilityResults = {
-  rent: CriteriaEligibility;
-  rentRegulation: CriteriaEligibility;
-  portfolioSize?: CriteriaEligibility;
-  buildingClass?: CriteriaEligibility;
-  subsidy?: CriteriaEligibility;
-  certificateOfOccupancy?: CriteriaEligibility;
+export type CriteriaDetails = {
+  rent: CriterionDetails;
+  rentRegulation: CriterionDetails;
+  portfolioSize?: CriterionDetails;
+  buildingClass?: CriterionDetails;
+  subsidy?: CriterionDetails;
+  certificateOfOccupancy?: CriterionDetails;
 };
 
-export function useEligibility(
+export function useCriteriaResults(
   formFields: FormFields,
   bldgData?: BuildingData
-): EligibilityResults | undefined {
+): CriteriaDetails | undefined {
   if (!bldgData) return undefined;
   const criteriaData: CriteriaData = { ...formFields, ...bldgData };
   return {
@@ -49,7 +47,7 @@ export function useEligibility(
 
 function eligibilityPortfolioSize(
   criteriaData: CriteriaData
-): CriteriaEligibility {
+): CriterionDetails {
   const {
     unitsres,
     wow_portfolio_units,
@@ -60,7 +58,7 @@ function eligibilityPortfolioSize(
 
   const criteria = "portfolioSize";
   const requirement = <>Landlord must own more than 10 apartments</>;
-  let determination: Determination;
+  let determination: CriterionResult;
   let userValue: React.ReactNode;
 
   if (unitsres === undefined) {
@@ -122,7 +120,7 @@ function eligibilityPortfolioSize(
   };
 }
 
-function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
+function eligibilityRent(criteriaData: CriteriaData): CriterionDetails {
   const { bedrooms, rent: rentString } = criteriaData;
 
   const rent = parseFloat(rentString || "");
@@ -135,7 +133,7 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
     "4+": "$9,065",
   };
   const criteria = "rent";
-  let determination: Determination;
+  let determination: CriterionResult;
 
   // should remove null from type for all form fields, since required
   if (rent === null || bedrooms === null) return { criteria };
@@ -172,11 +170,11 @@ function eligibilityRent(criteriaData: CriteriaData): CriteriaEligibility {
 
 function eligibilityRentRegulated(
   criteriaData: CriteriaData
-): CriteriaEligibility {
+): CriterionDetails {
   const { rentStabilized } = criteriaData;
   const criteria = "rentRegulation";
   const requirement = "Your apartment must not be rent stabilized.";
-  let determination: Determination;
+  let determination: CriterionResult;
   let userValue: React.ReactNode;
 
   // should remove null from type for all form fields, since required
@@ -210,13 +208,13 @@ function eligibilityRentRegulated(
 
 function eligibilityBuildingClass(
   criteriaData: CriteriaData
-): CriteriaEligibility {
+): CriterionDetails {
   const { bldgclass, bbl } = criteriaData;
   const criteria = "buildingClass";
   const requirement = (
     <>Your building must not be a condo, co-op, or other exempt category.</>
   );
-  let determination: Determination;
+  let determination: CriterionResult;
   let bldgTypeName = "";
 
   if (bbl === "5013920002") {
@@ -267,7 +265,7 @@ function eligibilityBuildingClass(
 
 function eligibilityCertificateOfOccupancy(
   criteriaData: CriteriaData
-): CriteriaEligibility {
+): CriterionDetails {
   const { co_issued } = criteriaData;
   const cutoffYear = 2009;
   const cutoffDate = new Date(cutoffYear, 1, 1);
@@ -280,7 +278,7 @@ function eligibilityCertificateOfOccupancy(
   const criteria = "certificateOfOccupancy";
   const requirement =
     "Your building must have received its certificate of occupancy before 2009.";
-  let determination: Determination;
+  let determination: CriterionResult;
   let userValue: React.ReactNode;
 
   if (co_issued === null || latestCoDate < cutoffDate) {
@@ -300,11 +298,11 @@ function eligibilityCertificateOfOccupancy(
   };
 }
 
-function eligibilitySubsidy(criteriaData: CriteriaData): CriteriaEligibility {
+function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
   const { housingType, is_nycha, is_subsidized } = criteriaData;
   const criteria = "subsidy";
   const requirement = <>You must not live in subsidized or public housing.</>;
-  let determination: Determination;
+  let determination: CriterionResult;
   let userValue: React.ReactNode;
   let moreInfo: React.ReactNode;
 

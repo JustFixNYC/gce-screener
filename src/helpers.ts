@@ -1,5 +1,4 @@
 import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
-import { EligibilityResults, Determination } from "./hooks/eligibility";
 import { RelatedProperty } from "./types/APIDataTypes";
 import { Address } from "./Components/Pages/Home/Home";
 
@@ -29,26 +28,6 @@ export const formatGeosearchAddress = (
         properties.postalcode
       }`
     : "";
-
-export const getDetermination = (
-  eligibilityResults?: EligibilityResults
-): Determination => {
-  if (!eligibilityResults) {
-    return "UNKNOWN";
-  }
-
-  const determinations = Object.values(eligibilityResults).map((criteria) => {
-    return criteria.determination;
-  });
-
-  if (determinations.includes("INELIGIBLE")) {
-    return "INELIGIBLE";
-  } else if (determinations.includes("UNKNOWN")) {
-    return "UNKNOWN";
-  } else {
-    return "ELIGIBLE";
-  }
-};
 
 export const splitBBL = (
   bbl: string

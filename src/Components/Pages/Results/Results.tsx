@@ -3,20 +3,21 @@ import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import { Button, Icon } from "@justfixnyc/component-library";
 
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
-import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
+import {
+  BuildingData,
+  CoverageResult,
+  CriteriaResults,
+  CriterionResult,
+  GCEUser,
+} from "../../../types/APIDataTypes";
 import { FormFields } from "../Form/Form";
 import {
-  CriteriaEligibility,
-  Determination,
-  EligibilityResults,
-  useEligibility,
+  CriterionDetails,
+  CriteriaDetails,
+  useCriteriaResults as useCriteriaDetails,
 } from "../../../hooks/eligibility";
-import {
-  determinationToCoverage,
-  extractDeterminations,
-} from "../../../api/helpers";
+import { getCriteriaResults } from "../../../api/helpers";
 import { Address } from "../Home/Home";
-import { getDetermination } from "../../../helpers";
 import {
   ContentBox,
   ContentBoxFooter,
@@ -40,6 +41,11 @@ export const Results: React.FC = () => {
   };
   const [, setSearchParams] = useSearchParams();
   const { trigger } = useSendGceData();
+  const bbl = address.bbl;
+  const { data: bldgData, isLoading, error } = useGetBuildingData(bbl);
+  const criteriaDetails = useCriteriaDetails(fields, bldgData);
+  const criteriaResults = getCriteriaResults(criteriaDetails);
+  const coverageResult = getCoverageResult(fields, criteriaResults);
 
   useEffect(() => {
     // save session state in params
@@ -57,12 +63,12 @@ export const Results: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (determination && eligibilityResults) {
+    if (coverageResult && criteriaResults) {
       try {
         trigger({
           id: user?.id,
-          result_coverage: determinationToCoverage(determination),
-          result_criteria: extractDeterminations(eligibilityResults),
+          result_coverage: coverageResult,
+          result_criteria: criteriaResults,
         });
       } catch (error) {
         console.log({ "tenants2-error": error });
@@ -98,26 +104,12 @@ export const Results: React.FC = () => {
     };
   }, []);
 
-  const bbl = address.bbl;
-
-  const { data: bldgData, isLoading, error } = useGetBuildingData(bbl);
-
-  const eligibilityResults = useEligibility(fields, bldgData);
-
-  const determination = getDetermination(eligibilityResults);
-
-  const isRentStabilized =
-    eligibilityResults?.rentRegulation.determination === "INELIGIBLE";
-
   return (
     <div id="results-page">
       <Header
         title={
-          bldgData && eligibilityResults ? (
-            <EligibilityResultHeadline
-              determination={determination}
-              eligibilityResults={eligibilityResults}
-            />
+          bldgData && coverageResult ? (
+            <CoverageResultHeadline result={coverageResult} />
           ) : (
             "Loading your results..."
           )
@@ -135,9 +127,7 @@ export const Results: React.FC = () => {
         )}
 
         <div className="eligibility__table__container">
-          {bldgData && (
-            <EligibilityCriteriaTable eligibilityResults={eligibilityResults} />
-          )}
+          {bldgData && <CriteriaTable criteria={criteriaDetails} />}
         </div>
         <div className="protections-on-next-page__print">
           View tenant protection information on following pages
@@ -146,21 +136,23 @@ export const Results: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          {determination === "UNKNOWN" && bldgData && eligibilityResults && (
+          {coverageResult === "UNKNOWN" && bldgData && criteriaDetails && (
             <EligibilityNextSteps
               bldgData={bldgData}
-              eligibilityResults={eligibilityResults}
+              eligibilityResults={criteriaDetails}
             />
           )}
 
-          {isRentStabilized && <RentStabilizedProtections />}
-          {determination === "UNKNOWN" && (
+          {coverageResult === "RENT_STABILIZED" && (
+            <RentStabilizedProtections />
+          )}
+          {coverageResult === "UNKNOWN" && (
             <>
               <GoodCauseProtections subtitle="Protections you might have under Good Cause Eviction" />
               <UniversalProtections />
             </>
           )}
-          {determination === "ELIGIBLE" && (
+          {coverageResult === "COVERED" && (
             <>
               <GoodCauseExercisingRights />
               <GoodCauseProtections />
@@ -193,7 +185,7 @@ const CRITERIA_LABELS = {
   certificateOfOccupancy: "Certificate of Occupancy",
 };
 
-const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
+const EligibilityIcon: React.FC<{ determination?: CriterionResult }> = ({
   determination,
 }) => {
   switch (determination) {
@@ -211,7 +203,7 @@ const EligibilityIcon: React.FC<{ determination?: Determination }> = ({
   }
 };
 
-const CriteriaResult: React.FC<CriteriaEligibility> = (props) => {
+const CriterionRow: React.FC<CriterionDetails> = (props) => {
   return (
     <li className="eligibility__row">
       <span className="eligibility__row__icon">
@@ -236,24 +228,9 @@ const CriteriaResult: React.FC<CriteriaEligibility> = (props) => {
   );
 };
 
-const CoveredPill: React.FC<{
-  determination: Determination;
-  className: string;
-}> = ({ determination, className }) => {
-  const longClassName = `${className} ${className}--${determination.toLowerCase()}`;
-
-  if (determination === "ELIGIBLE") {
-    return <span className={longClassName}>covered</span>;
-  } else if (determination === "INELIGIBLE") {
-    return <span className={longClassName}>not covered</span>;
-  } else {
-    return <span className={longClassName}>might be covered</span>;
-  }
-};
-
-const EligibilityCriteriaTable: React.FC<{
-  eligibilityResults: EligibilityResults | undefined;
-}> = ({ eligibilityResults }) => (
+const CriteriaTable: React.FC<{
+  criteria?: CriteriaDetails;
+}> = ({ criteria }) => (
   <div className="eligibility__table">
     <div className="eligibility__table__header">
       <span className="eligibility__table__header__title">
@@ -265,24 +242,16 @@ const EligibilityCriteriaTable: React.FC<{
       </p>
     </div>
     <ul className="eligibility__table__list">
-      {eligibilityResults?.rent && (
-        <CriteriaResult {...eligibilityResults.rent} />
+      {criteria?.rent && <CriterionRow {...criteria.rent} />}
+      {criteria?.rentRegulation && (
+        <CriterionRow {...criteria.rentRegulation} />
       )}
-      {eligibilityResults?.rentRegulation && (
-        <CriteriaResult {...eligibilityResults.rentRegulation} />
+      {criteria?.buildingClass && <CriterionRow {...criteria.buildingClass} />}
+      {criteria?.certificateOfOccupancy && (
+        <CriterionRow {...criteria.certificateOfOccupancy} />
       )}
-      {eligibilityResults?.buildingClass && (
-        <CriteriaResult {...eligibilityResults.buildingClass} />
-      )}
-      {eligibilityResults?.certificateOfOccupancy && (
-        <CriteriaResult {...eligibilityResults.certificateOfOccupancy} />
-      )}
-      {eligibilityResults?.subsidy && (
-        <CriteriaResult {...eligibilityResults.subsidy} />
-      )}
-      {eligibilityResults?.portfolioSize && (
-        <CriteriaResult {...eligibilityResults.portfolioSize} />
-      )}
+      {criteria?.subsidy && <CriterionRow {...criteria.subsidy} />}
+      {criteria?.portfolioSize && <CriterionRow {...criteria.portfolioSize} />}
     </ul>
 
     <div className="eligibility__table__footer">
@@ -297,7 +266,7 @@ const EligibilityCriteriaTable: React.FC<{
 
 const EligibilityNextSteps: React.FC<{
   bldgData: BuildingData;
-  eligibilityResults: EligibilityResults;
+  eligibilityResults: CriteriaDetails;
 }> = ({ bldgData, eligibilityResults }) => {
   const portfolioSizeUnknown =
     eligibilityResults?.portfolioSize?.determination === "UNKNOWN";
@@ -387,51 +356,72 @@ const EligibilityNextSteps: React.FC<{
   );
 };
 
-const EligibilityResultHeadline: React.FC<{
-  determination: Determination;
-  eligibilityResults: EligibilityResults;
-}> = ({ determination, eligibilityResults }) => {
-  if (determination === "UNKNOWN") {
-    return (
-      <>
-        <span className="eligibility__result">
+const getCoverageResult = (
+  fields?: FormFields,
+  criteriaResults?: CriteriaResults
+): CoverageResult | undefined => {
+  if (!fields || !criteriaResults) {
+    return undefined;
+  }
+
+  const results = Object.values(criteriaResults);
+
+  if (fields?.housingType === "NYCHA") {
+    return "NYCHA";
+  } else if (fields?.rentStabilized === "YES") {
+    return "RENT_STABILIZED";
+  } else if (results.includes("INELIGIBLE")) {
+    return "NOT_COVERED";
+  } else if (results.includes("UNKNOWN")) {
+    return "UNKNOWN";
+  } else {
+    return "COVERED";
+  }
+};
+
+const CoverageResultHeadline: React.FC<{
+  result: CoverageResult;
+}> = ({ result }) => {
+  switch (result) {
+    case "UNKNOWN":
+      return (
+        <span>
           Your apartment{" "}
-          <CoveredPill determination={determination} className="covered-pill" />
+          <span className="coverage-pill yellow">might be covered</span> by Good
+          Cause Eviction
         </span>
-        <span>by Good Cause Eviction</span>
-      </>
-    );
-  } else if (determination === "ELIGIBLE") {
-    return (
-      <>
-        <span className="eligibility__result">
+      );
+    case "NOT_COVERED":
+      return (
+        <span>
           Your apartment is likely{" "}
-          <CoveredPill determination={determination} className="covered-pill" />
+          <span className="coverage-pill orange">not covered</span> by Good
+          Cause Eviction
         </span>
-        <span>by Good Cause Eviction</span>
-      </>
-    );
-  } else if (eligibilityResults.rentRegulation.determination === "INELIGIBLE") {
-    return (
-      <>
-        <span className="eligibility__result">
+      );
+    case "RENT_STABILIZED":
+      return (
+        <span>
           Your apartment is protected by{" "}
-          <span className="covered-pill covered-pill--eligible">
-            rent stabilization
-          </span>
-          , which provides stronger protections than Good Cause Eviction
+          <span className="coverage-pill green">rent stabilization</span>, which
+          provides stronger protections than Good Cause Eviction
         </span>
-      </>
-    );
-  } else if (determination === "INELIGIBLE") {
-    return (
-      <>
-        <span className="eligibility__result">
+      );
+    case "COVERED":
+      return (
+        <span>
           Your apartment is likely{" "}
-          <CoveredPill determination={determination} className="covered-pill" />{" "}
+          <span className="coverage-pill green">covered</span> by Good Cause
+          Eviction
         </span>
-        <span>by Good Cause Eviction</span>
-      </>
-    );
+      );
+    case "NYCHA":
+      return (
+        <span>
+          Your apartment is part of{" "}
+          <span className="coverage-pill green">NYCHA</span>, which provides
+          stronger protections than Good Cause Eviction
+        </span>
+      );
   }
 };

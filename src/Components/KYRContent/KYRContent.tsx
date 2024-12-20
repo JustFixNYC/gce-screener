@@ -266,44 +266,67 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
 
 export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
   title = "KNOW YOUR RIGHTS",
-  subtitle = "Protections you have if you live in NYCHA housing",
+  subtitle = "Protections you have as a NYCHA tenant",
   children,
 }) => (
   <>
     <ContentBox title={title} subtitle={subtitle}>
-      <ContentBoxItem title="Your right to limited rent increases">
+      <ContentBoxItem title="Your right to repairs">
         <p>
-          For rent-stabilized leases being renewed between October 1, 2024 and
-          September 30, 2025 the legal rent may be increased at the following
-          levels: for a one-year renewal there is a 2.75% increase, or for a
-          two-year renewal there is a 5.25% increase.
+          Everyone has the right to live in a safe and habitable environment.
+          This includes timely repairs to their apartment to address any
+          maintenance issues that may arise. NYCHA Residents have the right to
+          request repairs and expect prompt action from management.
         </p>
-        <JFCLLinkExternal href="https://hcr.ny.gov/system/files/documents/2024/10/fact-sheet-26-10-2024.pdf">
-          Learn about rent increase rights
-        </JFCLLinkExternal>
+        <br />
+        <p>
+          If NYCHA is not responding to ticket requests, residents can file
+          housing court cases (HP actions) seeking a judicial order requiring
+          NYCHA to make prompt repairs.
+        </p>
       </ContentBoxItem>
 
-      <ContentBoxItem title="Your right to a lease renewal">
+      <ContentBoxItem title="Your right to income-based rent">
         <p>
-          If you are rent-stabilized your landlord cannot simply decide they
-          don’t want you as a tenant anymore, they are limited to certain
-          reasons for evicting you.
+          This ensures that housing remains affordable and equitable for all
+          residents, regardless of financial circumstances. Residents who have
+          recently experienced a change in income can request an interim
+          recertification to ensure that their apartment remains affordable.
         </p>
-        <JFCLLinkExternal href="https://rentguidelinesboard.cityofnewyork.us/resources/faqs/leases-renewal-vacancy/#landlord:~:text=If%20your%20apartment%20is%20rent,before%20the%20existing%20lease%20expires">
-          Learn about lease renewal rights
-        </JFCLLinkExternal>
       </ContentBoxItem>
 
-      <ContentBoxItem title="Your right to succession">
+      <ContentBoxItem title="Your right to grieve management decisions">
         <p>
-          If you are the immediate family member of a rent-stabilized tenant and
-          have been living with them immediately prior to their moving or
-          passing away, you might be entitled to take over the lease.
+          In instances where residents disagree with management decisions or
+          believe their rights have been violated, they have the right to grieve
+          these issues through a formal process.
         </p>
-        <JFCLLinkExternal href="https://www.metcouncilonhousing.org/help-answers/succession-rights-in-rent-stabilized-and-rent-controlled-apartments/">
-          Learn about succession rights
-        </JFCLLinkExternal>
+        <br />
+        <p>
+          Residents can file grievances online through the resident portal or on
+          paper by visiting the management office.
+        </p>
       </ContentBoxItem>
+
+      <ContentBoxItem title="Your right to legal representation">
+        <p>
+          Legal representation can make a significant difference in ensuring a
+          fair and just resolution to housing disputes, protecting residents
+          from wrongful eviction or other adverse outcomes.
+        </p>
+        <br />
+        <p>
+          If you do not have a lawyer and are facing a termination of tenancy at
+          the Office of Impartial Hearings, you can ask for your case to be
+          adjourned in order for you to seek counsel.
+        </p>
+      </ContentBoxItem>
+
+      <ContentBoxItem title="Learn more about NYCHA protections">
+        <JFCLLinkExternal href="">NY Legal Assistance Group</JFCLLinkExternal>
+        <JFCLLinkExternal href="">PACT Fact Sheet</JFCLLinkExternal>
+      </ContentBoxItem>
+
       {children}
     </ContentBox>
     <div className="divider__print" />
