@@ -130,6 +130,9 @@ export const Results: React.FC = () => {
         <div className="protections-on-next-page__print">
           View tenant protection information on following pages
         </div>
+        <div className="protections-on-next-page__print">
+          View tenant protection information on following pages
+        </div>
       </Header>
 
       <div className="content-section">
