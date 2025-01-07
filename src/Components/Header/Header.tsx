@@ -10,7 +10,7 @@ type HeaderProps = {
   pageType?: string;
   address?: Address;
   isGuide?: boolean;
-  showBreadcrumbs?: boolean;
+  showProgressBar?: boolean;
   children?: React.ReactNode;
 };
 
@@ -20,13 +20,13 @@ export const Header: React.FC<HeaderProps> = ({
   title,
   subtitle,
   isGuide = false,
-  showBreadcrumbs = true,
+  showProgressBar = true,
   children,
 }) => {
   return (
     <div className="headline-section">
       <div className="headline-section__content">
-        {showBreadcrumbs && <ProgressBar address={address} />}
+        {showProgressBar && <ProgressBar address={address} />}
         <div className="headline-section__address__print">
           {toTitleCase(
             `${address?.houseNumber} ${address?.streetName}, ${address?.zipcode}`

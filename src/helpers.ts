@@ -1,6 +1,5 @@
 import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { RelatedProperty } from "./types/APIDataTypes";
-import { Address } from "./Components/Pages/Home/Home";
 
 export function toTitleCase(x: string) {
   return x.replace(
@@ -8,16 +7,6 @@ export function toTitleCase(x: string) {
     (text: string) =>
       text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
   );
-}
-
-export function breadCrumbAddress(address?: Address, maxLength = 45) {
-  if (!address) return "Your address";
-  const addrShort = toTitleCase(
-    `${address?.houseNumber} ${address?.streetName}`
-  );
-  return addrShort.length > maxLength
-    ? `${addrShort.substring(0, maxLength)}\u2026`
-    : addrShort;
 }
 
 export const formatGeosearchAddress = (

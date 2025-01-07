@@ -12,14 +12,14 @@ export const ProgressBar: React.FC<{ address?: Address }> = ({ address }) => {
 
   const progressBarSteps = steps.flatMap((step, index, array) => {
     const StepElement = step.active ? (
-      <span key={index} className="progress-bar__crumb__active">
+      <span key={index} className="progress-bar__step__active">
         {step.name}
       </span>
     ) : (
       <Link
         key={index}
         to={step.path ?? "/"}
-        className="jfcl-link progress-bar__crumb"
+        className="jfcl-link progress-bar__step"
       >
         {step.name}
       </Link>

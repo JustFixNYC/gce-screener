@@ -13,18 +13,18 @@
     display: none;
   }
 
-  .progress-bar__crumb,
-  .progress-bar__crumb__active {
+  .progress-bar__step,
+  .progress-bar__step__active {
     font-size: 1.125rem; // 18px
   }
-  .progress-bar__crumb {
+  .progress-bar__step {
     font-weight: 500;
     color: $GREY_700;
     &:not(:hover) {
       text-decoration: none;
     }
   }
-  .progress-bar__crumb__active {
+  .progress-bar__step__active {
     font-weight: 600;
   }
 }
