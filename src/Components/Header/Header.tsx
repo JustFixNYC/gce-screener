@@ -1,5 +1,5 @@
 import React from "react";
-import { BreadCrumbs } from "../BreadCrumbs/BreadCrumbs";
+import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { Address } from "../Pages/Home/Home";
 import { BackLink } from "../JFCLLinkInternal";
 import { toTitleCase } from "../../helpers";
@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <div className="headline-section">
       <div className="headline-section__content">
-        {showBreadcrumbs && <BreadCrumbs address={address} />}
+        {showBreadcrumbs && <ProgressBar address={address} />}
         <div className="headline-section__address__print">
           {toTitleCase(
             `${address?.houseNumber} ${address?.streetName}, ${address?.zipcode}`

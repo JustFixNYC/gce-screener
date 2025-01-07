@@ -1,6 +1,6 @@
 @import "../../colors.scss";
 
-.breadCrumbs {
+.progress-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -13,18 +13,18 @@
     display: none;
   }
 
-  .breadCrumbs__crumb,
-  .breadCrumbs__crumb__active {
+  .progress-bar__crumb,
+  .progress-bar__crumb__active {
     font-size: 1.125rem; // 18px
   }
-  .breadCrumbs__crumb {
+  .progress-bar__crumb {
     font-weight: 500;
     color: $GREY_700;
     &:not(:hover) {
       text-decoration: none;
     }
   }
-  .breadCrumbs__crumb__active {
+  .progress-bar__crumb__active {
     font-weight: 600;
   }
 }
