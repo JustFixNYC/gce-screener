@@ -64,3 +64,29 @@
     }
   }
 }
+
+@media print {
+  #portfolio-size-page {
+    .headline-section__address__print {
+      padding-bottom: 0.75rem; //12px
+    }
+
+    .headline-section__back-link {
+      display: none;
+    }
+
+    .content-box {
+      border: unset;
+      .accordion__chevron {
+        display: none;
+      }
+      .content-box__footer {
+        display: none;
+      }
+    }
+
+    .divider__print {
+      border-bottom: 1px solid black !important;
+    }
+  }
+}

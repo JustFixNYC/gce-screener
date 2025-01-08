@@ -15,6 +15,8 @@ import { useGetBuildingData } from "../../../api/hooks";
 import { AcrisDocument, BuildingData } from "../../../types/APIDataTypes";
 import {
   acrisDocTypeFull,
+  closeAccordionsPrint,
+  openAccordionsPrint,
   prioritizeBldgs,
   urlAcrisBbl,
   urlAcrisDoc,
@@ -43,6 +45,15 @@ export const PortfolioSize: React.FC = () => {
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("beforeprint", openAccordionsPrint);
+    window.addEventListener("afterprint", closeAccordionsPrint);
+    return () => {
+      window.removeEventListener("beforeprint", openAccordionsPrint);
+      window.removeEventListener("afterprint", closeAccordionsPrint);
+    };
   }, []);
 
   const bbl = address.bbl;
@@ -78,7 +89,7 @@ export const PortfolioSize: React.FC = () => {
             </p>
           </ContentBoxItem>
         </ContentBox>
-
+        <div className="divider__print" />
         <ContentBox
           title="WHAT YOU CAN DO"
           subtitle="How to find other apartments your landlord owns"
@@ -131,6 +142,7 @@ export const PortfolioSize: React.FC = () => {
             link={<BackLink to="/form">Back to survey</BackLink>}
           />
         </ContentBox>
+        <div className="divider__print" />
       </div>
     </div>
   );
