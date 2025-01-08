@@ -6,3 +6,30 @@
     padding: 0;
   }
 }
+
+@media print {
+  #tenant-rights-page {
+    .headline-section__address__print {
+      display: none;
+    }
+
+    .headline-section__page-type {
+      padding-top: 24px;
+      padding-bottom: 12px;
+    }
+
+    .content-box {
+      border: unset;
+      .accordion__chevron {
+        display: none;
+      }
+      .content-box__footer {
+        display: none;
+      }
+    }
+
+    .divider__print {
+      border-bottom: 1px solid black;
+    }
+  }
+}

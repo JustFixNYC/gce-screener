@@ -200,6 +200,10 @@ $eligibilityTablePaddingH: 36px;
       color: $OFF_BLACK;
     }
 
+    .headline-section__address__print {
+      padding-bottom: 12px;
+    }
+
     .eligibility__row {
       &:last-of-type {
         border-bottom: unset;
@@ -224,10 +228,8 @@ $eligibilityTablePaddingH: 36px;
         display: none;
       }
     }
-    .criteria-icon {
-      svg {
-        color: black;
-      }
+    svg {
+      color: $OFF_BLACK !important;
     }
 
     .divider__print {
