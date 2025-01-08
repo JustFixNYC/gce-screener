@@ -14,6 +14,10 @@
     }
   }
 
+  .accordion__summary:hover {
+    background-color: $OFF_WHITE_100;
+  }
+
   &[open] {
     summary .accordion__chevron {
       transform: scale(-1, -1);
