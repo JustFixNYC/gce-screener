@@ -1,0 +1,21 @@
+.share-button__container {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 3rem;
+
+  button.share-button {
+    background: unset;
+    border: unset;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .share-button svg {
+    margin-right: 0.5rem;
+  }
+}
+
+@media print {
+  .share-button__container {
+    display: none;
+  }
+}

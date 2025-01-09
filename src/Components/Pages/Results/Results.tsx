@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import { Button, Icon } from "@justfixnyc/component-library";
 
@@ -30,8 +30,9 @@ import {
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
 import { Header } from "../../Header/Header";
-import "./Results.scss";
 import { CheckPlusIcon } from "../../CheckPlusIcon";
+import { ShareButtons } from "../../ShareButtons/ShareButtons";
+import "./Results.scss";
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -46,6 +47,10 @@ export const Results: React.FC = () => {
   const criteriaDetails = useCriteriaDetails(fields, bldgData);
   const criteriaResults = getCriteriaResults(criteriaDetails);
   const coverageResult = getCoverageResult(fields, criteriaResults);
+
+  const headlineRef = useRef<HTMLSpanElement>(null);
+  const EMAIL_SUBJECT = "Good Cause NYC | Your Coverage Result";
+  const EMAIL_BODY = headlineRef?.current?.textContent;
 
   useEffect(() => {
     // save session state in params
@@ -109,7 +114,10 @@ export const Results: React.FC = () => {
       <Header
         title={
           bldgData && coverageResult ? (
-            <CoverageResultHeadline result={coverageResult} />
+            <CoverageResultHeadline
+              result={coverageResult}
+              headlineRef={headlineRef}
+            />
           ) : (
             "Loading your results..."
           )
@@ -124,6 +132,18 @@ export const Results: React.FC = () => {
         )}
         {isLoading && (
           <div className="data__loading">Loading your results...</div>
+        )}
+
+        {bldgData && coverageResult && (
+          <ShareButtons
+            buttonsInfo={[
+              ["email", "Email coverage"],
+              ["download", "Download coverage"],
+              ["print", "Print coverage"],
+            ]}
+            emailSubject={EMAIL_SUBJECT}
+            emailBody={EMAIL_BODY}
+          />
         )}
 
         {bldgData && <CriteriaTable criteria={criteriaDetails} />}
@@ -385,47 +405,55 @@ const getCoverageResult = (
 
 const CoverageResultHeadline: React.FC<{
   result: CoverageResult;
-}> = ({ result }) => {
+  headlineRef: React.RefObject<HTMLSpanElement>;
+}> = ({ result, headlineRef }) => {
+  let headlineContent = <></>;
   switch (result) {
     case "UNKNOWN":
-      return (
-        <span>
+      headlineContent = (
+        <>
           Your apartment{" "}
           <span className="coverage-pill yellow">might be covered</span> by Good
           Cause Eviction
-        </span>
+        </>
       );
+      break;
     case "NOT_COVERED":
-      return (
-        <span>
+      headlineContent = (
+        <>
           Your apartment is likely{" "}
           <span className="coverage-pill orange">not covered</span> by Good
           Cause Eviction
-        </span>
+        </>
       );
+      break;
     case "RENT_STABILIZED":
-      return (
-        <span>
+      headlineContent = (
+        <>
           Your apartment is protected by{" "}
           <span className="coverage-pill green">rent stabilization</span>, which
           provides stronger protections than Good Cause Eviction
-        </span>
+        </>
       );
+      break;
     case "COVERED":
-      return (
-        <span>
+      headlineContent = (
+        <>
           Your apartment is likely{" "}
           <span className="coverage-pill green">covered</span> by Good Cause
           Eviction
-        </span>
+        </>
       );
+      break;
     case "NYCHA":
-      return (
-        <span>
+      headlineContent = (
+        <>
           Your apartment is part of{" "}
           <span className="coverage-pill green">NYCHA</span>, which provides
           stronger protections than Good Cause Eviction
-        </span>
+        </>
       );
+      break;
   }
+  return <span ref={headlineRef}>{headlineContent}</span>;
 };
