@@ -1,18 +1,11 @@
-#tenant-rights-page {
-  .headline-section__content {
-    margin: 0;
-  }
-}
-
 @media print {
-  #tenant-rights-page {
+  #rent-stabilization-page {
     .headline-section__address__print {
-      display: none;
+      padding-bottom: 0.75rem; //12px
     }
 
-    .headline-section__page-type {
-      padding-top: 1.5rem; //24px
-      padding-bottom: 0.75rem; //12px
+    .headline-section__back-link {
+      display: none;
     }
 
     .content-box {
@@ -27,6 +20,7 @@
 
     .divider__print {
       border-bottom: 1px solid black;
+      width: 100%;
     }
   }
 }

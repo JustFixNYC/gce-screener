@@ -32,6 +32,7 @@ import {
 import { Header } from "../../Header/Header";
 import { CheckPlusIcon } from "../../CheckPlusIcon";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
+import { closeAccordionsPrint, openAccordionsPrint } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
 
@@ -88,24 +89,6 @@ export const Results: React.FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const openAccordionsPrint = () => {
-    const accordions: NodeListOf<HTMLDetailsElement> =
-      document.body.querySelectorAll("details:not([open])");
-    accordions.forEach((e) => {
-      e.setAttribute("open", "");
-      e.dataset.wasclosed = "";
-    });
-  };
-
-  const closeAccordionsPrint = () => {
-    const accordions: NodeListOf<HTMLDetailsElement> =
-      document.body.querySelectorAll("details[data-wasclosed]");
-    accordions.forEach((e) => {
-      e.removeAttribute("open");
-      delete e.dataset.wasclosed;
-    });
-  };
 
   useEffect(() => {
     window.addEventListener("beforeprint", openAccordionsPrint);
@@ -175,7 +158,6 @@ export const Results: React.FC = () => {
           {coverageResult === "UNKNOWN" && (
             <>
               <GoodCauseProtections subtitle="Protections you might have under Good Cause Eviction" />
-              <UniversalProtections />
             </>
           )}
           {coverageResult === "COVERED" && (
