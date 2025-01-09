@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ContentBoxFooter } from "../../ContentBox/ContentBox";
 import { Header } from "../../Header/Header";
 import JFCLLinkInternal from "../../JFCLLinkInternal";
@@ -8,8 +9,18 @@ import {
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
 import "./TenantRights.scss";
+import { openAccordionsPrint, closeAccordionsPrint } from "../../../helpers";
 
 export const TenantRights: React.FC = () => {
+  useEffect(() => {
+    window.addEventListener("beforeprint", openAccordionsPrint);
+    window.addEventListener("afterprint", closeAccordionsPrint);
+    return () => {
+      window.removeEventListener("beforeprint", openAccordionsPrint);
+      window.removeEventListener("afterprint", closeAccordionsPrint);
+    };
+  }, []);
+
   return (
     <div id="tenant-rights-page">
       <Header

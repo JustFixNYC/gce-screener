@@ -9,6 +9,9 @@ import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { BackLink } from "../../JFCLLinkInternal";
 import { Address } from "../Home/Home";
 import { Header } from "../../Header/Header";
+import "./RentStabilization.scss";
+import { useEffect } from "react";
+import { openAccordionsPrint, closeAccordionsPrint } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 
 const EMAIL_SUBJECT =
@@ -19,6 +22,15 @@ export const RentStabilization: React.FC = () => {
   const { address } = useLoaderData() as {
     address: Address;
   };
+
+  useEffect(() => {
+    window.addEventListener("beforeprint", openAccordionsPrint);
+    window.addEventListener("afterprint", closeAccordionsPrint);
+    return () => {
+      window.removeEventListener("beforeprint", openAccordionsPrint);
+      window.removeEventListener("afterprint", closeAccordionsPrint);
+    };
+  }, []);
 
   return (
     <div id="rent-stabilization-page">
@@ -51,7 +63,7 @@ export const RentStabilization: React.FC = () => {
             </p>
           </ContentBoxItem>
         </ContentBox>
-
+        <div className="divider__print" />
         <ContentBox
           title="WHAT YOU CAN DO"
           subtitle="How to find out if your apartment is rent stabilized"
@@ -96,6 +108,7 @@ export const RentStabilization: React.FC = () => {
             link={<BackLink to="/form">Back to survey</BackLink>}
           />
         </ContentBox>
+        <div className="divider__print" />
       </div>
     </div>
   );
