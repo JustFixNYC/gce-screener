@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { Link, useLocation } from "react-router-dom";
 import { Address } from "../Pages/Home/Home";
-import { toTitleCase } from "../../helpers";
+import { abbreviateBoro, toTitleCase } from "../../helpers";
 import "./ProgressBar.scss";
 
 type Step = { path?: string; name?: string; active?: boolean };
@@ -63,9 +63,9 @@ const makeProgressSteps = (pathname: string, address?: Address) => {
 
 function progressBarAddress(address?: Address, maxLength = 45) {
   if (!address) return "Address";
-  const addrShort = toTitleCase(
-    `${address?.houseNumber} ${address?.streetName}`
-  );
+  const addrShort = `${toTitleCase(
+    `${address?.houseNumber || ""} ${address?.streetName}`
+  )}, ${abbreviateBoro(address.borough)}`;
   return addrShort.length > maxLength
     ? `${addrShort.substring(0, maxLength)}\u2026`
     : addrShort;

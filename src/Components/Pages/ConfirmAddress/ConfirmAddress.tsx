@@ -88,7 +88,7 @@ export const ConfirmAddress: React.FC = () => {
               <div className="address-container">
                 <div className="your-address">Your Address</div>
                 <h3 className="address-part-1">{`${
-                  address.houseNumber
+                  address.houseNumber || ""
                 } ${toTitleCase(address.streetName)}`}</h3>
                 <div className="address-part-2">{`${toTitleCase(
                   address.borough

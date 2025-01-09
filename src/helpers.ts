@@ -34,6 +34,23 @@ export const splitBBL = (
   return { boro, block, lot };
 };
 
+export const abbreviateBoro = (borough: string): string => {
+  switch (borough.toUpperCase()) {
+    case "MANHATTAN":
+      return "MN";
+    case "BRONX":
+      return "BX";
+    case "BROOKLYN":
+      return "BK";
+    case "QUEENS":
+      return "QN";
+    case "STATEN ISLAND":
+      return "SI";
+    default:
+      return "";
+  }
+};
+
 export const formatDistance = (distance_ft: number): string => {
   if (distance_ft < 2640) {
     return `${new Intl.NumberFormat("en", {
