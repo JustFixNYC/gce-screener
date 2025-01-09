@@ -6,13 +6,12 @@ import {
   ContentBoxItem,
 } from "../../ContentBox/ContentBox";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
-import { BackLink } from "../../JFCLLinkInternal";
 import { Address } from "../Home/Home";
 import { Header } from "../../Header/Header";
-import "./RentStabilization.scss";
 import { useEffect } from "react";
 import { openAccordionsPrint, closeAccordionsPrint } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
+import "./RentStabilization.scss";
 
 const EMAIL_SUBJECT =
   "Good Cause NYC | Find out if your apartment is rent stabilized";
@@ -104,9 +103,9 @@ export const RentStabilization: React.FC = () => {
             </JFCLLinkExternal>
           </ContentBoxItem>
           <ContentBoxFooter
-            title="Have you confirmed your rent stabilization status?"
-            subtitle="Adjust your survey answers and receive an updated coverage result"
-            link={<BackLink to="/form">Back to survey</BackLink>}
+            message="Update your coverage result"
+            linkText="Adjust survey answers"
+            linkTo="/form"
           />
         </ContentBox>
         <div className="divider__print" />

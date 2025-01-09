@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import "./ContentBox.scss";
 import { Accordion } from "../Accordion/Accordion";
 import classNames from "classnames";
+import { Link, To } from "react-router-dom";
 
 export type ContentBoxProps = {
   title?: ReactNode;
@@ -81,23 +82,26 @@ export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
 };
 
 export type ContentBoxFooterProps = {
-  title: string;
-  subtitle?: string;
+  message: string;
+  linkText: string;
+  linkTo: To;
   className?: string;
-  link?: ReactNode;
 };
 
 export const ContentBoxFooter: React.FC<ContentBoxFooterProps> = ({
-  title,
-  subtitle,
+  message,
   className,
-  link,
+  linkText,
+  linkTo,
 }) => {
   return (
     <div className={classNames("content-box__footer", className)}>
-      <div className="content-box__footer__title">{title}</div>
-      <p className="content-box__footer__subtitle">{subtitle}</p>
-      <div className="content-box__footer__link">{link}</div>
+      <div className="content-box__footer__message">{message}</div>
+      <div className="content-box__footer__link">
+        <Link to={linkTo} className="jfcl-link">
+          {linkText}
+        </Link>
+      </div>
     </div>
   );
 };

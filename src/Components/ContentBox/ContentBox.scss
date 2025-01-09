@@ -101,16 +101,14 @@ $videoEmbedW: 623px;
 }
 
 .content-box__footer {
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  background-color: $OFF_WHITE_200;
-  padding: 2.25rem; // 36px
+  justify-content: space-between;
+  background-color: $OFF_WHITE_100;
+  padding: 1.5rem 2rem;
+  border-radius: 0 0 8px 8px;
 
-  .content-box__footer__title {
-    @include body_large_desktop;
-  }
-  .content-box__footer__subtitle {
+  .content-box__footer__message {
     @include body_standard_desktop;
-    margin: 0.5rem 0 1.125rem 0; // 8px 18px
   }
 }

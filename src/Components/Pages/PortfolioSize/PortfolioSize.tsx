@@ -10,7 +10,6 @@ import {
 import { Accordion } from "../../Accordion/Accordion";
 import { FormFields } from "../Form/Form";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
-import { BackLink } from "../../JFCLLinkInternal";
 import { useGetBuildingData } from "../../../api/hooks";
 import { AcrisDocument, BuildingData } from "../../../types/APIDataTypes";
 import {
@@ -22,10 +21,10 @@ import {
   urlAcrisDoc,
   urlCountyClerkBbl,
 } from "../../../helpers";
-import "./PortfolioSize.scss";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { Header } from "../../Header/Header";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
+import "./PortfolioSize.scss";
 
 // const LOOM_EMBED_URL =
 //   "https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119";
@@ -151,9 +150,9 @@ export const PortfolioSize: React.FC = () => {
           </ContentBoxItem>
 
           <ContentBoxFooter
-            title="Have you found more buildings owned by your landlord?"
-            subtitle="Adjust your survey answers and receive an updated coverage result"
-            link={<BackLink to="/form">Back to survey</BackLink>}
+            message="Update your coverage result"
+            linkText="Adjust survey answers"
+            linkTo="/form"
           />
         </ContentBox>
         <div className="divider__print" />
