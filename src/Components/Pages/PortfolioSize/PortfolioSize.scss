@@ -86,10 +86,11 @@
     }
 
     .divider__print {
-      border-bottom: 1px solid black !important;
+      border-bottom: 1px solid black;
+      width: 100%;
     }
     .acris-links__pill {
-      color: black
+      color: black;
     }
   }
 }

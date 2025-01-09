@@ -19,7 +19,8 @@
     }
 
     .divider__print {
-      border-bottom: 1px solid black !important;
+      border-bottom: 1px solid black;
+      width: 100%;
     }
   }
 }
