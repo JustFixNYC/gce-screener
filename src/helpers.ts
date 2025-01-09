@@ -1,5 +1,7 @@
 import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { RelatedProperty } from "./types/APIDataTypes";
+import { Address } from "./Components/Pages/Home/Home";
+import { FormFields } from "./Components/Pages/Form/Form";
 
 export function toTitleCase(x: string) {
   return x.replace(
@@ -82,3 +84,9 @@ export const acrisDocTypeFull = (docType: string) => {
 
 export const formatNumber = (n: number) =>
   new Intl.NumberFormat("en").format(n);
+
+export const getLastStepReached = (address?: Address, fields?: FormFields) => {
+  if (!address) return 1;
+  if (!fields) return 2;
+  return 3;
+};

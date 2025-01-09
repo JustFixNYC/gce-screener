@@ -26,15 +26,14 @@ export const Home: React.FC = () => {
   const [, setUser] = useSessionStorage<GCEUser>("user");
   const [address, setAddress] = useSessionStorage<Address>("address");
   const [, , removeFormFields] = useSessionStorage<FormFields>("fields");
+  const [lastStepReached, setLastStepReached] =
+    useSessionStorage<number>("lastStepReached");
   const [geoAddress, setGeoAddress] = useState<Address>();
   const [inputInvalid, setInputInvalid] = useState(false);
   const { trigger } = useSendGceData();
 
-  console.log({ inputInvalid });
-
   const handleAddressSearch = async () => {
     if (!geoAddress) {
-      console.log("no-address");
       setInputInvalid(true);
       return;
     }
@@ -54,12 +53,17 @@ export const Home: React.FC = () => {
     }
 
     removeFormFields();
+    setLastStepReached(0);
     navigate("confirm_address");
   };
 
   return (
     <div id="home-page">
-      <Header title="Learn if you're covered by Good Cause Eviction law in NYC">
+      <Header
+        title="Learn if you're covered by Good Cause Eviction law in NYC"
+        address={address}
+        lastStepReached={lastStepReached}
+      >
         <div className="geo-search-form">
           <GeoSearchInput
             initialAddress={address}

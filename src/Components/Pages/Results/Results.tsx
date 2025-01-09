@@ -30,8 +30,9 @@ import {
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
 import { Header } from "../../Header/Header";
-import "./Results.scss";
 import { CheckPlusIcon } from "../../CheckPlusIcon";
+import { useSessionStorage } from "../../../hooks/useSessionStorage";
+import "./Results.scss";
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -46,6 +47,14 @@ export const Results: React.FC = () => {
   const criteriaDetails = useCriteriaDetails(fields, bldgData);
   const criteriaResults = getCriteriaResults(criteriaDetails);
   const coverageResult = getCoverageResult(fields, criteriaResults);
+
+  const [lastStepReached, setLastStepReached] =
+    useSessionStorage<number>("lastStepReached");
+  useEffect(() => {
+    if (!lastStepReached || lastStepReached < 2) {
+      setLastStepReached(2);
+    }
+  }, [lastStepReached, setLastStepReached]);
 
   useEffect(() => {
     // save session state in params
@@ -115,6 +124,7 @@ export const Results: React.FC = () => {
           )
         }
         address={address}
+        lastStepReached={lastStepReached}
       >
         {error && (
           <div className="data__error">

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { Button } from "@justfixnyc/component-library";
 
@@ -5,6 +6,7 @@ import { Address } from "../Home/Home";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { BackLink } from "../../JFCLLinkInternal";
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
+import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
 import { toTitleCase } from "../../../helpers";
@@ -17,6 +19,13 @@ export const ConfirmAddress: React.FC = () => {
     address: Address;
     user?: GCEUser;
   };
+  const [lastStepReached, setLastStepReached] =
+    useSessionStorage<number>("lastStepReached");
+  useEffect(() => {
+    if (!lastStepReached || lastStepReached < 0) {
+      setLastStepReached(0);
+    }
+  }, [lastStepReached, setLastStepReached]);
   const { data: bldgData } = useGetBuildingData(address.bbl);
   const { trigger } = useSendGceData();
 
@@ -51,6 +60,7 @@ export const ConfirmAddress: React.FC = () => {
         title="Confirm your address"
         subtitle="We'll use info about your building from public data sources to help learn if you're covered"
         address={address}
+        lastStepReached={lastStepReached}
       />
 
       <div className="content-section">

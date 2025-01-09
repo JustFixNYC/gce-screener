@@ -24,15 +24,14 @@ $eligibilityTablePaddingH: 36px;
   .headline-section__content {
     width: 100%;
     max-width: $contentBoxWidth;
-    margin-top: 1.5rem; // 24px
+
+    .headline-section__address {
+      font-size: 1.125rem; // 18px
+      margin-bottom: 3rem; // 48px
+    }
 
     .headline-section__back-link {
       margin-bottom: 0.75rem; // 12px
-    }
-
-    .headline-section__page-type {
-      @include eyebrow_large_desktop;
-      padding-top: 30px;
     }
 
     .headline-section__title {

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, FormGroup, TextInput } from "@justfixnyc/component-library";
 import { useLoaderData, useNavigate } from "react-router";
 
@@ -37,6 +37,14 @@ export const Form: React.FC = () => {
     address: Address;
     user?: GCEUser;
   };
+  const [lastStepReached, setLastStepReached] =
+    useSessionStorage<number>("lastStepReached");
+  useEffect(() => {
+    if (!lastStepReached || lastStepReached < 1) {
+      setLastStepReached(1);
+    }
+  }, [lastStepReached, setLastStepReached]);
+
   const [fields, setFields] = useSessionStorage<FormFields>("fields");
   const [localFields, setLocalFields] = useState<FormFields>(
     fields || initialFields
@@ -107,6 +115,7 @@ export const Form: React.FC = () => {
         title="Survey"
         subtitle="We'll use your answers to help determine your coverage"
         address={address}
+        lastStepReached={lastStepReached}
       />
       <div className="content-section">
         <div className="content-section__content">

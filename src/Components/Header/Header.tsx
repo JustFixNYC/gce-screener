@@ -7,27 +7,32 @@ import { toTitleCase } from "../../helpers";
 type HeaderProps = {
   title: string | React.ReactNode;
   subtitle?: string;
-  pageType?: string;
   address?: Address;
   isGuide?: boolean;
   showProgressBar?: boolean;
+  lastStepReached?: number;
   children?: React.ReactNode;
 };
 
 export const Header: React.FC<HeaderProps> = ({
   address,
-  pageType,
   title,
   subtitle,
   isGuide = false,
   showProgressBar = true,
+  lastStepReached,
   children,
 }) => {
   return (
     <div className="headline-section">
       <div className="headline-section__content">
-        {showProgressBar && <ProgressBar address={address} />}
-        <div className="headline-section__address__print">
+        <div
+          className={
+            isGuide
+              ? "headline-section__address"
+              : "headline-section__address__print"
+          }
+        >
           {toTitleCase(
             `${address?.houseNumber} ${address?.streetName}, ${address?.zipcode}`
           )}
@@ -37,8 +42,8 @@ export const Header: React.FC<HeaderProps> = ({
             <BackLink to="/results">Back to Coverage Result</BackLink>
           </div>
         )}
-        {pageType && (
-          <div className="headline-section__page-type">{pageType}</div>
+        {showProgressBar && (
+          <ProgressBar address={address} lastStepReached={lastStepReached} />
         )}
         <h2 className="headline-section__title">{title}</h2>
         {subtitle && (
