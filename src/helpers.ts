@@ -34,6 +34,17 @@ export const splitBBL = (
   return { boro, block, lot };
 };
 
+export const urlZOLA = (bbl: string): string => {
+  const { boro, block, lot } = splitBBL(bbl);
+  return `https://zola.planning.nyc.gov/l/lot/${parseInt(boro)}/${parseInt(
+    block
+  )}/${parseInt(lot)}`;
+};
+
+export const urlDOB = (bin: string): string => {
+  return `https://a810-bisweb.nyc.gov/bisweb/COsByLocationServlet?allbin=${bin}`;
+};
+
 export const abbreviateBoro = (borough: string): string => {
   switch (borough.toUpperCase()) {
     case "MANHATTAN":

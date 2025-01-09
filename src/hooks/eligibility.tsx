@@ -1,6 +1,8 @@
 import { FormFields } from "../Components/Pages/Form/Form";
 import JFCLLinkInternal from "../Components/JFCLLinkInternal";
 import { BuildingData, CriterionResult } from "../types/APIDataTypes";
+import JFCLLinkExternal from "../Components/JFCLLinkExternal";
+import { urlDOB, urlZOLA } from "../helpers";
 
 export type Criteria =
   | "portfolioSize"
@@ -17,7 +19,6 @@ export type CriterionDetails = {
   determination?: CriterionResult;
   requirement?: React.ReactNode;
   userValue?: React.ReactNode;
-  moreInfo?: React.ReactNode;
 };
 
 export type CriteriaDetails = {
@@ -54,6 +55,7 @@ function eligibilityPortfolioSize(
     wow_portfolio_bbls,
     landlord,
     portfolioSize,
+    bbl,
   } = criteriaData;
 
   const criteria = "portfolioSize";
@@ -88,6 +90,10 @@ function eligibilityPortfolioSize(
       <>
         Your building has 10 or fewer apartments, and you reported that your
         landlord does not own other buildings.
+        <br />
+        <JFCLLinkExternal href={urlZOLA(bbl)} className="data-source">
+          View source
+        </JFCLLinkExternal>
       </>
     );
   } else {
@@ -103,12 +109,7 @@ function eligibilityPortfolioSize(
         </>
       );
     } else {
-      userValue = (
-        <>
-          {`Your building has only ${unitsres} apartments, but your landlord may own
-          other buildings`}
-        </>
-      );
+      userValue = `Your building has only ${unitsres} apartments, but your landlord may own other buildings`;
     }
   }
 
@@ -246,27 +247,30 @@ function eligibilityBuildingClass(
     determination = "ELIGIBLE";
   }
 
-  const userValue =
-    bldgTypeName === "" ? (
-      <>Your building is not an exempted type.</>
-    ) : (
-      <>{`Your building is ${bldgTypeName}, and is exempt.`}</>
-    );
-  const moreInfo = !!bldgclass && <>{`Your building class is ${bldgclass}`}</>;
+  const userValue = (
+    <>
+      {bldgTypeName === ""
+        ? "Your building is not an exempted type."
+        : `Your building is ${bldgTypeName}, and is exempt.`}
+      <br />
+      <JFCLLinkExternal href={urlZOLA(bbl)} className="data-source">
+        View source
+      </JFCLLinkExternal>
+    </>
+  );
 
   return {
     criteria,
     determination,
     requirement,
     userValue,
-    moreInfo,
   };
 }
 
 function eligibilityCertificateOfOccupancy(
   criteriaData: CriteriaData
 ): CriterionDetails {
-  const { co_issued } = criteriaData;
+  const { co_issued, co_bin } = criteriaData;
   const cutoffYear = 2009;
   const cutoffDate = new Date(cutoffYear, 1, 1);
   const latestCoDate = new Date(co_issued);
@@ -287,7 +291,15 @@ function eligibilityCertificateOfOccupancy(
       "There is no recorded certificate of occupancy for your building since 2009.";
   } else {
     determination = "INELIGIBLE";
-    userValue = `Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`;
+    userValue = (
+      <>
+        {`Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`}
+        <br />
+        <JFCLLinkExternal href={urlDOB(co_bin)} className="data-source">
+          View source
+        </JFCLLinkExternal>
+      </>
+    );
   }
 
   return {
@@ -304,7 +316,6 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
   const requirement = <>You must not live in subsidized or public housing.</>;
   let determination: CriterionResult;
   let userValue: React.ReactNode;
-  let moreInfo: React.ReactNode;
 
   if (housingType == "UNSURE" || housingType === null) {
     determination = "UNKNOWN";
@@ -340,6 +351,5 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
     determination,
     requirement,
     userValue,
-    moreInfo,
   };
 }

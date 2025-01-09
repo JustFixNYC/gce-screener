@@ -121,6 +121,9 @@ $eligibilityTablePaddingH: 36px;
       p {
         margin: 0 0 0.625rem 0;
       }
+      .data-source {
+        @include small_text_desktop;
+      }
     }
   }
 
@@ -203,7 +206,7 @@ $eligibilityTablePaddingH: 36px;
     .headline-section__address__print {
       padding-bottom: 0.75rem; //12px
     }
-    
+
     .share-button__container,
     .eligibility__table__footer,
     .share-footer {
