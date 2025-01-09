@@ -1,0 +1,83 @@
+@import "../../colors.scss";
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+#topbar {
+  position: fixed;
+  top: 0;
+  background-color: $OFF_BLACK;
+  border-bottom: 1px solid #d2d2d2;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-wrap: nowrap;
+  z-index: 100;
+
+  div {
+    height: $headerH - (1.5rem * 2);
+  }
+
+  &,
+  h1,
+  a {
+    color: $OFF_WHITE_100;
+    text-decoration: none;
+  }
+
+  .topbar__name {
+    border-right: 1px solid $OFF_WHITE_100;
+    padding: 1.5rem 2.25rem;
+    h1,
+    a {
+      margin: 0;
+      font-family: "Degular Display";
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 100%; /* 1.5rem */
+      letter-spacing: 0.045rem;
+    }
+  }
+
+  .topbar__collab {
+    flex: 1;
+    border-right: 1px solid $OFF_WHITE_100;
+    padding: 1.5rem 2.25rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 100%; /* 1.125rem */
+    letter-spacing: 0.0225rem;
+    a {
+      text-decoration: underline;
+      text-underline-position: from-font;
+    }
+  }
+
+  @media (max-width: 772px) {
+    .topbar__collab {
+      display: none;
+    }
+  }
+
+  .topbar__search {
+    padding: 1.5rem;
+    font-family: "Degular Display";
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: 0.03375rem;
+  }
+
+  @media print {
+    position: unset;
+    background-color: unset;
+    &,
+    h1,
+    a {
+      color: black;
+      @include body_large_desktop;
+    }
+    .topbar__search a {
+      display: none;
+    }
+  }
+}

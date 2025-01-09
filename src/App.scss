@@ -21,43 +21,6 @@
   height: 100%;
 }
 
-#header {
-  position: fixed;
-  top: 0;
-  background-color: $OFF_BLACK;
-  border-bottom: 1px solid #d2d2d2;
-
-  height: $headerH;
-  width: 100%;
-  padding-left: 1rem; // 16px
-  display: flex;
-  align-items: center;
-  text-wrap: nowrap;
-  z-index: 100;
-
-  h1 {
-    color: $OFF_WHITE_100;
-    font-size: 1.25rem; // 20px
-    font-weight: 600;
-    letter-spacing: 0.8px;
-  }
-
-  .header__link {
-    color: $WHITE;
-    text-decoration: none;
-  }
-
-  @media print {
-    position: unset;
-    background-color: unset;
-    h1,
-    .header__link {
-      color: black;
-      @include body_large_desktop;
-    }
-  }
-}
-
 #main {
   flex-grow: 1;
   margin-top: $headerH;
