@@ -11,22 +11,24 @@ import { Form } from "./Components/Pages/Form/Form";
 import { Results } from "./Components/Pages/Results/Results";
 import { APIDocs } from "./Components/Pages/APIDocs/APIDocs";
 import { ConfirmAddress } from "./Components/Pages/ConfirmAddress/ConfirmAddress";
-import { createBrowserRouter, Link, ScrollRestoration } from "react-router-dom";
+import { createBrowserRouter, ScrollRestoration } from "react-router-dom";
 import { RentStabilization } from "./Components/Pages/RentStabilization/RentStabilization";
 import { PortfolioSize } from "./Components/Pages/PortfolioSize/PortfolioSize";
 import { Footer } from "./Components/Footer/Footer";
 import { TenantRights } from "./Components/Pages/TenantRights/TenantRights";
+import { TopBar } from "./Components/TopBar/TopBar";
 
 const Layout = () => {
   return (
     <div id="container">
-      <header id="header">
+      {/* <header id="header">
         <h1>
           <Link to="/" className="header__link">
             Good Cause Eviction NYC
           </Link>
         </h1>
-      </header>
+      </header> */}
+      <TopBar />
 
       <main id="main">
         <div id="content">
