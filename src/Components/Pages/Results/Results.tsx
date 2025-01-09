@@ -173,7 +173,7 @@ export const Results: React.FC = () => {
               Help your neighbors learn if they’re covered{" "}
             </h3>
             <Button
-              labelText="Copy the link to this website"
+              labelText="Copy goodcausenyc.org"
               labelIcon="copy"
               onClick={() =>
                 navigator.clipboard.writeText(window.location.href)

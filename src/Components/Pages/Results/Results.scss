@@ -3,8 +3,6 @@
 @import "../../../variables.scss";
 @import "../content-page.scss";
 
-$eligibilityTablePaddingH: 36px;
-
 #results-page {
   .data__loading,
   .data__error {
@@ -129,7 +127,7 @@ $eligibilityTablePaddingH: 36px;
 
     .share-footer__header {
       @include h3_desktop;
-      margin: 0 0 $eligibilityTablePaddingH 0;
+      margin: 0 0 2rem 0;
       text-align: center;
     }
     .jfcl-button {
