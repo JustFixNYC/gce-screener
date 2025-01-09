@@ -9,6 +9,11 @@ import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { BackLink } from "../../JFCLLinkInternal";
 import { Address } from "../Home/Home";
 import { Header } from "../../Header/Header";
+import { ShareButtons } from "../../ShareButtons/ShareButtons";
+
+const EMAIL_SUBJECT =
+  "Good Cause NYC | Find out if your apartment is rent stabilized";
+const EMAIL_BODY = "...";
 
 export const RentStabilization: React.FC = () => {
   const { address } = useLoaderData() as {
@@ -22,7 +27,16 @@ export const RentStabilization: React.FC = () => {
         address={address}
         showProgressBar={false}
         isGuide
-      />
+      >
+        <ShareButtons
+          buttonsInfo={[
+            ["bookmark", "Bookmark this page"],
+            ["email", "Email this page"],
+          ]}
+          emailSubject={EMAIL_SUBJECT}
+          emailBody={EMAIL_BODY}
+        />
+      </Header>
 
       <div className="content-section">
         <div className="content-section__content"></div>
