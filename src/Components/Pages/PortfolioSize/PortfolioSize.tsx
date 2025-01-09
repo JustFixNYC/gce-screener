@@ -25,9 +25,14 @@ import {
 import "./PortfolioSize.scss";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { Header } from "../../Header/Header";
+import { ShareButtons } from "../../ShareButtons/ShareButtons";
 
 // const LOOM_EMBED_URL =
 //   "https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119";
+
+const EMAIL_SUBJECT =
+  "Good Cause NYC | Find out if your landlord owns other apartments";
+const EMAIL_BODY = "...";
 
 export const PortfolioSize: React.FC = () => {
   const { address, fields } = useLoaderData() as {
@@ -73,6 +78,14 @@ export const PortfolioSize: React.FC = () => {
             minutes.
           </div>
         )}
+        <ShareButtons
+          buttonsInfo={[
+            ["bookmark", "Bookmark this page"],
+            ["email", "Email this page"],
+          ]}
+          emailSubject={EMAIL_SUBJECT}
+          emailBody={EMAIL_BODY}
+        />
       </Header>
 
       <div className="content-section">

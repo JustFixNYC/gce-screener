@@ -203,15 +203,17 @@ $eligibilityTablePaddingH: 36px;
     .headline-section__address__print {
       padding-bottom: 0.75rem; //12px
     }
+    
+    .share-button__container,
+    .eligibility__table__footer,
+    .share-footer {
+      display: none;
+    }
 
     .eligibility__row {
       &:last-of-type {
         border-bottom: unset;
       }
-    }
-
-    .eligibility__table__footer {
-      display: none;
     }
 
     .protections-on-next-page__print {
@@ -221,9 +223,7 @@ $eligibilityTablePaddingH: 36px;
 
     .content-box {
       border: unset;
-      .accordion__chevron {
-        display: none;
-      }
+      .accordion__chevron,
       .content-box__footer {
         display: none;
       }
@@ -234,10 +234,6 @@ $eligibilityTablePaddingH: 36px;
 
     .divider__print {
       border-bottom: 1px solid black;
-    }
-
-    .share-footer {
-      display: none;
     }
   }
 }

@@ -14,21 +14,21 @@ export const CheckPlusIcon: React.FC<{
     <path
       d="M5 17.4L13.4 25.8L31.4 7.79999"
       stroke="currentcolor"
-      stroke-width="5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M32 16.6L32 26.6"
       stroke="currentcolor"
-      stroke-width="4"
-      stroke-linecap="round"
+      strokeWidth="4"
+      strokeLinecap="round"
     />
     <path
       d="M37 21.6L27 21.6"
       stroke="currentcolor"
-      stroke-width="4"
-      stroke-linecap="round"
+      strokeWidth="4"
+      strokeLinecap="round"
     />
   </svg>
 );
