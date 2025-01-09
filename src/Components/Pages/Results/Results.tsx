@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Link, useLoaderData, useSearchParams } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 import { Button, Icon } from "@justfixnyc/component-library";
 
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
@@ -22,7 +22,7 @@ import {
   ContentBoxFooter,
   ContentBoxItem,
 } from "../../ContentBox/ContentBox";
-import JFCLLinkInternal, { BackLink } from "../../JFCLLinkInternal";
+import JFCLLinkInternal from "../../JFCLLinkInternal";
 import {
   GoodCauseExercisingRights,
   GoodCauseProtections,
@@ -228,17 +228,17 @@ const EligibilityIcon: React.FC<
 
 const CriterionRow: React.FC<CriterionDetails> = (props) => {
   return (
-    <li className="eligibility__row">
+    <li className="criteria-table__row">
       <EligibilityIcon {...props} />
-      <div className="eligibility__row__info">
-        <span className="eligibility__row__criteria">
+      <div className="criteria-table__row__info">
+        <span className="criteria-table__row__criteria">
           {CRITERIA_LABELS[props?.criteria]}
         </span>
-        <span className="eligibility__row__requirement">
+        <span className="criteria-table__row__requirement">
           {props?.requirement}
         </span>
       </div>
-      <div className="eligibility__row__userValue">{props?.userValue}</div>
+      <div className="criteria-table__row__userValue">{props?.userValue}</div>
     </li>
   );
 };
@@ -246,9 +246,9 @@ const CriterionRow: React.FC<CriterionDetails> = (props) => {
 const CriteriaTable: React.FC<{
   criteria?: CriteriaDetails;
 }> = ({ criteria }) => (
-  <div className="eligibility__table">
-    <div className="eligibility__table__header">
-      <span className="eligibility__table__header__title">
+  <ContentBox className="criteria-table">
+    <div className="criteria-table__header">
+      <span className="criteria-table__header__title">
         How we determined your coverage
       </span>
       <p>
@@ -256,7 +256,7 @@ const CriteriaTable: React.FC<{
         your building and the information you’ve provided.
       </p>
     </div>
-    <ul className="eligibility__table__list">
+    <ul className="criteria-table__list">
       {criteria?.rent && <CriterionRow {...criteria.rent} />}
       {criteria?.rentStabilized && (
         <CriterionRow {...criteria.rentStabilized} />
@@ -268,15 +268,13 @@ const CriteriaTable: React.FC<{
       {criteria?.subsidy && <CriterionRow {...criteria.subsidy} />}
       {criteria?.portfolioSize && <CriterionRow {...criteria.portfolioSize} />}
     </ul>
-
-    <div className="eligibility__table__footer">
-      Is something not quite right?
-      <div className="eligibility__table__footer__link">
-        <Icon icon="arrowLeft" />
-        <Link to="/form">Back to survey</Link>
-      </div>
-    </div>
-  </div>
+    <ContentBoxFooter
+      message="Need to update your information?"
+      linkText="Back to survey"
+      linkTo="/form"
+      className="criteria-table__footer"
+    />
+  </ContentBox>
 );
 
 const EligibilityNextSteps: React.FC<{
@@ -360,9 +358,9 @@ const EligibilityNextSteps: React.FC<{
           </ContentBoxItem>
         )}
         <ContentBoxFooter
-          title="Update your coverage result"
-          subtitle="Adjust your survey answers and receive an updated coverage result"
-          link={<BackLink to="/form">Back to survey</BackLink>}
+          message="Update your coverage result"
+          linkText="Back to survey"
+          linkTo="/form"
         />
       </ContentBox>
       <div className="divider__print" />
