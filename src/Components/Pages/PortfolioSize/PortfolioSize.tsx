@@ -148,23 +148,24 @@ export const PortfolioSize: React.FC = () => {
                 } across other buildings.`}
             </p>
             <VideoEmbed url="" />
-            {!!bldgData?.related_properties && (
-              <div className="content-box__section__related-buildings">
-                {isLoading && <>Loading document links...</>}
-                <AcrisAccordions {...bldgData} />
-              </div>
-            )}
-            {!bldgData?.related_properties && (
-              <div className="content-box__section__related-buildings">
-                <InfoBox color="blue">
-                  <span>
-                    Our data is not showing additional buildings that may be
-                    owned by your landlord.
-                  </span>
-                </InfoBox>
-                <FindOtherBuildings />
-              </div>
-            )}
+            <div className="content-box__section__related-buildings">
+              {!!bldgData?.related_properties ? (
+                <>
+                  {isLoading && <>Loading document links...</>}
+                  <AcrisAccordions {...bldgData} />
+                </>
+              ) : (
+                <>
+                  <InfoBox color="blue">
+                    <span>
+                      Our data is not showing additional buildings that may be
+                      owned by your landlord.
+                    </span>
+                  </InfoBox>
+                  <FindOtherBuildings />
+                </>
+              )}
+            </div>
           </ContentBoxItem>
 
           <ContentBoxFooter
