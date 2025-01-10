@@ -345,8 +345,12 @@ const EligibilityNextSteps: React.FC<{
                 <br />
                 <p>
                   We are unable to find other apartments your landlord might own
-                  in our records.
+                  in our records. You can find out if your landlord might own
+                  additional buildings that is not in our data.
                 </p>
+                <JFCLLinkInternal to="/portfolio_size">
+                  Learn how to find out
+                </JFCLLinkInternal>
               </>
             )}
           </ContentBoxItem>
