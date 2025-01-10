@@ -295,7 +295,7 @@ const FindOtherBuildings: React.FC = () => {
 
 export const AcrisAccordions: React.FC<BuildingData> = (props) => {
   const INIT_DISPLAY = 5;
-  const LOAD_MORE_AMOUNT = 50;
+  const LOAD_MORE_AMOUNT = 5;
 
   // TODO: decide how to handle these cases, for now exclude. might also want to exclude if no acris_docs, but for now leave in.
   const relatedProperties = props.related_properties
