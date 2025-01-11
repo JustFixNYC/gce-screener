@@ -331,7 +331,7 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
         ))}
       </ul>
       <div className="related-buildings__footer">
-        Showing {visibleCount} of {totalCount} buildings
+        {`Showing ${visibleCount} of ${totalCount} buildings`}
         {showLoadMoreButton ? (
           <button
             onClick={loadMoreBuildings}
