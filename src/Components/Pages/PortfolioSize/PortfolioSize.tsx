@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 
 import { Address } from "../Home/Home";
@@ -131,11 +131,16 @@ export const PortfolioSize: React.FC = () => {
             title="Find other buildings your landlord might own"
             step={2}
           >
-            <p>
-              Review documents below to find your landlord’s name or signature
-              to see if they own more than 10 units across multiple buildings.
-            </p>
-            <br />
+            {!!bldgData?.related_properties && (
+              <>
+                <p>
+                  Review documents below to find your landlord’s name or
+                  signature to see if they own more than 10 units across
+                  multiple buildings.
+                </p>
+                <br />
+              </>
+            )}
             <p>
               {`Your building has ${bldgData?.unitsres} apartments. You only need to confirm that your ` +
                 `landlord owns ${10 - bldgData!.unitsres} additional ${
@@ -144,8 +149,22 @@ export const PortfolioSize: React.FC = () => {
             </p>
             <VideoEmbed url="" />
             <div className="content-box__section__related-buildings">
-              {isLoading && <>Loading document links...</>}
-              {bldgData && <AcrisAccordions {...bldgData} />}
+              {!!bldgData?.related_properties ? (
+                <>
+                  {isLoading && <>Loading document links...</>}
+                  <AcrisAccordions {...bldgData} />
+                </>
+              ) : (
+                <>
+                  <InfoBox color="blue">
+                    <span>
+                      Our data is not showing additional buildings that may be
+                      owned by your landlord.
+                    </span>
+                  </InfoBox>
+                  <FindOtherBuildings />
+                </>
+              )}
             </div>
           </ContentBoxItem>
 
@@ -257,18 +276,51 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
   );
 };
 
+const FindOtherBuildings: React.FC = () => {
+  return (
+    <div className="callout-box">
+      <strong>To find other buildings your landlord might own, you can:</strong>
+      <ul>
+        <li>
+          Google your landlord’s name and find mentions of other buildings they
+          may own in the press.
+        </li>
+        <li>
+          Talk to your neighbors to see if they know of any other buildings your
+          landlord may own.
+        </li>
+      </ul>
+    </div>
+  );
+};
+
 export const AcrisAccordions: React.FC<BuildingData> = (props) => {
-  const MAX_PROPERTIES = 5;
+  const INIT_DISPLAY = 5;
+  const LOAD_MORE_AMOUNT = 5;
+
   // TODO: decide how to handle these cases, for now exclude. might also want to exclude if no acris_docs, but for now leave in.
   const relatedProperties = props.related_properties
     ?.filter((bldg) => bldg.unitsres > 0)
-    .sort(prioritizeBldgs)
-    .slice(0, MAX_PROPERTIES);
+    .sort(prioritizeBldgs);
+  const totalCount = relatedProperties?.length;
+  const [visibleCount, setVisibleCount] = useState(INIT_DISPLAY);
+  const [showLoadMoreButton, setShowLoadMoreButton] = useState(
+    totalCount ? totalCount > INIT_DISPLAY : false
+  );
+
+  const loadMoreBuildings = () => {
+    if (!!totalCount && visibleCount + LOAD_MORE_AMOUNT >= totalCount) {
+      setVisibleCount(totalCount);
+      setShowLoadMoreButton(false);
+    } else {
+      setVisibleCount(visibleCount + LOAD_MORE_AMOUNT);
+    }
+  };
 
   return (
-    <ul>
-      {relatedProperties?.map((bldg, i) => {
-        return (
+    <>
+      <ul>
+        {relatedProperties?.slice(0, visibleCount).map((bldg, i) => (
           <li key={i}>
             <AcrisLinks
               {...bldg}
@@ -276,8 +328,25 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
               accordion
             />
           </li>
-        );
-      })}
-    </ul>
+        ))}
+      </ul>
+      <div className="related-buildings__footer">
+        {`Showing ${visibleCount} of ${totalCount} buildings`}
+        {showLoadMoreButton ? (
+          <button
+            onClick={loadMoreBuildings}
+            className="load-more-button jfcl-link"
+          >
+            Load more buildings
+          </button>
+        ) : (
+          <div className="load-more-end">
+            We’ve loaded all buildings that we could find related to your
+            landlord.
+            <FindOtherBuildings />
+          </div>
+        )}
+      </div>
+    </>
   );
 };
