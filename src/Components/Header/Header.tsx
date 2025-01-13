@@ -2,7 +2,7 @@ import React from "react";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { Address } from "../Pages/Home/Home";
 import { BackLink } from "../JFCLLinkInternal";
-import { toTitleCase } from "../../helpers";
+import { ProgressStep, toTitleCase } from "../../helpers";
 
 type HeaderProps = {
   title: string | React.ReactNode;
@@ -10,7 +10,7 @@ type HeaderProps = {
   address?: Address;
   isGuide?: boolean;
   showProgressBar?: boolean;
-  lastStepReached?: number;
+  lastStepReached?: ProgressStep;
   children?: React.ReactNode;
 };
 

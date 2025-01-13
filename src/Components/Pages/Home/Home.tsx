@@ -10,6 +10,7 @@ import { GCEPostData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
 import JFCLLinkInternal from "../../JFCLLinkInternal";
 import "./Home.scss";
+import { ProgressStep } from "../../../helpers";
 
 export type Address = {
   bbl: string;
@@ -27,7 +28,7 @@ export const Home: React.FC = () => {
   const [address, setAddress] = useSessionStorage<Address>("address");
   const [, , removeFormFields] = useSessionStorage<FormFields>("fields");
   const [lastStepReached, setLastStepReached] =
-    useSessionStorage<number>("lastStepReached");
+    useSessionStorage<ProgressStep>("lastStepReached");
   const [geoAddress, setGeoAddress] = useState<Address>();
   const [inputInvalid, setInputInvalid] = useState(false);
   const { trigger } = useSendGceData();
@@ -53,7 +54,7 @@ export const Home: React.FC = () => {
     }
 
     removeFormFields();
-    setLastStepReached(0);
+    setLastStepReached(ProgressStep.Address);
     navigate("confirm_address");
   };
 

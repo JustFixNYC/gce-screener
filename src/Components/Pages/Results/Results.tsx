@@ -32,7 +32,11 @@ import {
 import { Header } from "../../Header/Header";
 import { CheckPlusIcon } from "../../CheckPlusIcon";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
-import { closeAccordionsPrint, openAccordionsPrint } from "../../../helpers";
+import {
+  closeAccordionsPrint,
+  openAccordionsPrint,
+  ProgressStep,
+} from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
 
@@ -50,10 +54,10 @@ export const Results: React.FC = () => {
   const criteriaResults = getCriteriaResults(criteriaDetails);
   const coverageResult = getCoverageResult(fields, criteriaResults);
   const [lastStepReached, setLastStepReached] =
-    useSessionStorage<number>("lastStepReached");
+    useSessionStorage<ProgressStep>("lastStepReached");
   useEffect(() => {
     if (!lastStepReached || lastStepReached < 2) {
-      setLastStepReached(2);
+      setLastStepReached(ProgressStep.Result);
     }
   }, [lastStepReached, setLastStepReached]);
   const headlineRef = useRef<HTMLSpanElement>(null);
