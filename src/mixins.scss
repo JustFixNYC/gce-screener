@@ -1,7 +1,9 @@
+// All font weights being adjusted down 100 since they visually don't match between website and figma
+
 @mixin body_standard_desktop {
   font-family: "Degular", Arial, Helvetica, sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1.125rem; // 18px
   line-height: 120%; // 21.6px
   letter-spacing: 0.54px;
@@ -10,22 +12,22 @@
 @mixin h3_desktop {
   font-size: 2.25rem; // 36px
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 100%; /* 36px */
 }
 
 @mixin h4_desktop {
   font-size: 1.5rem; // 24px
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 120%;
 }
 
 @mixin page_header {
-  font-family: Degular;
+  font-family: "Degular", Arial, Helvetica, sans-serif;
   font-size: 3.25rem; // 52px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 100%; /* 52px */
   letter-spacing: 1.56px;
 }
@@ -33,7 +35,7 @@
 @mixin body_large_desktop {
   font-family: "Degular", Arial, Helvetica, sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1.5rem; // 24px
   line-height: 120%; // 28.8px
   letter-spacing: 0.72px;
@@ -42,7 +44,7 @@
 @mixin small_text_desktop {
   font-family: "Degular", Arial, Helvetica, sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 0.875rem; // 14px
   line-height: 130%; // 28.8px
   letter-spacing: 0.42px;
@@ -52,7 +54,7 @@
   font-family: "Suisse Int'l Mono";
   font-size: 1rem; // 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 115%; /* 18.4px */
   letter-spacing: 0.48px;
   text-transform: uppercase;
@@ -62,7 +64,7 @@
   font-family: "Suisse Int'l Mono";
   font-size: 1.125rem; // 18px
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 115%; /* 20.7px */
   letter-spacing: 0.54px;
   text-transform: uppercase;
