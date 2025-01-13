@@ -15,7 +15,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   lastStepReached = ProgressStep.Home,
 }) => {
   const location = useLocation();
-  const steps = makeProgressSteps(location.pathname, address);
+  const steps = makeProgressSteps(location.pathname, lastStepReached, address);
 
   const progressBarSteps = steps.flatMap((step, index, array) => {
     const StepText =
@@ -46,11 +46,15 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   return <div id="progress-bar">{progressBarSteps}</div>;
 };
 
-const makeProgressSteps = (pathname: string, address?: Address) => {
+const makeProgressSteps = (
+  pathname: string,
+  lastStepReached: ProgressStep,
+  address?: Address
+) => {
   const steps: StepInfo[] = [
     {
       path: "/confirm_address",
-      name: progressBarAddress(address),
+      name: progressBarAddress(lastStepReached, address),
     },
     { path: "/form", name: "Survey" },
     { path: "/results", name: "Result" },
@@ -61,8 +65,12 @@ const makeProgressSteps = (pathname: string, address?: Address) => {
   });
 };
 
-function progressBarAddress(address?: Address, maxLength = 45) {
-  if (!address) return "Address";
+function progressBarAddress(
+  lastStepReached: ProgressStep,
+  address?: Address,
+  maxLength = 45
+) {
+  if (!address || lastStepReached === ProgressStep.Home) return "Address";
   const addrShort = `${toTitleCase(
     `${address?.houseNumber || ""} ${address?.streetName}`
   )}, ${abbreviateBoro(address.borough)}`;
