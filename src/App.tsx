@@ -21,13 +21,6 @@ import { TopBar } from "./Components/TopBar/TopBar";
 const Layout = () => {
   return (
     <div id="container">
-      {/* <header id="header">
-        <h1>
-          <Link to="/" className="header__link">
-            Good Cause Eviction NYC
-          </Link>
-        </h1>
-      </header> */}
       <TopBar />
 
       <main id="main">

@@ -37,6 +37,7 @@ export const RentStabilization: React.FC = () => {
       <Header
         title="Find out if your apartment is rent stabilized"
         address={address}
+        showProgressBar={false}
         isGuide
       >
         <ShareButtons

@@ -1,6 +1,12 @@
 import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { RelatedProperty } from "./types/APIDataTypes";
-import { Address } from "./Components/Pages/Home/Home";
+
+export enum ProgressStep {
+  Home = -1,
+  Address = 0,
+  Survey = 1,
+  Result = 2,
+}
 
 export function toTitleCase(x: string) {
   return x.replace(
@@ -8,16 +14,6 @@ export function toTitleCase(x: string) {
     (text: string) =>
       text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
   );
-}
-
-export function breadCrumbAddress(address?: Address, maxLength = 45) {
-  if (!address) return "Your address";
-  const addrShort = toTitleCase(
-    `${address?.houseNumber} ${address?.streetName}`
-  );
-  return addrShort.length > maxLength
-    ? `${addrShort.substring(0, maxLength)}\u2026`
-    : addrShort;
 }
 
 export const formatGeosearchAddress = (
@@ -41,6 +37,23 @@ export const splitBBL = (
   const block = bblArr.slice(1, 6).join("");
   const lot = bblArr.slice(6, 10).join("");
   return { boro, block, lot };
+};
+
+export const abbreviateBoro = (borough: string): string => {
+  switch (borough.toUpperCase()) {
+    case "MANHATTAN":
+      return "MN";
+    case "BRONX":
+      return "BX";
+    case "BROOKLYN":
+      return "BK";
+    case "QUEENS":
+      return "QN";
+    case "STATEN ISLAND":
+      return "SI";
+    default:
+      return "";
+  }
 };
 
 export const formatDistance = (distance_ft: number): string => {

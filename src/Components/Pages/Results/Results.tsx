@@ -31,7 +31,12 @@ import {
 } from "../../KYRContent/KYRContent";
 import { Header } from "../../Header/Header";
 import { CheckPlusIcon } from "../../CheckPlusIcon";
-import { closeAccordionsPrint, openAccordionsPrint } from "../../../helpers";
+import { useSessionStorage } from "../../../hooks/useSessionStorage";
+import {
+  closeAccordionsPrint,
+  openAccordionsPrint,
+  ProgressStep,
+} from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
 
@@ -48,7 +53,13 @@ export const Results: React.FC = () => {
   const criteriaDetails = useCriteriaDetails(fields, bldgData);
   const criteriaResults = getCriteriaResults(criteriaDetails);
   const coverageResult = getCoverageResult(fields, criteriaResults);
-
+  const [lastStepReached, setLastStepReached] =
+    useSessionStorage<ProgressStep>("lastStepReached");
+  useEffect(() => {
+    if (!lastStepReached || lastStepReached < 2) {
+      setLastStepReached(ProgressStep.Result);
+    }
+  }, [lastStepReached, setLastStepReached]);
   const headlineRef = useRef<HTMLSpanElement>(null);
   const EMAIL_SUBJECT = "Good Cause NYC | Your Coverage Result";
   const EMAIL_BODY = headlineRef?.current?.textContent;
@@ -106,6 +117,7 @@ export const Results: React.FC = () => {
           )
         }
         address={address}
+        lastStepReached={lastStepReached}
       >
         {error && (
           <div className="data__error">

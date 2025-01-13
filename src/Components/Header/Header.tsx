@@ -1,33 +1,38 @@
 import React from "react";
-import { BreadCrumbs } from "../BreadCrumbs/BreadCrumbs";
+import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { Address } from "../Pages/Home/Home";
 import { BackLink } from "../JFCLLinkInternal";
-import { toTitleCase } from "../../helpers";
+import { ProgressStep, toTitleCase } from "../../helpers";
 
 type HeaderProps = {
   title: string | React.ReactNode;
   subtitle?: string;
-  pageType?: string;
   address?: Address;
   isGuide?: boolean;
-  showBreadcrumbs?: boolean;
+  showProgressBar?: boolean;
+  lastStepReached?: ProgressStep;
   children?: React.ReactNode;
 };
 
 export const Header: React.FC<HeaderProps> = ({
   address,
-  pageType,
   title,
   subtitle,
   isGuide = false,
-  showBreadcrumbs = true,
+  showProgressBar = true,
+  lastStepReached,
   children,
 }) => {
   return (
     <div className="headline-section">
       <div className="headline-section__content">
-        {showBreadcrumbs && <BreadCrumbs address={address} />}
-        <div className="headline-section__address__print">
+        <div
+          className={
+            isGuide
+              ? "headline-section__address"
+              : "headline-section__address__print"
+          }
+        >
           {toTitleCase(
             `${address?.houseNumber} ${address?.streetName}, ${address?.zipcode}`
           )}
@@ -37,8 +42,8 @@ export const Header: React.FC<HeaderProps> = ({
             <BackLink to="/results">Back to Coverage Result</BackLink>
           </div>
         )}
-        {pageType && (
-          <div className="headline-section__page-type">{pageType}</div>
+        {showProgressBar && (
+          <ProgressBar address={address} lastStepReached={lastStepReached} />
         )}
         <h2 className="headline-section__title">{title}</h2>
         {subtitle && (

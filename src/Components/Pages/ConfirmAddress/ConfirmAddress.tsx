@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { Button } from "@justfixnyc/component-library";
 
@@ -5,9 +6,10 @@ import { Address } from "../Home/Home";
 import { ContentBox } from "../../ContentBox/ContentBox";
 import { BackLink } from "../../JFCLLinkInternal";
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
+import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
-import { toTitleCase } from "../../../helpers";
+import { ProgressStep, toTitleCase } from "../../../helpers";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import "./ConfirmAddress.scss";
 
@@ -17,6 +19,13 @@ export const ConfirmAddress: React.FC = () => {
     address: Address;
     user?: GCEUser;
   };
+  const [lastStepReached, setLastStepReached] =
+    useSessionStorage<ProgressStep>("lastStepReached");
+  useEffect(() => {
+    if (!lastStepReached || lastStepReached < 0) {
+      setLastStepReached(ProgressStep.Address);
+    }
+  }, [lastStepReached, setLastStepReached]);
   const { data: bldgData } = useGetBuildingData(address.bbl);
   const { trigger } = useSendGceData();
 
@@ -51,6 +60,7 @@ export const ConfirmAddress: React.FC = () => {
         title="Confirm your address"
         subtitle="We'll use info about your building from public data sources to help learn if you're covered"
         address={address}
+        lastStepReached={lastStepReached}
       />
 
       <div className="content-section">
@@ -78,7 +88,7 @@ export const ConfirmAddress: React.FC = () => {
               <div className="address-container">
                 <div className="your-address">Your Address</div>
                 <h3 className="address-part-1">{`${
-                  address.houseNumber
+                  address.houseNumber || ""
                 } ${toTitleCase(address.streetName)}`}</h3>
                 <div className="address-part-2">{`${toTitleCase(
                   address.borough

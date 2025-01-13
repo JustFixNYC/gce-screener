@@ -70,6 +70,7 @@ export const PortfolioSize: React.FC = () => {
       <Header
         title="Find out if your landlord owns other apartments"
         address={address}
+        showProgressBar={false}
         isGuide
       >
         {error && (
