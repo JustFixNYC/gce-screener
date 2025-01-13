@@ -1,15 +1,14 @@
 import { useEffect } from "react";
 import { ContentBoxFooter } from "../../ContentBox/ContentBox";
 import { Header } from "../../Header/Header";
-import JFCLLinkInternal from "../../JFCLLinkInternal";
 import {
   GoodCauseProtections,
   NYCHAProtections,
   RentStabilizedProtections,
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
-import "./TenantRights.scss";
 import { openAccordionsPrint, closeAccordionsPrint } from "../../../helpers";
+import "./TenantRights.scss";
 
 export const TenantRights: React.FC = () => {
   useEffect(() => {
@@ -35,19 +34,17 @@ export const TenantRights: React.FC = () => {
 
           <GoodCauseProtections subtitle="Protections you have if you’re covered by Good Cause Eviction">
             <ContentBoxFooter
-              title="Find out if you’re covered by Good Cause Eviction"
-              link={<JFCLLinkInternal to="/">Take the survey</JFCLLinkInternal>}
+              message="Find out if you’re covered by Good Cause Eviction"
+              linkText="Take the survey"
+              linkTo="/"
             />
           </GoodCauseProtections>
 
           <RentStabilizedProtections subtitle="Protections you have if you live in a rent stabilized apartment">
             <ContentBoxFooter
-              title="Find out if your apartment is rent stabilized"
-              link={
-                <JFCLLinkInternal to="/rent_stabilization">
-                  View the guide
-                </JFCLLinkInternal>
-              }
+              message="Find out if your apartment is rent stabilized"
+              linkText="View the guide"
+              linkTo="/rent_stabilization"
             />
           </RentStabilizedProtections>
 
