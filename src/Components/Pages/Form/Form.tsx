@@ -8,7 +8,7 @@ import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { RadioGroup } from "../../RadioGroup/RadioGroup";
 import { InfoBox } from "../../InfoBox/InfoBox";
-import { formatNumber } from "../../../helpers";
+import { formatNumber, ProgressStep } from "../../../helpers";
 import { cleanFormFields } from "../../../api/helpers";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
@@ -38,10 +38,10 @@ export const Form: React.FC = () => {
     user?: GCEUser;
   };
   const [lastStepReached, setLastStepReached] =
-    useSessionStorage<number>("lastStepReached");
+    useSessionStorage<ProgressStep>("lastStepReached");
   useEffect(() => {
     if (!lastStepReached || lastStepReached < 1) {
-      setLastStepReached(1);
+      setLastStepReached(ProgressStep.Survey);
     }
   }, [lastStepReached, setLastStepReached]);
 

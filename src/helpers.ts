@@ -1,7 +1,12 @@
 import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { RelatedProperty } from "./types/APIDataTypes";
-import { Address } from "./Components/Pages/Home/Home";
-import { FormFields } from "./Components/Pages/Form/Form";
+
+export enum ProgressStep {
+  Home = -1,
+  Address = 0,
+  Survey = 1,
+  Result = 2,
+}
 
 export function toTitleCase(x: string) {
   return x.replace(
