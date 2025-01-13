@@ -1,18 +1,18 @@
 import classNames from "classnames";
 import { Link, useLocation } from "react-router-dom";
 import { Address } from "../Pages/Home/Home";
-import { abbreviateBoro, toTitleCase } from "../../helpers";
+import { abbreviateBoro, ProgressStep, toTitleCase } from "../../helpers";
 import "./ProgressBar.scss";
 
-type Step = { path?: string; name?: string; active?: boolean };
+type StepInfo = { path?: string; name?: string; active?: boolean };
 type ProgressBarProps = {
   address?: Address;
-  lastStepReached?: number;
+  lastStepReached?: ProgressStep;
 };
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
   address,
-  lastStepReached = -1,
+  lastStepReached = ProgressStep.Home,
 }) => {
   const location = useLocation();
   const steps = makeProgressSteps(location.pathname, address);
@@ -47,7 +47,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 };
 
 const makeProgressSteps = (pathname: string, address?: Address) => {
-  const steps: Step[] = [
+  const steps: StepInfo[] = [
     {
       path: "/confirm_address",
       name: progressBarAddress(address),

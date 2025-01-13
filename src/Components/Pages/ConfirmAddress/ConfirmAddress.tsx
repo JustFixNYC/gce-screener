@@ -9,7 +9,7 @@ import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
-import { toTitleCase } from "../../../helpers";
+import { ProgressStep, toTitleCase } from "../../../helpers";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import "./ConfirmAddress.scss";
 
@@ -20,10 +20,10 @@ export const ConfirmAddress: React.FC = () => {
     user?: GCEUser;
   };
   const [lastStepReached, setLastStepReached] =
-    useSessionStorage<number>("lastStepReached");
+    useSessionStorage<ProgressStep>("lastStepReached");
   useEffect(() => {
     if (!lastStepReached || lastStepReached < 0) {
-      setLastStepReached(0);
+      setLastStepReached(ProgressStep.Address);
     }
   }, [lastStepReached, setLastStepReached]);
   const { data: bldgData } = useGetBuildingData(address.bbl);
