@@ -1,4 +1,4 @@
-import { FormFields } from "../Components/Pages/Form/Form";
+import { FormFields } from "../Components/Pages/Form/Survey";
 import { CriteriaDetails } from "../hooks/eligibility";
 import {
   CriteriaResults,

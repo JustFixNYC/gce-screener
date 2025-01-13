@@ -51,7 +51,7 @@ export const ConfirmAddress: React.FC = () => {
     } catch (error) {
       console.log({ "tenants2-error": error });
     }
-    navigate("/form");
+    navigate("/survey");
   };
 
   return (

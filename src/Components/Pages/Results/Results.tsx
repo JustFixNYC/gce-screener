@@ -9,7 +9,7 @@ import {
   CriteriaResults,
   GCEUser,
 } from "../../../types/APIDataTypes";
-import { FormFields } from "../Form/Form";
+import { FormFields } from "../Form/Survey";
 import {
   CriterionDetails,
   CriteriaDetails,
@@ -275,7 +275,7 @@ const CriteriaTable: React.FC<{
     <ContentBoxFooter
       message="Need to update your information?"
       linkText="Back to survey"
-      linkTo="/form"
+      linkTo="/survey"
       className="criteria-table__footer"
     />
   </ContentBox>
@@ -368,7 +368,7 @@ const EligibilityNextSteps: React.FC<{
         <ContentBoxFooter
           message="Update your coverage result"
           linkText="Back to survey"
-          linkTo="/form"
+          linkTo="/survey"
         />
       </ContentBox>
       <div className="divider__print" />
