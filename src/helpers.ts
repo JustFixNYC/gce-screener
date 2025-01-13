@@ -118,12 +118,6 @@ export const acrisDocTypeFull = (docType: string) => {
 export const formatNumber = (n: number) =>
   new Intl.NumberFormat("en").format(n);
 
-export const getLastStepReached = (address?: Address, fields?: FormFields) => {
-  if (!address) return 1;
-  if (!fields) return 2;
-  return 3;
-};
-
 export const openAccordionsPrint = () => {
   const accordions: NodeListOf<HTMLDetailsElement> =
     document.body.querySelectorAll("details:not([open])");
