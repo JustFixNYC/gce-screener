@@ -1,4 +1,4 @@
-import { FormFields } from "../Components/Pages/Form/Form";
+import { FormFields } from "../Components/Pages/Form/Survey";
 import JFCLLinkInternal from "../Components/JFCLLinkInternal";
 import { BuildingData, CriterionResult } from "../types/APIDataTypes";
 import JFCLLinkExternal from "../Components/JFCLLinkExternal";
