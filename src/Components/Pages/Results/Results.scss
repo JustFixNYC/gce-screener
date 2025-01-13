@@ -121,6 +121,9 @@ $eligibilityTablePaddingH: 36px;
       p {
         margin: 0 0 0.625rem 0;
       }
+      .data-source {
+        @include small_text_desktop;
+      }
     }
   }
 
