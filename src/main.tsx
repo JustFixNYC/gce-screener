@@ -6,7 +6,7 @@ import "./index.scss";
 
 const rollbarConfig = {
   accessToken: import.meta.env.VITE_ROLLBAR_ACCESS_TOKEN,
-  environment: "testenv",
+  environment: import.meta.env.MODE,
 };
 
 createRoot(document.getElementById("root")!).render(

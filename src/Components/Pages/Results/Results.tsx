@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
+import { useRollbar } from "@rollbar/react";
 import { Button, Icon } from "@justfixnyc/component-library";
 
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
@@ -48,6 +49,7 @@ export const Results: React.FC = () => {
   };
   const [, setSearchParams] = useSearchParams();
   const { trigger } = useSendGceData();
+  const rollbar = useRollbar();
   const bbl = address.bbl;
   const { data: bldgData, isLoading, error } = useGetBuildingData(bbl);
   const criteriaDetails = useCriteriaDetails(fields, bldgData);
@@ -81,14 +83,16 @@ export const Results: React.FC = () => {
 
   useEffect(() => {
     if (coverageResult && criteriaResults) {
-      try {
-        trigger({
-          id: user?.id,
-          result_coverage: coverageResult,
-          result_criteria: criteriaResults,
-        });
-      } catch (error) {
-        console.log({ "tenants2-error": error });
+      if (import.meta.env.MODE === "production") {
+        try {
+          trigger({
+            id: user?.id,
+            result_coverage: coverageResult,
+            result_criteria: criteriaResults,
+          });
+        } catch {
+          rollbar.error("cannot connect to tenant platform");
+        }
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
