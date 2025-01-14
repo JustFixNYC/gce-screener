@@ -104,7 +104,7 @@ function eligibilityPortfolioSize(
           <p>{`Your building has only ${unitsres} apartments, but your landlord may own
           ${wow_portfolio_bbls! - 1} other buildings`}</p>
           <JFCLLinkInternal to="/portfolio_size">
-            How to find out
+            Find your landlord’s other buildings
           </JFCLLinkInternal>
         </>
       );
@@ -193,7 +193,7 @@ function eligibilityRentStabilized(
       <>
         <p>You don't know if your apartment is rent stabilized.</p>
         <JFCLLinkInternal to="/rent_stabilization">
-          How to find out
+          Find out if you are rent stabilized
         </JFCLLinkInternal>
       </>
     );

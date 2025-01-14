@@ -322,7 +322,7 @@ const EligibilityNextSteps: React.FC<{
               rent stabilized status.
             </p>
             <JFCLLinkInternal to="/rent_stabilization">
-              Learn how to find out
+              Find out if you are rent stabilized
             </JFCLLinkInternal>
           </ContentBoxItem>
         )}
@@ -343,7 +343,7 @@ const EligibilityNextSteps: React.FC<{
                 </p>
 
                 <JFCLLinkInternal to="/portfolio_size">
-                  Learn how to find out
+                  Find your landlord’s other buildings
                 </JFCLLinkInternal>
               </>
             ) : (
@@ -359,7 +359,7 @@ const EligibilityNextSteps: React.FC<{
                   additional buildings that is not in our data.
                 </p>
                 <JFCLLinkInternal to="/portfolio_size">
-                  Learn how to find out
+                  Find your landlord’s other buildings
                 </JFCLLinkInternal>
               </>
             )}
