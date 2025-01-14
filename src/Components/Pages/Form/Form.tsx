@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Button, FormGroup, TextInput } from "@justfixnyc/component-library";
 import { useLoaderData, useNavigate } from "react-router";
+import { useRollbar } from "@rollbar/react";
+import { Button, FormGroup, TextInput } from "@justfixnyc/component-library";
 
 import { FormStep } from "../../FormStep/FormStep";
 import { Address } from "../Home/Home";
@@ -55,6 +56,7 @@ export const Form: React.FC = () => {
 
   const { data: bldgData } = useGetBuildingData(bbl);
   const { trigger } = useSendGceData();
+  const rollbar = useRollbar();
 
   const NUM_STEPS = !bldgData ? 5 : bldgData?.unitsres > 10 ? 5 : 6;
 
@@ -81,10 +83,12 @@ export const Form: React.FC = () => {
       return;
     }
     setFields(localFields);
-    try {
-      trigger({ id: user?.id, form_answers: cleanFormFields(localFields) });
-    } catch (error) {
-      console.log({ "tenants2-error": error });
+    if (import.meta.env.MODE === "production") {
+      try {
+        trigger({ id: user?.id, form_answers: cleanFormFields(localFields) });
+      } catch {
+        rollbar.error("cannot connect to tenant platform");
+      }
     }
     navigate(`/results`);
   };

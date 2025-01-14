@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { useRollbar } from "@rollbar/react";
 import { Button } from "@justfixnyc/component-library";
 
 import { Address } from "../Home/Home";
@@ -28,6 +29,7 @@ export const ConfirmAddress: React.FC = () => {
   }, [lastStepReached, setLastStepReached]);
   const { data: bldgData } = useGetBuildingData(address.bbl);
   const { trigger } = useSendGceData();
+  const rollbar = useRollbar();
 
   const styleToken = import.meta.env.VITE_MAPBOX_STYLE_TOKEN;
   const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
@@ -42,14 +44,16 @@ export const ConfirmAddress: React.FC = () => {
   const mapImageURL = `https://api.mapbox.com/styles/v1/${styleToken}/static/${marker}/${longLat},${zoom},${bearing},${pitch}/${width}x${height}?access_token=${accessToken}`;
 
   const handleSubmit = async () => {
-    try {
-      trigger({
-        id: user?.id,
-        address_confirmed: true,
-        nycdb_results: bldgData,
-      });
-    } catch (error) {
-      console.log({ "tenants2-error": error });
+    if (import.meta.env.MODE === "production") {
+      try {
+        trigger({
+          id: user?.id,
+          address_confirmed: true,
+          nycdb_results: bldgData,
+        });
+      } catch {
+        rollbar.error("cannot connect to tenant platform");
+      }
     }
     navigate("/form");
   };
