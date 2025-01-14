@@ -11,7 +11,7 @@ type KYRContentBoxProps = Omit<ContentBoxProps, "children"> & {
 };
 
 export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
-  title = "UNIVERSAL TENANT RIGHTS",
+  title = undefined,
   subtitle: headerSubtitle = "Protections that all New Yorkers have",
   children,
 }) => (
@@ -126,7 +126,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
 );
 
 export const GoodCauseProtections: React.FC<KYRContentBoxProps> = ({
-  title = "KNOW YOUR RIGHTS",
+  title = undefined,
   subtitle = "Protections you have under Good Cause Eviction",
   children,
 }) => (
@@ -174,7 +174,7 @@ export const GoodCauseProtections: React.FC<KYRContentBoxProps> = ({
 );
 
 export const GoodCauseExercisingRights: React.FC<KYRContentBoxProps> = ({
-  title = "KNOW YOUR RIGHTS",
+  title = undefined,
   subtitle = "How to assert your rights",
   children,
 }) => (
@@ -219,7 +219,7 @@ export const GoodCauseExercisingRights: React.FC<KYRContentBoxProps> = ({
 );
 
 export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
-  title = "KNOW YOUR RIGHTS",
+  title = undefined,
   subtitle = "Protections you have as a rent stabilized tenant",
   children,
 }) => (
@@ -265,7 +265,7 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
 );
 
 export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
-  title = "KNOW YOUR RIGHTS",
+  title = undefined,
   subtitle = "Protections you have as a NYCHA tenant",
   children,
 }) => (

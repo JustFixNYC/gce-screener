@@ -61,7 +61,13 @@ export const Home: React.FC = () => {
   return (
     <div id="home-page">
       <Header
-        title="Learn if you're covered by Good Cause Eviction law in NYC"
+        title={
+          <>
+            Learn if you're covered <br />
+            by Good Cause <br />
+            Eviction law in NYC
+          </>
+        }
         address={address}
         lastStepReached={lastStepReached}
       >

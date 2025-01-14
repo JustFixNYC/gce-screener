@@ -19,9 +19,9 @@ export const ContentBox: React.FC<ContentBoxProps> = ({
 }) => {
   return (
     <div className={classNames("content-box", className)}>
-      {title && (
+      {(title || subtitle) && (
         <div className="content-box__header">
-          <div className="content-box__header-title">{title}</div>
+          {title && <div className="content-box__header-title">{title}</div>}
           {subtitle && (
             <div className="content-box__header-subtitle">{subtitle}</div>
           )}
