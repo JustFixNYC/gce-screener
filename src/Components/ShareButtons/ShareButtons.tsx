@@ -19,34 +19,35 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
       : "" + emailBody
       ? `&subject=${emailBody}`
       : "";
-  const emailButton = (x: string) => (
+  const emailButton = (x: string, key: React.Key) => (
     <a
       href={mailtoLink}
       target="_blank"
       rel="noopener noreferrer"
       className="share-button jfcl-link"
+      key={key}
     >
       <Icon icon="envelope" type="regular" />
       {x}
     </a>
   );
 
-  const downloadButton = (x: string) => (
-    <button onClick={window.print} className="share-button jfcl-link">
+  const downloadButton = (x: string, key: React.Key) => (
+    <button onClick={window.print} className="share-button jfcl-link" key={key}>
       <Icon icon="download" type="regular" />
       {x}
     </button>
   );
 
-  const printButton = (x: string) => (
-    <button onClick={window.print} className="share-button jfcl-link">
+  const printButton = (x: string, key: React.Key) => (
+    <button onClick={window.print} className="share-button jfcl-link" key={key}>
       <Icon icon="print" type="regular" />
       {x}
     </button>
   );
 
-  const bookmarkButton = (x: string) => (
-    <button onClick={() => {}} className="share-button jfcl-link">
+  const bookmarkButton = (x: string, key: React.Key) => (
+    <button onClick={() => {}} className="share-button jfcl-link" key={key}>
       <Icon icon="bookmark" type="regular" />
       {x}
     </button>
@@ -61,10 +62,10 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
 
   return (
     <div className="share-button__container">
-      {buttonsInfo.map((b) => {
+      {buttonsInfo.map((b, i) => {
         const buttonFun = buttonElements[b[0]];
         const message = b[1];
-        return buttonFun(message);
+        return buttonFun(message, i);
       })}
     </div>
   );
