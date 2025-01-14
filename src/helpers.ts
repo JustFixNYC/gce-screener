@@ -50,6 +50,10 @@ export const urlDOB = (bin: string): string => {
   return `https://a810-bisweb.nyc.gov/bisweb/COsByLocationServlet?allbin=${bin}`;
 };
 
+export const urlFCSubsidized = (bbl: string): string => {
+  return `https://app.coredata.nyc/?ptsb=${bbl}`;
+};
+
 export const abbreviateBoro = (borough: string): string => {
   switch (borough.toUpperCase()) {
     case "MANHATTAN":
