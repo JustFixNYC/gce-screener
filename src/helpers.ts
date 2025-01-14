@@ -81,11 +81,38 @@ export const formatDistance = (distance_ft: number): string => {
   }
 };
 
-export const prioritizeBldgs = (a: RelatedProperty, b: RelatedProperty) => {
+const prioritizeBldgsWithUnits = (
+  a: RelatedProperty,
+  b: RelatedProperty,
+  unitsNeeded: number
+) => {
+  if (a.acris_docs.length !== b.acris_docs.length)
+    return a.acris_docs.length ? -1 : 1;
+
+  if (a.match_ownername !== b.match_ownername)
+    return a.match_ownername ? -1 : 1;
+
+  if (a.match_multidoc !== b.match_multidoc) return a.match_multidoc ? -1 : 1;
+
   if (a.wow_match_name !== b.wow_match_name) return a.wow_match_name ? -1 : 1;
+
   if (a.wow_match_bizaddr_unit !== b.wow_match_bizaddr_unit)
     return a.wow_match_bizaddr_unit ? -1 : 1;
+
+  if (
+    unitsNeeded > 0 &&
+    a.unitsres >= unitsNeeded !== b.unitsres >= unitsNeeded
+  )
+    return a.unitsres >= unitsNeeded ? -1 : 1;
+
   return b.distance_ft - a.distance_ft;
+};
+
+// Return the above function with the additional argument pre-filled so we can
+// incorporate the number of additional units needed into the sort logic
+export const getPrioritizeBldgs = (unitsNeeded: number) => {
+  return (a: RelatedProperty, b: RelatedProperty) =>
+    prioritizeBldgsWithUnits(a, b, unitsNeeded);
 };
 
 export const urlCountyClerkBbl = (bbl: string) => {
