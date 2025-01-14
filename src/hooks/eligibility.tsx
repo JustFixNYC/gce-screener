@@ -2,7 +2,7 @@ import { FormFields } from "../Components/Pages/Form/Form";
 import JFCLLinkInternal from "../Components/JFCLLinkInternal";
 import { BuildingData, CriterionResult } from "../types/APIDataTypes";
 import JFCLLinkExternal from "../Components/JFCLLinkExternal";
-import { urlDOB, urlZOLA } from "../helpers";
+import { urlDOB, urlFCSubsidized, urlZOLA } from "../helpers";
 
 export type Criteria =
   | "portfolioSize"
@@ -311,7 +311,7 @@ function eligibilityCertificateOfOccupancy(
 }
 
 function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
-  const { housingType, is_nycha, is_subsidized } = criteriaData;
+  const { housingType, is_nycha, is_subsidized, bbl } = criteriaData;
   const criteria = "subsidy";
   const requirement = <>You must not live in subsidized or public housing.</>;
   let determination: CriterionResult;
@@ -325,6 +325,10 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
           {`You don't know if you live in subsidized or public housing, but
           available data indicates that your building is
           ${is_nycha ? "public housing" : "subsidized"}.`}
+          <br />
+          <JFCLLinkExternal href={urlFCSubsidized(bbl)} className="data-source">
+            View source
+          </JFCLLinkExternal>
         </>
       );
     } else {
