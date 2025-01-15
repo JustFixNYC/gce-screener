@@ -8,6 +8,10 @@
     margin-bottom: 2px;
     &.jfcl-dropdown__control--is-focused {
       margin-bottom: 0;
+
+      .jfcl-dropdown__single-value {
+        background-color: $BLUE_50;
+      }
     }
   }
 
