@@ -12,7 +12,7 @@ import { formatNumber, ProgressStep } from "../../../helpers";
 import { cleanFormFields } from "../../../api/helpers";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
-import "./Form.scss";
+import "./Survey.scss";
 
 export type FormFields = {
   bedrooms: "STUDIO" | "1" | "2" | "3" | "4+" | null;
@@ -32,7 +32,7 @@ const initialFields: FormFields = {
   portfolioSize: null,
 };
 
-export const Form: React.FC = () => {
+export const Survey: React.FC = () => {
   const { address, user } = useLoaderData() as {
     address: Address;
     user?: GCEUser;

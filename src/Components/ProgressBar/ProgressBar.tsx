@@ -52,7 +52,7 @@ const makeProgressSteps = (pathname: string, address?: Address) => {
       path: "/confirm_address",
       name: progressBarAddress(address),
     },
-    { path: "/form", name: "Survey" },
+    { path: "/survey", name: "Survey" },
     { path: "/results", name: "Result" },
   ];
 

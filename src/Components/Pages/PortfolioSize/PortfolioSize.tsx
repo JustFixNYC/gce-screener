@@ -8,7 +8,7 @@ import {
   ContentBoxItem,
 } from "../../ContentBox/ContentBox";
 import { Accordion } from "../../Accordion/Accordion";
-import { FormFields } from "../Form/Form";
+import { FormFields } from "../Form/Survey";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { useGetBuildingData } from "../../../api/hooks";
 import { AcrisDocument, BuildingData } from "../../../types/APIDataTypes";
@@ -149,7 +149,7 @@ export const PortfolioSize: React.FC = () => {
             </p>
             <VideoEmbed url="" />
             <div className="content-box__section__related-buildings">
-              {!!bldgData?.related_properties ? (
+              {bldgData?.related_properties ? (
                 <>
                   {isLoading && <>Loading document links...</>}
                   <AcrisAccordions {...bldgData} />
@@ -171,7 +171,7 @@ export const PortfolioSize: React.FC = () => {
           <ContentBoxFooter
             message="Update your coverage result"
             linkText="Adjust survey answers"
-            linkTo="/form"
+            linkTo="/survey"
           />
         </ContentBox>
         <div className="divider__print" />
