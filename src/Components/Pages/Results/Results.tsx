@@ -90,7 +90,7 @@ export const Results: React.FC = () => {
             result_criteria: criteriaResults,
           });
         } catch {
-          rollbar.error("cannot connect to tenant platform");
+          rollbar.error("Cannot connect to tenant platform");
         }
       }
     }

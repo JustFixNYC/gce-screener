@@ -52,7 +52,7 @@ export const ConfirmAddress: React.FC = () => {
           nycdb_results: bldgData,
         });
       } catch {
-        rollbar.error("cannot connect to tenant platform");
+        rollbar.error("Cannot connect to tenant platform");
       }
     }
     navigate("/survey");

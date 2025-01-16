@@ -87,7 +87,7 @@ export const Survey: React.FC = () => {
       try {
         trigger({ id: user?.id, form_answers: cleanFormFields(localFields) });
       } catch {
-        rollbar.error("cannot connect to tenant platform");
+        rollbar.error("Cannot connect to tenant platform");
       }
     }
     navigate(`/results`);

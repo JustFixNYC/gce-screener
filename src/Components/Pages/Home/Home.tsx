@@ -54,7 +54,7 @@ export const Home: React.FC = () => {
         const userResp = (await trigger(postData)) as GCEUser;
         setUser(userResp);
       } catch {
-        rollbar.error("cannot connect to tenant platform");
+        rollbar.critical("Cannot connect to tenant platform");
       }
     }
 
