@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { useRollbar } from "@rollbar/react";
 import { Button } from "@justfixnyc/component-library";
 
 import { Address } from "../Home/Home";
@@ -28,6 +29,7 @@ export const ConfirmAddress: React.FC = () => {
   }, [lastStepReached, setLastStepReached]);
   const { data: bldgData } = useGetBuildingData(address.bbl);
   const { trigger } = useSendGceData();
+  const rollbar = useRollbar();
 
   const styleToken = import.meta.env.VITE_MAPBOX_STYLE_TOKEN;
   const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
@@ -50,7 +52,7 @@ export const ConfirmAddress: React.FC = () => {
           nycdb_results: bldgData,
         });
       } catch {
-        /* empty */
+        rollbar.error("cannot connect to tenant platform");
       }
     }
     navigate("/survey");
