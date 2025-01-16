@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useRollbar } from "@rollbar/react";
 import { Button } from "@justfixnyc/component-library";
 
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
@@ -33,7 +32,6 @@ export const Home: React.FC = () => {
   const [geoAddress, setGeoAddress] = useState<Address>();
   const [inputInvalid, setInputInvalid] = useState(false);
   const { trigger } = useSendGceData();
-  const rollbar = useRollbar();
 
   const handleAddressSearch = async () => {
     if (!geoAddress) {
@@ -54,7 +52,7 @@ export const Home: React.FC = () => {
         const userResp = (await trigger(postData)) as GCEUser;
         setUser(userResp);
       } catch {
-        rollbar.error("cannot connect to tenant platform");
+        /* empty */
       }
     }
 

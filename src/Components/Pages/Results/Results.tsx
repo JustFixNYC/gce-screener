@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
-import { useRollbar } from "@rollbar/react";
 import { Button, Icon } from "@justfixnyc/component-library";
 
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
@@ -49,7 +48,6 @@ export const Results: React.FC = () => {
   };
   const [, setSearchParams] = useSearchParams();
   const { trigger } = useSendGceData();
-  const rollbar = useRollbar();
   const bbl = address.bbl;
   const { data: bldgData, isLoading, error } = useGetBuildingData(bbl);
   const criteriaDetails = useCriteriaDetails(fields, bldgData);
@@ -91,7 +89,7 @@ export const Results: React.FC = () => {
             result_criteria: criteriaResults,
           });
         } catch {
-          rollbar.error("cannot connect to tenant platform");
+          /* empty */
         }
       }
     }
