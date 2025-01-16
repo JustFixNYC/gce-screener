@@ -53,7 +53,7 @@ export const ConfirmAddress: React.FC = () => {
         /* empty */
       }
     }
-    navigate("/form");
+    navigate("/survey");
   };
 
   return (

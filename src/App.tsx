@@ -10,7 +10,7 @@ import { useRollbar } from "@rollbar/react";
 import { createBrowserRouter, ScrollRestoration } from "react-router-dom";
 
 import { Home } from "./Components/Pages/Home/Home";
-import { Form } from "./Components/Pages/Form/Form";
+import { Survey } from "./Components/Pages/Form/Survey";
 import { Results } from "./Components/Pages/Results/Results";
 import { APIDocs } from "./Components/Pages/APIDocs/APIDocs";
 import { ConfirmAddress } from "./Components/Pages/ConfirmAddress/ConfirmAddress";
@@ -112,8 +112,8 @@ const router = createBrowserRouter(
         loader={LoadAddressAndUserSession}
       />
       <Route
-        path="form"
-        element={<Form />}
+        path="survey"
+        element={<Survey />}
         loader={LoadAddressAndUserSession}
       />
       <Route path="results" element={<Results />} loader={LoadURLSession} />

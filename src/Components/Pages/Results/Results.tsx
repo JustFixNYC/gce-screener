@@ -9,7 +9,7 @@ import {
   CriteriaResults,
   GCEUser,
 } from "../../../types/APIDataTypes";
-import { FormFields } from "../Form/Form";
+import { FormFields } from "../Form/Survey";
 import {
   CriterionDetails,
   CriteriaDetails,
@@ -30,7 +30,6 @@ import {
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
 import { Header } from "../../Header/Header";
-import { CheckPlusIcon } from "../../CheckPlusIcon";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import {
   closeAccordionsPrint,
@@ -208,15 +207,16 @@ const EligibilityIcon: React.FC<
     ["subsidy", "rentStabilized"].includes(criteria) &&
     determination === "INELIGIBLE"
   ) {
-    return <CheckPlusIcon className="criteria-icon green" title="" />;
-  } else if (determination === "ELIGIBLE") {
     return (
       <Icon
-        icon="check"
-        type="regular"
+        icon="checkDouble"
         className="criteria-icon green"
-        title="Eligible"
+        title="Stronger protections"
       />
+    );
+  } else if (determination === "ELIGIBLE") {
+    return (
+      <Icon icon="check" className="criteria-icon green" title="Eligible" />
     );
   } else {
     return (
@@ -277,7 +277,7 @@ const CriteriaTable: React.FC<{
     <ContentBoxFooter
       message="Need to update your information?"
       linkText="Back to survey"
-      linkTo="/form"
+      linkTo="/survey"
       className="criteria-table__footer"
     />
   </ContentBox>
@@ -324,7 +324,7 @@ const EligibilityNextSteps: React.FC<{
               rent stabilized status.
             </p>
             <JFCLLinkInternal to="/rent_stabilization">
-              Learn how to find out
+              Find out if you are rent stabilized
             </JFCLLinkInternal>
           </ContentBoxItem>
         )}
@@ -345,7 +345,7 @@ const EligibilityNextSteps: React.FC<{
                 </p>
 
                 <JFCLLinkInternal to="/portfolio_size">
-                  Learn how to find out
+                  Find your landlord’s other buildings
                 </JFCLLinkInternal>
               </>
             ) : (
@@ -361,7 +361,7 @@ const EligibilityNextSteps: React.FC<{
                   additional buildings that is not in our data.
                 </p>
                 <JFCLLinkInternal to="/portfolio_size">
-                  Learn how to find out
+                  Find your landlord’s other buildings
                 </JFCLLinkInternal>
               </>
             )}
@@ -370,7 +370,7 @@ const EligibilityNextSteps: React.FC<{
         <ContentBoxFooter
           message="Update your coverage result"
           linkText="Back to survey"
-          linkTo="/form"
+          linkTo="/survey"
         />
       </ContentBox>
       <div className="divider__print" />

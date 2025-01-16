@@ -1,5 +1,5 @@
 import { SelectButton } from "@justfixnyc/component-library";
-import { FormFields } from "../Pages/Form/Form";
+import { FormFields } from "../Pages/Form/Survey";
 import "./RadioGroup.scss";
 
 type RadioGroupProps = {

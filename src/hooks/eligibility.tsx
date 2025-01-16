@@ -1,8 +1,8 @@
-import { FormFields } from "../Components/Pages/Form/Form";
+import { FormFields } from "../Components/Pages/Form/Survey";
 import JFCLLinkInternal from "../Components/JFCLLinkInternal";
 import { BuildingData, CriterionResult } from "../types/APIDataTypes";
 import JFCLLinkExternal from "../Components/JFCLLinkExternal";
-import { urlDOB, urlZOLA } from "../helpers";
+import { urlDOB, urlFCSubsidized, urlZOLA } from "../helpers";
 
 export type Criteria =
   | "portfolioSize"
@@ -91,7 +91,7 @@ function eligibilityPortfolioSize(
         Your building has 10 or fewer apartments, and you reported that your
         landlord does not own other buildings.
         <br />
-        <JFCLLinkExternal href={urlZOLA(bbl)} className="data-source">
+        <JFCLLinkExternal href={urlZOLA(bbl)} className="criteria-link">
           View source
         </JFCLLinkExternal>
       </>
@@ -101,10 +101,11 @@ function eligibilityPortfolioSize(
     if (wow_portfolio_units !== undefined && wow_portfolio_units > 10) {
       userValue = (
         <>
-          <p>{`Your building has only ${unitsres} apartments, but your landlord may own
-          ${wow_portfolio_bbls! - 1} other buildings`}</p>
-          <JFCLLinkInternal to="/portfolio_size">
-            How to find out
+          {`Your building has only ${unitsres} apartments, but your landlord may own
+          ${wow_portfolio_bbls! - 1} other buildings`}
+          <br />
+          <JFCLLinkInternal to="/portfolio_size" className="criteria-link">
+            Find your landlord’s other buildings
           </JFCLLinkInternal>
         </>
       );
@@ -191,9 +192,10 @@ function eligibilityRentStabilized(
     determination = "UNKNOWN";
     userValue = (
       <>
-        <p>You don't know if your apartment is rent stabilized.</p>
-        <JFCLLinkInternal to="/rent_stabilization">
-          How to find out
+        You don't know if your apartment is rent stabilized.
+        <br />
+        <JFCLLinkInternal to="/rent_stabilization" className="criteria-link">
+          Find out if you are rent stabilized
         </JFCLLinkInternal>
       </>
     );
@@ -253,7 +255,7 @@ function eligibilityBuildingClass(
         ? "Your building is not an exempted type."
         : `Your building is ${bldgTypeName}, and is exempt.`}
       <br />
-      <JFCLLinkExternal href={urlZOLA(bbl)} className="data-source">
+      <JFCLLinkExternal href={urlZOLA(bbl)} className="criteria-link">
         View source
       </JFCLLinkExternal>
     </>
@@ -295,7 +297,7 @@ function eligibilityCertificateOfOccupancy(
       <>
         {`Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`}
         <br />
-        <JFCLLinkExternal href={urlDOB(co_bin)} className="data-source">
+        <JFCLLinkExternal href={urlDOB(co_bin)} className="criteria-link">
           View source
         </JFCLLinkExternal>
       </>
@@ -311,7 +313,7 @@ function eligibilityCertificateOfOccupancy(
 }
 
 function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
-  const { housingType, is_nycha, is_subsidized } = criteriaData;
+  const { housingType, is_nycha, is_subsidized, bbl } = criteriaData;
   const criteria = "subsidy";
   const requirement = <>You must not live in subsidized or public housing.</>;
   let determination: CriterionResult;
@@ -325,6 +327,10 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
           {`You don't know if you live in subsidized or public housing, but
           available data indicates that your building is
           ${is_nycha ? "public housing" : "subsidized"}.`}
+          <br />
+          <JFCLLinkExternal href={urlFCSubsidized(bbl)} className="data-source">
+            View source
+          </JFCLLinkExternal>
         </>
       );
     } else {

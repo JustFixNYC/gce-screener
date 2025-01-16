@@ -8,15 +8,15 @@ import {
   ContentBoxItem,
 } from "../../ContentBox/ContentBox";
 import { Accordion } from "../../Accordion/Accordion";
-import { FormFields } from "../Form/Form";
+import { FormFields } from "../Form/Survey";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { useGetBuildingData } from "../../../api/hooks";
 import { AcrisDocument, BuildingData } from "../../../types/APIDataTypes";
 import {
   acrisDocTypeFull,
   closeAccordionsPrint,
+  getPrioritizeBldgs,
   openAccordionsPrint,
-  prioritizeBldgs,
   urlAcrisBbl,
   urlAcrisDoc,
   urlCountyClerkBbl,
@@ -131,7 +131,7 @@ export const PortfolioSize: React.FC = () => {
             title="Find other buildings your landlord might own"
             step={2}
           >
-            {!!bldgData?.related_properties && (
+            {bldgData && !!bldgData?.related_properties && (
               <>
                 <p>
                   Review documents below to find your landlord’s name or
@@ -141,15 +141,17 @@ export const PortfolioSize: React.FC = () => {
                 <br />
               </>
             )}
-            <p>
-              {`Your building has ${bldgData?.unitsres} apartments. You only need to confirm that your ` +
-                `landlord owns ${10 - bldgData!.unitsres} additional ${
-                  10 - bldgData!.unitsres == 1 ? "apartment" : "apartments"
-                } across other buildings.`}
-            </p>
+            {bldgData?.unitsres && (
+              <p>
+                {`Your building has ${bldgData.unitsres} apartments. You only need to confirm that your ` +
+                  `landlord owns ${10 - bldgData.unitsres} additional ${
+                    10 - bldgData.unitsres == 1 ? "apartment" : "apartments"
+                  } across other buildings.`}
+              </p>
+            )}
             <VideoEmbed url="" />
             <div className="content-box__section__related-buildings">
-              {!!bldgData?.related_properties ? (
+              {bldgData?.related_properties ? (
                 <>
                   {isLoading && <>Loading document links...</>}
                   <AcrisAccordions {...bldgData} />
@@ -171,7 +173,7 @@ export const PortfolioSize: React.FC = () => {
           <ContentBoxFooter
             message="Update your coverage result"
             linkText="Adjust survey answers"
-            linkTo="/form"
+            linkTo="/survey"
           />
         </ContentBox>
         <div className="divider__print" />
@@ -297,6 +299,10 @@ const FindOtherBuildings: React.FC = () => {
 export const AcrisAccordions: React.FC<BuildingData> = (props) => {
   const INIT_DISPLAY = 5;
   const LOAD_MORE_AMOUNT = 5;
+
+  // Generate a sort function that takes into account how many additional units
+  // we need to find
+  const prioritizeBldgs = getPrioritizeBldgs(10 - props.unitsres);
 
   // TODO: decide how to handle these cases, for now exclude. might also want to exclude if no acris_docs, but for now leave in.
   const relatedProperties = props.related_properties

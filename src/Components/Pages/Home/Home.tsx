@@ -4,7 +4,7 @@ import { Button } from "@justfixnyc/component-library";
 
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
-import { FormFields } from "../Form/Form";
+import { FormFields } from "../Form/Survey";
 import { useSendGceData } from "../../../api/hooks";
 import { GCEPostData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
@@ -64,7 +64,13 @@ export const Home: React.FC = () => {
   return (
     <div id="home-page">
       <Header
-        title="Learn if you're covered by Good Cause Eviction law in NYC"
+        title={
+          <>
+            Learn if you're covered <br />
+            by Good Cause <br />
+            Eviction law in NYC
+          </>
+        }
         address={address}
         lastStepReached={lastStepReached}
       >
