@@ -39,6 +39,7 @@ import {
 } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
+import { useRollbar } from "@rollbar/react";
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -493,7 +494,7 @@ const PhoneNumberCallout: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    console.log(phoneNumber);
+    const rollbar = useRollbar();
     const cleaned = phoneNumber.replace(/\D/g, "");
     if (cleaned.length === VALID_PHONE_NUMBER_LENGTH) {
       try {
@@ -503,7 +504,7 @@ const PhoneNumberCallout: React.FC = () => {
         });
         setShowError(false);
       } catch (error) {
-        console.log({ "tenants2-error": error });
+        rollbar.error("Cannot connect to tenant platform");
       }
     } else {
       setShowError(true);
