@@ -468,6 +468,7 @@ const PhoneNumberCallout: React.FC = () => {
     user?: GCEUser;
   };
   const { trigger } = useSendGceData();
+  const rollbar = useRollbar();
 
   const formatPhoneNumber = (value: string): string => {
     // remove all non-digit characters
@@ -497,7 +498,6 @@ const PhoneNumberCallout: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    const rollbar = useRollbar();
     const cleaned = phoneNumber.replace(/\D/g, "");
     if (cleaned.length === VALID_PHONE_NUMBER_LENGTH) {
       try {
