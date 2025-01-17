@@ -112,3 +112,13 @@ $videoEmbedW: 623px;
     @include body_standard_desktop;
   }
 }
+
+.note-box {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  align-self: stretch;
+  @include small_text_desktop;
+}

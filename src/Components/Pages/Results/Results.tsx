@@ -160,13 +160,16 @@ export const Results: React.FC = () => {
           )}
           {coverageResult === "UNKNOWN" && (
             <>
-              <GoodCauseProtections subtitle="Protections you might have under Good Cause Eviction" />
+              <GoodCauseProtections
+                subtitle="Protections you might have under Good Cause Eviction"
+                rent={Number(fields.rent)}
+              />
             </>
           )}
           {coverageResult === "COVERED" && (
             <>
               <GoodCauseExercisingRights />
-              <GoodCauseProtections />
+              <GoodCauseProtections rent={Number(fields.rent)} />
             </>
           )}
           <UniversalProtections />
@@ -285,13 +288,16 @@ const EligibilityNextSteps: React.FC<{
   bldgData: BuildingData;
   criteriaDetails: CriteriaDetails;
 }> = ({ bldgData, criteriaDetails }) => {
-  const portfolioSizeUnknown =
-    criteriaDetails?.portfolioSize?.determination === "UNKNOWN";
   const rentStabilizedUnknown =
     criteriaDetails?.rentStabilized?.determination === "UNKNOWN";
-  const steps = [portfolioSizeUnknown, rentStabilizedUnknown].filter(
-    Boolean
-  ).length;
+  const subsidyUnknown = criteriaDetails?.subsidy?.determination === "UNKNOWN";
+  const portfolioSizeUnknown =
+    criteriaDetails?.portfolioSize?.determination === "UNKNOWN";
+  const steps = [
+    rentStabilizedUnknown,
+    subsidyUnknown,
+    portfolioSizeUnknown,
+  ].filter(Boolean).length;
   const unsureIcon = (
     <Icon
       icon="circleExclamation"
@@ -311,7 +317,7 @@ const EligibilityNextSteps: React.FC<{
       >
         {rentStabilizedUnknown && (
           <ContentBoxItem
-            title="We need to know if your apartment is rent stabilized."
+            title="We need to know if your apartment is rent stabilized"
             icon={unsureIcon}
             className="next-step"
             open
@@ -319,7 +325,7 @@ const EligibilityNextSteps: React.FC<{
             <p>
               The Good Cause Eviction law only covers tenants whose apartments
               are not rent stabilized. You told us that you are unsure of your
-              rent stabilized status.
+              rent regulation status.
             </p>
             <JFCLLinkInternal to="/rent_stabilization">
               Find out if you are rent stabilized
@@ -327,42 +333,44 @@ const EligibilityNextSteps: React.FC<{
           </ContentBoxItem>
         )}
 
-        {portfolioSizeUnknown && (
+        {subsidyUnknown && (
           <ContentBoxItem
-            title="We need to know if your landlord owns more than 10 units."
+            title="We need to know if your apartment is part of NYCHA or subsidized housing"
             icon={unsureIcon}
             className="next-step"
             open
           >
-            {bldgData.related_properties ? (
-              <>
-                <p>
-                  {`Good Cause Eviction law only covers tenants whose landlord owns
+            <p>
+              The Good Cause Eviction law only covers tenants whose apartments
+              are not part of NYCHA or subsidized housing. You told us that that
+              you are not sure if you live in subsidized or public housing, and
+              there is no indication from public data that your building is
+              public housing or subsidized.
+            </p>
+            <br />
+            <p>
+              To most accurately understand your apartment’s subsidy status, we
+              recommend asking your landlord if your apartment is part of any
+              subsidies.
+            </p>
+          </ContentBoxItem>
+        )}
+
+        {portfolioSizeUnknown && (
+          <ContentBoxItem
+            title="We need to know if your landlord owns more than 10 units"
+            icon={unsureIcon}
+            className="next-step"
+            open
+          >
+            <p>
+              {`Good Cause Eviction law only covers tenants whose landlord owns
                 more than 10 units. Your building has only ${bldgData.unitsres} apartments, but
                 your landlord may own other buildings.`}
-                </p>
-
-                <JFCLLinkInternal to="/portfolio_size">
-                  Find your landlord’s other buildings
-                </JFCLLinkInternal>
-              </>
-            ) : (
-              <>
-                <p>
-                  {`Good Cause Eviction law only covers tenants whose landlord owns
-                more than 10 units. Your building has only ${bldgData.unitsres} apartments.`}
-                </p>
-                <br />
-                <p>
-                  We are unable to find other apartments your landlord might own
-                  in our records. You can find out if your landlord might own
-                  additional buildings that is not in our data.
-                </p>
-                <JFCLLinkInternal to="/portfolio_size">
-                  Find your landlord’s other buildings
-                </JFCLLinkInternal>
-              </>
-            )}
+            </p>
+            <JFCLLinkInternal to="/portfolio_size">
+              Find your landlord’s other buildings
+            </JFCLLinkInternal>
           </ContentBoxItem>
         )}
         <ContentBoxFooter

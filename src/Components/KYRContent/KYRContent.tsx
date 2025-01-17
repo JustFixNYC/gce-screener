@@ -5,6 +5,9 @@ import {
   ContentBoxProps,
 } from "../ContentBox/ContentBox";
 import JFCLLinkExternal from "../JFCLLinkExternal";
+import { formatMoney } from "../../helpers";
+
+const CPI = 3.82;
 
 type KYRContentBoxProps = Omit<ContentBoxProps, "children"> & {
   children?: React.ReactNode;
@@ -125,53 +128,66 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
   </>
 );
 
-export const GoodCauseProtections: React.FC<KYRContentBoxProps> = ({
+export const GoodCauseProtections: React.FC<
+  KYRContentBoxProps & { rent?: number }
+> = ({
   title = undefined,
-  subtitle = "Protections you have under Good Cause Eviction",
+  subtitle = "Protections you have under Good Cause",
+  rent,
   children,
-}) => (
-  <>
-    <ContentBox title={title} subtitle={subtitle}>
-      <ContentBoxItem title="Your right to a lease renewal">
-        <p>
-          Your landlord will need to provide a good cause reason for ending a
-          tenancy. This includes evicting tenants, not renewing a lease, or, if
-          the tenant does not have a lease, giving notice that the tenancy will
-          end.
-        </p>
-      </ContentBoxItem>
+}) => {
+  const increase_pct = CPI + 5;
+  return (
+    <>
+      <ContentBox title={title} subtitle={subtitle}>
+        <ContentBoxItem title="Your right to stay in your home">
+          <p>
+            Your landlord will need to provide a good cause reason for ending a
+            tenancy. Even if your lease expires, your landlord cannot evict you,
+            as long as you abide by the terms of your expired lease.
+          </p>
+        </ContentBoxItem>
 
-      <ContentBoxItem title="Your right to limited rent increases">
-        <p>
-          Your landlord is not allowed to increase your rent at a rate higher
-          than the local standard. The local rent standard is set every year at
-          the rate of inflation plus 5%, with a maximum of 10% total.
-        </p>
-        <br />
-        <p>
-          As of May 1, 2024, the rate of inflation for the New York City area is
-          3.82%, meaning that the current local rent standard is 8.82%. A rent
-          increase of more than 8.82% could be found unreasonable by the court
-          if the rent was increased after April 20, 2024.
-        </p>
-      </ContentBoxItem>
+        <ContentBoxItem title="Your right to limited rent increases">
+          <p>
+            {`The state housing agency must publish each year’s Reasonable Rent
+          Increase by August. This year the maximum amount your landlord can
+          increase your rent by is ${increase_pct}%.`}
+          </p>
+          <br />
 
-      <ContentBoxItem title="Learn more about Good Cause Eviction Law protections">
-        <JFCLLinkExternal href="https://housingjusticeforall.org/kyr-good-cause">
-          Housing Justice for All Good Cause Eviction fact sheet
-        </JFCLLinkExternal>
-        <JFCLLinkExternal
-          href="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction"
-          className="has-label"
-        >
-          Met Council on Housing Good Cause Eviction fact sheet
-        </JFCLLinkExternal>
-      </ContentBoxItem>
-      {children}
-    </ContentBox>
-    <div className="divider__print" />
-  </>
-);
+          <p>
+            {rent
+              ? `If you are offered a new lease after April 20th, 2024 with an 
+              amount higher than ${formatMoney(
+                rent * (1 + increase_pct / 100)
+              )} (your current rent + ${increase_pct}%) you should ask your
+              landlord to provide reasons for the increase beyond the ${increase_pct}% 
+              reasonable rent standard.`
+              : `If you are offered a new lease after April 20th, 2024 with an amount 
+              higher than your current rent + ${increase_pct}%, you should ask your 
+              landlord to provide reasons for the increase beyond the ${increase_pct}% 
+              reasonable rent standard.`}
+          </p>
+        </ContentBoxItem>
+
+        <ContentBoxItem title="Learn more about Good Cause Eviction Law protections">
+          <JFCLLinkExternal href="https://housingjusticeforall.org/kyr-good-cause">
+            Housing Justice for All Good Cause Eviction fact sheet
+          </JFCLLinkExternal>
+          <JFCLLinkExternal
+            href="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction"
+            className="has-label"
+          >
+            Met Council on Housing Good Cause Eviction fact sheet
+          </JFCLLinkExternal>
+        </ContentBoxItem>
+        {children}
+      </ContentBox>
+      <div className="divider__print" />
+    </>
+  );
+};
 
 export const GoodCauseExercisingRights: React.FC<KYRContentBoxProps> = ({
   title = undefined,

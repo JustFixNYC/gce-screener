@@ -147,7 +147,13 @@ export const acrisDocTypeFull = (docType: string) => {
 };
 
 export const formatNumber = (n: number) =>
-  new Intl.NumberFormat("en").format(n);
+  new Intl.NumberFormat("en-US").format(n);
+
+export const formatMoney = (n: number) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(n);
 
 export const openAccordionsPrint = () => {
   const accordions: NodeListOf<HTMLDetailsElement> =
