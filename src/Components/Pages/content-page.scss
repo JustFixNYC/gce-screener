@@ -35,6 +35,7 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
+      font-size: clamp(2.25rem, 1.614rem + 3.18vw, 4rem);
     }
 
     .headline-section__subtitle {
@@ -52,6 +53,8 @@
     max-width: $contentBoxWidth;
     display: flex;
     flex-direction: column;
+    padding-left: clamp(1.5rem, -1.591rem + 15.45vw, 10rem);
+    padding-right: clamp(1.5rem, -1.591rem + 15.45vw, 10rem);
   }
 }
 
