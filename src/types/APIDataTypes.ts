@@ -82,4 +82,5 @@ export type GCEPostData = {
   form_answers?: FormAnswers;
   result_coverage?: CoverageResult;
   result_criteria?: CriteriaResults;
+  phone_number?: number;
 };

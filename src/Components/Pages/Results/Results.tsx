@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
-import { Button, Icon } from "@justfixnyc/component-library";
+import { Button, Icon, TextInput } from "@justfixnyc/component-library";
 
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import {
@@ -167,11 +167,12 @@ export const Results: React.FC = () => {
           {coverageResult === "COVERED" && (
             <>
               <GoodCauseExercisingRights />
+              <PhoneNumberCallout />
               <GoodCauseProtections />
             </>
           )}
           <UniversalProtections />
-
+          {!(coverageResult === "COVERED") && <PhoneNumberCallout />}
           <div className="share-footer">
             <h3 className="share-footer__header">
               Help your neighbors learn if they’re covered{" "}
@@ -452,4 +453,96 @@ const CoverageResultHeadline: React.FC<{
       break;
   }
   return <span ref={headlineRef}>{headlineContent}</span>;
+};
+
+const PhoneNumberCallout: React.FC = () => {
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [showError, setShowError] = useState(false);
+  const VALID_PHONE_NUMBER_LENGTH = 10;
+
+  const { user } = useLoaderData() as {
+    user?: GCEUser;
+  };
+  const { trigger } = useSendGceData();
+
+  const formatPhoneNumber = (value: string): string => {
+    // remove all non-digit characters
+    const cleaned = value.replace(/\D/g, "");
+    // limit to 10 characters
+    const limited = cleaned.slice(0, 10);
+
+    // format with parentheses and dashes e.g. (555) 666-7777
+    const match = limited.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
+    if (match) {
+      const [, part1, part2, part3] = match;
+      const formatted = [
+        part1 ? `(${part1}` : "",
+        part2 ? `) ${part2}` : "",
+        part3 ? `-${part3}` : "",
+      ]
+        .join("")
+        .trim();
+      return formatted;
+    }
+    return value;
+  };
+
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    const value = formatPhoneNumber(e.target.value);
+    setPhoneNumber(value);
+  };
+
+  const handleSubmit = () => {
+    console.log(phoneNumber);
+    const cleaned = phoneNumber.replace(/\D/g, "");
+    if (cleaned.length === VALID_PHONE_NUMBER_LENGTH) {
+      try {
+        trigger({
+          id: user?.id,
+          phone_number: parseInt(cleaned),
+        });
+        setShowError(false);
+      } catch (error) {
+        console.log({ "tenants2-error": error });
+      }
+    } else {
+      setShowError(true);
+    }
+  };
+
+  return (
+    <div className="callout-box">
+      <div className="callout-box__column">
+        <span className="callout-box__header">
+          Help build tenant power in NYC
+        </span>
+        <p>
+          We’ll text you once a year to ask about your housing conditions. We’ll
+          use that information to better advocate for your rights.
+        </p>
+      </div>
+      <div className="callout-box__column">
+        <div className="phone-number-input-container">
+          <TextInput
+            labelText="Phone number"
+            invalid={showError}
+            invalidText="Enter a valid phone number"
+            id="phone-number-input"
+            name="phone-number-input"
+            value={phoneNumber}
+            onChange={handleInputChange}
+          />
+          <Button
+            labelText="Submit"
+            variant="secondary"
+            size="small"
+            onClick={handleSubmit}
+          />
+        </div>
+        <div className="phone-number-description">
+          Your phone number will never be saved or used outside of this message
+        </div>
+      </div>
+    </div>
+  );
 };

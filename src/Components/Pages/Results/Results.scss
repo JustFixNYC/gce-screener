@@ -145,6 +145,47 @@
       margin-left: calc(var(--icon-size) + var(--icon-margin));
     }
   }
+  .callout-box {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem; // 24px
+    padding: 2.25rem; // 36px
+    background-color: $OFF_WHITE_200;
+    border-radius: 4px;
+
+    .callout-box__column {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 0;
+
+      .phone-number-input-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+
+        label {
+          @include body_standard_desktop;
+        }
+        .jfcl-text-input {
+          margin: unset;
+          margin-right: 1rem;
+        }
+      }
+
+      .phone-number-description {
+        @include small_text_desktop;
+        margin-top: 0.5rem;
+      }
+    }
+    .callout-box__header {
+      @include body_large_desktop;
+      margin-bottom: 1rem;
+    }
+    p {
+      @include body_standard_desktop;
+      margin: 0;
+    }
+  }
 }
 
 @media screen {
