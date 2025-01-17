@@ -5,8 +5,8 @@
 #topbar {
   position: fixed;
   top: 0;
-  background-color: $OFF_BLACK;
-  border-bottom: 1px solid #d2d2d2;
+  background-color: $OFF_WHITE_200;
+  border-bottom: 1px solid $OFF_BLACK;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -21,12 +21,12 @@
   &,
   h1,
   a {
-    color: $OFF_WHITE_100;
+    color: $OFF_BLACK;
     text-decoration: none;
   }
 
   .topbar__name {
-    border-right: 1px solid $OFF_WHITE_100;
+    border-right: 1px solid $OFF_BLACK;
     padding: 1.5rem 2.25rem;
     h1,
     a {
@@ -41,7 +41,7 @@
 
   .topbar__collab {
     flex: 1;
-    border-right: 1px solid $OFF_WHITE_100;
+    border-right: 1px solid $OFF_BLACK;
     padding: 1.5rem 2.25rem;
     font-size: 1.125rem;
     font-weight: 500;

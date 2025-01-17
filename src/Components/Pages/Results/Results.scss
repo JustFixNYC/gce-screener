@@ -81,16 +81,17 @@
       gap: 10px;
     }
 
-    .criteria-table__row__criteria {
-      @include eyebrow_small_desktop;
+    .criteria-table__row__criteria,
+    .criteria-table__row__requirement,
+    .criteria-table__row__userValue {
+      @include body_standard_desktop;
     }
 
-    .criteria-table__row__requirement {
-      @include body_standard_desktop;
+    .criteria-table__row__criteria {
+      font-weight: 600;
     }
 
     .criteria-table__row__userValue {
-      @include body_standard_desktop;
       margin: 0 1.25rem; // 20px
       box-sizing: border-box;
       flex-grow: 1;
@@ -98,7 +99,7 @@
       p {
         margin: 0 0 0.625rem 0;
       }
-      .data-source {
+      .criteria-link {
         @include small_text_desktop;
       }
     }

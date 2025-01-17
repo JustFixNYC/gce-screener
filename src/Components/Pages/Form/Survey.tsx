@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Button, FormGroup, TextInput } from "@justfixnyc/component-library";
 import { useLoaderData, useNavigate } from "react-router";
+import { useRollbar } from "@rollbar/react";
+import { Button, FormGroup, TextInput } from "@justfixnyc/component-library";
 
 import { FormStep } from "../../FormStep/FormStep";
 import { Address } from "../Home/Home";
@@ -12,7 +13,7 @@ import { formatNumber, ProgressStep } from "../../../helpers";
 import { cleanFormFields } from "../../../api/helpers";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
-import "./Form.scss";
+import "./Survey.scss";
 
 export type FormFields = {
   bedrooms: "STUDIO" | "1" | "2" | "3" | "4+" | null;
@@ -32,7 +33,7 @@ const initialFields: FormFields = {
   portfolioSize: null,
 };
 
-export const Form: React.FC = () => {
+export const Survey: React.FC = () => {
   const { address, user } = useLoaderData() as {
     address: Address;
     user?: GCEUser;
@@ -55,6 +56,7 @@ export const Form: React.FC = () => {
 
   const { data: bldgData } = useGetBuildingData(bbl);
   const { trigger } = useSendGceData();
+  const rollbar = useRollbar();
 
   const NUM_STEPS = !bldgData ? 5 : bldgData?.unitsres > 10 ? 5 : 6;
 
@@ -81,10 +83,12 @@ export const Form: React.FC = () => {
       return;
     }
     setFields(localFields);
-    try {
-      trigger({ id: user?.id, form_answers: cleanFormFields(localFields) });
-    } catch (error) {
-      console.log({ "tenants2-error": error });
+    if (import.meta.env.MODE === "production") {
+      try {
+        trigger({ id: user?.id, form_answers: cleanFormFields(localFields) });
+      } catch {
+        rollbar.error("Cannot connect to tenant platform");
+      }
     }
     navigate(`/results`);
   };

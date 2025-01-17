@@ -105,7 +105,7 @@ export const RentStabilization: React.FC = () => {
           <ContentBoxFooter
             message="Update your coverage result"
             linkText="Adjust survey answers"
-            linkTo="/form"
+            linkTo="/survey"
           />
         </ContentBox>
         <div className="divider__print" />

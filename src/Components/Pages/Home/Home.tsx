@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useRollbar } from "@rollbar/react";
 import { Button } from "@justfixnyc/component-library";
 
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
-import { FormFields } from "../Form/Form";
+import { FormFields } from "../Form/Survey";
 import { useSendGceData } from "../../../api/hooks";
 import { GCEPostData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
 import JFCLLinkInternal from "../../JFCLLinkInternal";
-import "./Home.scss";
 import { ProgressStep } from "../../../helpers";
+import "./Home.scss";
 
 export type Address = {
   bbl: string;
@@ -32,6 +33,7 @@ export const Home: React.FC = () => {
   const [geoAddress, setGeoAddress] = useState<Address>();
   const [inputInvalid, setInputInvalid] = useState(false);
   const { trigger } = useSendGceData();
+  const rollbar = useRollbar();
 
   const handleAddressSearch = async () => {
     if (!geoAddress) {
@@ -46,11 +48,14 @@ export const Home: React.FC = () => {
       borough: geoAddress.borough,
       zipcode: geoAddress.zipcode,
     };
-    try {
-      const userResp = (await trigger(postData)) as GCEUser;
-      setUser(userResp);
-    } catch (error) {
-      console.log({ "tenants2-error": error });
+
+    if (import.meta.env.MODE === "production") {
+      try {
+        const userResp = (await trigger(postData)) as GCEUser;
+        setUser(userResp);
+      } catch {
+        rollbar.critical("Cannot connect to tenant platform");
+      }
     }
 
     removeFormFields();
@@ -61,7 +66,13 @@ export const Home: React.FC = () => {
   return (
     <div id="home-page">
       <Header
-        title="Learn if you're covered by Good Cause Eviction law in NYC"
+        title={
+          <>
+            Learn if you're covered <br />
+            by Good Cause <br />
+            Eviction law in NYC
+          </>
+        }
         address={address}
         lastStepReached={lastStepReached}
       >
