@@ -507,7 +507,7 @@ const PhoneNumberCallout: React.FC = () => {
         });
         setShowError(false);
       } catch (error) {
-        rollbar.error("Cannot connect to tenant platform");
+        rollbar.critical("Cannot connect to tenant platform");
       }
     } else {
       setShowError(true);
