@@ -7,6 +7,7 @@ import {
 import "./GeoSearchInput.scss";
 import { Address } from "../Pages/Home/Home";
 import { formatGeosearchAddress } from "../../helpers";
+import classNames from "classnames";
 
 type GeoSearchInputProps = {
   initialAddress?: Address;
@@ -23,6 +24,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
 }) => {
   const [results, setResults] = useState<GeoSearchFeature[]>([]);
   const [isFocused, setIsFocused] = useState(false);
+  const [isHighlighted, setIsHighlighted] = useState(false);
 
   const placeholder = (
     <>
@@ -38,7 +40,6 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
           console.log("ERROR", e);
         },
         onResults: (results) => {
-          // setIsLoading(false);
           setResults(results.features);
         },
       }),
@@ -61,7 +62,9 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
   return (
     <div className="geo-search">
       <Dropdown
-        className="geo-search"
+        className={classNames("geo-search", {
+          "is-highlighted": isHighlighted,
+        })}
         options={options}
         placeholder={!isFocused && placeholder}
         invalid={!isFocused && invalid}
@@ -69,8 +72,12 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
         onFocus={() => {
           setInvalid(false);
           setIsFocused(true);
+          setIsHighlighted(true);
         }}
-        onBlur={() => setIsFocused(false)}
+        onBlur={() => {
+          setIsFocused(false);
+          setIsHighlighted(false);
+        }}
         filterOption={null}
         onInputChange={(value: string) => {
           requester.changeSearchRequest(value);
@@ -82,6 +89,8 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
         ]}
         // @ts-expect-error We need to update the JFCL onChange props to match react-select
         onChange={({ value }) => {
+          setIsHighlighted(false);
+
           const selectedAddress = results.find(
             (result) => formatGeosearchAddress(result.properties) === value
           );
