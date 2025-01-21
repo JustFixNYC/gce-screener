@@ -32,9 +32,9 @@ export const TenantRights: React.FC = () => {
         <div className="content-section__content">
           <UniversalProtections />
 
-          <GoodCauseProtections subtitle="Protections you have if you’re covered by Good Cause Eviction">
+          <GoodCauseProtections subtitle="Protections you have if you’re covered by Good Cause">
             <ContentBoxFooter
-              message="Find out if you’re covered by Good Cause Eviction"
+              message="Find out if you’re covered by Good Cause"
               linkText="Take the survey"
               linkTo="/"
             />

@@ -308,7 +308,6 @@ const EligibilityNextSteps: React.FC<{
   return (
     <>
       <ContentBox
-        title="What this means for you"
         subtitle={
           steps == 1
             ? "There is still one thing you need to verify"
@@ -325,7 +324,7 @@ const EligibilityNextSteps: React.FC<{
             <p>
               The Good Cause Eviction law only covers tenants whose apartments
               are not rent stabilized. You told us that you are unsure of your
-              rent regulation status.
+              rent stabilization status.
             </p>
             <JFCLLinkInternal to="/rent_stabilization">
               Find out if you are rent stabilized

@@ -46,8 +46,12 @@ export const urlZOLA = (bbl: string): string => {
   )}/${parseInt(lot)}`;
 };
 
-export const urlDOB = (bin: string): string => {
+export const urlDOBBIN = (bin: string): string => {
   return `https://a810-bisweb.nyc.gov/bisweb/COsByLocationServlet?allbin=${bin}`;
+};
+export const urlDOBBBL = (bbl: string): string => {
+  const { boro, block, lot } = splitBBL(bbl);
+  return `https://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro=${boro}&block=${block}&lot=${lot}`;
 };
 
 export const urlFCSubsidized = (bbl: string): string => {
