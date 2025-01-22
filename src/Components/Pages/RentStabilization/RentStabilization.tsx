@@ -53,7 +53,7 @@ export const RentStabilization: React.FC = () => {
         <div className="content-section__content"></div>
         <ContentBox
           title="Why you need to know"
-          subtitle="Good Cause Eviction only applies to tenants who are not rent stabilized."
+          subtitle="Good Cause Eviction only applies to tenants who are not rent stabilized"
         >
           <ContentBoxItem accordion={false}>
             <p>
