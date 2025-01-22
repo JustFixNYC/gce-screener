@@ -25,6 +25,10 @@
 
   #rent-input {
     max-width: 19.375rem; // 310px
+    @include for-phone-only() {
+      max-width: unset;
+    }
+
     &::-webkit-inner-spin-button,
     ::-webkit-outer-spin-button {
       appearance: none;
