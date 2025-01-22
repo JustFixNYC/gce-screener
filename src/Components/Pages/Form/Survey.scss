@@ -25,6 +25,8 @@
 
   #rent-input {
     max-width: 19.375rem; // 310px
+    appearance: textfield;
+
     @include for-phone-only() {
       max-width: unset;
     }
@@ -34,7 +36,6 @@
       appearance: none;
       margin: 0;
     }
-    appearance: textfield;
   }
 
   .form__buttons {

@@ -53,7 +53,7 @@
     }
   }
 
-  @media (max-width: 772px) {
+  @include for-phone-only() {
     .topbar__collab {
       display: none;
     }
