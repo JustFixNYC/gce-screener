@@ -116,8 +116,8 @@ export const Survey: React.FC = () => {
   return (
     <div id="survey-page">
       <Header
-        title="Survey"
-        subtitle="We'll use your answers to help determine your coverage"
+        title="A few questions about your apartment"
+        subtitle="We'll use your answers combined with public data to help determine your coverage."
         address={address}
         lastStepReached={lastStepReached}
       />
@@ -318,7 +318,7 @@ export const Survey: React.FC = () => {
               variant="secondary"
               onClick={() => navigate("/confirm_address")}
             />
-            <Button labelText="Next" onClick={handleSubmit} />
+            <Button labelText="See your results" onClick={handleSubmit} />
           </div>
         </div>
       </div>
@@ -338,13 +338,13 @@ const getRsHelperText = (bldgData?: BuildingData): string | undefined => {
   } = bldgData;
 
   return bldgUnits > 0 && rsUnits >= bldgUnits
-    ? "Our data shows that all apartments in your building are registered as rent stabilized."
+    ? "City data shows that all apartments in your building are registered as rent stabilized."
     : new Date(end_421a) > new Date()
     ? "Your building appears to receive the 421a tax exemption. This means your apartment is rent stabilized."
     : new Date(end_j51) > new Date()
     ? "Your building appears to receive the J51 tax exemption. This means your apartment is rent stabilized."
     : rsUnits > 0
-    ? `Our data shows that ${formatNumber(rsUnits)} of the ${formatNumber(
+    ? `City data shows that ${formatNumber(rsUnits)} of the ${formatNumber(
         bldgUnits
       )} apartments in your building are registered as rent stabilized.`
     : yearbuilt < 1974 && bldgUnits >= 6
@@ -355,9 +355,9 @@ const getRsHelperText = (bldgData?: BuildingData): string | undefined => {
 const getSubsidyHelperText = (bldgData?: BuildingData): string | undefined => {
   if (!bldgData) return undefined;
   return bldgData.is_nycha
-    ? "Based on our data, it looks like your building is part of NYCHA"
+    ? "City data shows that your building is part of NYCHA."
     : bldgData.is_subsidized
-    ? `Based on our data, it looks like your building is part of the ${bldgData.subsidy_name} subsidy program`
+    ? `City data shows that your building is part of ${bldgData.subsidy_name}, which is considered subsidized housing.`
     : "By subsidized we mean that your apartment is affordable housing available to people with a specific income level. " +
       "This does not include vouchers that can be used anywhere to cover some or all of the your rent.";
 };

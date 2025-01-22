@@ -64,10 +64,7 @@ export const RentStabilization: React.FC = () => {
           </ContentBoxItem>
         </ContentBox>
         <div className="divider__print" />
-        <ContentBox
-          title="WHAT YOU CAN DO"
-          subtitle="How to find out if your apartment is rent stabilized"
-        >
+        <ContentBox subtitle="How to find out if your apartment is rent stabilized">
           <ContentBoxItem title="Request your rent history">
             <p>
               Request your rent history to help find out if your apartment is
@@ -92,13 +89,13 @@ export const RentStabilization: React.FC = () => {
             </JFCLLinkExternal>
           </ContentBoxItem>
 
-          <ContentBoxItem title="Attend a walk-in Clinic hosted by the Met Council on Housing ">
+          <ContentBoxItem title="Attend a walk-in Clinic hosted by the Met Council on Housing">
             <p>
               Met Council on Housing’s free clinic offers tenants assistance
               with understanding their rent stabilization status and
               landlord-tenant disputes.
             </p>
-            <JFCLLinkExternal href="https://portal.hcr.ny.gov/app/ask">
+            <JFCLLinkExternal href="https://www.metcouncilonhousing.org/program/met-council-on-housings-weekly-tenants-rights-walk-in-clinic/">
               Tenants’ Rights Walk-In Clinic
             </JFCLLinkExternal>
           </ContentBoxItem>
