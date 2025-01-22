@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useRollbar } from "@rollbar/react";
 import { Button } from "@justfixnyc/component-library";
@@ -26,7 +26,8 @@ export type Address = {
 export const Home: React.FC = () => {
   const navigate = useNavigate();
   const [, setUser] = useSessionStorage<GCEUser>("user");
-  const [address, setAddress] = useSessionStorage<Address>("address");
+  const [address, setAddress, removeAddress] =
+    useSessionStorage<Address>("address");
   const [, , removeFormFields] = useSessionStorage<FormFields>("fields");
   const [lastStepReached, setLastStepReached] =
     useSessionStorage<ProgressStep>("lastStepReached");
@@ -34,6 +35,13 @@ export const Home: React.FC = () => {
   const [inputInvalid, setInputInvalid] = useState(false);
   const { trigger } = useSendGceData();
   const rollbar = useRollbar();
+
+  useEffect(() => {
+    removeAddress();
+    removeFormFields();
+    setLastStepReached(ProgressStep.Home);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleAddressSearch = async () => {
     if (!geoAddress) {
@@ -73,7 +81,6 @@ export const Home: React.FC = () => {
             Eviction law in NYC
           </>
         }
-        address={address}
         lastStepReached={lastStepReached}
       >
         <div className="geo-search-form">
@@ -112,7 +119,7 @@ export const Home: React.FC = () => {
       </div>
       <div className="content-section home__about-project">
         <div className="content-section__content">
-          <h3>About the project</h3>
+          <h3>About the site</h3>
           <p>
             To be covered by Good Cause Eviction, your apartment must meet
             certain requirements. If you live in New York City, you can use this
@@ -121,8 +128,7 @@ export const Home: React.FC = () => {
           </p>
           <br />
           <p>
-            This project is a collaboration between JustFix and Housing Justice
-            for All
+            This is a collaboration between JustFix and Housing Justice for All.
           </p>
           <div className="about-project__orgs-container">
             <div className="callout-box">
@@ -131,7 +137,9 @@ export const Home: React.FC = () => {
                 A non-profit that builds free tools for tenants to exercise
                 their rights to a livable home.
               </p>
-              <JFCLLinkInternal to="">Learn more</JFCLLinkInternal>
+              <JFCLLinkInternal to="https://www.justfix.org/">
+                Learn more
+              </JFCLLinkInternal>
             </div>
             <div className="callout-box">
               <span className="callout-box__header">
@@ -142,7 +150,9 @@ export const Home: React.FC = () => {
                 homeless New Yorkers, united in the fight for housing as a human
                 right.
               </p>
-              <JFCLLinkInternal to="">Learn more</JFCLLinkInternal>
+              <JFCLLinkInternal to="https://housingjusticeforall.org/">
+                Learn more
+              </JFCLLinkInternal>
             </div>
           </div>
         </div>

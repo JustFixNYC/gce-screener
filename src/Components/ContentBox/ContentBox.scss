@@ -68,12 +68,47 @@ $videoEmbedW: 623px;
       margin-top: 1.875rem; // 30px
     }
 
+    .note-box {
+      display: flex;
+      padding: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      align-self: stretch;
+      border: 1px solid $GREY_NEW;
+      border-radius: 4px;
+      margin: 1.5rem 0;
+      @include small_text_desktop;
+    }
+
+    li,
     p {
       @include body_standard_desktop;
+      a {
+        font-size: inherit;
+        font-weight: inherit;
+        text-underline-offset: 0.125rem;
+      }
+    }
+
+    p {
       max-width: $contentPWidth;
       margin: 0;
       &.bold {
         font-weight: 700;
+      }
+    }
+
+    ol {
+      padding-left: 1.25rem;
+      li {
+        margin-bottom: 1em;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+        &::marker {
+          font-weight: 600;
+        }
       }
     }
 
@@ -88,8 +123,11 @@ $videoEmbedW: 623px;
       }
     }
 
-    & > .jfcl-link:first-of-type {
-      margin-top: 0;
+    .share-button__container {
+      margin-top: 2rem;
+      .share-button {
+        margin: 0;
+      }
     }
   }
 
