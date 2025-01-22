@@ -1,4 +1,3 @@
-import "./App.scss";
 import {
   Route,
   Outlet,
@@ -6,17 +5,22 @@ import {
   RouterProvider,
   redirect,
 } from "react-router";
+import { SWRConfig } from "swr";
+import { useRollbar } from "@rollbar/react";
+import { createBrowserRouter, ScrollRestoration } from "react-router-dom";
+
 import { Home } from "./Components/Pages/Home/Home";
 import { Survey } from "./Components/Pages/Form/Survey";
 import { Results } from "./Components/Pages/Results/Results";
 import { APIDocs } from "./Components/Pages/APIDocs/APIDocs";
 import { ConfirmAddress } from "./Components/Pages/ConfirmAddress/ConfirmAddress";
-import { createBrowserRouter, ScrollRestoration } from "react-router-dom";
 import { RentStabilization } from "./Components/Pages/RentStabilization/RentStabilization";
 import { PortfolioSize } from "./Components/Pages/PortfolioSize/PortfolioSize";
 import { Footer } from "./Components/Footer/Footer";
 import { TenantRights } from "./Components/Pages/TenantRights/TenantRights";
 import { TopBar } from "./Components/TopBar/TopBar";
+import { NetworkError } from "./api/error-reporting";
+import "./App.scss";
 
 const Layout = () => {
   return (
@@ -130,7 +134,20 @@ const router = createBrowserRouter(
   )
 );
 function App() {
-  return <RouterProvider router={router} />;
+  const rollbar = useRollbar();
+
+  return (
+    <SWRConfig
+      value={{
+        onError: (error) => {
+          if (error instanceof NetworkError && !error.shouldReport) return;
+          rollbar.error(error);
+        },
+      }}
+    >
+      <RouterProvider router={router} />
+    </SWRConfig>
+  );
 }
 
 export default App;

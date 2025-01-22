@@ -11,6 +11,11 @@
     }
   }
 
+  &.is-highlighted .jfcl-dropdown__single-value {
+    background-color: $BLUE_50;
+    width: fit-content;
+  }
+
   .jfcl-dropdown__value-container {
     padding: 1.125rem; // 18px
   }
