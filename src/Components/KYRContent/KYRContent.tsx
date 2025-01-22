@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import {
   ContentBox,
   ContentBoxItem,
@@ -90,6 +90,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           promises protection from discrimination, banning bias based on age,
           sexual orientation, and military status.
         </p>
+        <br />
         <p>
           Source of income discrimination the illegal practice by landlords,
           owners, and real estate brokers of refusing to rent to current or
@@ -120,6 +121,28 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         <p className="bold">Report source of income discrimination</p>
         <JFCLLinkExternal href="https://weunlock.nyc" className="has-label">
           Unlock NYC
+        </JFCLLinkExternal>
+      </ContentBoxItem>
+      <ContentBoxItem title="Your right to organize">
+        <p>
+          Has your landlord raised your rent? Is your landlord refusing to do
+          basic repairs? Are you worried about getting evicted or non-renewed?
+        </p>
+        <br />
+        <p>
+          You’re not alone. Too many landlords care more about getting rich off
+          our rent money than providing us with decent homes.
+        </p>
+        <br />
+        <p>
+          When tenants come together, we have power. Tenants across our state
+          are forming tenant unions to fight back. If you're interested in
+          organizing a tenant union with your neighbors, fill out this form to
+          get support from a tenant group near you.
+        </p>
+        <br />
+        <JFCLLinkExternal href="https://actionnetwork.org/forms/are-you-worried-about-your-housing">
+          Housing Justice for All tenant organizing form
         </JFCLLinkExternal>
       </ContentBoxItem>
       {children}
@@ -169,8 +192,24 @@ export const GoodCauseProtections: React.FC<
               landlord to provide reasons for the increase beyond the ${increase_pct}% 
               reasonable rent standard.`}
           </p>
+          <div className="note-box">
+            <p>
+              <strong>Note</strong>
+            </p>
+            <p>
+              Landlords can increase the rent more than the reasonable rent
+              increase but they must explain why and must point to increases in
+              their costs or substantial repairs they did to the apartment or
+              building.
+            </p>
+          </div>
+          <p>
+            <strong>Learn about Reasonable Rent Standard</strong>
+          </p>
+          <JFCLLinkExternal href="https://legalaidnyc.org/get-help/housing-problems/what-you-need-to-know-about-new-yorks-good-cause-eviction-law/#rent-increases">
+            Reasonable Rent Increase
+          </JFCLLinkExternal>
         </ContentBoxItem>
-
         <ContentBoxItem title="Learn more about Good Cause Eviction Law protections">
           <JFCLLinkExternal href="https://housingjusticeforall.org/kyr-good-cause">
             Housing Justice for All Good Cause Eviction fact sheet
@@ -189,33 +228,96 @@ export const GoodCauseProtections: React.FC<
   );
 };
 
-export const GoodCauseExercisingRights: React.FC<KYRContentBoxProps> = ({
+export const GoodCauseExercisingRights: React.FC<
+  KYRContentBoxProps & { shareButtons: ReactNode }
+> = ({
   title = undefined,
   subtitle = "How to assert your rights",
+  shareButtons,
   children,
 }) => (
   <>
     <ContentBox title={title} subtitle={subtitle}>
-      <ContentBoxItem title="Share your coverage with your landlord">
+      <ContentBoxItem title="Use Good Cause to stay in your home">
         <p>
-          Assert your rights by printing your coverage results and sharing with
-          your landlord. You can use these results as an indicator that your
-          apartment is covered by Good Cause Eviction Law.
+          If your landlord refuses to renew your lease, tells you that you have
+          to leave for no reason, or tries to evict you for no reason, stay in
+          your home!
         </p>
-        {/* TODO: add email/download/print coverage result buttons */}
-      </ContentBoxItem>
-      <ContentBoxItem title="Organize with your neighbors">
+        <br />
+        <p>
+          Tell your landlord you have a right to stay unless your landlord has a
+          “Good Cause” to evict you. If your landlord then tries to formally
+          evict you in court, you can raise a Good Cause defense and require
+          your landlord to demonstrate they have a “Good Cause” to evict you.
+        </p>
+        <br />
         <p>
           Since your apartment is covered by Good Cause Eviction, there is a
           good chance other apartments in your building are covered as well.
           Organizing with your neighbors can help you assert your rights as a
           group.
         </p>
-        <JFCLLinkExternal href="">
+        <br />
+        <JFCLLinkExternal href="https://housingjusticeforall.org/resource/fight-your-rent-hike-toolkit/">
           Tenant Organizing Toolkit from Housing Justice for All
         </JFCLLinkExternal>
       </ContentBoxItem>
-      <ContentBoxItem title="Reach out to Met Council on Housing">
+      <ContentBoxItem title="Use Good Cause to fight your rent hike">
+        <ol>
+          <li>
+            <strong>Demand notice</strong>
+            <br />
+            Your landlord must give you written notice to raise your rent more
+            than 5% (30 days notice if you’ve lived there less than 1 year, 60
+            days if you’ve lived there 1-2 years, and 90 days notice if you’ve
+            lived there longer than 2 years). If your landlord tries to raise
+            rent without proper notice, inform them they are violating{" "}
+            <a
+              href="https://www.nysenate.gov/legislation/laws/RPP/226-C"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="jfcl-link"
+            >
+              Real Property Law L Section 226-C
+            </a>
+            . Do not pay any rent increase until they give written notice.
+          </li>
+          <li>
+            <strong>Tell them it’s unreasonable</strong>
+            <br />
+            If your rent increase is more than 10% (or CPI+5%, whichever is
+            lower), tell your landlord it is an unreasonable increase and that a
+            judge could force your landlord to justify it based on increased
+            costs.
+          </li>
+          <li>
+            <strong>Withhold the unreasonable increase</strong>
+            <br />
+            You can withhold the rent increase above the ‘reasonable’ threshold.
+            Pay your old rent plus CPI+5% or 10%, whichever is lower. To be
+            safe, set aside the extra rent in a separate escrow account until
+            your negotiations with your landlord have totally resolved.
+          </li>
+          <li>
+            <strong>Invoke Good Cause to a judge</strong>
+            <br />
+            If your landlord takes you to court, you can raise a Good Cause
+            defense. Your landlord would then have to demonstrate to the judge
+            that they raised the rent because of increased costs (taxes,
+            maintenance costs, etc.) or be forced to lower the increase.
+          </li>
+        </ol>
+      </ContentBoxItem>
+      <ContentBoxItem title="Share your coverage with your landlord">
+        <p>
+          Assert your rights by printing your coverage results and sharing with
+          your landlord. You can use these results as an indicator that your
+          apartment is covered by Good Cause Eviction Law.
+        </p>
+        {shareButtons}
+      </ContentBoxItem>
+      <ContentBoxItem title="Reach out to external resources">
         <p>
           The Met Council on Housing helps organize tenants to stand up not only
           for their individual rights, but also for changes to housing policies.
@@ -223,8 +325,11 @@ export const GoodCauseExercisingRights: React.FC<KYRContentBoxProps> = ({
           rights as a tenant, and understand your options for dealing with a
           housing situation.
         </p>
-        <JFCLLinkExternal href="">Met Council on Housing</JFCLLinkExternal>
-        <JFCLLinkExternal href="">
+        <br />
+        <JFCLLinkExternal href="https://www.metcouncilonhousing.org/">
+          Met Council on Housing
+        </JFCLLinkExternal>
+        <JFCLLinkExternal href="https://www.metcouncilonhousing.org/program/tenants-rights-hotline/">
           Call Met Council on Housing Hotline
         </JFCLLinkExternal>
       </ContentBoxItem>
@@ -339,8 +444,12 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
       </ContentBoxItem>
 
       <ContentBoxItem title="Learn more about NYCHA protections">
-        <JFCLLinkExternal href="">NY Legal Assistance Group</JFCLLinkExternal>
-        <JFCLLinkExternal href="">PACT Fact Sheet</JFCLLinkExternal>
+        <JFCLLinkExternal href="https://nylag.org/tenants-rights/public-housing-justice-project/">
+          NY Legal Assistance Group
+        </JFCLLinkExternal>
+        <JFCLLinkExternal href="https://www.nyc.gov/assets/nycha/downloads/pdf/pact-factsheet.pdf">
+          PACT Fact Sheet
+        </JFCLLinkExternal>
       </ContentBoxItem>
 
       {children}

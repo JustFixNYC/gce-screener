@@ -26,6 +26,7 @@ import JFCLLinkInternal from "../../JFCLLinkInternal";
 import {
   GoodCauseExercisingRights,
   GoodCauseProtections,
+  NYCHAProtections,
   RentStabilizedProtections,
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
@@ -168,10 +169,23 @@ export const Results: React.FC = () => {
           )}
           {coverageResult === "COVERED" && (
             <>
-              <GoodCauseExercisingRights />
+              <GoodCauseExercisingRights
+                shareButtons={
+                  <ShareButtons
+                    buttonsInfo={[
+                      ["email", "Email coverage"],
+                      ["download", "Download coverage"],
+                      ["print", "Print coverage"],
+                    ]}
+                    emailSubject={EMAIL_SUBJECT}
+                    emailBody={EMAIL_BODY}
+                  />
+                }
+              />
               <GoodCauseProtections rent={Number(fields.rent)} />
             </>
           )}
+          {coverageResult === "NYCHA" && <NYCHAProtections />}
           <UniversalProtections />
 
           <div className="share-footer">

@@ -105,12 +105,3 @@ export const ContentBoxFooter: React.FC<ContentBoxFooterProps> = ({
     </div>
   );
 };
-
-type NoteBoxProps = {
-  className?: string;
-  children: ReactNode;
-};
-
-export const NoteBox: React.FC<NoteBoxProps> = ({ className, children }) => {
-  return <div className={classNames("note-box", className)}>{children}</div>;
-};
