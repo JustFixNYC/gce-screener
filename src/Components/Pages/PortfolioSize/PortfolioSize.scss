@@ -95,7 +95,7 @@
           background-color: $OFF_WHITE_100;
           border: none !important;
 
-          @media (min-width: 900px) {
+          @include for-tablet-landscape-up() {
             width: 500px;
           }
         }
