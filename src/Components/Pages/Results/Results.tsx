@@ -578,7 +578,7 @@ const CopyURLButton: React.FC = () => {
   const [showSuccess, setShowSuccess] = useState(false);
 
   const handleClick = () => {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(window.location.origin);
     setShowSuccess(true);
     setTimeout(() => {
       setShowSuccess(false);
