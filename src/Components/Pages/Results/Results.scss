@@ -173,6 +173,17 @@
         }
       }
 
+      .phone-number-success {
+        @include small_text_desktop;
+        svg {
+          height: 1.25rem;
+          width: 1.25rem;
+          color: $GREEN;
+          margin-right: 0.25rem;
+          vertical-align: bottom;
+        }
+      }
+
       .phone-number-description {
         @include small_text_desktop;
         margin-top: 0.5rem;
