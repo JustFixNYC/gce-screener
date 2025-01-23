@@ -1,5 +1,6 @@
 @import "../../../mixins.scss";
 @import "../../../variables.scss";
+@import "../../../colors.scss";
 
 #survey-page {
   .jfcl-input-header__label {
@@ -43,5 +44,18 @@
     justify-content: center;
     margin: 3rem 0; //48px
     gap: 0.625rem; //10px
+
+    // sticky footer
+    @include for-phone-only() {
+      position: fixed;
+      bottom: 0;
+      background-color: white;
+      width: 100%;
+      margin: unset;
+      margin-left: -2rem; // override padding from content-section
+      padding: 1rem;
+      justify-content: center;
+      border-top: 1px solid $OFF_BLACK;
+    }
   }
 }

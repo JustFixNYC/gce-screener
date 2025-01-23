@@ -23,4 +23,20 @@
       transform: scale(-1, -1);
     }
   }
+
+  @include for-phone-only() {
+    .accordion__summary {
+      padding: 1rem 1.5rem !important; // overrides desktop ContentBox.scss
+    }
+    .accordion__content {
+      padding: 1rem 1.5rem 1.5rem 1.5rem; // 16px 24px
+
+      .jfcl-link {
+        margin-top: 0.5rem;
+      }
+      .jfcl-link:first-child {
+        margin-top: 0;
+      }
+    }
+  }
 }

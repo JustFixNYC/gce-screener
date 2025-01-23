@@ -12,6 +12,10 @@ $videoEmbedW: 623px;
   max-width: $contentBoxWidth;
   margin: 36px 0;
   background-color: $WHITE;
+
+  @include for-phone-only() {
+    margin: unset;
+  }
 }
 
 .content-box__header {
@@ -19,6 +23,10 @@ $videoEmbedW: 623px;
   padding: $contentBoxPadding;
   flex-direction: column;
   gap: 10px;
+
+  @include for-phone-only() {
+    padding: 1.5rem; // 24px
+  }
 
   .content-box__header-title {
     @include eyebrow_small_desktop;
@@ -145,6 +153,13 @@ $videoEmbedW: 623px;
   background-color: $OFF_WHITE_100;
   padding: 1.5rem 2rem;
   border-radius: 0 0 8px 8px;
+
+  @include for-phone-only() {
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
 
   .content-box__footer__message {
     @include body_standard_desktop;

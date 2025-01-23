@@ -40,6 +40,7 @@ import {
 } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
+import classNames from "classnames";
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -164,10 +165,10 @@ export const Results: React.FC = () => {
             <RentStabilizedProtections />
           )}
           {coverageResult === "UNKNOWN" && (
-              <GoodCauseProtections
-                subtitle="Protections you might have under Good Cause Eviction"
-                rent={Number(fields.rent)}
-              />
+            <GoodCauseProtections
+              subtitle="Protections you might have under Good Cause Eviction"
+              rent={Number(fields.rent)}
+            />
           )}
           {coverageResult === "COVERED" && (
             <>
@@ -315,6 +316,7 @@ const EligibilityNextSteps: React.FC<{
     subsidyUnknown,
     portfolioSizeUnknown,
   ].filter(Boolean).length;
+  const isMobile = window.innerWidth < 599 ? "closed" : "open"; // same as mixin for-phone-only breakpoint
   const unsureIcon = (
     <Icon
       icon="circleExclamation"
@@ -335,14 +337,14 @@ const EligibilityNextSteps: React.FC<{
           <ContentBoxItem
             title="We need to know if your apartment is rent stabilized"
             icon={unsureIcon}
-            className="next-step"
-            open
+            className={classNames("next-step", isMobile)}
           >
             <p>
               The Good Cause Eviction law only covers tenants whose apartments
               are not rent stabilized. You told us that you are unsure of your
               rent stabilization status.
             </p>
+            <br />
             <JFCLLinkInternal to="/rent_stabilization">
               Find out if you are rent stabilized
             </JFCLLinkInternal>
@@ -353,8 +355,7 @@ const EligibilityNextSteps: React.FC<{
           <ContentBoxItem
             title="We need to know if your apartment is part of NYCHA or subsidized housing"
             icon={unsureIcon}
-            className="next-step"
-            open
+            className={classNames("next-step", isMobile)}
           >
             <p>
               The Good Cause Eviction law only covers tenants whose apartments
@@ -376,14 +377,15 @@ const EligibilityNextSteps: React.FC<{
           <ContentBoxItem
             title="We need to know if your landlord owns more than 10 units"
             icon={unsureIcon}
-            className="next-step"
-            open
+            className={classNames("next-step", isMobile)}
           >
             <p>
               {`Good Cause Eviction law only covers tenants whose landlord owns
                 more than 10 units. Your building has only ${bldgData.unitsres} apartments, but
                 your landlord may own other buildings.`}
             </p>
+            <br />
+
             <JFCLLinkInternal to="/portfolio_size">
               Find your landlord’s other buildings
             </JFCLLinkInternal>
@@ -556,6 +558,7 @@ const PhoneNumberCallout: React.FC = () => {
             onChange={handleInputChange}
           />
           <Button
+            className="phone-number-submit__desktop"
             labelText="Submit"
             variant="secondary"
             size="small"
@@ -564,6 +567,14 @@ const PhoneNumberCallout: React.FC = () => {
         </div>
         <div className="phone-number-description">
           Your phone number will never be saved or used outside of this message
+        </div>
+        <div className="phone-number-submit__mobile">
+          <Button
+            labelText="Submit"
+            variant="secondary"
+            size="small"
+            onClick={handleSubmit}
+          />
         </div>
       </div>
     </div>

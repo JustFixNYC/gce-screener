@@ -131,7 +131,7 @@ export const PortfolioSize: React.FC = () => {
             title="Find other buildings your landlord might own"
             step={2}
           >
-            {bldgData && !!bldgData?.related_properties && (
+            {bldgData && !!bldgData?.related_properties.length && (
               <>
                 <p>
                   Review documents below to find your landlord’s name or
@@ -141,7 +141,7 @@ export const PortfolioSize: React.FC = () => {
                 <br />
               </>
             )}
-            {bldgData?.unitsres && (
+            {bldgData && (
               <p>
                 {`Your building has ${bldgData.unitsres} apartments. You only need to confirm that your ` +
                   `landlord owns ${10 - bldgData.unitsres} additional ${
@@ -151,7 +151,8 @@ export const PortfolioSize: React.FC = () => {
             )}
             <VideoEmbed url="" />
             <div className="content-box__section__related-buildings">
-              {bldgData?.related_properties ? (
+              {!!bldgData?.related_properties &&
+              bldgData?.related_properties.length > 0 ? (
                 <>
                   {isLoading && <>Loading document links...</>}
                   <AcrisAccordions {...bldgData} />

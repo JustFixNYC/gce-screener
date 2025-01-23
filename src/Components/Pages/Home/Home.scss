@@ -3,6 +3,11 @@
 @import "../../../colors.scss";
 
 #home-page {
+  .headline-section {
+    @include for-phone-only() {
+      border-bottom: 1px solid $OFF_BLACK;
+    }
+  }
   .geo-search-form {
     display: inline-flex;
     align-items: end;
