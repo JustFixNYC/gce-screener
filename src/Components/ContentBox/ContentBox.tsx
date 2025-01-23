@@ -7,6 +7,7 @@ import { Link, To } from "react-router-dom";
 export type ContentBoxProps = {
   title?: ReactNode;
   subtitle?: ReactNode;
+  headerExtra?: ReactNode;
   className?: string;
   children: ReactNode;
 };
@@ -14,17 +15,19 @@ export type ContentBoxProps = {
 export const ContentBox: React.FC<ContentBoxProps> = ({
   title,
   subtitle,
+  headerExtra,
   className,
   children,
 }) => {
   return (
     <div className={classNames("content-box", className)}>
-      {(title || subtitle) && (
+      {(title || subtitle || headerExtra) && (
         <div className="content-box__header">
           {title && <div className="content-box__header-title">{title}</div>}
           {subtitle && (
             <div className="content-box__header-subtitle">{subtitle}</div>
           )}
+          {headerExtra}
         </div>
       )}
       {children}

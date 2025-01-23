@@ -164,10 +164,10 @@ export const Results: React.FC = () => {
             <RentStabilizedProtections />
           )}
           {coverageResult === "UNKNOWN" && (
-              <GoodCauseProtections
-                subtitle="Protections you might have under Good Cause Eviction"
-                rent={Number(fields.rent)}
-              />
+            <GoodCauseProtections
+              subtitle="Protections you might have under Good Cause Eviction"
+              rent={Number(fields.rent)}
+            />
           )}
           {coverageResult === "COVERED" && (
             <>
