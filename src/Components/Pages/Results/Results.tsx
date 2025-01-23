@@ -195,13 +195,7 @@ export const Results: React.FC = () => {
             <h3 className="share-footer__header">
               Help your neighbors learn if they’re covered{" "}
             </h3>
-            <Button
-              labelText="Copy goodcausenyc.org"
-              labelIcon="copy"
-              onClick={() =>
-                navigator.clipboard.writeText(window.location.href)
-              }
-            />
+            <CopyURLButton />
           </div>
         </div>
       </div>
@@ -566,7 +560,7 @@ const PhoneNumberCallout: React.FC = () => {
           />
         </div>
         {showSuccess && (
-          <div className="phone-number-success">
+          <div className="success-message">
             <Icon icon="check" />
             Phone number submitted
           </div>
@@ -576,5 +570,35 @@ const PhoneNumberCallout: React.FC = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const CopyURLButton: React.FC = () => {
+  const successDuration = 3000;
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleClick = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setShowSuccess(true);
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, successDuration);
+  };
+
+  return (
+    <>
+      <Button
+        className="copy-url-button"
+        labelText="Copy goodcausenyc.org"
+        labelIcon="copy"
+        onClick={handleClick}
+      />
+      {showSuccess && (
+        <div className="success-message">
+          <Icon icon="check" />
+          Copied
+        </div>
+      )}
+    </>
   );
 };
