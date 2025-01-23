@@ -9,7 +9,7 @@
   border-bottom: 1px solid $OFF_BLACK;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   text-wrap: nowrap;
   z-index: 100;
@@ -54,8 +54,14 @@
   }
 
   @include for-phone-only() {
+    .topbar__name {
+      border-right: none;
+    }
     .topbar__collab {
       display: none;
+    }
+    .topbar__search {
+      border-left: 1px solid $OFF_BLACK;
     }
   }
 
