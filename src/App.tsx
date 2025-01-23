@@ -21,6 +21,8 @@ import { TenantRights } from "./Components/Pages/TenantRights/TenantRights";
 import { TopBar } from "./Components/TopBar/TopBar";
 import { NetworkError } from "./api/error-reporting";
 import "./App.scss";
+import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
+import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 
 const Layout = () => {
   return (
@@ -128,6 +130,8 @@ const router = createBrowserRouter(
         loader={LoadURLSession}
       />
       <Route path="tenant_rights" element={<TenantRights />} />
+      <Route path="privacy_policy" element={<PrivacyPolicy />} />
+      <Route path="terms_of_use" element={<TermsOfUse />} />
       <Route path="api_docs" element={<APIDocs />} />
       <Route path="*" element={<Home />} />
     </Route>

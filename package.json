@@ -11,9 +11,11 @@
     "format": "prettier --write --ignore-unknown \"src/**/*\""
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^16.0.1",
     "@justfixnyc/component-library": "0.53.9",
     "@justfixnyc/geosearch-requester": "^1.0.3-alpha.0",
     "@rollbar/react": "^0.12.0-beta",
+    "contentful": "^11.4.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
