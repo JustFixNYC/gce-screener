@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useRollbar } from "@rollbar/react";
 import { Button } from "@justfixnyc/component-library";
@@ -26,7 +26,8 @@ export type Address = {
 export const Home: React.FC = () => {
   const navigate = useNavigate();
   const [, setUser] = useSessionStorage<GCEUser>("user");
-  const [address, setAddress] = useSessionStorage<Address>("address");
+  const [address, setAddress, removeAddress] =
+    useSessionStorage<Address>("address");
   const [, , removeFormFields] = useSessionStorage<FormFields>("fields");
   const [lastStepReached, setLastStepReached] =
     useSessionStorage<ProgressStep>("lastStepReached");
@@ -34,6 +35,13 @@ export const Home: React.FC = () => {
   const [inputInvalid, setInputInvalid] = useState(false);
   const { trigger } = useSendGceData();
   const rollbar = useRollbar();
+
+  useEffect(() => {
+    removeAddress();
+    removeFormFields();
+    setLastStepReached(ProgressStep.Home);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleAddressSearch = async () => {
     if (!geoAddress) {
@@ -73,7 +81,6 @@ export const Home: React.FC = () => {
             Eviction law in NYC
           </>
         }
-        address={address}
         lastStepReached={lastStepReached}
       >
         <div className="geo-search-form">
