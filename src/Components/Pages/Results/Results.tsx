@@ -252,13 +252,6 @@ const EligibilityIcon: React.FC<
 };
 
 const CriterionRow: React.FC<CriterionDetails> = (props) => {
-  const unsureIcon = (
-    <Icon
-      icon="circleExclamation"
-      type="regular"
-      className="criteria-icon yellow"
-    />
-  );
   return (
     <li className="criteria-table__row">
       <div className="criteria-table__row__desktop">
@@ -277,7 +270,7 @@ const CriterionRow: React.FC<CriterionDetails> = (props) => {
         className="criteria-table__row__mobile"
         title={CRITERIA_LABELS[props?.criteria]}
         subtitle={props?.requirement}
-        icon={unsureIcon}
+        icon={<EligibilityIcon {...props} />}
       >
         <div className="callout-box">{props?.userValue}</div>
       </ContentBoxItem>
