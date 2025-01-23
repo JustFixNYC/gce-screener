@@ -11,7 +11,11 @@ import { Accordion } from "../../Accordion/Accordion";
 import { FormFields } from "../Form/Survey";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { useGetBuildingData } from "../../../api/hooks";
-import { AcrisDocument, BuildingData } from "../../../types/APIDataTypes";
+import {
+  AcrisDocument,
+  BuildingData,
+  GCEUser,
+} from "../../../types/APIDataTypes";
 import {
   acrisDocTypeFull,
   closeAccordionsPrint,
@@ -34,7 +38,8 @@ const EMAIL_SUBJECT =
 const EMAIL_BODY = "...";
 
 export const PortfolioSize: React.FC = () => {
-  const { address, fields } = useLoaderData() as {
+  const { user, address, fields } = useLoaderData() as {
+    user: GCEUser;
     address: Address;
     fields: FormFields;
   };
@@ -44,7 +49,11 @@ export const PortfolioSize: React.FC = () => {
     // save session state in params
     if (address && fields) {
       setSearchParams(
-        { address: JSON.stringify(address), fields: JSON.stringify(fields) },
+        {
+          ...(!!user?.id && { user: JSON.stringify(user.id) }),
+          address: JSON.stringify(address),
+          fields: JSON.stringify(fields),
+        },
         { replace: true }
       );
     }
