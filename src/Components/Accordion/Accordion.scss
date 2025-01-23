@@ -25,9 +25,6 @@
   }
 
   @include for-phone-only() {
-    .accordion__summary {
-      padding: 1rem 1.5rem !important; // overrides desktop ContentBox.scss
-    }
     .accordion__content {
       padding: 1rem 1.5rem 1.5rem 1.5rem; // 16px 24px
 

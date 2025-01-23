@@ -252,18 +252,35 @@ const EligibilityIcon: React.FC<
 };
 
 const CriterionRow: React.FC<CriterionDetails> = (props) => {
+  const unsureIcon = (
+    <Icon
+      icon="circleExclamation"
+      type="regular"
+      className="criteria-icon yellow"
+    />
+  );
   return (
     <li className="criteria-table__row">
-      <EligibilityIcon {...props} />
-      <div className="criteria-table__row__info">
-        <span className="criteria-table__row__criteria">
-          {CRITERIA_LABELS[props?.criteria]}
-        </span>
-        <span className="criteria-table__row__requirement">
-          {props?.requirement}
-        </span>
+      <div className="criteria-table__row__desktop">
+        <EligibilityIcon {...props} />
+        <div className="criteria-table__row__info">
+          <span className="criteria-table__row__criteria">
+            {CRITERIA_LABELS[props?.criteria]}
+          </span>
+          <span className="criteria-table__row__requirement">
+            {props?.requirement}
+          </span>
+        </div>
+        <div className="criteria-table__row__userValue">{props?.userValue}</div>
       </div>
-      <div className="criteria-table__row__userValue">{props?.userValue}</div>
+      <ContentBoxItem
+        className="criteria-table__row__mobile"
+        title={CRITERIA_LABELS[props?.criteria]}
+        subtitle={props?.requirement}
+        icon={unsureIcon}
+      >
+        <div className="callout-box">{props?.userValue}</div>
+      </ContentBoxItem>
     </li>
   );
 };

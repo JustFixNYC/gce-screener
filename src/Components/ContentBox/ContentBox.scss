@@ -46,6 +46,9 @@ $videoEmbedW: 623px;
 
   .accordion__summary {
     padding: 1.5rem 2.25rem; // 24px 36px
+    @include for-phone-only() {
+      padding: 1rem 1.5rem; // overrides desktop ContentBox.scss
+    }
   }
 
   &.accordion[open] .accordion__summary {
