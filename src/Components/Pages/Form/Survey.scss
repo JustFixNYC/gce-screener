@@ -3,6 +3,11 @@
 @import "../../../colors.scss";
 
 #survey-page {
+  .content-section {
+    @include for-phone-only() {
+      padding-bottom: 0;
+    }
+  }
   .jfcl-input-header__label {
     @include body_large_desktop;
     margin: 0 0 1.125rem 0; // 18px
@@ -44,6 +49,12 @@
     justify-content: center;
     margin: 3rem 0; //48px
     gap: 0.625rem; //10px
+
+    .survey__back {
+      margin-right: 0.625rem; //10px
+      padding: 0.75rem 1.5rem 0.75rem 0; // 12px 24px 12px 0;
+      align-self: center;
+    }
 
     // sticky footer
     @include for-phone-only() {

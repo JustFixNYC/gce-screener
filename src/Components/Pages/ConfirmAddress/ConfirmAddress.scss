@@ -5,6 +5,11 @@
 $mapImgHeight: 223px;
 
 #confirm-address-page {
+  .content-section {
+    @include for-phone-only() {
+      padding-bottom: 0;
+    }
+  }
   .content-box {
     display: flex;
     flex-direction: column;
@@ -38,6 +43,7 @@ $mapImgHeight: 223px;
       @include for-phone-only() {
         flex-direction: column-reverse;
         gap: 2rem;
+        padding-bottom: 1.5rem;
       }
 
       .img-wrapper,
