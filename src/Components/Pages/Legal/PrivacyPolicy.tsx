@@ -8,7 +8,7 @@ export const PrivacyPolicy: React.FC = () => {
     <div id="privacy-policy-page">
       <Header
         title="Privacy policy"
-        subtitle="Last modified: May 13, 2024"
+        subtitle="Last modified: Jan 24, 2025"
         showProgressBar={false}
       />
 
