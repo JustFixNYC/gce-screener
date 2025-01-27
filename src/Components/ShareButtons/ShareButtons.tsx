@@ -13,12 +13,10 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
   emailSubject,
   emailBody,
 }) => {
-  const mailtoLink =
-    `mailto:` + emailSubject
-      ? `&subject=${emailSubject}`
-      : "" + emailBody
-      ? `&subject=${emailBody}`
-      : "";
+  const subjectParam = emailSubject ? `subject=${emailSubject}` : "";
+  const bodyParam = emailBody ? `body=${emailBody}` : "";
+  const mailtoLink = `mailto:?${subjectParam}&${bodyParam}`;
+
   const emailButton = (x: string, key: React.Key) => (
     <a
       href={mailtoLink}

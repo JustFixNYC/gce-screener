@@ -65,7 +65,7 @@ function eligibilityPortfolioSize(
     determination = "ELIGIBLE";
     userValue = (
       <>
-        Your building has more than apartments.
+        Your building has more than 10 apartments.
         <br />
         <JFCLLinkExternal href={urlZOLA(bbl)} className="criteria-link">
           View source
@@ -80,7 +80,7 @@ function eligibilityPortfolioSize(
     determination = "ELIGIBLE";
     userValue =
       "Your building has 10 or fewer apartments, and you reported that your " +
-      "landlord more than 10 apartments across multiple buildings.";
+      "landlord owns more than 10 apartments across multiple buildings.";
   } else if (portfolioSize === "NO") {
     determination = "INELIGIBLE";
     userValue = (
