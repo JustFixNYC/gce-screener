@@ -11,7 +11,11 @@ import { Accordion } from "../../Accordion/Accordion";
 import { FormFields } from "../Form/Survey";
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { useGetBuildingData } from "../../../api/hooks";
-import { AcrisDocument, BuildingData } from "../../../types/APIDataTypes";
+import {
+  AcrisDocument,
+  BuildingData,
+  GCEUser,
+} from "../../../types/APIDataTypes";
 import {
   acrisDocTypeFull,
   closeAccordionsPrint,
@@ -34,7 +38,8 @@ const EMAIL_SUBJECT =
 const EMAIL_BODY = "...";
 
 export const PortfolioSize: React.FC = () => {
-  const { address, fields } = useLoaderData() as {
+  const { user, address, fields } = useLoaderData() as {
+    user: GCEUser;
     address: Address;
     fields: FormFields;
   };
@@ -44,7 +49,11 @@ export const PortfolioSize: React.FC = () => {
     // save session state in params
     if (address && fields) {
       setSearchParams(
-        { address: JSON.stringify(address), fields: JSON.stringify(fields) },
+        {
+          ...(!!user?.id && { user: JSON.stringify(user.id) }),
+          address: JSON.stringify(address),
+          fields: JSON.stringify(fields),
+        },
         { replace: true }
       );
     }
@@ -90,10 +99,7 @@ export const PortfolioSize: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content"></div>
-        <ContentBox
-          title="Why you need to know"
-          subtitle="Good Cause Eviction covers tenants whose landlords own more than 10 apartments"
-        >
+        <ContentBox subtitle="Good Cause Eviction covers tenants whose landlords own more than 10 apartments">
           <ContentBoxItem accordion={false}>
             <p>
               If you are able to find that your landlord owns more than 10 total
@@ -104,8 +110,12 @@ export const PortfolioSize: React.FC = () => {
         </ContentBox>
         <div className="divider__print" />
         <ContentBox
-          title="WHAT YOU CAN DO"
           subtitle="How to find other apartments your landlord owns"
+          headerExtra={
+            <InfoBox color="blue">
+              We recommend doing the following research on a desktop computer.
+            </InfoBox>
+          }
         >
           <ContentBoxItem
             title="Confirm your landlord’s name and signature"
@@ -236,36 +246,40 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
   );
 
   const content = (
-    <div className="acris-links__content">
-      {info && <InfoBox color="blue">{info}</InfoBox>}
-      {!bbl && <>Loading document links...</>}
-      {bbl && (
-        <>
-          {acris_docs && (
-            <ul>
-              {acris_docs.map((docInfo, i) => (
-                <li key={i}>
-                  <JFCLLinkExternal href={urlAcrisDoc(docInfo.doc_id)}>
-                    {`${acrisDocTypeFull(
-                      docInfo.doc_type
-                    )} (${docInfo.doc_date.slice(0, 4)})`}
-                  </JFCLLinkExternal>
-                </li>
-              ))}
-            </ul>
-          )}
-          {isStatenIsland ? (
-            <JFCLLinkExternal href={urlCountyClerkBbl(bbl)}>
-              View all documents from Richmond County Clerk
-            </JFCLLinkExternal>
-          ) : (
-            <JFCLLinkExternal href={urlAcrisBbl(bbl)}>
-              View all documents in ACRIS
-            </JFCLLinkExternal>
-          )}
-        </>
-      )}
-    </div>
+    <>
+      <div className="acris-links__content">
+        {info && <InfoBox color="blue">{info}</InfoBox>}
+        {!bbl && <>Loading document links...</>}
+        {acris_docs && (
+          <ul>
+            {acris_docs.map((docInfo, i) => (
+              <li key={i}>
+                <JFCLLinkExternal href={urlAcrisDoc(docInfo.doc_id)}>
+                  {`${acrisDocTypeFull(
+                    docInfo.doc_type
+                  )} (${docInfo.doc_date.slice(0, 4)})`}
+                </JFCLLinkExternal>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      <div className="acris-links__footer">
+        {bbl && (
+          <>
+            {isStatenIsland ? (
+              <JFCLLinkExternal href={urlCountyClerkBbl(bbl)}>
+                View all documents from Richmond County Clerk
+              </JFCLLinkExternal>
+            ) : (
+              <JFCLLinkExternal href={urlAcrisBbl(bbl)}>
+                View all documents in ACRIS
+              </JFCLLinkExternal>
+            )}
+          </>
+        )}
+      </div>
+    </>
   );
   return accordion ? (
     <Accordion summary={header} open={open} className="acris-links">

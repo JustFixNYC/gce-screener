@@ -12,16 +12,17 @@
     .accordion__chevron {
       margin-left: auto;
     }
+    &::-webkit-details-marker {
+      display: none;
+    }
   }
 
   .accordion__summary:hover {
     background-color: $OFF_WHITE_100;
   }
 
-  &[open] {
-    summary .accordion__chevron {
-      transform: scale(-1, -1);
-    }
+  &[open] > summary .accordion__chevron {
+    transform: scale(-1, -1);
   }
 
   @include for-phone-only() {

@@ -11,7 +11,7 @@ export const Footer: React.FC = () => (
       </div>
       <div className="footer__legal_pages">
         <a
-          href="https://www.justfix.org/privacy-policy"
+          href="privacy_policy"
           target="_blank"
           rel="noopener noreferrer"
           className="jfcl-link"
@@ -19,7 +19,7 @@ export const Footer: React.FC = () => (
           Privacy Policy
         </a>
         <a
-          href="https://www.justfix.org/terms-of-use"
+          href="terms_of_use"
           target="_blank"
           rel="noopener noreferrer"
           className="jfcl-link"

@@ -196,13 +196,7 @@ export const Results: React.FC = () => {
             <h3 className="share-footer__header">
               Help your neighbors learn if they’re covered{" "}
             </h3>
-            <Button
-              labelText="Copy goodcausenyc.org"
-              labelIcon="copy"
-              onClick={() =>
-                navigator.clipboard.writeText(window.location.href)
-              }
-            />
+            <CopyURLButton />
           </div>
         </div>
       </div>
@@ -493,6 +487,7 @@ const CoverageResultHeadline: React.FC<{
 const PhoneNumberCallout: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [showError, setShowError] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const VALID_PHONE_NUMBER_LENGTH = 10;
 
   const { user } = useLoaderData() as {
@@ -526,6 +521,7 @@ const PhoneNumberCallout: React.FC = () => {
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const value = formatPhoneNumber(e.target.value);
     setPhoneNumber(value);
+    setShowSuccess(false);
   };
 
   const handleSubmit = () => {
@@ -537,7 +533,8 @@ const PhoneNumberCallout: React.FC = () => {
           phone_number: parseInt(cleaned),
         });
         setShowError(false);
-      } catch (error) {
+        setShowSuccess(true);
+      } catch {
         rollbar.critical("Cannot connect to tenant platform");
       }
     } else {
@@ -575,6 +572,12 @@ const PhoneNumberCallout: React.FC = () => {
             onClick={handleSubmit}
           />
         </div>
+        {showSuccess && (
+          <div className="success-message">
+            <Icon icon="check" />
+            Phone number submitted
+          </div>
+        )}
         <div className="phone-number-description">
           Your phone number will never be saved or used outside of this message
         </div>
@@ -588,5 +591,35 @@ const PhoneNumberCallout: React.FC = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const CopyURLButton: React.FC = () => {
+  const successDuration = 3000;
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleClick = () => {
+    navigator.clipboard.writeText(window.location.origin);
+    setShowSuccess(true);
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, successDuration);
+  };
+
+  return (
+    <>
+      <Button
+        className="copy-url-button"
+        labelText="Copy goodcausenyc.org"
+        labelIcon="copy"
+        onClick={handleClick}
+      />
+      {showSuccess && (
+        <div className="success-message">
+          <Icon icon="check" />
+          Copied
+        </div>
+      )}
+    </>
   );
 };

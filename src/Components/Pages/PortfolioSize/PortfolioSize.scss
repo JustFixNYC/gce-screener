@@ -2,8 +2,19 @@
 @import "../../../colors.scss";
 
 #portfolio-size-page {
+  .content-box__header > .info-box {
+    @media (min-width: 900px) {
+      display: none;
+    }
+  }
+
   .acris-links {
     border: 1px solid $GREY_NEW;
+
+    &,
+    .accordion__summary {
+      border-radius: 4px;
+    }
 
     .accordion__summary,
     & > .acris-links__header {
@@ -16,7 +27,6 @@
       list-style: none;
       @include body_standard_desktop;
       font-weight: 600;
-      cursor: pointer;
 
       .acris-links__pill {
         margin-left: 0.5rem; // 8px
@@ -28,14 +38,14 @@
     }
 
     .acris-links__content {
-      padding: 0 1.5rem 1.125rem 1.5rem; // 0 24px 18px 24px
+      padding: 0 1.5rem 1.5rem 1.5rem;
 
       p {
         font-weight: 600;
         margin-top: 1.875rem; // 30px
       }
       ul {
-        margin: 0 0 1.5rem 0; // 24px
+        margin: 0;
         padding: 0;
         list-style: none;
       }
@@ -43,6 +53,13 @@
         @include body_standard_desktop;
         margin-top: 0.75rem; // 12px
       }
+    }
+
+    .acris-links__footer {
+      background-color: $OFF_WHITE_100;
+      border-radius: 0 0 4px 4px;
+      border-top: 1px solid $GREY_NEW;
+      padding: 1.5rem;
     }
   }
 
@@ -61,7 +78,7 @@
       list-style: none;
 
       .acris-links {
-        border-bottom: none;
+        margin-bottom: 1rem;
       }
     }
 
@@ -69,9 +86,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-bottom: unset;
-      border: 1px solid #c5ccd1;
-      padding: 1.125rem 1.5rem;
+      padding: 1rem 1.5rem;
       color: $GREY_700;
       @include small_text_desktop;
 
