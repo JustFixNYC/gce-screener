@@ -1,0 +1,36 @@
+@import "../../../mixins.scss";
+
+#privacy-policy-page,
+#terms-of-use-page {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    u {
+      text-decoration: none;
+    }
+  }
+
+  h1 {
+    @include page_header;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  h2 {
+    @include h3_desktop;
+    font-size: 2rem;
+  }
+  h3 {
+    @include h4_desktop;
+  }
+  h4 {
+    @include body_large_desktop;
+  }
+  h5 {
+    @include body_standard_desktop;
+  }
+  p {
+    @include body_standard_desktop;
+  }
+}

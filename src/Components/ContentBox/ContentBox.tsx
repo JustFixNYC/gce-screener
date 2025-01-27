@@ -37,6 +37,7 @@ export const ContentBox: React.FC<ContentBoxProps> = ({
 
 export type ContentBoxItemProps = {
   title?: ReactNode;
+  subtitle?: ReactNode;
   step?: number;
   icon?: ReactNode;
   children?: ReactNode;
@@ -47,6 +48,7 @@ export type ContentBoxItemProps = {
 
 export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
   title,
+  subtitle,
   step,
   icon,
   accordion = true,
@@ -62,6 +64,11 @@ export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
           <div className="content-box__section__step">{`Step ${step}`}</div>
         )}
         {title && <div className="content-box__section__header">{title}</div>}
+        {subtitle && (
+          <div className="content-box__section__header-subtitle">
+            {subtitle}
+          </div>
+        )}
       </div>
     </>
   );

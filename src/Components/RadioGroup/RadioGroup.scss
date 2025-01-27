@@ -1,7 +1,12 @@
+@import "../../mixins.scss";
+
 .radio-options {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  @include for-phone-only() {
+    flex-direction: column;
+  }
 
   .radio-button {
     min-width: 5.625rem; // 90px

@@ -1,13 +1,26 @@
+@import "../../mixins.scss";
+
 .share-button__container {
   display: flex;
   gap: 1.5rem;
   margin-top: 3rem;
+
+  @include for-phone-only() {
+    margin-top: 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
 
   button.share-button {
     background: unset;
     border: unset;
     text-decoration: underline;
     cursor: pointer;
+
+    @include for-phone-only() {
+      padding: unset;
+    }
   }
   .share-button svg {
     margin-right: 0.5rem;

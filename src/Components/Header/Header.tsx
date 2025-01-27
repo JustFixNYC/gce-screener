@@ -39,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
         {isGuide && (
           <div className="headline-section__back-link">
-            <BackLink to="/results">Back to Coverage Result</BackLink>
+            <BackLink to="/results">Back to Result</BackLink>
           </div>
         )}
         {showProgressBar && (

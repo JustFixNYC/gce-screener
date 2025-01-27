@@ -110,7 +110,7 @@
           background-color: $OFF_WHITE_100;
           border: none !important;
 
-          @media (min-width: 900px) {
+          @include for-tablet-landscape-up() {
             width: 500px;
           }
         }
@@ -165,6 +165,27 @@
     }
     .acris-links__pill {
       color: black;
+    }
+  }
+}
+
+@include for-phone-only() {
+  #portfolio-size-page {
+    .share-button__container {
+      margin-top: 3rem !important; // overrides ShareButton.scss
+    }
+    .content-section {
+      padding: 0 1.5rem 2rem !important; // overrides styles w/ max-width 772px
+      gap: 2rem;
+      .content-box__header-title {
+        display: none;
+      }
+      .content-box__section.no-title {
+        padding: 1.5rem;
+        p {
+          margin: unset;
+        }
+      }
     }
   }
 }

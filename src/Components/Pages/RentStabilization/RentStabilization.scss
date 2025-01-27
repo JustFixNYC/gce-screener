@@ -1,5 +1,25 @@
-@media print {
-  #rent-stabilization-page {
+@import "../../../mixins.scss";
+
+#rent-stabilization-page {
+  @include for-phone-only() {
+    .share-button__container {
+      margin-top: 3rem !important; // overrides ShareButton.scss
+    }
+    .content-section {
+      padding: 0 1.5rem 2rem !important; // overrides styles w/ max-width 772px
+      gap: 2rem;
+      .content-box__header-title {
+        display: none;
+      }
+      .content-box__section {
+        p {
+          margin: unset;
+        }
+      }
+    }
+  }
+
+  @media print {
     .headline-section__address__print {
       padding-bottom: 0.75rem; //12px
     }
