@@ -36,12 +36,23 @@
     max-width: $contentBoxWidth;
   }
 
+  .criteria-table {
+    @include for-phone-only() {
+      margin-top: 2rem; //32px
+    }
+  }
+
   .criteria-table__header {
     display: flex;
     flex-direction: column;
     padding: 0.5rem 1.25rem 2rem 1.25rem;
     margin: 1.5rem 1.5rem 0 1.5rem;
     gap: 0.75rem; // 12px
+
+    @include for-phone-only() {
+      margin: 1rem; //16px
+      padding: 0.5rem 0.5rem 0 0.5rem;
+    }
 
     span {
       @include body_large_desktop;
@@ -56,19 +67,78 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    @include for-phone-only() {
+      margin: 0 1rem;
+    }
   }
 
   .criteria-table__row {
-    display: flex;
     border-top: 1px solid $GREY_NEW;
     align-items: center;
     padding: 1.5rem 0;
     margin: 0 1.5rem;
+    @include for-tablet-portrait-up() {
+      display: flex;
+    }
+    @include for-phone-only() {
+      padding: unset;
+      margin: unset;
+    }
+
+    .criteria-table__row__desktop {
+      display: flex;
+      @include for-tablet-portrait-range() {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .criteria-table__row__userValue {
+        align-self: center;
+      }
+      @include for-phone-only() {
+        display: none;
+      }
+    }
+    .criteria-table__row__mobile {
+      border-top: unset;
+      @include for-tablet-portrait-up() {
+        display: none;
+      }
+      @include for-phone-only() {
+        .accordion__summary {
+          padding: unset;
+          padding: 1rem 0.5rem;
+
+          .content-box__section__header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+          }
+          .accordion__chevron {
+            margin-left: auto;
+          }
+        }
+        .accordion__content {
+          padding: 1rem 0 1rem 3rem;
+          .callout-box {
+            padding: 0.75rem;
+            gap: 0.75rem;
+            background: $OFF_WHITE_100;
+          }
+        }
+      }
+    }
 
     .criteria-icon {
       padding: 0 1.25rem; // 0 20px
       font-size: 1.875rem; //30px
       width: 1.875rem; //30px
+
+      @include for-phone-only() {
+        padding: unset;
+        margin-right: 1rem;
+      }
     }
 
     .criteria-table__row__info {
@@ -116,6 +186,18 @@
       color: $ORANGE;
     }
   }
+  @include for-phone-only() {
+    .content-section {
+      .content-section__content {
+        width: 100%;
+        gap: 2rem; // 32px
+        .content-box {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
 
   .success-message {
     @include small_text_desktop;
@@ -135,6 +217,10 @@
     margin: 2.625rem 0; //42px
     position: relative;
 
+    @include for-phone-only() {
+      margin: 1.5rem 0;
+    }
+
     .share-footer__header {
       @include h3_desktop;
       margin: 0 0 2rem 0;
@@ -144,7 +230,7 @@
     .success-message {
       position: absolute;
       bottom: -1.5rem;
-       margin-top: .5rem;
+      margin-top: 0.5rem;
     }
   }
 
@@ -168,6 +254,10 @@
     padding: 2.25rem; // 36px
     background-color: $OFF_WHITE_200;
     border-radius: 4px;
+    @include for-phone-only() {
+      flex-direction: column;
+      padding: 1.5rem; // 24px
+    }
 
     .callout-box__column {
       display: flex;
@@ -178,6 +268,13 @@
         display: flex;
         flex-direction: row;
         align-items: flex-end;
+
+        @include for-phone-only() {
+          width: -webkit-fill-available;
+          .phone-number-submit__desktop {
+            display: none;
+          }
+        }
 
         label {
           @include body_standard_desktop;
@@ -192,6 +289,14 @@
         @include small_text_desktop;
         margin-top: 0.5rem;
       }
+
+      .phone-number-submit__mobile {
+        margin-top: 1.5rem; // 24px
+
+        @include for-tablet-portrait-up {
+          display: none;
+        }
+      }
     }
     .callout-box__header {
       @include body_large_desktop;
@@ -205,7 +310,7 @@
 }
 
 @media screen {
-  @media (max-width: 772px) {
+  @include for-tablet-portrait-range() {
     .criteria-table__row {
       flex-direction: column;
       gap: 16px;
@@ -247,6 +352,9 @@
     }
 
     .criteria-table__row {
+      .criteria-table__row__desktop {
+        flex-direction: row;
+      }
       &:last-of-type {
         border-bottom: unset;
       }

@@ -14,6 +14,7 @@ import { cleanFormFields } from "../../../api/helpers";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
 import "./Survey.scss";
+import { BackLink } from "../../JFCLLinkInternal";
 
 export type FormFields = {
   bedrooms: "STUDIO" | "1" | "2" | "3" | "4+" | null;
@@ -312,13 +313,14 @@ export const Survey: React.FC = () => {
             )}
           </form>
           <div className="form__buttons">
+            <BackLink to="/confirm_address" className="survey__back">
+              Back
+            </BackLink>
             <Button
-              labelText="Back"
-              labelIcon="chevronLeft"
-              variant="secondary"
-              onClick={() => navigate("/confirm_address")}
+              labelText="See your results"
+              size="small"
+              onClick={handleSubmit}
             />
-            <Button labelText="See your results" onClick={handleSubmit} />
           </div>
         </div>
       </div>

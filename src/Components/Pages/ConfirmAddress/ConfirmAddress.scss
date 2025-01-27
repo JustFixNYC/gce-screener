@@ -5,12 +5,21 @@
 $mapImgHeight: 223px;
 
 #confirm-address-page {
+  .content-section {
+    @include for-phone-only() {
+      padding-bottom: 0;
+    }
+  }
   .content-box {
     display: flex;
     flex-direction: column;
     padding: 1.125rem; // 18px
     margin: 0;
     gap: 1.125rem; // 18px
+    @include for-phone-only() {
+      border: none;
+      padding: unset;
+    }
 
     .info-box__content-container {
       display: flex;
@@ -19,18 +28,39 @@ $mapImgHeight: 223px;
       }
     }
 
+    @include for-phone-only() {
+      .info-box__content-container {
+        flex-direction: column;
+        a {
+          margin-left: unset;
+        }
+      }
+    }
+
     .map-address-container {
       display: flex;
       gap: 2.25rem; // 36px
+      @include for-phone-only() {
+        flex-direction: column-reverse;
+        gap: 2rem;
+        padding-bottom: 1.5rem;
+      }
 
       .img-wrapper,
       .img-wrapper__img {
         border-radius: 4px;
         // width: 100%;
         height: $mapImgHeight;
+        @include for-phone-only() {
+          width: 100%;
+        }
       }
       .img-wrapper {
         background-color: $GREY_NEW;
+        @include for-phone-only() {
+          border: 2px solid #c5ccd1;
+          border-radius: 8px;
+        }
       }
       .img-wrapper__img {
         object-fit: cover;
@@ -44,6 +74,9 @@ $mapImgHeight: 223px;
 
         .your-address {
           @include eyebrow_small_desktop;
+          @include for-phone-only() {
+            display: none;
+          }
         }
         .address-part-1 {
           @include h3_desktop;
@@ -65,6 +98,18 @@ $mapImgHeight: 223px;
       margin-right: 0.625rem; //10px
       padding: 0.75rem 1.5rem 0.75rem 0; // 12px 24px 12px 0;
       align-self: center;
+    }
+
+    // sticky footer
+    @include for-phone-only() {
+      position: sticky;
+      bottom: 0;
+      background-color: $OFF_WHITE_NEW;
+      width: 105%;
+      margin: unset;
+      padding: 1rem;
+      justify-content: center;
+      border-top: 1px solid $OFF_BLACK;
     }
   }
 }
