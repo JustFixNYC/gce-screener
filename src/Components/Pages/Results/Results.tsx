@@ -207,6 +207,7 @@ export const Results: React.FC = () => {
 const CRITERIA_LABELS = {
   portfolioSize: "Landlord portfolio size",
   buildingClass: "Type of building",
+  landlord: "Live-in Landlord",
   rent: "Rent",
   subsidy: "Subsidy",
   rentStabilized: "Rent stabilization",
@@ -295,6 +296,7 @@ const CriteriaTable: React.FC<{
         <CriterionRow {...criteria.certificateOfOccupancy} />
       )}
       {criteria?.subsidy && <CriterionRow {...criteria.subsidy} />}
+      {criteria?.landlord && <CriterionRow {...criteria.landlord} />}
       {criteria?.portfolioSize && <CriterionRow {...criteria.portfolioSize} />}
     </ul>
     <ContentBoxFooter

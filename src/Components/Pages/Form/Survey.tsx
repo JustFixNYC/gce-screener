@@ -19,18 +19,19 @@ import { BackLink } from "../../JFCLLinkInternal";
 export type FormFields = {
   bedrooms: "STUDIO" | "1" | "2" | "3" | "4+" | null;
   rent: string | null;
-  landlord: "YES" | "NO" | "UNSURE" | null;
   rentStabilized: "YES" | "NO" | "UNSURE" | null;
   housingType: "NYCHA" | "SUBSIDIZED" | "NONE" | "UNSURE" | null;
+  landlord?: "YES" | "NO" | null;
   portfolioSize?: "YES" | "NO" | "UNSURE" | null;
 };
 
+// This must be in the order that the questions appear
 const initialFields: FormFields = {
   bedrooms: null,
   rent: null,
-  landlord: null,
   rentStabilized: null,
   housingType: null,
+  landlord: null,
   portfolioSize: null,
 };
 
@@ -59,7 +60,8 @@ export const Survey: React.FC = () => {
   const { trigger } = useSendGceData();
   const rollbar = useRollbar();
 
-  const NUM_STEPS = !bldgData ? 5 : bldgData?.unitsres > 10 ? 5 : 6;
+  // Skip live-in landlord and portfolio size questions is > 10 units
+  const NUM_STEPS = !bldgData ? 4 : bldgData?.unitsres > 10 ? 4 : 6;
 
   const formStepRefs = [
     useRef<HTMLFieldSetElement | null>(null),
@@ -76,6 +78,7 @@ export const Survey: React.FC = () => {
     const firstUnansweredIndex = Object.values(localFields).findIndex(
       (x) => x === null
     );
+    console.log({ NUM_STEPS, firstUnansweredIndex });
     if (firstUnansweredIndex >= 0 && firstUnansweredIndex <= NUM_STEPS - 1) {
       setShowErrors(true);
       formStepRefs[firstUnansweredIndex].current?.scrollIntoView({
@@ -192,32 +195,6 @@ export const Survey: React.FC = () => {
               step={3}
               total={NUM_STEPS}
               fieldsetRef={formStepRefs[2]}
-              invalid={showErrors && localFields.landlord === null}
-            >
-              <FormGroup
-                legendText="Does your landlord live in the building?"
-                invalid={showErrors && localFields.landlord === null}
-                invalidText="Please select one"
-              >
-                <RadioGroup
-                  fields={localFields}
-                  radioGroup={{
-                    name: "landlord",
-                    options: [
-                      { label: "Yes", value: "YES" },
-                      { label: "No", value: "NO" },
-                      { label: "I'm not sure", value: "UNSURE" },
-                    ],
-                  }}
-                  onChange={handleRadioChange}
-                />
-              </FormGroup>
-            </FormStep>
-
-            <FormStep
-              step={4}
-              total={NUM_STEPS}
-              fieldsetRef={formStepRefs[3]}
               invalid={showErrors && localFields.rentStabilized === null}
             >
               <FormGroup
@@ -246,9 +223,9 @@ export const Survey: React.FC = () => {
             </FormStep>
 
             <FormStep
-              step={5}
+              step={4}
               total={NUM_STEPS}
-              fieldsetRef={formStepRefs[4]}
+              fieldsetRef={formStepRefs[3]}
               invalid={showErrors && localFields.housingType === null}
             >
               <FormGroup
@@ -278,38 +255,65 @@ export const Survey: React.FC = () => {
             </FormStep>
 
             {bldgData && bldgData?.unitsres <= 10 && (
-              <FormStep
-                step={6}
-                total={NUM_STEPS}
-                fieldsetRef={formStepRefs[5]}
-                invalid={showErrors && localFields.portfolioSize === null}
-              >
-                <FormGroup
-                  legendText="Does your landlord own more than 10 apartments across multiple buildings?"
-                  helperElement={
-                    <InfoBox>
-                      {`It looks like there are ${bldgData.unitsres} apartments in your building. ` +
-                        "Good Cause Eviction protections only apply to tenants whose landlords own more than 10 apartments, " +
-                        "even if those apartments are spread across multiple buildings."}
-                    </InfoBox>
-                  }
-                  invalid={showErrors && localFields.portfolioSize === null}
-                  invalidText="Please select one"
+              <>
+                <FormStep
+                  step={5}
+                  total={NUM_STEPS}
+                  fieldsetRef={formStepRefs[4]}
+                  invalid={showErrors && localFields.landlord === null}
                 >
-                  <RadioGroup
-                    fields={localFields}
-                    radioGroup={{
-                      name: "portfolioSize",
-                      options: [
-                        { label: "Yes", value: "YES" },
-                        { label: "No", value: "NO" },
-                        { label: "I'm not sure", value: "UNSURE" },
-                      ],
-                    }}
-                    onChange={handleRadioChange}
-                  />
-                </FormGroup>
-              </FormStep>
+                  <FormGroup
+                    legendText="Does your landlord live in the building?"
+                    invalid={showErrors && localFields.landlord === null}
+                    invalidText="Please select one"
+                  >
+                    <RadioGroup
+                      fields={localFields}
+                      radioGroup={{
+                        name: "landlord",
+                        options: [
+                          { label: "Yes", value: "YES" },
+                          { label: "No", value: "NO" },
+                        ],
+                      }}
+                      onChange={handleRadioChange}
+                    />
+                  </FormGroup>
+                </FormStep>
+
+                <FormStep
+                  step={6}
+                  total={NUM_STEPS}
+                  fieldsetRef={formStepRefs[5]}
+                  invalid={showErrors && localFields.portfolioSize === null}
+                >
+                  <FormGroup
+                    legendText="Does your landlord own more than 10 apartments across multiple buildings?"
+                    helperElement={
+                      <InfoBox>
+                        {`It looks like there are ${bldgData.unitsres} apartments in your building. ` +
+                          "Good Cause Eviction protections only apply to tenants whose landlords own more than 10 apartments, " +
+                          "even if those apartments are spread across multiple buildings."}
+                      </InfoBox>
+                    }
+                    invalid={showErrors && localFields.portfolioSize === null}
+                    invalidText="Please select one"
+                  >
+                    <RadioGroup
+                      fields={localFields}
+                      radioGroup={{
+                        name: "portfolioSize",
+                        options: [
+                          { label: "Yes", value: "YES" },
+                          { label: "No", value: "NO" },
+                          { label: "I'm not sure", value: "UNSURE" },
+                        ],
+                      }}
+                      onChange={handleRadioChange}
+                    />
+                  </FormGroup>
+                </FormStep>
+              </>
             )}
           </form>
           <div className="form__buttons">
