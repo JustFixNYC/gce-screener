@@ -40,7 +40,6 @@ import {
 } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
-import classNames from "classnames";
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -320,7 +319,6 @@ const EligibilityNextSteps: React.FC<{
     subsidyUnknown,
     portfolioSizeUnknown,
   ].filter(Boolean).length;
-  const isMobile = window.innerWidth < 599 ? "closed" : "open"; // same as mixin for-phone-only breakpoint
   const unsureIcon = (
     <Icon
       icon="circleExclamation"
@@ -341,7 +339,7 @@ const EligibilityNextSteps: React.FC<{
           <ContentBoxItem
             title="We need to know if your apartment is rent stabilized"
             icon={unsureIcon}
-            className={classNames("next-step", isMobile)}
+            className="next-step"
           >
             <p>
               The Good Cause Eviction law only covers tenants whose apartments
@@ -359,7 +357,7 @@ const EligibilityNextSteps: React.FC<{
           <ContentBoxItem
             title="We need to know if your apartment is part of NYCHA or subsidized housing"
             icon={unsureIcon}
-            className={classNames("next-step", isMobile)}
+            className="next-step"
           >
             <p>
               The Good Cause Eviction law only covers tenants whose apartments
@@ -381,7 +379,7 @@ const EligibilityNextSteps: React.FC<{
           <ContentBoxItem
             title="We need to know if your landlord owns more than 10 units"
             icon={unsureIcon}
-            className={classNames("next-step", isMobile)}
+            className="next-step"
           >
             <p>
               {`Good Cause Eviction law only covers tenants whose landlord owns
