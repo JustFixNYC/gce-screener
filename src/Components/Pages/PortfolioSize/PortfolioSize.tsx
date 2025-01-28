@@ -18,9 +18,7 @@ import {
 } from "../../../types/APIDataTypes";
 import {
   acrisDocTypeFull,
-  closeAccordionsPrint,
   getPrioritizeBldgs,
-  openAccordionsPrint,
   urlAcrisBbl,
   urlAcrisDoc,
   urlCountyClerkBbl,
@@ -29,6 +27,7 @@ import { InfoBox } from "../../InfoBox/InfoBox";
 import { Header } from "../../Header/Header";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./PortfolioSize.scss";
+import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 
 // const LOOM_EMBED_URL =
 //   "https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119";
@@ -45,6 +44,8 @@ export const PortfolioSize: React.FC = () => {
   };
   const [, setSearchParams] = useSearchParams();
 
+  useAccordionsOpenForPrint();
+
   useEffect(() => {
     // save session state in params
     if (address && fields) {
@@ -58,15 +59,6 @@ export const PortfolioSize: React.FC = () => {
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("beforeprint", openAccordionsPrint);
-    window.addEventListener("afterprint", closeAccordionsPrint);
-    return () => {
-      window.removeEventListener("beforeprint", openAccordionsPrint);
-      window.removeEventListener("afterprint", closeAccordionsPrint);
-    };
   }, []);
 
   const bbl = address.bbl;

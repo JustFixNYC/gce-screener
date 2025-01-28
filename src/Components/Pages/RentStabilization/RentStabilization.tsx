@@ -8,10 +8,9 @@ import {
 import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { Address } from "../Home/Home";
 import { Header } from "../../Header/Header";
-import { useEffect } from "react";
-import { openAccordionsPrint, closeAccordionsPrint } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./RentStabilization.scss";
+import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 
 const EMAIL_SUBJECT =
   "Good Cause NYC | Find out if your apartment is rent stabilized";
@@ -22,14 +21,7 @@ export const RentStabilization: React.FC = () => {
     address: Address;
   };
 
-  useEffect(() => {
-    window.addEventListener("beforeprint", openAccordionsPrint);
-    window.addEventListener("afterprint", closeAccordionsPrint);
-    return () => {
-      window.removeEventListener("beforeprint", openAccordionsPrint);
-      window.removeEventListener("afterprint", closeAccordionsPrint);
-    };
-  }, []);
+  useAccordionsOpenForPrint();
 
   return (
     <div id="rent-stabilization-page">

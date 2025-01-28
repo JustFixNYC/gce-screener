@@ -33,13 +33,10 @@ import {
 } from "../../KYRContent/KYRContent";
 import { Header } from "../../Header/Header";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
-import {
-  closeAccordionsPrint,
-  openAccordionsPrint,
-  ProgressStep,
-} from "../../../helpers";
+import { ProgressStep } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
+import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -65,6 +62,8 @@ export const Results: React.FC = () => {
   const headlineRef = useRef<HTMLSpanElement>(null);
   const EMAIL_SUBJECT = "Good Cause NYC | Your Coverage Result";
   const EMAIL_BODY = headlineRef?.current?.textContent;
+
+  useAccordionsOpenForPrint();
 
   useEffect(() => {
     // save session state in params
@@ -96,15 +95,6 @@ export const Results: React.FC = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("beforeprint", openAccordionsPrint);
-    window.addEventListener("afterprint", closeAccordionsPrint);
-    return () => {
-      window.removeEventListener("beforeprint", openAccordionsPrint);
-      window.removeEventListener("afterprint", closeAccordionsPrint);
-    };
   }, []);
 
   return (
