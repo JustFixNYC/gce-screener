@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 
 import {
   ContentBox,
@@ -9,19 +9,26 @@ import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { Address } from "../Home/Home";
 import { Header } from "../../Header/Header";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
-import "./RentStabilization.scss";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
+import { GCEUser } from "../../../types/APIDataTypes";
+import { FormFields } from "../Form/Survey";
+import "./RentStabilization.scss";
+import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 
 const EMAIL_SUBJECT =
   "Good Cause NYC | Find out if your apartment is rent stabilized";
 const EMAIL_BODY = "...";
 
 export const RentStabilization: React.FC = () => {
-  const { address } = useLoaderData() as {
+  const { user, address, fields } = useLoaderData() as {
+    user: GCEUser;
     address: Address;
+    fields: FormFields;
   };
+  const [, setSearchParams] = useSearchParams();
 
   useAccordionsOpenForPrint();
+  useSearchParamsURL(setSearchParams, address, fields, user);
 
   return (
     <div id="rent-stabilization-page">

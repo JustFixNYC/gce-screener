@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 
 import { Address } from "../Home/Home";
@@ -26,8 +26,9 @@ import {
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { Header } from "../../Header/Header";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
-import "./PortfolioSize.scss";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
+import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
+import "./PortfolioSize.scss";
 
 // const LOOM_EMBED_URL =
 //   "https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119";
@@ -38,28 +39,14 @@ const EMAIL_BODY = "...";
 
 export const PortfolioSize: React.FC = () => {
   const { user, address, fields } = useLoaderData() as {
-    user: GCEUser;
+    user?: GCEUser;
     address: Address;
     fields: FormFields;
   };
   const [, setSearchParams] = useSearchParams();
 
   useAccordionsOpenForPrint();
-
-  useEffect(() => {
-    // save session state in params
-    if (address && fields) {
-      setSearchParams(
-        {
-          ...(!!user?.id && { user: JSON.stringify(user.id) }),
-          address: JSON.stringify(address),
-          fields: JSON.stringify(fields),
-        },
-        { replace: true }
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useSearchParamsURL(setSearchParams, address, fields, user);
 
   const bbl = address.bbl;
 

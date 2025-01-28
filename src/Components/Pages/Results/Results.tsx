@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useLoaderData, useSearchParams } from "react-router-dom";
+import { useLoaderData, useLocation, useSearchParams } from "react-router-dom";
 import { Button, Icon, TextInput } from "@justfixnyc/component-library";
 import { useRollbar } from "@rollbar/react";
 
@@ -15,7 +15,7 @@ import {
   CriterionDetails,
   CriteriaDetails,
   useCriteriaResults as useCriteriaDetails,
-} from "../../../hooks/eligibility";
+} from "../../../hooks/useCriteriaResults";
 import { getCriteriaResults } from "../../../api/helpers";
 import { Address } from "../Home/Home";
 import {
@@ -37,6 +37,7 @@ import { ProgressStep } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
+import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -44,12 +45,14 @@ export const Results: React.FC = () => {
     fields: FormFields;
     user?: GCEUser;
   };
+  const { search } = useLocation();
+  const searchParams = new URLSearchParams(search);
   const [, setSearchParams] = useSearchParams();
   const { trigger } = useSendGceData();
   const rollbar = useRollbar();
   const bbl = address.bbl;
   const { data: bldgData, isLoading, error } = useGetBuildingData(bbl);
-  const criteriaDetails = useCriteriaDetails(fields, bldgData);
+  const criteriaDetails = useCriteriaDetails(fields, searchParams, bldgData);
   const criteriaResults = getCriteriaResults(criteriaDetails);
   const coverageResult = getCoverageResult(fields, criteriaResults);
   const [lastStepReached, setLastStepReached] =
@@ -64,21 +67,7 @@ export const Results: React.FC = () => {
   const EMAIL_BODY = headlineRef?.current?.textContent;
 
   useAccordionsOpenForPrint();
-
-  useEffect(() => {
-    // save session state in params
-    if (address && fields) {
-      setSearchParams(
-        {
-          ...(!!user?.id && { user: JSON.stringify(user) }),
-          address: JSON.stringify(address),
-          fields: JSON.stringify(fields),
-        },
-        { replace: true }
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useSearchParamsURL(setSearchParams, address, fields, user);
 
   useEffect(() => {
     if (coverageResult && criteriaResults) {
@@ -147,6 +136,7 @@ export const Results: React.FC = () => {
             <EligibilityNextSteps
               bldgData={bldgData}
               criteriaDetails={criteriaDetails}
+              searchParams={searchParams}
             />
           )}
 
@@ -298,7 +288,8 @@ const CriteriaTable: React.FC<{
 const EligibilityNextSteps: React.FC<{
   bldgData: BuildingData;
   criteriaDetails: CriteriaDetails;
-}> = ({ bldgData, criteriaDetails }) => {
+  searchParams: URLSearchParams;
+}> = ({ bldgData, criteriaDetails, searchParams }) => {
   const rentStabilizedUnknown =
     criteriaDetails?.rentStabilized?.determination === "UNKNOWN";
   const subsidyUnknown = criteriaDetails?.subsidy?.determination === "UNKNOWN";
@@ -337,7 +328,9 @@ const EligibilityNextSteps: React.FC<{
               rent stabilization status.
             </p>
             <br />
-            <JFCLLinkInternal to="/rent_stabilization">
+            <JFCLLinkInternal
+              to={`/rent_stabilization?${searchParams.toString()}`}
+            >
               Find out if you are rent stabilized
             </JFCLLinkInternal>
           </ContentBoxItem>
@@ -378,7 +371,7 @@ const EligibilityNextSteps: React.FC<{
             </p>
             <br />
 
-            <JFCLLinkInternal to="/portfolio_size">
+            <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
               Find your landlord’s other buildings
             </JFCLLinkInternal>
           </ContentBoxItem>

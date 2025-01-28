@@ -1,5 +1,5 @@
 import { FormFields } from "../Components/Pages/Form/Survey";
-import { CriteriaDetails } from "../hooks/eligibility";
+import { CriteriaDetails } from "../hooks/useCriteriaResults";
 import {
   CriteriaResults,
   FormAnswers,
