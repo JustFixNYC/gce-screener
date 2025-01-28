@@ -47,7 +47,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       return Step;
     }
   });
-  return <div id="progress-bar">{progressBarSteps}</div>;
+  return <nav id="progress-bar">{progressBarSteps}</nav>;
 };
 
 const makeProgressSteps = (
