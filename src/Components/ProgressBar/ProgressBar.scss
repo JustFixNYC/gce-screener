@@ -34,7 +34,7 @@
       letter-spacing: -0.00963rem;
     }
 
-    &.active .progress-bar__step__number {
+    .progress-bar__step__number.visited {
       background-color: $OFF_BLACK;
       color: $OFF_WHITE_100;
     }
