@@ -2,10 +2,17 @@ import { FormFields } from "../Components/Pages/Form/Survey";
 import JFCLLinkInternal from "../Components/JFCLLinkInternal";
 import { BuildingData, CriterionResult } from "../types/APIDataTypes";
 import JFCLLinkExternal from "../Components/JFCLLinkExternal";
-import { urlDOBBBL, urlDOBBIN, urlFCSubsidized, urlZOLA } from "../helpers";
+import {
+  formatNumber,
+  urlDOBBBL,
+  urlDOBBIN,
+  urlFCSubsidized,
+  urlZOLA,
+} from "../helpers";
 
 export type Criteria =
   | "portfolioSize"
+  | "landlord"
   | "buildingClass"
   | "rent"
   | "subsidy"
@@ -26,6 +33,7 @@ export type CriteriaDetails = {
   rentStabilized: CriterionDetails;
   portfolioSize?: CriterionDetails;
   buildingClass?: CriterionDetails;
+  landlord?: CriterionDetails;
   subsidy?: CriterionDetails;
   certificateOfOccupancy?: CriterionDetails;
 };
@@ -39,6 +47,7 @@ export function useCriteriaResults(
   const criteriaData: CriteriaData = { ...formFields, ...bldgData };
   return {
     portfolioSize: eligibilityPortfolioSize(criteriaData, searchParams),
+    landlord: eligibilityLandlord(criteriaData),
     buildingClass: eligibilityBuildingClass(criteriaData),
     rent: eligibilityRent(criteriaData),
     rentStabilized: eligibilityRentStabilized(criteriaData, searchParams),
@@ -51,8 +60,7 @@ function eligibilityPortfolioSize(
   criteriaData: CriteriaData,
   searchParams: URLSearchParams
 ): CriterionDetails {
-  const { unitsres, related_properties, landlord, portfolioSize, bbl } =
-    criteriaData;
+  const { unitsres, related_properties, portfolioSize } = criteriaData;
   const relatedProperties = related_properties.length || 0;
 
   const criteria = "portfolioSize";
@@ -62,59 +70,84 @@ function eligibilityPortfolioSize(
 
   if (unitsres === undefined) {
     determination = "UNKNOWN";
-    userValue = "No data available for number of apartments in your building.";
+    userValue =
+      "No data available for the number of apartments in your building.";
   } else if (unitsres > 10) {
     determination = "ELIGIBLE";
-    userValue = (
-      <>
-        Your building has more than 10 apartments.
-        <br />
-        <JFCLLinkExternal href={urlZOLA(bbl)} className="criteria-link">
-          View source
-        </JFCLLinkExternal>
-      </>
-    );
-  } else if (landlord === "YES") {
-    determination = "INELIGIBLE";
-    userValue =
-      "Your building has 10 or fewer apartments and is owner-occupied";
+    userValue = `Your building has ${formatNumber(unitsres)} apartments.`;
   } else if (portfolioSize === "YES") {
     determination = "ELIGIBLE";
-    userValue =
-      "Your building has 10 or fewer apartments, and you reported that your " +
-      "landlord owns more than 10 apartments across multiple buildings.";
+    userValue = `Your building has ${formatNumber(
+      unitsres
+    )} apartments, and you reported that your landlord owns more than 10 apartments across multiple buildings.`;
   } else if (portfolioSize === "NO") {
     determination = "INELIGIBLE";
-    userValue = (
-      <>
-        Your building has 10 or fewer apartments, and you reported that your
-        landlord does not own other buildings.
-        <br />
-        <JFCLLinkExternal href={urlZOLA(bbl)} className="criteria-link">
-          View source
-        </JFCLLinkExternal>
-      </>
-    );
+    userValue = `Your building has ${formatNumber(
+      unitsres
+    )} apartments, and you reported that your landlord does not own other buildings.`;
   } else {
     determination = "UNKNOWN";
-    if (relatedProperties) {
-      userValue = (
-        <>
-          {`Your building has only ${unitsres} apartments, but your landlord may own
-          ${relatedProperties - 1} other buildings`}
-          <br />
-          <JFCLLinkInternal
-            to={`/portfolio_size?${searchParams.toString()}`}
-            className="criteria-link"
-          >
-            Find your landlord’s other buildings
-          </JFCLLinkInternal>
-        </>
-      );
-    } else {
-      userValue = `Your building has only ${unitsres} apartments, but your landlord may own other buildings`;
-    }
+    userValue = (
+      <>
+        {`Your building has only ${formatNumber(
+          unitsres
+        )} apartments, but your landlord may own
+          ${
+            relatedProperties ? `${relatedProperties - 1} ` : ""
+          }other buildings`}
+        <br />
+        <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`} className="criteria-link">
+          Find your landlord’s other buildings
+        </JFCLLinkInternal>
+      </>
+    );
   }
+
+  return {
+    criteria,
+    determination,
+    requirement,
+    userValue,
+  };
+}
+
+function eligibilityLandlord(criteriaData: CriteriaData): CriterionDetails {
+  const { unitsres, landlord, bbl } = criteriaData;
+
+  const criteria = "landlord";
+  const requirement =
+    "If the building has 10 or fewer apartments, the landlord must not also live in it.";
+  let determination: CriterionResult;
+  let userValueText: string;
+
+  if (unitsres === undefined) {
+    determination = "UNKNOWN";
+    userValueText =
+      "No data available for the number of apartments in your building.";
+  } else if (unitsres > 10) {
+    determination = "ELIGIBLE";
+    userValueText = `Your building has ${formatNumber(unitsres)} apartments.`;
+  } else if (landlord === "YES") {
+    determination = "INELIGIBLE";
+    userValueText = `Your building has ${formatNumber(
+      unitsres
+    )} apartments and you reported that your landlord lives in the building.`;
+  } else {
+    determination = "ELIGIBLE";
+    userValueText = `Your building has ${formatNumber(
+      unitsres
+    )} apartments and you reported that your landlord does not live in the building.`;
+  }
+
+  const userValue = (
+    <>
+      {userValueText}
+      <br />
+      <JFCLLinkExternal href={urlZOLA(bbl)} className="criteria-link">
+        View source
+      </JFCLLinkExternal>
+    </>
+  );
 
   return {
     criteria,

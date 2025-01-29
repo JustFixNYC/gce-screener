@@ -68,3 +68,28 @@
   letter-spacing: 1.12px;
   text-transform: uppercase;
 }
+
+button.jfcl-button {
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    box-shadow: none;
+  }
+
+  &.jfcl-variant-primary {
+    &:hover:not(:disabled) {
+      background-color: $GREY_700;
+    }
+    &:active:not(:disabled) {
+      background-color: $GREY_600;
+    }
+  }
+
+  &.jfcl-variant-secondary {
+    &:hover:not(:disabled) {
+      background-color: $GREY_50;
+    }
+    &:active:not(:disabled) {
+      background-color: $OFF_WHITE_150;
+    }
+  }
+}
