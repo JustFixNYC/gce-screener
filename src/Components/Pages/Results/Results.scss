@@ -37,8 +37,9 @@
   }
 
   .criteria-table {
+    margin-top: 2.25rem;
     @include for-phone-only() {
-      margin-top: 2rem; //32px
+      margin-top: 1.25rem; //32px
     }
   }
 

@@ -5,15 +5,17 @@
   flex-wrap: wrap;
   gap: 0.12rem;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 
   .progress-bar__step {
     display: flex;
+    align-items: center;
     font-weight: 500;
 
     span,
     a {
       font-size: 1.125rem; // 18px
+      padding: 1rem 0;
     }
 
     a:not(:hover) {
