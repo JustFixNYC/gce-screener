@@ -78,7 +78,6 @@ export const Survey: React.FC = () => {
     const firstUnansweredIndex = Object.values(localFields).findIndex(
       (x) => x === null
     );
-    console.log({ NUM_STEPS, firstUnansweredIndex });
     if (firstUnansweredIndex >= 0 && firstUnansweredIndex <= NUM_STEPS - 1) {
       setShowErrors(true);
       formStepRefs[firstUnansweredIndex].current?.scrollIntoView({
