@@ -76,7 +76,7 @@ export const Home: React.FC = () => {
       <Header
         title={
           <>
-            Learn if you're covered <br />
+            Learn if you’re covered <br />
             by Good Cause <br />
             Eviction law in NYC
           </>

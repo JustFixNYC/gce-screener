@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { useRollbar } from "@rollbar/react";
 import { Button, FormGroup, TextInput } from "@justfixnyc/component-library";
@@ -9,12 +9,18 @@ import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { RadioGroup } from "../../RadioGroup/RadioGroup";
 import { InfoBox } from "../../InfoBox/InfoBox";
-import { formatNumber, ProgressStep } from "../../../helpers";
+import {
+  formatNumber,
+  ProgressStep,
+  urlFCSubsidized,
+  urlWOWTimelineRS,
+} from "../../../helpers";
 import { cleanFormFields } from "../../../api/helpers";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
-import "./Survey.scss";
 import { BackLink } from "../../JFCLLinkInternal";
+import JFCLLinkExternal from "../../JFCLLinkExternal";
+import "./Survey.scss";
 
 export type FormFields = {
   bedrooms: "STUDIO" | "1" | "2" | "3" | "4+" | null;
@@ -328,7 +334,7 @@ export const Survey: React.FC = () => {
   );
 };
 
-const getRsHelperText = (bldgData?: BuildingData): string | undefined => {
+const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
   if (!bldgData) return undefined;
 
   const {
@@ -337,29 +343,107 @@ const getRsHelperText = (bldgData?: BuildingData): string | undefined => {
     end_421a,
     end_j51,
     yearbuilt,
+    bbl,
   } = bldgData;
 
-  return bldgUnits > 0 && rsUnits >= bldgUnits
-    ? "City data shows that all apartments in your building are registered as rent stabilized."
-    : new Date(end_421a) > new Date()
-    ? "Your building appears to receive the 421a tax exemption. This means your apartment is rent stabilized."
-    : new Date(end_j51) > new Date()
-    ? "Your building appears to receive the J51 tax exemption. This means your apartment is rent stabilized."
-    : rsUnits > 0
-    ? `City data shows that ${formatNumber(rsUnits)} of the ${formatNumber(
-        bldgUnits
-      )} apartments in your building are registered as rent stabilized.`
-    : yearbuilt < 1974 && bldgUnits >= 6
-    ? "Based on the size and age of your building, your apartment might be rent stabilized."
-    : undefined;
+  const active421a = new Date(end_421a) > new Date();
+  const activeJ51 = new Date(end_j51) > new Date();
+
+  const wowLink = (
+    <JFCLLinkExternal href={urlWOWTimelineRS(bbl)} className="source-link">
+      View source
+    </JFCLLinkExternal>
+  );
+
+  if (bldgUnits > 0 && rsUnits >= bldgUnits) {
+    return (
+      <>
+        City data shows that all apartments in your building are registered as
+        rent stabilized. <br />
+        {wowLink}
+      </>
+    );
+  } else if (active421a || activeJ51) {
+    return (
+      <>
+        {`Your building appears to receive the ${
+          activeJ51 ? "421a" : "J51"
+        } tax exemption. This means your
+        apartment is rent stabilized.`}
+        <br />
+        <JFCLLinkExternal href={urlFCSubsidized(bbl)} className="source-link">
+          View source
+        </JFCLLinkExternal>
+      </>
+    );
+  } else if (rsUnits > 0) {
+    return (
+      <>
+        {`City data shows that ${formatNumber(rsUnits)} of the ${formatNumber(
+          bldgUnits
+        )} apartments in your building are registered as rent stabilized.`}
+        <br />
+        {wowLink}
+      </>
+    );
+  } else if (yearbuilt < 1974 && bldgUnits >= 6) {
+    return "Based on the size and age of your building, your apartment might be rent stabilized.";
+  } else {
+    return undefined;
+  }
 };
 
-const getSubsidyHelperText = (bldgData?: BuildingData): string | undefined => {
+const getSubsidyHelperText = (
+  bldgData?: BuildingData
+): ReactNode | undefined => {
   if (!bldgData) return undefined;
-  return bldgData.is_nycha
-    ? "City data shows that your building is part of NYCHA."
-    : bldgData.is_subsidized
-    ? `City data shows that your building is part of ${bldgData.subsidy_name}, which is considered subsidized housing.`
-    : "By subsidized we mean that your apartment is affordable housing available to people with a specific income level. " +
-      "This does not include vouchers that can be used anywhere to cover some or all of the your rent.";
+
+  const { bbl, is_nycha, is_subsidized, subsidy_name } = bldgData;
+
+  const subsidyLink = (
+    <JFCLLinkExternal href={urlFCSubsidized(bbl)} className="source-link">
+      View source
+    </JFCLLinkExternal>
+  );
+
+  if (is_nycha) {
+    return (
+      <>
+        City data shows that your building is part of NYCHA.
+        <br />
+        {subsidyLink}
+      </>
+    );
+  } else if (is_subsidized) {
+    const subsidyLanguage =
+      subsidy_name === "HUD Project-Based"
+        ? "receives a HUD Project-Based subsidy"
+        : subsidy_name === "Low-Income Housing Tax Credit (LIHTC)"
+        ? "receives receives the Low-Income Housing Tax Credit (LIHTC)"
+        : subsidy_name === "Article XI"
+        ? "is an Article XI"
+        : subsidy_name === "HPD Program"
+        ? "is part of an HPD subsidy Program"
+        : subsidy_name === "Mitchell-Lama"
+        ? "is a Mitchell-Lama"
+        : "";
+
+    return (
+      <>
+        {`City data shows that your building ${subsidyLanguage}, which is considered subsidized housing.`}
+        <br />
+        {subsidyLink}
+      </>
+    );
+  } else {
+    return (
+      <>
+        If you applied for your apartment through Housing Connect and are unsure
+        of your specific subsidy, you can select “Other.”
+        <br />
+        If you used a voucher that can be used anywhere to cover some or all of
+        the your rent, select “No, my apartment is not subsidized.”
+      </>
+    );
+  }
 };
