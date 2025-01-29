@@ -96,7 +96,10 @@ function eligibilityPortfolioSize(
             relatedProperties ? `${relatedProperties - 1} ` : ""
           }other buildings`}
         <br />
-        <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`} className="criteria-link">
+        <JFCLLinkInternal
+          to={`/portfolio_size?${searchParams.toString()}`}
+          className="criteria-link"
+        >
           Find your landlord’s other buildings
         </JFCLLinkInternal>
       </>
