@@ -10,6 +10,7 @@
   }
   .jfcl-input-header__label {
     @include body_large_desktop;
+    font-weight: 500;
     margin: 0 0 1.125rem 0; // 18px
   }
 
