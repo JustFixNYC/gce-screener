@@ -27,7 +27,7 @@ export type FormFields = {
   rent: string | null;
   landlord: "YES" | "NO" | "UNSURE" | null;
   rentStabilized: "YES" | "NO" | "UNSURE" | null;
-  housingType: "NYCHA" | "SUBSIDIZED" | "NONE" | "UNSURE" | null;
+  housingType: "NYCHA" | "SUBSIDIZED" | "NONE" | null;
   portfolioSize?: "YES" | "NO" | "UNSURE" | null;
 };
 
@@ -273,9 +273,14 @@ export const Survey: React.FC = () => {
                     name: "housingType",
                     options: [
                       { label: "NYCHA or PACT/RAD", value: "NYCHA" },
-                      { label: "Subsidized housing", value: "SUBSIDIZED" },
-                      { label: "None of these", value: "NONE" },
-                      { label: "I'm not sure", value: "UNSURE" },
+                      { label: "Mitchell-Lama", value: "SUBSIDIZED" },
+                      { label: "LIHTC", value: "SUBSIDIZED" },
+                      { label: "HDFC", value: "SUBSIDIZED" },
+                      { label: "Other", value: "SUBSIDIZED" },
+                      {
+                        label: "No, my apartment is not subsidized",
+                        value: "NONE",
+                      },
                     ],
                   }}
                   onChange={handleRadioChange}

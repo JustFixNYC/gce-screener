@@ -2,7 +2,7 @@ import { FormFields } from "../Components/Pages/Form/Survey";
 import JFCLLinkInternal from "../Components/JFCLLinkInternal";
 import { BuildingData, CriterionResult } from "../types/APIDataTypes";
 import JFCLLinkExternal from "../Components/JFCLLinkExternal";
-import { urlDOBBBL, urlDOBBIN, urlFCSubsidized, urlZOLA } from "../helpers";
+import { urlDOBBBL, urlDOBBIN, urlZOLA } from "../helpers";
 
 export type Criteria =
   | "portfolioSize"
@@ -304,36 +304,13 @@ function eligibilityCertificateOfOccupancy(
 }
 
 function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
-  const { housingType, is_nycha, is_subsidized, bbl } = criteriaData;
+  const { housingType } = criteriaData;
   const criteria = "subsidy";
   const requirement = "You must not live in subsidized or public housing.";
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
-  if (housingType == "UNSURE") {
-    determination = "UNKNOWN";
-    if (is_nycha || is_subsidized) {
-      userValue = (
-        <>
-          {"You reported that you are not sure if you live in subsidized or public housing, " +
-            `but available data indicates that your building is ${
-              is_nycha ? "NYCHA" : "subsidized"
-            }.`}
-          <br />
-          <JFCLLinkExternal
-            href={urlFCSubsidized(bbl)}
-            className="criteria-link"
-          >
-            View source
-          </JFCLLinkExternal>
-        </>
-      );
-    } else {
-      userValue =
-        "You reported that you are not sure if you live in NYCHA or subsidized housing, " +
-        "and there is no indication from public data that your building is public housing or subsidized.";
-    }
-  } else if (housingType === "NYCHA" || housingType === "SUBSIDIZED") {
+  if (housingType === "NYCHA" || housingType === "SUBSIDIZED") {
     determination = "INELIGIBLE";
     userValue = `You reported that you live in ${
       housingType === "NYCHA" ? "NYCHA" : "subsidized"
