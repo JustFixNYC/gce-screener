@@ -163,21 +163,3 @@ export const formatMoney = (n: number) =>
     style: "currency",
     currency: "USD",
   }).format(n);
-
-export const openAccordionsPrint = () => {
-  const accordions: NodeListOf<HTMLDetailsElement> =
-    document.body.querySelectorAll("details:not([open])");
-  accordions.forEach((e) => {
-    e.setAttribute("open", "");
-    e.dataset.wasclosed = "";
-  });
-};
-
-export const closeAccordionsPrint = () => {
-  const accordions: NodeListOf<HTMLDetailsElement> =
-    document.body.querySelectorAll("details[data-wasclosed]");
-  accordions.forEach((e) => {
-    e.removeAttribute("open");
-    delete e.dataset.wasclosed;
-  });
-};

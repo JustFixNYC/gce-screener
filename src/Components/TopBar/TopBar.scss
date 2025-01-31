@@ -25,6 +25,10 @@
     text-decoration: none;
   }
 
+  a {
+    padding: 0.5rem 0;
+  }
+
   .topbar__name {
     border-right: 1px solid $OFF_BLACK;
     padding: 1.5rem 2.25rem;

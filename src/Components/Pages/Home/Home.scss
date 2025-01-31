@@ -66,6 +66,7 @@
 
       .callout-box__header {
         @include body_large_desktop;
+        font-weight: 500;
       }
       p {
         @include body_standard_desktop;

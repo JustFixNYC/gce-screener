@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { ContentBoxFooter } from "../../ContentBox/ContentBox";
 import { Header } from "../../Header/Header";
 import {
@@ -7,18 +6,11 @@ import {
   RentStabilizedProtections,
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
-import { openAccordionsPrint, closeAccordionsPrint } from "../../../helpers";
+import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import "./TenantRights.scss";
 
 export const TenantRights: React.FC = () => {
-  useEffect(() => {
-    window.addEventListener("beforeprint", openAccordionsPrint);
-    window.addEventListener("afterprint", closeAccordionsPrint);
-    return () => {
-      window.removeEventListener("beforeprint", openAccordionsPrint);
-      window.removeEventListener("afterprint", closeAccordionsPrint);
-    };
-  }, []);
+  useAccordionsOpenForPrint();
 
   return (
     <div id="tenant-rights-page">

@@ -1,7 +1,7 @@
 @mixin body_standard_desktop {
   font-family: "Degular", Arial, Helvetica, sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400; // Adjusted down from normal 500
   font-size: 1.125rem; // 18px
   line-height: 120%; // 21.6px
   letter-spacing: 0.54px;
@@ -33,7 +33,7 @@
 @mixin body_large_desktop {
   font-family: "Degular", Arial, Helvetica, sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400; // Adjusted down from normal 500
   font-size: 1.5rem; // 24px
   line-height: 120%; // 28.8px
   letter-spacing: 0.72px;
@@ -42,7 +42,7 @@
 @mixin small_text_desktop {
   font-family: "Degular", Arial, Helvetica, sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400; // Adjusted down from normal 500
   font-size: 0.875rem; // 14px
   line-height: 130%; // 28.8px
   letter-spacing: 0.42px;

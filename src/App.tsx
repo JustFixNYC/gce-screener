@@ -20,9 +20,9 @@ import { Footer } from "./Components/Footer/Footer";
 import { TenantRights } from "./Components/Pages/TenantRights/TenantRights";
 import { TopBar } from "./Components/TopBar/TopBar";
 import { NetworkError } from "./api/error-reporting";
-import "./App.scss";
 import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
+import "./App.scss";
 
 const Layout = () => {
   return (
@@ -122,7 +122,7 @@ const router = createBrowserRouter(
       <Route
         path="rent_stabilization"
         element={<RentStabilization />}
-        loader={LoadAddressAndUserSession}
+        loader={LoadURLSession}
       />
       <Route
         path="portfolio_size"

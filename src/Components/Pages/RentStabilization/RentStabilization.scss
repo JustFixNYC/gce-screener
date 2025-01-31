@@ -3,7 +3,7 @@
 #rent-stabilization-page {
   @include for-phone-only() {
     .share-button__container {
-      margin-top: 3rem !important; // overrides ShareButton.scss
+      margin-top: 2.25rem !important; // overrides ShareButton.scss
     }
     .content-section {
       padding: 0 1.5rem 2rem !important; // overrides styles w/ max-width 772px
