@@ -284,6 +284,9 @@
         .jfcl-text-input {
           margin: unset;
           margin-right: 1rem;
+          @include for-phone-only {
+            width: 100%;
+          }
         }
       }
 
