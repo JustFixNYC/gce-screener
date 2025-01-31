@@ -61,6 +61,7 @@ $videoEmbedW: 623px;
   }
   .content-box__section__header {
     @include body_large_desktop;
+    font-weight: 500;
   }
 
   .accordion__content {
