@@ -49,6 +49,7 @@ export const urlZOLA = (bbl: string): string => {
 export const urlDOBBIN = (bin: string): string => {
   return `https://a810-bisweb.nyc.gov/bisweb/COsByLocationServlet?allbin=${bin}`;
 };
+
 export const urlDOBBBL = (bbl: string): string => {
   const { boro, block, lot } = splitBBL(bbl);
   return `https://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro=${boro}&block=${block}&lot=${lot}`;
@@ -56,6 +57,10 @@ export const urlDOBBBL = (bbl: string): string => {
 
 export const urlFCSubsidized = (bbl: string): string => {
   return `https://app.coredata.nyc/?ptsb=${bbl}`;
+};
+
+export const urlWOWTimelineRS = (bbl: string): string => {
+  return `https://whoownswhat.justfix.org/bbl/${bbl}/timeline/rentstabilizedunits`;
 };
 
 export const abbreviateBoro = (borough: string): string => {

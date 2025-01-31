@@ -23,6 +23,9 @@
     margin-bottom: 1.5rem; // 24px
     .info-box__content-container {
       @include body_standard_desktop;
+      .source-link {
+        @include small_text_desktop;
+      }
     }
   }
 
