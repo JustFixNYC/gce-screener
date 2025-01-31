@@ -133,7 +133,7 @@ export const Survey: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           {showErrors && (
-            <InfoBox color="orange">
+            <InfoBox color="orange" role="alert">
               Please complete the unanswered questions before continuing.
             </InfoBox>
           )}
@@ -148,6 +148,7 @@ export const Survey: React.FC = () => {
                 legendText="How many bedrooms are in your apartment?"
                 invalid={showErrors && localFields.bedrooms === null}
                 invalidText="Please select one"
+                invalidRole="status"
               >
                 <RadioGroup
                   fields={localFields}
@@ -182,6 +183,7 @@ export const Survey: React.FC = () => {
                 }
                 invalid={showErrors && localFields.rent === null}
                 invalidText="Enter your total rent amount"
+                invalidRole="status"
                 id="rent-input"
                 type="money"
                 name="rent"
@@ -211,6 +213,7 @@ export const Survey: React.FC = () => {
                 }
                 invalid={showErrors && localFields.rentStabilized === null}
                 invalidText="Please select one"
+                invalidRole="status"
               >
                 <RadioGroup
                   fields={localFields}
@@ -242,6 +245,7 @@ export const Survey: React.FC = () => {
                 }
                 invalid={showErrors && localFields.housingType === null}
                 invalidText="Please select one"
+                invalidRole="status"
               >
                 <RadioGroup
                   fields={localFields}
@@ -276,6 +280,7 @@ export const Survey: React.FC = () => {
                     legendText="Does your landlord live in the building?"
                     invalid={showErrors && localFields.landlord === null}
                     invalidText="Please select one"
+                    invalidRole="status"
                   >
                     <RadioGroup
                       fields={localFields}
@@ -308,6 +313,7 @@ export const Survey: React.FC = () => {
                     }
                     invalid={showErrors && localFields.portfolioSize === null}
                     invalidText="Please select one"
+                    invalidRole="status"
                   >
                     <RadioGroup
                       fields={localFields}
