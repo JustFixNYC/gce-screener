@@ -9,7 +9,7 @@ export const Footer: React.FC = () => (
         qualified to give advice on legal issues pertaining to housing. We can
         help direct you to free legal services if necessary.
       </div>
-      <div className="footer__legal_pages">
+      <nav className="footer__legal_pages">
         <a
           href="privacy_policy"
           target="_blank"
@@ -26,7 +26,7 @@ export const Footer: React.FC = () => (
         >
           Terms of Use
         </a>
-      </div>
+      </nav>
     </div>
   </footer>
 );

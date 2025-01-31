@@ -40,23 +40,25 @@ export type CriteriaDetails = {
 
 export function useCriteriaResults(
   formFields: FormFields,
+  searchParams: URLSearchParams,
   bldgData?: BuildingData
 ): CriteriaDetails | undefined {
   if (!bldgData) return undefined;
   const criteriaData: CriteriaData = { ...formFields, ...bldgData };
   return {
-    portfolioSize: eligibilityPortfolioSize(criteriaData),
+    portfolioSize: eligibilityPortfolioSize(criteriaData, searchParams),
     landlord: eligibilityLandlord(criteriaData),
     buildingClass: eligibilityBuildingClass(criteriaData),
     rent: eligibilityRent(criteriaData),
-    rentStabilized: eligibilityRentStabilized(criteriaData),
+    rentStabilized: eligibilityRentStabilized(criteriaData, searchParams),
     certificateOfOccupancy: eligibilityCertificateOfOccupancy(criteriaData),
     subsidy: eligibilitySubsidy(criteriaData),
   };
 }
 
 function eligibilityPortfolioSize(
-  criteriaData: CriteriaData
+  criteriaData: CriteriaData,
+  searchParams: URLSearchParams
 ): CriterionDetails {
   const { unitsres, related_properties, portfolioSize } = criteriaData;
   const relatedProperties = related_properties.length || 0;
@@ -94,7 +96,10 @@ function eligibilityPortfolioSize(
             relatedProperties ? `${relatedProperties - 1} ` : ""
           }other buildings`}
         <br />
-        <JFCLLinkInternal to="/portfolio_size" className="criteria-link">
+        <JFCLLinkInternal
+          to={`/portfolio_size?${searchParams.toString()}`}
+          className="criteria-link"
+        >
           Find your landlord’s other buildings
         </JFCLLinkInternal>
       </>
@@ -201,7 +206,8 @@ function eligibilityRent(criteriaData: CriteriaData): CriterionDetails {
 }
 
 function eligibilityRentStabilized(
-  criteriaData: CriteriaData
+  criteriaData: CriteriaData,
+  searchParams: URLSearchParams
 ): CriterionDetails {
   const { rentStabilized } = criteriaData;
   const criteria = "rentStabilized";
@@ -224,7 +230,10 @@ function eligibilityRentStabilized(
       <>
         You reported that you are not sure if your apartment is rent stabilized.
         <br />
-        <JFCLLinkInternal to="/rent_stabilization" className="criteria-link">
+        <JFCLLinkInternal
+          to={`/rent_stabilization?${searchParams.toString()}`}
+          className="criteria-link"
+        >
           Find out if you are rent stabilized
         </JFCLLinkInternal>
       </>
