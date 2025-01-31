@@ -184,7 +184,7 @@ export const GoodCauseProtections: React.FC<
       <ContentBox title={title} subtitle={subtitle}>
         <ContentBoxItem
           title="Your right to stay in your home"
-          gtmId="gce-protectionsiction"
+          gtmId="gce-protections_eviction"
           coverageResult={coverageResult}
         >
           <p>
@@ -196,7 +196,7 @@ export const GoodCauseProtections: React.FC<
 
         <ContentBoxItem
           title="Your right to limited rent increases"
-          gtmId="gce-protectionse_rent"
+          gtmId="gce-protections_rent"
           coverageResult={coverageResult}
         >
           <p>
