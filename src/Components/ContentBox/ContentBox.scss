@@ -135,7 +135,7 @@ $videoEmbedW: 623px;
     }
 
     .share-button__container {
-      margin-top: 2rem;
+      margin-top: 1.25rem;
       .share-button {
         margin: 0;
       }
@@ -156,6 +156,10 @@ $videoEmbedW: 623px;
   background-color: $OFF_WHITE_100;
   padding: 1.5rem 2rem;
   border-radius: 0 0 8px 8px;
+
+  .jfcl-link {
+    padding: 1rem 0;
+  }
 
   @include for-phone-only() {
     padding: 1.5rem;

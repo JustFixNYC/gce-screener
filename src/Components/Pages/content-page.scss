@@ -14,7 +14,7 @@
 
 .headline-section {
   position: relative;
-  padding-top: 70px;
+  padding-top: 54px;
   padding-bottom: 3rem; // 48px
   background-color: $OFF_WHITE_200;
 
@@ -29,6 +29,9 @@
 
     .headline-section__back-link {
       margin-bottom: 0.75rem; // 12px
+      .jfcl-link {
+        padding: 1rem 0;
+      }
     }
 
     .headline-section__title {
