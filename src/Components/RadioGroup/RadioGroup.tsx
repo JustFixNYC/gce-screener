@@ -25,7 +25,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
             name={radioGroup.name}
             labelText={option.label}
             id={`${radioGroup.name}-${option.value}`}
-            key={`${radioGroup.name}-${option.value}`}
+            key={`${radioGroup.name}-${option.label}`}
             data-value={option.value}
             checked={fields[radioGroup.name] === option.value}
             onChange={onChange}
