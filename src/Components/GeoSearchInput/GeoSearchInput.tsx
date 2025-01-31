@@ -69,6 +69,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
         placeholder={!isFocused && placeholder}
         invalid={!isFocused && invalid}
         invalidText="You must enter an address"
+        invalidRole="alert"
         onFocus={() => {
           setInvalid(false);
           setIsFocused(true);
