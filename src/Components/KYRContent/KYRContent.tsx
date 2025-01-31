@@ -6,21 +6,28 @@ import {
 } from "../ContentBox/ContentBox";
 import JFCLLinkExternal from "../JFCLLinkExternal";
 import { formatMoney } from "../../helpers";
+import { CoverageResult } from "../../types/APIDataTypes";
 
 const CPI = 3.82;
 
 type KYRContentBoxProps = Omit<ContentBoxProps, "children"> & {
   children?: React.ReactNode;
+  coverageResult?: CoverageResult;
 };
 
 export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
   title = undefined,
   subtitle: headerSubtitle = "Protections that all New Yorkers have",
   children,
+  coverageResult,
 }) => (
   <>
     <ContentBox title={title} subtitle={headerSubtitle}>
-      <ContentBoxItem title="Your eviction protections">
+      <ContentBoxItem
+        title="Your eviction protections"
+        gtmId="universal_eviction"
+        coverageResult={coverageResult}
+      >
         <p>
           The only way your landlord can evict you is through housing court.
           Lockouts (also known as unlawful evictions or self-help evictions) are
@@ -47,7 +54,11 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         </JFCLLinkExternal>
       </ContentBoxItem>
 
-      <ContentBoxItem title="Your right to a liveable home">
+      <ContentBoxItem
+        title="Your right to a liveable home"
+        gtmId="universal_habitability"
+        coverageResult={coverageResult}
+      >
         <p>
           Tenants have the right to live in a safe, sanitary, and
           well-maintained apartment, including public areas of the building.
@@ -83,7 +94,10 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           JustFix’s Letter of Complaint
         </JFCLLinkExternal>
       </ContentBoxItem>
-      <ContentBoxItem title="Your rights if you’re being discriminated against">
+      <ContentBoxItem
+        title="Your rights if you’re being discriminated against"
+        gtmId="universal_discrimination"
+      >
         <p>
           Your landlord can’t evict you based on your race, religion, gender,
           national origin, familial status, or disability. New York State law
@@ -123,7 +137,11 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           Unlock NYC
         </JFCLLinkExternal>
       </ContentBoxItem>
-      <ContentBoxItem title="Your right to organize">
+      <ContentBoxItem
+        title="Your right to organize"
+        gtmId="universal_organize"
+        coverageResult={coverageResult}
+      >
         <p>
           Has your landlord raised your rent? Is your landlord refusing to do
           basic repairs? Are you worried about getting evicted or non-renewed?
@@ -158,12 +176,17 @@ export const GoodCauseProtections: React.FC<
   subtitle = "Protections you have under Good Cause",
   rent,
   children,
+  coverageResult,
 }) => {
   const increase_pct = CPI + 5;
   return (
     <>
       <ContentBox title={title} subtitle={subtitle}>
-        <ContentBoxItem title="Your right to stay in your home">
+        <ContentBoxItem
+          title="Your right to stay in your home"
+          gtmId="gce-protectionsiction"
+          coverageResult={coverageResult}
+        >
           <p>
             Your landlord will need to provide a good cause reason for ending a
             tenancy. Even if your lease expires, your landlord cannot evict you,
@@ -171,7 +194,11 @@ export const GoodCauseProtections: React.FC<
           </p>
         </ContentBoxItem>
 
-        <ContentBoxItem title="Your right to limited rent increases">
+        <ContentBoxItem
+          title="Your right to limited rent increases"
+          gtmId="gce-protectionse_rent"
+          coverageResult={coverageResult}
+        >
           <p>
             {`The state housing agency must publish each year’s Reasonable Rent
           Increase by August. This year the maximum amount your landlord can
@@ -210,7 +237,11 @@ export const GoodCauseProtections: React.FC<
             Reasonable Rent Increase
           </JFCLLinkExternal>
         </ContentBoxItem>
-        <ContentBoxItem title="Learn more about Good Cause Eviction Law protections">
+        <ContentBoxItem
+          title="Learn more about Good Cause Eviction Law protections"
+          gtmId="gce-protections_learn"
+          coverageResult={coverageResult}
+        >
           <JFCLLinkExternal href="https://housingjusticeforall.org/kyr-good-cause">
             Housing Justice for All Good Cause Eviction fact sheet
           </JFCLLinkExternal>
@@ -235,10 +266,15 @@ export const GoodCauseExercisingRights: React.FC<
   subtitle = "How to assert your rights",
   shareButtons,
   children,
+  coverageResult,
 }) => (
   <>
     <ContentBox title={title} subtitle={subtitle}>
-      <ContentBoxItem title="Use Good Cause to stay in your home">
+      <ContentBoxItem
+        title="Use Good Cause to stay in your home"
+        gtmId="gce-exercise_eviction"
+        coverageResult={coverageResult}
+      >
         <p>
           If your landlord refuses to renew your lease, tells you that you have
           to leave for no reason, or tries to evict you for no reason, stay in
@@ -263,7 +299,10 @@ export const GoodCauseExercisingRights: React.FC<
           Tenant Organizing Toolkit from Housing Justice for All
         </JFCLLinkExternal>
       </ContentBoxItem>
-      <ContentBoxItem title="Use Good Cause to fight your rent hike">
+      <ContentBoxItem
+        title="Use Good Cause to fight your rent hike"
+        gtmId="gce-exercise_rent"
+      >
         <ol>
           <li>
             <strong>Demand notice</strong>
@@ -309,7 +348,11 @@ export const GoodCauseExercisingRights: React.FC<
           </li>
         </ol>
       </ContentBoxItem>
-      <ContentBoxItem title="Share your coverage with your landlord">
+      <ContentBoxItem
+        title="Share your coverage with your landlord"
+        gtmId="gce-exercise_share"
+        coverageResult={coverageResult}
+      >
         <p>
           Assert your rights by printing your coverage results and sharing with
           your landlord. You can use these results as an indicator that your
@@ -317,7 +360,10 @@ export const GoodCauseExercisingRights: React.FC<
         </p>
         {shareButtons}
       </ContentBoxItem>
-      <ContentBoxItem title="Reach out to external resources">
+      <ContentBoxItem
+        title="Reach out to external resources"
+        gtmId="gce-exercise_resources"
+      >
         <p>
           The Met Council on Housing helps organize tenants to stand up not only
           for their individual rights, but also for changes to housing policies.
@@ -343,10 +389,15 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
   title = undefined,
   subtitle = "Protections you have as a rent stabilized tenant",
   children,
+  coverageResult,
 }) => (
   <>
     <ContentBox title={title} subtitle={subtitle}>
-      <ContentBoxItem title="Your right to limited rent increases">
+      <ContentBoxItem
+        title="Your right to limited rent increases"
+        gtmId="rs_rent"
+        coverageResult={coverageResult}
+      >
         <p>
           For rent-stabilized leases being renewed between October 1, 2024 and
           September 30, 2025 the legal rent may be increased at the following
@@ -358,7 +409,11 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
         </JFCLLinkExternal>
       </ContentBoxItem>
 
-      <ContentBoxItem title="Your right to a lease renewal">
+      <ContentBoxItem
+        title="Your right to a lease renewal"
+        gtmId="rs_renewal"
+        coverageResult={coverageResult}
+      >
         <p>
           If you are rent-stabilized your landlord cannot simply decide they
           don’t want you as a tenant anymore, they are limited to certain
@@ -369,7 +424,11 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
         </JFCLLinkExternal>
       </ContentBoxItem>
 
-      <ContentBoxItem title="Your right to succession">
+      <ContentBoxItem
+        title="Your right to succession"
+        gtmId="rs_succession"
+        coverageResult={coverageResult}
+      >
         <p>
           If you are the immediate family member of a rent-stabilized tenant and
           have been living with them immediately prior to their moving or
@@ -389,10 +448,15 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
   title = undefined,
   subtitle = "Protections you have as a NYCHA tenant",
   children,
+  coverageResult,
 }) => (
   <>
     <ContentBox title={title} subtitle={subtitle}>
-      <ContentBoxItem title="Your right to repairs">
+      <ContentBoxItem
+        title="Your right to repairs"
+        gtmId="nycha_repairs"
+        coverageResult={coverageResult}
+      >
         <p>
           Everyone has the right to live in a safe and habitable environment.
           This includes timely repairs to their apartment to address any
@@ -407,7 +471,11 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
         </p>
       </ContentBoxItem>
 
-      <ContentBoxItem title="Your right to income-based rent">
+      <ContentBoxItem
+        title="Your right to income-based rent"
+        gtmId="nycha_rent"
+        coverageResult={coverageResult}
+      >
         <p>
           This ensures that housing remains affordable and equitable for all
           residents, regardless of financial circumstances. Residents who have
@@ -416,7 +484,11 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
         </p>
       </ContentBoxItem>
 
-      <ContentBoxItem title="Your right to grieve management decisions">
+      <ContentBoxItem
+        title="Your right to grieve management decisions"
+        gtmId="nycha_grieve"
+        coverageResult={coverageResult}
+      >
         <p>
           In instances where residents disagree with management decisions or
           believe their rights have been violated, they have the right to grieve
@@ -429,7 +501,11 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
         </p>
       </ContentBoxItem>
 
-      <ContentBoxItem title="Your right to legal representation">
+      <ContentBoxItem
+        title="Your right to legal representation"
+        gtmId="nycha_legal"
+        coverageResult={coverageResult}
+      >
         <p>
           Legal representation can make a significant difference in ensuring a
           fair and just resolution to housing disputes, protecting residents
@@ -443,7 +519,11 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
         </p>
       </ContentBoxItem>
 
-      <ContentBoxItem title="Learn more about NYCHA protections">
+      <ContentBoxItem
+        title="Learn more about NYCHA protections"
+        gtmId="nycha_learn"
+        coverageResult={coverageResult}
+      >
         <JFCLLinkExternal href="https://nylag.org/tenants-rights/public-housing-justice-project/">
           NY Legal Assistance Group
         </JFCLLinkExternal>
