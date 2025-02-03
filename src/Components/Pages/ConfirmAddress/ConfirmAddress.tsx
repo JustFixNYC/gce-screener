@@ -76,7 +76,9 @@ export const ConfirmAddress: React.FC = () => {
                   City data shows that there aren’t any residential units at
                   this address.
                 </span>
-                <Link to="/">Search new address</Link>
+                <Link to="/" className="jfcl-link">
+                  Search new address
+                </Link>
               </InfoBox>
             )}
             <div className="map-address-container">
