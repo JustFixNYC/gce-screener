@@ -90,7 +90,6 @@ export const ConfirmAddress: React.FC = () => {
                 />
               </div>
               <div className="address-container">
-                <div className="your-address">Your Address</div>
                 <h3 className="address-part-1">{`${
                   address.houseNumber || ""
                 } ${toTitleCase(address.streetName)}`}</h3>
