@@ -9,6 +9,13 @@
     margin: 3rem 0;
   }
 
+  .headline-section {
+    padding-bottom: 1.5rem;
+    .share-button__container {
+      margin-top: 1.5rem;
+    }
+  }
+
   .coverage-pill {
     display: inline-flex;
     padding: 0px 18px 4px;
@@ -188,8 +195,17 @@
       color: $ORANGE;
     }
   }
+  .content-section {
+    padding-top: 1.5rem;
+    .content-box {
+      margin: unset;
+      margin-bottom: 2rem;
+    }
+  }
+
   @include for-phone-only() {
     .content-section {
+      padding: 1.5rem 1.5rem 2rem;
       .content-section__content {
         width: 100%;
         gap: 2rem; // 32px
