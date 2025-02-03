@@ -57,9 +57,18 @@
     }
   }
 
+  .topbar__search {
+    padding: 1.5rem;
+    font-family: "Degular Display";
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: 0.03375rem;
+  }
+
   @include for-phone-only() {
     .topbar__name {
       border-right: none;
+      padding: 1.5rem;
     }
     .topbar__collab {
       display: none;
@@ -67,14 +76,6 @@
     .topbar__search {
       border-left: 1px solid $OFF_BLACK;
     }
-  }
-
-  .topbar__search {
-    padding: 1.5rem;
-    font-family: "Degular Display";
-    font-size: 1.125rem;
-    font-weight: 500;
-    letter-spacing: 0.03375rem;
   }
 
   @media print {
