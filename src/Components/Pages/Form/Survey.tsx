@@ -139,8 +139,6 @@ export const Survey: React.FC = () => {
           )}
           <form>
             <FormStep
-              step={1}
-              total={NUM_STEPS}
               fieldsetRef={formStepRefs[0]}
               invalid={showErrors && localFields.bedrooms === null}
             >
@@ -167,8 +165,6 @@ export const Survey: React.FC = () => {
             </FormStep>
 
             <FormStep
-              step={2}
-              total={NUM_STEPS}
               fieldsetRef={formStepRefs[1]}
               invalid={showErrors && localFields.rent === null}
             >
@@ -197,8 +193,6 @@ export const Survey: React.FC = () => {
             </FormStep>
 
             <FormStep
-              step={3}
-              total={NUM_STEPS}
               fieldsetRef={formStepRefs[2]}
               invalid={showErrors && localFields.rentStabilized === null}
             >
@@ -228,8 +222,6 @@ export const Survey: React.FC = () => {
             </FormStep>
 
             <FormStep
-              step={4}
-              total={NUM_STEPS}
               fieldsetRef={formStepRefs[3]}
               invalid={showErrors && localFields.housingType === null}
             >
@@ -267,8 +259,6 @@ export const Survey: React.FC = () => {
             {bldgData && bldgData?.unitsres <= 10 && (
               <>
                 <FormStep
-                  step={5}
-                  total={NUM_STEPS}
                   fieldsetRef={formStepRefs[4]}
                   invalid={showErrors && localFields.landlord === null}
                 >
@@ -292,8 +282,6 @@ export const Survey: React.FC = () => {
                 </FormStep>
 
                 <FormStep
-                  step={6}
-                  total={NUM_STEPS}
                   fieldsetRef={formStepRefs[5]}
                   invalid={showErrors && localFields.portfolioSize === null}
                 >
