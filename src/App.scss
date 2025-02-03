@@ -93,3 +93,11 @@ button.jfcl-button {
     }
   }
 }
+
+div.jfcl-input-header__invalid_text {
+  color: $RED;
+  .jfcl-input-header__invalid_icon {
+    color: $ORANGE;
+    margin-right: 8px;
+  }
+}
