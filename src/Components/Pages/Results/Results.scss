@@ -302,6 +302,9 @@
           @include body_standard_desktop;
           font-weight: 500;
         }
+        .jfcl-input-header__invalid_text {
+          margin-bottom: 4px;
+        }
         .jfcl-text-input {
           margin: unset;
           margin-right: 1rem;
@@ -309,6 +312,9 @@
             width: 100%;
           }
         }
+      }
+      .success-message {
+        margin-top: 4px;
       }
 
       .phone-number-description {
@@ -326,6 +332,7 @@
     }
     .callout-box__header {
       @include body_large_desktop;
+      font-weight: 500;
       margin-bottom: 1rem;
     }
     p {
