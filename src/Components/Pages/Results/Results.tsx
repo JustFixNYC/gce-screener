@@ -540,6 +540,7 @@ const PhoneNumberCallout: React.FC = () => {
         <div className="phone-number-input-container">
           <TextInput
             labelText="Phone number"
+            placeholder="(123) 456-7890"
             invalid={showError}
             invalidText="Enter a valid phone number"
             id="phone-number-input"
