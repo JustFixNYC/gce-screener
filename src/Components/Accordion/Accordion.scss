@@ -26,6 +26,9 @@
   }
 
   @include for-phone-only() {
+    .accordion__summary:hover {
+      background-color: unset;
+    }
     .accordion__content {
       padding: 1rem 1.5rem 1.5rem 1.5rem; // 16px 24px
 
