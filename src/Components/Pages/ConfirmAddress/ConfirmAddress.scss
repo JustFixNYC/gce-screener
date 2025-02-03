@@ -23,10 +23,12 @@ $mapImgHeight: 223px;
 
     .info-box__content-container {
       display: flex;
+      font-size: 1rem;
       a {
         margin-left: auto;
         font-size: inherit;
         font-weight: inherit;
+        text-underline-offset: 4px;
       }
     }
 
