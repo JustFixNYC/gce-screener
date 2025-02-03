@@ -38,6 +38,7 @@
 
   .criteria-table {
     margin-top: 2.25rem;
+    border: 1px solid $OFF_WHITE_200_DARKER;
     @include for-phone-only() {
       margin-top: 1.25rem; //32px
     }
