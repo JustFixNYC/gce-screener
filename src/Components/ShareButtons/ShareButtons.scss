@@ -8,7 +8,7 @@
   @include for-phone-only() {
     margin-top: 1.5rem;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: unset;
     align-items: flex-start;
   }
 
