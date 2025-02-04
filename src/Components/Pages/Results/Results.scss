@@ -74,12 +74,16 @@
       padding: 0.5rem 0.5rem 0 0.5rem;
     }
 
-    span {
-      @include body_large_desktop;
+    .criteria-table__header__title {
+      @include body_standard_desktop;
+      font-weight: 600;
     }
     p {
       @include body_standard_desktop;
       margin: 0;
+      @include for-tablet-portrait-up {
+        width: 75%;
+      }
     }
   }
 
@@ -186,12 +190,14 @@
       gap: 10px;
     }
 
+    .criteria-table__header__title,
     .criteria-table__row__criteria,
     .criteria-table__row__requirement,
     .criteria-table__row__userValue {
       @include body_standard_desktop;
     }
 
+    .criteria-table__header__title,
     .criteria-table__row__criteria {
       font-weight: 600;
     }
