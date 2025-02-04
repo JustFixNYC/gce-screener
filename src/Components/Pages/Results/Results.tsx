@@ -293,14 +293,11 @@ const EligibilityNextSteps: React.FC<{
 }> = ({ bldgData, criteriaDetails, searchParams }) => {
   const rentStabilizedUnknown =
     criteriaDetails?.rentStabilized?.determination === "UNKNOWN";
-  const subsidyUnknown = criteriaDetails?.subsidy?.determination === "UNKNOWN";
   const portfolioSizeUnknown =
     criteriaDetails?.portfolioSize?.determination === "UNKNOWN";
-  const steps = [
-    rentStabilizedUnknown,
-    subsidyUnknown,
-    portfolioSizeUnknown,
-  ].filter(Boolean).length;
+  const steps = [rentStabilizedUnknown, portfolioSizeUnknown].filter(
+    Boolean
+  ).length;
   const unsureIcon = (
     <Icon
       icon="circleExclamation"
@@ -334,28 +331,6 @@ const EligibilityNextSteps: React.FC<{
             >
               Find out if you are rent stabilized
             </JFCLLinkInternal>
-          </ContentBoxItem>
-        )}
-
-        {subsidyUnknown && (
-          <ContentBoxItem
-            title="We need to know if your apartment is part of NYCHA or subsidized housing"
-            icon={unsureIcon}
-            className="next-step"
-          >
-            <p>
-              The Good Cause Eviction law only covers tenants whose apartments
-              are not part of NYCHA or subsidized housing. You told us that that
-              you are not sure if you live in subsidized or public housing, and
-              there is no indication from public data that your building is
-              public housing or subsidized.
-            </p>
-            <br />
-            <p>
-              To most accurately understand your apartment’s subsidy status, we
-              recommend asking your landlord if your apartment is part of any
-              subsidies.
-            </p>
           </ContentBoxItem>
         )}
 
