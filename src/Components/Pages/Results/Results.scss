@@ -299,9 +299,12 @@
       flex: 1 1 0;
 
       .phone-number-input-container {
-        display: flex;
-        flex-direction: row;
         align-items: flex-end;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        @include for-phone-only {
+          grid-template-columns: 1fr;
+        }
 
         @include for-phone-only() {
           width: -webkit-fill-available;
@@ -326,7 +329,7 @@
         }
       }
       .success-message {
-        margin-top: 4px;
+        margin-bottom: 0.5rem;
       }
 
       .phone-number-description {

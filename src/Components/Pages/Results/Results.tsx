@@ -529,15 +529,16 @@ const PhoneNumberCallout: React.FC = () => {
             size="small"
             onClick={handleSubmit}
           />
-        </div>
-        {showSuccess && (
-          <div className="success-message">
-            <Icon icon="check" />
-            Phone number submitted
+          <div className="phone-number-description">
+            {showSuccess && (
+              <div className="success-message">
+                <Icon icon="check" />
+                Phone number submitted
+              </div>
+            )}
+            Your phone number will never be saved or used outside of this
+            message
           </div>
-        )}
-        <div className="phone-number-description">
-          Your phone number will never be saved or used outside of this message
         </div>
         <div className="phone-number-submit__mobile">
           <Button
