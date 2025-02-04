@@ -257,8 +257,9 @@
   }
 
   .next-step {
-    --icon-size: 2.75rem; // 44px;
+    --icon-size: 1.875rem; //30px
     --icon-margin: 1.5rem; // 24px;
+    align-self: start;
 
     .criteria-icon {
       width: var(--icon-size);

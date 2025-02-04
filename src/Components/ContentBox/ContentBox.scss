@@ -44,17 +44,6 @@ $videoEmbedW: 623px;
   padding: 1.5rem 2.25rem; // 24px 36px
   border-top: 1px solid $GREY_NEW;
 
-  .accordion__summary {
-    padding: 1.5rem 2.25rem; // 24px 36px
-    @include for-phone-only() {
-      padding: 1rem 1.5rem; // overrides desktop ContentBox.scss
-    }
-  }
-
-  &.accordion[open] .accordion__summary {
-    padding: 1.5rem 2.25rem 1.125rem 2.25rem; // 24px 36px 18px 36px
-  }
-
   .content-box__section__step {
     @include eyebrow_small_desktop;
     margin-bottom: 0.25rem; // 4px
@@ -62,10 +51,6 @@ $videoEmbedW: 623px;
   .content-box__section__header {
     @include body_large_desktop;
     font-weight: 500;
-  }
-
-  .accordion__content {
-    padding: 0 2.25rem 2rem 2.25rem; // 0 36px 32px 36px
   }
 
   .content-box__section__content,
