@@ -8,6 +8,17 @@
   align-items: center;
   margin-bottom: 1rem;
 
+  .progress-bar__step:first-of-type {
+    @include for-phone-only {
+      a {
+        width: 25vw;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
   .progress-bar__step {
     display: flex;
     align-items: center;
