@@ -164,13 +164,12 @@ export const Results: React.FC = () => {
                   />
                 }
               />
-              <PhoneNumberCallout />
               <GoodCauseProtections />
             </>
           )}
           {coverageResult === "NYCHA" && <NYCHAProtections />}
           <UniversalProtections />
-          {!(coverageResult === "COVERED") && <PhoneNumberCallout />}
+          <PhoneNumberCallout />
           <div className="share-footer">
             <h3 className="share-footer__header">
               Help your neighbors learn if they’re covered{" "}
@@ -430,9 +429,9 @@ const CoverageResultHeadline: React.FC<{
     case "NOT_COVERED":
       headlineContent = (
         <>
-          Your apartment is likely{" "}
-          <span className="coverage-pill orange">not covered</span> by Good
-          Cause Eviction
+          Your apartment is{" "}
+          <span className="coverage-pill orange">likely not covered</span> by
+          Good Cause Eviction
         </>
       );
       break;
@@ -448,9 +447,9 @@ const CoverageResultHeadline: React.FC<{
     case "COVERED":
       headlineContent = (
         <>
-          Your apartment is likely{" "}
-          <span className="coverage-pill green">covered</span> by Good Cause
-          Eviction
+          Your apartment is{" "}
+          <span className="coverage-pill green">likely covered</span> by Good
+          Cause Eviction
         </>
       );
       break;
