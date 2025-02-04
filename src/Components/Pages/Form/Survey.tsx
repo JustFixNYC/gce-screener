@@ -87,7 +87,9 @@ export const Survey: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
     const firstUnansweredIndex = Object.values(localFields).findIndex(
       (x) => x === null
     );
@@ -144,7 +146,7 @@ export const Survey: React.FC = () => {
               Please complete the unanswered questions before continuing.
             </InfoBox>
           )}
-          <form>
+          <form id="survey-form" onSubmit={handleSubmit}>
             <FormStep
               fieldsetRef={formStepRefs[0]}
               invalid={showErrors && localFields.bedrooms === null}
@@ -332,9 +334,10 @@ export const Survey: React.FC = () => {
               Back
             </BackLink>
             <Button
+              type="submit"
+              form="survey-form"
               labelText="See your results"
               size="small"
-              onClick={handleSubmit}
             />
           </div>
         </div>
