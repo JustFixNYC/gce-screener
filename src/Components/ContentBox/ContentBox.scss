@@ -111,12 +111,18 @@ $videoEmbedW: 623px;
 
     .jfcl-button,
     .jfcl-link {
-      margin-top: 1.875rem; // 30px
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
       &.has-label {
-        margin-top: 0.625rem; //10px
+        margin-top: 0.5rem;
       }
-      &:only-child {
+      &:only-child,
+      &:first-child {
         margin-top: 0;
+      }
+      &:last-child,
+      &:not(.has-label) {
+        margin-bottom: 0;
       }
     }
 
