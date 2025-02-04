@@ -45,8 +45,12 @@
   pointer-events: none;
 }
 
-.back-link.jfcl-link {
-  .jfcl-link__icon {
+a.jfcl-link svg.jfcl-link__icon {
+  margin-left: 6px;
+}
+
+a.back-link.jfcl-link {
+  svg.jfcl-link__icon {
     margin: 0 0.75rem 0 0; // 12px
   }
 }
