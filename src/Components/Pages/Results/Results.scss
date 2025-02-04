@@ -16,24 +16,35 @@
     }
   }
 
-  .coverage-pill {
-    display: inline-flex;
-    padding: 0px 18px 4px;
-    border-radius: 44px;
-    white-space: nowrap;
-    height: calc(1em + 4px);
+  .result-headline {
+    line-height: 1.125em;
+    @include for-tablet-portrait-up {
+      .result-headline__top {
+        line-height: 1.5em;
+      }
+    }
+    .coverage-pill {
+      padding: 0 1.125rem;
+      border-radius: 2.75rem;
+      box-decoration-break: clone;
+      white-space: nowrap;
+      @include for-tablet-potrait-down {
+        white-space: unset;
+        line-height: 1.5em;
+      }
 
-    &.green {
-      background-color: $GREEN;
-      color: $WHITE;
-    }
-    &.yellow {
-      background-color: $YELLOW;
-      color: $OFF_BLACK;
-    }
-    &.orange {
-      background-color: $ORANGE;
-      color: $OFF_BLACK;
+      &.green {
+        background-color: $GREEN;
+        color: $WHITE;
+      }
+      &.yellow {
+        background-color: $YELLOW;
+        color: $OFF_BLACK;
+      }
+      &.orange {
+        background-color: $ORANGE;
+        color: $OFF_BLACK;
+      }
     }
   }
 

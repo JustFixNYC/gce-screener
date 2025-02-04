@@ -404,16 +404,19 @@ const CoverageResultHeadline: React.FC<{
     case "NOT_COVERED":
       headlineContent = (
         <>
-          Your apartment is{" "}
-          <span className="coverage-pill orange">likely not covered</span> by
-          Good Cause Eviction
+          <span className="result-headline__top">Your apartment is</span>{" "}
+          <span className="coverage-pill orange">likely not covered</span>{" "}
+          <br />
+          by Good Cause Eviction
         </>
       );
       break;
     case "RENT_STABILIZED":
       headlineContent = (
         <>
-          Your apartment is protected by{" "}
+          <span className="result-headline__top">
+            Your apartment is protected by
+          </span>{" "}
           <span className="coverage-pill green">rent stabilization</span>, which
           provides stronger protections than Good Cause Eviction
         </>
@@ -422,7 +425,7 @@ const CoverageResultHeadline: React.FC<{
     case "COVERED":
       headlineContent = (
         <>
-          Your apartment is{" "}
+          <span className="result-headline__top">Your apartment is</span>{" "}
           <span className="coverage-pill green">likely covered</span> by Good
           Cause Eviction
         </>
@@ -431,14 +434,20 @@ const CoverageResultHeadline: React.FC<{
     case "NYCHA":
       headlineContent = (
         <>
-          Your apartment is part of{" "}
+          <span className="result-headline__top">
+            Your apartment is part of
+          </span>{" "}
           <span className="coverage-pill green">NYCHA</span>, which provides
           stronger protections than Good Cause Eviction
         </>
       );
       break;
   }
-  return <span ref={headlineRef}>{headlineContent}</span>;
+  return (
+    <span className="result-headline" ref={headlineRef}>
+      {headlineContent}
+    </span>
+  );
 };
 
 const PhoneNumberCallout: React.FC = () => {
