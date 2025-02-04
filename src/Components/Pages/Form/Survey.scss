@@ -48,6 +48,7 @@
   #rent-input {
     max-width: 19.375rem; // 310px
     appearance: textfield;
+    padding-left: var(--input-padding-left);
 
     @include for-phone-only() {
       max-width: unset;

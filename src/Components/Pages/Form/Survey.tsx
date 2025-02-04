@@ -121,7 +121,7 @@ export const Survey: React.FC = () => {
 
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const fieldName = e.target.name;
-    const value = e.target.value;
+    const value = e.target.value === "" ? null : e.target.value;
     const updatedFields = {
       ...localFields,
       [fieldName]: value,
