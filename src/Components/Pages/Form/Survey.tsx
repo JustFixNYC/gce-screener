@@ -26,7 +26,14 @@ export type FormFields = {
   bedrooms: "STUDIO" | "1" | "2" | "3" | "4+" | null;
   rent: string | null;
   rentStabilized: "YES" | "NO" | "UNSURE" | null;
-  housingType: "NYCHA" | "SUBSIDIZED" | "NONE" | null;
+  housingType:
+    | "NYCHA"
+    | "SUBSIDIZED_ML"
+    | "SUBSIDIZED_LIHTC"
+    | "SUBSIDIZED_OTHER"
+    | "SUBSIDIZED_HDFC"
+    | "NONE"
+    | null;
   landlord?: "YES" | "NO" | null;
   portfolioSize?: "YES" | "NO" | "UNSURE" | null;
 };
@@ -245,10 +252,10 @@ export const Survey: React.FC = () => {
                     name: "housingType",
                     options: [
                       { label: "NYCHA or PACT/RAD", value: "NYCHA" },
-                      { label: "Mitchell-Lama", value: "SUBSIDIZED" },
-                      { label: "LIHTC", value: "SUBSIDIZED" },
-                      { label: "HDFC", value: "SUBSIDIZED" },
-                      { label: "Other", value: "SUBSIDIZED" },
+                      { label: "Mitchell-Lama", value: "SUBSIDIZED_ML" },
+                      { label: "LIHTC", value: "SUBSIDIZED_LIHTC" },
+                      { label: "HDFC", value: "SUBSIDIZED_HDFC" },
+                      { label: "Other", value: "SUBSIDIZED_OTHER" },
                       {
                         label: "No, my apartment is not subsidized",
                         value: "NONE",
