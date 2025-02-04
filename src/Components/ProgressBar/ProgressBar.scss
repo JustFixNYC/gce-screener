@@ -1,4 +1,5 @@
 @import "../../colors.scss";
+@import "../../mixins.scss";
 
 #progress-bar {
   display: flex;
@@ -47,6 +48,15 @@
     border-bottom: 1px solid $OFF_BLACK;
     width: 2rem;
     margin: 0;
+  }
+}
+
+@include for-phone-only {
+  #progress-bar {
+    gap: 1rem;
+    hr {
+      display: none;
+    }
   }
 }
 
