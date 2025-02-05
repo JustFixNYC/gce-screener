@@ -12,6 +12,9 @@
     @include body_large_desktop;
     font-weight: 500;
     margin: 0 0 1.125rem 0; // 18px
+    @include for-phone-only {
+      @include body_large_mobile;
+    }
   }
 
   .jfcl-input-header__label + .info-box {
@@ -23,6 +26,9 @@
     margin-bottom: 2.25rem; // 24px
     .info-box__content-container {
       @include body_standard_desktop;
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
       .source-link {
         @include small_text_desktop;
       }

@@ -10,6 +10,10 @@
     flex-direction: column;
     gap: unset;
     align-items: flex-start;
+
+    .jfcl-link {
+      @include small_text_mobile;
+    }
   }
 
   .share-button {

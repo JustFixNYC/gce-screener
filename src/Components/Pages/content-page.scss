@@ -29,8 +29,12 @@
 
     .headline-section__back-link {
       margin-bottom: 0.75rem; // 12px
+
       .jfcl-link {
         padding: 1rem 0;
+        @include for-phone-only {
+          @include small_text_mobile;
+        }
       }
     }
 
