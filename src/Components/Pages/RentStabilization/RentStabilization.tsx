@@ -50,10 +50,7 @@ export const RentStabilization: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content"></div>
-        <ContentBox
-          title="Why you need to know"
-          subtitle="Good Cause Eviction only applies to tenants who are not rent stabilized"
-        >
+        <ContentBox subtitle="Good Cause Eviction only applies to tenants who are not rent stabilized">
           <ContentBoxItem accordion={false}>
             <p>
               If your apartment is rent stabilized, you are not covered by Good
@@ -83,7 +80,6 @@ export const RentStabilization: React.FC = () => {
               never been rent stabilized, and therefore you may be eligible for
               Good Cause Eviction coverage.
             </p>
-            <br />
             <JFCLLinkExternal href="https://portal.hcr.ny.gov/app/ask">
               Fill out the form
             </JFCLLinkExternal>
@@ -95,7 +91,6 @@ export const RentStabilization: React.FC = () => {
               with understanding their rent stabilization status and
               landlord-tenant disputes.
             </p>
-            <br />
             <JFCLLinkExternal href="https://www.metcouncilonhousing.org/program/met-council-on-housings-weekly-tenants-rights-walk-in-clinic/">
               Tenants’ Rights Walk-In Clinic
             </JFCLLinkExternal>

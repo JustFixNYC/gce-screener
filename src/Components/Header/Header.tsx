@@ -2,7 +2,7 @@ import React from "react";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { Address } from "../Pages/Home/Home";
 import { BackLink } from "../JFCLLinkInternal";
-import { ProgressStep, toTitleCase } from "../../helpers";
+import { abbreviateBoro, ProgressStep, toTitleCase } from "../../helpers";
 
 type HeaderProps = {
   title: string | React.ReactNode;
@@ -26,6 +26,11 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <div className="headline-section">
       <div className="headline-section__content">
+        {isGuide && (
+          <nav className="headline-section__back-link">
+            <BackLink to="/results">Back to Result</BackLink>
+          </nav>
+        )}
         <div
           className={
             isGuide
@@ -33,15 +38,9 @@ export const Header: React.FC<HeaderProps> = ({
               : "headline-section__address__print"
           }
         >
-          {toTitleCase(
-            `${address?.houseNumber} ${address?.streetName}, ${address?.zipcode}`
-          )}
+          {toTitleCase(`${address?.houseNumber} ${address?.streetName}, `) +
+            (address && abbreviateBoro(address?.borough))}
         </div>
-        {isGuide && (
-          <nav className="headline-section__back-link">
-            <BackLink to="/results">Back to Result</BackLink>
-          </nav>
-        )}
         {showProgressBar && (
           <ProgressBar address={address} lastStepReached={lastStepReached} />
         )}

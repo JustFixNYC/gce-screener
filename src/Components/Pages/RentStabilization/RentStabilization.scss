@@ -1,6 +1,25 @@
 @import "../../../mixins.scss";
 
 #rent-stabilization-page {
+  .headline-section {
+    padding-top: 1.5rem;
+    .headline-section__back-link {
+      margin-bottom: 3rem;
+    }
+    .headline-section__address {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .content-section {
+    padding-top: 1.5rem;
+  }
+
+  .content-box {
+    margin: unset;
+    margin-bottom: 1.5rem;
+  }
+
   @include for-phone-only() {
     .share-button__container {
       margin-top: 2.25rem !important; // overrides ShareButton.scss
