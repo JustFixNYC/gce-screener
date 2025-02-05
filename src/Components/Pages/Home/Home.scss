@@ -61,10 +61,18 @@
     h3 {
       @include h3_desktop;
       margin: 0 0 1rem 0; // 16px
+
+      @include for-phone-only {
+        @include h3_mobile;
+      }
     }
     p {
       @include body_large_desktop;
       margin: 0;
+
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
     }
     .callout-box {
       display: flex;
@@ -80,13 +88,25 @@
         @include body_large_desktop;
         font-weight: 500;
         margin-bottom: 0.5rem;
+        @include for-phone-only {
+          @include body_standard_mobile;
+          font-weight: 600;
+        }
       }
+
       p {
         @include body_standard_desktop;
         margin: 0;
         margin-bottom: 1.5rem;
         @include for-phone-only {
+          @include small_text_mobile;
           margin-bottom: 1rem;
+        }
+      }
+
+      a {
+        @include for-phone-only {
+          @include small_text_mobile;
         }
       }
     }

@@ -17,6 +17,13 @@
   }
 
   .result-headline {
+    color: var(--Primary-off-black, #242323);
+    font-family: "Degular Display";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 36px */
+    letter-spacing: 1.08px;
     line-height: 1.125em;
     @include for-tablet-portrait-up {
       .result-headline__top {

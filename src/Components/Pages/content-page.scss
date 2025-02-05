@@ -38,11 +38,18 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
+
+      @include for-phone-only {
+        @include page_header_mobile;
+      }
     }
 
     .headline-section__subtitle {
       @include body_large_desktop;
       margin-top: 1.125rem; // 18px
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
     }
   }
 }
