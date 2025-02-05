@@ -16,7 +16,7 @@ $mapImgHeight: 223px;
     padding: 1.125rem; // 18px
     margin: 0;
     gap: 1.125rem; // 18px
-    background-color: $OFF_WHITE_100;
+    background-color: $WHITE;
     @include for-phone-only() {
       border: none;
       padding: unset;
@@ -50,7 +50,7 @@ $mapImgHeight: 223px;
     .map-address-container {
       display: flex;
       gap: 2.25rem; // 36px
-      background-color: $OFF_WHITE_100;
+      background-color: $WHITE;
       @include for-phone-only() {
         flex-direction: column-reverse;
         gap: 2rem;
