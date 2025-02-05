@@ -19,6 +19,7 @@ import {
 import {
   acrisDocTypeFull,
   getPrioritizeBldgs,
+  toTitleCase,
   urlAcrisBbl,
   urlAcrisDoc,
   urlCountyClerkBbl,
@@ -219,7 +220,7 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
 
   const header = (
     <div className="acris-links__header">
-      <span className="acris-links__address">{address}</span>
+      <span className="acris-links__address">{toTitleCase(address || "")}</span>
       <span className="acris-links__pill pill">{`${unitsres} apartments`}</span>
     </div>
   );
@@ -303,7 +304,9 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
     ?.filter((bldg) => bldg.unitsres > 0)
     .sort(prioritizeBldgs);
   const totalCount = relatedProperties?.length;
-  const [visibleCount, setVisibleCount] = useState(INIT_DISPLAY);
+  const [visibleCount, setVisibleCount] = useState(
+    Math.min(totalCount, INIT_DISPLAY)
+  );
   const [showLoadMoreButton, setShowLoadMoreButton] = useState(
     totalCount ? totalCount > INIT_DISPLAY : false
   );
