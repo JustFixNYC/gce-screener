@@ -172,10 +172,9 @@
             gap: 0.75rem;
             background: $OFF_WHITE_100;
             margin-bottom: 0;
-            @include body_standard_mobile;
             &,
             .criteria-link {
-              @include small_text_mobile;
+              @include body_standard_mobile;
             }
           }
         }
