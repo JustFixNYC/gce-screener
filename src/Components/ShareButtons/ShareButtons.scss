@@ -7,12 +7,12 @@
 
   @include for-phone-only() {
     margin-top: 1.5rem;
-    flex-direction: column;
-    gap: unset;
+    gap: 1rem 0.5rem;
+    flex-wrap: wrap;
     align-items: flex-start;
 
     .jfcl-link {
-      @include small_text_mobile;
+      @include body_standard_mobile;
     }
 
     .share-button__print {

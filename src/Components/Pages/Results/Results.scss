@@ -55,10 +55,6 @@
     }
   }
 
-  // .share-button {
-
-  // }
-
   .criteria-table,
   .protections-on-next-page__print {
     margin-top: 3rem; // 48px
@@ -257,22 +253,19 @@
   }
 
   @include for-phone-only() {
-    .content-section {
-      padding: 1.5rem 1.5rem 2rem;
-      .content-section__content {
-        width: 100%;
-        .content-box {
-          display: flex;
-          flex-direction: column;
-        }
+    .content-section__content {
+      width: 100%;
+      .content-box {
+        display: flex;
+        flex-direction: column;
       }
-      .content-box__header-subtitle {
-        @include h3_mobile;
-      }
-      .content-box__section__header {
-        @include body_standard_mobile;
-        font-weight: 600;
-      }
+    }
+    .content-box__header-subtitle {
+      @include h3_mobile;
+    }
+    .content-box__section__header {
+      @include body_standard_mobile;
+      font-weight: 600;
     }
   }
 

@@ -8,6 +8,14 @@
     }
   }
 
+  .info-box .info-box__content-container {
+    @include body_standard_desktop;
+    @include for-phone-only {
+      @include body_standard_mobile;
+      font-weight: 500;
+    }
+  }
+
   .headline-section {
     padding-top: 1.5rem;
     .headline-section__back-link {
@@ -59,9 +67,6 @@
       padding: 0.5rem 1.5rem 1.5rem 1.5rem;
       .info-box {
         align-content: flex-start;
-      }
-      .info-box__content-container {
-        @include body_standard_desktop;
       }
 
       p {
@@ -207,7 +212,6 @@
       margin-top: 2.25rem !important; // overrides ShareButton.scss
     }
     .content-section {
-      padding: 0 1.5rem 2rem !important; // overrides styles w/ max-width 772px
       gap: 2rem;
       .content-box__header-title {
         display: none;
@@ -228,23 +232,29 @@
         }
         .content-box__section__header {
           @include body_standard_mobile;
+          font-weight: 600;
         }
       }
 
       .accordion__content {
         p {
-          @include small_text_mobile;
+          @include body_standard_mobile;
         }
       }
 
       .acris-links__header {
         @include body_standard_mobile;
         font-weight: 600;
+        flex-direction: column-reverse;
+        align-items: start;
+        .acris-links__pill {
+          margin: 0 0 0.5rem;
+        }
       }
 
       .content-box__footer__message,
       .jfcl-link {
-        @include small_text_mobile;
+        @include body_standard_mobile;
       }
 
       .load-more-end {

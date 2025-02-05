@@ -5,18 +5,12 @@
 $mapImgHeight: 223px;
 
 #confirm-address-page {
-  .content-section {
-    @include for-phone-only() {
-      padding: 2rem 1.5rem 0;
-    }
-  }
   .content-box {
     display: flex;
     flex-direction: column;
     padding: 1.125rem; // 18px
     margin: 0;
     gap: 1.125rem; // 18px
-    background-color: $OFF_WHITE_100;
     @include for-phone-only() {
       border: none;
       padding: unset;
@@ -40,6 +34,7 @@ $mapImgHeight: 223px;
     @include for-phone-only() {
       .info-box__content-container {
         flex-direction: column;
+        gap: 0.5rem;
         @include small_text_mobile;
         a {
           margin-left: unset;
@@ -50,8 +45,9 @@ $mapImgHeight: 223px;
     .map-address-container {
       display: flex;
       gap: 2.25rem; // 36px
-      background-color: $OFF_WHITE_100;
+      background-color: $WHITE;
       @include for-phone-only() {
+        background-color: $OFF_WHITE_100;
         flex-direction: column-reverse;
         gap: 2rem;
         padding-bottom: 2rem;

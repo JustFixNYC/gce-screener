@@ -49,7 +49,7 @@ export const RentStabilization: React.FC = () => {
       </Header>
 
       <div className="content-section">
-        <div className="content-section__content"></div>
+        <div className="content-section__content">
         <ContentBox subtitle="Good Cause Eviction only applies to tenants who are not rent stabilized">
           <ContentBoxItem accordion={false}>
             <p>
@@ -102,6 +102,7 @@ export const RentStabilization: React.FC = () => {
           />
         </ContentBox>
         <div className="divider__print" />
+        </div>
       </div>
     </div>
   );

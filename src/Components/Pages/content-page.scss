@@ -33,7 +33,7 @@
       .jfcl-link {
         padding: 1rem 0;
         @include for-phone-only {
-          @include small_text_mobile;
+          @include body_standard_mobile;
         }
       }
     }

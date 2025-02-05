@@ -78,7 +78,7 @@ export const PortfolioSize: React.FC = () => {
       </Header>
 
       <div className="content-section">
-        <div className="content-section__content"></div>
+        <div className="content-section__content">
         <ContentBox subtitle="Good Cause Eviction covers tenants whose landlords own more than 10 apartments">
           <ContentBoxItem accordion={false}>
             <p>
@@ -168,6 +168,7 @@ export const PortfolioSize: React.FC = () => {
           />
         </ContentBox>
         <div className="divider__print" />
+        </div>
       </div>
     </div>
   );

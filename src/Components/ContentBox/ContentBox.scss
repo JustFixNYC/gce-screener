@@ -41,8 +41,11 @@ $videoEmbedW: 623px;
 .content-box__footer {
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 2.25rem; // 24px 36px
   border-top: 1px solid $GREY_NEW;
+  padding: 1.5rem 2rem;
+  @include for-phone-only {
+    padding: 1.5rem;
+  }
 
   .content-box__section__step {
     @include eyebrow_small_desktop;
@@ -156,7 +159,7 @@ $videoEmbedW: 623px;
   align-items: center;
   justify-content: space-between;
   background-color: $OFF_WHITE_100;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem;
   border-radius: 0 0 8px 8px;
 
   .jfcl-link {
