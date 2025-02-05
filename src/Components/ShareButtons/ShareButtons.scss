@@ -14,6 +14,10 @@
     .jfcl-link {
       @include small_text_mobile;
     }
+
+    .share-button__print {
+      display: none;
+    }
   }
 
   .share-button {

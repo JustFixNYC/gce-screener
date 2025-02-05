@@ -22,7 +22,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
       href={mailtoLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="share-button jfcl-link"
+      className="share-button share-button__email jfcl-link"
       key={key}
     >
       <Icon icon="envelope" type="regular" />
@@ -31,21 +31,33 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
   );
 
   const downloadButton = (x: string, key: React.Key) => (
-    <button onClick={window.print} className="share-button jfcl-link" key={key}>
+    <button
+      onClick={window.print}
+      className="share-button share-button__download jfcl-link"
+      key={key}
+    >
       <Icon icon="download" type="regular" />
       {x}
     </button>
   );
 
   const printButton = (x: string, key: React.Key) => (
-    <button onClick={window.print} className="share-button jfcl-link" key={key}>
+    <button
+      onClick={window.print}
+      className="share-button share-button__print jfcl-link"
+      key={key}
+    >
       <Icon icon="print" type="regular" />
       {x}
     </button>
   );
 
   const bookmarkButton = (x: string, key: React.Key) => (
-    <button onClick={() => {}} className="share-button jfcl-link" key={key}>
+    <button
+      onClick={() => {}}
+      className="share-button share-button__bookmark jfcl-link"
+      key={key}
+    >
       <Icon icon="bookmark" type="regular" />
       {x}
     </button>
