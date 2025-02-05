@@ -7,7 +7,7 @@ $mapImgHeight: 223px;
 #confirm-address-page {
   .content-section {
     @include for-phone-only() {
-      padding-bottom: 0;
+      padding: 2rem 1.5rem 0;
     }
   }
   .content-box {
@@ -19,6 +19,7 @@ $mapImgHeight: 223px;
     @include for-phone-only() {
       border: none;
       padding: unset;
+      gap: 2rem;
     }
 
     .info-box__content-container {
@@ -35,6 +36,7 @@ $mapImgHeight: 223px;
     @include for-phone-only() {
       .info-box__content-container {
         flex-direction: column;
+        @include small_text_mobile;
         a {
           margin-left: unset;
         }
@@ -75,6 +77,9 @@ $mapImgHeight: 223px;
         flex-direction: column;
         justify-content: center;
         gap: 0.5rem; // 8px
+        @include for-phone-only() {
+          gap: 0.25rem; // 4px
+        }
 
         .your-address {
           @include eyebrow_small_desktop;
@@ -85,9 +90,15 @@ $mapImgHeight: 223px;
         .address-part-1 {
           @include h3_desktop;
           margin: 0;
+          @include for-phone-only() {
+            @include h3_mobile;
+          }
         }
         .address-part-2 {
           @include body_large_desktop;
+          @include for-phone-only() {
+            @include body_standard_mobile;
+          }
         }
       }
     }
