@@ -16,6 +16,7 @@ $mapImgHeight: 223px;
     padding: 1.125rem; // 18px
     margin: 0;
     gap: 1.125rem; // 18px
+    background-color: $OFF_WHITE_100;
     @include for-phone-only() {
       border: none;
       padding: unset;
@@ -30,6 +31,9 @@ $mapImgHeight: 223px;
         font-size: inherit;
         font-weight: inherit;
         text-underline-offset: 4px;
+        @include for-phone-only {
+          text-underline-offset: 2px;
+        }
       }
     }
 
@@ -46,10 +50,11 @@ $mapImgHeight: 223px;
     .map-address-container {
       display: flex;
       gap: 2.25rem; // 36px
+      background-color: $OFF_WHITE_100;
       @include for-phone-only() {
         flex-direction: column-reverse;
         gap: 2rem;
-        padding-bottom: 1.5rem;
+        padding-bottom: 2rem;
       }
 
       .img-wrapper,
@@ -65,7 +70,7 @@ $mapImgHeight: 223px;
         background-color: $GREY_NEW;
         @include for-phone-only() {
           border: 2px solid #c5ccd1;
-          border-radius: 8px;
+          border-radius: 4px;
         }
       }
       .img-wrapper__img {

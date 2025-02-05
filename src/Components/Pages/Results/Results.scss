@@ -10,7 +10,7 @@
   }
 
   .headline-section {
-    padding-bottom: 1.5rem;
+    padding-bottom: 2rem;
     .share-button__container {
       margin-top: 1.5rem;
     }
@@ -55,6 +55,10 @@
     }
   }
 
+  // .share-button {
+
+  // }
+
   .criteria-table,
   .protections-on-next-page__print {
     margin-top: 3rem; // 48px
@@ -63,6 +67,7 @@
 
   .criteria-table {
     margin-top: 2.25rem;
+    margin-bottom: 0;
     border: 1px solid $OFF_WHITE_200_DARKER;
     @include for-phone-only() {
       margin-top: 1.25rem; //32px
@@ -78,7 +83,7 @@
 
     @include for-phone-only() {
       margin: 1rem; //16px
-      padding: 0.5rem 0.5rem 0 0.5rem;
+      padding: 0.5rem;
     }
 
     .criteria-table__header__title {
@@ -86,7 +91,7 @@
       font-weight: 600;
     }
     p {
-      @include small_text_mobile;
+      @include body_standard_mobile;
       margin: 0;
       @include for-tablet-portrait-up {
         width: 75%;
@@ -151,7 +156,7 @@
             flex-direction: column;
             align-items: flex-start;
             text-align: left;
-            @include small_text_mobile;
+            @include body_standard_mobile;
             .content-box__section__header {
               padding-bottom: 0.25rem;
             }
@@ -162,13 +167,13 @@
           }
         }
         .accordion__content {
-          padding: 1rem 0 1rem 3rem;
+          padding: 0 0 1rem 3rem;
           .callout-box {
             padding: 0.75rem;
             gap: 0.75rem;
             background: $OFF_WHITE_100;
             margin-bottom: 0;
-            @include small_text_mobile;
+            @include body_standard_mobile;
             &,
             .criteria-link {
               @include small_text_mobile;
@@ -246,7 +251,7 @@
     }
   }
   .content-section {
-    padding-top: 1.5rem;
+    padding-top: 2rem;
     .content-box {
       margin: unset;
       margin-bottom: 2rem;
@@ -269,12 +274,6 @@
       .content-box__section__header {
         @include body_standard_mobile;
         font-weight: 600;
-      }
-      .accordion__content {
-        p,
-        .jfcl-link {
-          @include small_text_mobile;
-        }
       }
     }
   }

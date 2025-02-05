@@ -6,8 +6,8 @@ $contentPWidth: 677px;
 $videoEmbedW: 623px;
 
 .content-box {
-  border-radius: 8px;
-  border: 2px solid $GREY_NEW;
+  border-radius: 4px;
+  border: 1px solid $GREY_NEW;
   width: 100%;
   max-width: $contentBoxWidth;
   margin: 36px 0;
@@ -51,6 +51,10 @@ $videoEmbedW: 623px;
   .content-box__section__header {
     @include body_large_desktop;
     font-weight: 500;
+    @include for-phone-only {
+      @include body_standard_mobile;
+      font-weight: 600;
+    }
   }
 
   .content-box__section__content,
@@ -79,8 +83,13 @@ $videoEmbedW: 623px;
     }
 
     li,
-    p {
+    p,
+    a,
+    button {
       @include body_standard_desktop;
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
       a {
         font-size: inherit;
         font-weight: inherit;
@@ -97,6 +106,7 @@ $videoEmbedW: 623px;
     }
 
     ol {
+      margin: 0;
       padding-left: 1.25rem;
       li {
         margin-bottom: 1em;

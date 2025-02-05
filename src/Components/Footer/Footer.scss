@@ -28,6 +28,7 @@
   }
 
   .footer__legal-disclaimer {
+    align-self: start;
     @include body_standard_desktop;
     span {
       display: block;
@@ -83,13 +84,20 @@
   }
 
   @include for-phone-only {
+    .footer__legal-disclaimer {
+      margin-bottom: 1.5rem;
+    }
     .footer__content {
       grid-template-columns: 1fr;
     }
     .footer__legal-pages {
       flex-direction: row;
+      flex-wrap: wrap;
       margin: 0;
       width: unset;
+      .jfcl-link {
+        margin-right: 2rem;
+      }
     }
   }
 }

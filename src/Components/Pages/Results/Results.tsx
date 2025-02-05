@@ -325,7 +325,6 @@ const EligibilityNextSteps: React.FC<{
               are not rent stabilized. You told us that you are unsure of your
               rent stabilization status.
             </p>
-            <br />
             <JFCLLinkInternal
               to={`/rent_stabilization?${searchParams.toString()}`}
             >
@@ -345,8 +344,6 @@ const EligibilityNextSteps: React.FC<{
                 more than 10 units. Your building has only ${bldgData.unitsres} apartments, but
                 your landlord may own other buildings.`}
             </p>
-            <br />
-
             <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
               Find your landlord’s other buildings
             </JFCLLinkInternal>

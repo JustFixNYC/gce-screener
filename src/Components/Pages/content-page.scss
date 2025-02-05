@@ -59,13 +59,14 @@
 }
 
 .content-section {
-  background-color: $OFF_WHITE_NEW;
+  background-color: $OFF_WHITE_100;
   padding-top: 2.25rem; // 36px
 
   .content-section__content {
     max-width: $contentBoxWidth;
     display: flex;
     flex-direction: column;
+    width: -webkit-fill-available;
   }
 }
 
@@ -73,7 +74,7 @@
   .headline-section,
   .content-section {
     @media (max-width: 772px) {
-      padding: 1rem 1.5rem 2rem;
+      padding: 1rem 1rem 2rem;
     }
   }
   .headline-section__address__print {
