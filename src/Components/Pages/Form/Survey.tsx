@@ -26,7 +26,14 @@ export type FormFields = {
   bedrooms: "STUDIO" | "1" | "2" | "3" | "4+" | null;
   rent: string | null;
   rentStabilized: "YES" | "NO" | "UNSURE" | null;
-  housingType: "NYCHA" | "SUBSIDIZED" | "NONE" | null;
+  housingType:
+    | "NYCHA"
+    | "SUBSIDIZED_ML"
+    | "SUBSIDIZED_LIHTC"
+    | "SUBSIDIZED_OTHER"
+    | "SUBSIDIZED_HDFC"
+    | "NONE"
+    | null;
   landlord?: "YES" | "NO" | null;
   portfolioSize?: "YES" | "NO" | "UNSURE" | null;
 };
@@ -80,7 +87,9 @@ export const Survey: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
     const firstUnansweredIndex = Object.values(localFields).findIndex(
       (x) => x === null
     );
@@ -114,7 +123,7 @@ export const Survey: React.FC = () => {
 
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const fieldName = e.target.name;
-    const value = e.target.value;
+    const value = e.target.value === "" ? null : e.target.value;
     const updatedFields = {
       ...localFields,
       [fieldName]: value,
@@ -133,14 +142,12 @@ export const Survey: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           {showErrors && (
-            <InfoBox color="orange">
+            <InfoBox color="orange" role="alert">
               Please complete the unanswered questions before continuing.
             </InfoBox>
           )}
-          <form>
+          <form id="survey-form" onSubmit={handleSubmit}>
             <FormStep
-              step={1}
-              total={NUM_STEPS}
               fieldsetRef={formStepRefs[0]}
               invalid={showErrors && localFields.bedrooms === null}
             >
@@ -148,6 +155,7 @@ export const Survey: React.FC = () => {
                 legendText="How many bedrooms are in your apartment?"
                 invalid={showErrors && localFields.bedrooms === null}
                 invalidText="Please select one"
+                invalidRole="status"
               >
                 <RadioGroup
                   fields={localFields}
@@ -167,8 +175,6 @@ export const Survey: React.FC = () => {
             </FormStep>
 
             <FormStep
-              step={2}
-              total={NUM_STEPS}
               fieldsetRef={formStepRefs[1]}
               invalid={showErrors && localFields.rent === null}
             >
@@ -182,6 +188,7 @@ export const Survey: React.FC = () => {
                 }
                 invalid={showErrors && localFields.rent === null}
                 invalidText="Enter your total rent amount"
+                invalidRole="status"
                 id="rent-input"
                 type="money"
                 name="rent"
@@ -197,8 +204,6 @@ export const Survey: React.FC = () => {
             </FormStep>
 
             <FormStep
-              step={3}
-              total={NUM_STEPS}
               fieldsetRef={formStepRefs[2]}
               invalid={showErrors && localFields.rentStabilized === null}
             >
@@ -211,6 +216,7 @@ export const Survey: React.FC = () => {
                 }
                 invalid={showErrors && localFields.rentStabilized === null}
                 invalidText="Please select one"
+                invalidRole="status"
               >
                 <RadioGroup
                   fields={localFields}
@@ -228,8 +234,6 @@ export const Survey: React.FC = () => {
             </FormStep>
 
             <FormStep
-              step={4}
-              total={NUM_STEPS}
               fieldsetRef={formStepRefs[3]}
               invalid={showErrors && localFields.housingType === null}
             >
@@ -242,6 +246,7 @@ export const Survey: React.FC = () => {
                 }
                 invalid={showErrors && localFields.housingType === null}
                 invalidText="Please select one"
+                invalidRole="status"
               >
                 <RadioGroup
                   fields={localFields}
@@ -249,10 +254,10 @@ export const Survey: React.FC = () => {
                     name: "housingType",
                     options: [
                       { label: "NYCHA or PACT/RAD", value: "NYCHA" },
-                      { label: "Mitchell-Lama", value: "SUBSIDIZED" },
-                      { label: "LIHTC", value: "SUBSIDIZED" },
-                      { label: "HDFC", value: "SUBSIDIZED" },
-                      { label: "Other", value: "SUBSIDIZED" },
+                      { label: "Mitchell-Lama", value: "SUBSIDIZED_ML" },
+                      { label: "LIHTC", value: "SUBSIDIZED_LIHTC" },
+                      { label: "HDFC", value: "SUBSIDIZED_HDFC" },
+                      { label: "Other", value: "SUBSIDIZED_OTHER" },
                       {
                         label: "No, my apartment is not subsidized",
                         value: "NONE",
@@ -267,8 +272,6 @@ export const Survey: React.FC = () => {
             {bldgData && bldgData?.unitsres <= 10 && (
               <>
                 <FormStep
-                  step={5}
-                  total={NUM_STEPS}
                   fieldsetRef={formStepRefs[4]}
                   invalid={showErrors && localFields.landlord === null}
                 >
@@ -276,6 +279,7 @@ export const Survey: React.FC = () => {
                     legendText="Does your landlord live in the building?"
                     invalid={showErrors && localFields.landlord === null}
                     invalidText="Please select one"
+                    invalidRole="status"
                   >
                     <RadioGroup
                       fields={localFields}
@@ -292,8 +296,6 @@ export const Survey: React.FC = () => {
                 </FormStep>
 
                 <FormStep
-                  step={6}
-                  total={NUM_STEPS}
                   fieldsetRef={formStepRefs[5]}
                   invalid={showErrors && localFields.portfolioSize === null}
                 >
@@ -308,6 +310,7 @@ export const Survey: React.FC = () => {
                     }
                     invalid={showErrors && localFields.portfolioSize === null}
                     invalidText="Please select one"
+                    invalidRole="status"
                   >
                     <RadioGroup
                       fields={localFields}
@@ -331,9 +334,10 @@ export const Survey: React.FC = () => {
               Back
             </BackLink>
             <Button
+              type="submit"
+              form="survey-form"
               labelText="See your results"
               size="small"
-              onClick={handleSubmit}
             />
           </div>
         </div>

@@ -14,7 +14,7 @@
 
 .headline-section {
   position: relative;
-  padding-top: 54px;
+  padding-top: 0.5rem;
   padding-bottom: 3rem; // 48px
   background-color: $OFF_WHITE_200;
 
@@ -29,8 +29,12 @@
 
     .headline-section__back-link {
       margin-bottom: 0.75rem; // 12px
+
       .jfcl-link {
         padding: 1rem 0;
+        @include for-phone-only {
+          @include small_text_mobile;
+        }
       }
     }
 
@@ -38,11 +42,18 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
+
+      @include for-phone-only {
+        @include page_header_mobile;
+      }
     }
 
     .headline-section__subtitle {
       @include body_large_desktop;
       margin-top: 1.125rem; // 18px
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
     }
   }
 }
@@ -62,7 +73,7 @@
   .headline-section,
   .content-section {
     @media (max-width: 772px) {
-      padding: 2rem 1.5rem; // 36px 24px
+      padding: 1rem 1.5rem 2rem;
     }
   }
   .headline-section__address__print {

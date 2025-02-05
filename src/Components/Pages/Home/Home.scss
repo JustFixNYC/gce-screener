@@ -11,6 +11,7 @@
   .geo-search-form {
     display: inline-flex;
     align-items: end;
+    justify-content: end;
     gap: 1.5rem; // 24px
     width: 100%;
     height: 6.25rem; // 100px
@@ -34,15 +35,24 @@
   }
 
   .content-section {
-    padding: 4.5rem 0; // 72px
+    padding: 3rem 0;
     @include for-phone-only() {
       padding: 2rem 1.5rem;
     }
-
+    @include for-tablet-portrait-up {
+      .content-section__content > p:first-of-type {
+        width: 85%;
+      }
+    }
     &.home__about-law {
       border-bottom: 1px solid $OFF_BLACK;
       .callout-box {
         margin-top: 3rem;
+        @include for-tablet-portrait-up {
+          p {
+            width: 75%;
+          }
+        }
         @include for-phone-only() {
           margin-top: 1.5rem; // 24px
         }
@@ -51,26 +61,53 @@
     h3 {
       @include h3_desktop;
       margin: 0 0 1rem 0; // 16px
+
+      @include for-phone-only {
+        @include h3_mobile;
+      }
     }
     p {
       @include body_large_desktop;
       margin: 0;
+
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
     }
     .callout-box {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem; // 24px
-      padding: 2.25rem; // 36px
       background-color: $OFF_WHITE_200;
       border-radius: 4px;
+      padding: 2rem;
+      @include for-phone-only {
+        padding: 1.5rem;
+      }
 
       .callout-box__header {
         @include body_large_desktop;
         font-weight: 500;
+        margin-bottom: 0.5rem;
+        @include for-phone-only {
+          @include body_standard_mobile;
+          font-weight: 600;
+        }
       }
+
       p {
         @include body_standard_desktop;
         margin: 0;
+        margin-bottom: 1.5rem;
+        @include for-phone-only {
+          @include small_text_mobile;
+          margin-bottom: 1rem;
+        }
+      }
+
+      a {
+        @include for-phone-only {
+          @include small_text_mobile;
+        }
       }
     }
     .about-project__orgs-container {

@@ -29,4 +29,10 @@
   .jfcl-dropdown__indicators {
     display: none;
   }
+  .jfcl-input-header__invalid_text {
+    font-size: 1.125rem;
+  }
+  .jfcl-dropdown__option--is-focused {
+    background-color: $OFF_WHITE_200;
+  }
 }

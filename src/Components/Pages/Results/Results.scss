@@ -9,24 +9,49 @@
     margin: 3rem 0;
   }
 
-  .coverage-pill {
-    display: inline-flex;
-    padding: 0px 18px 4px;
-    border-radius: 44px;
-    white-space: nowrap;
-    height: calc(1em + 4px);
+  .headline-section {
+    padding-bottom: 1.5rem;
+    .share-button__container {
+      margin-top: 1.5rem;
+    }
+  }
 
-    &.green {
-      background-color: $GREEN;
-      color: $WHITE;
+  .result-headline {
+    color: var(--Primary-off-black, #242323);
+    font-family: "Degular Display";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 36px */
+    letter-spacing: 1.08px;
+    line-height: 1.125em;
+    @include for-tablet-portrait-up {
+      .result-headline__top {
+        line-height: 1.5em;
+      }
     }
-    &.yellow {
-      background-color: $YELLOW;
-      color: $OFF_BLACK;
-    }
-    &.orange {
-      background-color: $ORANGE;
-      color: $OFF_BLACK;
+    .coverage-pill {
+      padding: 0 1.125rem;
+      border-radius: 2.75rem;
+      box-decoration-break: clone;
+      white-space: nowrap;
+      @include for-tablet-potrait-down {
+        white-space: unset;
+        line-height: 1.5em;
+      }
+
+      &.green {
+        background-color: $GREEN;
+        color: $WHITE;
+      }
+      &.yellow {
+        background-color: $YELLOW;
+        color: $OFF_BLACK;
+      }
+      &.orange {
+        background-color: $ORANGE;
+        color: $OFF_BLACK;
+      }
     }
   }
 
@@ -38,6 +63,7 @@
 
   .criteria-table {
     margin-top: 2.25rem;
+    border: 1px solid $OFF_WHITE_200_DARKER;
     @include for-phone-only() {
       margin-top: 1.25rem; //32px
     }
@@ -55,12 +81,16 @@
       padding: 0.5rem 0.5rem 0 0.5rem;
     }
 
-    span {
-      @include body_large_desktop;
+    .criteria-table__header__title {
+      @include body_standard_mobile;
+      font-weight: 600;
     }
     p {
-      @include body_standard_desktop;
+      @include small_text_mobile;
       margin: 0;
+      @include for-tablet-portrait-up {
+        width: 75%;
+      }
     }
   }
 
@@ -95,6 +125,7 @@
       }
       .criteria-table__row__userValue {
         align-self: center;
+        margin-top: 1.75rem; // align with requirement space (10px gap + 18px font)
       }
       @include for-phone-only() {
         display: none;
@@ -109,15 +140,25 @@
         .accordion__summary {
           padding: unset;
           padding: 1rem 0.5rem;
+          align-items: flex-start;
 
+          .content-box__section__header {
+            @include body_standard_mobile;
+            font-weight: 600;
+          }
           .content-box__section__header-container {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             text-align: left;
+            @include small_text_mobile;
+            .content-box__section__header {
+              padding-bottom: 0.25rem;
+            }
           }
           .accordion__chevron {
-            margin-left: auto;
+            padding-left: 0.25rem;
+            padding-top: 0.25rem;
           }
         }
         .accordion__content {
@@ -126,6 +167,12 @@
             padding: 0.75rem;
             gap: 0.75rem;
             background: $OFF_WHITE_100;
+            margin-bottom: 0;
+            @include small_text_mobile;
+            &,
+            .criteria-link {
+              @include small_text_mobile;
+            }
           }
         }
       }
@@ -152,12 +199,14 @@
       gap: 10px;
     }
 
+    .criteria-table__header__title,
     .criteria-table__row__criteria,
     .criteria-table__row__requirement,
     .criteria-table__row__userValue {
       @include body_standard_desktop;
     }
 
+    .criteria-table__header__title,
     .criteria-table__row__criteria {
       font-weight: 600;
     }
@@ -176,6 +225,15 @@
     }
   }
 
+  .criteria-table__footer {
+    .content-box__footer__message,
+    .jfcl-link {
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
+    }
+  }
+
   svg.criteria-icon {
     &.green {
       color: $GREEN;
@@ -187,14 +245,35 @@
       color: $ORANGE;
     }
   }
+  .content-section {
+    padding-top: 1.5rem;
+    .content-box {
+      margin: unset;
+      margin-bottom: 2rem;
+    }
+  }
+
   @include for-phone-only() {
     .content-section {
+      padding: 1.5rem 1.5rem 2rem;
       .content-section__content {
         width: 100%;
-        gap: 2rem; // 32px
         .content-box {
           display: flex;
           flex-direction: column;
+        }
+      }
+      .content-box__header-subtitle {
+        @include h3_mobile;
+      }
+      .content-box__section__header {
+        @include body_standard_mobile;
+        font-weight: 600;
+      }
+      .accordion__content {
+        p,
+        .jfcl-link {
+          @include small_text_mobile;
         }
       }
     }
@@ -215,17 +294,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2.625rem 0; //42px
+    margin: 1rem 0 3rem; //margin top accounts for content items above having 2rem margin bottoms
     position: relative;
 
     @include for-phone-only() {
-      margin: 1.5rem 0;
+      margin: 2rem 0 2rem;
     }
 
     .share-footer__header {
       @include h3_desktop;
       margin: 0 0 2rem 0;
       text-align: center;
+      @include for-phone-only {
+        @include h3_mobile;
+      }
     }
 
     .success-message {
@@ -236,8 +318,9 @@
   }
 
   .next-step {
-    --icon-size: 2.75rem; // 44px;
+    --icon-size: 1.875rem; //30px
     --icon-margin: 1.5rem; // 24px;
+    align-self: start;
 
     .criteria-icon {
       width: var(--icon-size);
@@ -255,6 +338,7 @@
     padding: 2.25rem; // 36px
     background-color: $OFF_WHITE_200;
     border-radius: 4px;
+    margin-bottom: 2rem;
     @include for-phone-only() {
       flex-direction: column;
       padding: 1.5rem; // 24px
@@ -266,9 +350,12 @@
       flex: 1 1 0;
 
       .phone-number-input-container {
-        display: flex;
-        flex-direction: row;
         align-items: flex-end;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        @include for-phone-only {
+          grid-template-columns: 1fr;
+        }
 
         @include for-phone-only() {
           width: -webkit-fill-available;
@@ -281,10 +368,19 @@
           @include body_standard_desktop;
           font-weight: 500;
         }
+        .jfcl-input-header__invalid_text {
+          margin-bottom: 4px;
+        }
         .jfcl-text-input {
           margin: unset;
           margin-right: 1rem;
+          @include for-phone-only {
+            width: 100%;
+          }
         }
+      }
+      .success-message {
+        margin-bottom: 0.5rem;
       }
 
       .phone-number-description {
@@ -302,11 +398,18 @@
     }
     .callout-box__header {
       @include body_large_desktop;
+      font-weight: 500;
       margin-bottom: 1rem;
+      @include for-phone-only {
+        @include body_large_mobile;
+      }
     }
     p {
       @include body_standard_desktop;
       margin: 0;
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
     }
   }
 }

@@ -6,28 +6,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $OFF_BLACK;
-  padding: 3.75rem 0; // 60px 0
+  background-color: $OFF_WHITE_200;
+  padding: 2rem 0 1.5rem;
   @include for-phone-only() {
-    padding: 2rem 1.5rem;
+    padding: 2rem 0;
   }
 
-  &,
-  .jfcl-link {
-    color: $OFF_WHITE_100;
-  }
-
-  .jfcl-link {
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-      color: $OFF_WHITE_100;
-    }
-  }
-
-  .footer__content {
-    display: flex;
-    flex-direction: column;
+  .footer__content,
+  .footer__bottom-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: -webkit-fill-available;
     align-items: center;
     max-width: $contentBoxWidth;
     padding-left: 3rem; // 48px
@@ -36,28 +25,71 @@
       padding-left: 1.5rem; // 24px
       padding-right: 1.5rem; // 24px
     }
+  }
 
-    .footer__legal_disclaimer {
-      font-size: 1.125rem; // 18px
+  .footer__legal-disclaimer {
+    @include body_standard_desktop;
+    span {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
     }
+  }
 
-    .footer__legal_pages {
-      display: flex;
-      align-self: start;
-      margin-top: 1.75rem;
-      @include for-phone-only() {
-        margin-top: 1.5rem;
-        flex-direction: column;
-      }
+  .footer__legal-pages {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    gap: 0.25rem;
+  }
 
-      .jfcl-link {
-        @include eyebrow_small_desktop;
-        margin-right: 5.625rem; // 90px
-        padding: 0.5rem 0;
-        @include for-phone-only() {
-          margin-bottom: 0.5rem;
-        }
+  hr {
+    width: -webkit-fill-available;
+    border: none;
+    border-bottom: 1px solid $OFF_BLACK;
+    margin: 1.5rem 0;
+  }
+
+  .footer__name,
+  .footer__collab {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 100%; /* 1.125rem */
+    letter-spacing: 0.0225rem;
+  }
+
+  .footer__collab {
+    margin-left: auto;
+    a {
+      padding: 0.75rem 0;
+      text-decoration: underline;
+      text-underline-position: from-font;
+    }
+  }
+  .footer__collab,
+  .footer__legal-pages {
+    width: 9rem;
+  }
+
+  .footer__name,
+  .footer__legal-pages {
+    .jfcl-link {
+      padding: 0.75rem 0;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
       }
+    }
+  }
+
+  @include for-phone-only {
+    .footer__content {
+      grid-template-columns: 1fr;
+    }
+    .footer__legal-pages {
+      flex-direction: row;
+      margin: 0;
+      width: unset;
     }
   }
 }

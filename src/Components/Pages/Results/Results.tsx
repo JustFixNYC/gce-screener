@@ -167,7 +167,6 @@ export const Results: React.FC = () => {
                   />
                 }
               />
-              <PhoneNumberCallout />
               <GoodCauseProtections />
             </>
           )}
@@ -175,9 +174,7 @@ export const Results: React.FC = () => {
             <NYCHAProtections coverageResult={coverageResult} />
           )}
           <UniversalProtections coverageResult={coverageResult} />
-          {!(coverageResult === "COVERED") && (
-            <PhoneNumberCallout coverageResult={coverageResult} />
-          )}
+          <PhoneNumberCallout coverageResult={coverageResult} />
           <div className="share-footer">
             <h3 className="share-footer__header">
               Help your neighbors learn if they’re covered{" "}
@@ -302,14 +299,11 @@ const EligibilityNextSteps: React.FC<{
 }> = ({ bldgData, criteriaDetails, searchParams }) => {
   const rentStabilizedUnknown =
     criteriaDetails?.rentStabilized?.determination === "UNKNOWN";
-  const subsidyUnknown = criteriaDetails?.subsidy?.determination === "UNKNOWN";
   const portfolioSizeUnknown =
     criteriaDetails?.portfolioSize?.determination === "UNKNOWN";
-  const steps = [
-    rentStabilizedUnknown,
-    subsidyUnknown,
-    portfolioSizeUnknown,
-  ].filter(Boolean).length;
+  const steps = [rentStabilizedUnknown, portfolioSizeUnknown].filter(
+    Boolean
+  ).length;
   const unsureIcon = (
     <Icon
       icon="circleExclamation"
@@ -344,29 +338,6 @@ const EligibilityNextSteps: React.FC<{
             >
               Find out if you are rent stabilized
             </JFCLLinkInternal>
-          </ContentBoxItem>
-        )}
-
-        {subsidyUnknown && (
-          <ContentBoxItem
-            title="We need to know if your apartment is part of NYCHA or subsidized housing"
-            icon={unsureIcon}
-            className="next-step"
-            gtmId="next-step_subsidy"
-          >
-            <p>
-              The Good Cause Eviction law only covers tenants whose apartments
-              are not part of NYCHA or subsidized housing. You told us that that
-              you are not sure if you live in subsidized or public housing, and
-              there is no indication from public data that your building is
-              public housing or subsidized.
-            </p>
-            <br />
-            <p>
-              To most accurately understand your apartment’s subsidy status, we
-              recommend asking your landlord if your apartment is part of any
-              subsidies.
-            </p>
           </ContentBoxItem>
         )}
 
@@ -442,16 +413,19 @@ const CoverageResultHeadline: React.FC<{
     case "NOT_COVERED":
       headlineContent = (
         <>
-          Your apartment is likely{" "}
-          <span className="coverage-pill orange">not covered</span> by Good
-          Cause Eviction
+          <span className="result-headline__top">Your apartment is</span>{" "}
+          <span className="coverage-pill orange">likely not covered</span>{" "}
+          <br />
+          by Good Cause Eviction
         </>
       );
       break;
     case "RENT_STABILIZED":
       headlineContent = (
         <>
-          Your apartment is protected by{" "}
+          <span className="result-headline__top">
+            Your apartment is protected by
+          </span>{" "}
           <span className="coverage-pill green">rent stabilization</span>, which
           provides stronger protections than Good Cause Eviction
         </>
@@ -460,23 +434,29 @@ const CoverageResultHeadline: React.FC<{
     case "COVERED":
       headlineContent = (
         <>
-          Your apartment is likely{" "}
-          <span className="coverage-pill green">covered</span> by Good Cause
-          Eviction
+          <span className="result-headline__top">Your apartment is</span>{" "}
+          <span className="coverage-pill green">likely covered</span> by Good
+          Cause Eviction
         </>
       );
       break;
     case "NYCHA":
       headlineContent = (
         <>
-          Your apartment is part of{" "}
+          <span className="result-headline__top">
+            Your apartment is part of
+          </span>{" "}
           <span className="coverage-pill green">NYCHA</span>, which provides
           stronger protections than Good Cause Eviction
         </>
       );
       break;
   }
-  return <span ref={headlineRef}>{headlineContent}</span>;
+  return (
+    <span className="result-headline" ref={headlineRef}>
+      {headlineContent}
+    </span>
+  );
 };
 
 const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
@@ -555,6 +535,7 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
         <div className="phone-number-input-container">
           <TextInput
             labelText="Phone number"
+            placeholder="(123) 456-7890"
             invalid={showError}
             invalidText="Enter a valid phone number"
             id="phone-number-input"
@@ -569,15 +550,16 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
             size="small"
             onClick={handleSubmit}
           />
-        </div>
-        {showSuccess && (
-          <div className="success-message">
-            <Icon icon="check" />
-            Phone number submitted
+          <div className="phone-number-description">
+            {showSuccess && (
+              <div className="success-message">
+                <Icon icon="check" />
+                Phone number submitted
+              </div>
+            )}
+            Your phone number will never be saved or used outside of this
+            message
           </div>
-        )}
-        <div className="phone-number-description">
-          Your phone number will never be saved or used outside of this message
         </div>
         <div className="phone-number-submit__mobile">
           <Button

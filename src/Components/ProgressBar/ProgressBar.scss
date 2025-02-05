@@ -1,11 +1,24 @@
 @import "../../colors.scss";
+@import "../../mixins.scss";
 
 #progress-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.12rem;
+  gap: 0.5rem;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+
+  .progress-bar__step:first-of-type.visited {
+    @include for-phone-only {
+      a,
+      span {
+        width: 25vw;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
 
   .progress-bar__step {
     display: flex;
@@ -45,8 +58,17 @@
   hr {
     border: none;
     border-bottom: 1px solid $OFF_BLACK;
-    width: 1.5rem;
+    width: 2rem;
     margin: 0;
+  }
+}
+
+@include for-phone-only {
+  #progress-bar {
+    gap: 1rem;
+    hr {
+      display: none;
+    }
   }
 }
 
