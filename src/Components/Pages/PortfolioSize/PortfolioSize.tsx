@@ -221,14 +221,18 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
   const header = (
     <div className="acris-links__header">
       <span className="acris-links__address">{toTitleCase(address || "")}</span>
-      <span className="acris-links__pill pill">{`${unitsres} apartments`}</span>
+      <span className="acris-links__pill pill">{`${unitsres} ${
+        unitsres === 1 ? "apartment" : "apartments"
+      }`}</span>
     </div>
   );
 
   const content = (
     <>
       <div className="acris-links__content">
-        {info && <InfoBox color="blue">{info}</InfoBox>}
+        {info && acris_docs && acris_docs?.length > 1 && (
+          <InfoBox color="blue">{info}</InfoBox>
+        )}
         {!bbl && <>Loading document links...</>}
         {acris_docs && (
           <ul>
