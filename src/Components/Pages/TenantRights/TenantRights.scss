@@ -5,9 +5,19 @@
     margin: 0;
   }
 
+  .content-box {
+    margin: 0 0 2rem;
+  }
+
   @include for-phone-only {
+    .content-section {
+      padding-bottom: 1rem;
+    }
     .content-box__header-subtitle {
       @include h3_mobile;
+    }
+    .content-box {
+      margin: 0 0 1rem;
     }
     .content-box__footer {
       .content-box__footer__message,
