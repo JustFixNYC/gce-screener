@@ -8,9 +8,10 @@
   align-items: center;
   margin-bottom: 1rem;
 
-  .progress-bar__step:first-of-type {
+  .progress-bar__step:first-of-type.visited {
     @include for-phone-only {
-      a {
+      a,
+      span {
         width: 25vw;
         white-space: nowrap;
         overflow: hidden;
