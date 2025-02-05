@@ -82,11 +82,11 @@
     }
 
     .criteria-table__header__title {
-      @include body_standard_desktop;
+      @include body_standard_mobile;
       font-weight: 600;
     }
     p {
-      @include body_standard_desktop;
+      @include small_text_mobile;
       margin: 0;
       @include for-tablet-portrait-up {
         width: 75%;
@@ -143,14 +143,15 @@
           align-items: flex-start;
 
           .content-box__section__header {
-            font-size: 1.125rem;
+            @include body_standard_mobile;
+            font-weight: 600;
           }
           .content-box__section__header-container {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             text-align: left;
-            @include small_text_desktop;
+            @include small_text_mobile;
             .content-box__section__header {
               padding-bottom: 0.25rem;
             }
@@ -167,9 +168,10 @@
             gap: 0.75rem;
             background: $OFF_WHITE_100;
             margin-bottom: 0;
+            @include small_text_mobile;
             &,
             .criteria-link {
-              @include small_text_desktop;
+              @include small_text_mobile;
             }
           }
         }
@@ -223,6 +225,15 @@
     }
   }
 
+  .criteria-table__footer {
+    .content-box__footer__message,
+    .jfcl-link {
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
+    }
+  }
+
   svg.criteria-icon {
     &.green {
       color: $GREEN;
@@ -250,6 +261,19 @@
         .content-box {
           display: flex;
           flex-direction: column;
+        }
+      }
+      .content-box__header-subtitle {
+        @include h3_mobile;
+      }
+      .content-box__section__header {
+        @include body_standard_mobile;
+        font-weight: 600;
+      }
+      .accordion__content {
+        p,
+        .jfcl-link {
+          @include small_text_mobile;
         }
       }
     }
@@ -281,6 +305,9 @@
       @include h3_desktop;
       margin: 0 0 2rem 0;
       text-align: center;
+      @include for-phone-only {
+        @include h3_mobile;
+      }
     }
 
     .success-message {
@@ -373,10 +400,16 @@
       @include body_large_desktop;
       font-weight: 500;
       margin-bottom: 1rem;
+      @include for-phone-only {
+        @include body_large_mobile;
+      }
     }
     p {
       @include body_standard_desktop;
       margin: 0;
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
     }
   }
 }
