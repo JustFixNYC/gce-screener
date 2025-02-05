@@ -45,8 +45,12 @@
   pointer-events: none;
 }
 
-.back-link.jfcl-link {
-  .jfcl-link__icon {
+a.jfcl-link svg.jfcl-link__icon {
+  margin-left: 6px;
+}
+
+a.back-link.jfcl-link {
+  svg.jfcl-link__icon {
     margin: 0 0.75rem 0 0; // 12px
   }
 }
@@ -86,10 +90,18 @@ button.jfcl-button {
 
   &.jfcl-variant-secondary {
     &:hover:not(:disabled) {
-      background-color: $GREY_50;
+      background-color: $WHITE;
     }
     &:active:not(:disabled) {
       background-color: $OFF_WHITE_150;
     }
+  }
+}
+
+div.jfcl-input-header__invalid_text {
+  color: $RED;
+  .jfcl-input-header__invalid_icon {
+    color: $ORANGE;
+    margin-right: 8px;
   }
 }

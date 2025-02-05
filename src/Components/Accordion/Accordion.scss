@@ -8,7 +8,11 @@
     align-items: center;
     list-style: none;
     cursor: pointer;
+    padding: 1.5rem 2rem;
 
+    &:hover {
+      background-color: $OFF_WHITE_100;
+    }
     .accordion__chevron {
       margin-left: auto;
     }
@@ -17,17 +21,23 @@
     }
   }
 
-  .accordion__summary:hover {
-    background-color: $OFF_WHITE_100;
-  }
-
   &[open] > summary .accordion__chevron {
     transform: scale(-1, -1);
   }
 
+  .accordion__content {
+    padding: 0.75rem 2rem 2rem 2rem;
+  }
+
   @include for-phone-only() {
+    .accordion__summary {
+      padding: 1rem 1.5rem;
+      &:hover {
+        background-color: unset;
+      }
+    }
     .accordion__content {
-      padding: 1rem 1.5rem 1.5rem 1.5rem; // 16px 24px
+      padding: 1rem 1.5rem 1.5rem 1.5rem;
 
       .jfcl-link {
         margin-top: 0.5rem;

@@ -28,7 +28,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       );
 
     const Step = (
-      <div key={index} className="progress-bar__step">
+      <div
+        key={index}
+        className={classNames(
+          "progress-bar__step",
+          index <= lastStepReached && "visited"
+        )}
+      >
         <div
           className={classNames(
             "progress-bar__step__number",

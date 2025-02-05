@@ -20,12 +20,24 @@
 
   .info-box {
     margin-top: 1.125rem; // 18px
-    margin-bottom: 1.5rem; // 24px
+    margin-bottom: 2.25rem; // 24px
     .info-box__content-container {
       @include body_standard_desktop;
       .source-link {
         @include small_text_desktop;
       }
+    }
+    &.orange {
+      margin: 0 0 2.25rem;
+      @include for-phone-only {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  @include for-tablet-portrait-up {
+    .form-step .info-box {
+      width: 75%;
     }
   }
 
@@ -36,6 +48,7 @@
   #rent-input {
     max-width: 19.375rem; // 310px
     appearance: textfield;
+    padding-left: var(--input-padding-left);
 
     @include for-phone-only() {
       max-width: unset;
@@ -51,7 +64,7 @@
   .form__buttons {
     display: flex;
     justify-content: center;
-    margin: 3rem 0; //48px
+    margin: 1rem 0 2.5rem;
     gap: 0.625rem; //10px
 
     .survey__back {

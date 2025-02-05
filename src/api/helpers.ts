@@ -76,11 +76,13 @@ export const cleanFormFields = ({
   housingType,
 }: FormFields): FormAnswers => {
   return {
-    bedrooms: bedrooms === null ? undefined : bedrooms,
+    bedrooms: bedrooms || undefined,
     rent: rent === null ? undefined : parseFloat(rent),
-    owner_occupied: landlord === null ? undefined : landlord,
-    rent_stab: rentStabilized === null ? undefined : rentStabilized,
-    subsidy: housingType === null ? undefined : housingType,
+    owner_occupied: landlord || undefined,
+    rent_stab: rentStabilized || undefined,
+    subsidy: housingType?.includes("SUBSIDIZED")
+      ? "SUBSIDIZED"
+      : housingType || undefined,
   };
 };
 

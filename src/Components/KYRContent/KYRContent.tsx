@@ -36,8 +36,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         >
           NY Homes and Community Renewal
         </JFCLLinkExternal>
-        <br />
-        <br />
+
         <p className="bold">See if you are eligible for a free attorney</p>
         <JFCLLinkExternal
           href="https://www.evictionfreenyc.org"
@@ -64,8 +63,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         >
           NY Courts
         </JFCLLinkExternal>
-        <br />
-        <br />
+
         <p className="bold">Learn how tenant associations can help</p>
         <JFCLLinkExternal
           href="https://www.metcouncilonhousing.org/help-answers/forming-a-tenants-association"
@@ -73,8 +71,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         >
           Met Council on Housing
         </JFCLLinkExternal>
-        <br />
-        <br />
+
         <p className="bold">Notify your landlord of repair issues</p>
         <JFCLLinkExternal
           href="https://app.justfix.org/loc/splash"
@@ -105,8 +102,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         >
           Fair Housing NYC
         </JFCLLinkExternal>
-        <br />
-        <br />
+
         <p className="bold">
           Learn more about lawful source of income discrimination
         </p>
@@ -116,8 +112,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         >
           Lawful source of income
         </JFCLLinkExternal>
-        <br />
-        <br />
+
         <p className="bold">Report source of income discrimination</p>
         <JFCLLinkExternal href="https://weunlock.nyc" className="has-label">
           Unlock NYC
@@ -140,7 +135,6 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           organizing a tenant union with your neighbors, fill out this form to
           get support from a tenant group near you.
         </p>
-        <br />
         <JFCLLinkExternal href="https://actionnetwork.org/forms/are-you-worried-about-your-housing">
           Housing Justice for All tenant organizing form
         </JFCLLinkExternal>
@@ -206,7 +200,10 @@ export const GoodCauseProtections: React.FC<
           <p>
             <strong>Learn about Reasonable Rent Standard</strong>
           </p>
-          <JFCLLinkExternal href="https://legalaidnyc.org/get-help/housing-problems/what-you-need-to-know-about-new-yorks-good-cause-eviction-law/#rent-increases">
+          <JFCLLinkExternal
+            className="has-label"
+            href="https://legalaidnyc.org/get-help/housing-problems/what-you-need-to-know-about-new-yorks-good-cause-eviction-law/#rent-increases"
+          >
             Reasonable Rent Increase
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -214,10 +211,7 @@ export const GoodCauseProtections: React.FC<
           <JFCLLinkExternal href="https://housingjusticeforall.org/kyr-good-cause">
             Housing Justice for All Good Cause Eviction fact sheet
           </JFCLLinkExternal>
-          <JFCLLinkExternal
-            href="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction"
-            className="has-label"
-          >
+          <JFCLLinkExternal href="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction">
             Met Council on Housing Good Cause Eviction fact sheet
           </JFCLLinkExternal>
         </ContentBoxItem>

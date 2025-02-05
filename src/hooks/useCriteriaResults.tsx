@@ -349,7 +349,7 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
-  if (housingType === "NYCHA" || housingType === "SUBSIDIZED") {
+  if (housingType === "NYCHA" || housingType?.includes("SUBSIDIZED")) {
     determination = "INELIGIBLE";
     userValue = `You reported that you live in ${
       housingType === "NYCHA" ? "NYCHA" : "subsidized"
