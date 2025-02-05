@@ -79,95 +79,96 @@ export const PortfolioSize: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-        <ContentBox subtitle="Good Cause Eviction covers tenants whose landlords own more than 10 apartments">
-          <ContentBoxItem accordion={false}>
-            <p>
-              If you are able to find that your landlord owns more than 10 total
-              apartments across multiple buildings, this means that you meet the
-              Landlord Portfolio Size criteria for Good Cause Eviction Law.
-            </p>
-          </ContentBoxItem>
-        </ContentBox>
-        <div className="divider__print" />
-        <ContentBox
-          subtitle="How to find other apartments your landlord owns"
-          headerExtra={
-            <InfoBox color="blue">
-              We recommend doing the following research on a desktop computer.
-            </InfoBox>
-          }
-        >
-          <ContentBoxItem
-            title="Confirm your landlord’s name and signature"
-            step={1}
-          >
-            <p>
-              Before we can find out if your landlord owns other apartments, we
-              need to confirm your building’s landlord. The best way to do this
-              is by searching real estate documents for your building’s
-              landlord’s name and signature.
-            </p>
-            <VideoEmbed url="" />
-            <div className="content-box__section__search-building">
-              <AcrisLinks
-                {...bldgData}
-                address={address.address}
-                info="You only need to find your building’s landlord’s signature on one of the documents below"
-              />
-            </div>
-          </ContentBoxItem>
-
-          <ContentBoxItem
-            title="Find other buildings your landlord might own"
-            step={2}
-          >
-            {bldgData && !!bldgData?.related_properties.length && (
-              <>
-                <p>
-                  Review documents below to find your landlord’s name or
-                  signature to see if they own more than 10 units across
-                  multiple buildings.
-                </p>
-                <br />
-              </>
-            )}
-            {bldgData && (
+          <ContentBox subtitle="Good Cause Eviction covers tenants whose landlords own more than 10 apartments">
+            <ContentBoxItem accordion={false}>
               <p>
-                {`Your building has ${bldgData.unitsres} apartments. You only need to confirm that your ` +
-                  `landlord owns ${10 - bldgData.unitsres} additional ${
-                    10 - bldgData.unitsres == 1 ? "apartment" : "apartments"
-                  } across other buildings.`}
+                If you are able to find that your landlord owns more than 10
+                total apartments across multiple buildings, this means that you
+                meet the Landlord Portfolio Size criteria for Good Cause
+                Eviction Law.
               </p>
-            )}
-            <VideoEmbed url="" />
-            <div className="content-box__section__related-buildings">
-              {!!bldgData?.related_properties &&
-              bldgData?.related_properties.length > 0 ? (
+            </ContentBoxItem>
+          </ContentBox>
+          <div className="divider__print" />
+          <ContentBox
+            subtitle="How to find other apartments your landlord owns"
+            headerExtra={
+              <InfoBox color="blue">
+                We recommend doing the following research on a desktop computer.
+              </InfoBox>
+            }
+          >
+            <ContentBoxItem
+              title="Confirm your landlord’s name and signature"
+              step={1}
+            >
+              <p>
+                Before we can find out if your landlord owns other apartments,
+                we need to confirm your building’s landlord. The best way to do
+                this is by searching real estate documents for your building’s
+                landlord’s name and signature.
+              </p>
+              <VideoEmbed url="" />
+              <div className="content-box__section__search-building">
+                <AcrisLinks
+                  {...bldgData}
+                  address={address.address}
+                  info="You only need to find your building’s landlord’s signature on one of the documents below"
+                />
+              </div>
+            </ContentBoxItem>
+
+            <ContentBoxItem
+              title="Find other buildings your landlord might own"
+              step={2}
+            >
+              {bldgData && !!bldgData?.related_properties.length && (
                 <>
-                  {isLoading && <>Loading document links...</>}
-                  <AcrisAccordions {...bldgData} />
-                </>
-              ) : (
-                <>
-                  <InfoBox color="blue">
-                    <span>
-                      Our data is not showing additional buildings that may be
-                      owned by your landlord.
-                    </span>
-                  </InfoBox>
-                  <FindOtherBuildings />
+                  <p>
+                    Review documents below to find your landlord’s name or
+                    signature to see if they own more than 10 units across
+                    multiple buildings.
+                  </p>
+                  <br />
                 </>
               )}
-            </div>
-          </ContentBoxItem>
+              {bldgData && (
+                <p>
+                  {`Your building has ${bldgData.unitsres} apartments. You only need to confirm that your ` +
+                    `landlord owns ${10 - bldgData.unitsres} additional ${
+                      10 - bldgData.unitsres == 1 ? "apartment" : "apartments"
+                    } across other buildings.`}
+                </p>
+              )}
+              <VideoEmbed url="" />
+              <div className="content-box__section__related-buildings">
+                {!!bldgData?.related_properties &&
+                bldgData?.related_properties.length > 0 ? (
+                  <>
+                    {isLoading && <>Loading document links...</>}
+                    <AcrisAccordions {...bldgData} />
+                  </>
+                ) : (
+                  <>
+                    <InfoBox color="blue">
+                      <span>
+                        Our data is not showing additional buildings that may be
+                        owned by your landlord.
+                      </span>
+                    </InfoBox>
+                    <FindOtherBuildings />
+                  </>
+                )}
+              </div>
+            </ContentBoxItem>
 
-          <ContentBoxFooter
-            message="Update your coverage result"
-            linkText="Adjust survey answers"
-            linkTo="/survey"
-          />
-        </ContentBox>
-        <div className="divider__print" />
+            <ContentBoxFooter
+              message="Update your coverage result"
+              linkText="Adjust survey answers"
+              linkTo="/survey"
+            />
+          </ContentBox>
+          <div className="divider__print" />
         </div>
       </div>
     </div>
