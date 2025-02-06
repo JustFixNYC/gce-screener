@@ -50,12 +50,12 @@ export const RentStabilization: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          <ContentBox subtitle="Good Cause Eviction only applies to tenants who are not rent stabilized">
+          <ContentBox subtitle="Good Cause only applies to tenants who are not rent stabilized">
             <ContentBoxItem accordion={false}>
               <p>
                 If your apartment is rent stabilized, you are not covered by
-                Good Cause Eviction law because you already have stronger
-                existing protections through rent stabilization law.
+                Good Cause law because you already have stronger existing
+                protections through rent stabilization law.
               </p>
             </ContentBoxItem>
           </ContentBox>

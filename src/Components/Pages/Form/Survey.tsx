@@ -304,7 +304,7 @@ export const Survey: React.FC = () => {
                     helperElement={
                       <InfoBox>
                         {`It looks like there are ${bldgData.unitsres} apartments in your building. ` +
-                          "Good Cause Eviction protections only apply to tenants whose landlords own more than 10 apartments, " +
+                          "Good Cause protections only apply to tenants whose landlords own more than 10 apartments, " +
                           "even if those apartments are spread across multiple buildings."}
                       </InfoBox>
                     }

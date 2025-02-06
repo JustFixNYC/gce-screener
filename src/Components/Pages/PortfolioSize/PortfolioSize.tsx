@@ -79,7 +79,7 @@ export const PortfolioSize: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          <ContentBox subtitle="Good Cause Eviction covers tenants whose landlords own more than 10 apartments">
+          <ContentBox subtitle="Good Cause covers tenants whose landlords own more than 10 apartments">
             <ContentBoxItem accordion={false}>
               <p>
                 If you are able to find that your landlord owns more than 10
