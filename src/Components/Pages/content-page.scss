@@ -84,12 +84,24 @@
   }
 }
 @media print {
+  #results-page,
+  #portfolio-size-page,
+  #rent-stabilization-page,
+  #tenant-rights-page {
+    .headline-section {
+      padding: 1rem;
+    }
+  }
   .headline-section,
   .content-section {
     background-color: unset;
     border-bottom: unset;
     padding-top: 0;
     padding-bottom: 0;
+  }
+
+  .info-box {
+    border-color: $GREY_NEW !important;
   }
 
   .headline-section__address__print {

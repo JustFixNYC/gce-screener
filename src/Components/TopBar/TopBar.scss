@@ -86,14 +86,22 @@
   @media print {
     position: unset;
     background-color: unset;
+
+    .topbar__name,
+    .topbar__collab {
+      padding: 0.5rem 1rem;
+    }
+    .topbar__collab {
+      border: none;
+    }
+    .topbar__search {
+      display: none;
+    }
     &,
     h1,
     a {
       color: black;
       @include body_large_desktop;
-    }
-    .topbar__search a {
-      display: none;
     }
   }
 }

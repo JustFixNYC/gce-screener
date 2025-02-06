@@ -447,6 +447,7 @@
     }
 
     .criteria-table__row {
+      padding: 0.5rem 0;
       .criteria-table__row__desktop {
         flex-direction: row;
       }
@@ -469,6 +470,11 @@
     }
     svg {
       color: $OFF_BLACK !important;
+    }
+
+    .callout-box,
+    .share-footer {
+      display: none;
     }
 
     .divider__print {
