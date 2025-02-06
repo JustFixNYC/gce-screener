@@ -392,7 +392,7 @@ const CoverageResultHeadline: React.FC<{
     case "UNKNOWN":
       headlineContent = (
         <>
-          Your apartment{" "}
+          <span className="result-headline__top">Your apartment</span>{" "}
           <span className="coverage-pill yellow">might be covered</span> by Good
           Cause Eviction
         </>
