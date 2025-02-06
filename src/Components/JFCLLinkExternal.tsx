@@ -1,18 +1,30 @@
-import { Link, LinkProps } from "@justfixnyc/component-library";
 import React from "react";
+import { Link, To } from "react-router-dom";
+import { Icon } from "@justfixnyc/component-library";
+import classNames from "classnames";
 
-// Creating a version of our Component library's Link component that
-// has the internal icon for passing into react router Links.
+// Creating a version of React Router's Link component styled like our Component
+// library's External Link.
 
-const JFCLLinkExternal: React.FC<LinkProps> = (props) => {
-  return (
-    <Link
-      icon="external"
-      target="_blank"
-      rel="noopener noreferrer"
-      {...props}
-    />
-  );
+type JFCLLinkExternalProps = {
+  to: To;
+  children: React.ReactNode;
+  className?: string | undefined;
 };
+
+const JFCLLinkExternal: React.FC<JFCLLinkExternalProps> = (props) => (
+  <Link
+    to={props.to}
+    className={classNames(props.className, "jfcl-link")}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {props.children}
+    <span className="jfcl-link__icon-wrapper">
+      &#xfeff;
+      <Icon icon="squareArrowUpRight" className="jfcl-link__icon" />
+    </span>
+  </Link>
+);
 
 export default JFCLLinkExternal;

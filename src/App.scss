@@ -45,8 +45,8 @@
   pointer-events: none;
 }
 
-a.jfcl-link {
-  text-wrap: pretty;
+a.jfcl-link .jfcl-link__icon-wrapper {
+  white-space: nowrap;
   svg.jfcl-link__icon {
     margin-left: 6px;
   }
