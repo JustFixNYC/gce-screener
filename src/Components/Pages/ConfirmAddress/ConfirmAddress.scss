@@ -5,6 +5,12 @@
 $mapImgHeight: 223px;
 
 #confirm-address-page {
+  .headline-section__subtitle {
+    @include for-tablet-portrait-up {
+      width: 75%;
+    }
+  }
+
   .content-box {
     display: flex;
     flex-direction: column;
@@ -57,7 +63,6 @@ $mapImgHeight: 223px;
       .img-wrapper,
       .img-wrapper__img {
         border-radius: 4px;
-        // width: 100%;
         height: $mapImgHeight;
         @include for-phone-only() {
           width: 100%;

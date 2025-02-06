@@ -3,6 +3,12 @@
 @import "../../../colors.scss";
 
 #survey-page {
+  .headline-section__subtitle {
+    @include for-tablet-portrait-up {
+      width: 75%;
+    }
+  }
+
   .content-section {
     @include for-phone-only() {
       padding-bottom: 0;
