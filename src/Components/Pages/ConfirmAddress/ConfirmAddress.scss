@@ -122,16 +122,8 @@ $mapImgHeight: 223px;
       align-self: center;
     }
 
-    // sticky footer
     @include for-phone-only() {
-      position: sticky;
-      bottom: 0;
-      background-color: $OFF_WHITE_NEW;
-      width: 105%;
       margin: unset;
-      padding: 1rem;
-      justify-content: center;
-      border-top: 1px solid $OFF_BLACK;
     }
   }
 }
