@@ -80,7 +80,7 @@ export const RentStabilization: React.FC = () => {
                 has never been rent stabilized, and therefore you may be
                 eligible for Good Cause Eviction coverage.
               </p>
-              <JFCLLinkExternal href="https://portal.hcr.ny.gov/app/ask">
+              <JFCLLinkExternal to="https://portal.hcr.ny.gov/app/ask">
                 Fill out the form
               </JFCLLinkExternal>
             </ContentBoxItem>
@@ -91,7 +91,7 @@ export const RentStabilization: React.FC = () => {
                 with understanding their rent stabilization status and
                 landlord-tenant disputes.
               </p>
-              <JFCLLinkExternal href="https://www.metcouncilonhousing.org/program/met-council-on-housings-weekly-tenants-rights-walk-in-clinic/">
+              <JFCLLinkExternal to="https://www.metcouncilonhousing.org/program/met-council-on-housings-weekly-tenants-rights-walk-in-clinic/">
                 Tenants’ Rights Walk-In Clinic
               </JFCLLinkExternal>
             </ContentBoxItem>

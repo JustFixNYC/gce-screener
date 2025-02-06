@@ -362,7 +362,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
   const activeJ51 = new Date(end_j51) > new Date();
 
   const wowLink = (
-    <JFCLLinkExternal href={urlWOWTimelineRS(bbl)} className="source-link">
+    <JFCLLinkExternal to={urlWOWTimelineRS(bbl)} className="source-link">
       View source
     </JFCLLinkExternal>
   );
@@ -383,7 +383,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
         } tax exemption. This means your
         apartment is rent stabilized.`}
         <br />
-        <JFCLLinkExternal href={urlFCSubsidized(bbl)} className="source-link">
+        <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
           View source
         </JFCLLinkExternal>
       </>
@@ -413,7 +413,7 @@ const getSubsidyHelperText = (
   const { bbl, is_nycha, is_subsidized, subsidy_name } = bldgData;
 
   const subsidyLink = (
-    <JFCLLinkExternal href={urlFCSubsidized(bbl)} className="source-link">
+    <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
       View source
     </JFCLLinkExternal>
   );

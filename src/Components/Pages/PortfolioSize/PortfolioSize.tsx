@@ -240,7 +240,7 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
           <ul>
             {acris_docs.map((docInfo, i) => (
               <li key={i}>
-                <JFCLLinkExternal href={urlAcrisDoc(docInfo.doc_id)}>
+                <JFCLLinkExternal to={urlAcrisDoc(docInfo.doc_id)}>
                   {`${acrisDocTypeFull(
                     docInfo.doc_type
                   )} (${docInfo.doc_date.slice(0, 4)})`}
@@ -254,11 +254,11 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
         {bbl && (
           <>
             {isStatenIsland ? (
-              <JFCLLinkExternal href={urlCountyClerkBbl(bbl)}>
+              <JFCLLinkExternal to={urlCountyClerkBbl(bbl)}>
                 View all documents from Richmond County Clerk
               </JFCLLinkExternal>
             ) : (
-              <JFCLLinkExternal href={urlAcrisBbl(bbl)}>
+              <JFCLLinkExternal to={urlAcrisBbl(bbl)}>
                 View all documents in ACRIS
               </JFCLLinkExternal>
             )}
