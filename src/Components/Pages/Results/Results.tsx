@@ -164,7 +164,7 @@ export const Results: React.FC = () => {
                   />
                 }
               />
-              <GoodCauseProtections />
+              <GoodCauseProtections rent={Number(fields.rent)} />
             </>
           )}
           {coverageResult === "NYCHA" && <NYCHAProtections />}
