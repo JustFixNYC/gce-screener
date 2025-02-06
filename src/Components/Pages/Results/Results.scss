@@ -18,8 +18,9 @@
 
   .result-headline {
     @include for-tablet-portrait-up {
+      line-height: 120%;
       .result-headline__top {
-        line-height: 1.5em;
+        line-height: 1.25em;
       }
     }
     .coverage-pill {
