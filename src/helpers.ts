@@ -129,8 +129,8 @@ export const getPrioritizeBldgs = (unitsNeeded: number) => {
 };
 
 export const urlCountyClerkBbl = (bbl: string) => {
-  const { boro, block, lot } = splitBBL(bbl);
-  return `https://www.richmondcountyclerk.com/Search/ShowResultsBlocks/${boro}?Block=${block}&Lot=${lot}`;
+  const { block, lot } = splitBBL(bbl);
+  return `https://www.richmondcountyclerk.com/Search/ShowResultsBlocks?Block=${block}&Lot=${lot}`;
 };
 
 export const urlAcrisBbl = (bbl: string) => {
