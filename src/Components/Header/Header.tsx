@@ -3,6 +3,8 @@ import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { Address } from "../Pages/Home/Home";
 import { BackLink } from "../JFCLLink";
 import { abbreviateBoro, ProgressStep, toTitleCase } from "../../helpers";
+import { FormFields } from "../Pages/Form/Survey";
+import { useLoaderData } from "react-router-dom";
 
 type HeaderProps = {
   title: string | React.ReactNode;
@@ -23,24 +25,38 @@ export const Header: React.FC<HeaderProps> = ({
   lastStepReached,
   children,
 }) => {
+  const sessionData = useLoaderData() as {
+    fields?: FormFields;
+  };
+
   return (
     <div className="headline-section">
       <div className="headline-section__content">
         {isGuide && (
-          <nav className="headline-section__back-link">
-            <BackLink to="/results">Back to Result</BackLink>
-          </nav>
+          <>
+            {sessionData?.fields ? (
+              <nav className="headline-section__back-link">
+                <BackLink to="/results">Back to Result</BackLink>
+              </nav>
+            ) : (
+              <nav className="headline-section__back-link">
+                <BackLink to="/survey">Back to Survey</BackLink>
+              </nav>
+            )}
+          </>
         )}
-        <div
-          className={
-            isGuide
-              ? "headline-section__address"
-              : "headline-section__address__print"
-          }
-        >
-          {toTitleCase(`${address?.houseNumber} ${address?.streetName}, `) +
-            (address && abbreviateBoro(address?.borough))}
-        </div>
+        {address && (
+          <div
+            className={
+              isGuide
+                ? "headline-section__address"
+                : "headline-section__address__print"
+            }
+          >
+            {toTitleCase(`${address?.houseNumber} ${address?.streetName}, `) +
+              (address && abbreviateBoro(address?.borough))}
+          </div>
+        )}
         {showProgressBar && (
           <ProgressBar address={address} lastStepReached={lastStepReached} />
         )}

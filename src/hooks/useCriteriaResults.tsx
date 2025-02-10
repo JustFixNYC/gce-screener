@@ -359,13 +359,13 @@ function eligibilitySubsidy(
 
   if (housingType === "NYCHA") {
     requirement =
-      "There are different, stronger protections for tenants whose apartments are part of NYCHA.";
+      "There are different, stronger protections for tenants who live in NYCHA housing.";
     determination = "OTHER_PROTECTION";
     userValue = "You reported that your apartment is part of NYCHA.";
   } else if (housingType?.includes("SUBSIDIZED")) {
     determination = "OTHER_PROTECTION";
     requirement =
-      "There are different, stronger protections for tenants whose apartments are part of subsidized housing.";
+      "There are different, stronger protections for tenants who live in subsidized housing.";
     const subsidyLanguage =
       housingType === "SUBSIDIZED_HDFC"
         ? "is an HDFC"
@@ -422,7 +422,7 @@ function eligibilitySubsidy(
           to={`/subsidy?${searchParams.toString()}`}
           className="criteria-link"
         >
-          Find out if you are rent stabilized
+          View subsidy guide
         </JFCLLinkInternal>
       </>
     );

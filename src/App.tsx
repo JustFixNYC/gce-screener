@@ -67,7 +67,7 @@ const LoadAddressAndUserSession = () => {
   };
 };
 
-const LoadURLSession = ({ request }: { request: Request }) => {
+const LoadURLSessionRequired = ({ request }: { request: Request }) => {
   const url = new URL(request.url);
   const userParam = url.searchParams.get("user");
   const addressParam = url.searchParams.get("address");
@@ -105,6 +105,46 @@ const LoadURLSession = ({ request }: { request: Request }) => {
   }
 };
 
+const LoadURLSessionOptional = ({ request }: { request: Request }) => {
+  const url = new URL(request.url);
+  const userParam = url.searchParams.get("user");
+  const addressParam = url.searchParams.get("address");
+  const fieldsParam = url.searchParams.get("fields");
+  const sessionUser = window.sessionStorage.getItem("user");
+  const sessionAddress = window.sessionStorage.getItem("address");
+  const sessionFields = window.sessionStorage.getItem("fields");
+
+  // If we session values, and they are valid JSON, return those in the loader data
+  // otherwise, if we have don't have session values but we do have search params,
+  // then put those search param values into session storage and
+  // return them in the loader data.
+  // otherwise, if we don't have session values or search params, return undefined
+  if (isJsonString(sessionAddress) || isJsonString(sessionFields)) {
+    return {
+      // to satisfy typescript, since JSON.parse() only takes strings
+      user: !isJsonString(sessionUser)
+        ? undefined
+        : JSON.parse(sessionUser as string),
+      address: !isJsonString(sessionAddress)
+        ? undefined
+        : JSON.parse(sessionAddress as string),
+      fields: !isJsonString(sessionFields)
+        ? undefined
+        : JSON.parse(sessionFields as string),
+    };
+  } else {
+    // set session values
+    if (userParam) window.sessionStorage.setItem("user", userParam);
+    if (addressParam) window.sessionStorage.setItem("address", addressParam);
+    if (fieldsParam) window.sessionStorage.setItem("fields", fieldsParam);
+    return {
+      user: !userParam ? undefined : JSON.parse(userParam),
+      address: !addressParam ? undefined : JSON.parse(addressParam),
+      fields: !fieldsParam ? undefined : JSON.parse(fieldsParam),
+    };
+  }
+};
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
@@ -119,18 +159,26 @@ const router = createBrowserRouter(
         element={<Survey />}
         loader={LoadAddressAndUserSession}
       />
-      <Route path="results" element={<Results />} loader={LoadURLSession} />
+      <Route
+        path="results"
+        element={<Results />}
+        loader={LoadURLSessionRequired}
+      />
       <Route
         path="rent_stabilization"
         element={<RentStabilization />}
-        loader={LoadURLSession}
+        loader={LoadURLSessionRequired}
       />
       <Route
         path="portfolio_size"
         element={<PortfolioSize />}
-        loader={LoadURLSession}
+        loader={LoadURLSessionRequired}
       />
-      <Route path="subsidy" element={<Subsidy />} loader={LoadURLSession} />
+      <Route
+        path="subsidy"
+        element={<Subsidy />}
+        loader={LoadURLSessionOptional}
+      />
       <Route path="tenant_rights" element={<TenantRights />} />
       <Route path="privacy_policy" element={<PrivacyPolicy />} />
       <Route path="terms_of_use" element={<TermsOfUse />} />
