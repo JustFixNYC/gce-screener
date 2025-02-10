@@ -16,6 +16,9 @@
     & > svg {
       align-self: start;
     }
+    & > svg:only-of-type {
+      align-self: unset;
+    }
     .accordion__chevron {
       margin-left: auto;
       padding: 4px;
