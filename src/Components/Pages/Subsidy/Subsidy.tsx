@@ -74,6 +74,12 @@ export const Subsidy: React.FC = () => {
               tell you if your apartment is part of a subsidy program.
             </p>
           </ContentBoxItem>
+          <ContentBoxItem title="Find out if you got your apartment through NYC Housing Connect">
+            <p>
+              TK If you got your apartment through NYC Housing Connect, you can
+              be sure that your apartment is subsidized.
+            </p>
+          </ContentBoxItem>
           <ContentBoxFooter
             message="Update your coverage result"
             linkText="Adjust survey answers"
