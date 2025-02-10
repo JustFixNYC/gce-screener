@@ -456,9 +456,9 @@ const getSubsidyHelperText = (
         <br />
         If you are unsure of your subsidy status, especially if you receive a
         housing voucher, please review our{" "}
-        <JFCLLink to="subsidy" icon="arrowUp">
+        <JFCLLink to="/subsidy" icon="arrowUpRight">
           subsidy guide
-        </JFCLLink>
+        </JFCLLink>{" "}
         before proceeding.
       </>
     );
