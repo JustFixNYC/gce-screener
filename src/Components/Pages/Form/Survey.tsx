@@ -18,8 +18,7 @@ import {
 import { cleanFormFields } from "../../../api/helpers";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
-import { BackLink } from "../../JFCLLinkInternal";
-import JFCLLinkExternal from "../../JFCLLinkExternal";
+import { BackLink, JFCLLink, JFCLLinkExternal } from "../../JFCLLink";
 import "./Survey.scss";
 
 export type FormFields = {
@@ -33,6 +32,7 @@ export type FormFields = {
     | "SUBSIDIZED_OTHER"
     | "SUBSIDIZED_HDFC"
     | "NONE"
+    | "UNSURE"
     | null;
   landlord?: "YES" | "NO" | null;
   portfolioSize?: "YES" | "NO" | "UNSURE" | null;
@@ -258,8 +258,9 @@ export const Survey: React.FC = () => {
                       { label: "LIHTC", value: "SUBSIDIZED_LIHTC" },
                       { label: "HDFC", value: "SUBSIDIZED_HDFC" },
                       { label: "Other", value: "SUBSIDIZED_OTHER" },
+                      { label: "I'm not sure", value: "UNSURE" },
                       {
-                        label: "No, my apartment is not subsidized",
+                        label: "No, my building is not subsidized",
                         value: "NONE",
                       },
                     ],
@@ -421,7 +422,7 @@ const getSubsidyHelperText = (
   if (is_nycha) {
     return (
       <>
-        City data shows that your building is part of NYCHA.
+        Public data shows that your building is part of NYCHA.
         <br />
         {subsidyLink}
       </>
@@ -442,7 +443,7 @@ const getSubsidyHelperText = (
 
     return (
       <>
-        {`City data shows that your building ${subsidyLanguage}, which is considered subsidized housing.`}
+        {`Public data shows that your building ${subsidyLanguage}, which is considered subsidized housing.`}
         <br />
         {subsidyLink}
       </>
@@ -450,11 +451,15 @@ const getSubsidyHelperText = (
   } else {
     return (
       <>
-        If you applied for your apartment through Housing Connect and are unsure
-        of your specific subsidy, you can select “Other.”
+        Public data sources do not show that your building is part of any
+        subsidized housing programs.
         <br />
-        If you used a voucher that can be used anywhere to cover some or all of
-        the your rent, select “No, my apartment is not subsidized.”
+        If you are unsure of your subsidy status, especially if you receive a
+        housing voucher, please review our{" "}
+        <JFCLLink to="subsidy" icon="arrowUp">
+          subsidy guide
+        </JFCLLink>
+        before proceeding.
       </>
     );
   }

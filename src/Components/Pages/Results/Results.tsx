@@ -23,7 +23,6 @@ import {
   ContentBoxFooter,
   ContentBoxItem,
 } from "../../ContentBox/ContentBox";
-import JFCLLinkInternal from "../../JFCLLinkInternal";
 import {
   GoodCauseExercisingRights,
   GoodCauseProtections,
@@ -38,6 +37,7 @@ import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
+import { JFCLLinkInternal } from "../../JFCLLink";
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -192,35 +192,42 @@ const CRITERIA_LABELS = {
   certificateOfOccupancy: "Certificate of Occupancy",
 };
 
-const EligibilityIcon: React.FC<
-  Pick<CriterionDetails, "criteria" | "determination">
-> = ({ criteria, determination }) => {
-  if (
-    ["subsidy", "rentStabilized"].includes(criteria) &&
-    determination === "INELIGIBLE"
-  ) {
-    return (
-      <Icon
-        icon="checkDouble"
-        className="criteria-icon green"
-        title="Stronger protections"
-      />
-    );
-  } else if (determination === "ELIGIBLE") {
-    return (
-      <Icon icon="check" className="criteria-icon green" title="Eligible" />
-    );
-  } else {
-    return (
-      <Icon
-        icon="circleExclamation"
-        type="regular"
-        className={`criteria-icon ${
-          determination === "INELIGIBLE" ? "orange" : "yellow"
-        }`}
-        title={determination === "INELIGIBLE" ? "Ineligible" : "Unsure"}
-      />
-    );
+const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
+  determination,
+}) => {
+  switch (determination) {
+    case "OTHER_PROTECTION":
+      return (
+        <Icon
+          icon="checkDouble"
+          className="criteria-icon green"
+          title="Stronger protections"
+        />
+      );
+    case "ELIGIBLE":
+      return (
+        <Icon icon="check" className="criteria-icon green" title="Eligible" />
+      );
+    case "INELIGIBLE":
+      return (
+        <Icon
+          icon="circleExclamation"
+          type="regular"
+          className="criteria-icon orange"
+          title="Ineligible"
+        />
+      );
+    case "UNKNOWN":
+      return (
+        <Icon
+          icon="circleExclamation"
+          type="regular"
+          className="criteria-icon yellow"
+          title="Unknown"
+        />
+      );
+    default:
+      break;
   }
 };
 
@@ -295,9 +302,12 @@ const EligibilityNextSteps: React.FC<{
     criteriaDetails?.rentStabilized?.determination === "UNKNOWN";
   const portfolioSizeUnknown =
     criteriaDetails?.portfolioSize?.determination === "UNKNOWN";
-  const steps = [rentStabilizedUnknown, portfolioSizeUnknown].filter(
-    Boolean
-  ).length;
+  const subsidyUnknown = criteriaDetails?.subsidy?.determination === "UNKNOWN";
+  const steps = [
+    rentStabilizedUnknown,
+    portfolioSizeUnknown,
+    subsidyUnknown,
+  ].filter(Boolean).length;
   const unsureIcon = (
     <Icon
       icon="circleExclamation"
@@ -349,6 +359,24 @@ const EligibilityNextSteps: React.FC<{
             </JFCLLinkInternal>
           </ContentBoxItem>
         )}
+
+        {subsidyUnknown && (
+          <ContentBoxItem
+            title="We need to know if your building is subsidized"
+            icon={unsureIcon}
+            className="next-step"
+          >
+            <p>
+              Good Cause Eviction law does not cover subsidized housing, as the
+              subsidy program separately provides similar tenant protections.
+            </p>
+
+            <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
+              Find out if your building is subsidized
+            </JFCLLinkInternal>
+          </ContentBoxItem>
+        )}
+
         <ContentBoxFooter
           message="Update your coverage result"
           linkText="Back to survey"
@@ -372,6 +400,8 @@ const getCoverageResult = (
 
   if (fields?.housingType === "NYCHA") {
     return "NYCHA";
+  } else if (fields?.housingType?.includes("SUBSIDIZED")) {
+    return "SUBSIDIZED";
   } else if (fields?.rentStabilized === "YES") {
     return "RENT_STABILIZED";
   } else if (results.includes("INELIGIBLE")) {
@@ -436,6 +466,15 @@ const CoverageResultHeadline: React.FC<{
           </span>{" "}
           <span className="coverage-pill green">NYCHA</span>, which provides
           stronger protections than Good Cause Eviction
+        </>
+      );
+      break;
+    case "SUBSIDIZED":
+      headlineContent = (
+        <>
+          <span className="result-headline__top">Your apartment is</span>{" "}
+          <span className="coverage-pill green">subsidized</span>, which
+          provides similar protections to Good Cause Eviction
         </>
       );
       break;

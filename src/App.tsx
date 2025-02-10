@@ -23,6 +23,7 @@ import { NetworkError } from "./api/error-reporting";
 import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import "./App.scss";
+import { Subsidy } from "./Components/Pages/Subsidy/Subsidy";
 
 const Layout = () => {
   return (
@@ -129,6 +130,7 @@ const router = createBrowserRouter(
         element={<PortfolioSize />}
         loader={LoadURLSession}
       />
+      <Route path="subsidy" element={<Subsidy />} loader={LoadURLSession} />
       <Route path="tenant_rights" element={<TenantRights />} />
       <Route path="privacy_policy" element={<PrivacyPolicy />} />
       <Route path="terms_of_use" element={<TermsOfUse />} />

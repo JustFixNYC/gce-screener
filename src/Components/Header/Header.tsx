@@ -1,7 +1,7 @@
 import React from "react";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { Address } from "../Pages/Home/Home";
-import { BackLink } from "../JFCLLinkInternal";
+import { BackLink } from "../JFCLLink";
 import { abbreviateBoro, ProgressStep, toTitleCase } from "../../helpers";
 
 type HeaderProps = {

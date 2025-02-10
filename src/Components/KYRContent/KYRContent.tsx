@@ -4,8 +4,8 @@ import {
   ContentBoxItem,
   ContentBoxProps,
 } from "../ContentBox/ContentBox";
-import JFCLLinkExternal from "../JFCLLinkExternal";
 import { formatMoney } from "../../helpers";
+import { JFCLLinkExternal } from "../JFCLLink";
 
 const CPI = 3.82;
 

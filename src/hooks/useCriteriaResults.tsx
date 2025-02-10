@@ -1,8 +1,13 @@
 import { FormFields } from "../Components/Pages/Form/Survey";
-import JFCLLinkInternal from "../Components/JFCLLinkInternal";
 import { BuildingData, CriterionResult } from "../types/APIDataTypes";
-import JFCLLinkExternal from "../Components/JFCLLinkExternal";
-import { formatNumber, urlDOBBBL, urlDOBBIN, urlZOLA } from "../helpers";
+import {
+  formatNumber,
+  urlDOBBBL,
+  urlDOBBIN,
+  urlFCSubsidized,
+  urlZOLA,
+} from "../helpers";
+import { JFCLLinkExternal, JFCLLinkInternal } from "../Components/JFCLLink";
 
 export type Criteria =
   | "portfolioSize"
@@ -46,7 +51,7 @@ export function useCriteriaResults(
     rent: eligibilityRent(criteriaData),
     rentStabilized: eligibilityRentStabilized(criteriaData, searchParams),
     certificateOfOccupancy: eligibilityCertificateOfOccupancy(criteriaData),
-    subsidy: eligibilitySubsidy(criteriaData),
+    subsidy: eligibilitySubsidy(criteriaData, searchParams),
   };
 }
 
@@ -213,7 +218,7 @@ function eligibilityRentStabilized(
   if (rentStabilized === null) return { criteria, requirement };
 
   if (rentStabilized === "YES") {
-    determination = "INELIGIBLE";
+    determination = "OTHER_PROTECTION";
     userValue = "You reported that your apartment is rent stabilized.";
   } else if (rentStabilized === "NO") {
     determination = "ELIGIBLE";
@@ -342,20 +347,88 @@ function eligibilityCertificateOfOccupancy(
   };
 }
 
-function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
-  const { housingType } = criteriaData;
+function eligibilitySubsidy(
+  criteriaData: CriteriaData,
+  searchParams: URLSearchParams
+): CriterionDetails {
+  const { housingType, subsidy_name, bbl } = criteriaData;
   const criteria = "subsidy";
-  const requirement = "You must not live in subsidized or public housing.";
+  let requirement;
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
-  if (housingType === "NYCHA" || housingType?.includes("SUBSIDIZED")) {
-    determination = "INELIGIBLE";
-    userValue = `You reported that you live in ${
-      housingType === "NYCHA" ? "NYCHA" : "subsidized"
-    } housing.`;
+  if (housingType === "NYCHA") {
+    requirement =
+      "There are different, stronger protections for tenants whose apartments are part of NYCHA.";
+    determination = "OTHER_PROTECTION";
+    userValue = "You reported that your apartment is part of NYCHA.";
+  } else if (housingType?.includes("SUBSIDIZED")) {
+    determination = "OTHER_PROTECTION";
+    requirement =
+      "There are different, stronger protections for tenants whose apartments are part of subsidized housing.";
+    const subsidyLanguage =
+      housingType === "SUBSIDIZED_HDFC"
+        ? "is an HDFC"
+        : housingType === "SUBSIDIZED_LIHTC"
+        ? "receives receives the Low-Income Housing Tax Credit (LIHTC)"
+        : housingType === "SUBSIDIZED_ML"
+        ? "is a Mitchell-Lama"
+        : housingType === "SUBSIDIZED_OTHER"
+        ? "recieves a subsidy"
+        : "";
+    userValue = `You reported that your buidling ${subsidyLanguage}.`;
+  } else if (housingType === "UNSURE") {
+    determination = "UNKNOWN";
+    requirement = "You must not live in NYCHA or subsidized housing.";
+    const subsidyLanguage =
+      subsidy_name === "HUD Project-Based"
+        ? "receives a HUD Project-Based subsidy"
+        : subsidy_name === "Low-Income Housing Tax Credit (LIHTC)"
+        ? "receives receives the Low-Income Housing Tax Credit (LIHTC)"
+        : subsidy_name === "Article XI"
+        ? "is an Article XI"
+        : subsidy_name === "HPD Program"
+        ? "is part of an HPD subsidy Program"
+        : subsidy_name === "Mitchell-Lama"
+        ? "is a Mitchell-Lama"
+        : "";
+    userValue = (
+      <>
+        {subsidyLanguage === "" ? (
+          <>
+            You reported that you are not sure if your apartment is part of any
+            subsidized housing programs.
+          </>
+        ) : (
+          <>
+            {`You reported that you are not sure if your apartment is part of any
+            subsidized housing programs, but public data suggests that your
+            building ${subsidyLanguage}.`}
+          </>
+        )}
+        <br />
+        {subsidyLanguage !== "" && (
+          <>
+            <JFCLLinkExternal
+              to={urlFCSubsidized(bbl)}
+              className="criteria-link"
+            >
+              View source
+            </JFCLLinkExternal>
+            <br />
+          </>
+        )}
+        <JFCLLinkInternal
+          to={`/subsidy?${searchParams.toString()}`}
+          className="criteria-link"
+        >
+          Find out if you are rent stabilized
+        </JFCLLinkInternal>
+      </>
+    );
   } else {
     determination = "ELIGIBLE";
+    requirement = "You must not live in NYCHA or subsidized housing.";
     userValue =
       "You reported that you do not live in NYCHA or subsidized housing.";
   }
