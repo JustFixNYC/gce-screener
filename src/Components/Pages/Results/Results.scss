@@ -17,17 +17,6 @@
   }
 
   .result-headline {
-    @include for-tablet-portrait-up {
-      line-height: 120%;
-      .result-headline__top {
-        line-height: 1.25em;
-      }
-      .coverage-pill {
-        display: inline-flex;
-        line-height: 110%;
-        padding-bottom: 0.25rem;
-      }
-    }
     .coverage-pill {
       padding: 0 1.125rem;
       border-radius: 2.75rem;
@@ -49,6 +38,18 @@
       &.orange {
         background-color: $ORANGE;
         color: $OFF_BLACK;
+      }
+    }
+
+    @include for-tablet-portrait-up {
+      line-height: 120%;
+      .result-headline__top {
+        line-height: 1.25em;
+      }
+      .coverage-pill {
+        display: inline-flex;
+        line-height: 110%;
+        padding-bottom: 0.375rem;
       }
     }
   }
