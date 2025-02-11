@@ -108,7 +108,7 @@ export const PortfolioSize: React.FC = () => {
                 this is by searching real estate documents for your building’s
                 landlord’s name and signature.
               </p>
-              {/* <VideoEmbed url="" /> */}
+              <VideoEmbed url="https://www.youtube.com/embed/jFyi3k6rr8k?si=C98276JgvDojcfx7&amp;controls=0" />
               <div className="content-box__section__search-building">
                 <AcrisLinks
                   {...bldgData}
@@ -140,7 +140,7 @@ export const PortfolioSize: React.FC = () => {
                     } across other buildings.`}
                 </p>
               )}
-              {/* <VideoEmbed url="" /> */}
+              <VideoEmbed url="https://www.youtube.com/embed/jFyi3k6rr8k?si=C98276JgvDojcfx7&amp;controls=0" />
               <div className="content-box__section__related-buildings">
                 {!!bldgData?.related_properties &&
                 bldgData?.related_properties.length > 0 ? (
@@ -175,29 +175,19 @@ export const PortfolioSize: React.FC = () => {
   );
 };
 
-// const VideoEmbed: React.FC<{ url: string }> = ({ url }) => (
-//   <div className="content-box__section__video">
-//     {/* Loom embed code: */}
-//     <div
-//       style={{
-//         position: "relative",
-//         paddingBottom: "56.25%",
-//         height: "0",
-//       }}
-//     >
-//       <iframe
-//         src={url}
-//         style={{
-//           position: "absolute",
-//           top: "0",
-//           left: "0",
-//           width: "100%",
-//           height: "100%",
-//         }}
-//       />
-//     </div>
-//   </div>
-// );
+const VideoEmbed: React.FC<{ url: string }> = ({ url }) => (
+  <div className="content-box__section__video">
+    <iframe
+      width="560"
+      height="315"
+      src={url}
+      title="YouTube video for how to find other apartments your landlord owns"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+    ></iframe>
+  </div>
+);
 
 type ACRISLinksProps = {
   bbl?: string;
