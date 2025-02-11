@@ -279,6 +279,18 @@
     }
   }
 
+  .error-message {
+    @include small_text_desktop;
+    color: $RED;
+    font-weight: 500;
+
+    svg {
+      color: $ORANGE;
+      margin-right: 0.25rem;
+      vertical-align: bottom;
+    }
+  }
+
   .share-footer {
     display: flex;
     flex-direction: column;
@@ -363,12 +375,16 @@
         .jfcl-text-input {
           margin: unset;
           margin-right: 1rem;
+          & :focus-visible {
+            outline-color: $BLUE;
+          }
           @include for-phone-only {
             width: 100%;
           }
         }
       }
-      .success-message {
+      .success-message,
+      .error-message {
         margin-bottom: 0.5rem;
       }
 

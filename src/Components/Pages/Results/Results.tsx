@@ -460,6 +460,7 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
   coverageResult,
 }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [showFieldError, setShowFieldError] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const VALID_PHONE_NUMBER_LENGTH = 10;
@@ -496,6 +497,8 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
     const value = formatPhoneNumber(e.target.value);
     setPhoneNumber(value);
     setShowSuccess(false);
+    setShowFieldError(false);
+    setShowError(false);
   };
 
   const handleSubmit = () => {
@@ -506,14 +509,15 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
           id: user?.id,
           phone_number: parseInt(cleaned),
         });
-        setShowError(false);
+        setShowFieldError(false);
         setShowSuccess(true);
         gtmPush("gce_phone_submit", { gce_result: coverageResult });
       } catch {
+        setShowError(true);
         rollbar.critical("Cannot connect to tenant platform");
       }
     } else {
-      setShowError(true);
+      setShowFieldError(true);
     }
   };
 
@@ -533,7 +537,7 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
           <TextInput
             labelText="Phone number"
             placeholder="(123) 456-7890"
-            invalid={showError}
+            invalid={showFieldError}
             invalidText="Enter a valid phone number"
             id="phone-number-input"
             name="phone-number-input"
@@ -552,6 +556,12 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
               <div className="success-message">
                 <Icon icon="check" />
                 Phone number submitted
+              </div>
+            )}
+            {showError && (
+              <div className="error-message">
+                <Icon icon="circleExclamation" />
+                Something went wrong. Try again later.
               </div>
             )}
             Your phone number will never be saved or used outside of this
