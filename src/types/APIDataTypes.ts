@@ -44,14 +44,19 @@ export type GCEUser = {
   id: number;
 };
 
-export type CriterionResult = "ELIGIBLE" | "INELIGIBLE" | "UNKNOWN";
+export type CriterionResult =
+  | "ELIGIBLE"
+  | "INELIGIBLE"
+  | "UNKNOWN"
+  | "OTHER_PROTECTION";
 
 export type CoverageResult =
   | "COVERED"
   | "NOT_COVERED"
   | "UNKNOWN"
   | "RENT_STABILIZED"
-  | "NYCHA";
+  | "NYCHA"
+  | "SUBSIDIZED";
 
 export type CriteriaResults = {
   rent?: CriterionResult;

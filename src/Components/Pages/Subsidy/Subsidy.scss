@@ -1,0 +1,67 @@
+@import "../../../mixins.scss";
+
+#subsidy-page {
+  @include for-phone-only() {
+    .share-button__container {
+      margin-top: 2.25rem !important; // overrides ShareButton.scss
+    }
+    .content-section {
+      padding: 0 1.5rem 2rem !important; // overrides styles w/ max-width 772px
+      gap: 2rem;
+      .content-box__header-title {
+        display: none;
+      }
+      .content-box__header-subtitle {
+        @include h3_mobile;
+      }
+      .content-box__section {
+        p {
+          margin: unset;
+          @include body_standard_mobile;
+        }
+      }
+      .content-box__footer__message,
+      .content-box__footer__link {
+        @include body_standard_mobile;
+      }
+    }
+
+    .accordion {
+      .content-box__section__header {
+        @include body_standard_mobile;
+        font-weight: 600;
+      }
+      .accordion__content {
+        p,
+        .jfcl-link {
+          @include small_text_mobile;
+        }
+      }
+    }
+  }
+
+  @media print {
+    .headline-section__address__print {
+      padding-bottom: 0.75rem; //12px
+    }
+
+    .headline-section__back-link {
+      display: none;
+    }
+
+    .content-box {
+      border: unset;
+      .accordion__chevron {
+        display: none;
+      }
+      .content-box__footer {
+        display: none;
+      }
+    }
+
+    .divider__print {
+      border-bottom: 1px solid black;
+      width: 100%;
+    }
+  }
+}

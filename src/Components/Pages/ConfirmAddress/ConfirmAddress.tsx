@@ -5,7 +5,7 @@ import { Button } from "@justfixnyc/component-library";
 
 import { Address } from "../Home/Home";
 import { ContentBox } from "../../ContentBox/ContentBox";
-import { BackLink } from "../../JFCLLinkInternal";
+import { BackLink } from "../../JFCLLink";
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { GCEUser } from "../../../types/APIDataTypes";

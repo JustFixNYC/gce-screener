@@ -5,15 +5,15 @@ import {
   ContentBoxFooter,
   ContentBoxItem,
 } from "../../ContentBox/ContentBox";
-import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { Address } from "../Home/Home";
 import { Header } from "../../Header/Header";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { GCEUser } from "../../../types/APIDataTypes";
 import { FormFields } from "../Form/Survey";
-import "./RentStabilization.scss";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
+import { JFCLLinkExternal } from "../../JFCLLink";
+import "./RentStabilization.scss";
 
 const EMAIL_SUBJECT =
   "Good Cause NYC | Find out if your apartment is rent stabilized";
