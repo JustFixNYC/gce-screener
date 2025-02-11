@@ -3,6 +3,7 @@ import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { Address } from "../Pages/Home/Home";
 import { BackLink } from "../JFCLLinkInternal";
 import { abbreviateBoro, ProgressStep, toTitleCase } from "../../helpers";
+import { gtmPush } from "../../google-tag-manager";
 
 type HeaderProps = {
   title: string | React.ReactNode;
@@ -28,7 +29,8 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="headline-section__content">
         {isGuide && (
           <nav className="headline-section__back-link">
-            <BackLink to="/results">Back to Result</BackLink>
+            <BackLink to="/results"
+              onClick={() => gtmPush("gce_back_to_result")}>Back to Result</BackLink>
           </nav>
         )}
         <div

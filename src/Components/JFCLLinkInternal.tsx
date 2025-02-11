@@ -10,10 +10,15 @@ type JFCLLinkInternal = {
   to: To;
   children: React.ReactNode;
   className?: string | undefined;
+  onClick?: () => void;
 };
 
 const JFCLLinkInternal: React.FC<JFCLLinkInternal> = (props) => (
-  <Link to={props.to} className={classNames(props.className, "jfcl-link")}>
+  <Link
+    to={props.to}
+    className={classNames(props.className, "jfcl-link")}
+    onClick={props.onClick}
+  >
     {props.children}
     <span className="jfcl-link__icon-wrapper">
       &#xfeff;
@@ -25,6 +30,7 @@ const JFCLLinkInternal: React.FC<JFCLLinkInternal> = (props) => (
 export const BackLink: React.FC<JFCLLinkInternal> = (props) => (
   <Link
     to={props.to}
+    onClick={props.onClick}
     className={classNames(props.className, "jfcl-link back-link")}
   >
     <span className="jfcl-link__icon-wrapper">

@@ -14,6 +14,7 @@ import { GCEUser } from "../../../types/APIDataTypes";
 import { FormFields } from "../Form/Survey";
 import "./RentStabilization.scss";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
+import { gtmPush } from "../../../google-tag-manager";
 
 const EMAIL_SUBJECT =
   "Good Cause NYC | Find out if your apartment is rent stabilized";
@@ -99,6 +100,7 @@ export const RentStabilization: React.FC = () => {
               message="Update your coverage result"
               linkText="Adjust survey answers"
               linkTo="/survey"
+              linkOnClick={() => gtmPush("gce_return_survey")}
             />
           </ContentBox>
           <div className="divider__print" />

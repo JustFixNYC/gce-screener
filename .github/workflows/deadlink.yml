@@ -1,0 +1,15 @@
+on:
+  schedule:
+  - cron: "0 5 1 * *"
+  workflow_dispatch:
+
+jobs:
+  find_dead_links:
+    runs-on: ubuntu-latest
+    name: Deadlink crawler
+    steps:
+      - name: Scan Good Cause NYC Dead Links
+        uses: JustFixNYC/deadlink-crawler@v2.1
+        with:
+          site-url: "http://goodcausenyc.org"
+          token: ${{ secrets.GITHUB_TOKEN }}
