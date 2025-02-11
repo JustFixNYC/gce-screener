@@ -1,5 +1,6 @@
 import { Icon } from "@justfixnyc/component-library";
 import "./ShareButtons.scss";
+import { gtmPush } from "../../google-tag-manager";
 
 type ShareButtonType = "email" | "download" | "print" | "bookmark";
 type ShareButtonsProps = {
@@ -24,6 +25,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
       rel="noopener noreferrer"
       className="share-button jfcl-link"
       key={key}
+      onClick={() => gtmPush("gce_share_button", { type: "email" })}
     >
       <Icon icon="envelope" type="regular" />
       {x}
@@ -31,14 +33,28 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
   );
 
   const downloadButton = (x: string, key: React.Key) => (
-    <button onClick={window.print} className="share-button jfcl-link" key={key}>
+    <button
+      className="share-button jfcl-link"
+      key={key}
+      onClick={() => {
+        window.print();
+        gtmPush("gce_share_button", { type: "download" });
+      }}
+    >
       <Icon icon="download" type="regular" />
       {x}
     </button>
   );
 
   const printButton = (x: string, key: React.Key) => (
-    <button onClick={window.print} className="share-button jfcl-link" key={key}>
+    <button
+      className="share-button jfcl-link"
+      key={key}
+      onClick={() => {
+        window.print();
+        gtmPush("gce_share_button", { type: "download" });
+      }}
+    >
       <Icon icon="print" type="regular" />
       {x}
     </button>

@@ -29,6 +29,7 @@ import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import "./PortfolioSize.scss";
+import { gtmPush } from "../../../google-tag-manager";
 
 // const LOOM_EMBED_URL =
 //   "https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119";
@@ -164,6 +165,7 @@ export const PortfolioSize: React.FC = () => {
             message="Update your coverage result"
             linkText="Adjust survey answers"
             linkTo="/survey"
+            linkOnClick={() => gtmPush("gce_return_survey")}
           />
         </ContentBox>
         <div className="divider__print" />
@@ -315,6 +317,7 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
     } else {
       setVisibleCount(visibleCount + LOAD_MORE_AMOUNT);
     }
+    gtmPush("gce_load_more");
   };
 
   return (
