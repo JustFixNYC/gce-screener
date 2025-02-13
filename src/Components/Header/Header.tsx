@@ -3,8 +3,7 @@ import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { Address } from "../Pages/Home/Home";
 import { BackLink } from "../JFCLLink";
 import { abbreviateBoro, ProgressStep, toTitleCase } from "../../helpers";
-import { FormFields } from "../Pages/Form/Survey";
-import { useLoaderData } from "react-router-dom";
+import { gtmPush } from "../../google-tag-manager";
 
 type HeaderProps = {
   title: string | React.ReactNode;
@@ -25,25 +24,18 @@ export const Header: React.FC<HeaderProps> = ({
   lastStepReached,
   children,
 }) => {
-  const sessionData = useLoaderData() as {
-    fields?: FormFields;
-  };
-
   return (
     <div className="headline-section">
       <div className="headline-section__content">
         {isGuide && (
-          <>
-            {sessionData?.fields ? (
-              <nav className="headline-section__back-link">
-                <BackLink to="/results">Back to Result</BackLink>
-              </nav>
-            ) : (
-              <nav className="headline-section__back-link">
-                <BackLink to="/survey">Back to Survey</BackLink>
-              </nav>
-            )}
-          </>
+          <nav className="headline-section__back-link">
+            <BackLink
+              to="/results"
+              onClick={() => gtmPush("gce_back_to_result")}
+            >
+              Back to Result
+            </BackLink>
+          </nav>
         )}
         {address && (
           <div

@@ -38,6 +38,7 @@ import "./Results.scss";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkInternal } from "../../JFCLLink";
+import { gtmPush } from "../../../google-tag-manager";
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -141,17 +142,19 @@ export const Results: React.FC = () => {
           )}
 
           {coverageResult === "RENT_STABILIZED" && (
-            <RentStabilizedProtections />
+            <RentStabilizedProtections coverageResult={coverageResult} />
           )}
           {coverageResult === "UNKNOWN" && (
             <GoodCauseProtections
               subtitle="Protections you might have under Good Cause"
               rent={Number(fields.rent)}
+              coverageResult={coverageResult}
             />
           )}
           {coverageResult === "COVERED" && (
             <>
               <GoodCauseExercisingRights
+                coverageResult={coverageResult}
                 shareButtons={
                   <ShareButtons
                     buttonsInfo={[
@@ -167,9 +170,11 @@ export const Results: React.FC = () => {
               <GoodCauseProtections rent={Number(fields.rent)} />
             </>
           )}
-          {coverageResult === "NYCHA" && <NYCHAProtections />}
-          <UniversalProtections />
-          <PhoneNumberCallout />
+          {coverageResult === "NYCHA" && (
+            <NYCHAProtections coverageResult={coverageResult} />
+          )}
+          <UniversalProtections coverageResult={coverageResult} />
+          <PhoneNumberCallout coverageResult={coverageResult} />
           <div className="share-footer">
             <h3 className="share-footer__header">
               Help your neighbors learn if they’re covered{" "}
@@ -288,6 +293,7 @@ const CriteriaTable: React.FC<{
       message="Need to update your information?"
       linkText="Back to survey"
       linkTo="/survey"
+      linkOnClick={() => gtmPush("gce_return_survey")}
       className="criteria-table__footer"
     />
   </ContentBox>
@@ -329,6 +335,7 @@ const EligibilityNextSteps: React.FC<{
             title="We need to know if your apartment is rent stabilized"
             icon={unsureIcon}
             className="next-step"
+            gtmId="next-step_rs"
           >
             <p>
               The Good Cause Eviction law only covers tenants whose apartments
@@ -348,6 +355,7 @@ const EligibilityNextSteps: React.FC<{
             title="We need to know if your landlord owns more than 10 units"
             icon={unsureIcon}
             className="next-step"
+            gtmId="next-step_portfolio"
           >
             <p>
               {`Good Cause Eviction law only covers tenants whose landlord owns
@@ -381,6 +389,7 @@ const EligibilityNextSteps: React.FC<{
           message="Update your coverage result"
           linkText="Back to survey"
           linkTo="/survey"
+          linkOnClick={() => gtmPush("gce_return_survey")}
         />
       </ContentBox>
       <div className="divider__print" />
@@ -486,8 +495,11 @@ const CoverageResultHeadline: React.FC<{
   );
 };
 
-const PhoneNumberCallout: React.FC = () => {
+const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
+  coverageResult,
+}) => {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [showFieldError, setShowFieldError] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const VALID_PHONE_NUMBER_LENGTH = 10;
@@ -524,6 +536,8 @@ const PhoneNumberCallout: React.FC = () => {
     const value = formatPhoneNumber(e.target.value);
     setPhoneNumber(value);
     setShowSuccess(false);
+    setShowFieldError(false);
+    setShowError(false);
   };
 
   const handleSubmit = () => {
@@ -534,13 +548,15 @@ const PhoneNumberCallout: React.FC = () => {
           id: user?.id,
           phone_number: parseInt(cleaned),
         });
-        setShowError(false);
+        setShowFieldError(false);
         setShowSuccess(true);
+        gtmPush("gce_phone_submit", { gce_result: coverageResult });
       } catch {
+        setShowError(true);
         rollbar.critical("Cannot connect to tenant platform");
       }
     } else {
-      setShowError(true);
+      setShowFieldError(true);
     }
   };
 
@@ -560,7 +576,7 @@ const PhoneNumberCallout: React.FC = () => {
           <TextInput
             labelText="Phone number"
             placeholder="(123) 456-7890"
-            invalid={showError}
+            invalid={showFieldError}
             invalidText="Enter a valid phone number"
             id="phone-number-input"
             name="phone-number-input"
@@ -579,6 +595,12 @@ const PhoneNumberCallout: React.FC = () => {
               <div className="success-message">
                 <Icon icon="check" />
                 Phone number submitted
+              </div>
+            )}
+            {showError && (
+              <div className="error-message">
+                <Icon icon="circleExclamation" />
+                Something went wrong. Try again later.
               </div>
             )}
             Your phone number will never be saved or used outside of this
@@ -608,6 +630,7 @@ const CopyURLButton: React.FC = () => {
     setTimeout(() => {
       setShowSuccess(false);
     }, successDuration);
+    gtmPush("gce_copy_url");
   };
 
   return (

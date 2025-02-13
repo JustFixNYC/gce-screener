@@ -66,10 +66,11 @@ $videoEmbedW: 623px;
     flex-direction: column;
 
     .content-box__section__video {
-      width: $videoEmbedW;
-      background-color: black;
       align-self: center;
       margin-top: 1.875rem; // 30px
+      iframe {
+        border: 0px;
+      }
     }
 
     .note-box {

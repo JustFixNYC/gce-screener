@@ -30,6 +30,7 @@ import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPr
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import "./PortfolioSize.scss";
+import { gtmPush } from "../../../google-tag-manager";
 
 // const LOOM_EMBED_URL =
 //   "https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119";
@@ -108,7 +109,7 @@ export const PortfolioSize: React.FC = () => {
                 this is by searching real estate documents for your building’s
                 landlord’s name and signature.
               </p>
-              <VideoEmbed url="" />
+              <VideoEmbed url="https://www.youtube.com/embed/jFyi3k6rr8k?si=C98276JgvDojcfx7&amp;controls=0" />
               <div className="content-box__section__search-building">
                 <AcrisLinks
                   {...bldgData}
@@ -140,7 +141,7 @@ export const PortfolioSize: React.FC = () => {
                     } across other buildings.`}
                 </p>
               )}
-              <VideoEmbed url="" />
+              <VideoEmbed url="https://www.youtube.com/embed/jFyi3k6rr8k?si=C98276JgvDojcfx7&amp;controls=0" />
               <div className="content-box__section__related-buildings">
                 {!!bldgData?.related_properties &&
                 bldgData?.related_properties.length > 0 ? (
@@ -166,6 +167,7 @@ export const PortfolioSize: React.FC = () => {
               message="Update your coverage result"
               linkText="Adjust survey answers"
               linkTo="/survey"
+              linkOnClick={() => gtmPush("gce_return_survey")}
             />
           </ContentBox>
           <div className="divider__print" />
@@ -177,25 +179,15 @@ export const PortfolioSize: React.FC = () => {
 
 const VideoEmbed: React.FC<{ url: string }> = ({ url }) => (
   <div className="content-box__section__video">
-    {/* Loom embed code: */}
-    <div
-      style={{
-        position: "relative",
-        paddingBottom: "56.25%",
-        height: "0",
-      }}
-    >
-      <iframe
-        src={url}
-        style={{
-          position: "absolute",
-          top: "0",
-          left: "0",
-          width: "100%",
-          height: "100%",
-        }}
-      />
-    </div>
+    <iframe
+      width="560"
+      height="315"
+      src={url}
+      title="YouTube video for how to find other apartments your landlord owns"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+    ></iframe>
   </div>
 );
 
@@ -324,6 +316,7 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
     } else {
       setVisibleCount(visibleCount + LOAD_MORE_AMOUNT);
     }
+    gtmPush("gce_load_more");
   };
 
   return (

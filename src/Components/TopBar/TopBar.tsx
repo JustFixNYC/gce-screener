@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./TopBar.scss";
+import { gtmPush } from "../../google-tag-manager";
 
 export const TopBar: React.FC = () => {
   return (
@@ -28,7 +29,9 @@ export const TopBar: React.FC = () => {
         </a>
       </div>
       <div className="topbar__search">
-        <Link to="/">New Search</Link>
+        <Link to="/" onClick={() => gtmPush("gce_new_search")}>
+          New Search
+        </Link>
       </div>
     </header>
   );

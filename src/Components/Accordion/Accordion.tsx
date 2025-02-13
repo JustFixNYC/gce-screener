@@ -8,14 +8,23 @@ type AccordionProps = {
   children: React.ReactNode;
   open?: boolean;
   className?: string;
+  onClick?: () => void;
+  id?: string;
 };
 export const Accordion: React.FC<AccordionProps> = ({
   summary,
   children,
   open = false,
   className,
+  onClick,
+  id,
 }) => (
-  <details className={classNames("accordion", className)} open={open}>
+  <details
+    className={classNames("accordion", className)}
+    open={open}
+    onClick={onClick}
+    id={id}
+  >
     <summary className="accordion__summary">
       {summary}
       <Icon icon="chevronDown" className="accordion__chevron" />

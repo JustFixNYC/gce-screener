@@ -13,6 +13,7 @@ import { GCEUser } from "../../../types/APIDataTypes";
 import { FormFields } from "../Form/Survey";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkExternal } from "../../JFCLLink";
+import { gtmPush } from "../../../google-tag-manager";
 import "./RentStabilization.scss";
 
 const EMAIL_SUBJECT =
@@ -99,6 +100,7 @@ export const RentStabilization: React.FC = () => {
               message="Update your coverage result"
               linkText="Adjust survey answers"
               linkTo="/survey"
+              linkOnClick={() => gtmPush("gce_return_survey")}
             />
           </ContentBox>
           <div className="divider__print" />

@@ -3,6 +3,8 @@ import "./ContentBox.scss";
 import { Accordion } from "../Accordion/Accordion";
 import classNames from "classnames";
 import { Link, To } from "react-router-dom";
+import { gtmPush } from "../../google-tag-manager";
+import { CoverageResult } from "../../types/APIDataTypes";
 
 export type ContentBoxProps = {
   title?: ReactNode;
@@ -44,6 +46,8 @@ export type ContentBoxItemProps = {
   accordion?: boolean;
   open?: boolean;
   className?: string;
+  gtmId?: string;
+  coverageResult?: CoverageResult;
 };
 
 export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
@@ -55,6 +59,8 @@ export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
   open = false,
   className,
   children,
+  gtmId,
+  coverageResult,
 }) => {
   const headerSection = (
     <>
@@ -79,8 +85,25 @@ export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
     className
   );
 
+  const handleAccordionClick = () => {
+    if (!gtmId) return;
+    const detailsElement = document.getElementById(gtmId) as HTMLDetailsElement;
+    const isOpen = detailsElement.open;
+    if (isOpen) return;
+    gtmPush("gce_accordion_open", {
+      gce_id: gtmId,
+      gce_result: coverageResult,
+    });
+  };
+
   return accordion ? (
-    <Accordion summary={headerSection} className={containerClass} open={open}>
+    <Accordion
+      summary={headerSection}
+      className={containerClass}
+      open={open}
+      onClick={handleAccordionClick}
+      id={gtmId}
+    >
       {children}
     </Accordion>
   ) : (
@@ -96,6 +119,7 @@ export type ContentBoxFooterProps = {
   linkText: string;
   linkTo: To;
   className?: string;
+  linkOnClick?: () => void;
 };
 
 export const ContentBoxFooter: React.FC<ContentBoxFooterProps> = ({
@@ -103,12 +127,13 @@ export const ContentBoxFooter: React.FC<ContentBoxFooterProps> = ({
   className,
   linkText,
   linkTo,
+  linkOnClick,
 }) => {
   return (
     <div className={classNames("content-box__footer", className)}>
       <div className="content-box__footer__message">{message}</div>
       <div className="content-box__footer__link">
-        <Link to={linkTo} className="jfcl-link">
+        <Link to={linkTo} className="jfcl-link" onClick={linkOnClick}>
           {linkText}
         </Link>
       </div>
