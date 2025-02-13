@@ -1,6 +1,7 @@
 import { FormFields } from "../Components/Pages/Form/Survey";
 import { BuildingData, CriterionResult } from "../types/APIDataTypes";
 import {
+  buildingSubsidyLanguage,
   formatNumber,
   urlDOBBBL,
   urlDOBBIN,
@@ -366,35 +367,16 @@ function eligibilitySubsidy(
     determination = "OTHER_PROTECTION";
     requirement =
       "There are different, stronger protections for tenants who live in subsidized housing.";
-    const subsidyLanguage =
-      housingType === "SUBSIDIZED_HDFC"
-        ? "is an HDFC"
-        : housingType === "SUBSIDIZED_LIHTC"
-        ? "receives receives the Low-Income Housing Tax Credit (LIHTC)"
-        : housingType === "SUBSIDIZED_ML"
-        ? "is a Mitchell-Lama"
-        : housingType === "SUBSIDIZED_OTHER"
-        ? "recieves a subsidy"
-        : "";
-    userValue = `You reported that your buidling ${subsidyLanguage}.`;
+
+    userValue = `You reported that your buidling ${buildingSubsidyLanguage(
+      subsidy_name
+    )}.`;
   } else if (housingType === "UNSURE") {
     determination = "UNKNOWN";
     requirement = "You must not live in NYCHA or subsidized housing.";
-    const subsidyLanguage =
-      subsidy_name === "HUD Project-Based"
-        ? "receives a HUD Project-Based subsidy"
-        : subsidy_name === "Low-Income Housing Tax Credit (LIHTC)"
-        ? "receives receives the Low-Income Housing Tax Credit (LIHTC)"
-        : subsidy_name === "Article XI"
-        ? "is an Article XI"
-        : subsidy_name === "HPD Program"
-        ? "is part of an HPD subsidy Program"
-        : subsidy_name === "Mitchell-Lama"
-        ? "is a Mitchell-Lama"
-        : "";
     userValue = (
       <>
-        {subsidyLanguage === "" ? (
+        {subsidy_name === "" ? (
           <>
             You reported that you are not sure if your apartment is part of any
             subsidized housing programs.
@@ -403,11 +385,11 @@ function eligibilitySubsidy(
           <>
             {`You reported that you are not sure if your apartment is part of any
             subsidized housing programs, but public data suggests that your
-            building ${subsidyLanguage}.`}
+            building ${buildingSubsidyLanguage(subsidy_name)}.`}
           </>
         )}
         <br />
-        {subsidyLanguage !== "" && (
+        {subsidy_name !== "" && (
           <>
             <JFCLLinkExternal
               to={urlFCSubsidized(bbl)}
