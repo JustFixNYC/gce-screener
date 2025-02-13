@@ -381,7 +381,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
     return (
       <>
         {`Your building appears to receive the ${
-          activeJ51 ? "421a" : "J51"
+          active421a ? "421a" : "J51"
         } tax exemption. This means your
         apartment is rent stabilized.`}
         <br />

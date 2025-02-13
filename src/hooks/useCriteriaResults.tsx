@@ -6,6 +6,7 @@ import {
   urlDOBBBL,
   urlDOBBIN,
   urlFCSubsidized,
+  urlWOWTimelineRS,
   urlZOLA,
 } from "../helpers";
 import { JFCLLinkExternal, JFCLLinkInternal } from "../Components/JFCLLink";
@@ -209,11 +210,40 @@ function eligibilityRentStabilized(
   criteriaData: CriteriaData,
   searchParams: URLSearchParams
 ): CriterionDetails {
-  const { rentStabilized } = criteriaData;
+  const {
+    rentStabilized,
+    post_hstpa_rs_units,
+    unitsres,
+    end_421a,
+    end_j51,
+    bbl,
+  } = criteriaData;
   const criteria = "rentStabilized";
   const requirement = "Your apartment must not be rent stabilized.";
   let determination: CriterionResult;
   let userValue: React.ReactNode;
+
+  const allUnitsRS = unitsres > 0 && post_hstpa_rs_units >= unitsres;
+  const active421a = new Date(end_421a) > new Date();
+  const activeJ51 = new Date(end_j51) > new Date();
+  const wowLink = (
+    <JFCLLinkExternal to={urlWOWTimelineRS(bbl)} className="criteria-link">
+      View source
+    </JFCLLinkExternal>
+  );
+  const subsidyLink = (
+    <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="criteria-link">
+      View source
+    </JFCLLinkExternal>
+  );
+  const guideLink = (
+    <JFCLLinkInternal
+      to={`/rent_stabilization?${searchParams.toString()}`}
+      className="criteria-link"
+    >
+      Find out if you are rent stabilized
+    </JFCLLinkInternal>
+  );
 
   // should remove null from type for all form fields, since required
   if (rentStabilized === null) return { criteria, requirement };
@@ -223,21 +253,65 @@ function eligibilityRentStabilized(
     userValue = "You reported that your apartment is rent stabilized.";
   } else if (rentStabilized === "NO") {
     determination = "ELIGIBLE";
-    userValue = "You reported that your apartment is not rent stabilized.";
+    userValue =
+      active421a || activeJ51 ? (
+        <>
+          {`You reported that your apartment is not rent stabilized, and we are using ` +
+            `this information in our coverage determination, even though public data sources ` +
+            `indicate that your building receives the ${
+              activeJ51 ? "421a" : "J51"
+            } tax exemption, which means your apartment should be rent stabilized.`}
+          <br />
+          {subsidyLink}
+          <br />
+          {guideLink}
+        </>
+      ) : allUnitsRS ? (
+        <>
+          {`You reported that your apartment is not rent stabilized, and we are using ` +
+            `this information in our coverage determination, even though public data sources ` +
+            `indicate that all apartments in your building are rent stabilized.`}
+          <br />
+          {wowLink}
+          <br />
+          {guideLink}
+        </>
+      ) : (
+        "You reported that your apartment is not rent stabilized."
+      );
   } else {
     determination = "UNKNOWN";
-    userValue = (
-      <>
-        You reported that you are not sure if your apartment is rent stabilized.
-        <br />
-        <JFCLLinkInternal
-          to={`/rent_stabilization?${searchParams.toString()}`}
-          className="criteria-link"
-        >
-          Find out if you are rent stabilized
-        </JFCLLinkInternal>
-      </>
-    );
+    userValue =
+      active421a || activeJ51 ? (
+        <>
+          {`You reported that you are not sure if your apartment is rent stabilized, and we are using ` +
+            `this information in our coverage determination, even though public data sources ` +
+            `indicate that your building receives the ${
+              activeJ51 ? "421a" : "J51"
+            } tax exemption, which means your apartment should be rent stabilized.`}
+          <br />
+          {subsidyLink}
+          <br />
+          {guideLink}
+        </>
+      ) : allUnitsRS ? (
+        <>
+          {`You reported that you are not sure if your apartment is rent stabilized, and we are using ` +
+            `this information in our coverage determination, even though public data sources ` +
+            `indicate that all apartments in your building are rent stabilized.`}
+          <br />
+          {wowLink}
+          <br />
+          {guideLink}
+        </>
+      ) : (
+        <>
+          You reported that you are not sure if your apartment is rent
+          stabilized.
+          <br />
+          {guideLink}
+        </>
+      );
   }
 
   return {
