@@ -19,7 +19,7 @@ import {
 import { cleanFormFields } from "../../../api/helpers";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
-import { BackLink, JFCLLink, JFCLLinkExternal } from "../../JFCLLink";
+import { BackLink, JFCLLinkExternal } from "../../JFCLLink";
 import "./Survey.scss";
 
 export type FormFields = {
@@ -414,7 +414,7 @@ const getSubsidyHelperText = (
 
   const { bbl, is_nycha, is_subsidized, subsidy_name } = bldgData;
 
-  const subsidyLink = (
+  const sourceLink = (
     <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
       View source
     </JFCLLinkExternal>
@@ -425,7 +425,7 @@ const getSubsidyHelperText = (
       <>
         Public data shows that your building is part of NYCHA.
         <br />
-        {subsidyLink}
+        {sourceLink}
       </>
     );
   } else if (is_subsidized) {
@@ -435,21 +435,17 @@ const getSubsidyHelperText = (
           subsidy_name
         )}, which is considered subsidized housing.`}
         <br />
-        {subsidyLink}
+        {sourceLink}
       </>
     );
   } else {
     return (
       <>
-        Public data sources do not show that your building is part of any
-        subsidized housing programs.
+        If you applied for your apartment through Housing Connect and are unsure
+        of your specific subsidy, you can select “Other.”
         <br />
-        If you are unsure of your subsidy status, especially if you receive a
-        housing voucher, please review our{" "}
-        <JFCLLink to="/subsidy" icon="arrowUpRight">
-          subsidy guide
-        </JFCLLink>{" "}
-        before proceeding.
+        If you used a voucher that can be used anywhere to cover some or all of
+        the your rent, select “No, my apartment is not subsidized.”
       </>
     );
   }
