@@ -301,14 +301,7 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
   const relatedProperties = props.related_properties
     ?.filter((bldg) => bldg.unitsres > 0)
     .sort(prioritizeBldgs);
-
-  // TODO: remove later - moving up SI building for guide recording
-  const siBuilding = relatedProperties.filter((x) => x.bbl.charAt(0) == "5")[0];
   const totalCount = relatedProperties?.length;
-  const relatedProperties2 = [relatedProperties[0], siBuilding].concat(
-    relatedProperties.slice(1)
-  );
-
   const [visibleCount, setVisibleCount] = useState(
     Math.min(totalCount, INIT_DISPLAY)
   );
@@ -329,7 +322,7 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
   return (
     <>
       <ul>
-        {relatedProperties2?.slice(0, visibleCount).map((bldg, i) => (
+        {relatedProperties?.slice(0, visibleCount).map((bldg, i) => (
           <li key={i}>
             <AcrisLinks
               {...bldg}
