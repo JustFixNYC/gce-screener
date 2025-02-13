@@ -351,6 +351,23 @@ const EligibilityNextSteps: React.FC<{
           </ContentBoxItem>
         )}
 
+        {subsidyUnknown && (
+          <ContentBoxItem
+            title="We need to know if your apartment is part of NYCHA or subsidized housing"
+            icon={unsureIcon}
+            className="next-step"
+          >
+            <p>
+              Good Cause Eviction law does not cover subsidized housing, as the
+              subsidy program separately provides similar tenant protections.
+            </p>
+
+            <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
+              Find out if your building is subsidized
+            </JFCLLinkInternal>
+          </ContentBoxItem>
+        )}
+
         {portfolioSizeUnknown && (
           <ContentBoxItem
             title="We need to know if your landlord owns more than 10 units"
@@ -365,23 +382,6 @@ const EligibilityNextSteps: React.FC<{
             </p>
             <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
               Find your landlord’s other buildings
-            </JFCLLinkInternal>
-          </ContentBoxItem>
-        )}
-
-        {subsidyUnknown && (
-          <ContentBoxItem
-            title="We need to know if your building is subsidized"
-            icon={unsureIcon}
-            className="next-step"
-          >
-            <p>
-              Good Cause Eviction law does not cover subsidized housing, as the
-              subsidy program separately provides similar tenant protections.
-            </p>
-
-            <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
-              Find out if your building is subsidized
             </JFCLLinkInternal>
           </ContentBoxItem>
         )}
