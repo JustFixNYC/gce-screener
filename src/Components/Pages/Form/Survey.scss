@@ -3,6 +3,12 @@
 @import "../../../colors.scss";
 
 #survey-page {
+  .headline-section__subtitle {
+    @include for-tablet-portrait-up {
+      width: 75%;
+    }
+  }
+
   .content-section {
     @include for-phone-only() {
       padding-bottom: 0;
@@ -77,19 +83,6 @@
       margin-right: 0.625rem; //10px
       padding: 0.75rem 1.5rem 0.75rem 0; // 12px 24px 12px 0;
       align-self: center;
-    }
-
-    // sticky footer
-    @include for-phone-only() {
-      position: sticky;
-      bottom: 0;
-      background-color: $OFF_WHITE_NEW;
-      width: 105%;
-      margin: unset;
-      margin-left: -1.5rem; // override padding from content-section
-      padding: 1rem;
-      justify-content: center;
-      border-top: 1px solid $OFF_BLACK;
     }
   }
 

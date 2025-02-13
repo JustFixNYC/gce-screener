@@ -23,7 +23,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
       href={mailtoLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="share-button jfcl-link"
+      className="share-button share-button__email jfcl-link"
       key={key}
       onClick={() => gtmPush("gce_share_button", { type: "email" })}
     >
@@ -34,7 +34,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
 
   const downloadButton = (x: string, key: React.Key) => (
     <button
-      className="share-button jfcl-link"
+      className="share-button share-button__download jfcl-link"
       key={key}
       onClick={() => {
         window.print();
@@ -48,7 +48,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
 
   const printButton = (x: string, key: React.Key) => (
     <button
-      className="share-button jfcl-link"
+      className="share-button share-button__print jfcl-link"
       key={key}
       onClick={() => {
         window.print();
@@ -61,7 +61,11 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
   );
 
   const bookmarkButton = (x: string, key: React.Key) => (
-    <button onClick={() => {}} className="share-button jfcl-link" key={key}>
+    <button
+      onClick={() => {}}
+      className="share-button share-button__bookmark jfcl-link"
+      key={key}
+    >
       <Icon icon="bookmark" type="regular" />
       {x}
     </button>

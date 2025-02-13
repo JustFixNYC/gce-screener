@@ -146,7 +146,7 @@ export const Results: React.FC = () => {
           )}
           {coverageResult === "UNKNOWN" && (
             <GoodCauseProtections
-              subtitle="Protections you might have under Good Cause Eviction"
+              subtitle="Protections you might have under Good Cause"
               rent={Number(fields.rent)}
               coverageResult={coverageResult}
             />
@@ -167,7 +167,7 @@ export const Results: React.FC = () => {
                   />
                 }
               />
-              <GoodCauseProtections />
+              <GoodCauseProtections rent={Number(fields.rent)} />
             </>
           )}
           {coverageResult === "NYCHA" && (
@@ -332,7 +332,6 @@ const EligibilityNextSteps: React.FC<{
               are not rent stabilized. You told us that you are unsure of your
               rent stabilization status.
             </p>
-            <br />
             <JFCLLinkInternal
               to={`/rent_stabilization?${searchParams.toString()}`}
             >
@@ -353,8 +352,6 @@ const EligibilityNextSteps: React.FC<{
                 more than 10 units. Your building has only ${bldgData.unitsres} apartments, but
                 your landlord may own other buildings.`}
             </p>
-            <br />
-
             <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
               Find your landlord’s other buildings
             </JFCLLinkInternal>
@@ -404,7 +401,7 @@ const CoverageResultHeadline: React.FC<{
     case "UNKNOWN":
       headlineContent = (
         <>
-          Your apartment{" "}
+          <span className="result-headline__top">Your apartment</span>{" "}
           <span className="coverage-pill yellow">might be covered</span> by Good
           Cause Eviction
         </>
@@ -463,6 +460,7 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
   coverageResult,
 }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [showFieldError, setShowFieldError] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const VALID_PHONE_NUMBER_LENGTH = 10;
@@ -499,6 +497,8 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
     const value = formatPhoneNumber(e.target.value);
     setPhoneNumber(value);
     setShowSuccess(false);
+    setShowFieldError(false);
+    setShowError(false);
   };
 
   const handleSubmit = () => {
@@ -509,14 +509,15 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
           id: user?.id,
           phone_number: parseInt(cleaned),
         });
-        setShowError(false);
+        setShowFieldError(false);
         setShowSuccess(true);
         gtmPush("gce_phone_submit", { gce_result: coverageResult });
       } catch {
+        setShowError(true);
         rollbar.critical("Cannot connect to tenant platform");
       }
     } else {
-      setShowError(true);
+      setShowFieldError(true);
     }
   };
 
@@ -536,7 +537,7 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
           <TextInput
             labelText="Phone number"
             placeholder="(123) 456-7890"
-            invalid={showError}
+            invalid={showFieldError}
             invalidText="Enter a valid phone number"
             id="phone-number-input"
             name="phone-number-input"
@@ -555,6 +556,12 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
               <div className="success-message">
                 <Icon icon="check" />
                 Phone number submitted
+              </div>
+            )}
+            {showError && (
+              <div className="error-message">
+                <Icon icon="circleExclamation" />
+                Something went wrong. Try again later.
               </div>
             )}
             Your phone number will never be saved or used outside of this

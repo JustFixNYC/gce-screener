@@ -7,6 +7,15 @@
   letter-spacing: 0.54px;
 }
 
+@mixin h2_desktop {
+  font-family: "Degular Display", Arial, Helvetica, sans-serif;
+  font-size: 4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 4rem */
+  letter-spacing: 0.12rem;
+}
+
 @mixin h3_desktop {
   font-size: 2.25rem; // 36px
   font-style: normal;

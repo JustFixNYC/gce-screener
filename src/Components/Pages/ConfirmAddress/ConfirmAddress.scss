@@ -5,17 +5,19 @@
 $mapImgHeight: 223px;
 
 #confirm-address-page {
-  .content-section {
-    @include for-phone-only() {
-      padding: 2rem 1.5rem 0;
+  .headline-section__subtitle {
+    @include for-tablet-portrait-up {
+      width: 75%;
     }
   }
+
   .content-box {
     display: flex;
     flex-direction: column;
     padding: 1.125rem; // 18px
     margin: 0;
     gap: 1.125rem; // 18px
+    background-color: $WHITE;
     @include for-phone-only() {
       border: none;
       padding: unset;
@@ -30,12 +32,16 @@ $mapImgHeight: 223px;
         font-size: inherit;
         font-weight: inherit;
         text-underline-offset: 4px;
+        @include for-phone-only {
+          text-underline-offset: 2px;
+        }
       }
     }
 
     @include for-phone-only() {
       .info-box__content-container {
         flex-direction: column;
+        gap: 0.5rem;
         @include small_text_mobile;
         a {
           margin-left: unset;
@@ -46,16 +52,17 @@ $mapImgHeight: 223px;
     .map-address-container {
       display: flex;
       gap: 2.25rem; // 36px
+      background-color: $WHITE;
       @include for-phone-only() {
+        background-color: $OFF_WHITE_100;
         flex-direction: column-reverse;
         gap: 2rem;
-        padding-bottom: 1.5rem;
+        padding-bottom: 2rem;
       }
 
       .img-wrapper,
       .img-wrapper__img {
         border-radius: 4px;
-        // width: 100%;
         height: $mapImgHeight;
         @include for-phone-only() {
           width: 100%;
@@ -65,7 +72,7 @@ $mapImgHeight: 223px;
         background-color: $GREY_NEW;
         @include for-phone-only() {
           border: 2px solid #c5ccd1;
-          border-radius: 8px;
+          border-radius: 4px;
         }
       }
       .img-wrapper__img {
@@ -115,16 +122,8 @@ $mapImgHeight: 223px;
       align-self: center;
     }
 
-    // sticky footer
     @include for-phone-only() {
-      position: sticky;
-      bottom: 0;
-      background-color: $OFF_WHITE_NEW;
-      width: 105%;
       margin: unset;
-      padding: 1rem;
-      justify-content: center;
-      border-top: 1px solid $OFF_BLACK;
     }
   }
 }

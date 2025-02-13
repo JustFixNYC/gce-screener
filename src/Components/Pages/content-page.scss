@@ -14,7 +14,7 @@
 
 .headline-section {
   position: relative;
-  padding-top: 0.5rem;
+  padding-top: 1.5rem;
   padding-bottom: 3rem; // 48px
   background-color: $OFF_WHITE_200;
 
@@ -33,7 +33,7 @@
       .jfcl-link {
         padding: 1rem 0;
         @include for-phone-only {
-          @include small_text_mobile;
+          @include body_standard_mobile;
         }
       }
     }
@@ -42,6 +42,7 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
+      @include h2_desktop;
 
       @include for-phone-only {
         @include page_header_mobile;
@@ -59,13 +60,14 @@
 }
 
 .content-section {
-  background-color: $OFF_WHITE_NEW;
+  background-color: $OFF_WHITE_100;
   padding-top: 2.25rem; // 36px
 
   .content-section__content {
     max-width: $contentBoxWidth;
     display: flex;
     flex-direction: column;
+    width: -webkit-fill-available;
   }
 }
 
@@ -73,7 +75,7 @@
   .headline-section,
   .content-section {
     @media (max-width: 772px) {
-      padding: 1rem 1.5rem 2rem;
+      padding: 1rem 1rem 2rem;
     }
   }
   .headline-section__address__print {
@@ -83,12 +85,24 @@
   }
 }
 @media print {
+  #results-page,
+  #portfolio-size-page,
+  #rent-stabilization-page,
+  #tenant-rights-page {
+    .headline-section {
+      padding: 1rem;
+    }
+  }
   .headline-section,
   .content-section {
     background-color: unset;
     border-bottom: unset;
     padding-top: 0;
     padding-bottom: 0;
+  }
+
+  .info-box {
+    border-color: $GREY_NEW !important;
   }
 
   .headline-section__address__print {

@@ -38,7 +38,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         <br />
         <p className="bold">Learn more about the eviction process</p>
         <JFCLLinkExternal
-          href="https://hcr.ny.gov/eviction"
+          to="https://hcr.ny.gov/eviction"
           className="has-label"
         >
           NY Homes and Community Renewal
@@ -46,7 +46,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
 
         <p className="bold">See if you are eligible for a free attorney</p>
         <JFCLLinkExternal
-          href="https://www.evictionfreenyc.org"
+          to="https://www.evictionfreenyc.org"
           className="has-label"
         >
           Eviction Free NYC
@@ -69,7 +69,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         <br />
         <p className="bold">Learn about warranty of habitability</p>
         <JFCLLinkExternal
-          href="https://nycourts.gov/courts/nyc/housing/pdfs/warrantyofhabitability.pdf"
+          to="https://nycourts.gov/courts/nyc/housing/pdfs/warrantyofhabitability.pdf"
           className="has-label"
         >
           NY Courts
@@ -77,7 +77,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
 
         <p className="bold">Learn how tenant associations can help</p>
         <JFCLLinkExternal
-          href="https://www.metcouncilonhousing.org/help-answers/forming-a-tenants-association"
+          to="https://www.metcouncilonhousing.org/help-answers/forming-a-tenants-association"
           className="has-label"
         >
           Met Council on Housing
@@ -85,7 +85,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
 
         <p className="bold">Notify your landlord of repair issues</p>
         <JFCLLinkExternal
-          href="https://app.justfix.org/loc/splash"
+          to="https://app.justfix.org/loc/splash"
           className="has-label"
         >
           JustFix’s Letter of Complaint
@@ -111,7 +111,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         <br />
         <p className="bold">Learn more about fair housing</p>
         <JFCLLinkExternal
-          href="https://www.nyc.gov/site/fairhousing/about/what-is-fair-housing.page"
+          to="https://www.nyc.gov/site/fairhousing/about/what-is-fair-housing.page"
           className="has-label"
         >
           Fair Housing NYC
@@ -121,14 +121,14 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           Learn more about lawful source of income discrimination
         </p>
         <JFCLLinkExternal
-          href="https://www.nyc.gov/site/fairhousing/renters/lawful-source-of-income.page"
+          to="https://www.nyc.gov/site/fairhousing/renters/lawful-source-of-income.page"
           className="has-label"
         >
           Lawful source of income
         </JFCLLinkExternal>
 
         <p className="bold">Report source of income discrimination</p>
-        <JFCLLinkExternal href="https://weunlock.nyc" className="has-label">
+        <JFCLLinkExternal to="https://weunlock.nyc" className="has-label">
           Unlock NYC
         </JFCLLinkExternal>
       </ContentBoxItem>
@@ -153,7 +153,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           organizing a tenant union with your neighbors, fill out this form to
           get support from a tenant group near you.
         </p>
-        <JFCLLinkExternal href="https://actionnetwork.org/forms/are-you-worried-about-your-housing">
+        <JFCLLinkExternal to="https://actionnetwork.org/forms/are-you-worried-about-your-housing">
           Housing Justice for All tenant organizing form
         </JFCLLinkExternal>
       </ContentBoxItem>
@@ -229,7 +229,7 @@ export const GoodCauseProtections: React.FC<
           </p>
           <JFCLLinkExternal
             className="has-label"
-            href="https://legalaidnyc.org/get-help/housing-problems/what-you-need-to-know-about-new-yorks-good-cause-eviction-law/#rent-increases"
+            to="https://legalaidnyc.org/get-help/housing-problems/what-you-need-to-know-about-new-yorks-good-cause-eviction-law/#rent-increases"
           >
             Reasonable Rent Increase
           </JFCLLinkExternal>
@@ -239,10 +239,10 @@ export const GoodCauseProtections: React.FC<
           gtmId="gce-protections_learn"
           coverageResult={coverageResult}
         >
-          <JFCLLinkExternal href="https://housingjusticeforall.org/kyr-good-cause">
+          <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause">
             Housing Justice for All Good Cause Eviction fact sheet
           </JFCLLinkExternal>
-          <JFCLLinkExternal href="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction">
+          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction">
             Met Council on Housing Good Cause Eviction fact sheet
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -289,7 +289,7 @@ export const GoodCauseExercisingRights: React.FC<
           group.
         </p>
         <br />
-        <JFCLLinkExternal href="https://housingjusticeforall.org/resource/fight-your-rent-hike-toolkit/">
+        <JFCLLinkExternal to="https://housingjusticeforall.org/resource/fight-your-rent-hike-toolkit/">
           Tenant Organizing Toolkit from Housing Justice for All
         </JFCLLinkExternal>
       </ContentBoxItem>
@@ -366,10 +366,10 @@ export const GoodCauseExercisingRights: React.FC<
           housing situation.
         </p>
         <br />
-        <JFCLLinkExternal href="https://www.metcouncilonhousing.org/">
+        <JFCLLinkExternal to="https://www.metcouncilonhousing.org/">
           Met Council on Housing
         </JFCLLinkExternal>
-        <JFCLLinkExternal href="https://www.metcouncilonhousing.org/program/tenants-rights-hotline/">
+        <JFCLLinkExternal to="https://www.metcouncilonhousing.org/program/tenants-rights-hotline/">
           Call Met Council on Housing Hotline
         </JFCLLinkExternal>
       </ContentBoxItem>
@@ -398,7 +398,7 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
           levels: for a one-year renewal there is a 2.75% increase, or for a
           two-year renewal there is a 5.25% increase.
         </p>
-        <JFCLLinkExternal href="https://hcr.ny.gov/system/files/documents/2024/10/fact-sheet-26-10-2024.pdf">
+        <JFCLLinkExternal to="https://hcr.ny.gov/system/files/documents/2024/10/fact-sheet-26-10-2024.pdf">
           Learn about rent increase rights
         </JFCLLinkExternal>
       </ContentBoxItem>
@@ -413,7 +413,7 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
           don’t want you as a tenant anymore, they are limited to certain
           reasons for evicting you.
         </p>
-        <JFCLLinkExternal href="https://rentguidelinesboard.cityofnewyork.us/resources/faqs/leases-renewal-vacancy/#landlord:~:text=If%20your%20apartment%20is%20rent,before%20the%20existing%20lease%20expires">
+        <JFCLLinkExternal to="https://rentguidelinesboard.cityofnewyork.us/resources/faqs/leases-renewal-vacancy/#landlord:~:text=If%20your%20apartment%20is%20rent,before%20the%20existing%20lease%20expires">
           Learn about lease renewal rights
         </JFCLLinkExternal>
       </ContentBoxItem>
@@ -428,7 +428,7 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
           have been living with them immediately prior to their moving or
           passing away, you might be entitled to take over the lease.
         </p>
-        <JFCLLinkExternal href="https://www.metcouncilonhousing.org/help-answers/succession-rights-in-rent-stabilized-and-rent-controlled-apartments/">
+        <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/succession-rights-in-rent-stabilized-and-rent-controlled-apartments/">
           Learn about succession rights
         </JFCLLinkExternal>
       </ContentBoxItem>
@@ -518,10 +518,10 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
         gtmId="nycha_learn"
         coverageResult={coverageResult}
       >
-        <JFCLLinkExternal href="https://nylag.org/tenants-rights/public-housing-justice-project/">
+        <JFCLLinkExternal to="https://nylag.org/tenants-rights/public-housing-justice-project/">
           NY Legal Assistance Group
         </JFCLLinkExternal>
-        <JFCLLinkExternal href="https://www.nyc.gov/assets/nycha/downloads/pdf/pact-factsheet.pdf">
+        <JFCLLinkExternal to="https://www.nyc.gov/assets/nycha/downloads/pdf/pact-factsheet.pdf">
           PACT Fact Sheet
         </JFCLLinkExternal>
       </ContentBoxItem>

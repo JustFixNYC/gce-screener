@@ -8,6 +8,32 @@
     }
   }
 
+  .info-box .info-box__content-container {
+    @include body_standard_desktop;
+    @include for-phone-only {
+      @include body_standard_mobile;
+      font-weight: 500;
+    }
+  }
+
+  .headline-section {
+    padding-top: 1.5rem;
+    .headline-section__back-link {
+      margin-bottom: 3rem;
+    }
+    .headline-section__address {
+      margin-bottom: 1rem;
+    }
+  }
+  .content-section {
+    padding-top: 1.5rem;
+  }
+
+  .content-box {
+    margin: unset;
+    margin-bottom: 1.5rem;
+  }
+
   .acris-links {
     border: 1px solid $GREY_NEW;
 
@@ -38,7 +64,10 @@
     }
 
     .acris-links__content {
-      padding: 0 1.5rem 1.5rem 1.5rem;
+      padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+      .info-box {
+        align-content: flex-start;
+      }
 
       p {
         font-weight: 600;
@@ -51,7 +80,7 @@
       }
       li {
         @include body_standard_desktop;
-        margin-top: 0.75rem; // 12px
+        margin-top: 1.5rem;
         margin-bottom: 2rem;
         &:last-of-type {
           margin-bottom: 0;
@@ -95,7 +124,7 @@
       align-items: center;
       padding: 1rem 1.5rem 0 1.5rem;
       color: $GREY_700;
-      @include small_text_desktop;
+      @include body_standard_desktop;
 
       button.load-more-button {
         background: unset;
@@ -112,6 +141,7 @@
         padding-top: 1.25rem; // 20px
         text-align: center;
         @include body_standard_desktop;
+        color: $OFF_BLACK;
 
         .callout-box {
           background-color: $OFF_WHITE_100;
@@ -182,7 +212,6 @@
       margin-top: 2.25rem !important; // overrides ShareButton.scss
     }
     .content-section {
-      padding: 0 1.5rem 2rem !important; // overrides styles w/ max-width 772px
       gap: 2rem;
       .content-box__header-title {
         display: none;
@@ -203,23 +232,29 @@
         }
         .content-box__section__header {
           @include body_standard_mobile;
+          font-weight: 600;
         }
       }
 
       .accordion__content {
         p {
-          @include small_text_mobile;
+          @include body_standard_mobile;
         }
       }
 
       .acris-links__header {
         @include body_standard_mobile;
         font-weight: 600;
+        flex-direction: column-reverse;
+        align-items: start;
+        .acris-links__pill {
+          margin: 0 0 0.5rem;
+        }
       }
 
       .content-box__footer__message,
       .jfcl-link {
-        @include small_text_mobile;
+        @include body_standard_mobile;
       }
 
       .load-more-end {

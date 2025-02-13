@@ -19,6 +19,7 @@ import {
 import {
   acrisDocTypeFull,
   getPrioritizeBldgs,
+  toTitleCase,
   urlAcrisBbl,
   urlAcrisDoc,
   urlCountyClerkBbl,
@@ -78,97 +79,99 @@ export const PortfolioSize: React.FC = () => {
       </Header>
 
       <div className="content-section">
-        <div className="content-section__content"></div>
-        <ContentBox subtitle="Good Cause Eviction covers tenants whose landlords own more than 10 apartments">
-          <ContentBoxItem accordion={false}>
-            <p>
-              If you are able to find that your landlord owns more than 10 total
-              apartments across multiple buildings, this means that you meet the
-              Landlord Portfolio Size criteria for Good Cause Eviction Law.
-            </p>
-          </ContentBoxItem>
-        </ContentBox>
-        <div className="divider__print" />
-        <ContentBox
-          subtitle="How to find other apartments your landlord owns"
-          headerExtra={
-            <InfoBox color="blue">
-              We recommend doing the following research on a desktop computer.
-            </InfoBox>
-          }
-        >
-          <ContentBoxItem
-            title="Confirm your landlord’s name and signature"
-            step={1}
-          >
-            <p>
-              Before we can find out if your landlord owns other apartments, we
-              need to confirm your building’s landlord. The best way to do this
-              is by searching real estate documents for your building’s
-              landlord’s name and signature.
-            </p>
-            <VideoEmbed url="" />
-            <div className="content-box__section__search-building">
-              <AcrisLinks
-                {...bldgData}
-                address={address.address}
-                info="You only need to find your building’s landlord’s signature on one of the documents below"
-              />
-            </div>
-          </ContentBoxItem>
-
-          <ContentBoxItem
-            title="Find other buildings your landlord might own"
-            step={2}
-          >
-            {bldgData && !!bldgData?.related_properties.length && (
-              <>
-                <p>
-                  Review documents below to find your landlord’s name or
-                  signature to see if they own more than 10 units across
-                  multiple buildings.
-                </p>
-                <br />
-              </>
-            )}
-            {bldgData && (
+        <div className="content-section__content">
+          <ContentBox subtitle="Good Cause covers tenants whose landlords own more than 10 apartments">
+            <ContentBoxItem accordion={false}>
               <p>
-                {`Your building has ${bldgData.unitsres} apartments. You only need to confirm that your ` +
-                  `landlord owns ${10 - bldgData.unitsres} additional ${
-                    10 - bldgData.unitsres == 1 ? "apartment" : "apartments"
-                  } across other buildings.`}
+                If you are able to find that your landlord owns more than 10
+                total apartments across multiple buildings, this means that you
+                meet the Landlord Portfolio Size criteria for Good Cause
+                Eviction Law.
               </p>
-            )}
-            <VideoEmbed url="" />
-            <div className="content-box__section__related-buildings">
-              {!!bldgData?.related_properties &&
-              bldgData?.related_properties.length > 0 ? (
+            </ContentBoxItem>
+          </ContentBox>
+          <div className="divider__print" />
+          <ContentBox
+            subtitle="How to find other apartments your landlord owns"
+            headerExtra={
+              <InfoBox color="blue">
+                We recommend doing the following research on a desktop computer.
+              </InfoBox>
+            }
+          >
+            <ContentBoxItem
+              title="Confirm your landlord’s name and signature"
+              step={1}
+            >
+              <p>
+                Before we can find out if your landlord owns other apartments,
+                we need to confirm your building’s landlord. The best way to do
+                this is by searching real estate documents for your building’s
+                landlord’s name and signature.
+              </p>
+              <VideoEmbed url="https://www.youtube.com/embed/jFyi3k6rr8k?si=C98276JgvDojcfx7&amp;controls=0" />
+              <div className="content-box__section__search-building">
+                <AcrisLinks
+                  {...bldgData}
+                  address={address.address}
+                  info="You only need to find your building’s landlord’s signature on one of the documents below"
+                />
+              </div>
+            </ContentBoxItem>
+
+            <ContentBoxItem
+              title="Find other buildings your landlord might own"
+              step={2}
+            >
+              {bldgData && !!bldgData?.related_properties.length && (
                 <>
-                  {isLoading && <>Loading document links...</>}
-                  <AcrisAccordions {...bldgData} />
-                </>
-              ) : (
-                <>
-                  <InfoBox color="blue">
-                    <span>
-                      Our data is not showing additional buildings that may be
-                      owned by your landlord.
-                    </span>
-                  </InfoBox>
-                  <FindOtherBuildings />
+                  <p>
+                    Review documents below to find your landlord’s name or
+                    signature to see if they own more than 10 units across
+                    multiple buildings.
+                  </p>
+                  <br />
                 </>
               )}
-            </div>
-          </ContentBoxItem>
+              {bldgData && (
+                <p>
+                  {`Your building has ${bldgData.unitsres} apartments. You only need to confirm that your ` +
+                    `landlord owns ${10 - bldgData.unitsres} additional ${
+                      10 - bldgData.unitsres == 1 ? "apartment" : "apartments"
+                    } across other buildings.`}
+                </p>
+              )}
+              <VideoEmbed url="https://www.youtube.com/embed/jFyi3k6rr8k?si=C98276JgvDojcfx7&amp;controls=0" />
+              <div className="content-box__section__related-buildings">
+                {!!bldgData?.related_properties &&
+                bldgData?.related_properties.length > 0 ? (
+                  <>
+                    {isLoading && <>Loading document links...</>}
+                    <AcrisAccordions {...bldgData} />
+                  </>
+                ) : (
+                  <>
+                    <InfoBox color="blue">
+                      <span>
+                        Our data is not showing additional buildings that may be
+                        owned by your landlord.
+                      </span>
+                    </InfoBox>
+                    <FindOtherBuildings />
+                  </>
+                )}
+              </div>
+            </ContentBoxItem>
 
-          <ContentBoxFooter
-            message="Update your coverage result"
-            linkText="Adjust survey answers"
-            linkTo="/survey"
-            linkOnClick={() => gtmPush("gce_return_survey")}
-          />
-        </ContentBox>
-        <div className="divider__print" />
+            <ContentBoxFooter
+              message="Update your coverage result"
+              linkText="Adjust survey answers"
+              linkTo="/survey"
+              linkOnClick={() => gtmPush("gce_return_survey")}
+            />
+          </ContentBox>
+          <div className="divider__print" />
+        </div>
       </div>
     </div>
   );
@@ -176,25 +179,15 @@ export const PortfolioSize: React.FC = () => {
 
 const VideoEmbed: React.FC<{ url: string }> = ({ url }) => (
   <div className="content-box__section__video">
-    {/* Loom embed code: */}
-    <div
-      style={{
-        position: "relative",
-        paddingBottom: "56.25%",
-        height: "0",
-      }}
-    >
-      <iframe
-        src={url}
-        style={{
-          position: "absolute",
-          top: "0",
-          left: "0",
-          width: "100%",
-          height: "100%",
-        }}
-      />
-    </div>
+    <iframe
+      width="560"
+      height="315"
+      src={url}
+      title="YouTube video for how to find other apartments your landlord owns"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+    ></iframe>
   </div>
 );
 
@@ -221,21 +214,25 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
 
   const header = (
     <div className="acris-links__header">
-      <span className="acris-links__address">{address}</span>
-      <span className="acris-links__pill pill">{`${unitsres} apartments`}</span>
+      <span className="acris-links__address">{toTitleCase(address || "")}</span>
+      <span className="acris-links__pill pill">{`${unitsres} ${
+        unitsres === 1 ? "apartment" : "apartments"
+      }`}</span>
     </div>
   );
 
   const content = (
     <>
       <div className="acris-links__content">
-        {info && <InfoBox color="blue">{info}</InfoBox>}
+        {info && acris_docs && acris_docs?.length > 1 && (
+          <InfoBox color="blue">{info}</InfoBox>
+        )}
         {!bbl && <>Loading document links...</>}
         {acris_docs && (
           <ul>
             {acris_docs.map((docInfo, i) => (
               <li key={i}>
-                <JFCLLinkExternal href={urlAcrisDoc(docInfo.doc_id)}>
+                <JFCLLinkExternal to={urlAcrisDoc(docInfo.doc_id)}>
                   {`${acrisDocTypeFull(
                     docInfo.doc_type
                   )} (${docInfo.doc_date.slice(0, 4)})`}
@@ -249,11 +246,11 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
         {bbl && (
           <>
             {isStatenIsland ? (
-              <JFCLLinkExternal href={urlCountyClerkBbl(bbl)}>
+              <JFCLLinkExternal to={urlCountyClerkBbl(bbl)}>
                 View all documents from Richmond County Clerk
               </JFCLLinkExternal>
             ) : (
-              <JFCLLinkExternal href={urlAcrisBbl(bbl)}>
+              <JFCLLinkExternal to={urlAcrisBbl(bbl)}>
                 View all documents in ACRIS
               </JFCLLinkExternal>
             )}
@@ -305,7 +302,9 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
     ?.filter((bldg) => bldg.unitsres > 0)
     .sort(prioritizeBldgs);
   const totalCount = relatedProperties?.length;
-  const [visibleCount, setVisibleCount] = useState(INIT_DISPLAY);
+  const [visibleCount, setVisibleCount] = useState(
+    Math.min(totalCount, INIT_DISPLAY)
+  );
   const [showLoadMoreButton, setShowLoadMoreButton] = useState(
     totalCount ? totalCount > INIT_DISPLAY : false
   );

@@ -11,7 +11,7 @@ export const TopBar: React.FC = () => {
         </h1>
       </div>
       <div className="topbar__collab">
-        By{" "}
+        <span>By</span>{" "}
         <a
           href="https://housingjusticeforall.org/"
           target="_blank"
@@ -19,7 +19,7 @@ export const TopBar: React.FC = () => {
         >
           HJ4A
         </a>{" "}
-        &{" "}
+        <span>&</span>{" "}
         <a
           href="https://justfix.org/"
           target="_blank"

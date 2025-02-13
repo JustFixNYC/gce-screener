@@ -7,7 +7,7 @@
   top: 0;
   background-color: $OFF_WHITE_200;
   border-bottom: 1px solid $OFF_BLACK;
-  width: 100%;
+  width: -webkit-fill-available;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,6 +20,7 @@
 
   &,
   h1,
+  span,
   a {
     color: $OFF_BLACK;
     text-decoration: none;
@@ -55,6 +56,10 @@
       text-decoration: underline;
       text-underline-position: from-font;
     }
+    span,
+    a {
+      vertical-align: sub;
+    }
   }
 
   .topbar__search {
@@ -81,14 +86,22 @@
   @media print {
     position: unset;
     background-color: unset;
+
+    .topbar__name,
+    .topbar__collab {
+      padding: 0.5rem 1rem;
+    }
+    .topbar__collab {
+      border: none;
+    }
+    .topbar__search {
+      display: none;
+    }
     &,
     h1,
     a {
       color: black;
       @include body_large_desktop;
-    }
-    .topbar__search a {
-      display: none;
     }
   }
 }

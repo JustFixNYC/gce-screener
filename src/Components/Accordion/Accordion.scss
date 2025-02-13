@@ -11,10 +11,17 @@
     padding: 1.5rem 2rem;
 
     &:hover {
-      background-color: $OFF_WHITE_100;
+      background-color: $OFF_WHITE_200;
+    }
+    & > svg {
+      align-self: start;
+    }
+    & > svg:only-of-type {
+      align-self: unset;
     }
     .accordion__chevron {
       margin-left: auto;
+      padding: 4px;
     }
     &::-webkit-details-marker {
       display: none;
@@ -41,6 +48,9 @@
 
       .jfcl-link {
         margin-top: 0.5rem;
+        @include for-phone-only {
+          margin-top: 1rem;
+        }
       }
       .jfcl-link:first-child {
         margin-top: 0;

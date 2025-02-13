@@ -3,13 +3,6 @@
 
 .geo-search {
   width: 100%;
-  // the focus outline shifts the layout a bit, so trying to counter this (still a bit of flicker, but better)
-  .jfcl-dropdown__control {
-    margin-bottom: 2px;
-    &.jfcl-dropdown__control--is-focused {
-      margin-bottom: 0;
-    }
-  }
 
   &.is-highlighted .jfcl-dropdown__single-value {
     background-color: $BLUE_50;

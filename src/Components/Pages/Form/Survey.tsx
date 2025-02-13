@@ -152,7 +152,7 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.bedrooms === null}
             >
               <FormGroup
-                legendText="How many bedrooms are in your apartment?"
+                legendText="1. How many bedrooms are in your apartment?"
                 invalid={showErrors && localFields.bedrooms === null}
                 invalidText="Please select one"
                 invalidRole="status"
@@ -179,7 +179,7 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.rent === null}
             >
               <TextInput
-                labelText="What is the total monthly rent for your entire apartment?"
+                labelText="2. What is the total monthly rent for your entire apartment?"
                 helperElement={
                   <InfoBox>
                     Please provide the total rent of your apartment, not just
@@ -208,7 +208,7 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.rentStabilized === null}
             >
               <FormGroup
-                legendText="Is your apartment rent-stabilized?"
+                legendText="3. Is your apartment rent-stabilized?"
                 helperElement={
                   getRsHelperText(bldgData) && (
                     <InfoBox>{getRsHelperText(bldgData)}</InfoBox>
@@ -238,7 +238,7 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.housingType === null}
             >
               <FormGroup
-                legendText="Is your apartment associated with any of the following?"
+                legendText="4. Is your apartment associated with any of the following?"
                 helperElement={
                   getSubsidyHelperText(bldgData) && (
                     <InfoBox>{getSubsidyHelperText(bldgData)}</InfoBox>
@@ -276,7 +276,7 @@ export const Survey: React.FC = () => {
                   invalid={showErrors && localFields.landlord === null}
                 >
                   <FormGroup
-                    legendText="Does your landlord live in the building?"
+                    legendText="5. Does your landlord live in the building?"
                     invalid={showErrors && localFields.landlord === null}
                     invalidText="Please select one"
                     invalidRole="status"
@@ -300,11 +300,11 @@ export const Survey: React.FC = () => {
                   invalid={showErrors && localFields.portfolioSize === null}
                 >
                   <FormGroup
-                    legendText="Does your landlord own more than 10 apartments across multiple buildings?"
+                    legendText="6. Does your landlord own more than 10 apartments across multiple buildings?"
                     helperElement={
                       <InfoBox>
                         {`It looks like there are ${bldgData.unitsres} apartments in your building. ` +
-                          "Good Cause Eviction protections only apply to tenants whose landlords own more than 10 apartments, " +
+                          "Good Cause protections only apply to tenants whose landlords own more than 10 apartments, " +
                           "even if those apartments are spread across multiple buildings."}
                       </InfoBox>
                     }
@@ -362,7 +362,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
   const activeJ51 = new Date(end_j51) > new Date();
 
   const wowLink = (
-    <JFCLLinkExternal href={urlWOWTimelineRS(bbl)} className="source-link">
+    <JFCLLinkExternal to={urlWOWTimelineRS(bbl)} className="source-link">
       View source
     </JFCLLinkExternal>
   );
@@ -383,7 +383,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
         } tax exemption. This means your
         apartment is rent stabilized.`}
         <br />
-        <JFCLLinkExternal href={urlFCSubsidized(bbl)} className="source-link">
+        <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
           View source
         </JFCLLinkExternal>
       </>
@@ -413,7 +413,7 @@ const getSubsidyHelperText = (
   const { bbl, is_nycha, is_subsidized, subsidy_name } = bldgData;
 
   const subsidyLink = (
-    <JFCLLinkExternal href={urlFCSubsidized(bbl)} className="source-link">
+    <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
       View source
     </JFCLLinkExternal>
   );

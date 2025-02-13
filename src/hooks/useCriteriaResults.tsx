@@ -140,7 +140,7 @@ function eligibilityLandlord(criteriaData: CriteriaData): CriterionDetails {
     <>
       {userValueText}
       <br />
-      <JFCLLinkExternal href={urlZOLA(bbl)} className="criteria-link">
+      <JFCLLinkExternal to={urlZOLA(bbl)} className="criteria-link">
         View source
       </JFCLLinkExternal>
     </>
@@ -288,7 +288,7 @@ function eligibilityBuildingClass(
         ? "Your building is not an exempted type."
         : `Your building is ${bldgTypeName}, and is exempt.`}
       <br />
-      <JFCLLinkExternal href={urlZOLA(bbl)} className="criteria-link">
+      <JFCLLinkExternal to={urlZOLA(bbl)} className="criteria-link">
         View source
       </JFCLLinkExternal>
     </>
@@ -326,7 +326,7 @@ function eligibilityCertificateOfOccupancy(
         : `Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`}
       <br />
       <JFCLLinkExternal
-        href={determination === "ELIGIBLE" ? urlDOBBBL(bbl) : urlDOBBIN(co_bin)}
+        to={determination === "ELIGIBLE" ? urlDOBBBL(bbl) : urlDOBBIN(co_bin)}
         className="criteria-link"
       >
         View source

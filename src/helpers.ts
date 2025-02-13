@@ -130,7 +130,7 @@ export const getPrioritizeBldgs = (unitsNeeded: number) => {
 
 export const urlCountyClerkBbl = (bbl: string) => {
   const { block, lot } = splitBBL(bbl);
-  return `https://www.richmondcountyclerk.com/Search/ShowResultsBlocks/0?Block=${block}&Lot=8${lot}`;
+  return `https://www.richmondcountyclerk.com/Search/ShowResultsBlocks?Block=${block}&Lot=${lot}`;
 };
 
 export const urlAcrisBbl = (bbl: string) => {

@@ -19,7 +19,11 @@ const JFCLLinkInternal: React.FC<JFCLLinkInternal> = (props) => (
     className={classNames(props.className, "jfcl-link")}
     onClick={props.onClick}
   >
-    {props.children} <Icon icon="arrowRight" className="jfcl-link__icon" />
+    {props.children}
+    <span className="jfcl-link__icon-wrapper">
+      &#xfeff;
+      <Icon icon="arrowRight" className="jfcl-link__icon" />
+    </span>
   </Link>
 );
 
@@ -29,7 +33,10 @@ export const BackLink: React.FC<JFCLLinkInternal> = (props) => (
     onClick={props.onClick}
     className={classNames(props.className, "jfcl-link back-link")}
   >
-    <Icon icon="chevronLeft" className="jfcl-link__icon" />
+    <span className="jfcl-link__icon-wrapper">
+      &#xfeff;
+      <Icon icon="arrowLeft" className="jfcl-link__icon" />
+    </span>
     {props.children}
   </Link>
 );

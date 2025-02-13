@@ -20,11 +20,12 @@ const closeAccordionsPrint = () => {
 
 export const useAccordionsOpenForPrint = () => {
   useEffect(() => {
-    window.addEventListener("beforeprint", openAccordionsPrint);
-    window.addEventListener("afterprint", closeAccordionsPrint);
+    const controller = new AbortController();
+    const signal = controller.signal;
+    window.addEventListener("beforeprint", openAccordionsPrint, { signal });
+    window.addEventListener("afterprint", closeAccordionsPrint, { signal });
     return () => {
-      window.removeEventListener("beforeprint", openAccordionsPrint);
-      window.removeEventListener("afterprint", closeAccordionsPrint);
+      controller.abort();
     };
   }, []);
 };
