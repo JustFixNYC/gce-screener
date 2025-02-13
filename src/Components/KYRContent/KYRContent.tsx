@@ -17,12 +17,12 @@ type KYRContentBoxProps = Omit<ContentBoxProps, "children"> & {
 
 export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
   title = undefined,
-  subtitle: headerSubtitle = "Protections that all New Yorkers have",
+  subtitle = "Protections that all New Yorkers have",
   children,
   coverageResult,
 }) => (
   <>
-    <ContentBox title={title} subtitle={headerSubtitle}>
+    <ContentBox title={title} subtitle={subtitle}>
       <ContentBoxItem
         title="Your eviction protections"
         gtmId="universal_eviction"

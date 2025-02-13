@@ -175,5 +175,7 @@ export const buildingSubsidyLanguage = (subsidyName?: string): string => {
     ? "is part of an HPD subsidy Program"
     : subsidyName === "Mitchell-Lama"
     ? "is a Mitchell-Lama"
+    : subsidyName === "NYCHA"
+    ? "is part of NYCHA"
     : "";
 };

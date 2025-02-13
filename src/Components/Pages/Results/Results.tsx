@@ -141,6 +141,7 @@ export const Results: React.FC = () => {
             />
           )}
 
+          {coverageResult === "SUBSIDIZED" && subsidyProtections}
           {coverageResult === "RENT_STABILIZED" && (
             <RentStabilizedProtections coverageResult={coverageResult} />
           )}
@@ -481,9 +482,9 @@ const CoverageResultHeadline: React.FC<{
     case "SUBSIDIZED":
       headlineContent = (
         <>
-          <span className="result-headline__top">Your apartment is</span>{" "}
-          <span className="coverage-pill green">subsidized</span>, which
-          provides similar protections to Good Cause Eviction
+          <span className="result-headline__top">Your apartment is in a</span>{" "}
+          <span className="coverage-pill green">subsidized</span> building,
+          which provides existing eviction protections
         </>
       );
       break;
@@ -650,3 +651,16 @@ const CopyURLButton: React.FC = () => {
     </>
   );
 };
+
+const subsidyProtections = (
+  <ContentBox
+    subtitle="You are not covered by Good Cause because you have existing eviction protections through your building's subsidy program."
+    className="subsidy-protections"
+  >
+    <ContentBoxItem accordion={false}>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat officia
+      nemo sunt excepturi itaque modi explicabo magni corporis quae praesentium
+      reiciendis porro, omnis vel qui doloribus distinctio commodi. Ab, atque.
+    </ContentBoxItem>
+  </ContentBox>
+);

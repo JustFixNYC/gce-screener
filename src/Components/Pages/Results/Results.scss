@@ -254,6 +254,12 @@
       margin-bottom: 2rem;
     }
   }
+  .subsidy-protections .content-box__section {
+    @include body_large_desktop;
+    @include for-phone-only {
+      @include body_standard_mobile;
+    }
+  }
 
   @include for-phone-only() {
     .content-section__content {

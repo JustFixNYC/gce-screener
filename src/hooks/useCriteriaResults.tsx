@@ -358,61 +358,90 @@ function eligibilitySubsidy(
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
+  const subsidyLanguage = buildingSubsidyLanguage(subsidy_name);
+  const sourceLink = (
+    <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="criteria-link">
+      View source
+    </JFCLLinkExternal>
+  );
+  const guideLink = (
+    <JFCLLinkInternal
+      to={`/subsidy?${searchParams.toString()}`}
+      className="criteria-link"
+    >
+      View subsidy guide
+    </JFCLLinkInternal>
+  );
+
   if (housingType === "NYCHA") {
     requirement =
-      "There are different, stronger protections for tenants who live in NYCHA housing.";
+      "There are stronger existing eviction protections for tenants who live in NYCHA housing.";
     determination = "OTHER_PROTECTION";
-    userValue = "You reported that your apartment is part of NYCHA.";
+    userValue =
+      subsidyLanguage === "" || subsidyLanguage.includes("NYCHA") ? (
+        "You reported that your building is part of NYCHA."
+      ) : (
+        <>
+          {`You reported that your building is part of NYCHA, and we are using ` +
+            `this information in our coverage determination, even though publicly ` +
+            `available data sources indicate that your building ${subsidyLanguage}`}
+          <br />
+          {sourceLink}
+        </>
+      );
   } else if (housingType?.includes("SUBSIDIZED")) {
     determination = "OTHER_PROTECTION";
     requirement =
-      "There are different, stronger protections for tenants who live in subsidized housing.";
-
-    userValue = `You reported that your buidling ${buildingSubsidyLanguage(
-      subsidy_name
-    )}.`;
+      "There are existing eviction protections for tenants who live in subsidized housing.";
+    userValue = `You reported that your building is subsidized.`;
+    userValue = subsidyLanguage.includes("NYCHA") ? (
+      <>
+        {`You reported that your building is subsidized, and we are using ` +
+          `this information in our coverage determination, even though publicly ` +
+          `available data sources indicate that your building ${subsidyLanguage}`}
+        <br />
+        {sourceLink}
+      </>
+    ) : (
+      "You reported that your building is subsidized."
+    );
   } else if (housingType === "UNSURE") {
     determination = "UNKNOWN";
     requirement = "You must not live in NYCHA or subsidized housing.";
-    userValue = (
-      <>
-        {subsidy_name === "" ? (
-          <>
-            You reported that you are not sure if your apartment is part of any
-            subsidized housing programs.
-          </>
-        ) : (
-          <>
-            {`You reported that you are not sure if your apartment is part of any
-            subsidized housing programs, but public data suggests that your
-            building ${buildingSubsidyLanguage(subsidy_name)}.`}
-          </>
-        )}
-        <br />
-        {subsidy_name !== "" && (
-          <>
-            <JFCLLinkExternal
-              to={urlFCSubsidized(bbl)}
-              className="criteria-link"
-            >
-              View source
-            </JFCLLinkExternal>
-            <br />
-          </>
-        )}
-        <JFCLLinkInternal
-          to={`/subsidy?${searchParams.toString()}`}
-          className="criteria-link"
-        >
-          View subsidy guide
-        </JFCLLinkInternal>
-      </>
-    );
+    userValue =
+      subsidyLanguage === "" ? (
+        <>
+          You reported that you are not sure if your apartment is part of any
+          subsidized housing programs.
+          <br />
+          {guideLink}
+        </>
+      ) : (
+        <>
+          {`You reported that you are not sure if your apartment is subsidized, ` +
+            `and we are using this information in our coverage determination, even though ` +
+            `publicly available data sources indicate that your building ${subsidyLanguage}.`}
+          <br />
+          {sourceLink}
+          <br />
+          {guideLink}
+        </>
+      );
   } else {
     determination = "ELIGIBLE";
     requirement = "You must not live in NYCHA or subsidized housing.";
     userValue =
-      "You reported that you do not live in NYCHA or subsidized housing.";
+      subsidyLanguage === "" ? (
+        "You reported that your building is not part of any subsidized housing programs."
+      ) : (
+        <>
+          {`You reported that your building is not subsidized, and we are using ` +
+            `this information in our coverage determination, even though publicly ` +
+            `available data sources indicate that your building ${subsidyLanguage}`}
+          <br />
+          {sourceLink}
+        </>
+      );
   }
 
   return {
