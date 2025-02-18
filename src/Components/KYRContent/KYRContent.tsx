@@ -7,6 +7,7 @@ import {
 import JFCLLinkExternal from "../JFCLLinkExternal";
 import { formatMoney } from "../../helpers";
 import { CoverageResult } from "../../types/APIDataTypes";
+import classNames from "classnames";
 
 const CPI = 3.82;
 
@@ -177,6 +178,53 @@ export const GoodCauseProtections: React.FC<
     <>
       <ContentBox title={title} subtitle={subtitle}>
         <ContentBoxItem
+          title="Your right to limited rent increases"
+          gtmId="gce-protections_rent"
+          coverageResult={coverageResult}
+        >
+          <p>
+            {`The state housing agency must publish each year’s Reasonable Rent
+          Increase by August. This year the maximum amount your landlord can
+          increase your rent by is ${increase_pct}%.`}
+          </p>
+          <br />
+          <div className="callout-box">
+            <p>
+              If you are offered a new lease after April 20th, 2024 with an
+              amount higher than:
+              <span className="rent-increase">
+                {!!rent && (
+                  <span className="amount bold">
+                    {`${formatMoney(rent * (1 + increase_pct / 100))}`}{" "}
+                  </span>
+                )}
+                <br />
+                <span className={classNames("formula", !rent && "bold")}>
+                  {!!rent
+                    ? `(${formatMoney(rent)} + ${increase_pct}%)`
+                    : `your current rent + ${increase_pct}%`}
+                </span>
+              </span>
+              you should ask your landlord to provide reasons for the increase
+              beyond the {`${increase_pct}%`} reasonable rent standard.
+            </p>
+          </div>
+          <p>
+            <strong>Note</strong>
+            <br />
+            Landlords can increase the rent more than the reasonable rent
+            increase but they must explain why and must point to increases in
+            their costs or substantial repairs they did to the apartment or
+            building.
+          </p>
+          <JFCLLinkExternal
+            className="has-label"
+            to="https://legalaidnyc.org/get-help/housing-problems/what-you-need-to-know-about-new-yorks-good-cause-eviction-law/#rent-increases"
+          >
+            Learn more about Reasonable Rent Increase
+          </JFCLLinkExternal>
+        </ContentBoxItem>
+        <ContentBoxItem
           title="Your right to stay in your home"
           gtmId="gce-protections_eviction"
           coverageResult={coverageResult}
@@ -188,52 +236,6 @@ export const GoodCauseProtections: React.FC<
           </p>
         </ContentBoxItem>
 
-        <ContentBoxItem
-          title="Your right to limited rent increases"
-          gtmId="gce-protections_rent"
-          coverageResult={coverageResult}
-        >
-          <p>
-            {`The state housing agency must publish each year’s Reasonable Rent
-          Increase by August. This year the maximum amount your landlord can
-          increase your rent by is ${increase_pct}%.`}
-          </p>
-          <br />
-
-          <p>
-            {rent
-              ? `If you are offered a new lease after April 20th, 2024 with an 
-              amount higher than ${formatMoney(
-                rent * (1 + increase_pct / 100)
-              )} (your current rent + ${increase_pct}%) you should ask your
-              landlord to provide reasons for the increase beyond the ${increase_pct}% 
-              reasonable rent standard.`
-              : `If you are offered a new lease after April 20th, 2024 with an amount 
-              higher than your current rent + ${increase_pct}%, you should ask your 
-              landlord to provide reasons for the increase beyond the ${increase_pct}% 
-              reasonable rent standard.`}
-          </p>
-          <div className="note-box">
-            <p>
-              <strong>Note</strong>
-            </p>
-            <p>
-              Landlords can increase the rent more than the reasonable rent
-              increase but they must explain why and must point to increases in
-              their costs or substantial repairs they did to the apartment or
-              building.
-            </p>
-          </div>
-          <p>
-            <strong>Learn about Reasonable Rent Standard</strong>
-          </p>
-          <JFCLLinkExternal
-            className="has-label"
-            to="https://legalaidnyc.org/get-help/housing-problems/what-you-need-to-know-about-new-yorks-good-cause-eviction-law/#rent-increases"
-          >
-            Reasonable Rent Increase
-          </JFCLLinkExternal>
-        </ContentBoxItem>
         <ContentBoxItem
           title="Learn more about Good Cause Eviction Law protections"
           gtmId="gce-protections_learn"

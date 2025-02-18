@@ -153,6 +153,7 @@ export const Results: React.FC = () => {
           )}
           {coverageResult === "COVERED" && (
             <>
+              <GoodCauseProtections rent={Number(fields.rent)} />
               <GoodCauseExercisingRights
                 coverageResult={coverageResult}
                 shareButtons={
@@ -167,7 +168,6 @@ export const Results: React.FC = () => {
                   />
                 }
               />
-              <GoodCauseProtections rent={Number(fields.rent)} />
             </>
           )}
           {coverageResult === "NYCHA" && (
@@ -522,7 +522,7 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
   };
 
   return (
-    <div className="callout-box">
+    <div className="phone-number-callout-box">
       <div className="callout-box__column">
         <span className="callout-box__header">
           Help build tenant power in NYC
