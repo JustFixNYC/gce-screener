@@ -38,6 +38,11 @@ $videoEmbedW: 623px;
           font-weight: 600;
         }
       }
+      @include for-tablet-portrait-up {
+        br {
+          display: none;
+        }
+      }
     }
   }
 }

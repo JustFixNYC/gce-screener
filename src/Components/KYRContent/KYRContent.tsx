@@ -198,6 +198,7 @@ export const GoodCauseProtections: React.FC<
                     {`${formatMoney(rent * (1 + increase_pct / 100))}`}{" "}
                   </span>
                 )}
+                <br />
                 <span className={classNames("formula", !rent && "bold")}>
                   {!!rent
                     ? `(${formatMoney(rent)} + ${increase_pct}%)`
