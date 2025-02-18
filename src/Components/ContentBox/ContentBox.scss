@@ -16,6 +16,30 @@ $videoEmbedW: 623px;
   @include for-phone-only() {
     margin: unset;
   }
+
+  #gce-protections_rent {
+    strong {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .rent-increase {
+      display: block;
+      margin: 1rem 0;
+      .amount {
+        @include body_large_desktop;
+        &.bold {
+          font-weight: 600;
+        }
+      }
+      .formula {
+        &.bold {
+          @include body_large_desktop;
+          font-weight: 600;
+        }
+      }
+    }
+  }
 }
 
 .content-box__header {
@@ -71,6 +95,17 @@ $videoEmbedW: 623px;
       iframe {
         border: 0px;
       }
+    }
+
+    .callout-box {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: #efe9dc;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      max-width: $contentPWidth;
     }
 
     .note-box {
