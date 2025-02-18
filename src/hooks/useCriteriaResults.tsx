@@ -1,8 +1,15 @@
 import { FormFields } from "../Components/Pages/Form/Survey";
-import JFCLLinkInternal from "../Components/JFCLLinkInternal";
 import { BuildingData, CriterionResult } from "../types/APIDataTypes";
-import JFCLLinkExternal from "../Components/JFCLLinkExternal";
-import { formatNumber, urlDOBBBL, urlDOBBIN, urlZOLA } from "../helpers";
+import {
+  buildingSubsidyLanguage,
+  formatNumber,
+  urlDOBBBL,
+  urlDOBBIN,
+  urlFCSubsidized,
+  urlWOWTimelineRS,
+  urlZOLA,
+} from "../helpers";
+import { JFCLLinkExternal, JFCLLinkInternal } from "../Components/JFCLLink";
 
 export type Criteria =
   | "portfolioSize"
@@ -46,7 +53,7 @@ export function useCriteriaResults(
     rent: eligibilityRent(criteriaData),
     rentStabilized: eligibilityRentStabilized(criteriaData, searchParams),
     certificateOfOccupancy: eligibilityCertificateOfOccupancy(criteriaData),
-    subsidy: eligibilitySubsidy(criteriaData),
+    subsidy: eligibilitySubsidy(criteriaData, searchParams),
   };
 }
 
@@ -203,35 +210,108 @@ function eligibilityRentStabilized(
   criteriaData: CriteriaData,
   searchParams: URLSearchParams
 ): CriterionDetails {
-  const { rentStabilized } = criteriaData;
+  const {
+    rentStabilized,
+    post_hstpa_rs_units,
+    unitsres,
+    end_421a,
+    end_j51,
+    bbl,
+  } = criteriaData;
   const criteria = "rentStabilized";
   const requirement = "Your apartment must not be rent stabilized.";
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
+  const allUnitsRS = unitsres > 0 && post_hstpa_rs_units >= unitsres;
+  const active421a = new Date(end_421a) > new Date();
+  const activeJ51 = new Date(end_j51) > new Date();
+  const wowLink = (
+    <JFCLLinkExternal to={urlWOWTimelineRS(bbl)} className="criteria-link">
+      View source
+    </JFCLLinkExternal>
+  );
+  const subsidyLink = (
+    <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="criteria-link">
+      View source
+    </JFCLLinkExternal>
+  );
+  const guideLink = (
+    <JFCLLinkInternal
+      to={`/rent_stabilization?${searchParams.toString()}`}
+      className="criteria-link"
+    >
+      Find out if you are rent stabilized
+    </JFCLLinkInternal>
+  );
+
   // should remove null from type for all form fields, since required
   if (rentStabilized === null) return { criteria, requirement };
 
   if (rentStabilized === "YES") {
-    determination = "INELIGIBLE";
+    determination = "OTHER_PROTECTION";
     userValue = "You reported that your apartment is rent stabilized.";
   } else if (rentStabilized === "NO") {
     determination = "ELIGIBLE";
-    userValue = "You reported that your apartment is not rent stabilized.";
+    userValue =
+      active421a || activeJ51 ? (
+        <>
+          {`You reported that your apartment is not rent stabilized, and we are using ` +
+            `this information in our coverage determination, even though public data sources ` +
+            `indicate that your building receives the ${
+              activeJ51 ? "421a" : "J51"
+            } tax exemption, which means your apartment should be rent stabilized.`}
+          <br />
+          {subsidyLink}
+          <br />
+          {guideLink}
+        </>
+      ) : allUnitsRS ? (
+        <>
+          {`You reported that your apartment is not rent stabilized, and we are using ` +
+            `this information in our coverage determination, even though public data sources ` +
+            `indicate that all apartments in your building are rent stabilized.`}
+          <br />
+          {wowLink}
+          <br />
+          {guideLink}
+        </>
+      ) : (
+        "You reported that your apartment is not rent stabilized."
+      );
   } else {
     determination = "UNKNOWN";
-    userValue = (
-      <>
-        You reported that you are not sure if your apartment is rent stabilized.
-        <br />
-        <JFCLLinkInternal
-          to={`/rent_stabilization?${searchParams.toString()}`}
-          className="criteria-link"
-        >
-          Find out if you are rent stabilized
-        </JFCLLinkInternal>
-      </>
-    );
+    userValue =
+      active421a || activeJ51 ? (
+        <>
+          {`You reported that you are not sure if your apartment is rent stabilized, and we are using ` +
+            `this information in our coverage determination, even though public data sources ` +
+            `indicate that your building receives the ${
+              activeJ51 ? "421a" : "J51"
+            } tax exemption, which means your apartment should be rent stabilized.`}
+          <br />
+          {subsidyLink}
+          <br />
+          {guideLink}
+        </>
+      ) : allUnitsRS ? (
+        <>
+          {`You reported that you are not sure if your apartment is rent stabilized, and we are using ` +
+            `this information in our coverage determination, even though public data sources ` +
+            `indicate that all apartments in your building are rent stabilized.`}
+          <br />
+          {wowLink}
+          <br />
+          {guideLink}
+        </>
+      ) : (
+        <>
+          You reported that you are not sure if your apartment is rent
+          stabilized.
+          <br />
+          {guideLink}
+        </>
+      );
   }
 
   return {
@@ -342,22 +422,100 @@ function eligibilityCertificateOfOccupancy(
   };
 }
 
-function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
-  const { housingType } = criteriaData;
+function eligibilitySubsidy(
+  criteriaData: CriteriaData,
+  searchParams: URLSearchParams
+): CriterionDetails {
+  const { housingType, subsidy_name, bbl } = criteriaData;
   const criteria = "subsidy";
-  const requirement = "You must not live in subsidized or public housing.";
+  let requirement;
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
-  if (housingType === "NYCHA" || housingType?.includes("SUBSIDIZED")) {
-    determination = "INELIGIBLE";
-    userValue = `You reported that you live in ${
-      housingType === "NYCHA" ? "NYCHA" : "subsidized"
-    } housing.`;
+  const subsidyLanguage = buildingSubsidyLanguage(subsidy_name);
+  const sourceLink = (
+    <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="criteria-link">
+      View source
+    </JFCLLinkExternal>
+  );
+  const guideLink = (
+    <JFCLLinkInternal
+      to={`/subsidy?${searchParams.toString()}`}
+      className="criteria-link"
+    >
+      View subsidy guide
+    </JFCLLinkInternal>
+  );
+
+  if (housingType === "NYCHA") {
+    requirement =
+      "There are stronger existing eviction protections for tenants who live in NYCHA housing.";
+    determination = "OTHER_PROTECTION";
+    userValue =
+      subsidyLanguage === "" || subsidyLanguage.includes("NYCHA") ? (
+        "You reported that your building is part of NYCHA."
+      ) : (
+        <>
+          {`You reported that your building is part of NYCHA, and we are using ` +
+            `this information in our coverage determination, even though publicly ` +
+            `available data sources indicate that your building ${subsidyLanguage}`}
+          <br />
+          {sourceLink}
+        </>
+      );
+  } else if (housingType?.includes("SUBSIDIZED")) {
+    determination = "OTHER_PROTECTION";
+    requirement =
+      "There are existing eviction protections for tenants who live in subsidized housing.";
+    userValue = `You reported that your building is subsidized.`;
+    userValue = subsidyLanguage.includes("NYCHA") ? (
+      <>
+        {`You reported that your building is subsidized, and we are using ` +
+          `this information in our coverage determination, even though publicly ` +
+          `available data sources indicate that your building ${subsidyLanguage}`}
+        <br />
+        {sourceLink}
+      </>
+    ) : (
+      "You reported that your building is subsidized."
+    );
+  } else if (housingType === "UNSURE") {
+    determination = "UNKNOWN";
+    requirement = "You must not live in NYCHA or subsidized housing.";
+    userValue =
+      subsidyLanguage === "" ? (
+        <>
+          You reported that you are not sure if your apartment is part of any
+          subsidized housing programs.
+          <br />
+          {guideLink}
+        </>
+      ) : (
+        <>
+          {`You reported that you are not sure if your apartment is subsidized, ` +
+            `and we are using this information in our coverage determination, even though ` +
+            `publicly available data sources indicate that your building ${subsidyLanguage}.`}
+          <br />
+          {sourceLink}
+          <br />
+          {guideLink}
+        </>
+      );
   } else {
     determination = "ELIGIBLE";
+    requirement = "You must not live in NYCHA or subsidized housing.";
     userValue =
-      "You reported that you do not live in NYCHA or subsidized housing.";
+      subsidyLanguage === "" ? (
+        "You reported that your building is not part of any subsidized housing programs."
+      ) : (
+        <>
+          {`You reported that your building is not subsidized, and we are using ` +
+            `this information in our coverage determination, even though publicly ` +
+            `available data sources indicate that your building ${subsidyLanguage}`}
+          <br />
+          {sourceLink}
+        </>
+      );
   }
 
   return {

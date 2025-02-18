@@ -4,8 +4,8 @@ import {
   ContentBoxItem,
   ContentBoxProps,
 } from "../ContentBox/ContentBox";
-import JFCLLinkExternal from "../JFCLLinkExternal";
 import { formatMoney } from "../../helpers";
+import { JFCLLinkExternal } from "../JFCLLink";
 import { CoverageResult } from "../../types/APIDataTypes";
 import classNames from "classnames";
 
@@ -18,12 +18,12 @@ type KYRContentBoxProps = Omit<ContentBoxProps, "children"> & {
 
 export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
   title = undefined,
-  subtitle: headerSubtitle = "Protections that all New Yorkers have",
+  subtitle = "Protections that all New Yorkers have",
   children,
   coverageResult,
 }) => (
   <>
-    <ContentBox title={title} subtitle={headerSubtitle}>
+    <ContentBox title={title} subtitle={subtitle}>
       <ContentBoxItem
         title="Your eviction protections"
         gtmId="universal_eviction"

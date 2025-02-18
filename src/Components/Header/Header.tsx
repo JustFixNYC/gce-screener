@@ -1,7 +1,7 @@
 import React from "react";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { Address } from "../Pages/Home/Home";
-import { BackLink } from "../JFCLLinkInternal";
+import { BackLink } from "../JFCLLink";
 import { abbreviateBoro, ProgressStep, toTitleCase } from "../../helpers";
 import { gtmPush } from "../../google-tag-manager";
 
@@ -29,20 +29,26 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="headline-section__content">
         {isGuide && (
           <nav className="headline-section__back-link">
-            <BackLink to="/results"
-              onClick={() => gtmPush("gce_back_to_result")}>Back to Result</BackLink>
+            <BackLink
+              to="/results"
+              onClick={() => gtmPush("gce_back_to_result")}
+            >
+              Back to Result
+            </BackLink>
           </nav>
         )}
-        <div
-          className={
-            isGuide
-              ? "headline-section__address"
-              : "headline-section__address__print"
-          }
-        >
-          {toTitleCase(`${address?.houseNumber} ${address?.streetName}, `) +
-            (address && abbreviateBoro(address?.borough))}
-        </div>
+        {address && (
+          <div
+            className={
+              isGuide
+                ? "headline-section__address"
+                : "headline-section__address__print"
+            }
+          >
+            {toTitleCase(`${address?.houseNumber} ${address?.streetName}, `) +
+              (address && abbreviateBoro(address?.borough))}
+          </div>
+        )}
         {showProgressBar && (
           <ProgressBar address={address} lastStepReached={lastStepReached} />
         )}

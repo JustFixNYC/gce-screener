@@ -9,9 +9,9 @@ import { FormFields } from "../Form/Survey";
 import { useSendGceData } from "../../../api/hooks";
 import { GCEPostData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
-import JFCLLinkInternal from "../../JFCLLinkInternal";
 import { ProgressStep } from "../../../helpers";
 import "./Home.scss";
+import { JFCLLinkInternal } from "../../JFCLLink";
 
 export type Address = {
   bbl: string;

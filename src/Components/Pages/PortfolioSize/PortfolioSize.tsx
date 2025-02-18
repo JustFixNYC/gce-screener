@@ -9,7 +9,6 @@ import {
 } from "../../ContentBox/ContentBox";
 import { Accordion } from "../../Accordion/Accordion";
 import { FormFields } from "../Form/Survey";
-import JFCLLinkExternal from "../../JFCLLinkExternal";
 import { useGetBuildingData } from "../../../api/hooks";
 import {
   AcrisDocument,
@@ -29,6 +28,7 @@ import { Header } from "../../Header/Header";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
+import { JFCLLinkExternal } from "../../JFCLLink";
 import "./PortfolioSize.scss";
 import { gtmPush } from "../../../google-tag-manager";
 

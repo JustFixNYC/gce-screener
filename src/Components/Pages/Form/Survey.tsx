@@ -10,6 +10,7 @@ import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { RadioGroup } from "../../RadioGroup/RadioGroup";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import {
+  buildingSubsidyLanguage,
   formatNumber,
   ProgressStep,
   urlFCSubsidized,
@@ -18,8 +19,7 @@ import {
 import { cleanFormFields } from "../../../api/helpers";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
-import { BackLink } from "../../JFCLLinkInternal";
-import JFCLLinkExternal from "../../JFCLLinkExternal";
+import { BackLink, JFCLLinkExternal } from "../../JFCLLink";
 import "./Survey.scss";
 
 export type FormFields = {
@@ -33,6 +33,7 @@ export type FormFields = {
     | "SUBSIDIZED_OTHER"
     | "SUBSIDIZED_HDFC"
     | "NONE"
+    | "UNSURE"
     | null;
   landlord?: "YES" | "NO" | null;
   portfolioSize?: "YES" | "NO" | "UNSURE" | null;
@@ -258,8 +259,9 @@ export const Survey: React.FC = () => {
                       { label: "LIHTC", value: "SUBSIDIZED_LIHTC" },
                       { label: "HDFC", value: "SUBSIDIZED_HDFC" },
                       { label: "Other", value: "SUBSIDIZED_OTHER" },
+                      { label: "I'm not sure", value: "UNSURE" },
                       {
-                        label: "No, my apartment is not subsidized",
+                        label: "No, my building is not subsidized",
                         value: "NONE",
                       },
                     ],
@@ -379,7 +381,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
     return (
       <>
         {`Your building appears to receive the ${
-          activeJ51 ? "421a" : "J51"
+          active421a ? "421a" : "J51"
         } tax exemption. This means your
         apartment is rent stabilized.`}
         <br />
@@ -412,7 +414,7 @@ const getSubsidyHelperText = (
 
   const { bbl, is_nycha, is_subsidized, subsidy_name } = bldgData;
 
-  const subsidyLink = (
+  const sourceLink = (
     <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
       View source
     </JFCLLinkExternal>
@@ -421,30 +423,19 @@ const getSubsidyHelperText = (
   if (is_nycha) {
     return (
       <>
-        City data shows that your building is part of NYCHA.
+        Public data shows that your building is part of NYCHA.
         <br />
-        {subsidyLink}
+        {sourceLink}
       </>
     );
   } else if (is_subsidized) {
-    const subsidyLanguage =
-      subsidy_name === "HUD Project-Based"
-        ? "receives a HUD Project-Based subsidy"
-        : subsidy_name === "Low-Income Housing Tax Credit (LIHTC)"
-        ? "receives receives the Low-Income Housing Tax Credit (LIHTC)"
-        : subsidy_name === "Article XI"
-        ? "is an Article XI"
-        : subsidy_name === "HPD Program"
-        ? "is part of an HPD subsidy Program"
-        : subsidy_name === "Mitchell-Lama"
-        ? "is a Mitchell-Lama"
-        : "";
-
     return (
       <>
-        {`City data shows that your building ${subsidyLanguage}, which is considered subsidized housing.`}
+        {`Public data shows that your building ${buildingSubsidyLanguage(
+          subsidy_name
+        )}, which is considered subsidized housing.`}
         <br />
-        {subsidyLink}
+        {sourceLink}
       </>
     );
   } else {
