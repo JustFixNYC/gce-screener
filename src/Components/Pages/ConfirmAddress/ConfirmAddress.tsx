@@ -71,7 +71,7 @@ export const ConfirmAddress: React.FC = () => {
         <div className="content-section__content">
           <ContentBox>
             {bldgData?.unitsres === 0 && (
-              <InfoBox color="blue">
+              <InfoBox color="orange">
                 <span>
                   City data indicates that there aren’t any residential units at
                   this address.

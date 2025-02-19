@@ -70,7 +70,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         <br />
         <p className="bold">Learn about warranty of habitability</p>
         <JFCLLinkExternal
-          to="https://nycourts.gov/courts/nyc/housing/pdfs/warrantyofhabitability.pdf"
+          to="https://nycourts.gov/COURTS/nyc//housing/pdfs/warrantyofhabitability.pdf"
           className="has-label"
         >
           NY Courts

@@ -11,6 +11,14 @@ $mapImgHeight: 223px;
     }
   }
 
+  .info-box {
+    align-items: center;
+    .info-box__icon-container {
+      display: flex;
+      align-items: center;
+    }
+  }
+
   .content-box {
     display: flex;
     flex-direction: column;

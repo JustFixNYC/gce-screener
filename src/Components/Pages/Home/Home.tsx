@@ -10,8 +10,8 @@ import { useSendGceData } from "../../../api/hooks";
 import { GCEPostData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
 import { ProgressStep } from "../../../helpers";
+import { JFCLLinkExternal, JFCLLinkInternal } from "../../JFCLLink";
 import "./Home.scss";
-import { JFCLLinkInternal } from "../../JFCLLink";
 
 export type Address = {
   bbl: string;
@@ -158,9 +158,9 @@ export const Home: React.FC = () => {
                 A statewide coalition of tenants and homeless New Yorkers united
                 in our fight for housing as a human right.
               </p>
-              <JFCLLinkInternal to="https://housingjusticeforall.org/">
+              <JFCLLinkExternal to="https://housingjusticeforall.org/">
                 Visit Housing Justice for All
-              </JFCLLinkInternal>
+              </JFCLLinkExternal>
             </div>
             <div className="callout-box">
               <span className="callout-box__header">JustFix</span>
@@ -168,9 +168,9 @@ export const Home: React.FC = () => {
                 A nonprofit organization that builds online tools to help New
                 Yorkers achieve affordable, healthy, eviction-free housing.
               </p>
-              <JFCLLinkInternal to="https://www.justfix.org/">
+              <JFCLLinkExternal to="https://www.justfix.org/">
                 Visit JustFix
-              </JFCLLinkInternal>
+              </JFCLLinkExternal>
             </div>
           </div>
         </div>

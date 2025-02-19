@@ -366,8 +366,8 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
   if (bldgUnits > 0 && rsUnits >= bldgUnits) {
     return (
       <>
-        City data shows that all apartments in your building are registered as
-        rent stabilized. <br />
+        City data indicates that all apartments in your building are registered
+        as rent stabilized. <br />
         {wowLink}
       </>
     );
@@ -376,7 +376,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
       <>
         {`Your building appears to receive the ${
           active421a ? "421a" : "J51"
-        } tax exemption. This means your
+        } tax incentive. This means your
         apartment is rent stabilized.`}
         <br />
         <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
@@ -387,7 +387,9 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
   } else if (rsUnits > 0) {
     return (
       <>
-        {`City data shows that ${formatNumber(rsUnits)} of the ${formatNumber(
+        {`Publicly available data sources indicate that ${formatNumber(
+          rsUnits
+        )} of the ${formatNumber(
           bldgUnits
         )} apartments in your building are registered as rent stabilized.`}
         <br />
@@ -395,7 +397,10 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
       </>
     );
   } else if (yearbuilt < 1974 && bldgUnits >= 6) {
-    return "Based on the size and age of your building, your apartment might be rent stabilized.";
+    return (
+      "No rent stabilized apartments were registered in your building in recent years, " +
+      "but based on the size and age of your building some of the apartments may still be rent stabilized."
+    );
   } else {
     return undefined;
   }
@@ -417,17 +422,27 @@ const getSubsidyHelperText = (
   if (is_nycha) {
     return (
       <>
-        Public data shows that your building is part of NYCHA.
+        Publicly available data sources indicate that your building is part of
+        NYCHA.
         <br />
         {sourceLink}
       </>
     );
   } else if (is_subsidized) {
+    const namedSubsidies = [
+      "Low-Income Housing Tax Credit (LIHTC)",
+      "Mitchell-Lama",
+    ];
+
     return (
       <>
-        {`Public data shows that your building ${buildingSubsidyLanguage(
+        {`Publicly available data sources indicate that your building ${buildingSubsidyLanguage(
           subsidy_name
-        )}, which is considered subsidized housing.`}
+        )}${
+          namedSubsidies.includes(subsidy_name)
+            ? "."
+            : ", which is considered subsidized housing."
+        }`}
         <br />
         {sourceLink}
       </>

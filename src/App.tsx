@@ -167,7 +167,7 @@ const router = createBrowserRouter(
       <Route
         path="rent_stabilization"
         element={<RentStabilization />}
-        loader={LoadURLSessionRequired}
+        loader={LoadURLSessionOptional}
       />
       <Route
         path="portfolio_size"
