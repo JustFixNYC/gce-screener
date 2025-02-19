@@ -366,15 +366,15 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
   if (bldgUnits > 0 && rsUnits >= bldgUnits) {
     return (
       <>
-        City data indicates that all apartments in your building are registered
-        as rent stabilized. <br />
+        Publicly available data sources indicate that all apartments in your
+        building are registered as rent stabilized. <br />
         {wowLink}
       </>
     );
   } else if (active421a || activeJ51) {
     return (
       <>
-        {`Your building appears to receive the ${
+        {`Publicly available data sources indicate that your building receives the ${
           active421a ? "421a" : "J51"
         } tax incentive. This means your
         apartment is rent stabilized.`}
@@ -450,11 +450,8 @@ const getSubsidyHelperText = (
   } else {
     return (
       <>
-        If you applied for your apartment through Housing Connect and are unsure
-        of your specific subsidy, you can select “Other.”
-        <br />
-        If you used a voucher that can be used anywhere to cover some or all of
-        the your rent, select “No, my apartment is not subsidized.”
+        Publicly available data sources do not indicate that your building is
+        part of any subsidized housing programs.
       </>
     );
   }

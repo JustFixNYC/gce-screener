@@ -191,11 +191,11 @@ export const Results: React.FC = () => {
 const CRITERIA_LABELS = {
   portfolioSize: "Landlord portfolio size",
   buildingClass: "Type of building",
-  landlord: "Live-in Landlord",
-  rent: "Rent",
-  subsidy: "Subsidy",
+  landlord: "Live-in landlord",
+  rent: "Rent Amount",
+  subsidy: "Subsidized housing",
   rentStabilized: "Rent stabilization",
-  certificateOfOccupancy: "Certificate of Occupancy",
+  certificateOfOccupancy: "Certificate of occupancy",
 };
 
 const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
