@@ -75,7 +75,9 @@ function eligibilityPortfolioSize(
       "No data available for the number of apartments in your building.";
   } else if (unitsres > 10) {
     determination = "ELIGIBLE";
-    userValue = `Your building has ${formatNumber(unitsres)} apartments.`;
+    userValue = `Your building has ${formatNumber(unitsres)} ${
+      unitsres === 1 ? "apartment" : "apartments"
+    }.`;
   } else if (portfolioSize === "YES") {
     determination = "ELIGIBLE";
     userValue = `Your building has ${formatNumber(
