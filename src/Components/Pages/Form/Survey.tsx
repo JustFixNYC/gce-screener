@@ -136,7 +136,7 @@ export const Survey: React.FC = () => {
     <div id="survey-page">
       <Header
         title="A few questions about your apartment"
-        subtitle="We'll use your answers combined with public data to help determine your coverage."
+        subtitle="We'll use your answers and publicly available information about your building to help learn if you’re covered."
         address={address}
         lastStepReached={lastStepReached}
       />
@@ -155,7 +155,7 @@ export const Survey: React.FC = () => {
               <FormGroup
                 legendText="1. How many bedrooms are in your apartment?"
                 invalid={showErrors && localFields.bedrooms === null}
-                invalidText="Please select one"
+                invalidText="Please specify the number of bedrooms in your apartment."
                 invalidRole="status"
               >
                 <RadioGroup
@@ -181,14 +181,8 @@ export const Survey: React.FC = () => {
             >
               <TextInput
                 labelText="2. What is the total monthly rent for your entire apartment?"
-                helperElement={
-                  <InfoBox>
-                    Please provide the total rent of your apartment, not just
-                    the portion of rent that you pay.
-                  </InfoBox>
-                }
                 invalid={showErrors && localFields.rent === null}
-                invalidText="Enter your total rent amount"
+                invalidText="Please enter your total rent amount."
                 invalidRole="status"
                 id="rent-input"
                 type="money"
@@ -209,14 +203,14 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.rentStabilized === null}
             >
               <FormGroup
-                legendText="3. Is your apartment rent-stabilized?"
+                legendText="3. Is your apartment rent stabilized?"
                 helperElement={
                   getRsHelperText(bldgData) && (
                     <InfoBox>{getRsHelperText(bldgData)}</InfoBox>
                   )
                 }
                 invalid={showErrors && localFields.rentStabilized === null}
-                invalidText="Please select one"
+                invalidText="Please specify if your apartment is rent stabilized."
                 invalidRole="status"
               >
                 <RadioGroup
@@ -239,14 +233,14 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.housingType === null}
             >
               <FormGroup
-                legendText="4. Is your apartment associated with any of the following?"
+                legendText="4. Is your apartment part of any subsidized housing programs?"
                 helperElement={
                   getSubsidyHelperText(bldgData) && (
                     <InfoBox>{getSubsidyHelperText(bldgData)}</InfoBox>
                   )
                 }
                 invalid={showErrors && localFields.housingType === null}
-                invalidText="Please select one"
+                invalidText="Please specify if your apartment is part of any subsidized housing programs."
                 invalidRole="status"
               >
                 <RadioGroup
@@ -280,7 +274,7 @@ export const Survey: React.FC = () => {
                   <FormGroup
                     legendText="5. Does your landlord live in the building?"
                     invalid={showErrors && localFields.landlord === null}
-                    invalidText="Please select one"
+                    invalidText="Please specify whether your landlord lives in your apartment building."
                     invalidRole="status"
                   >
                     <RadioGroup
@@ -311,7 +305,7 @@ export const Survey: React.FC = () => {
                       </InfoBox>
                     }
                     invalid={showErrors && localFields.portfolioSize === null}
-                    invalidText="Please select one"
+                    invalidText="Please specify whether your landlord owns more than 10 apartments across multiple buildings."
                     invalidRole="status"
                   >
                     <RadioGroup
