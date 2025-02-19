@@ -1,6 +1,16 @@
 @import "../../../mixins.scss";
 
 #subsidy-page {
+  .headline-section {
+    padding-top: 1.5rem;
+    .headline-section__back-link {
+      margin-bottom: 3rem;
+    }
+    .headline-section__address {
+      margin-bottom: 1rem;
+    }
+  }
+
   @include for-phone-only() {
     .share-button__container {
       margin-top: 2.25rem !important; // overrides ShareButton.scss
