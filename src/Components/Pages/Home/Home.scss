@@ -40,7 +40,7 @@
       padding: 2rem 1.5rem;
     }
     @include for-tablet-portrait-up {
-      .content-section__content > p:first-of-type {
+      .content-section__content > p {
         width: 85%;
       }
     }
@@ -66,7 +66,8 @@
         @include h3_mobile;
       }
     }
-    p {
+    p,
+    p a {
       @include body_large_desktop;
       margin: 0;
 

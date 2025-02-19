@@ -98,21 +98,37 @@ export const Home: React.FC = () => {
         <div className="content-section__content">
           <h3>About the law</h3>
           <p>
-            Good Cause Eviction went into effect on April 20th, 2024. If you are
-            covered by the law, you now have a right to remain in your home as
-            long as you pay rent and follow the terms of your lease. There are
-            also limits to how much your rent can be increased.
+            Good Cause Eviction protections went into effect on April 20th,
+            2024. If you are covered by the law, you have strong legal
+            protections against eviction as long as you follow your lease. There
+            are also limits to how much your landlord can raise your rent.{" "}
+            <a
+              href="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="jfcl-link"
+            >
+              Learn more about the law.
+            </a>
+          </p>
+          <br />
+          <p>
+            To be covered by the law, your apartment must meet several
+            requirements. If you live in New York City, you can use this site to
+            learn which requirements you meet and how to assert your rights.{" "}
           </p>
           <div className="callout-box">
             <span className="callout-box__header">
-              You’re protected, even if you aren’t covered
+              If you’re not covered by Good Cause Eviction
             </span>
             <p>
-              All NYC tenants are protected by certain rights, even if they are
-              not covered by the new Good Cause Eviction legislation.
+              If you live in NYC and are not covered by Good Cause Eviction, you
+              still have important tenant protections. Depending on the type of
+              housing you live in, your protections may be even stronger than
+              those provided by Good Cause.
             </p>
             <JFCLLinkInternal to="/tenant_rights">
-              Learn more about tenants’ rights in NYC
+              Learn more about tenant protections in NYC
             </JFCLLinkInternal>
           </div>
         </div>
@@ -121,37 +137,39 @@ export const Home: React.FC = () => {
         <div className="content-section__content">
           <h3>About the site</h3>
           <p>
-            To be covered by Good Cause Eviction, your apartment must meet
-            certain requirements. If you live in New York City, you can use this
-            tool to see which of the law's requirements you meet and what you
-            can do to assert your rights.
+            Good Cause law can be complex to understand and to use to protect
+            yourself. This site exists to make it easier for you and your
+            neighbors to understand your tenant protections and to assert your
+            rights.
           </p>
           <br />
           <p>
-            This is a collaboration between JustFix and Housing Justice for All.
+            This site is a collaboration between Housing Justice for All
+            Coalition and JustFix. We thank all individuals who contributed to
+            this site and to all the tenants and advocates who fought for Good
+            Cause protections.
           </p>
           <div className="about-project__orgs-container">
-            <div className="callout-box">
-              <span className="callout-box__header">JustFix</span>
-              <p>
-                A non-profit that builds free tools for tenants to exercise
-                their rights to a livable home.
-              </p>
-              <JFCLLinkInternal to="https://www.justfix.org/">
-                Learn more
-              </JFCLLinkInternal>
-            </div>
             <div className="callout-box">
               <span className="callout-box__header">
                 Housing Justice for All
               </span>
               <p>
-                A statewide coalition of over 80 groups representing tenants and
-                homeless New Yorkers, united in the fight for housing as a human
-                right.
+                A statewide coalition of tenants and homeless New Yorkers united
+                in our fight for housing as a human right.
               </p>
               <JFCLLinkInternal to="https://housingjusticeforall.org/">
-                Learn more
+                Visit Housing Justice for All
+              </JFCLLinkInternal>
+            </div>
+            <div className="callout-box">
+              <span className="callout-box__header">JustFix</span>
+              <p>
+                A nonprofit organization that builds online tools to help New
+                Yorkers achieve affordable, healthy, eviction-free housing.
+              </p>
+              <JFCLLinkInternal to="https://www.justfix.org/">
+                Visit JustFix
               </JFCLLinkInternal>
             </div>
           </div>
