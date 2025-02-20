@@ -99,6 +99,13 @@
         margin-right: 2rem;
       }
     }
+    .footer__bottom-bar {
+      grid-template-columns: 1fr;
+    }
+    .footer__collab {
+      margin: 1rem 0 0;
+      width: unset;
+    }
   }
 }
 
