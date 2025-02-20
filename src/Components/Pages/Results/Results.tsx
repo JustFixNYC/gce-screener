@@ -432,7 +432,7 @@ const CoverageResultHeadline: React.FC<{
     case "UNKNOWN":
       headlineContent = (
         <>
-          <span className="result-headline__top">Your apartment</span>{" "}
+          <span className="result-headline__top">You</span>{" "}
           <span className="coverage-pill yellow">might be covered</span> by Good
           Cause Eviction
         </>
@@ -441,7 +441,7 @@ const CoverageResultHeadline: React.FC<{
     case "NOT_COVERED":
       headlineContent = (
         <>
-          <span className="result-headline__top">Your apartment is</span>{" "}
+          <span className="result-headline__top">You are</span>{" "}
           <span className="coverage-pill orange">likely not covered</span>{" "}
           <br />
           by Good Cause Eviction
@@ -451,10 +451,8 @@ const CoverageResultHeadline: React.FC<{
     case "RENT_STABILIZED":
       headlineContent = (
         <>
-          <span className="result-headline__top">
-            Your apartment is protected by
-          </span>{" "}
-          <span className="coverage-pill green">rent stabilization</span>, which
+          <span className="result-headline__top">Your apartment is</span>{" "}
+          <span className="coverage-pill green">rent stabilized</span> which
           provides stronger protections than Good Cause Eviction
         </>
       );
@@ -462,7 +460,7 @@ const CoverageResultHeadline: React.FC<{
     case "COVERED":
       headlineContent = (
         <>
-          <span className="result-headline__top">Your apartment is</span>{" "}
+          <span className="result-headline__top">You are</span>{" "}
           <span className="coverage-pill green">likely covered</span> by Good
           Cause Eviction
         </>
@@ -474,16 +472,16 @@ const CoverageResultHeadline: React.FC<{
           <span className="result-headline__top">
             Your apartment is part of
           </span>{" "}
-          <span className="coverage-pill green">NYCHA</span>, which provides
-          stronger protections than Good Cause Eviction
+          <span className="coverage-pill green">NYCHA or PACT/RAD</span> which
+          provides stronger protections than Good Cause Eviction
         </>
       );
       break;
     case "SUBSIDIZED":
       headlineContent = (
         <>
-          <span className="result-headline__top">Your apartment is in a</span>{" "}
-          <span className="coverage-pill green">subsidized</span> building,
+          <span className="result-headline__top">Your building is</span>{" "}
+          <span className="coverage-pill green">subsidized</span>
           which provides existing eviction protections
         </>
       );
