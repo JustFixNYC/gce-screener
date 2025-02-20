@@ -40,10 +40,7 @@ export const Subsidy: React.FC = () => {
         isGuide
       >
         <ShareButtons
-          buttonsInfo={[
-            ["bookmark", "Bookmark this page"],
-            ["email", "Email this page"],
-          ]}
+          buttonsInfo={[["email", "Email this page"]]}
           emailSubject={EMAIL_SUBJECT}
           emailBody={EMAIL_BODY}
         />
