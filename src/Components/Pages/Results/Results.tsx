@@ -399,7 +399,7 @@ const EligibilityNextSteps: React.FC<{
                 `Good Cause Eviction law only covers tenants whose landlord owns`}
             </p>
             <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
-              Find your landlord’s other buildings
+              Find other buildings your landlord owns
             </JFCLLinkInternal>
           </ContentBoxItem>
         )}
