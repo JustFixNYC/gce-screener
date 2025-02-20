@@ -172,13 +172,19 @@ export const Results: React.FC = () => {
           {coverageResult === "NYCHA" && (
             <NYCHAProtections coverageResult={coverageResult} />
           )}
-          {coverageResult !== "UNKNOWN" && (
+          {coverageResult !== "UNKNOWN" && coverageResult !== "NOT_COVERED" && (
             <UniversalProtections coverageResult={coverageResult} />
+          )}
+          {coverageResult === "NOT_COVERED" && (
+            <UniversalProtections
+              coverageResult={coverageResult}
+              subtitle="Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights"
+            />
           )}
           <PhoneNumberCallout coverageResult={coverageResult} />
           <div className="share-footer">
             <h3 className="share-footer__header">
-              Help your neighbors learn if they’re covered{" "}
+              Share this site with your neighbors
             </h3>
             <CopyURLButton />
           </div>
@@ -568,8 +574,8 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
           Help build tenant power in NYC
         </span>
         <p>
-          We’ll text you once a year to ask about your housing conditions. We’ll
-          use that information to better advocate for your rights.
+          We’ll text you once a year to learn about your housing conditions.
+          We’ll use your answers to better advocate for your rights.
         </p>
       </div>
       <div className="callout-box__column">
@@ -641,6 +647,7 @@ const CopyURLButton: React.FC = () => {
         labelText="Copy goodcausenyc.org"
         labelIcon="copy"
         onClick={handleClick}
+        size="small"
       />
       {showSuccess && (
         <div className="success-message">

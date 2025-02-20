@@ -259,7 +259,7 @@ export const GoodCauseExercisingRights: React.FC<
   KYRContentBoxProps & { shareButtons: ReactNode }
 > = ({
   title = undefined,
-  subtitle = "How to assert your rights",
+  subtitle = "How to assert your Good Cause rights",
   shareButtons,
   children,
   coverageResult,
@@ -442,7 +442,7 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
 
 export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
   title = undefined,
-  subtitle = "Protections you have as a NYCHA tenant",
+  subtitle = "Protections you have as a NYCHA or PACT/RAD tenant",
   children,
   coverageResult,
 }) => (
