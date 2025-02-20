@@ -13,6 +13,8 @@ import { GCEUser } from "../../../types/APIDataTypes";
 import { FormFields } from "../Form/Survey";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import "./Subsidy.scss";
+import { JFCLLinkExternal } from "../../JFCLLink";
+import { urlMyGov } from "../../../helpers";
 
 const EMAIL_SUBJECT =
   "Good Cause NYC | Find out if your apartment is subsidized";
@@ -32,7 +34,7 @@ export const Subsidy: React.FC = () => {
   return (
     <div id="subsidy-page">
       <Header
-        title="Find out if your apartment is subsidized"
+        title="Find out if your building is subsidized"
         address={address}
         showProgressBar={false}
         isGuide
@@ -53,18 +55,18 @@ export const Subsidy: React.FC = () => {
           <ContentBoxItem accordion={false}>
             <p>
               If you live in subsidized housing, you are not covered by Good
-              Cause because you already have stronger existing protections
-              through your housing subsidy.
+              Cause because you already have existing eviction protections
+              through your building’s housing subsidy.
             </p>
           </ContentBoxItem>
         </ContentBox>
         <div className="divider__print" />
-        <ContentBox subtitle="How to find out if your apartment is subsidized.">
+        <ContentBox subtitle="How to find out if your building is subsidized">
           <ContentBoxItem title="Check your lease">
             <p>
-              Look for mentions of programs like HDFC, Mitchell-Lama, LIHTC
-              (Low-Income Housing Tax Credit), or NYCHA (New York City Housing
-              Authority) in your lease.
+              Look for mentions of programs like HDFC (Housing Development Fund
+              Corporation), Mitchell-Lama, LIHTC (Low-Income Housing Tax
+              Credit), or NYCHA (New York City Housing Authority) in your lease.
             </p>
           </ContentBoxItem>
 
@@ -76,12 +78,21 @@ export const Subsidy: React.FC = () => {
           </ContentBoxItem>
           <ContentBoxItem title="Find out if you got your apartment through NYC Housing Connect">
             <p>
-              TK If you got your apartment through NYC Housing Connect, you can
-              be sure that your apartment is subsidized.
+              If you got your apartment through NYC Housing Connect, you can be
+              sure that your apartment is subsidized.
             </p>
           </ContentBoxItem>
+          <ContentBoxItem title="Connect with a tenant advocate">
+            <p>
+              Ask your local City Council member’s office if they can help you
+              learn if your building is subsidized.
+            </p>
+            <JFCLLinkExternal to={urlMyGov(address.longLat)}>
+              Reach out to your local city council member
+            </JFCLLinkExternal>
+          </ContentBoxItem>
           <ContentBoxFooter
-            message="Update your coverage result"
+            message="Have you learned something new?"
             linkText="Adjust survey answers"
             linkTo="/survey"
           />

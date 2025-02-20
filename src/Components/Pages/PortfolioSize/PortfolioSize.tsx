@@ -78,7 +78,7 @@ export const PortfolioSize: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           <ContentBox
-            subtitle="To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments"
+            subtitle="To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments."
             className="portfolio-video-box"
           >
             <ContentBoxItem accordion={false}>
