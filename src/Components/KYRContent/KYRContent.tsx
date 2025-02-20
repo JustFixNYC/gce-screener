@@ -4,16 +4,17 @@ import {
   ContentBoxItem,
   ContentBoxProps,
 } from "../ContentBox/ContentBox";
-import { formatMoney } from "../../helpers";
-import { JFCLLinkExternal } from "../JFCLLink";
+import { formatMoney, urlMyGov } from "../../helpers";
+import { JFCLLinkExternal, JFCLLinkInternal } from "../JFCLLink";
 import { CoverageResult } from "../../types/APIDataTypes";
-import classNames from "classnames";
 
+// This needs to be updated each year when DHCR publishes the new number
 const CPI = 3.82;
 
 type KYRContentBoxProps = Omit<ContentBoxProps, "children"> & {
   children?: React.ReactNode;
   coverageResult?: CoverageResult;
+  className?: string;
 };
 
 export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
@@ -21,20 +22,22 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
   subtitle = "Protections that all New Yorkers have",
   children,
   coverageResult,
+  className,
 }) => (
   <>
-    <ContentBox title={title} subtitle={subtitle}>
+    <ContentBox title={title} subtitle={subtitle} className={className}>
       <ContentBoxItem
         title="Your eviction protections"
         gtmId="universal_eviction"
         coverageResult={coverageResult}
       >
         <p>
-          The only way your landlord can evict you is through housing court.
-          Lockouts (also known as unlawful evictions or self-help evictions) are
-          illegal. All tenants, including those in private residential programs,
-          have the right to stay in their home unless they choose to leave or
-          are evicted through a court process.
+          The only way your landlord can legally evict you is through an
+          eviction lawsuit in housing court. Lockouts (also known as unlawful
+          evictions or self-help evictions) are illegal. All tenants, including
+          those in private residential programs, have the right to stay in their
+          home unless they choose to leave or are evicted through a court
+          process.
         </p>
         <br />
         <p className="bold">Learn more about the eviction process</p>
@@ -42,10 +45,26 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           to="https://hcr.ny.gov/eviction"
           className="has-label"
         >
-          NY Homes and Community Renewal
+          NY Homes and Community Renewal eviction information
+        </JFCLLinkExternal>
+        <JFCLLinkExternal
+          to="https://www.metcouncilonhousing.org/help-answers/nonpayment-of-rent-eviction-cases/"
+          className="has-label"
+        >
+          Met Council on Housing Nonpayment of Rent Eviction information
         </JFCLLinkExternal>
 
-        <p className="bold">See if you are eligible for a free attorney</p>
+        <p className="bold">Learn more about housing court</p>
+        <JFCLLinkExternal
+          to="https://housingcourtanswers.org/answers/for-tenants/"
+          className="has-label"
+        >
+          Housing Court Answers
+        </JFCLLinkExternal>
+
+        <p className="bold">
+          See if you are eligible for a free attorney in housing court
+        </p>
         <JFCLLinkExternal
           to="https://www.evictionfreenyc.org"
           className="has-label"
@@ -68,12 +87,12 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           can take to exercise your rights.
         </p>
         <br />
-        <p className="bold">Learn about warranty of habitability</p>
+        <p className="bold">Learn about Warranty of Habitability</p>
         <JFCLLinkExternal
           to="https://nycourts.gov/COURTS/nyc//housing/pdfs/warrantyofhabitability.pdf"
           className="has-label"
         >
-          NY Courts
+          NY Courts Warranty of Habitability fact sheet
         </JFCLLinkExternal>
 
         <p className="bold">Learn how tenant associations can help</p>
@@ -81,10 +100,27 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           to="https://www.metcouncilonhousing.org/help-answers/forming-a-tenants-association"
           className="has-label"
         >
-          Met Council on Housing
+          Met Council on Housing’s Guide to forming a tenant association
         </JFCLLinkExternal>
 
-        <p className="bold">Notify your landlord of repair issues</p>
+        <p className="bold">Learn more about requesting repairs</p>
+        <JFCLLinkExternal
+          to="https://www.metcouncilonhousing.org/help-answers/getting-repairs/"
+          className="has-label"
+        >
+          Met Council on Housing guide to getting repairs
+        </JFCLLinkExternal>
+        <JFCLLinkExternal
+          to="https://housingcourtanswers.org/answers/for-tenants/hp-actions-tenants/"
+          className="has-label"
+        >
+          Housing Court Answers repairs resources
+        </JFCLLinkExternal>
+
+        <p className="bold">
+          Send a free, legally vetted letter to notify your landlord of repair
+          issues
+        </p>
         <JFCLLinkExternal
           to="https://app.justfix.org/loc/splash"
           className="has-label"
@@ -104,7 +140,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         </p>
         <br />
         <p>
-          Source of income discrimination the illegal practice by landlords,
+          Source of income discrimination is the illegal practice by landlords,
           owners, and real estate brokers of refusing to rent to current or
           prospective tenants seeking to pay for housing with housing assistance
           vouchers, subsidies, or other forms of public assistance.
@@ -158,6 +194,24 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           Housing Justice for All tenant organizing form
         </JFCLLinkExternal>
       </ContentBoxItem>
+      <ContentBoxItem
+        title="More resources about your rights as an NYC tenant"
+        gtmId="universal_resources"
+        coverageResult={coverageResult}
+      >
+        <JFCLLinkExternal to="https://ag.ny.gov/publications/residential-tenants-rights-guide">
+          Residential Tenants Guide
+        </JFCLLinkExternal>
+        <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/">
+          Met Council on Housing
+        </JFCLLinkExternal>
+        <JFCLLinkExternal to="https://housingcourtanswers.org/answers/for-tenants/">
+          Housing Court Answers
+        </JFCLLinkExternal>
+        <JFCLLinkExternal to="https://www.justfix.org/en/learn">
+          JustFix
+        </JFCLLinkExternal>
+      </ContentBoxItem>
       {children}
     </ContentBox>
     <div className="divider__print" />
@@ -172,11 +226,12 @@ export const GoodCauseProtections: React.FC<
   rent,
   children,
   coverageResult,
+  className,
 }) => {
   const increase_pct = CPI + 5;
   return (
     <>
-      <ContentBox title={title} subtitle={subtitle}>
+      <ContentBox title={title} subtitle={subtitle} className={className}>
         <ContentBoxItem
           title="Your right to limited rent increases"
           gtmId="gce-protections_rent"
@@ -190,24 +245,28 @@ export const GoodCauseProtections: React.FC<
           <br />
           <div className="callout-box">
             <p>
-              If you are offered a new lease after April 20th, 2024 with an
-              amount higher than:
-              <span className="rent-increase">
-                {!!rent && (
-                  <span className="amount bold">
-                    {`${formatMoney(rent * (1 + increase_pct / 100))}`}{" "}
-                  </span>
-                )}
-                <br />
-                <span className={classNames("formula", !rent && "bold")}>
-                  {rent
-                    ? `(${formatMoney(rent)} + ${increase_pct}%)`
-                    : `your current rent + ${increase_pct}%`}
-                </span>
-              </span>
-              you should ask your landlord to provide reasons for the increase
-              beyond the {`${increase_pct}%`} reasonable rent standard.
+              If you are offered a new lease after April 20th, 2024, then your
+              landlord can’t raise your apartment’s monthly rent higher than:
             </p>
+            <span className="rent-increase">
+              <span className="amount">
+                {rent ? (
+                  <>{`${formatMoney(rent * (1 + increase_pct / 100))} `}</>
+                ) : (
+                  <>{`Your current monthly rent + ${increase_pct}%`}</>
+                )}
+              </span>
+              {!!rent && (
+                <>
+                  <br />
+                  <span className="formula">
+                    {`(Your current monthly rent ${formatMoney(
+                      rent
+                    )} + ${increase_pct}%)`}
+                  </span>
+                </>
+              )}
+            </span>
           </div>
           <p>
             <strong>Note</strong>
@@ -232,7 +291,7 @@ export const GoodCauseProtections: React.FC<
           <p>
             Your landlord will need to provide a good cause reason for ending a
             tenancy. Even if your lease expires, your landlord cannot evict you,
-            as long as you abide by the terms of your expired lease.
+            as long as you abide by the terms of your expired lease.{" "}
           </p>
         </ContentBoxItem>
 
@@ -246,6 +305,9 @@ export const GoodCauseProtections: React.FC<
           </JFCLLinkExternal>
           <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction">
             Met Council on Housing Good Cause Eviction fact sheet
+          </JFCLLinkExternal>
+          <JFCLLinkExternal to="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page">
+            Housing Preservation and Development Good Cause Eviction overview
           </JFCLLinkExternal>
         </ContentBoxItem>
         {children}
@@ -263,9 +325,10 @@ export const GoodCauseExercisingRights: React.FC<
   shareButtons,
   children,
   coverageResult,
+  className,
 }) => (
   <>
-    <ContentBox title={title} subtitle={subtitle}>
+    <ContentBox title={title} subtitle={subtitle} className={className}>
       <ContentBoxItem
         title="Use Good Cause to stay in your home"
         gtmId="gce-exercise_eviction"
@@ -386,9 +449,10 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
   subtitle = "Protections you have as a rent stabilized tenant",
   children,
   coverageResult,
+  className,
 }) => (
   <>
-    <ContentBox title={title} subtitle={subtitle}>
+    <ContentBox title={title} subtitle={subtitle} className={className}>
       <ContentBoxItem
         title="Your right to limited rent increases"
         gtmId="rs_rent"
@@ -434,6 +498,21 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
           Learn about succession rights
         </JFCLLinkExternal>
       </ContentBoxItem>
+
+      <ContentBoxItem
+        title="Learn more about rent stabilization"
+        gtmId="rs_learn"
+        coverageResult={coverageResult}
+      >
+        <p>
+          If you are the immediate family member of a rent-stabilized tenant and
+          have been living with them immediately prior to their moving or
+          passing away, you might be entitled to take over the lease.
+        </p>
+        <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/about-rent-stabilization/">
+          Met Council on Housing’s Rent Stabilization overview
+        </JFCLLinkExternal>
+      </ContentBoxItem>
       {children}
     </ContentBox>
     <div className="divider__print" />
@@ -445,9 +524,10 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
   subtitle = "Protections you have as a NYCHA or PACT/RAD tenant",
   children,
   coverageResult,
+  className,
 }) => (
   <>
-    <ContentBox title={title} subtitle={subtitle}>
+    <ContentBox title={title} subtitle={subtitle} className={className}>
       <ContentBoxItem
         title="Your right to repairs"
         gtmId="nycha_repairs"
@@ -455,15 +535,11 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
       >
         <p>
           Everyone has the right to live in a safe and habitable environment.
-          This includes timely repairs to their apartment to address any
-          maintenance issues that may arise. NYCHA Residents have the right to
-          request repairs and expect prompt action from management.
-        </p>
-        <br />
-        <p>
+          This includes timely repairs to your apartment. NYCHA Residents have
+          the right to request repairs and expect prompt action from management.
           If NYCHA is not responding to ticket requests, residents can file
           housing court cases (HP actions) seeking a judicial order requiring
-          NYCHA to make prompt repairs.
+          NYCHA to make repairs.
         </p>
       </ContentBoxItem>
 
@@ -478,6 +554,9 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
           recently experienced a change in income can request an interim
           recertification to ensure that their apartment remains affordable.
         </p>
+        <JFCLLinkExternal to="https://www.nyc.gov/site/nycha/residents/acop.page">
+          Learn more about income-based rent and recertification
+        </JFCLLinkExternal>
       </ContentBoxItem>
 
       <ContentBoxItem
@@ -488,43 +567,49 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
         <p>
           In instances where residents disagree with management decisions or
           believe their rights have been violated, they have the right to grieve
-          these issues through a formal process.
+          these issues through a formal process. Residents can file grievances
+          online through the resident portal or on paper by visiting the
+          management office.
         </p>
-        <br />
-        <p>
-          Residents can file grievances online through the resident portal or on
-          paper by visiting the management office.
-        </p>
+        <JFCLLinkExternal to="https://www.nyc.gov/site/nycha/residents/acop/chapter-12.page">
+          Learn more about income-based rent and recertification
+        </JFCLLinkExternal>
       </ContentBoxItem>
 
       <ContentBoxItem
-        title="Your right to legal representation"
+        title="Your right to legal representation if facing eviction"
         gtmId="nycha_legal"
         coverageResult={coverageResult}
       >
         <p>
           Legal representation can make a significant difference in ensuring a
           fair and just resolution to housing disputes, protecting residents
-          from wrongful eviction or other adverse outcomes.
+          from wrongful eviction or other adverse outcomes. If you do not have a
+          lawyer and are facing a termination of tenancy at the Office of
+          Impartial Hearings, you can ask for your case to be adjourned in order
+          for you to seek counsel.
         </p>
-        <br />
-        <p>
-          If you do not have a lawyer and are facing a termination of tenancy at
-          the Office of Impartial Hearings, you can ask for your case to be
-          adjourned in order for you to seek counsel.
-        </p>
+        <JFCLLinkExternal to="https://www.nyc.gov/site/nycha/residents/acop/chapter-11.page">
+          Learn more about NYCHA lease terminations
+        </JFCLLinkExternal>
       </ContentBoxItem>
 
       <ContentBoxItem
-        title="Learn more about NYCHA protections"
+        title="Learn more about NYCHA and PACT/RAD’s tenant protections"
         gtmId="nycha_learn"
         coverageResult={coverageResult}
       >
-        <JFCLLinkExternal to="https://nylag.org/tenants-rights/public-housing-justice-project/">
-          NY Legal Assistance Group
+        <JFCLLinkExternal to="https://www.nyc.gov/site/nycha/residents/acop.page">
+          NYCHA policies
         </JFCLLinkExternal>
-        <JFCLLinkExternal to="https://www.nyc.gov/assets/nycha/downloads/pdf/pact-factsheet.pdf">
+        <JFCLLinkExternal to="https://nylag.org/tenants-rights/public-housing-justice-project/">
+          NYLAG's Public Housing Justice Project
+        </JFCLLinkExternal>
+        <JFCLLinkExternal to="https://nylag.org/tenants-rights/public-housing-justice-project/">
           PACT Fact Sheet
+        </JFCLLinkExternal>
+        <JFCLLinkExternal to="hhttps://www.nyc.gov/assets/nycha/downloads/pdf/PACT-Rights-Responsibilities-English.pdf">
+          PACT Rights and Responsibilities Fact Sheet
         </JFCLLinkExternal>
       </ContentBoxItem>
 
@@ -532,4 +617,69 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
     </ContentBox>
     <div className="divider__print" />
   </>
+);
+
+export const SubsidizedProtections: React.FC<
+  KYRContentBoxProps & { lngLat?: string }
+> = ({
+  title = undefined,
+  subtitle = "You are not covered by Good Cause because you have existing eviction protections through your building’s subsidy program",
+  children,
+  coverageResult,
+  lngLat,
+  className,
+}) => (
+  <ContentBox title={title} subtitle={subtitle} className={className}>
+    <ContentBoxItem
+      accordion={false}
+      gtmId="subsidized_learn"
+      coverageResult={coverageResult}
+    >
+      <p>
+        You told us that that you live subsidized housing. If your building is
+        subsidized then you are not covered by Good Cause Eviction law because
+        you should already have important tenant protections associated with
+        your building’s subsidy.
+      </p>
+      <br />
+      <p>
+        To learn what protections you have through your building’s subsidy
+        program we recommend that you speak to your landlord and your neighbors.
+        For further assistance you can also try contacting:
+      </p>
+      <JFCLLinkExternal to={urlMyGov(lngLat)}>
+        Your local City Council representative
+      </JFCLLinkExternal>
+      <JFCLLinkExternal to="https://www.metcouncilonhousing.org/program/tenants-rights-hotline/">
+        Met Council on Housing’s Hotline
+      </JFCLLinkExternal>
+    </ContentBoxItem>
+    {children}
+  </ContentBox>
+);
+
+export const UnknownProtections: React.FC<KYRContentBoxProps> = ({
+  title = undefined,
+  subtitle = "Regardless of whether you’re covered by Good Cause, learn more about your rights as a NYC tenant",
+  children,
+  coverageResult,
+  className,
+}) => (
+  <ContentBox title={title} subtitle={subtitle} className={className}>
+    <ContentBoxItem
+      accordion={false}
+      gtmId="unknown_learn"
+      coverageResult={coverageResult}
+    >
+      <p>
+        Our guide to understanding your rights helps you learn more about all
+        the rights you have as an NYC tenant and the rights you might have
+        depending on the type of housing you live in.
+      </p>
+      <JFCLLinkInternal to="/tenant_rights">
+        Understand your rights
+      </JFCLLinkInternal>
+    </ContentBoxItem>
+    {children}
+  </ContentBox>
 );
