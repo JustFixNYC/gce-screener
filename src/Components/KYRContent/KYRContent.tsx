@@ -200,7 +200,7 @@ export const GoodCauseProtections: React.FC<
                 )}
                 <br />
                 <span className={classNames("formula", !rent && "bold")}>
-                  {!!rent
+                  {rent
                     ? `(${formatMoney(rent)} + ${increase_pct}%)`
                     : `your current rent + ${increase_pct}%`}
                 </span>

@@ -254,7 +254,8 @@
       margin-bottom: 2rem;
     }
   }
-  .unknown-protections .content-box__section {
+  .unknown-protections,
+  .subsidized-protections {
     p,
     .jfcl-link {
       @include body_standard_desktop;

@@ -32,12 +32,12 @@ import {
 } from "../../KYRContent/KYRContent";
 import { Header } from "../../Header/Header";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
-import { ProgressStep } from "../../../helpers";
+import { ProgressStep, urlMyGov } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
-import { JFCLLinkInternal } from "../../JFCLLink";
+import { JFCLLinkExternal, JFCLLinkInternal } from "../../JFCLLink";
 import { gtmPush } from "../../../google-tag-manager";
 
 export const Results: React.FC = () => {
@@ -86,6 +86,8 @@ export const Results: React.FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  console.log(address);
 
   return (
     <div id="results-page">
@@ -141,7 +143,9 @@ export const Results: React.FC = () => {
             />
           )}
 
-          {coverageResult === "SUBSIDIZED" && subsidyProtections}
+          {coverageResult === "SUBSIDIZED" && (
+            <SubsidizedProtections lngLat={address.longLat} />
+          )}
           {coverageResult === "RENT_STABILIZED" && (
             <RentStabilizedProtections coverageResult={coverageResult} />
           )}
@@ -648,15 +652,34 @@ const CopyURLButton: React.FC = () => {
   );
 };
 
-const subsidyProtections = (
+const SubsidizedProtections: React.FC<{ lngLat?: string }> = (props) => (
   <ContentBox
-    subtitle="You are not covered by Good Cause because you have existing eviction protections through your building's subsidy program."
-    className="subsidy-protections"
+    subtitle="You are not covered by Good Cause because you have existing eviction protections through your building’s subsidy program"
+    className="subsidized-protections"
   >
-    <ContentBoxItem accordion={false}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat officia
-      nemo sunt excepturi itaque modi explicabo magni corporis quae praesentium
-      reiciendis porro, omnis vel qui doloribus distinctio commodi. Ab, atque.
+    <ContentBoxItem
+      accordion={false}
+      gtmId="subsidized_learn"
+      coverageResult="SUBSIDIZED"
+    >
+      <p>
+        You told us that that you live subsidized housing. If your building is
+        subsidized then you are not covered by Good Cause Eviction law because
+        you should already have important tenant protections associated with
+        your building’s subsidy.
+      </p>
+      <br />
+      <p>
+        To learn what protections you have through your building’s subsidy
+        program we recommend that you speak to your landlord and your neighbors.
+        For further assistance you can also try contacting:
+      </p>
+      <JFCLLinkExternal to={urlMyGov(props.lngLat)}>
+        Your local City Council representative
+      </JFCLLinkExternal>
+      <JFCLLinkExternal to="https://www.metcouncilonhousing.org/program/tenants-rights-hotline/">
+        Met Council on Housing’s Hotline
+      </JFCLLinkExternal>
     </ContentBoxItem>
   </ContentBox>
 );
@@ -666,11 +689,16 @@ const unknownProtections = (
     subtitle="Regardless of whether you’re covered by Good Cause, learn more about your rights as a NYC tenant"
     className="unknown-protections"
   >
-    <ContentBoxItem accordion={false}>
+    <ContentBoxItem
+      accordion={false}
+      gtmId="unknown_learn"
+      coverageResult="UNKNOWN"
+    >
       <p>
-      Our guide to understanding your rights helps you learn more about all the
-      rights you have as an NYC tenant and the rights you might have depending
-      on the type of housing you live in.</p>
+        Our guide to understanding your rights helps you learn more about all
+        the rights you have as an NYC tenant and the rights you might have
+        depending on the type of housing you live in.
+      </p>
       <JFCLLinkInternal to="/tenant_rights">
         Understand your rights
       </JFCLLinkInternal>

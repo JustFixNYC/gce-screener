@@ -142,6 +142,12 @@ export const urlAcrisDoc = (docId: string) => {
   return `https://a836-acris.nyc.gov/DS/DocumentSearch/DocumentImageView?doc_id=${docId}`;
 };
 
+export const urlMyGov = (lngLat?: string) => {
+  return lngLat
+    ? `https://www.mygovnyc.org/?lnglat=${encodeURIComponent(lngLat)}`
+    : "https://www.mygovnyc.org";
+};
+
 export const acrisDocTypeFull = (docType: string) => {
   switch (docType) {
     case "AGMT":
