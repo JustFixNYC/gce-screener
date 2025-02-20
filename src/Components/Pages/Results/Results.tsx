@@ -145,13 +145,7 @@ export const Results: React.FC = () => {
           {coverageResult === "RENT_STABILIZED" && (
             <RentStabilizedProtections coverageResult={coverageResult} />
           )}
-          {coverageResult === "UNKNOWN" && (
-            <GoodCauseProtections
-              subtitle="Protections you might have under Good Cause"
-              rent={Number(fields.rent)}
-              coverageResult={coverageResult}
-            />
-          )}
+          {coverageResult === "UNKNOWN" && unknownProtections}
           {coverageResult === "COVERED" && (
             <>
               <GoodCauseProtections rent={Number(fields.rent)} />
@@ -174,7 +168,9 @@ export const Results: React.FC = () => {
           {coverageResult === "NYCHA" && (
             <NYCHAProtections coverageResult={coverageResult} />
           )}
-          <UniversalProtections coverageResult={coverageResult} />
+          {coverageResult !== "UNKNOWN" && (
+            <UniversalProtections coverageResult={coverageResult} />
+          )}
           <PhoneNumberCallout coverageResult={coverageResult} />
           <div className="share-footer">
             <h3 className="share-footer__header">
@@ -273,8 +269,8 @@ const CriteriaTable: React.FC<{
         How we determined your coverage
       </span>
       <p>
-        Assessment of coverage is based on the publicly available data about
-        your building and the information you’ve provided.
+        Results are based on publicly available data about your building and the
+        answers you provided. This does not constitute legal advice.
       </p>
     </div>
     <ul className="criteria-table__list">
@@ -325,23 +321,22 @@ const EligibilityNextSteps: React.FC<{
   return (
     <>
       <ContentBox
-        subtitle={
-          steps == 1
-            ? "There is still one thing you need to verify"
-            : `There are still ${steps} things you need to verify`
-        }
+        subtitle={`There ${
+          steps === 1 ? "is 1 thing" : `are ${steps} things`
+        } you need to verify to confirm your coverage`}
       >
         {rentStabilizedUnknown && (
           <ContentBoxItem
-            title="We need to know if your apartment is rent stabilized"
+            title="We need to confirm if your apartment is rent stabilized"
             icon={unsureIcon}
             className="next-step"
             gtmId="next-step_rs"
           >
             <p>
-              The Good Cause Eviction law only covers tenants whose apartments
-              are not rent stabilized. You told us that you are unsure of your
-              rent stabilization status.
+              You told us that you are unsure if you are rent stabilized. If
+              your apartment is rent stabilized, you are not covered by Good
+              Cause Eviction law, but rent stabilized protections are even
+              stronger than the Good Cause Eviction law.
             </p>
             <JFCLLinkInternal
               to={`/rent_stabilization?${searchParams.toString()}`}
@@ -353,13 +348,16 @@ const EligibilityNextSteps: React.FC<{
 
         {subsidyUnknown && (
           <ContentBoxItem
-            title="We need to know if your apartment is part of NYCHA or subsidized housing"
+            title="We need to confirm if your building is subsidized"
             icon={unsureIcon}
             className="next-step"
           >
             <p>
-              Good Cause Eviction law does not cover subsidized housing, as the
-              subsidy program separately provides similar tenant protections.
+              You told us that that you are not sure if you live in subsidized
+              housing. If your building is subsidized then you are not covered
+              by Good Cause Eviction law because you should already have
+              important tenant protections associated with your building’s
+              subsidy.
             </p>
 
             <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
@@ -370,15 +368,15 @@ const EligibilityNextSteps: React.FC<{
 
         {portfolioSizeUnknown && (
           <ContentBoxItem
-            title="We need to know if your landlord owns more than 10 units"
+            title="We need to confirm if your landlord owns more than 10 apartments"
             icon={unsureIcon}
             className="next-step"
             gtmId="next-step_portfolio"
           >
             <p>
-              {`Good Cause Eviction law only covers tenants whose landlord owns
-                more than 10 units. Your building has only ${bldgData.unitsres} apartments, but
-                your landlord may own other buildings.`}
+              {`Good Cause Eviction law only covers tenants whose landlord owns more than 10 units. ` +
+                `Your building has only ${bldgData.unitsres} apartments, but your landlord may own other buildings. ` +
+                `Good Cause Eviction law only covers tenants whose landlord owns`}
             </p>
             <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
               Find your landlord’s other buildings
@@ -387,8 +385,8 @@ const EligibilityNextSteps: React.FC<{
         )}
 
         <ContentBoxFooter
-          message="Update your coverage result"
-          linkText="Back to survey"
+          message="Have you learned something new?"
+          linkText="Adjust survey answers"
           linkTo="/survey"
           linkOnClick={() => gtmPush("gce_return_survey")}
         />
@@ -659,6 +657,23 @@ const subsidyProtections = (
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat officia
       nemo sunt excepturi itaque modi explicabo magni corporis quae praesentium
       reiciendis porro, omnis vel qui doloribus distinctio commodi. Ab, atque.
+    </ContentBoxItem>
+  </ContentBox>
+);
+
+const unknownProtections = (
+  <ContentBox
+    subtitle="Regardless of whether you’re covered by Good Cause, learn more about your rights as a NYC tenant"
+    className="unknown-protections"
+  >
+    <ContentBoxItem accordion={false}>
+      <p>
+      Our guide to understanding your rights helps you learn more about all the
+      rights you have as an NYC tenant and the rights you might have depending
+      on the type of housing you live in.</p>
+      <JFCLLinkInternal to="/tenant_rights">
+        Understand your rights
+      </JFCLLinkInternal>
     </ContentBoxItem>
   </ContentBox>
 );

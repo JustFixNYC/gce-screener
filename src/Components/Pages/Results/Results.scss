@@ -254,10 +254,13 @@
       margin-bottom: 2rem;
     }
   }
-  .subsidy-protections .content-box__section {
-    @include body_large_desktop;
-    @include for-phone-only {
-      @include body_standard_mobile;
+  .unknown-protections .content-box__section {
+    p,
+    .jfcl-link {
+      @include body_standard_desktop;
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
     }
   }
 
