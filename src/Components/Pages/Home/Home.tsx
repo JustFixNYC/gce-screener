@@ -131,6 +131,18 @@ export const Home: React.FC = () => {
               Learn more about tenant protections in NYC
             </JFCLLinkInternal>
           </div>
+          <div className="callout-box">
+            <span className="callout-box__header">
+              If you live outside of NYC
+            </span>
+            <p>
+              Tenants and tenant advocates are working to extend Good Cause
+              protections throughout New York State.
+            </p>
+            <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause/">
+              Learn where Good Cause Protections have already been won
+            </JFCLLinkExternal>
+          </div>
         </div>
       </div>
       <div className="content-section home__about-project">

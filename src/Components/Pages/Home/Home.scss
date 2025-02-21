@@ -50,6 +50,9 @@
       border-bottom: 1px solid $OFF_BLACK;
       .callout-box {
         margin-top: 3rem;
+        &:last-of-type {
+          margin-top: 1.5rem;
+        }
         @include for-tablet-portrait-up {
           p {
             width: 75%;
