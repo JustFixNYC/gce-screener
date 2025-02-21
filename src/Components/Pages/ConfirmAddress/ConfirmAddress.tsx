@@ -69,18 +69,18 @@ export const ConfirmAddress: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
+          {bldgData?.unitsres === 0 && (
+            <InfoBox color="orange">
+              <span>
+                City data indicates that there aren’t any residential units at
+                this address.
+              </span>
+              <Link to="/" className="jfcl-link">
+                Search new address
+              </Link>
+            </InfoBox>
+          )}
           <ContentBox>
-            {bldgData?.unitsres === 0 && (
-              <InfoBox color="orange">
-                <span>
-                  City data indicates that there aren’t any residential units at
-                  this address.
-                </span>
-                <Link to="/" className="jfcl-link">
-                  Search new address
-                </Link>
-              </InfoBox>
-            )}
             <div className="map-address-container">
               <div className="img-wrapper">
                 <img

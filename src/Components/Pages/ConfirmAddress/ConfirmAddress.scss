@@ -12,26 +12,7 @@ $mapImgHeight: 285px;
   }
 
   .info-box {
-    align-items: center;
-    .info-box__icon-container {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  .content-box {
-    display: flex;
-    flex-direction: column;
-    // padding: 1.125rem; // 18px
-    margin: 0;
-    gap: 1.125rem; // 18px
-    background-color: $WHITE;
-    @include for-phone-only() {
-      border: none;
-      padding: unset;
-      gap: 2rem;
-    }
-
+    margin-bottom: 1.125rem;
     .info-box__content-container {
       display: flex;
       font-size: 1rem;
@@ -44,17 +25,29 @@ $mapImgHeight: 285px;
           text-underline-offset: 2px;
         }
       }
-    }
 
-    @include for-phone-only() {
-      .info-box__content-container {
+      @include for-phone-only() {
         flex-direction: column;
         gap: 0.5rem;
+        align-items: start;
         @include small_text_mobile;
         a {
           margin-left: unset;
         }
       }
+    }
+  }
+
+  .content-box {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    gap: 1.125rem; // 18px
+    background-color: $WHITE;
+    @include for-phone-only() {
+      border: none;
+      padding: unset;
+      gap: 2rem;
     }
 
     .map-address-container {
