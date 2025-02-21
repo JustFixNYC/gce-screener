@@ -33,7 +33,7 @@ import { gtmPush } from "../../../google-tag-manager";
 import "./PortfolioSize.scss";
 
 const VIDEO_EMBED_URL =
-  "https://www.youtube.com/embed/jFyi3k6rr8k?si=C98276JgvDojcfx7&amp;controls=0";
+  "https://www.youtube.com/embed/dSnDgmGH_6E?si=G9wM6P8LHgAynN5O";
 
 const EMAIL_SUBJECT =
   "Good Cause NYC | Find out if your landlord owns other apartments";
