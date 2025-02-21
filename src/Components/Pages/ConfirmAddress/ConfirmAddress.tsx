@@ -38,7 +38,7 @@ export const ConfirmAddress: React.FC = () => {
   const bearing = "0";
   const pitch = "0";
   const width = "425";
-  const height = "223";
+  const height = "285";
   const marker = `pin-s+000(${longLat})`;
 
   const mapImageURL = `https://api.mapbox.com/styles/v1/${styleToken}/static/${marker}/${longLat},${zoom},${bearing},${pitch}/${width}x${height}?access_token=${accessToken}`;
