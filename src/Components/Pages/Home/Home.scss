@@ -98,10 +98,9 @@
       p {
         @include body_standard_desktop;
         margin: 0;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         @include for-phone-only {
           @include small_text_mobile;
-          margin-bottom: 1rem;
         }
       }
 
