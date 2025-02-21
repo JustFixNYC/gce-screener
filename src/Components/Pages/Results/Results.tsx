@@ -28,7 +28,9 @@ import {
   GoodCauseProtections,
   NYCHAProtections,
   RentStabilizedProtections,
+  SubsidizedProtections,
   UniversalProtections,
+  UnknownProtections,
 } from "../../KYRContent/KYRContent";
 import { Header } from "../../Header/Header";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
@@ -87,6 +89,8 @@ export const Results: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log(address);
+
   return (
     <div id="results-page">
       <Header
@@ -134,23 +138,27 @@ export const Results: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           {coverageResult === "UNKNOWN" && bldgData && criteriaDetails && (
-            <EligibilityNextSteps
-              bldgData={bldgData}
-              criteriaDetails={criteriaDetails}
-              searchParams={searchParams}
+            <>
+              <EligibilityNextSteps
+                bldgData={bldgData}
+                criteriaDetails={criteriaDetails}
+                searchParams={searchParams}
+              />
+              <UnknownProtections
+                className="unknown-protections"
+                coverageResult={coverageResult}
+              />
+            </>
+          )}
+          {coverageResult === "SUBSIDIZED" && (
+            <SubsidizedProtections
+              lngLat={address.longLat}
+              coverageResult={coverageResult}
+              className="subsidized-protections"
             />
           )}
-
-          {coverageResult === "SUBSIDIZED" && subsidyProtections}
           {coverageResult === "RENT_STABILIZED" && (
             <RentStabilizedProtections coverageResult={coverageResult} />
-          )}
-          {coverageResult === "UNKNOWN" && (
-            <GoodCauseProtections
-              subtitle="Protections you might have under Good Cause"
-              rent={Number(fields.rent)}
-              coverageResult={coverageResult}
-            />
           )}
           {coverageResult === "COVERED" && (
             <>
@@ -174,11 +182,19 @@ export const Results: React.FC = () => {
           {coverageResult === "NYCHA" && (
             <NYCHAProtections coverageResult={coverageResult} />
           )}
-          <UniversalProtections coverageResult={coverageResult} />
+          {coverageResult !== "UNKNOWN" && coverageResult !== "NOT_COVERED" && (
+            <UniversalProtections coverageResult={coverageResult} />
+          )}
+          {coverageResult === "NOT_COVERED" && (
+            <UniversalProtections
+              coverageResult={coverageResult}
+              subtitle="Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights"
+            />
+          )}
           <PhoneNumberCallout coverageResult={coverageResult} />
           <div className="share-footer">
             <h3 className="share-footer__header">
-              Help your neighbors learn if they’re covered{" "}
+              Share this site with your neighbors
             </h3>
             <CopyURLButton />
           </div>
@@ -191,11 +207,11 @@ export const Results: React.FC = () => {
 const CRITERIA_LABELS = {
   portfolioSize: "Landlord portfolio size",
   buildingClass: "Type of building",
-  landlord: "Live-in Landlord",
-  rent: "Rent",
-  subsidy: "Subsidy",
+  landlord: "Live-in landlord",
+  rent: "Rent Amount",
+  subsidy: "Subsidized housing",
   rentStabilized: "Rent stabilization",
-  certificateOfOccupancy: "Certificate of Occupancy",
+  certificateOfOccupancy: "Certificate of occupancy",
 };
 
 const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
@@ -273,8 +289,8 @@ const CriteriaTable: React.FC<{
         How we determined your coverage
       </span>
       <p>
-        Assessment of coverage is based on the publicly available data about
-        your building and the information you’ve provided.
+        Results are based on publicly available data about your building and the
+        answers you provided. This does not constitute legal advice.
       </p>
     </div>
     <ul className="criteria-table__list">
@@ -325,23 +341,22 @@ const EligibilityNextSteps: React.FC<{
   return (
     <>
       <ContentBox
-        subtitle={
-          steps == 1
-            ? "There is still one thing you need to verify"
-            : `There are still ${steps} things you need to verify`
-        }
+        subtitle={`There ${
+          steps === 1 ? "is 1 thing" : `are ${steps} things`
+        } you need to verify to confirm your coverage`}
       >
         {rentStabilizedUnknown && (
           <ContentBoxItem
-            title="We need to know if your apartment is rent stabilized"
+            title="We need to confirm if your apartment is rent stabilized"
             icon={unsureIcon}
             className="next-step"
             gtmId="next-step_rs"
           >
             <p>
-              The Good Cause Eviction law only covers tenants whose apartments
-              are not rent stabilized. You told us that you are unsure of your
-              rent stabilization status.
+              You told us that you are unsure if you are rent stabilized. If
+              your apartment is rent stabilized, you are not covered by Good
+              Cause Eviction law, but rent stabilized protections are even
+              stronger than the Good Cause Eviction law.
             </p>
             <JFCLLinkInternal
               to={`/rent_stabilization?${searchParams.toString()}`}
@@ -353,13 +368,16 @@ const EligibilityNextSteps: React.FC<{
 
         {subsidyUnknown && (
           <ContentBoxItem
-            title="We need to know if your apartment is part of NYCHA or subsidized housing"
+            title="We need to confirm if your building is subsidized"
             icon={unsureIcon}
             className="next-step"
           >
             <p>
-              Good Cause Eviction law does not cover subsidized housing, as the
-              subsidy program separately provides similar tenant protections.
+              You told us that that you are not sure if you live in subsidized
+              housing. If your building is subsidized then you are not covered
+              by Good Cause Eviction law because you should already have
+              important tenant protections associated with your building’s
+              subsidy.
             </p>
 
             <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
@@ -370,25 +388,25 @@ const EligibilityNextSteps: React.FC<{
 
         {portfolioSizeUnknown && (
           <ContentBoxItem
-            title="We need to know if your landlord owns more than 10 units"
+            title="We need to confirm if your landlord owns more than 10 apartments"
             icon={unsureIcon}
             className="next-step"
             gtmId="next-step_portfolio"
           >
             <p>
-              {`Good Cause Eviction law only covers tenants whose landlord owns
-                more than 10 units. Your building has only ${bldgData.unitsres} apartments, but
-                your landlord may own other buildings.`}
+              {`Good Cause Eviction law only covers tenants whose landlord owns more than 10 units. ` +
+                `Your building has only ${bldgData.unitsres} apartments, but your landlord may own other buildings. ` +
+                `Good Cause Eviction law only covers tenants whose landlord owns`}
             </p>
             <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
-              Find your landlord’s other buildings
+              Find other buildings your landlord owns
             </JFCLLinkInternal>
           </ContentBoxItem>
         )}
 
         <ContentBoxFooter
-          message="Update your coverage result"
-          linkText="Back to survey"
+          message="Have you learned something new?"
+          linkText="Adjust survey answers"
           linkTo="/survey"
           linkOnClick={() => gtmPush("gce_return_survey")}
         />
@@ -432,7 +450,7 @@ const CoverageResultHeadline: React.FC<{
     case "UNKNOWN":
       headlineContent = (
         <>
-          <span className="result-headline__top">Your apartment</span>{" "}
+          <span className="result-headline__top">You</span>{" "}
           <span className="coverage-pill yellow">might be covered</span> by Good
           Cause Eviction
         </>
@@ -441,7 +459,7 @@ const CoverageResultHeadline: React.FC<{
     case "NOT_COVERED":
       headlineContent = (
         <>
-          <span className="result-headline__top">Your apartment is</span>{" "}
+          <span className="result-headline__top">You are</span>{" "}
           <span className="coverage-pill orange">likely not covered</span>{" "}
           <br />
           by Good Cause Eviction
@@ -451,10 +469,8 @@ const CoverageResultHeadline: React.FC<{
     case "RENT_STABILIZED":
       headlineContent = (
         <>
-          <span className="result-headline__top">
-            Your apartment is protected by
-          </span>{" "}
-          <span className="coverage-pill green">rent stabilization</span>, which
+          <span className="result-headline__top">Your apartment is</span>{" "}
+          <span className="coverage-pill green">rent stabilized</span> which
           provides stronger protections than Good Cause Eviction
         </>
       );
@@ -462,7 +478,7 @@ const CoverageResultHeadline: React.FC<{
     case "COVERED":
       headlineContent = (
         <>
-          <span className="result-headline__top">Your apartment is</span>{" "}
+          <span className="result-headline__top">You are</span>{" "}
           <span className="coverage-pill green">likely covered</span> by Good
           Cause Eviction
         </>
@@ -474,16 +490,16 @@ const CoverageResultHeadline: React.FC<{
           <span className="result-headline__top">
             Your apartment is part of
           </span>{" "}
-          <span className="coverage-pill green">NYCHA</span>, which provides
-          stronger protections than Good Cause Eviction
+          <span className="coverage-pill green">NYCHA or PACT/RAD</span> which
+          provides stronger protections than Good Cause Eviction
         </>
       );
       break;
     case "SUBSIDIZED":
       headlineContent = (
         <>
-          <span className="result-headline__top">Your apartment is in a</span>{" "}
-          <span className="coverage-pill green">subsidized</span> building,
+          <span className="result-headline__top">Your building is</span>{" "}
+          <span className="coverage-pill green">subsidized</span>
           which provides existing eviction protections
         </>
       );
@@ -568,8 +584,8 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
           Help build tenant power in NYC
         </span>
         <p>
-          We’ll text you once a year to ask about your housing conditions. We’ll
-          use that information to better advocate for your rights.
+          We’ll text you once a year to learn about your housing conditions.
+          We’ll use your answers to better advocate for your rights.
         </p>
       </div>
       <div className="callout-box__column">
@@ -641,6 +657,7 @@ const CopyURLButton: React.FC = () => {
         labelText="Copy goodcausenyc.org"
         labelIcon="copy"
         onClick={handleClick}
+        size="small"
       />
       {showSuccess && (
         <div className="success-message">
@@ -651,16 +668,3 @@ const CopyURLButton: React.FC = () => {
     </>
   );
 };
-
-const subsidyProtections = (
-  <ContentBox
-    subtitle="You are not covered by Good Cause because you have existing eviction protections through your building's subsidy program."
-    className="subsidy-protections"
-  >
-    <ContentBoxItem accordion={false}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat officia
-      nemo sunt excepturi itaque modi explicabo magni corporis quae praesentium
-      reiciendis porro, omnis vel qui doloribus distinctio commodi. Ab, atque.
-    </ContentBoxItem>
-  </ContentBox>
-);

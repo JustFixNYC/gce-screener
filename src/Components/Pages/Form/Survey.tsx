@@ -136,7 +136,7 @@ export const Survey: React.FC = () => {
     <div id="survey-page">
       <Header
         title="A few questions about your apartment"
-        subtitle="We'll use your answers combined with public data to help determine your coverage."
+        subtitle="We'll use your answers and publicly available information about your building to help learn if you’re covered."
         address={address}
         lastStepReached={lastStepReached}
       />
@@ -155,7 +155,7 @@ export const Survey: React.FC = () => {
               <FormGroup
                 legendText="1. How many bedrooms are in your apartment?"
                 invalid={showErrors && localFields.bedrooms === null}
-                invalidText="Please select one"
+                invalidText="Please specify the number of bedrooms in your apartment."
                 invalidRole="status"
               >
                 <RadioGroup
@@ -181,14 +181,8 @@ export const Survey: React.FC = () => {
             >
               <TextInput
                 labelText="2. What is the total monthly rent for your entire apartment?"
-                helperElement={
-                  <InfoBox>
-                    Please provide the total rent of your apartment, not just
-                    the portion of rent that you pay.
-                  </InfoBox>
-                }
                 invalid={showErrors && localFields.rent === null}
-                invalidText="Enter your total rent amount"
+                invalidText="Please enter your total rent amount."
                 invalidRole="status"
                 id="rent-input"
                 type="money"
@@ -209,14 +203,14 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.rentStabilized === null}
             >
               <FormGroup
-                legendText="3. Is your apartment rent-stabilized?"
+                legendText="3. Is your apartment rent stabilized?"
                 helperElement={
                   getRsHelperText(bldgData) && (
                     <InfoBox>{getRsHelperText(bldgData)}</InfoBox>
                   )
                 }
                 invalid={showErrors && localFields.rentStabilized === null}
-                invalidText="Please select one"
+                invalidText="Please specify if your apartment is rent stabilized."
                 invalidRole="status"
               >
                 <RadioGroup
@@ -239,14 +233,14 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.housingType === null}
             >
               <FormGroup
-                legendText="4. Is your apartment associated with any of the following?"
+                legendText="4. Is your apartment part of any subsidized housing programs?"
                 helperElement={
                   getSubsidyHelperText(bldgData) && (
                     <InfoBox>{getSubsidyHelperText(bldgData)}</InfoBox>
                   )
                 }
                 invalid={showErrors && localFields.housingType === null}
-                invalidText="Please select one"
+                invalidText="Please specify if your apartment is part of any subsidized housing programs."
                 invalidRole="status"
               >
                 <RadioGroup
@@ -280,7 +274,7 @@ export const Survey: React.FC = () => {
                   <FormGroup
                     legendText="5. Does your landlord live in the building?"
                     invalid={showErrors && localFields.landlord === null}
-                    invalidText="Please select one"
+                    invalidText="Please specify whether your landlord lives in your apartment building."
                     invalidRole="status"
                   >
                     <RadioGroup
@@ -311,7 +305,7 @@ export const Survey: React.FC = () => {
                       </InfoBox>
                     }
                     invalid={showErrors && localFields.portfolioSize === null}
-                    invalidText="Please select one"
+                    invalidText="Please specify whether your landlord owns more than 10 apartments across multiple buildings."
                     invalidRole="status"
                   >
                     <RadioGroup
@@ -372,17 +366,17 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
   if (bldgUnits > 0 && rsUnits >= bldgUnits) {
     return (
       <>
-        City data shows that all apartments in your building are registered as
-        rent stabilized. <br />
+        Publicly available data sources indicate that all apartments in your
+        building are registered as rent stabilized. <br />
         {wowLink}
       </>
     );
   } else if (active421a || activeJ51) {
     return (
       <>
-        {`Your building appears to receive the ${
+        {`Publicly available data sources indicate that your building receives the ${
           active421a ? "421a" : "J51"
-        } tax exemption. This means your
+        } tax incentive. This means your
         apartment is rent stabilized.`}
         <br />
         <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
@@ -393,7 +387,9 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
   } else if (rsUnits > 0) {
     return (
       <>
-        {`City data shows that ${formatNumber(rsUnits)} of the ${formatNumber(
+        {`Publicly available data sources indicate that ${formatNumber(
+          rsUnits
+        )} of the ${formatNumber(
           bldgUnits
         )} apartments in your building are registered as rent stabilized.`}
         <br />
@@ -401,7 +397,10 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
       </>
     );
   } else if (yearbuilt < 1974 && bldgUnits >= 6) {
-    return "Based on the size and age of your building, your apartment might be rent stabilized.";
+    return (
+      "No rent stabilized apartments were registered in your building in recent years, " +
+      "but based on the size and age of your building some of the apartments may still be rent stabilized."
+    );
   } else {
     return undefined;
   }
@@ -423,17 +422,27 @@ const getSubsidyHelperText = (
   if (is_nycha) {
     return (
       <>
-        Public data shows that your building is part of NYCHA.
+        Publicly available data sources indicate that your building is part of
+        NYCHA.
         <br />
         {sourceLink}
       </>
     );
   } else if (is_subsidized) {
+    const namedSubsidies = [
+      "Low-Income Housing Tax Credit (LIHTC)",
+      "Mitchell-Lama",
+    ];
+
     return (
       <>
-        {`Public data shows that your building ${buildingSubsidyLanguage(
+        {`Publicly available data sources indicate that your building ${buildingSubsidyLanguage(
           subsidy_name
-        )}, which is considered subsidized housing.`}
+        )}${
+          namedSubsidies.includes(subsidy_name)
+            ? "."
+            : ", which is considered subsidized housing."
+        }`}
         <br />
         {sourceLink}
       </>
@@ -441,11 +450,8 @@ const getSubsidyHelperText = (
   } else {
     return (
       <>
-        If you applied for your apartment through Housing Connect and are unsure
-        of your specific subsidy, you can select “Other.”
-        <br />
-        If you used a voucher that can be used anywhere to cover some or all of
-        the your rent, select “No, my apartment is not subsidized.”
+        Publicly available data sources do not indicate that your building is
+        part of any subsidized housing programs.
       </>
     );
   }

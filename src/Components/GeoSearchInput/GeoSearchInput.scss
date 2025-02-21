@@ -9,14 +9,28 @@
     width: fit-content;
   }
 
+  .jfcl-dropdown__control {
+    cursor: text;
+  }
+
+  .jfcl-dropdown__option {
+    cursor: pointer;
+  }
+
   .jfcl-dropdown__value-container {
     padding: 1.125rem; // 18px
+    @include for-phone-only {
+      padding: 0.5rem 1.125rem;
+    }
   }
   .jfcl-dropdown__placeholder {
     @include body_large_desktop;
     svg {
       color: $OFF_BLACK;
       margin-right: 1.5rem; // 24px
+      @include for-phone-only {
+        margin-right: 0.5rem;
+      }
     }
   }
   .jfcl-dropdown__indicators {
@@ -25,7 +39,12 @@
   .jfcl-input-header__invalid_text {
     font-size: 1.125rem;
   }
-  .jfcl-dropdown__option--is-focused {
-    background-color: $OFF_WHITE_200;
+  .jfcl-dropdown {
+    .jfcl-dropdown__option--is-focused {
+      background-color: $GREY_50;
+    }
+    .jfcl-dropdown__option--is-selected {
+      background-color: $BLUE_50;
+    }
   }
 }

@@ -3,6 +3,8 @@
 @import "../../../colors.scss";
 
 #home-page {
+  border-bottom: 1px solid $OFF_BLACK;
+
   .headline-section {
     @include for-phone-only() {
       border-bottom: 1px solid $OFF_BLACK;
@@ -40,7 +42,7 @@
       padding: 2rem 1.5rem;
     }
     @include for-tablet-portrait-up {
-      .content-section__content > p:first-of-type {
+      .content-section__content > p {
         width: 85%;
       }
     }
@@ -48,6 +50,9 @@
       border-bottom: 1px solid $OFF_BLACK;
       .callout-box {
         margin-top: 3rem;
+        &:last-of-type {
+          margin-top: 1.5rem;
+        }
         @include for-tablet-portrait-up {
           p {
             width: 75%;
@@ -66,7 +71,8 @@
         @include h3_mobile;
       }
     }
-    p {
+    p,
+    p a {
       @include body_large_desktop;
       margin: 0;
 
@@ -97,14 +103,14 @@
       p {
         @include body_standard_desktop;
         margin: 0;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         @include for-phone-only {
           @include small_text_mobile;
-          margin-bottom: 1rem;
         }
       }
 
       a {
+        font-weight: 400;
         @include for-phone-only {
           @include small_text_mobile;
         }

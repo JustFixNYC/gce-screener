@@ -88,6 +88,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
         defaultOptions={[
           { value: initialAddress?.address, label: initialAddress?.address },
         ]}
+        noOptionsMessage={() => "Enter an address to get started"}
         // @ts-expect-error We need to update the JFCL onChange props to match react-select
         onChange={({ value }) => {
           setIsHighlighted(false);

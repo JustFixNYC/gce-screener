@@ -51,6 +51,10 @@
     margin: 1.5rem 0;
   }
 
+  .footer__name .jfcl-link {
+    text-decoration: none;
+  }
+
   .footer__name,
   .footer__collab {
     font-size: 1.125rem;
@@ -67,19 +71,11 @@
       text-underline-position: from-font;
     }
   }
-  .footer__collab,
-  .footer__legal-pages {
-    width: 9rem;
-  }
 
   .footer__name,
   .footer__legal-pages {
     .jfcl-link {
       padding: 0.75rem 0;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
 
@@ -98,6 +94,13 @@
       .jfcl-link {
         margin-right: 2rem;
       }
+    }
+    .footer__bottom-bar {
+      grid-template-columns: 1fr;
+    }
+    .footer__collab {
+      margin: 1rem 0 0;
+      width: unset;
     }
   }
 }

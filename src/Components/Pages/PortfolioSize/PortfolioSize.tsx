@@ -29,11 +29,11 @@ import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkExternal } from "../../JFCLLink";
-import "./PortfolioSize.scss";
 import { gtmPush } from "../../../google-tag-manager";
+import "./PortfolioSize.scss";
 
-// const LOOM_EMBED_URL =
-//   "https://www.loom.com/embed/cef3632773a14617a0e8ec407c77e513?sid=93a986f7-ccdc-4048-903c-974fed826119";
+const VIDEO_EMBED_URL =
+  "https://www.youtube.com/embed/dSnDgmGH_6E?si=G9wM6P8LHgAynN5O";
 
 const EMAIL_SUBJECT =
   "Good Cause NYC | Find out if your landlord owns other apartments";
@@ -57,7 +57,7 @@ export const PortfolioSize: React.FC = () => {
   return (
     <div id="portfolio-size-page">
       <Header
-        title="Find out if your landlord owns other apartments"
+        title="Find out if your landlord owns other buildings"
         address={address}
         showProgressBar={false}
         isGuide
@@ -69,10 +69,7 @@ export const PortfolioSize: React.FC = () => {
           </div>
         )}
         <ShareButtons
-          buttonsInfo={[
-            ["bookmark", "Bookmark this page"],
-            ["email", "Email this page"],
-          ]}
+          buttonsInfo={[["email", "Email this page"]]}
           emailSubject={EMAIL_SUBJECT}
           emailBody={EMAIL_BODY}
         />
@@ -80,42 +77,53 @@ export const PortfolioSize: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          <ContentBox subtitle="Good Cause covers tenants whose landlords own more than 10 apartments">
+          <ContentBox
+            subtitle="To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments."
+            className="portfolio-video-box"
+          >
             <ContentBoxItem accordion={false}>
               <p>
-                If you are able to find that your landlord owns more than 10
-                total apartments across multiple buildings, this means that you
-                meet the Landlord Portfolio Size criteria for Good Cause
-                Eviction Law.
+                If your building has fewer than 11 apartments, you need to learn
+                if your landlord owns other residential buildings.
               </p>
+              <br />
+              <p>
+                Unfortunately, it can be difficult to find out who your landlord
+                really is and if your landlord owns other buildings. This is
+                especially true if your building is owned by a corporation.
+              </p>
+              <br />
+              <p>
+                This guide will walk you through two steps that will help you
+                prove who you landlord is and if they own other buildings.
+                Please watch the instruction video, below, to get started.
+              </p>
+              <VideoEmbed url={VIDEO_EMBED_URL} />
             </ContentBoxItem>
           </ContentBox>
           <div className="divider__print" />
-          <ContentBox
-            subtitle="How to find other apartments your landlord owns"
-            headerExtra={
-              <InfoBox color="blue">
-                We recommend doing the following research on a desktop computer.
-              </InfoBox>
-            }
-          >
+          <ContentBox subtitle="How to find other apartments your landlord owns">
             <ContentBoxItem
               title="Confirm your landlord’s name and signature"
               step={1}
             >
               <p>
-                Before we can find out if your landlord owns other apartments,
-                we need to confirm your building’s landlord. The best way to do
-                this is by searching real estate documents for your building’s
-                landlord’s name and signature.
+                First, you need to confirm your landlord’s name and signature.
+                It might not be the name you’re familiar with. The best way to
+                confirm your landlord’s name or signature is to review your
+                building’s official real estate transaction documents. We have
+                provided links to these documents, below.
               </p>
-              <VideoEmbed url="https://www.youtube.com/embed/jFyi3k6rr8k?si=C98276JgvDojcfx7&amp;controls=0" />
+              <br />
+              <p>
+                <strong>Note:</strong> If you have not already, please watch the
+                video, above, for helpful instructions on how to find your
+                landlord’s name or signature in these documents. Also note: You
+                only need to find your landlord’s name or signature on one of
+                these documents before moving to step #2.
+              </p>
               <div className="content-box__section__search-building">
-                <AcrisLinks
-                  {...bldgData}
-                  address={address.address}
-                  info="You only need to find your building’s landlord’s signature on one of the documents below"
-                />
+                <AcrisLinks {...bldgData} address={address.address} />
               </div>
             </ContentBoxItem>
 
@@ -123,25 +131,29 @@ export const PortfolioSize: React.FC = () => {
               title="Find other buildings your landlord might own"
               step={2}
             >
-              {bldgData && !!bldgData?.related_properties.length && (
+              {bldgData && (
                 <>
                   <p>
-                    Review documents below to find your landlord’s name or
-                    signature to see if they own more than 10 units across
-                    multiple buildings.
+                    {`Review the documents below to find your landlord’s name or
+                    signature to learn if they own more than 10 units across
+                    multiple buildings. Remember, your building has ${
+                      bldgData.unitsres
+                    }
+                    apartments, so you only need to confirm that your landlord
+                    owns ${10 - bldgData.unitsres} additional ${
+                      10 - bldgData.unitsres == 1 ? "apartment" : "apartments"
+                    } across other buildings.`}
                   </p>
                   <br />
                 </>
               )}
-              {bldgData && (
+              {bldgData && !!bldgData?.related_properties.length && (
                 <p>
-                  {`Your building has ${bldgData.unitsres} apartments. You only need to confirm that your ` +
-                    `landlord owns ${10 - bldgData.unitsres} additional ${
-                      10 - bldgData.unitsres == 1 ? "apartment" : "apartments"
-                    } across other buildings.`}
+                  <strong>Note:</strong> For any of the addresses listed below,
+                  you only need to find your landlord’s name or signature on one
+                  of the documents to know if they own that building.
                 </p>
               )}
-              <VideoEmbed url="https://www.youtube.com/embed/jFyi3k6rr8k?si=C98276JgvDojcfx7&amp;controls=0" />
               <div className="content-box__section__related-buildings">
                 {!!bldgData?.related_properties &&
                 bldgData?.related_properties.length > 0 ? (
@@ -164,7 +176,7 @@ export const PortfolioSize: React.FC = () => {
             </ContentBoxItem>
 
             <ContentBoxFooter
-              message="Update your coverage result"
+              message="Have you learned something new?"
               linkText="Adjust survey answers"
               linkTo="/survey"
               linkOnClick={() => gtmPush("gce_return_survey")}
@@ -196,7 +208,6 @@ type ACRISLinksProps = {
   address?: string;
   unitsres?: number;
   acris_docs?: AcrisDocument[];
-  info?: string;
   accordion?: boolean;
   open?: boolean;
 };
@@ -206,7 +217,6 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
   address,
   unitsres,
   acris_docs,
-  info,
   accordion = false,
   open = false,
 }) => {
@@ -224,9 +234,6 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
   const content = (
     <>
       <div className="acris-links__content">
-        {info && acris_docs && acris_docs?.length > 1 && (
-          <InfoBox color="blue">{info}</InfoBox>
-        )}
         {!bbl && <>Loading document links...</>}
         {acris_docs && (
           <ul>
@@ -324,11 +331,7 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
       <ul>
         {relatedProperties?.slice(0, visibleCount).map((bldg, i) => (
           <li key={i}>
-            <AcrisLinks
-              {...bldg}
-              info="You only need to find your building’s landlord’s signature on one of the documents below"
-              accordion
-            />
+            <AcrisLinks {...bldg} accordion />
           </li>
         ))}
       </ul>
