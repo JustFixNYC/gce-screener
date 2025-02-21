@@ -19,12 +19,18 @@
 
   .jfcl-dropdown__value-container {
     padding: 1.125rem; // 18px
+    @include for-phone-only {
+      padding: 0.5rem 1.125rem;
+    }
   }
   .jfcl-dropdown__placeholder {
     @include body_large_desktop;
     svg {
       color: $OFF_BLACK;
       margin-right: 1.5rem; // 24px
+      @include for-phone-only {
+        margin-right: 0.5rem;
+      }
     }
   }
   .jfcl-dropdown__indicators {
