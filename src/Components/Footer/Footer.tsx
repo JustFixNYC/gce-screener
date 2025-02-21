@@ -52,7 +52,7 @@ export const Footer: React.FC = () => (
           rel="noopener noreferrer"
           className="jfcl-link"
         >
-          HJ4A
+          Housing Justice for All
         </a>{" "}
         &{" "}
         <a

@@ -40,6 +40,7 @@
       }
     }
     &.orange {
+      border-width: 2px;
       margin: 0 0 2.25rem;
       @include for-phone-only {
         margin-bottom: 1rem;
@@ -87,6 +88,11 @@
   }
 
   .jfcl-select-button__label {
+    font-weight: 400;
+  }
+
+  .jfcl-input-header__invalid_text {
+    font-size: 1rem;
     font-weight: 400;
   }
 }

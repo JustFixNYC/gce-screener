@@ -32,6 +32,15 @@
   .content-box {
     margin: unset;
     margin-bottom: 1.5rem;
+    &.portfolio-video-box p {
+      max-width: unset;
+    }
+    .content-box__section__video iframe {
+      @include for-phone-only {
+        height: 135px;
+        width: 280px;
+      }
+    }
   }
 
   .acris-links {
@@ -88,6 +97,9 @@
       }
       a {
         padding: 0.75rem 0;
+        &:visited {
+          color: $BLUE_VISITED;
+        }
       }
     }
 
@@ -122,9 +134,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 1rem 1.5rem 0 1.5rem;
       color: $GREY_700;
       @include body_standard_desktop;
+      padding: 1rem 1.5rem 0 1.5rem;
+      @include for-phone-only {
+        padding: 1rem 0 0;
+      }
 
       button.load-more-button {
         background: unset;
@@ -142,15 +157,6 @@
         text-align: center;
         @include body_standard_desktop;
         color: $OFF_BLACK;
-
-        .callout-box {
-          background-color: $OFF_WHITE_100;
-          border: none !important;
-
-          @include for-tablet-landscape-up() {
-            width: 500px;
-          }
-        }
       }
     }
 
@@ -158,12 +164,20 @@
       display: flex;
       flex-direction: column;
       padding: 1.125rem 1.5rem; // 18px 24px
+      margin-bottom: 0;
       gap: 1.125rem; // 18px
       border-radius: 4px;
       margin-top: 1.25rem; // 20px
       text-align: left;
-      @include small_text_desktop;
-      border: 1px solid $GREY_NEW;
+      border: none;
+      background-color: $OFF_WHITE_100;
+      @include body_standard_desktop;
+      width: 75%;
+
+      @include for-phone-only {
+        width: unset;
+        @include small_text_mobile;
+      }
 
       ul {
         margin: unset;

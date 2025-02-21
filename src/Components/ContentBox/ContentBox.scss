@@ -18,6 +18,13 @@ $videoEmbedW: 623px;
   }
 
   #gce-protections_rent {
+    .callout-box {
+      flex-direction: column;
+    }
+    p {
+      width: 75%;
+    }
+
     strong {
       display: inline-block;
       margin-bottom: 0.5rem;
@@ -25,17 +32,15 @@ $videoEmbedW: 623px;
 
     .rent-increase {
       display: block;
-      margin: 1rem 0;
+      margin: 1rem 0 0;
       .amount {
         @include body_large_desktop;
-        &.bold {
-          font-weight: 600;
-        }
+        font-weight: 600;
       }
       .formula {
-        &.bold {
-          @include body_large_desktop;
-          font-weight: 600;
+        @include body_standard_desktop;
+        @include for-phone-only {
+          @include body_standard_mobile;
         }
       }
       @include for-tablet-portrait-up {
@@ -89,6 +94,7 @@ $videoEmbedW: 623px;
     }
   }
 
+  &,
   .content-box__section__content,
   .accordion__content {
     display: flex;
@@ -169,6 +175,12 @@ $videoEmbedW: 623px;
       margin-bottom: 1.5rem;
       &.has-label {
         margin-top: 0.5rem;
+      }
+      &.has-label:has(+ .has-label) {
+        margin-bottom: 0.75rem;
+      }
+      &.has-label + .has-label {
+        margin-top: 0;
       }
       &:only-child,
       &:first-child {

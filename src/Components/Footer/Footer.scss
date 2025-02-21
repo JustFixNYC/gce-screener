@@ -67,10 +67,6 @@
       text-underline-position: from-font;
     }
   }
-  .footer__collab,
-  .footer__legal-pages {
-    width: 9rem;
-  }
 
   .footer__name,
   .footer__legal-pages {
@@ -98,6 +94,13 @@
       .jfcl-link {
         margin-right: 2rem;
       }
+    }
+    .footer__bottom-bar {
+      grid-template-columns: 1fr;
+    }
+    .footer__collab {
+      margin: 1rem 0 0;
+      width: unset;
     }
   }
 }

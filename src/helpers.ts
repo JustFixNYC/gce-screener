@@ -142,6 +142,12 @@ export const urlAcrisDoc = (docId: string) => {
   return `https://a836-acris.nyc.gov/DS/DocumentSearch/DocumentImageView?doc_id=${docId}`;
 };
 
+export const urlMyGov = (lngLat?: string) => {
+  return lngLat
+    ? `https://www.mygovnyc.org/?lnglat=${encodeURIComponent(lngLat)}`
+    : "https://www.mygovnyc.org";
+};
+
 export const acrisDocTypeFull = (docType: string) => {
   switch (docType) {
     case "AGMT":
@@ -158,10 +164,11 @@ export const acrisDocTypeFull = (docType: string) => {
 export const formatNumber = (n: number) =>
   new Intl.NumberFormat("en-US").format(n);
 
-export const formatMoney = (n: number) =>
+export const formatMoney = (n: number, decimalDigits?: number) =>
   new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
+    maximumFractionDigits: decimalDigits,
   }).format(n);
 
 export const buildingSubsidyLanguage = (subsidyName?: string): string => {
@@ -176,6 +183,6 @@ export const buildingSubsidyLanguage = (subsidyName?: string): string => {
     : subsidyName === "Mitchell-Lama"
     ? "is a Mitchell-Lama"
     : subsidyName === "NYCHA"
-    ? "is part of NYCHA"
+    ? "is part of NYCHA or PACT/RAD"
     : "";
 };

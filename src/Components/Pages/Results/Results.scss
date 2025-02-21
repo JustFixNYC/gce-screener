@@ -254,10 +254,14 @@
       margin-bottom: 2rem;
     }
   }
-  .subsidy-protections .content-box__section {
-    @include body_large_desktop;
-    @include for-phone-only {
-      @include body_standard_mobile;
+  .unknown-protections,
+  .subsidized-protections {
+    p,
+    .jfcl-link {
+      @include body_standard_desktop;
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
     }
   }
 
@@ -497,7 +501,7 @@
       color: $OFF_BLACK !important;
     }
 
-    .callout-box,
+    .phone-number-callout-box,
     .share-footer {
       display: none;
     }

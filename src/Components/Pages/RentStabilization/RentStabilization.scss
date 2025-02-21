@@ -13,13 +13,13 @@
 
   .content-section {
     padding-top: 1.5rem;
+    @include for-phone-only {
+      padding-bottom: 0;
+    }
   }
 
   .content-box {
-    margin: unset;
-    &:first-of-type {
-      margin-bottom: 1.5rem;
-    }
+    margin: 0 0 1.5rem;
   }
 
   @include for-phone-only() {

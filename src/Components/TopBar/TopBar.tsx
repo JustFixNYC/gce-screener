@@ -17,7 +17,7 @@ export const TopBar: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          HJ4A
+          Housing Justice for All
         </a>{" "}
         <span>&</span>{" "}
         <a

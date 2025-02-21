@@ -65,17 +65,19 @@ export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
   const headerSection = (
     <>
       {icon}
-      <div className="content-box__section__header-container">
-        {step && (
-          <div className="content-box__section__step">{`Step ${step}`}</div>
-        )}
-        {title && <div className="content-box__section__header">{title}</div>}
-        {subtitle && (
-          <div className="content-box__section__header-subtitle">
-            {subtitle}
-          </div>
-        )}
-      </div>
+      {(step || title || subtitle) && (
+        <div className="content-box__section__header-container">
+          {step && (
+            <div className="content-box__section__step">{`Step ${step}`}</div>
+          )}
+          {title && <div className="content-box__section__header">{title}</div>}
+          {subtitle && (
+            <div className="content-box__section__header-subtitle">
+              {subtitle}
+            </div>
+          )}
+        </div>
+      )}
     </>
   );
 

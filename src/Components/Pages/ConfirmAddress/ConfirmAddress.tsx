@@ -61,8 +61,8 @@ export const ConfirmAddress: React.FC = () => {
   return (
     <div id="confirm-address-page">
       <Header
-        title="Confirm your address"
-        subtitle="We’ll use info about your building from public data sources to help learn if you're covered"
+        title="Please confirm your address"
+        subtitle="We’ll use publicly available information about your building to help learn if you're covered."
         address={address}
         lastStepReached={lastStepReached}
       />
@@ -71,9 +71,9 @@ export const ConfirmAddress: React.FC = () => {
         <div className="content-section__content">
           <ContentBox>
             {bldgData?.unitsres === 0 && (
-              <InfoBox color="blue">
+              <InfoBox color="orange">
                 <span>
-                  City data shows that there aren’t any residential units at
+                  City data indicates that there aren’t any residential units at
                   this address.
                 </span>
                 <Link to="/" className="jfcl-link">

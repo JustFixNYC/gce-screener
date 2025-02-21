@@ -28,6 +28,9 @@
 
   a {
     padding: 0.5rem 0;
+    &:hover {
+      color: $GREY_600;
+    }
   }
 
   .topbar__name {

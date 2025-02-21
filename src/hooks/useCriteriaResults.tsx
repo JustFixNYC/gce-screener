@@ -2,6 +2,7 @@ import { FormFields } from "../Components/Pages/Form/Survey";
 import { BuildingData, CriterionResult } from "../types/APIDataTypes";
 import {
   buildingSubsidyLanguage,
+  formatMoney,
   formatNumber,
   urlDOBBBL,
   urlDOBBIN,
@@ -62,10 +63,11 @@ function eligibilityPortfolioSize(
   searchParams: URLSearchParams
 ): CriterionDetails {
   const { unitsres, related_properties, portfolioSize } = criteriaData;
-  const relatedProperties = related_properties.length || 0;
+  const relatedProperties = related_properties.length - 1 || 0;
 
   const criteria = "portfolioSize";
-  const requirement = "Landlord must own more than 10 apartments";
+  const requirement =
+    "The landlord of the building must own more than 10 units.";
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
@@ -78,24 +80,27 @@ function eligibilityPortfolioSize(
     userValue = `Your building has ${formatNumber(unitsres)} apartments.`;
   } else if (portfolioSize === "YES") {
     determination = "ELIGIBLE";
-    userValue = `Your building has ${formatNumber(
-      unitsres
-    )} apartments, and you reported that your landlord owns more than 10 apartments across multiple buildings.`;
+    userValue = `Your building has ${formatNumber(unitsres)} ${
+      unitsres === 1 ? "apartment" : "apartments"
+    }, and you reported that your landlord owns more than 10 apartments across multiple buildings.`;
   } else if (portfolioSize === "NO") {
     determination = "INELIGIBLE";
     userValue = `Your building has ${formatNumber(
       unitsres
-    )} apartments, and you reported that your landlord does not own other buildings.`;
+    )} apartments and you reported that your landlord does not own other buildings.`;
   } else {
     determination = "UNKNOWN";
     userValue = (
       <>
-        {`Your building has only ${formatNumber(
-          unitsres
-        )} apartments, but your landlord may own
-          ${
-            relatedProperties ? `${relatedProperties - 1} ` : ""
-          }other buildings`}
+        {`Your building has only ${formatNumber(unitsres)} ${
+          unitsres === 1 ? "apartment" : "apartments"
+        }, but ${
+          relatedProperties
+            ? `publicly available data sources indicate that your landlord may be associated ${formatNumber(
+                relatedProperties
+              )}`
+            : "your landlord may own"
+        } other buildings.`}
         <br />
         <JFCLLinkInternal
           to={`/portfolio_size?${searchParams.toString()}`}
@@ -181,7 +186,7 @@ function eligibilityRent(criteriaData: CriteriaData): CriterionDetails {
 
   const requirement = `For a ${
     bedrooms === "STUDIO" ? "studio" : `${bedrooms} bedroom`
-  }, rent must be less than ${rentCutoffs[bedrooms]}`;
+  }, the monthly total rent must be less than ${rentCutoffs[bedrooms]}`;
   if (bedrooms === "STUDIO") {
     determination = rent < 5846 ? "ELIGIBLE" : "INELIGIBLE";
   } else if (bedrooms === "1") {
@@ -194,9 +199,7 @@ function eligibilityRent(criteriaData: CriteriaData): CriterionDetails {
     determination = rent < 9065 ? "ELIGIBLE" : "INELIGIBLE";
   }
 
-  const userValue = `Your rent is ${
-    determination === "ELIGIBLE" ? "less" : "more"
-  } than ${rentCutoffs[bedrooms]}.`;
+  const userValue = `You reported that your rent is ${formatMoney(rent, 0)}.`;
 
   return {
     criteria,
@@ -219,7 +222,7 @@ function eligibilityRentStabilized(
     bbl,
   } = criteriaData;
   const criteria = "rentStabilized";
-  const requirement = "Your apartment must not be rent stabilized.";
+  let requirement = "The apartment must not be rent stabilized.";
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
@@ -250,60 +253,36 @@ function eligibilityRentStabilized(
 
   if (rentStabilized === "YES") {
     determination = "OTHER_PROTECTION";
+    requirement =
+      "Rent stabilized apartments are not covered by Good Cause Eviction " +
+      "because they already have stronger tenant protections than Good Cause.";
     userValue = "You reported that your apartment is rent stabilized.";
-  } else if (rentStabilized === "NO") {
-    determination = "ELIGIBLE";
-    userValue =
-      active421a || activeJ51 ? (
-        <>
-          {`You reported that your apartment is not rent stabilized, and we are using ` +
-            `this information in our coverage determination, even though public data sources ` +
-            `indicate that your building receives the ${
-              activeJ51 ? "421a" : "J51"
-            } tax exemption, which means your apartment should be rent stabilized.`}
-          <br />
-          {subsidyLink}
-          <br />
-          {guideLink}
-        </>
-      ) : allUnitsRS ? (
-        <>
-          {`You reported that your apartment is not rent stabilized, and we are using ` +
-            `this information in our coverage determination, even though public data sources ` +
-            `indicate that all apartments in your building are rent stabilized.`}
-          <br />
-          {wowLink}
-          <br />
-          {guideLink}
-        </>
-      ) : (
-        "You reported that your apartment is not rent stabilized."
-      );
   } else {
-    determination = "UNKNOWN";
+    determination = rentStabilized === "NO" ? "ELIGIBLE" : "UNKNOWN";
     userValue =
-      active421a || activeJ51 ? (
+      allUnitsRS || active421a || activeJ51 ? (
         <>
-          {`You reported that you are not sure if your apartment is rent stabilized, and we are using ` +
-            `this information in our coverage determination, even though public data sources ` +
-            `indicate that your building receives the ${
-              activeJ51 ? "421a" : "J51"
-            } tax exemption, which means your apartment should be rent stabilized.`}
+          {`You reported that ${
+            rentStabilized === "NO"
+              ? "your apartment is not"
+              : "you are not sure if your apartment is"
+          } rent stabilized, ` +
+            "and we are using your answer as part of our coverage assessment. " +
+            "Note: publicly available data sources indicate that " +
+            (allUnitsRS
+              ? "all apartments in your building are registered as rent stabilized."
+              : `your building receives the ${
+                  activeJ51 ? "421a" : "J51"
+                } tax incentive, which means your apartment should be rent stabilized.`) +
+            " If those sources are correct, then you may already have stronger tenant " +
+            "protections than Good Cause Eviction provides."}
           <br />
-          {subsidyLink}
+          {allUnitsRS ? wowLink : subsidyLink}
           <br />
           {guideLink}
         </>
-      ) : allUnitsRS ? (
-        <>
-          {`You reported that you are not sure if your apartment is rent stabilized, and we are using ` +
-            `this information in our coverage determination, even though public data sources ` +
-            `indicate that all apartments in your building are rent stabilized.`}
-          <br />
-          {wowLink}
-          <br />
-          {guideLink}
-        </>
+      ) : rentStabilized === "NO" ? (
+        "You reported that your apartment is not rent stabilized."
       ) : (
         <>
           You reported that you are not sure if your apartment is rent
@@ -327,9 +306,8 @@ function eligibilityBuildingClass(
 ): CriterionDetails {
   const { bldgclass, bbl } = criteriaData;
   const criteria = "buildingClass";
-  const requirement = (
-    <>Your building must not be a condo, co-op, or other exempt category.</>
-  );
+  const requirement =
+    "The building must not be a condo, co-op, or other exempt building types.";
   let determination: CriterionResult;
   let bldgTypeName = "";
 
@@ -365,8 +343,8 @@ function eligibilityBuildingClass(
   const userValue = (
     <>
       {bldgTypeName === ""
-        ? "Your building is not an exempted type."
-        : `Your building is ${bldgTypeName}, and is exempt.`}
+        ? "Public data sources indicate that your building is not a condo, co-op, or other exempt category."
+        : `Public data sources indicate that your building is ${bldgTypeName}, and so is not covered by Good Cause Eviction.`}
       <br />
       <JFCLLinkExternal to={urlZOLA(bbl)} className="criteria-link">
         View source
@@ -396,13 +374,13 @@ function eligibilityCertificateOfOccupancy(
   });
   const criteria = "certificateOfOccupancy";
   const requirement =
-    "Your building must have received its certificate of occupancy before 2009.";
+    "The building must have received its certificate of occupancy before 2009.";
   const determination =
     co_issued === null || latestCoDate < cutoffDate ? "ELIGIBLE" : "INELIGIBLE";
   const userValue = (
     <>
       {determination === "ELIGIBLE"
-        ? "There is no recorded certificate of occupancy for your building since 2009."
+        ? "Your building has no recorded certificate of occupancy since 2009."
         : `Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`}
       <br />
       <JFCLLinkExternal
@@ -428,11 +406,14 @@ function eligibilitySubsidy(
 ): CriterionDetails {
   const { housingType, subsidy_name, bbl } = criteriaData;
   const criteria = "subsidy";
-  let requirement;
+  let requirement =
+    "The building must not be part of NYCHA, PACT/RAD, or other subsidized housing.”";
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
-  const subsidyLanguage = buildingSubsidyLanguage(subsidy_name);
+  const subsidyDataNote = `Note: publicly available data sources indicate that your building ${buildingSubsidyLanguage(
+    subsidy_name
+  )}.`;
   const sourceLink = (
     <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="criteria-link">
       View source
@@ -449,16 +430,16 @@ function eligibilitySubsidy(
 
   if (housingType === "NYCHA") {
     requirement =
-      "There are stronger existing eviction protections for tenants who live in NYCHA housing.";
+      "NYCHA and PACT/RAD apartments are not covered by Good Cause Eviction because they already have stronger tenant protections than Good Cause.";
     determination = "OTHER_PROTECTION";
     userValue =
-      subsidyLanguage === "" || subsidyLanguage.includes("NYCHA") ? (
-        "You reported that your building is part of NYCHA."
+      subsidy_name === "NYCHA" ? (
+        "You reported that your building is part of NYCHA or PACT/RAD."
       ) : (
         <>
-          {`You reported that your building is part of NYCHA, and we are using ` +
-            `this information in our coverage determination, even though publicly ` +
-            `available data sources indicate that your building ${subsidyLanguage}`}
+          {"You reported that your building is part of NYCHA or PACT/RAD, " +
+            "and we are using your answer as part of our coverage assessment. " +
+            subsidyDataNote}
           <br />
           {sourceLink}
         </>
@@ -466,56 +447,52 @@ function eligibilitySubsidy(
   } else if (housingType?.includes("SUBSIDIZED")) {
     determination = "OTHER_PROTECTION";
     requirement =
-      "There are existing eviction protections for tenants who live in subsidized housing.";
-    userValue = `You reported that your building is subsidized.`;
-    userValue = subsidyLanguage.includes("NYCHA") ? (
+      "Subsidized buildings are not covered by Good Cause Eviction because they " +
+      "already have similar, and sometimes stronger, existing tenant protections.";
+    userValue =
+      subsidy_name !== "NYCHA" ? (
+        "You reported that your building is subsidized."
+      ) : (
+        <>
+          {"You reported that your building is subsidized. " + subsidyDataNote}
+          <br />
+          {sourceLink}
+        </>
+      );
+  } else if (housingType === "UNSURE") {
+    determination = "UNKNOWN";
+    userValue = !subsidy_name ? (
       <>
-        {`You reported that your building is subsidized, and we are using ` +
-          `this information in our coverage determination, even though publicly ` +
-          `available data sources indicate that your building ${subsidyLanguage}`}
+        You reported that you are not sure if your building is subsidized.
+        <br />
+        {guideLink}
+      </>
+    ) : (
+      <>
+        {"You reported that you are not sure if your apartment is subsidized, and we " +
+          "are using your answer as part of our coverage assessment. " +
+          subsidyDataNote}
+        <br />
+        {sourceLink}
+        <br />
+        {guideLink}
+      </>
+    );
+  } else {
+    determination = "ELIGIBLE";
+    userValue = !subsidy_name ? (
+      "You reported that your building is not part of any subsidized housing programs."
+    ) : (
+      <>
+        {"You reported that your apartment is not subsidized, and we are using your " +
+          "answer as part of our coverage assessment." +
+          subsidyDataNote +
+          " If those sources are correct, then you may already have stronger tenant" +
+          "protections than Good Cause Eviction provides."}
         <br />
         {sourceLink}
       </>
-    ) : (
-      "You reported that your building is subsidized."
     );
-  } else if (housingType === "UNSURE") {
-    determination = "UNKNOWN";
-    requirement = "You must not live in NYCHA or subsidized housing.";
-    userValue =
-      subsidyLanguage === "" ? (
-        <>
-          You reported that you are not sure if your apartment is part of any
-          subsidized housing programs.
-          <br />
-          {guideLink}
-        </>
-      ) : (
-        <>
-          {`You reported that you are not sure if your apartment is subsidized, ` +
-            `and we are using this information in our coverage determination, even though ` +
-            `publicly available data sources indicate that your building ${subsidyLanguage}.`}
-          <br />
-          {sourceLink}
-          <br />
-          {guideLink}
-        </>
-      );
-  } else {
-    determination = "ELIGIBLE";
-    requirement = "You must not live in NYCHA or subsidized housing.";
-    userValue =
-      subsidyLanguage === "" ? (
-        "You reported that your building is not part of any subsidized housing programs."
-      ) : (
-        <>
-          {`You reported that your building is not subsidized, and we are using ` +
-            `this information in our coverage determination, even though publicly ` +
-            `available data sources indicate that your building ${subsidyLanguage}`}
-          <br />
-          {sourceLink}
-        </>
-      );
   }
 
   return {

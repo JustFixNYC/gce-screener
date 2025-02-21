@@ -15,6 +15,7 @@ import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { gtmPush } from "../../../google-tag-manager";
 import "./RentStabilization.scss";
+import { RentStabilizedProtections } from "../../KYRContent/KYRContent";
 
 const EMAIL_SUBJECT =
   "Good Cause NYC | Find out if your apartment is rent stabilized";
@@ -40,10 +41,7 @@ export const RentStabilization: React.FC = () => {
         isGuide
       >
         <ShareButtons
-          buttonsInfo={[
-            ["bookmark", "Bookmark this page"],
-            ["email", "Email this page"],
-          ]}
+          buttonsInfo={[["email", "Email this page"]]}
           emailSubject={EMAIL_SUBJECT}
           emailBody={EMAIL_BODY}
         />
@@ -51,11 +49,11 @@ export const RentStabilization: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          <ContentBox subtitle="Good Cause only applies to tenants who are not rent stabilized">
+          <ContentBox subtitle="Good Cause Eviction only applies to tenants who are not rent stabilized.">
             <ContentBoxItem accordion={false}>
               <p>
                 If your apartment is rent stabilized, you are not covered by
-                Good Cause law because you already have stronger existing
+                Good Cause because you already have stronger existing
                 protections through rent stabilization law.
               </p>
             </ContentBoxItem>
@@ -71,29 +69,31 @@ export const RentStabilization: React.FC = () => {
               <p>
                 If your apartment has ever been rent stabilized, you’ll receive
                 a document showing the rents that your landlord has registered
-                since 1984.
+                since 1984. This document will help you learn if your apartment
+                is still rent stabilized.
               </p>
               <br />
               <p>
-                If your apartment is not rent stabilized, you will get an email
-                the day after you submit your request, saying your apartment
-                doesn't have a registration on file. This means your apartment
-                has never been rent stabilized, and therefore you may be
-                eligible for Good Cause Eviction coverage.
+                If your apartment has never been rent stabilized, you should
+                receive get an email the day after you submit your request
+                letting you know that New York State does not have a
+                registration on file. This means your apartment is not rent
+                stabilized, and therefore you may be eligible for Good Cause
+                Eviction protections.
               </p>
               <JFCLLinkExternal to="https://portal.hcr.ny.gov/app/ask">
-                Fill out the form
+                Fill out the request form
               </JFCLLinkExternal>
             </ContentBoxItem>
 
-            <ContentBoxItem title="Attend a walk-in Clinic hosted by the Met Council on Housing">
+            <ContentBoxItem title="Attend a walk-in Clinic hosted by the Met Council on Housing ">
               <p>
                 Met Council on Housing’s free clinic offers tenants assistance
                 with understanding their rent stabilization status and
                 landlord-tenant disputes.
               </p>
-              <JFCLLinkExternal to="https://www.metcouncilonhousing.org/program/met-council-on-housings-weekly-tenants-rights-walk-in-clinic/">
-                Tenants’ Rights Walk-In Clinic
+              <JFCLLinkExternal to="https://www.metcouncilonhousing.org/program/tenants-rights-hotline/">
+                Call Met Council on Housing Hotline
               </JFCLLinkExternal>
             </ContentBoxItem>
             <ContentBoxFooter
@@ -104,6 +104,7 @@ export const RentStabilization: React.FC = () => {
             />
           </ContentBox>
           <div className="divider__print" />
+          <RentStabilizedProtections subtitle="Tenant rights under rent stabilization" />
         </div>
       </div>
     </div>
