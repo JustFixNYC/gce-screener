@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import "./TopBar.scss";
 import { gtmPush } from "../../google-tag-manager";
+import { useScrollDirection } from "../../hooks/useScrollDirection";
+import classNames from "classnames";
 
 export const TopBar: React.FC = () => {
+  const isScrollingUp = useScrollDirection() === "up";
+
   return (
-    <header id="topbar">
+    <header id="topbar" className={classNames(isScrollingUp && "scrolling-up")}>
       <div className="topbar__name">
         <h1>
           <Link to="/">Good Cause NYC</Link>
