@@ -51,6 +51,10 @@
     margin: 1.5rem 0;
   }
 
+  .footer__name .jfcl-link {
+    text-decoration: none;
+  }
+
   .footer__name,
   .footer__collab {
     font-size: 1.125rem;
@@ -72,10 +76,6 @@
   .footer__legal-pages {
     .jfcl-link {
       padding: 0.75rem 0;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
 
