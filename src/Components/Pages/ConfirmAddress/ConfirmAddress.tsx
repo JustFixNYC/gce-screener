@@ -109,7 +109,6 @@ export const ConfirmAddress: React.FC = () => {
             <Button
               className="confirmation__button"
               labelText="Next"
-              size="small"
               onClick={handleSubmit}
             />
           </div>

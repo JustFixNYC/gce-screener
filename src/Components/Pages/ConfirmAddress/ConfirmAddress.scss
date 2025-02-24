@@ -73,6 +73,9 @@ $mapImgHeight: 285px;
         @include for-phone-only() {
           width: 100%;
         }
+        @include for-tablet-portrait-up {
+          border-radius: 3px 0 0 3px;
+        }
       }
       .img-wrapper {
         background-color: $GREY_NEW;
