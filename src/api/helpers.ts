@@ -97,5 +97,6 @@ export const getCriteriaResults = (
     c_of_o: criteriaDetails?.certificateOfOccupancy?.determination,
     subsidy: criteriaDetails?.subsidy?.determination,
     portfolio_size: criteriaDetails?.portfolioSize?.determination,
+    landlord: criteriaDetails?.landlord?.determination,
   };
 };
