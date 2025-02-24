@@ -63,7 +63,7 @@ function eligibilityPortfolioSize(
   searchParams: URLSearchParams
 ): CriterionDetails {
   const { unitsres, related_properties, portfolioSize } = criteriaData;
-  const relatedProperties = related_properties.length - 1 || 0;
+  const relatedProperties = related_properties.length || 0;
 
   const criteria = "portfolioSize";
   const requirement =
