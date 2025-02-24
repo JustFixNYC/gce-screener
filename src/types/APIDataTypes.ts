@@ -65,6 +65,7 @@ export type CriteriaResults = {
   c_of_o?: CriterionResult;
   subsidy?: CriterionResult;
   portfolio_size?: CriterionResult;
+  landlord?: CriterionResult;
 };
 
 export type FormAnswers = {
