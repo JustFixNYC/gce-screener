@@ -333,7 +333,6 @@ export const Survey: React.FC = () => {
               type="submit"
               form="survey-form"
               labelText="See your results"
-              size="small"
             />
           </div>
         </div>
