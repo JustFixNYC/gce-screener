@@ -362,15 +362,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
     </JFCLLinkExternal>
   );
 
-  if (bldgUnits > 0 && rsUnits >= bldgUnits) {
-    return (
-      <>
-        Publicly available data sources indicate that all apartments in your
-        building are registered as rent stabilized. <br />
-        {wowLink}
-      </>
-    );
-  } else if (active421a || activeJ51) {
+  if (active421a || activeJ51) {
     return (
       <>
         {`Publicly available data sources indicate that your building receives the ${
@@ -381,6 +373,14 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
         <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
           View source
         </JFCLLinkExternal>
+      </>
+    );
+  } else if (bldgUnits > 0 && rsUnits >= bldgUnits) {
+    return (
+      <>
+        Publicly available data sources indicate that all apartments in your
+        building are registered as rent stabilized. <br />
+        {wowLink}
       </>
     );
   } else if (rsUnits > 0) {
