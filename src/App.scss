@@ -18,15 +18,10 @@
 #container {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 #main {
   flex-grow: 1;
-  margin-top: $headerH;
-  @media print {
-    margin-top: 0;
-  }
 
   #content {
     height: 100%;
