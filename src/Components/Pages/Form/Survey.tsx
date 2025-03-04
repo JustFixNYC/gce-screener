@@ -299,9 +299,13 @@ export const Survey: React.FC = () => {
                     legendText="6. Does your landlord own more than 10 apartments across multiple buildings?"
                     helperElement={
                       <InfoBox>
-                        {`It looks like there are ${bldgData.unitsres} apartments in your building. ` +
-                          "Good Cause protections only apply to tenants whose landlords own more than 10 apartments, " +
-                          "even if those apartments are spread across multiple buildings."}
+                        {`It looks like there ${
+                          bldgData.unitsres > 1
+                            ? "is 1 apartment"
+                            : `are ${bldgData.unitsres} apartments`
+                        } in your building. ` +
+                          "Good Cause protections only apply to tenants whose landlord owns more than 10 " +
+                          "apartments, even if those apartments are spread across multiple buildings."}
                       </InfoBox>
                     }
                     invalid={showErrors && localFields.portfolioSize === null}

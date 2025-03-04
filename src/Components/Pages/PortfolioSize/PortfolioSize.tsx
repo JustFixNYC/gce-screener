@@ -54,6 +54,17 @@ export const PortfolioSize: React.FC = () => {
 
   const { data: bldgData, isLoading, error } = useGetBuildingData(bbl);
 
+  const wowLink = (
+    <a
+      href="https://whoownswhat.justfix.org/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="jfcl-link"
+    >
+      Who Owns What
+    </a>
+  );
+
   return (
     <div id="portfolio-size-page">
       <Header
@@ -133,12 +144,34 @@ export const PortfolioSize: React.FC = () => {
             >
               {bldgData && (
                 <>
+                  {!!bldgData?.related_properties &&
+                  bldgData?.related_properties.length > 0 ? (
+                    <p>
+                      Based on data from the website {wowLink}, we have gathered
+                      a list of buildings that your landlord may be associated
+                      with. For each building, we have included links to
+                      important real estate transaction documents.
+                    </p>
+                  ) : (
+                    <p>
+                      Based on data from the website {wowLink}, we gather a list
+                      of buildings that your landlord may be associated with.
+                      For each building, we include links to important real
+                      estate transaction documents.
+                    </p>
+                  )}
+                  <br />
                   <p>
-                    {`Review the documents below to find your landlord’s name or
-                    signature to learn if they own more than 10 units across
-                    multiple buildings. Remember, your building has ${
-                      bldgData.unitsres
-                    }
+                    Please review these documents to learn if your landlord owns
+                    each building. If you find your landlord’s name or
+                    signature, that's a good sign they own the building. For any
+                    of the addresses listed below, you only need to find your
+                    landlord’s name or signature on one of the documents to know
+                    if they own that building.
+                  </p>
+                  <br />
+                  <p>
+                    {`Remember, your building has ${bldgData.unitsres}
                     apartments, so you only need to confirm that your landlord
                     owns ${10 - bldgData.unitsres} additional ${
                       10 - bldgData.unitsres == 1 ? "apartment" : "apartments"
@@ -146,13 +179,6 @@ export const PortfolioSize: React.FC = () => {
                   </p>
                   <br />
                 </>
-              )}
-              {bldgData && !!bldgData?.related_properties.length && (
-                <p>
-                  <strong>Note:</strong> For any of the addresses listed below,
-                  you only need to find your landlord’s name or signature on one
-                  of the documents to know if they own that building.
-                </p>
               )}
               <div className="content-box__section__related-buildings">
                 {!!bldgData?.related_properties &&
