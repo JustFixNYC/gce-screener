@@ -2,8 +2,16 @@
 @import "../../variables.scss";
 @import "../../mixins.scss";
 
+$headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
+
+#topbar-placeholder {
+  height: $headerH;
+  &.hide {
+    position: absolute;
+  }
+}
 #topbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   background-color: $OFF_WHITE_200;
   border-bottom: 1px solid $OFF_BLACK;
@@ -13,6 +21,10 @@
   align-items: center;
   text-wrap: nowrap;
   z-index: 100;
+
+  &.hide {
+    display: none;
+  }
 
   div {
     height: $headerH - (1.5rem * 2);
