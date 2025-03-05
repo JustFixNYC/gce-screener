@@ -93,8 +93,10 @@ $mapImgHeight: 285px;
         flex-direction: column;
         justify-content: center;
         gap: 0.5rem; // 8px
+        margin-right: 2.25rem;
         @include for-phone-only() {
           gap: 0.25rem; // 4px
+          margin-right: 0;
         }
 
         .your-address {
