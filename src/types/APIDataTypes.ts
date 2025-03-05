@@ -74,6 +74,7 @@ export type FormAnswers = {
   owner_occupied?: string;
   rent_stab?: string;
   subsidy?: string;
+  portfolio_size?: string;
 };
 
 export type GCEPostData = {
