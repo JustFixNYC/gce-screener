@@ -74,6 +74,7 @@ export const cleanFormFields = ({
   landlord,
   rentStabilized,
   housingType,
+  portfolioSize,
 }: FormFields): FormAnswers => {
   return {
     bedrooms: bedrooms || undefined,
@@ -83,6 +84,7 @@ export const cleanFormFields = ({
     subsidy: housingType?.includes("SUBSIDIZED")
       ? "SUBSIDIZED"
       : housingType || undefined,
+    portfolio_size: portfolioSize || undefined,
   };
 };
 
