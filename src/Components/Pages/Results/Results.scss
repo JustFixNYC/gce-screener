@@ -162,8 +162,9 @@
         .accordion__content {
           padding: 0 0 1rem 3rem;
           .callout-box {
+            flex-direction: column;
             padding: 0.75rem;
-            gap: 0.75rem;
+            gap: unset;
             background: $OFF_WHITE_100;
             margin-bottom: 0;
             &,
