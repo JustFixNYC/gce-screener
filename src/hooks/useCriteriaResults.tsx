@@ -407,7 +407,7 @@ function eligibilitySubsidy(
   const { housingType, subsidy_name, bbl } = criteriaData;
   const criteria = "subsidy";
   let requirement =
-    "The building must not be part of NYCHA, PACT/RAD, or other subsidized housing.”";
+    "The building must not be part of NYCHA, PACT/RAD, or other subsidized housing.";
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
