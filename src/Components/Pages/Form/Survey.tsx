@@ -300,7 +300,7 @@ export const Survey: React.FC = () => {
                     helperElement={
                       <InfoBox>
                         {`It looks like there ${
-                          bldgData.unitsres > 1
+                          bldgData.unitsres == 1
                             ? "is 1 apartment"
                             : `are ${bldgData.unitsres} apartments`
                         } in your building. ` +
