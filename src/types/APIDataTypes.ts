@@ -16,6 +16,7 @@ export type RelatedProperty = {
   distance_ft: number;
   wow_match_name: boolean;
   wow_match_bizaddr_unit: boolean;
+  party_name_match: boolean;
   acris_docs: AcrisDocument[];
 };
 

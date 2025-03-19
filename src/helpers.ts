@@ -107,6 +107,9 @@ const prioritizeBldgsWithUnits = (
 
   if (a.match_multidoc !== b.match_multidoc) return a.match_multidoc ? -1 : 1;
 
+  if (a.party_name_match !== b.party_name_match)
+    return a.party_name_match ? -1 : 1;
+
   if (a.wow_match_name !== b.wow_match_name) return a.wow_match_name ? -1 : 1;
 
   if (a.wow_match_bizaddr_unit !== b.wow_match_bizaddr_unit)
