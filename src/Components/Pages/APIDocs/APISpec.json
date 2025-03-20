@@ -73,6 +73,11 @@
             "example": "false",
             "description": "Whether the primary contact business address on the user's building's HPD registration exactly matches with this property, including the unit number."
           },
+          "party_name_match": {
+            "type": "boolean",
+            "example": "true",
+            "description": "Whether there is a common owner party name from the 5 ACRIS documents between the search address and this related property."
+          },
           "distance_ft": {
             "type": "number",
             "example": "103.59",
