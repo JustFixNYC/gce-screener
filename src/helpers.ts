@@ -99,18 +99,21 @@ const prioritizeBldgsWithUnits = (
   b: RelatedProperty,
   unitsNeeded: number
 ) => {
-  if (a.acris_docs.length !== b.acris_docs.length)
-    return a.acris_docs.length ? -1 : 1;
-
   if (a.match_ownername !== b.match_ownername)
     return a.match_ownername ? -1 : 1;
 
   if (a.match_multidoc !== b.match_multidoc) return a.match_multidoc ? -1 : 1;
 
+  if (a.party_name_match !== b.party_name_match)
+    return a.party_name_match ? -1 : 1;
+
   if (a.wow_match_name !== b.wow_match_name) return a.wow_match_name ? -1 : 1;
 
   if (a.wow_match_bizaddr_unit !== b.wow_match_bizaddr_unit)
     return a.wow_match_bizaddr_unit ? -1 : 1;
+
+  if (a.acris_docs.length !== b.acris_docs.length)
+    return a.acris_docs.length ? -1 : 1;
 
   if (
     unitsNeeded > 0 &&
@@ -118,7 +121,7 @@ const prioritizeBldgsWithUnits = (
   )
     return a.unitsres >= unitsNeeded ? -1 : 1;
 
-  return b.distance_ft - a.distance_ft;
+  return a.distance_ft - b.distance_ft;
 };
 
 // Return the above function with the additional argument pre-filled so we can
