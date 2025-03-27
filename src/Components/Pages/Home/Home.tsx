@@ -9,7 +9,7 @@ import { FormFields } from "../Form/Survey";
 import { useSendGceData } from "../../../api/hooks";
 import { GCEPostData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
-import { ProgressStep } from "../../../helpers";
+import { ProgressStep, toMacroCase } from "../../../helpers";
 import { JFCLLinkExternal, JFCLLinkInternal } from "../../JFCLLink";
 import "./Home.scss";
 
@@ -53,11 +53,11 @@ export const Home: React.FC = () => {
       bbl: geoAddress.bbl,
       house_number: geoAddress.houseNumber,
       street_name: geoAddress.streetName,
-      borough: geoAddress.borough,
+      borough: toMacroCase(geoAddress.borough),
       zipcode: geoAddress.zipcode,
     };
 
-    if (import.meta.env.MODE === "production") {
+    if (import.meta.env.MODE === "development") {
       try {
         const userResp = (await trigger(postData)) as GCEUser;
         setUser(userResp);

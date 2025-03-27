@@ -16,6 +16,10 @@ export function toTitleCase(x: string) {
   );
 }
 
+export function toMacroCase(x: string) {
+  return x.replace(/\s+/g, "_").toUpperCase();
+}
+
 export const formatGeosearchAddress = (
   properties: GeoSearchProperties | undefined
 ): string =>
