@@ -380,7 +380,7 @@ const EligibilityNextSteps: React.FC<{
               subsidy.
             </p>
 
-            <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
+            <JFCLLinkInternal to={`/subsidy?${searchParams.toString()}`}>
               Find out if your building is subsidized
             </JFCLLinkInternal>
           </ContentBoxItem>
