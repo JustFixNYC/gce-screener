@@ -72,24 +72,21 @@ export const Results: React.FC = () => {
   useAccordionsOpenForPrint();
   useSearchParamsURL(setSearchParams, address, fields, user);
 
+  const resultDataReady = !!coverageResult && !!criteriaResults?.building_class;
   useEffect(() => {
-    if (coverageResult && criteriaResults) {
-      if (import.meta.env.MODE === "production") {
-        try {
-          trigger({
-            id: user?.id,
-            result_coverage: coverageResult,
-            result_criteria: criteriaResults,
-          });
-        } catch {
-          rollbar.error("Cannot connect to tenant platform");
-        }
-      }
+    if (!resultDataReady) return;
+    if (import.meta.env.MODE !== "production") return;
+    try {
+      trigger({
+        id: user?.id,
+        result_coverage: coverageResult,
+        result_criteria: criteriaResults,
+      });
+    } catch {
+      rollbar.error("Cannot connect to tenant platform");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  console.log(address);
+  }, [resultDataReady]);
 
   return (
     <div id="results-page">
