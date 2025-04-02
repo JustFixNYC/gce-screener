@@ -1,0 +1,112 @@
+@import "../../../mixins.scss";
+
+#rent-stabilization-page {
+  .headline-section {
+    padding-top: 1.5rem;
+    .headline-section__back-link {
+      margin-bottom: 3rem;
+    }
+    .headline-section__address {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .content-section {
+    padding-top: 1.5rem;
+    @include for-phone-only {
+      padding-bottom: 0;
+    }
+  }
+
+  .content-box {
+    margin: 0 0 1.5rem;
+  }
+
+  .callout-box {
+    flex-direction: column;
+
+    .rent-increase {
+      @include body_large_desktop;
+    }
+    .rent-increase-description {
+      @include body_standard_desktop;
+    }
+  }
+
+  .rent-input-container {
+    align-items: flex-end;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    @include for-phone-only {
+      grid-template-columns: 1fr;
+    }
+
+    @include for-phone-only() {
+      width: -webkit-fill-available;
+      .phone-number-submit__desktop {
+        display: none;
+      }
+    }
+
+    label {
+      @include body_standard_desktop;
+      font-weight: 500;
+    }
+    .jfcl-input-header__invalid_text {
+      margin-bottom: 4px;
+    }
+    .jfcl-text-input {
+      margin: unset;
+      margin-right: 1rem;
+      & :focus-visible {
+        outline-color: blue;
+      }
+      @include for-phone-only {
+        width: 100%;
+      }
+    }
+  }
+
+  @include for-phone-only() {
+    .share-button__container {
+      margin-top: 2.25rem !important; // overrides ShareButton.scss
+    }
+    .content-box__header-title {
+      display: none;
+    }
+    .content-box__header-subtitle {
+      @include h3_mobile;
+    }
+    .content-box__section {
+      p {
+        margin: unset;
+        @include body_standard_mobile;
+      }
+    }
+  }
+
+  @media print {
+    .headline-section__address__print {
+      padding-bottom: 0.75rem; //12px
+    }
+
+    .headline-section__back-link {
+      display: none;
+    }
+
+    .content-box {
+      border: unset;
+      .accordion__chevron {
+        display: none;
+      }
+      .content-box__footer {
+        display: none;
+      }
+    }
+
+    .divider__print {
+      border-bottom: 1px solid black;
+      width: 100%;
+    }
+  }
+}

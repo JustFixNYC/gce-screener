@@ -24,6 +24,7 @@ import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import "./App.scss";
 import { Subsidy } from "./Components/Pages/Subsidy/Subsidy";
+import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
 
 const Layout = () => {
   return (
@@ -177,6 +178,11 @@ const router = createBrowserRouter(
       <Route
         path="subsidy"
         element={<Subsidy />}
+        loader={LoadURLSessionOptional}
+      />
+      <Route
+        path="rent_calculator"
+        element={<RentCalculator />}
         loader={LoadURLSessionOptional}
       />
       <Route path="tenant_rights" element={<TenantRights />} />
