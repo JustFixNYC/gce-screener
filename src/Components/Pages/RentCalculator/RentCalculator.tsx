@@ -12,16 +12,9 @@ import { GCEUser } from "../../../types/APIDataTypes";
 import { FormFields } from "../Form/Survey";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkExternal } from "../../JFCLLink";
-import { gtmPush } from "../../../google-tag-manager";
 import "./RentCalculator.scss";
-import {
-  CPI,
-  GoodCauseExercisingRights,
-  GoodCauseProtections,
-  RentStabilizedProtections,
-} from "../../KYRContent/KYRContent";
+import { CPI, GoodCauseProtections } from "../../KYRContent/KYRContent";
 import { formatMoney } from "../../../helpers";
-import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import { Button, TextInput } from "@justfixnyc/component-library";
 import { useState } from "react";
 
@@ -37,7 +30,7 @@ export const RentCalculator: React.FC = () => {
   useSearchParamsURL(setSearchParams, address, fields, user);
 
   const increase_pct = CPI + 5;
-  const rent = fields ? Number(fields.rent) : 0;
+  //const rent = fields ? Number(fields.rent) : 0;
 
   const [rentInput, setRentInput] = useState("");
   const [showRentInput, setShowRentInput] = useState(false);
