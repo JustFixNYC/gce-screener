@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import {
   ContentBox,
-  ContentBoxFooter,
   ContentBoxItem,
   ContentBoxProps,
 } from "../ContentBox/ContentBox";
