@@ -102,12 +102,10 @@ export const Survey: React.FC = () => {
       return;
     }
     setFields(localFields);
-    if (import.meta.env.MODE === "production") {
-      try {
-        trigger({ id: user?.id, form_answers: cleanFormFields(localFields) });
-      } catch {
-        rollbar.error("Cannot connect to tenant platform");
-      }
+    try {
+      trigger({ id: user?.id, form_answers: cleanFormFields(localFields) });
+    } catch {
+      rollbar.error("Cannot connect to tenant platform");
     }
     navigate(`/results`);
   };
