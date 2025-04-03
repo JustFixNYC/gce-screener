@@ -44,16 +44,14 @@ export const ConfirmAddress: React.FC = () => {
   const mapImageURL = `https://api.mapbox.com/styles/v1/${styleToken}/static/${marker}/${longLat},${zoom},${bearing},${pitch}/${width}x${height}?access_token=${accessToken}`;
 
   const handleSubmit = async () => {
-    if (import.meta.env.MODE === "production") {
-      try {
-        trigger({
-          id: user?.id,
-          address_confirmed: true,
-          nycdb_results: bldgData,
-        });
-      } catch {
-        rollbar.error("Cannot connect to tenant platform");
-      }
+    try {
+      trigger({
+        id: user?.id,
+        address_confirmed: true,
+        nycdb_results: bldgData,
+      });
+    } catch {
+      rollbar.error("Cannot connect to tenant platform");
     }
     navigate("/survey");
   };

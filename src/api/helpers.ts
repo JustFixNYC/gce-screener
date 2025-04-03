@@ -1,4 +1,5 @@
 import { FormFields } from "../Components/Pages/Form/Survey";
+import { Address } from "../Components/Pages/Home/Home";
 import { CriteriaDetails } from "../hooks/useCriteriaResults";
 import {
   CriteriaResults,
@@ -85,6 +86,16 @@ export const cleanFormFields = ({
       ? "SUBSIDIZED"
       : housingType || undefined,
     portfolio_size: portfolioSize || undefined,
+  };
+};
+
+export const cleanAddressFields = (address: Address) => {
+  return {
+    bbl: address.bbl,
+    house_number: address.houseNumber,
+    street_name: address.streetName,
+    borough: address.borough,
+    zipcode: address.zipcode,
   };
 };
 

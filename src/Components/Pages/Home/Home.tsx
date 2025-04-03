@@ -57,13 +57,11 @@ export const Home: React.FC = () => {
       zipcode: geoAddress.zipcode,
     };
 
-    if (import.meta.env.MODE === "production") {
-      try {
-        const userResp = (await trigger(postData)) as GCEUser;
-        setUser(userResp);
-      } catch {
-        rollbar.critical("Cannot connect to tenant platform");
-      }
+    try {
+      const userResp = (await trigger(postData)) as GCEUser;
+      setUser(userResp);
+    } catch {
+      rollbar.critical("Cannot connect to tenant platform");
     }
 
     removeFormFields();

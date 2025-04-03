@@ -16,7 +16,11 @@ import {
   CriteriaDetails,
   useCriteriaResults as useCriteriaDetails,
 } from "../../../hooks/useCriteriaResults";
-import { getCriteriaResults } from "../../../api/helpers";
+import {
+  cleanAddressFields,
+  cleanFormFields,
+  getCriteriaResults,
+} from "../../../api/helpers";
 import { Address } from "../Home/Home";
 import {
   ContentBox,
@@ -48,6 +52,7 @@ export const Results: React.FC = () => {
     fields: FormFields;
     user?: GCEUser;
   };
+  const [, setUser] = useSessionStorage<GCEUser>("user");
   const { search } = useLocation();
   const searchParams = new URLSearchParams(search);
   const [, setSearchParams] = useSearchParams();
@@ -75,13 +80,19 @@ export const Results: React.FC = () => {
   const resultDataReady = !!coverageResult && !!criteriaResults?.building_class;
   useEffect(() => {
     if (!resultDataReady) return;
-    if (import.meta.env.MODE !== "production") return;
     try {
-      trigger({
-        id: user?.id,
-        result_coverage: coverageResult,
-        result_criteria: criteriaResults,
-      });
+      const sendData = async () => {
+        const postData = {
+          id: user?.id,
+          ...cleanAddressFields(address),
+          form_answers: cleanFormFields(fields),
+          result_coverage: coverageResult,
+          result_criteria: criteriaResults,
+        };
+        const userResp = (await trigger(postData)) as GCEUser;
+        if (!user?.id) setUser(userResp);
+      };
+      sendData();
     } catch {
       rollbar.error("Cannot connect to tenant platform");
     }
