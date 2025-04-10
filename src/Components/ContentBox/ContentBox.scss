@@ -150,6 +150,9 @@ $videoEmbedW: 623px;
     p {
       max-width: $contentPWidth;
       margin: 0;
+      &:not(:last-of-type):not(.bold) {
+        margin-bottom: 1rem;
+      }
       &.bold {
         font-weight: 700;
       }

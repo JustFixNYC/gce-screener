@@ -111,7 +111,6 @@ export const Home: React.FC = () => {
               Learn more about the law.
             </a>
           </p>
-          <br />
           <p>
             To be covered by the law, your apartment must meet several
             requirements. If you live in New York City, you can use this site to
@@ -154,7 +153,6 @@ export const Home: React.FC = () => {
             neighbors to understand your tenant protections and to assert your
             rights.
           </p>
-          <br />
           <p>
             This site is a collaboration between Housing Justice for All
             Coalition and JustFix. We thank all individuals who contributed to
