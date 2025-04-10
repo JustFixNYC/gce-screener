@@ -24,7 +24,8 @@
       white-space: nowrap;
       @include for-tablet-potrait-down {
         white-space: unset;
-        line-height: 1.75em;
+        line-height: 1.6em;
+        padding: 0 1.125rem 0.275rem;
       }
 
       &.green {
