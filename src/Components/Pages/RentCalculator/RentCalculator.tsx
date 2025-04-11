@@ -1,11 +1,6 @@
-import { useLoaderData, useSearchParams } from "react-router-dom";
 import { ContentBoxFooter } from "../../ContentBox/ContentBox";
-import { Address } from "../Home/Home";
 import { Header } from "../../Header/Header";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
-import { GCEUser } from "../../../types/APIDataTypes";
-import { FormFields } from "../Form/Survey";
-import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkInternal } from "../../JFCLLink";
 import "./RentCalculator.scss";
 import {
@@ -19,15 +14,7 @@ import { useState } from "react";
 import { PhoneNumberCallout } from "../Results/Results";
 
 export const RentCalculator: React.FC = () => {
-  // const { user, address, fields } = useLoaderData() as {
-  //   user: GCEUser;
-  //   address: Address;
-  //   fields: FormFields;
-  // };
-  // const [, setSearchParams] = useSearchParams();
-
   useAccordionsOpenForPrint();
-  //useSearchParamsURL(setSearchParams, address, fields, user);
 
   const increase_pct = CPI + 5;
 
