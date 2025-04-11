@@ -1,42 +1,40 @@
 import { useLoaderData, useSearchParams } from "react-router-dom";
-
-import {
-  ContentBox,
-  ContentBoxFooter,
-  ContentBoxItem,
-} from "../../ContentBox/ContentBox";
+import { ContentBoxFooter } from "../../ContentBox/ContentBox";
 import { Address } from "../Home/Home";
 import { Header } from "../../Header/Header";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { GCEUser } from "../../../types/APIDataTypes";
 import { FormFields } from "../Form/Survey";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
-import { JFCLLinkExternal } from "../../JFCLLink";
+import { JFCLLinkInternal } from "../../JFCLLink";
 import "./RentCalculator.scss";
-import { CPI, GoodCauseProtections } from "../../KYRContent/KYRContent";
+import {
+  CPI,
+  GoodCauseProtections,
+  UniversalProtections,
+} from "../../KYRContent/KYRContent";
 import { formatMoney } from "../../../helpers";
 import { Button, TextInput } from "@justfixnyc/component-library";
 import { useState } from "react";
+import { PhoneNumberCallout } from "../Results/Results";
 
 export const RentCalculator: React.FC = () => {
-  const { user, address, fields } = useLoaderData() as {
-    user: GCEUser;
-    address: Address;
-    fields: FormFields;
-  };
-  const [, setSearchParams] = useSearchParams();
+  // const { user, address, fields } = useLoaderData() as {
+  //   user: GCEUser;
+  //   address: Address;
+  //   fields: FormFields;
+  // };
+  // const [, setSearchParams] = useSearchParams();
 
   useAccordionsOpenForPrint();
-  useSearchParamsURL(setSearchParams, address, fields, user);
+  //useSearchParamsURL(setSearchParams, address, fields, user);
 
   const increase_pct = CPI + 5;
-  //const rent = fields ? Number(fields.rent) : 0;
 
   const [rentInput, setRentInput] = useState("");
   const [showRentInput, setShowRentInput] = useState(false);
 
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    //const fieldName = e.target.name;
     if (showRentInput) {
       setShowRentInput(false);
     }
@@ -49,7 +47,7 @@ export const RentCalculator: React.FC = () => {
   };
 
   return (
-    <div id="rent-stabilization-page">
+    <div id="rent-calculator-page">
       <Header
         showProgressBar={false}
         title="Calculate your rent increase"
@@ -57,86 +55,94 @@ export const RentCalculator: React.FC = () => {
       ></Header>
       <div className="content-section">
         <div className="content-section__content">
-          <ContentBox subtitle="If you are covered by Good Cause, you have a right to limited rent increases.">
-            <ContentBoxItem accordion={false}>
-              <p>
-                {`The state housing agency must publish each year’s Reasonable Rent
-                        Increase by August. This year, the maximum amount your landlord can
-                        increase your rent by is ${increase_pct}%.`}
-                <br /> <br />
-                If you are offered a new lease after April 20th, 2024, then your
-                landlord can’t raise your apartment’s monthly rent higher than{" "}
-                <b>{`your current monthly rent + ${increase_pct}%`}</b>
-              </p>
+          <h3>
+            If you are covered by Good Cause, you have a right to limited rent
+            increases.
+          </h3>
+          <div className="rent-calculator-callout-box">
+            <span className="callout-box__header">
+              Find out how much your landlord can increase your rent
+            </span>
+            <div className="rent-input-container">
+              <TextInput
+                labelText="Enter the total monthly rent for your entire apartment"
+                type="money"
+                id="rent-input"
+                value={rentInput}
+                onChange={handleInputChange}
+                onWheel={(e) => {
+                  // prevents scroll incrementing value
+                  e.currentTarget.blur();
+                  e.stopPropagation();
+                  setTimeout(() => e.currentTarget.focus(), 0);
+                }}
+              />
+              <Button
+                type="submit"
+                variant="primary"
+                size="small"
+                labelText="Calculate"
+                onClick={handleSubmit}
+              />
+            </div>
+            <div className="rent-increase-container">
+              <span className="rent-increase-header">
+                Allowable rent increase amount:
+              </span>
               <br />
-              <div className="callout-box">
-                <div className="rent-input-container">
-                  <TextInput
-                    labelText="Enter the total monthly rent for your entire apartment"
-                    type="money"
-                    id="rent-input"
-                    value={rentInput}
-                    onChange={handleInputChange}
-                    onWheel={(e) => {
-                      // prevents scroll incrementing value
-                      e.currentTarget.blur();
-                      e.stopPropagation();
-                      setTimeout(() => e.currentTarget.focus(), 0);
-                    }}
-                  />
-                  <Button
-                    type="submit"
-                    variant="secondary"
-                    size="small"
-                    labelText="Calculate"
-                    onClick={handleSubmit}
-                  />
-                </div>
-                <p className="rent-increase-description">
-                  Allowable rent increase amount:
-                </p>
-                <span className="rent-increase">
-                  {rentInput && showRentInput ? (
-                    <>
-                      {`${formatMoney(Number(rentInput))} + ${increase_pct}% =`}
-                      <b>
-                        {" "}
-                        {`${formatMoney(
-                          Number(rentInput) * (1 + increase_pct / 100)
-                        )} `}
-                      </b>
-                    </>
-                  ) : (
-                    <>{`Your current monthly rent + ${increase_pct}%`}</>
-                  )}
-                </span>
-              </div>
-              <p>
-                <strong>Note</strong>
-                <br />
-                Landlords can increase the rent more than the reasonable rent
-                increase but they must explain why and must point to increases
-                in their costs or substantial repairs they did to the apartment
-                or building.
-              </p>
+              <span className="rent-increase-result">
+                {rentInput && showRentInput ? (
+                  <>
+                    <span className="rent-increase-formula">
+                      {`${formatMoney(Number(rentInput))} + ${increase_pct}% =`}{" "}
+                    </span>
+                    <span className="rent-increase-amount">
+                      {`${formatMoney(
+                        Number(rentInput) * (1 + increase_pct / 100)
+                      )} `}
+                    </span>
+                  </>
+                ) : (
+                  <>{`Your current monthly rent + ${increase_pct}%`}</>
+                )}
+              </span>
+            </div>
+          </div>
+          <p className="rent-increase-explanation">
+            The Good Cause law establishes a Reasonable Rent Increase, which is
+            set every year at the rate of inflation plus 5%, with a maximum of
+            10% total. As of May 1, 2024, the rate of inflation for New York
+            City is 3.82%, meaning that the current local Reasonable Rent
+            Increase is 8.82%.
+            <br /> <br />
+            If your rent was increased after April 20, 2024 beyond the allowable
+            rent increase amount calculated above, your rent increase could be
+            found unreasonable by the court.
+            <br /> <br />
+            Note: Landlords can increase the rent beyond the Reasonable Rent
+            Increase limit, but they must explain why and must point to
+            increases in their costs or substantial repairs they did to the
+            apartment or building.
+            <br /> <br />
+            <b>Find out if you’re covered by Good Cause</b>{" "}
+            <span className="mobile-breakpoint">
               <br />
-              <JFCLLinkExternal
-                className="has-label"
-                to="https://legalaidnyc.org/get-help/housing-problems/what-you-need-to-know-about-new-yorks-good-cause-eviction-law/#rent-increases"
-              >
-                Learn more about Reasonable Rent Increase
-              </JFCLLinkExternal>
-            </ContentBoxItem>
-          </ContentBox>
+              <br />
+            </span>
+            <JFCLLinkInternal to="/">Take the survey</JFCLLinkInternal>
+          </p>
           <div className="divider__print" />
-
-          <GoodCauseProtections rent={Number(fields?.rent)}>
+          <GoodCauseProtections
+            rent={showRentInput ? Number(rentInput) : undefined}
+          >
             <ContentBoxFooter
               message="Find out if you’re covered by Good Cause"
               linkText="Take the survey"
               linkTo="/"
             />
           </GoodCauseProtections>
+          <UniversalProtections />
+          <PhoneNumberCallout />
         </div>
       </div>
     </div>
