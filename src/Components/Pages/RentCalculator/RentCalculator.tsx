@@ -38,14 +38,11 @@ export const RentCalculator: React.FC = () => {
       <Header
         showProgressBar={false}
         title="Calculate your rent increase"
-        subtitle="Use this calculator to help you determine what the allowable rent increase is under Good Cause."
+        subtitle="If you are covered by Good Cause legislation, you have a right to limited rent
+            increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
       ></Header>
       <div className="content-section">
         <div className="content-section__content">
-          <h3>
-            If you are covered by Good Cause, you have a right to limited rent
-            increases.
-          </h3>
           <div className="rent-calculator-callout-box">
             <span className="callout-box__header">
               Find out how much your landlord can increase your rent
@@ -96,20 +93,20 @@ export const RentCalculator: React.FC = () => {
             </div>
           </div>
           <p className="rent-increase-explanation">
+            If your rent was increased after April 20, 2024 beyond the allowable
+            rent increase amount calculated above, your rent increase could be
+            found unreasonable by housing court.
+            <br /> <br />
             The Good Cause law establishes a Reasonable Rent Increase, which is
             set every year at the rate of inflation plus 5%, with a maximum of
             10% total. As of May 1, 2024, the rate of inflation for New York
             City is 3.82%, meaning that the current local Reasonable Rent
             Increase is 8.82%.
             <br /> <br />
-            If your rent was increased after April 20, 2024 beyond the allowable
-            rent increase amount calculated above, your rent increase could be
-            found unreasonable by the court.
-            <br /> <br />
             Note: Landlords can increase the rent beyond the Reasonable Rent
-            Increase limit, but they must explain why and must point to
-            increases in their costs or substantial repairs they did to the
-            apartment or building.
+            Increase limit, but they must explain why and must prove increases
+            in their costs or substantial repairs they did to the apartment or
+            building.
             <br /> <br />
             <b>Find out if you’re covered by Good Cause</b>{" "}
             <span className="mobile-breakpoint">
@@ -119,6 +116,8 @@ export const RentCalculator: React.FC = () => {
             <JFCLLinkInternal to="/">Take the survey</JFCLLinkInternal>
           </p>
           <div className="divider__print" />
+          <PhoneNumberCallout />
+
           <GoodCauseProtections
             rent={showRentInput ? Number(rentInput) : undefined}
           >
@@ -129,7 +128,6 @@ export const RentCalculator: React.FC = () => {
             />
           </GoodCauseProtections>
           <UniversalProtections />
-          <PhoneNumberCallout />
         </div>
       </div>
     </div>

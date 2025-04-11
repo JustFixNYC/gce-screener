@@ -17,12 +17,12 @@
     @include for-phone-only {
       padding: 0 1rem;
     }
-    h3 {
-      @include h3_desktop;
-      @include for-phone-only {
-        @include h3_mobile;
-      }
-    }
+    // h3 {
+    //   @include h3_desktop;
+    //   @include for-phone-only {
+    //     @include h3_mobile;
+    //   }
+    // }
 
     .rent-increase-explanation {
       width: 90%;
