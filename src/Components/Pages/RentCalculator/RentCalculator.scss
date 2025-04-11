@@ -107,6 +107,41 @@
       }
     }
   }
+  .rent-input-container-new {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include for-phone-only() {
+      .phone-number-submit__desktop {
+        display: none;
+      }
+    }
+
+    label {
+      @include body_standard_desktop;
+      font-weight: 500;
+    }
+    .jfcl-input-header__invalid_text {
+      margin-bottom: 4px;
+    }
+    .jfcl-text-input {
+      margin: unset;
+      margin-right: 1rem;
+      & :focus-visible {
+        outline-color: blue;
+      }
+      @include for-phone-only {
+        width: 100%;
+      }
+    }
+    button {
+      @include for-phone-only {
+        margin-top: 1.5rem;
+      }
+    }
+  }
 
   .rent-increase-container {
     @include body_standard_desktop;
@@ -117,10 +152,27 @@
     .rent-increase-formula {
       margin-right: 0.375rem; //6px;
     }
+    .rent-difference-description {
+      width: 90%;
+    }
     .rent-increase-amount {
       padding: 0 0.625rem 0.0625rem 0.625rem; //0 10px 1px 10px
       border-radius: 2.75rem;
       background-color: $GREEN;
+      color: $WHITE;
+    }
+
+    .rent-overcharge-amount {
+      padding: 0 0.625rem 0.0625rem 0.625rem; //0 10px 1px 10px
+      border-radius: 2.75rem;
+      background-color: $RED;
+      color: $WHITE;
+    }
+
+    .rent-undercharge-amount {
+      padding: 0 0.625rem 0.0625rem 0.625rem; //0 10px 1px 10px
+      border-radius: 2.75rem;
+      background-color: $YELLOW;
       color: $WHITE;
     }
   }
