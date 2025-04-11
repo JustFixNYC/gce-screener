@@ -55,6 +55,11 @@
       }
       .callout-box {
         margin-top: 3rem;
+        .jfcl-link {
+          span {
+            display: unset; // show link icons in callout box
+          }
+        }
         &:last-of-type {
           margin-top: 1.5rem;
         }
