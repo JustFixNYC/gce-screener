@@ -219,10 +219,10 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
 );
 
 export const GoodCauseProtections: React.FC<
-  KYRContentBoxProps & { rent?: number }
+  KYRContentBoxProps & { rent?: number; subtitle?: string }
 > = ({
   title = undefined,
-  subtitle = "Protections you have under Good Cause",
+  subtitle,
   rent,
   children,
   coverageResult,
@@ -231,7 +231,11 @@ export const GoodCauseProtections: React.FC<
   const increase_pct = CPI + 5;
   return (
     <>
-      <ContentBox title={title} subtitle={subtitle} className={className}>
+      <ContentBox
+        title={title}
+        subtitle={subtitle ?? "Protections you have under Good Cause"}
+        className={className}
+      >
         <ContentBoxItem
           title="Your right to limited rent increases"
           gtmId="gce-protections_rent"
