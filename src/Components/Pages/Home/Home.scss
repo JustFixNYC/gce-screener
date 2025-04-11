@@ -48,6 +48,11 @@
     }
     &.home__about-law {
       border-bottom: 1px solid $OFF_BLACK;
+      .jfcl-link {
+        span {
+          display: none; // hide internal link arrow icon
+        }
+      }
       .callout-box {
         margin-top: 3rem;
         &:last-of-type {

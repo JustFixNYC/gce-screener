@@ -509,9 +509,9 @@ const CoverageResultHeadline: React.FC<{
   );
 };
 
-const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
-  coverageResult,
-}) => {
+export const PhoneNumberCallout: React.FC<{
+  coverageResult?: CoverageResult;
+}> = ({ coverageResult }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [showFieldError, setShowFieldError] = useState(false);
   const [showError, setShowError] = useState(false);

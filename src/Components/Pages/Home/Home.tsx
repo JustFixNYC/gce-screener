@@ -101,7 +101,17 @@ export const Home: React.FC = () => {
             Good Cause Eviction protections went into effect on April 20th,
             2024. If you are covered by the law, you have strong legal
             protections against eviction as long as you follow your lease. There
-            are also limits to how much your landlord can raise your rent.{" "}
+            are also limits to how much your landlord can raise your rent. If
+            you already know you're covered you can{" "}
+            <JFCLLinkInternal to="/rent_calculator">
+              calculate your allowable rent increase.
+            </JFCLLinkInternal>
+          </p>
+          <br />
+          <p>
+            To be covered by the law, your apartment must meet several
+            requirements. If you live in New York City, you can use this site to
+            learn which requirements you meet and how to assert your rights.{" "}
             <a
               href="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page"
               target="_blank"
@@ -110,12 +120,6 @@ export const Home: React.FC = () => {
             >
               Learn more about the law.
             </a>
-          </p>
-          <br />
-          <p>
-            To be covered by the law, your apartment must meet several
-            requirements. If you live in New York City, you can use this site to
-            learn which requirements you meet and how to assert your rights.{" "}
           </p>
           <div className="callout-box">
             <span className="callout-box__header">
