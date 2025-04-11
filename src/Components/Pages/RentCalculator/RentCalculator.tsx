@@ -21,10 +21,15 @@ export const RentCalculator: React.FC = () => {
   const [rentInput, setRentInput] = useState("");
   const [showRentInput, setShowRentInput] = useState(false);
   const [proposedRentInput, setProposedRentInput] = useState("");
+  const [showProposedRentInput, setShowProposedRentInput] = useState(false);
 
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     if (showRentInput) {
       setShowRentInput(false);
+    }
+
+    if (showProposedRentInput) {
+      setShowProposedRentInput(false);
     }
     const value = e.target.value;
     setRentInput(value);
@@ -33,8 +38,8 @@ export const RentCalculator: React.FC = () => {
   const handleProposedRentInputChange: React.ChangeEventHandler<
     HTMLInputElement
   > = (e) => {
-    if (showRentInput) {
-      setShowRentInput(false);
+    if (showProposedRentInput) {
+      setShowProposedRentInput(false);
     }
     const value = e.target.value;
     setProposedRentInput(value);
@@ -42,6 +47,19 @@ export const RentCalculator: React.FC = () => {
 
   const handleSubmit = () => {
     setShowRentInput(true);
+  };
+
+  const handleSubmit_new1 = () => {
+    setShowRentInput(true);
+    if (proposedRentInput) {
+      setShowProposedRentInput(true);
+    }
+  };
+
+  const handleSubmit_proposedrentinput_new2 = () => {
+    if (proposedRentInput) {
+      setShowProposedRentInput(true);
+    }
   };
 
   return (
@@ -93,7 +111,7 @@ export const RentCalculator: React.FC = () => {
                 variant="primary"
                 size="small"
                 labelText="Calculate"
-                onClick={handleSubmit}
+                onClick={handleSubmit_new1}
               />
             </div>
             <div className="rent-increase-container">
@@ -112,36 +130,42 @@ export const RentCalculator: React.FC = () => {
                         Number(rentInput) * (1 + increase_pct / 100)
                       )} `}
                     </span>
-                    <br />
-                    <br />
-                    <div className="rent-difference-description">
-                      {proposedRentInput > rentInput ? (
-                        <>
-                          Your landlord is charging you{" "}
-                          <span className="rent-overcharge-amount">
-                            {`${formatMoney(
-                              Number(proposedRentInput) - Number(rentInput)
-                            )}`}
-                          </span>{" "}
-                          above the allowed legal rent increase amount.
-                        </>
-                      ) : (
-                        <>
-                          Your landlord is charging you{" "}
-                          <span className="rent-undercharge-amount">
-                            {`${formatMoney(
-                              Number(rentInput) - Number(proposedRentInput)
-                            )}`}
-                          </span>{" "}
-                          less than the allowed legal rent increase amount.
-                        </>
-                      )}
-                    </div>
                   </>
                 ) : (
                   <>{`Your current monthly rent + ${increase_pct}%`}</>
                 )}
               </span>
+              <br />
+              <br />
+              <div className="rent-difference-description">
+                {proposedRentInput &&
+                  rentInput &&
+                  showProposedRentInput &&
+                  (Number(proposedRentInput) >
+                  Number(rentInput) * (1 + increase_pct / 100) ? (
+                    <>
+                      Your landlord is charging you{" "}
+                      <span className="rent-overcharge-amount">
+                        {`${formatMoney(
+                          Number(proposedRentInput) -
+                            Number(rentInput) * (1 + increase_pct / 100)
+                        )}`}
+                      </span>{" "}
+                      above the allowed legal rent increase amount.
+                    </>
+                  ) : (
+                    <>
+                      Your landlord is charging you{" "}
+                      <span className="rent-undercharge-amount">
+                        {`${formatMoney(
+                          Number(rentInput) * (1 + increase_pct / 100) -
+                            Number(proposedRentInput)
+                        )}`}
+                      </span>{" "}
+                      less than the allowed legal rent increase amount.
+                    </>
+                  ))}
+              </div>
             </div>
           </div>
           {/* new option 2 */}
@@ -220,19 +244,21 @@ export const RentCalculator: React.FC = () => {
                 variant="primary"
                 size="small"
                 labelText="Calculate"
-                onClick={handleSubmit}
+                onClick={handleSubmit_proposedrentinput_new2}
               />
             </div>
             <div className="rent-increase-container">
               <span className="rent-increase-result">
-                {rentInput && showRentInput && (
+                {proposedRentInput && rentInput && showProposedRentInput && (
                   <div className="rent-difference-description">
-                    {proposedRentInput > rentInput ? (
+                    {Number(proposedRentInput) >
+                    Number(rentInput) * (1 + increase_pct / 100) ? (
                       <>
                         Your landlord is charging you{" "}
                         <span className="rent-overcharge-amount">
                           {`${formatMoney(
-                            Number(proposedRentInput) - Number(rentInput)
+                            Number(proposedRentInput) -
+                              Number(rentInput) * (1 + increase_pct / 100)
                           )}`}
                         </span>{" "}
                         above the allowed legal rent increase amount.
@@ -242,7 +268,8 @@ export const RentCalculator: React.FC = () => {
                         Your landlord is charging you{" "}
                         <span className="rent-undercharge-amount">
                           {`${formatMoney(
-                            Number(rentInput) - Number(proposedRentInput)
+                            Number(rentInput) * (1 + increase_pct / 100) -
+                              Number(proposedRentInput)
                           )}`}
                         </span>{" "}
                         less than the allowed legal rent increase amount.
