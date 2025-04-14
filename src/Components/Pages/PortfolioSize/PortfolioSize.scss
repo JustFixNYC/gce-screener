@@ -41,6 +41,9 @@
         width: 280px;
       }
     }
+    p {
+      margin-bottom: 1rem;
+    }
   }
 
   .acris-links {
@@ -76,11 +79,6 @@
       padding: 0.5rem 1.5rem 1.5rem 1.5rem;
       .info-box {
         align-content: flex-start;
-      }
-
-      p {
-        font-weight: 600;
-        margin-top: 1.875rem; // 30px
       }
       ul {
         margin: 0;

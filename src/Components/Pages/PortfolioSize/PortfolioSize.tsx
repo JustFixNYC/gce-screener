@@ -89,7 +89,7 @@ export const PortfolioSize: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           <ContentBox
-            subtitle="To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments."
+            subtitle="To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments"
             className="portfolio-video-box"
           >
             <ContentBoxItem accordion={false}>
@@ -97,13 +97,11 @@ export const PortfolioSize: React.FC = () => {
                 If your building has fewer than 11 apartments, you need to learn
                 if your landlord owns other residential buildings.
               </p>
-              <br />
               <p>
                 Unfortunately, it can be difficult to find out who your landlord
                 really is and if your landlord owns other buildings. This is
                 especially true if your building is owned by a corporation.
               </p>
-              <br />
               <p>
                 This guide will walk you through two steps that will help you
                 prove who you landlord is and if they own other buildings.
@@ -115,32 +113,50 @@ export const PortfolioSize: React.FC = () => {
           <div className="divider__print" />
           <ContentBox subtitle="How to find other apartments your landlord owns">
             <ContentBoxItem
-              title="Confirm your landlord’s name and signature"
-              step={1}
+              title={
+                <>
+                  <strong>Step 1:</strong> Find out who owns your building
+                </>
+              }
             >
               <p>
-                First, you need to confirm your landlord’s name and signature.
-                It might not be the name you’re familiar with. The best way to
-                confirm your landlord’s name or signature is to review your
-                building’s official real estate transaction documents. We have
-                provided links to these documents, below.
+                <strong>
+                  The owner of the building may be different than the person
+                  listed on your lease.
+                </strong>{" "}
+                The best way to confirm the owner of your building is to review
+                your building’s official real estate transaction documents and
+                look for the owner’s signature. We have provided links to these
+                documents, below.
               </p>
-              <br />
-              <p>
-                <strong>Note:</strong> If you have not already, please watch the
-                video, above, for helpful instructions on how to find your
-                landlord’s name or signature in these documents. Also note: You
-                only need to find your landlord’s name or signature on one of
-                these documents before moving to step #2.
-              </p>
+              <InfoBox color="blue">
+                <span>
+                  Tip: The signature page is often located toward the end of the
+                  document
+                </span>
+              </InfoBox>
               <div className="content-box__section__search-building">
-                <AcrisLinks {...bldgData} address={address.address} />
+                <AcrisLinks {...bldgData} address={address.address}>
+                  <p>
+                    You only need to find the name or signature of your
+                    building’s owner on one of these documents before moving to
+                    Step 2.{" "}
+                    <strong>
+                      Once you find the name of your building’s owner, remember
+                      it because you’ll need it in Step 2.
+                    </strong>
+                  </p>
+                </AcrisLinks>
               </div>
             </ContentBoxItem>
 
             <ContentBoxItem
-              title="Find other buildings your landlord might own"
-              step={2}
+              title={
+                <>
+                  <strong>Step 2:</strong> Find other properties associated with
+                  the owner of your building
+                </>
+              }
             >
               {bldgData && (
                 <>
@@ -148,36 +164,41 @@ export const PortfolioSize: React.FC = () => {
                   bldgData?.related_properties.length > 0 ? (
                     <p>
                       Based on data from the website {wowLink}, we have gathered
-                      a list of buildings that your landlord may be associated
-                      with. For each building, we have included links to
-                      important real estate transaction documents.
+                      a list of properties that the owner of your building may
+                      be associated with. For each property, we have included
+                      links to important real estate transaction documents.
                     </p>
                   ) : (
                     <p>
                       Based on data from the website {wowLink}, we gather a list
-                      of buildings that your landlord may be associated with.
-                      For each building, we include links to important real
-                      estate transaction documents.
+                      of properties that the owner of your building may be
+                      associated with. For each property, we include links to
+                      important real estate transaction documents.
                     </p>
                   )}
-                  <br />
                   <p>
-                    Please review these documents to learn if your landlord owns
-                    each building. If you find your landlord’s name or
-                    signature, that's a good sign they own the building. For any
-                    of the addresses listed below, you only need to find your
-                    landlord’s name or signature on one of the documents to know
-                    if they own that building.
+                    Please review these documents to learn if the owner of your
+                    building also owns any of the properties below. If you find
+                    the name or signature of your building’s owner on any of the
+                    documents below, that's a good sign they own the property.
                   </p>
-                  <br />
                   <p>
-                    {`Remember, your building has ${bldgData.unitsres}
-                    apartments, so you only need to confirm that your landlord
+                    <strong>
+                      For any of the addresses listed below, you only need to
+                      find your building’s owner’s name or signature on one of
+                      the documents to know if they own that property.
+                    </strong>
+                  </p>
+                  <InfoBox color="blue">
+                    <>
+                      {`Remember, your building has ${bldgData.unitsres}
+                    apartments, so `}
+                      <strong>{`you only need to confirm that your landlord
                     owns ${10 - bldgData.unitsres} additional ${
-                      10 - bldgData.unitsres == 1 ? "apartment" : "apartments"
-                    } across other buildings.`}
-                  </p>
-                  <br />
+                        10 - bldgData.unitsres == 1 ? "apartment" : "apartments"
+                      } across other buildings.`}</strong>
+                    </>
+                  </InfoBox>
                 </>
               )}
               <div className="content-box__section__related-buildings">
@@ -236,6 +257,7 @@ type ACRISLinksProps = {
   acris_docs?: AcrisDocument[];
   accordion?: boolean;
   open?: boolean;
+  children?: React.ReactNode;
 };
 
 export const AcrisLinks: React.FC<ACRISLinksProps> = ({
@@ -245,6 +267,7 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
   acris_docs,
   accordion = false,
   open = false,
+  children,
 }) => {
   const isStatenIsland = bbl ? bbl[0] === "5" : false;
 
@@ -260,6 +283,7 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
   const content = (
     <>
       <div className="acris-links__content">
+        {children}
         {!bbl && <>Loading document links...</>}
         {acris_docs && (
           <ul>
@@ -330,7 +354,6 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
   // we need to find
   const prioritizeBldgs = getPrioritizeBldgs(10 - props.unitsres);
 
-  // TODO: decide how to handle these cases, for now exclude. might also want to exclude if no acris_docs, but for now leave in.
   const relatedProperties = props.related_properties
     ?.filter((bldg) => bldg.unitsres > 0)
     .sort(prioritizeBldgs);
@@ -355,11 +378,38 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
   return (
     <>
       <ul>
-        {relatedProperties?.slice(0, visibleCount).map((bldg, i) => (
-          <li key={i}>
-            <AcrisLinks {...bldg} accordion />
-          </li>
-        ))}
+        {relatedProperties?.slice(0, visibleCount).map((bldg, i) => {
+          const isStatenIsland = bldg.bbl ? bldg.bbl[0] === "5" : false;
+          return (
+            <li key={i}>
+              <AcrisLinks {...bldg} accordion>
+                <InfoBox color="blue">
+                  {bldg.acris_docs.length ? (
+                    <>
+                      <strong>Tip:</strong> If, in any one of the documents
+                      below, you find an owner’s name that does not match your
+                      building’s owner’s name, then move on to the next building
+                      address.
+                    </>
+                  ) : isStatenIsland ? (
+                    <>
+                      We are unable to directly link to specific documents for
+                      properties in Staten Island. Please view all documents for
+                      this property, and refer to the video above to learn how
+                      to identify the documents most likely to contain the
+                      owner's name and signature.
+                    </>
+                  ) : (
+                    <>
+                      We were unable to find relevant documents containing owner
+                      names and/or signatures for this building.
+                    </>
+                  )}
+                </InfoBox>
+              </AcrisLinks>
+            </li>
+          );
+        })}
       </ul>
       <div className="related-buildings__footer">
         {`Showing ${visibleCount} of ${totalCount} buildings that your landlord may own`}
