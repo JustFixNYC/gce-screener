@@ -29,6 +29,10 @@
     padding-top: 1.5rem;
   }
 
+  .content-box__section.mobile-video-prompt {
+    display: none;
+  }
+
   .content-box {
     margin: unset;
     margin-bottom: 1.5rem;
@@ -225,6 +229,11 @@
     }
     .content-section {
       gap: 2rem;
+
+      .content-box__section.mobile-video-prompt {
+        display: block;
+        padding: 1rem 1.5rem;
+      }
       .content-box__header-title {
         display: none;
       }
@@ -254,19 +263,28 @@
         }
       }
 
-      .acris-links__header {
-        @include body_standard_mobile;
-        font-weight: 600;
-        flex-direction: column-reverse;
-        align-items: start;
-        .acris-links__pill {
-          margin: 0 0 0.5rem;
-        }
-      }
-
-      .content-box__footer__message,
       .jfcl-link {
         @include body_standard_mobile;
+      }
+
+      .acris-links {
+        .acris-links__header {
+          @include body_standard_mobile;
+          font-weight: 600;
+          flex-direction: column-reverse;
+          align-items: start;
+          .acris-links__pill {
+            margin: 0 0 0.5rem;
+          }
+        }
+        li,
+        a {
+          @include small_text_mobile;
+          margin: 1rem 0;
+        }
+        .acris-links__footer {
+          @include small_text_mobile;
+        }
       }
 
       .load-more-end {

@@ -112,6 +112,16 @@ export const PortfolioSize: React.FC = () => {
           </ContentBox>
           <div className="divider__print" />
           <ContentBox subtitle="How to find other apartments your landlord owns">
+            <ContentBoxItem className="mobile-video-prompt" accordion={false}>
+              <InfoBox color="blue">
+                <>
+                  <strong>Tip:</strong> We recommend doing the following
+                  research on a desktop computer.If you have not already, please
+                  watch the video, above, for step-by-step instructions on how
+                  to complete Steps 1 and 2.
+                </>
+              </InfoBox>
+            </ContentBoxItem>
             <ContentBoxItem
               title={
                 <>
