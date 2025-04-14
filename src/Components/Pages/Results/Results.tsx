@@ -34,7 +34,12 @@ import {
 } from "../../KYRContent/KYRContent";
 import { Header } from "../../Header/Header";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
-import { ProgressStep } from "../../../helpers";
+import {
+  decodeFromURI,
+  encodeForURI,
+  ProgressStep,
+  toTitleCase,
+} from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
@@ -66,11 +71,21 @@ export const Results: React.FC = () => {
     }
   }, [lastStepReached, setLastStepReached]);
   const headlineRef = useRef<HTMLSpanElement>(null);
-  const EMAIL_SUBJECT = "Good Cause NYC | Your Coverage Result";
+  const { emailSubject, emailBody } = getEmailSubjectBody(
+    address,
+    searchParams,
+    coverageResult
+  );
+  const EMAIL_SUBJECT = `${address.address}`;
   const EMAIL_BODY = headlineRef?.current?.textContent;
 
   useAccordionsOpenForPrint();
   useSearchParamsURL(setSearchParams, address, fields, user);
+
+  const encodedParams = encodeForURI({ address, fields, user });
+  const decodedParams = decodeFromURI(encodedParams);
+
+  console.log({ encodedParams, decodedParams, searchParams });
 
   const resultDataReady = !!coverageResult && !!criteriaResults?.building_class;
   useEffect(() => {
@@ -121,8 +136,8 @@ export const Results: React.FC = () => {
               ["download", "Download coverage"],
               ["print", "Print coverage"],
             ]}
-            emailSubject={EMAIL_SUBJECT}
-            emailBody={EMAIL_BODY}
+            emailSubject={emailSubject}
+            emailBody={emailBody}
           />
         )}
 
@@ -664,4 +679,41 @@ const CopyURLButton: React.FC = () => {
       )}
     </>
   );
+};
+
+const getEmailSubjectBody = (
+  address: Address,
+  searchParams: URLSearchParams,
+  coverageResult?: CoverageResult
+) => {
+  const addrShort = `${toTitleCase(
+    `${address?.houseNumber || ""} ${address?.streetName}`
+  )}, ${toTitleCase(address.borough)}`;
+  const coverageText =
+    coverageResult === "COVERED"
+      ? "is likely covered by Good Cause Eviction"
+      : coverageResult === "NOT_COVERED"
+      ? "is likely not covered by Good Cause Eviction"
+      : coverageResult === "NYCHA"
+      ? "is part of NYCHA or PACT/RAD which provides stronger protections than Good Cause Eviction"
+      : coverageResult === "RENT_STABILIZED"
+      ? "is rent stabilized which provides stronger protections than Good Cause Eviction"
+      : coverageResult === "SUBSIDIZED"
+      ? "is rent stabilized which provides existing eviction protections"
+      : "might be covered by Good Cause Eviction";
+  const emailSubject = `${addrShort} ${coverageText}`;
+  const emailBody =
+    "I used the Good Cause NYC screener, to see if my building is covered by the new Good Cause Eviction law in New York.%0D%0A%0D%0A" +
+    "Based on publicly available data about the building, and information I provided, " +
+    `${addrShort} ${coverageText}.%0D%0A%0D%0A` +
+    `See coverage results for ${addrShort} %0D%0A` +
+    `${window.location.origin}${window.location.pathname}?${searchParams
+      .toString()
+      .replace("&", "%26")} %0D%0A%0D%0A` +
+    "Find out if you’re covered by Good Cause %0D%0A" +
+    `${window.location.origin} %0D%0A%0D%0A` +
+    "Learn more about Good Cause Eviction %0D%0A" +
+    "https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page %0D%0A";
+
+  return { emailSubject, emailBody };
 };
