@@ -17,7 +17,7 @@
   }
 
   .result-headline {
-    @include for-tablet-potrait-down {
+    @include for-tablet-portrait-down {
       line-height: 125%;
     }
     .coverage-pill {
@@ -25,7 +25,7 @@
       border-radius: 2.75rem;
       box-decoration-break: clone;
       white-space: nowrap;
-      @include for-tablet-potrait-down {
+      @include for-tablet-portrait-down {
         white-space: unset;
         line-height: 1.5em;
         padding: 0 1rem 0.125rem;
