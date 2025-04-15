@@ -1,0 +1,37 @@
+@import "../../colors.scss";
+
+.modal {
+  max-width: 45rem;
+  border: 0;
+  padding: 0;
+  border-radius: 0.125rem;
+  position: fixed;
+  box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem;
+  background-color: $OFF_WHITE_100;
+
+  &::backdrop {
+    background: hsl(0 0% 0% / 50%);
+  }
+
+  .modal__content {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+
+    .modal__close {
+      position: absolute;
+      top: 0.25em;
+      right: 0.25em;
+      color: $OFF_BLACK;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+
+      svg {
+        height: 1rem;
+        width: 1rem;
+      }
+    }
+  }
+}
