@@ -8,11 +8,16 @@
     }
   }
 
-  .info-box .info-box__content-container {
-    @include body_standard_desktop;
-    @include for-phone-only {
-      @include body_standard_mobile;
-      font-weight: 500;
+  .info-box {
+    @include for-tablet-portrait-up {
+      width: 78%;
+    }
+    .info-box__content-container {
+      @include body_standard_desktop;
+      @include for-phone-only {
+        @include body_standard_mobile;
+        font-weight: 500;
+      }
     }
   }
 
@@ -83,6 +88,7 @@
       padding: 0.5rem 1.5rem 1.5rem 1.5rem;
       .info-box {
         align-content: flex-start;
+        width: 75%;
       }
       ul {
         margin: 0;
