@@ -57,13 +57,11 @@ export const Home: React.FC = () => {
       zipcode: geoAddress.zipcode,
     };
 
-    if (import.meta.env.MODE === "production") {
-      try {
-        const userResp = (await trigger(postData)) as GCEUser;
-        setUser(userResp);
-      } catch {
-        rollbar.critical("Cannot connect to tenant platform");
-      }
+    try {
+      const userResp = (await trigger(postData)) as GCEUser;
+      setUser(userResp);
+    } catch {
+      rollbar.critical("Cannot connect to tenant platform");
     }
 
     removeFormFields();
@@ -121,6 +119,11 @@ export const Home: React.FC = () => {
               Learn more about the law.
             </a>
           </p>
+          <p>
+            To be covered by the law, your apartment must meet several
+            requirements. If you live in New York City, you can use this site to
+            learn which requirements you meet and how to assert your rights.{" "}
+          </p>
           <div className="callout-box">
             <span className="callout-box__header">
               If you’re not covered by Good Cause Eviction
@@ -158,7 +161,6 @@ export const Home: React.FC = () => {
             neighbors to understand your tenant protections and to assert your
             rights.
           </p>
-          <br />
           <p>
             This site is a collaboration between Housing Justice for All
             Coalition and JustFix. We thank all individuals who contributed to

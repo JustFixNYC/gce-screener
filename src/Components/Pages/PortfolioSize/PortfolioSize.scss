@@ -8,11 +8,16 @@
     }
   }
 
-  .info-box .info-box__content-container {
-    @include body_standard_desktop;
-    @include for-phone-only {
-      @include body_standard_mobile;
-      font-weight: 500;
+  .info-box {
+    @include for-tablet-portrait-up {
+      width: 78%;
+    }
+    .info-box__content-container {
+      @include body_standard_desktop;
+      @include for-phone-only {
+        @include body_standard_mobile;
+        font-weight: 500;
+      }
     }
   }
 
@@ -29,6 +34,10 @@
     padding-top: 1.5rem;
   }
 
+  .content-box__section.mobile-video-prompt {
+    display: none;
+  }
+
   .content-box {
     margin: unset;
     margin-bottom: 1.5rem;
@@ -40,6 +49,9 @@
         height: 135px;
         width: 280px;
       }
+    }
+    p {
+      margin-bottom: 1rem;
     }
   }
 
@@ -76,11 +88,7 @@
       padding: 0.5rem 1.5rem 1.5rem 1.5rem;
       .info-box {
         align-content: flex-start;
-      }
-
-      p {
-        font-weight: 600;
-        margin-top: 1.875rem; // 30px
+        width: 75%;
       }
       ul {
         margin: 0;
@@ -227,6 +235,11 @@
     }
     .content-section {
       gap: 2rem;
+
+      .content-box__section.mobile-video-prompt {
+        display: block;
+        padding: 1rem 1.5rem;
+      }
       .content-box__header-title {
         display: none;
       }
@@ -256,19 +269,28 @@
         }
       }
 
-      .acris-links__header {
-        @include body_standard_mobile;
-        font-weight: 600;
-        flex-direction: column-reverse;
-        align-items: start;
-        .acris-links__pill {
-          margin: 0 0 0.5rem;
-        }
-      }
-
-      .content-box__footer__message,
       .jfcl-link {
         @include body_standard_mobile;
+      }
+
+      .acris-links {
+        .acris-links__header {
+          @include body_standard_mobile;
+          font-weight: 600;
+          flex-direction: column-reverse;
+          align-items: start;
+          .acris-links__pill {
+            margin: 0 0 0.5rem;
+          }
+        }
+        li,
+        a {
+          @include small_text_mobile;
+          margin: 1rem 0;
+        }
+        .acris-links__footer {
+          @include small_text_mobile;
+        }
       }
 
       .load-more-end {

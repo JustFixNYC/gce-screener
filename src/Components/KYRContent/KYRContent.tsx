@@ -39,7 +39,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           home unless they choose to leave or are evicted through a court
           process.
         </p>
-        <br />
+
         <p className="bold">Learn more about the eviction process</p>
         <JFCLLinkExternal
           to="https://hcr.ny.gov/eviction"
@@ -86,7 +86,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           these conditions in your apartment or building, there are actions you
           can take to exercise your rights.
         </p>
-        <br />
+
         <p className="bold">Learn about Warranty of Habitability</p>
         <JFCLLinkExternal
           to="https://nycourts.gov/COURTS/nyc//housing/pdfs/warrantyofhabitability.pdf"
@@ -138,14 +138,14 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           promises protection from discrimination, banning bias based on age,
           sexual orientation, and military status.
         </p>
-        <br />
+
         <p>
           Source of income discrimination is the illegal practice by landlords,
           owners, and real estate brokers of refusing to rent to current or
           prospective tenants seeking to pay for housing with housing assistance
           vouchers, subsidies, or other forms of public assistance.
         </p>
-        <br />
+
         <p className="bold">Learn more about fair housing</p>
         <JFCLLinkExternal
           to="https://www.nyc.gov/site/fairhousing/about/what-is-fair-housing.page"
@@ -178,12 +178,12 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           Has your landlord raised your rent? Is your landlord refusing to do
           basic repairs? Are you worried about getting evicted or non-renewed?
         </p>
-        <br />
+
         <p>
           You’re not alone. Too many landlords care more about getting rich off
           our rent money than providing us with decent homes.
         </p>
-        <br />
+
         <p>
           When tenants come together, we have power. Tenants across our state
           are forming tenant unions to fight back. If you're interested in
@@ -246,7 +246,7 @@ export const GoodCauseProtections: React.FC<
           Increase by August. This year the maximum amount your landlord can
           increase your rent by is ${increase_pct}%.`}
           </p>
-          <br />
+
           <div className="callout-box">
             <p>
               If you are offered a new lease after April 20th, 2024, then your
@@ -343,21 +343,21 @@ export const GoodCauseExercisingRights: React.FC<
           to leave for no reason, or tries to evict you for no reason, stay in
           your home!
         </p>
-        <br />
+
         <p>
           Tell your landlord you have a right to stay unless your landlord has a
           “Good Cause” to evict you. If your landlord then tries to formally
           evict you in court, you can raise a Good Cause defense and require
           your landlord to demonstrate they have a “Good Cause” to evict you.
         </p>
-        <br />
+
         <p>
           Since your apartment is covered by Good Cause Eviction, there is a
           good chance other apartments in your building are covered as well.
           Organizing with your neighbors can help you assert your rights as a
           group.
         </p>
-        <br />
+
         <JFCLLinkExternal to="https://housingjusticeforall.org/resource/fight-your-rent-hike-toolkit/">
           Tenant Organizing Toolkit from Housing Justice for All
         </JFCLLinkExternal>
@@ -434,7 +434,7 @@ export const GoodCauseExercisingRights: React.FC<
           rights as a tenant, and understand your options for dealing with a
           housing situation.
         </p>
-        <br />
+
         <JFCLLinkExternal to="https://www.metcouncilonhousing.org/">
           Met Council on Housing
         </JFCLLinkExternal>
@@ -645,7 +645,7 @@ export const SubsidizedProtections: React.FC<
         you should already have important tenant protections associated with
         your building’s subsidy.
       </p>
-      <br />
+
       <p>
         To learn what protections you have through your building’s subsidy
         program we recommend that you speak to your landlord and your neighbors.

@@ -32,7 +32,7 @@
       align-items: flex-start;
       height: 9.5rem; // arbritrary
       gap: 1rem; // 6px
-      margin-top: 3rem; // 32px
+      margin-top: 2rem;
     }
   }
 
@@ -45,6 +45,9 @@
       .content-section__content > p {
         width: 85%;
       }
+    }
+    p:not(:last-of-type) {
+      margin-bottom: 1rem;
     }
     &.home__about-law {
       border-bottom: 1px solid $OFF_BLACK;

@@ -137,7 +137,7 @@
   }
 }
 
-@mixin for-tablet-potrait-down {
+@mixin for-tablet-portrait-down {
   @media (max-width: 772px) {
     @content;
   }
