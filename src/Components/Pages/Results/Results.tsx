@@ -188,7 +188,10 @@ export const Results: React.FC = () => {
               subtitle="Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights"
             />
           )}
-          <PhoneNumberCallout coverageResult={coverageResult} />
+          <PhoneNumberCallout
+            coverageResult={coverageResult}
+            gtmId="results-page"
+          />
           <div className="share-footer">
             <h3 className="share-footer__header">
               Share this site with your neighbors
@@ -307,7 +310,9 @@ const CriteriaTable: React.FC<{
       message="Need to update your information?"
       linkText="Back to survey"
       linkTo="/survey"
-      linkOnClick={() => gtmPush("gce_return_survey")}
+      linkOnClick={() =>
+        gtmPush("gce_return_survey", { from: "results-page_criteria-table" })
+      }
       className="criteria-table__footer"
     />
   </ContentBox>
@@ -405,7 +410,9 @@ const EligibilityNextSteps: React.FC<{
           message="Have you learned something new?"
           linkText="Adjust survey answers"
           linkTo="/survey"
-          linkOnClick={() => gtmPush("gce_return_survey")}
+          linkOnClick={() =>
+            gtmPush("gce_return_survey", { from: "results-page_next-steps" })
+          }
         />
       </ContentBox>
       <div className="divider__print" />
@@ -511,7 +518,8 @@ const CoverageResultHeadline: React.FC<{
 
 export const PhoneNumberCallout: React.FC<{
   coverageResult?: CoverageResult;
-}> = ({ coverageResult }) => {
+  gtmId?: string;
+}> = ({ coverageResult, gtmId }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [showFieldError, setShowFieldError] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -564,7 +572,10 @@ export const PhoneNumberCallout: React.FC<{
         });
         setShowFieldError(false);
         setShowSuccess(true);
-        gtmPush("gce_phone_submit", { gce_result: coverageResult });
+        gtmPush("gce_phone_submit", {
+          gce_result: coverageResult,
+          from: gtmId,
+        });
       } catch {
         setShowError(true);
         rollbar.critical("Cannot connect to tenant platform");
