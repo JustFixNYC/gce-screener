@@ -683,7 +683,7 @@ const getEmailSubjectBody = (
     coverageResult &&
     ["NOT_COVERED", "RENT_STABILIZED"].includes(coverageResult);
   const encodedSearchParams = searchParams.toString().replace("&", "%26");
-  const coverageText =
+  const emailSubject =
     coverageResult === "COVERED"
       ? `${addrShort} is likely covered by Good Cause Eviction.`
       : coverageResult === "NOT_COVERED"
@@ -694,8 +694,7 @@ const getEmailSubjectBody = (
       ? "My apartment’s rent stabilization status provides stronger eviction protections than Good Cause."
       : coverageResult === "SUBSIDIZED"
       ? `${addrShort} is subsidized, which provides existing eviction protections.`
-      : `${addrShort} might be covered by Good Cause Eviction`;
-  const emailSubject = `${addrShort} ${coverageText}`;
+      : `${addrShort} might be covered by Good Cause Eviction.`;
   const rentStabilizedAddition =
     coverageResult === "RENT_STABILIZED"
       ? "Learn more about rent stabilization %0D%0A" +
@@ -705,8 +704,8 @@ const getEmailSubjectBody = (
     "I used the Good Cause NYC screener, to see if my building is covered by the new Good Cause Eviction law in New York.%0D%0A%0D%0A" +
     "Based on publicly available data about the building, and information I provided, " +
     `${
-      coverageText.charAt(0).toLowerCase() + coverageText.slice(1)
-    }.%0D%0A%0D%0A` +
+      emailSubject.charAt(0).toLowerCase() + emailSubject.slice(1)
+    }%0D%0A%0D%0A` +
     `See coverage details for ${
       aptCoverage ? "my apartment at " : ""
     }${addrShort} %0D%0A` +
