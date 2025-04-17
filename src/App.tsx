@@ -154,9 +154,9 @@ const LoadURLSessionOptional = ({ request }: { request: Request }) => {
     if (userParamDecoded)
       window.sessionStorage.setItem("fields", userParamDecoded);
     return {
-      user: addressParamDecoded,
-      address: fieldsParamDecoded,
-      fields: userParamDecoded,
+      user: userParamDecoded,
+      address: addressParamDecoded,
+      fields: fieldsParamDecoded,
     };
   }
 };

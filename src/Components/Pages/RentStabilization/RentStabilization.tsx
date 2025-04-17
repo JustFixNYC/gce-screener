@@ -34,7 +34,7 @@ export const RentStabilization: React.FC = () => {
         address={address}
         showProgressBar={false}
         isGuide
-      ></Header>
+      />
 
       <div className="content-section">
         <div className="content-section__content">
