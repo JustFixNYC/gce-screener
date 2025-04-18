@@ -102,12 +102,10 @@ export const Survey: React.FC = () => {
       return;
     }
     setFields(localFields);
-    if (import.meta.env.MODE === "production") {
-      try {
-        trigger({ id: user?.id, form_answers: cleanFormFields(localFields) });
-      } catch {
-        rollbar.error("Cannot connect to tenant platform");
-      }
+    try {
+      trigger({ id: user?.id, form_answers: cleanFormFields(localFields) });
+    } catch {
+      rollbar.error("Cannot connect to tenant platform");
     }
     navigate(`/results`);
   };
@@ -294,7 +292,7 @@ export const Survey: React.FC = () => {
                     legendText="6. Does your landlord own more than 10 apartments across multiple buildings?"
                     helperElement={
                       <InfoBox>
-                        {`It looks like there ${
+                        {`Publicly available data sources indicate that there ${
                           bldgData.unitsres == 1
                             ? "is 1 apartment"
                             : `are ${bldgData.unitsres} apartments`
