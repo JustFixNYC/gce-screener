@@ -42,7 +42,7 @@ export const TopBar: React.FC = () => {
         <div className="topbar__rent-calculator">
           <JFCLLinkInternal
             to="/rent_calculator"
-            onClick={() => gtmPush("gce_rent_calculator")}
+            onClick={() => gtmPush("gce_rent_calculator", { from: "navbar" })}
           >
             Rent increase calculator
           </JFCLLinkInternal>

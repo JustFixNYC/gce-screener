@@ -12,6 +12,7 @@ import { Header } from "../../Header/Header";
 import { ProgressStep, toMacroCase } from "../../../helpers";
 import { JFCLLinkExternal, JFCLLinkInternal } from "../../JFCLLink";
 import "./Home.scss";
+import { gtmPush } from "../../../google-tag-manager";
 
 export type Address = {
   bbl: string;
@@ -101,7 +102,12 @@ export const Home: React.FC = () => {
             2024. If you are covered by the law, you have strong legal
             protections against eviction as long as you follow your lease. There
             are also limits to how much your landlord can raise your rent.{" "}
-            <JFCLLinkInternal to="/rent_calculator">
+            <JFCLLinkInternal
+              to="/rent_calculator"
+              onClick={() =>
+                gtmPush("gce_rent_calculator", { from: "home-page" })
+              }
+            >
               Calculate your max rent increase.
             </JFCLLinkInternal>
           </p>
