@@ -30,7 +30,8 @@ export const RentCalculator: React.FC = () => {
     setRentInput(value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setShowRentInput(true);
     gtmPush("gce_rent_calculator_submit");
   };
@@ -49,7 +50,7 @@ export const RentCalculator: React.FC = () => {
             <span className="callout-box__header">
               Find out how much your landlord can increase your rent
             </span>
-            <div className="rent-input-container">
+            <form className="rent-input-container" onSubmit={handleSubmit}>
               <TextInput
                 labelText="Enter the total monthly rent for your entire apartment"
                 type="money"
@@ -68,9 +69,8 @@ export const RentCalculator: React.FC = () => {
                 variant="primary"
                 size="small"
                 labelText="Calculate"
-                onClick={handleSubmit}
               />
-            </div>
+            </form>
             <div className="rent-increase-container">
               <p className="rent-increase-header">
                 Allowable rent increase amount:

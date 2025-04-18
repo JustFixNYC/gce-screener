@@ -44,7 +44,8 @@ export const Home: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleAddressSearch = async () => {
+  const handleAddressSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (!geoAddress) {
       setInputInvalid(true);
       return;
@@ -83,15 +84,15 @@ export const Home: React.FC = () => {
         }
         lastStepReached={lastStepReached}
       >
-        <div className="geo-search-form">
+        <form className="geo-search-form" onSubmit={handleAddressSearch}>
           <GeoSearchInput
             initialAddress={address}
             onChange={setGeoAddress}
             invalid={inputInvalid}
             setInvalid={setInputInvalid}
           />
-          <Button labelText="Get started" onClick={handleAddressSearch} />
-        </div>
+          <Button type="submit" labelText="Get started" />
+        </form>
       </Header>
 
       <div className="content-section home__about-law">
