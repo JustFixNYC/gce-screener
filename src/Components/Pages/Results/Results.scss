@@ -462,25 +462,38 @@
 
 @media print {
   #results-page {
-    .result-headline .coverage-pill {
-      &.green,
-      &.yellow,
-      &.orange {
-        background-color: unset;
-        padding: unset;
-        text-decoration: underline;
-        text-underline-offset: 0.5rem;
-        color: $OFF_BLACK;
+    .result-headline {
+      &,
+      .coverage-pill {
+        line-height: 100%;
+        font-size: 3.5rem;
+      }
+
+      .coverage-pill {
+        &.green,
+        &.yellow,
+        &.orange {
+          background-color: unset;
+          padding: unset;
+          text-decoration: underline;
+          text-underline-offset: 0.5rem;
+          color: $OFF_BLACK;
+        }
       }
     }
 
     .headline-section__address__print {
-      padding-bottom: 0.75rem; //12px
+      padding-bottom: 0;
     }
 
     .share-button__container,
     .criteria-table__footer .share-footer {
       display: none;
+    }
+
+    .criteria-table__header,
+    .criteria-table {
+      margin-top: 0;
     }
 
     .criteria-table__row {
