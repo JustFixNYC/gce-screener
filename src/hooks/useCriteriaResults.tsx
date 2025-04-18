@@ -54,7 +54,7 @@ export function useCriteriaResults(
     rent: eligibilityRent(criteriaData),
     rentStabilized: eligibilityRentStabilized(criteriaData, searchParams),
     certificateOfOccupancy: eligibilityCertificateOfOccupancy(criteriaData),
-    subsidy: eligibilitySubsidy(criteriaData, searchParams),
+    subsidy: eligibilitySubsidy(criteriaData),
   };
 }
 
@@ -400,99 +400,122 @@ function eligibilityCertificateOfOccupancy(
   };
 }
 
-function eligibilitySubsidy(
-  criteriaData: CriteriaData,
-  searchParams: URLSearchParams
-): CriterionDetails {
+function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
   const { housingType, subsidy_name, bbl } = criteriaData;
   const criteria = "subsidy";
-  let requirement =
-    "The building must not be part of NYCHA, PACT/RAD, or other subsidized housing.";
+  let requirement: string;
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
-  const subsidyDataNote = `Note: publicly available data sources indicate that your building ${buildingSubsidyLanguage(
-    subsidy_name
-  )}.`;
   const sourceLink = (
     <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="criteria-link">
       View source
     </JFCLLinkExternal>
   );
-  const guideLink = (
-    <JFCLLinkInternal
-      to={`/subsidy?${searchParams.toString()}`}
-      className="criteria-link"
-    >
-      View subsidy guide
-    </JFCLLinkInternal>
-  );
 
-  if (housingType === "NYCHA") {
-    requirement =
-      "NYCHA and PACT/RAD apartments are not covered by Good Cause Eviction because they already have stronger tenant protections than Good Cause.";
-    determination = "OTHER_PROTECTION";
-    userValue =
-      subsidy_name === "NYCHA" ? (
-        "You reported that your building is part of NYCHA or PACT/RAD."
-      ) : (
+  if (!subsidy_name) {
+    if (housingType === "NYCHA") {
+      requirement =
+        "The building must not be part of NYCHA, PACT/RAD, or other subsidized housing.";
+      determination = "OTHER_PROTECTION";
+      userValue =
+        "You reported that your building is part of NYCHA or PACT/RAD.";
+    } else if (housingType === "SUBSIDIZED") {
+      requirement =
+        "NYCHA and PACT/RAD apartments are not covered by Good Cause because they already have stronger tenant protections than Good Cause.";
+      determination = "OTHER_PROTECTION";
+      userValue = "You reported that your building is subsidized.";
+    } else {
+      requirement =
+        "Subsidized buildings are not covered by Good Cause Eviction because they already have similar, and sometimes stronger, existing tenant protections.";
+      determination = "ELIGIBLE";
+      userValue =
+        "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing programs.";
+    }
+  } else if (subsidy_name === "NYCHA") {
+    if (housingType === "NYCHA") {
+      requirement =
+        "NYCHA and PACT/RAD apartments are not covered by Good Cause because they already have stronger tenant protections than Good Cause.";
+      determination = "OTHER_PROTECTION";
+      userValue =
+        "You reported that your building is part of NYCHA or PACT/RAD.";
+    } else if (housingType === "SUBSIDIZED") {
+      requirement =
+        "The building must not be part of NYCHA, PACT/RAD, or other subsidized housing.";
+      determination = "OTHER_PROTECTION";
+      userValue = (
         <>
-          {"You reported that your building is part of NYCHA or PACT/RAD, " +
-            "and we are using your answer as part of our coverage assessment. " +
-            subsidyDataNote}
+          You reported that your building is subsidized, and we are using your
+          answer as part of our coverage assessment. Note: publicly available
+          data sources indicate that your building is part of NYCHA or PACT/RAD.
+          If those sources are correct, then you may already have stronger
+          tenant protections than other subsidized housing programs.
+        </>
+      );
+    } else {
+      requirement =
+        "The building must not be part of NYCHA, PACT/RAD, or other subsidized housing.";
+      determination = "ELIGIBLE";
+      userValue = (
+        <>
+          You reported that your building is not part of any subsidized housing
+          programs, and we are using your answer as part of our coverage
+          assessment. Note: publicly available data sources indicate that your
+          building is part of NYCHA or PACT/RAD. If those sources are correct,
+          you may have existing tenant protections through NYCHA or PACT/RAD.
           <br />
           {sourceLink}
         </>
       );
-  } else if (housingType?.includes("SUBSIDIZED")) {
-    determination = "OTHER_PROTECTION";
-    requirement =
-      "Subsidized buildings are not covered by Good Cause Eviction because they " +
-      "already have similar, and sometimes stronger, existing tenant protections.";
-    userValue =
-      subsidy_name !== "NYCHA" ? (
-        "You reported that your building is subsidized."
-      ) : (
-        <>
-          {"You reported that your building is subsidized. " + subsidyDataNote}
-          <br />
-          {sourceLink}
-        </>
-      );
-  } else if (housingType === "UNSURE") {
-    determination = "UNKNOWN";
-    userValue = !subsidy_name ? (
-      <>
-        You reported that you are not sure if your building is subsidized.
-        <br />
-        {guideLink}
-      </>
-    ) : (
-      <>
-        {"You reported that you are not sure if your apartment is subsidized, and we " +
-          "are using your answer as part of our coverage assessment. " +
-          subsidyDataNote}
-        <br />
-        {sourceLink}
-        <br />
-        {guideLink}
-      </>
-    );
+    }
   } else {
-    determination = "ELIGIBLE";
-    userValue = !subsidy_name ? (
-      "You reported that your building is not part of any subsidized housing programs."
-    ) : (
-      <>
-        {"You reported that your apartment is not subsidized, and we are using your " +
-          "answer as part of our coverage assessment." +
-          subsidyDataNote +
-          " If those sources are correct, then you may already have stronger tenant" +
-          "protections than Good Cause Eviction provides."}
-        <br />
-        {sourceLink}
-      </>
-    );
+    if (housingType === "NYCHA") {
+      requirement =
+        "NYCHA and PACT/RAD apartments are not covered by Good Cause because they already " +
+        "have stronger tenant protections than Good Cause provides.";
+      determination = "OTHER_PROTECTION";
+      userValue = (
+        <>
+          {"You reported that your building is part of NYCHA or PACT/RAD, and we are using your answer " +
+            "as part of our coverage assessment. Note: publicly available data sources indicate " +
+            `that your building ${buildingSubsidyLanguage(subsidy_name)}` +
+            ", which is considered subsidized housing. If those sources are correct, then " +
+            "your protections may be different than the protections of NYCHA or PACT/RAD."}
+          <br />
+          {sourceLink}
+        </>
+      );
+    } else if (housingType === "SUBSIDIZED") {
+      requirement =
+        "Subsidized buildings are not covered by Good Cause Eviction because they already have similar, " +
+        "and sometimes stronger, existing tenant protections.";
+      determination = "OTHER_PROTECTION";
+      userValue = (
+        <>
+          You reported that your building is subsidized, and we are using your
+          answer as part of our coverage assessment. Note: publicly available
+          data sources indicate that your building is part of NYCHA or PACT/RAD.
+          If those sources are correct, then you may already have stronger
+          tenant protections than other subsidized housing programs.
+        </>
+      );
+    } else {
+      requirement =
+        "The building must not be part of NYCHA, PACT/RAD, or other subsidized housing.";
+      determination = "ELIGIBLE";
+      userValue = (
+        <>
+          {"You reported that your building is not part of NYCHA, PACT/RAD, or " +
+            "other subsidized housing, and we are using your answer as part of our " +
+            "coverage assessment. Note: publicly available data sources indicate " +
+            `that your building  ${buildingSubsidyLanguage(subsidy_name)}` +
+            ", which is considered subsidized housing. If those sources are correct, " +
+            "you may have existing tenant protections through your building’s subsidy program."}
+          <br />
+          {sourceLink}
+        </>
+      );
+    }
   }
 
   return {

@@ -333,12 +333,9 @@ const EligibilityNextSteps: React.FC<{
     criteriaDetails?.rentStabilized?.determination === "UNKNOWN";
   const portfolioSizeUnknown =
     criteriaDetails?.portfolioSize?.determination === "UNKNOWN";
-  const subsidyUnknown = criteriaDetails?.subsidy?.determination === "UNKNOWN";
-  const steps = [
-    rentStabilizedUnknown,
-    portfolioSizeUnknown,
-    subsidyUnknown,
-  ].filter(Boolean).length;
+  const steps = [rentStabilizedUnknown, portfolioSizeUnknown].filter(
+    Boolean
+  ).length;
   const unsureIcon = (
     <Icon
       icon="circleExclamation"
@@ -370,26 +367,6 @@ const EligibilityNextSteps: React.FC<{
               to={`/rent_stabilization?${searchParams.toString()}`}
             >
               Find out if you are rent stabilized
-            </JFCLLinkInternal>
-          </ContentBoxItem>
-        )}
-
-        {subsidyUnknown && (
-          <ContentBoxItem
-            title="We need to confirm if your building is subsidized"
-            icon={unsureIcon}
-            className="next-step"
-          >
-            <p>
-              You told us that that you are not sure if you live in subsidized
-              housing. If your building is subsidized then you are not covered
-              by Good Cause Eviction law because you should already have
-              important tenant protections associated with your building’s
-              subsidy.
-            </p>
-
-            <JFCLLinkInternal to={`/subsidy?${searchParams.toString()}`}>
-              Find out if your building is subsidized
             </JFCLLinkInternal>
           </ContentBoxItem>
         )}
