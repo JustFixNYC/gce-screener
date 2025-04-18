@@ -614,6 +614,7 @@ export const PhoneNumberCallout: React.FC<{
             labelText="Submit"
             variant="secondary"
             size="small"
+            type="submit"
           />
           <div className="phone-number-description">
             {showSuccess && (
