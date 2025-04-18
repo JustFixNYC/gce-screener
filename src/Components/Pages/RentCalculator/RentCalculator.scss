@@ -24,7 +24,6 @@
       @include for-phone-only {
         @include body_large_mobile;
         font-weight: 500;
-        margin: 1rem 0;
       }
       .jfcl-link {
         @include body_large_desktop;
@@ -54,10 +53,11 @@
     padding: 2rem; // 32px
     background-color: $OFF_WHITE_200;
     border-radius: 4px;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     @include for-phone-only() {
       flex-direction: column;
       padding: 1.5rem; // 24px
+      margin: 2rem 0 1rem;
     }
 
     .callout-box__header {
@@ -115,7 +115,11 @@
   .rent-increase-container {
     @include body_standard_desktop;
 
+    .rent-increase-header {
+      margin: unset;
+    }
     .rent-increase-result {
+      margin: unset;
       @include body_large_desktop;
     }
     .rent-increase-formula {
@@ -136,11 +140,11 @@
     padding: 2.25rem; // 36px
     background-color: $OFF_WHITE_200;
     border-radius: 4px;
-    margin: 1.5rem 0 2.25rem;
+    margin: 3rem 0 2.25rem;
     @include for-phone-only() {
       flex-direction: column;
       padding: 1.5rem; // 24px
-      margin: 1rem 0 2rem;
+      margin: 2rem 0 2rem;
     }
 
     .callout-box__column {

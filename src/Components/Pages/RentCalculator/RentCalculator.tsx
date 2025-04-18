@@ -72,11 +72,10 @@ export const RentCalculator: React.FC = () => {
               />
             </div>
             <div className="rent-increase-container">
-              <span className="rent-increase-header">
+              <p className="rent-increase-header">
                 Allowable rent increase amount:
-              </span>
-              <br />
-              <span className="rent-increase-result">
+              </p>
+              <p className="rent-increase-result">
                 {rentInput && showRentInput ? (
                   <>
                     <span className="rent-increase-formula">
@@ -91,30 +90,30 @@ export const RentCalculator: React.FC = () => {
                 ) : (
                   <>{`Your current monthly rent + ${increase_pct}%`}</>
                 )}
-              </span>
+              </p>
             </div>
           </div>
-          <p className="rent-increase-explanation">
-            If your rent was increased after April 20, 2024 beyond the allowable
-            rent increase amount calculated above, your rent increase could be
-            found unreasonable by housing court.
-            <br /> <br />
-            The Good Cause law establishes a Reasonable Rent Increase, which is
-            set every year at the rate of inflation plus 5%, with a maximum of
-            10% total. As of May 1, 2024, the rate of inflation for New York
-            City is 3.82%, meaning that the current local Reasonable Rent
-            Increase is 8.82%.
-            <br /> <br />
-            Note: Landlords can increase the rent beyond the Reasonable Rent
-            Increase limit, but they must explain why and must prove increases
-            in their costs or substantial repairs they did to the apartment or
-            building.
-            <br /> <br />
-            <b>Find out if you’re covered by Good Cause</b>{" "}
-            <span className="mobile-breakpoint">
-              <br />
-              <br />
-            </span>
+          <div className="rent-increase-explanation">
+            <p>
+              If your rent was increased after April 20, 2024 beyond the
+              allowable rent increase amount calculated above, your rent
+              increase could be found unreasonable by housing court.
+            </p>
+            <p>
+              The Good Cause law establishes a Reasonable Rent Increase, which
+              is set every year at the rate of inflation plus 5%, with a maximum
+              of 10% total. As of May 1, 2024, the rate of inflation for New
+              York City is 3.82%, meaning that the current local Reasonable Rent
+              Increase is 8.82%.
+            </p>
+            <p>
+              Note: Landlords can increase the rent beyond the Reasonable Rent
+              Increase limit, but they must explain why and must prove increases
+              in their costs or substantial repairs they did to the apartment or
+              building.
+            </p>
+            <strong>Find out if you’re covered by Good Cause</strong>{" "}
+            <p className="mobile-breakpoint"></p>
             <JFCLLinkInternal
               to="/"
               onClick={() =>
@@ -125,7 +124,7 @@ export const RentCalculator: React.FC = () => {
             >
               Take the survey
             </JFCLLinkInternal>
-          </p>
+          </div>
           <div className="divider__print" />
           <PhoneNumberCallout gtmId="rent-calculator-page" />
 
