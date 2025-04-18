@@ -84,7 +84,11 @@ export const Home: React.FC = () => {
         }
         lastStepReached={lastStepReached}
       >
-        <form className="geo-search-form" onSubmit={handleAddressSearch}>
+        <form
+          className="geo-search-form"
+          onSubmit={handleAddressSearch}
+          aria-label="Enter your address"
+        >
           <GeoSearchInput
             initialAddress={address}
             onChange={setGeoAddress}

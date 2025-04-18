@@ -50,7 +50,11 @@ export const RentCalculator: React.FC = () => {
             <span className="callout-box__header">
               Find out how much your landlord can increase your rent
             </span>
-            <form className="rent-input-container" onSubmit={handleSubmit}>
+            <form
+              className="rent-input-container"
+              onSubmit={handleSubmit}
+              aria-label="Enter the total monthly rent for your entire apartment"
+            >
               <TextInput
                 labelText="Enter the total monthly rent for your entire apartment"
                 type="money"
