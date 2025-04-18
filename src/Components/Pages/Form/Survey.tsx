@@ -191,7 +191,7 @@ export const Survey: React.FC = () => {
                   // prevents scroll incrementing value
                   e.currentTarget.blur();
                   e.stopPropagation();
-                  setTimeout(() => e.currentTarget.focus(), 0);
+                  setTimeout(() => e?.currentTarget?.focus(), 0);
                 }}
               />
             </FormStep>

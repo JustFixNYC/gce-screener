@@ -269,6 +269,30 @@
     }
   }
 
+  #gce-protections_eviction {
+    ul {
+      padding-left: 0;
+    }
+    ul:before {
+      content: attr(aria-label);
+      @include body_standard_desktop;
+    }
+    li {
+      @include body_standard_desktop;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      list-style-type: square;
+      list-style-position: inside;
+      margin-left: 0.625rem; //10px
+    }
+    li:first-of-type {
+      margin-top: 1rem;
+    }
+    ::marker {
+      font-size: 0.75rem;
+    }
+  }
+
   @include for-phone-only() {
     .content-section__content {
       width: 100%;
@@ -462,21 +486,38 @@
 
 @media print {
   #results-page {
-    .coverage-pill {
-      background-color: unset;
-      padding: unset;
-      text-decoration: underline;
-      text-underline-offset: 0.5rem;
-      color: $OFF_BLACK;
+    .result-headline {
+      &,
+      .coverage-pill {
+        line-height: 100%;
+        font-size: 3.5rem;
+      }
+
+      .coverage-pill {
+        &.green,
+        &.yellow,
+        &.orange {
+          background-color: unset;
+          padding: unset;
+          text-decoration: underline;
+          text-underline-offset: 0.5rem;
+          color: $OFF_BLACK;
+        }
+      }
     }
 
     .headline-section__address__print {
-      padding-bottom: 0.75rem; //12px
+      padding-bottom: 0;
     }
 
     .share-button__container,
     .criteria-table__footer .share-footer {
       display: none;
+    }
+
+    .criteria-table__header,
+    .criteria-table {
+      margin-top: 0;
     }
 
     .criteria-table__row {

@@ -288,11 +288,33 @@ export const GoodCauseProtections: React.FC<
           gtmId="gce-protections_eviction"
           coverageResult={coverageResult}
         >
-          <p>
-            Your landlord will need to provide a good reason for ending a
-            tenancy. Even if your lease expires, your landlord cannot evict you,
-            as long as you abide by the terms of your expired lease.{" "}
-          </p>
+          <>
+            <p>
+              Your landlord will need to provide a good reason for ending a
+              tenancy. Even if your lease expires, your landlord cannot evict
+              you, as long as you abide by the terms of your expired lease.
+            </p>
+            <ul
+              aria-label="Under the Good Cause Eviction law, landlords are allowed to evict
+              tenants for the following “good cause” reasons:"
+            >
+              <li>Non payment of rent</li>
+              <li>Lease violations</li>
+              <li>Nuisance activity</li>
+              <li>Illegal Activity</li>
+              <li>Landlord personal use/removal from market</li>
+              <li>Demolition</li>
+              <li>
+                Failure to sign lease renewal or provide access to apartment
+              </li>
+            </ul>
+            <JFCLLinkExternal
+              className="has-label"
+              to="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page#:~:text=What%20are%20the%20“good%20cause”%20reasons%20for%20eviction%2C%20nonrenewal%20of%20lease%2C%20or%20termination%20of%20tenancy%3F"
+            >
+              Learn more about Good Cause reasons for eviction
+            </JFCLLinkExternal>
+          </>
         </ContentBoxItem>
 
         <ContentBoxItem
