@@ -17,12 +17,6 @@
     @include for-phone-only {
       padding: 0 1rem;
     }
-    // h3 {
-    //   @include h3_desktop;
-    //   @include for-phone-only {
-    //     @include h3_mobile;
-    //   }
-    // }
 
     .rent-increase-explanation {
       width: 90%;
@@ -34,6 +28,9 @@
       }
       .jfcl-link {
         @include body_large_desktop;
+        svg {
+          display: none; // hide internal link arrow icon
+        }
       }
       .mobile-breakpoint {
         @include for-tablet-portrait-up {
@@ -208,6 +205,28 @@
       margin: 0;
       @include for-phone-only {
         @include body_standard_mobile;
+      }
+    }
+    .success-message {
+      @include small_text_desktop;
+      svg {
+        height: 1.25rem;
+        width: 1.25rem;
+        color: $GREEN;
+        margin-right: 0.25rem;
+        vertical-align: bottom;
+      }
+    }
+
+    .error-message {
+      @include small_text_desktop;
+      color: $RED;
+      font-weight: 500;
+
+      svg {
+        color: $ORANGE;
+        margin-right: 0.25rem;
+        vertical-align: bottom;
       }
     }
   }

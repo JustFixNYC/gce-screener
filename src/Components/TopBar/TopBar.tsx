@@ -5,6 +5,7 @@ import { gtmPush } from "../../google-tag-manager";
 import { useScrollDirection } from "../../hooks/useScrollDirection";
 import useInViewPort from "../../hooks/useInViewport";
 import "./TopBar.scss";
+import { JFCLLinkInternal } from "../JFCLLink";
 
 export const TopBar: React.FC = () => {
   const isScrollingUp = useScrollDirection() === "up";
@@ -38,10 +39,13 @@ export const TopBar: React.FC = () => {
             JustFix
           </a>
         </div>
-        <div className="topbar__search">
-          <Link to="/" onClick={() => gtmPush("gce_new_search")}>
-            New Search
-          </Link>
+        <div className="topbar__rent-calculator">
+          <JFCLLinkInternal
+            to="/rent_calculator"
+            onClick={() => gtmPush("gce_rent_calculator")}
+          >
+            Rent increase calculator
+          </JFCLLinkInternal>
         </div>
       </header>
       <div
