@@ -24,6 +24,7 @@ import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import { decodeFromURI } from "./helpers";
 import "./App.scss";
+import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
 
 const Layout = () => {
   return (
@@ -188,6 +189,11 @@ const router = createBrowserRouter(
         path="portfolio_size"
         element={<PortfolioSize />}
         loader={LoadURLSessionRequired}
+      />
+      <Route
+        path="rent_calculator"
+        element={<RentCalculator />}
+        loader={LoadURLSessionOptional}
       />
       <Route path="tenant_rights" element={<TenantRights />} />
       <Route path="privacy_policy" element={<PrivacyPolicy />} />

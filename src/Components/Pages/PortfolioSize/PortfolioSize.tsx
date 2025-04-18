@@ -226,7 +226,9 @@ export const PortfolioSize: React.FC = () => {
               message="Have you learned something new?"
               linkText="Adjust survey answers"
               linkTo="/survey"
-              linkOnClick={() => gtmPush("gce_return_survey")}
+              linkOnClick={() =>
+                gtmPush("gce_return_survey", { from: "portfolio-guide-page" })
+              }
             />
           </ContentBox>
           <div className="divider__print" />

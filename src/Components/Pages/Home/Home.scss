@@ -51,8 +51,18 @@
     }
     &.home__about-law {
       border-bottom: 1px solid $OFF_BLACK;
+      .jfcl-link {
+        span {
+          display: none; // hide internal link arrow icon
+        }
+      }
       .callout-box {
         margin-top: 3rem;
+        .jfcl-link {
+          span {
+            display: unset; // show link icons in callout box
+          }
+        }
         &:last-of-type {
           margin-top: 1.5rem;
         }

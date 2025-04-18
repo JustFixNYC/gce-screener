@@ -89,7 +89,11 @@ export const RentStabilization: React.FC = () => {
               message="Update your coverage result"
               linkText="Adjust survey answers"
               linkTo="/survey"
-              linkOnClick={() => gtmPush("gce_return_survey")}
+              linkOnClick={() =>
+                gtmPush("gce_return_survey", {
+                  from: "rent-stab-guide-page",
+                })
+              }
             />
           </ContentBox>
           <div className="divider__print" />

@@ -90,6 +90,7 @@ export const Results: React.FC = () => {
         const postData = {
           id: user?.id,
           ...cleanAddressFields(address),
+          nycdb_results: bldgData,
           form_answers: cleanFormFields(fields),
           result_coverage: coverageResult,
           result_criteria: criteriaResults,
@@ -204,7 +205,10 @@ export const Results: React.FC = () => {
               subtitle="Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights"
             />
           )}
-          <PhoneNumberCallout coverageResult={coverageResult} />
+          <PhoneNumberCallout
+            coverageResult={coverageResult}
+            gtmId="results-page"
+          />
           <div className="share-footer">
             <h3 className="share-footer__header">
               Share this site with your neighbors
@@ -323,7 +327,9 @@ const CriteriaTable: React.FC<{
       message="Need to update your information?"
       linkText="Back to survey"
       linkTo="/survey"
-      linkOnClick={() => gtmPush("gce_return_survey")}
+      linkOnClick={() =>
+        gtmPush("gce_return_survey", { from: "results-page_criteria-table" })
+      }
       className="criteria-table__footer"
     />
   </ContentBox>
@@ -398,7 +404,9 @@ const EligibilityNextSteps: React.FC<{
           message="Have you learned something new?"
           linkText="Adjust survey answers"
           linkTo="/survey"
-          linkOnClick={() => gtmPush("gce_return_survey")}
+          linkOnClick={() =>
+            gtmPush("gce_return_survey", { from: "results-page_next-steps" })
+          }
         />
       </ContentBox>
       <div className="divider__print" />
@@ -502,15 +510,17 @@ const CoverageResultHeadline: React.FC<{
   );
 };
 
-const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
-  coverageResult,
-}) => {
+export const PhoneNumberCallout: React.FC<{
+  coverageResult?: CoverageResult;
+  gtmId?: string;
+}> = ({ coverageResult, gtmId }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [showFieldError, setShowFieldError] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const VALID_PHONE_NUMBER_LENGTH = 10;
 
+  const [, setUser] = useSessionStorage<GCEUser>("user");
   const { user } = useLoaderData() as {
     user?: GCEUser;
   };
@@ -551,13 +561,21 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
     const cleaned = phoneNumber.replace(/\D/g, "");
     if (cleaned.length === VALID_PHONE_NUMBER_LENGTH) {
       try {
-        trigger({
-          id: user?.id,
-          phone_number: parseInt(cleaned),
-        });
+        const sendData = async () => {
+          const postData = {
+            id: user?.id,
+            phone_number: parseInt(cleaned),
+          };
+          const userResp = (await trigger(postData)) as GCEUser;
+          if (!user?.id) setUser(userResp);
+        };
+        sendData();
         setShowFieldError(false);
         setShowSuccess(true);
-        gtmPush("gce_phone_submit", { gce_result: coverageResult });
+        gtmPush("gce_phone_submit", {
+          gce_result: coverageResult,
+          from: gtmId,
+        });
       } catch {
         setShowError(true);
         rollbar.critical("Cannot connect to tenant platform");
