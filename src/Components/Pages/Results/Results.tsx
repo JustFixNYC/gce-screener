@@ -557,7 +557,8 @@ export const PhoneNumberCallout: React.FC<{
     setShowError(false);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const cleaned = phoneNumber.replace(/\D/g, "");
     if (cleaned.length === VALID_PHONE_NUMBER_LENGTH) {
       try {
@@ -596,7 +597,7 @@ export const PhoneNumberCallout: React.FC<{
           We’ll use your answers to better advocate for your rights.
         </p>
       </div>
-      <div className="callout-box__column">
+      <form className="callout-box__column" onSubmit={handleSubmit}>
         <div className="phone-number-input-container">
           <TextInput
             labelText="Phone number"
@@ -613,7 +614,6 @@ export const PhoneNumberCallout: React.FC<{
             labelText="Submit"
             variant="secondary"
             size="small"
-            onClick={handleSubmit}
           />
           <div className="phone-number-description">
             {showSuccess && (
@@ -633,14 +633,9 @@ export const PhoneNumberCallout: React.FC<{
           </div>
         </div>
         <div className="phone-number-submit__mobile">
-          <Button
-            labelText="Submit"
-            variant="secondary"
-            size="small"
-            onClick={handleSubmit}
-          />
+          <Button labelText="Submit" variant="secondary" size="small" />
         </div>
-      </div>
+      </form>
     </div>
   );
 };
