@@ -674,7 +674,11 @@ export const UnknownProtections: React.FC<KYRContentBoxProps> = ({
       gtmId="unknown_learn"
       coverageResult={coverageResult}
     >
-      <p>Read our guide to tenant rights in NYC</p>
+      <p>
+        All tenants in NYC are protected by important rights. This guide
+        provides information about many of those rights depending on the type of
+        housing you live in.
+      </p>
       <JFCLLinkInternal to="/tenant_rights">
         Learn more about your rights
       </JFCLLinkInternal>
