@@ -9,6 +9,30 @@
     margin: 0 0 2rem;
   }
 
+  #gce-protections_eviction {
+    ul {
+      padding-left: 0;
+    }
+    ul:before {
+      content: attr(aria-label);
+      @include body_standard_desktop;
+    }
+    li {
+      @include body_standard_desktop;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      list-style-type: square;
+      list-style-position: inside;
+      margin-left: 0.625rem; //10px
+    }
+    li:first-of-type {
+      margin-top: 1rem;
+    }
+    ::marker {
+      font-size: 0.75rem;
+    }
+  }
+
   @include for-phone-only {
     .content-section {
       padding-bottom: 1rem;
