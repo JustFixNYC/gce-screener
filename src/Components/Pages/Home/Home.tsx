@@ -57,13 +57,11 @@ export const Home: React.FC = () => {
       zipcode: geoAddress.zipcode,
     };
 
-    if (import.meta.env.MODE === "production") {
-      try {
-        const userResp = (await trigger(postData)) as GCEUser;
-        setUser(userResp);
-      } catch {
-        rollbar.critical("Cannot connect to tenant platform");
-      }
+    try {
+      const userResp = (await trigger(postData)) as GCEUser;
+      setUser(userResp);
+    } catch {
+      rollbar.critical("Cannot connect to tenant platform");
     }
 
     removeFormFields();
@@ -111,7 +109,6 @@ export const Home: React.FC = () => {
               Learn more about the law.
             </a>
           </p>
-          <br />
           <p>
             To be covered by the law, your apartment must meet several
             requirements. If you live in New York City, you can use this site to
@@ -140,25 +137,24 @@ export const Home: React.FC = () => {
               protections throughout New York State.
             </p>
             <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause/">
-              Learn where Good Cause Protections have already been won
+              Learn where Good Cause protections have been won
             </JFCLLinkExternal>
           </div>
         </div>
       </div>
       <div className="content-section home__about-project">
         <div className="content-section__content">
-          <h3>About the site</h3>
+          <h3>About this site</h3>
           <p>
             Good Cause law can be complex to understand and to use to protect
             yourself. This site exists to make it easier for you and your
             neighbors to understand your tenant protections and to assert your
             rights.
           </p>
-          <br />
           <p>
-            This site is a collaboration between Housing Justice for All
+            This site is a collaboration between the Housing Justice for All
             Coalition and JustFix. We thank all individuals who contributed to
-            this site and to all the tenants and advocates who fought for Good
+            this site and to all the tenants and advocates who fight for Good
             Cause protections.
           </p>
           <div className="about-project__orgs-container">

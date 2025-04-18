@@ -16,7 +16,11 @@ import {
   CriteriaDetails,
   useCriteriaResults as useCriteriaDetails,
 } from "../../../hooks/useCriteriaResults";
-import { getCriteriaResults } from "../../../api/helpers";
+import {
+  cleanAddressFields,
+  cleanFormFields,
+  getCriteriaResults,
+} from "../../../api/helpers";
 import { Address } from "../Home/Home";
 import {
   ContentBox,
@@ -48,6 +52,7 @@ export const Results: React.FC = () => {
     fields: FormFields;
     user?: GCEUser;
   };
+  const [, setUser] = useSessionStorage<GCEUser>("user");
   const { search } = useLocation();
   const searchParams = new URLSearchParams(search);
   const [, setSearchParams] = useSearchParams();
@@ -80,13 +85,19 @@ export const Results: React.FC = () => {
   const resultDataReady = !!coverageResult && !!criteriaResults?.building_class;
   useEffect(() => {
     if (!resultDataReady) return;
-    if (import.meta.env.MODE !== "production") return;
     try {
-      trigger({
-        id: user?.id,
-        result_coverage: coverageResult,
-        result_criteria: criteriaResults,
-      });
+      const sendData = async () => {
+        const postData = {
+          id: user?.id,
+          ...cleanAddressFields(address),
+          form_answers: cleanFormFields(fields),
+          result_coverage: coverageResult,
+          result_criteria: criteriaResults,
+        };
+        const userResp = (await trigger(postData)) as GCEUser;
+        if (!user?.id) setUser(userResp);
+      };
+      sendData();
     } catch {
       rollbar.error("Cannot connect to tenant platform");
     }
@@ -327,12 +338,9 @@ const EligibilityNextSteps: React.FC<{
     criteriaDetails?.rentStabilized?.determination === "UNKNOWN";
   const portfolioSizeUnknown =
     criteriaDetails?.portfolioSize?.determination === "UNKNOWN";
-  const subsidyUnknown = criteriaDetails?.subsidy?.determination === "UNKNOWN";
-  const steps = [
-    rentStabilizedUnknown,
-    portfolioSizeUnknown,
-    subsidyUnknown,
-  ].filter(Boolean).length;
+  const steps = [rentStabilizedUnknown, portfolioSizeUnknown].filter(
+    Boolean
+  ).length;
   const unsureIcon = (
     <Icon
       icon="circleExclamation"
@@ -364,26 +372,6 @@ const EligibilityNextSteps: React.FC<{
               to={`/rent_stabilization?${searchParams.toString()}`}
             >
               Find out if you are rent stabilized
-            </JFCLLinkInternal>
-          </ContentBoxItem>
-        )}
-
-        {subsidyUnknown && (
-          <ContentBoxItem
-            title="We need to confirm if your building is subsidized"
-            icon={unsureIcon}
-            className="next-step"
-          >
-            <p>
-              You told us that that you are not sure if you live in subsidized
-              housing. If your building is subsidized then you are not covered
-              by Good Cause Eviction law because you should already have
-              important tenant protections associated with your building’s
-              subsidy.
-            </p>
-
-            <JFCLLinkInternal to={`/subsidy?${searchParams.toString()}`}>
-              Find out if your building is subsidized
             </JFCLLinkInternal>
           </ContentBoxItem>
         )}
@@ -622,8 +610,8 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
                 Something went wrong. Try again later.
               </div>
             )}
-            Your phone number will never be saved or used outside of this
-            message
+            We will never call you or share your phone number. You can opt-out
+            at any time.
           </div>
         </div>
         <div className="phone-number-submit__mobile">

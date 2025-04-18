@@ -44,16 +44,14 @@ export const ConfirmAddress: React.FC = () => {
   const mapImageURL = `https://api.mapbox.com/styles/v1/${styleToken}/static/${marker}/${longLat},${zoom},${bearing},${pitch}/${width}x${height}?access_token=${accessToken}`;
 
   const handleSubmit = async () => {
-    if (import.meta.env.MODE === "production") {
-      try {
-        trigger({
-          id: user?.id,
-          address_confirmed: true,
-          nycdb_results: bldgData,
-        });
-      } catch {
-        rollbar.error("Cannot connect to tenant platform");
-      }
+    try {
+      trigger({
+        id: user?.id,
+        address_confirmed: true,
+        nycdb_results: bldgData,
+      });
+    } catch {
+      rollbar.error("Cannot connect to tenant platform");
     }
     navigate("/survey");
   };
@@ -62,7 +60,7 @@ export const ConfirmAddress: React.FC = () => {
     <div id="confirm-address-page">
       <Header
         title="Please confirm your address"
-        subtitle="We’ll use publicly available information about your building to help learn if you're covered."
+        subtitle="We’ll use publicly available information about your building to help learn if you’re covered."
         address={address}
         lastStepReached={lastStepReached}
       />
@@ -108,7 +106,7 @@ export const ConfirmAddress: React.FC = () => {
             </BackLink>
             <Button
               className="confirmation__button"
-              labelText="Next"
+              labelText="Confirm"
               onClick={handleSubmit}
             />
           </div>
