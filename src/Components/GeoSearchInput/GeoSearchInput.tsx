@@ -66,6 +66,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
           "is-highlighted": isHighlighted,
         })}
         options={options}
+        aria-label={placeholder}
         placeholder={!isFocused && placeholder}
         invalid={!isFocused && invalid}
         invalidText="You must enter an address"
