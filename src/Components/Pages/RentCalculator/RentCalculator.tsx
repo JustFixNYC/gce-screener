@@ -12,6 +12,7 @@ import { formatMoney } from "../../../helpers";
 import { Button, TextInput } from "@justfixnyc/component-library";
 import { useState } from "react";
 import { PhoneNumberCallout } from "../Results/Results";
+import { gtmPush } from "../../../google-tag-manager";
 
 export const RentCalculator: React.FC = () => {
   useAccordionsOpenForPrint();
@@ -31,6 +32,7 @@ export const RentCalculator: React.FC = () => {
 
   const handleSubmit = () => {
     setShowRentInput(true);
+    gtmPush("gce_rent_calculator_submit");
   };
 
   return (
@@ -113,10 +115,19 @@ export const RentCalculator: React.FC = () => {
               <br />
               <br />
             </span>
-            <JFCLLinkInternal to="/">Take the survey</JFCLLinkInternal>
+            <JFCLLinkInternal
+              to="/"
+              onClick={() =>
+                gtmPush("gce_return_survey", {
+                  from: "rent-calculator-page",
+                })
+              }
+            >
+              Take the survey
+            </JFCLLinkInternal>
           </p>
           <div className="divider__print" />
-          <PhoneNumberCallout />
+          <PhoneNumberCallout gtmId="rent-calculator-page" />
 
           <GoodCauseProtections
             rent={showRentInput ? Number(rentInput) : undefined}
@@ -126,6 +137,11 @@ export const RentCalculator: React.FC = () => {
               message="Find out if you’re covered by Good Cause"
               linkText="Take the survey"
               linkTo="/"
+              linkOnClick={() =>
+                gtmPush("gce_return_survey", {
+                  from: "rent-calculator-page_accordion",
+                })
+              }
             />
           </GoodCauseProtections>
           <UniversalProtections />

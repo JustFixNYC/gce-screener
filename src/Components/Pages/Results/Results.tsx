@@ -537,6 +537,7 @@ export const PhoneNumberCallout: React.FC<{
   const [showSuccess, setShowSuccess] = useState(false);
   const VALID_PHONE_NUMBER_LENGTH = 10;
 
+  const [, setUser] = useSessionStorage<GCEUser>("user");
   const { user } = useLoaderData() as {
     user?: GCEUser;
   };
@@ -577,10 +578,15 @@ export const PhoneNumberCallout: React.FC<{
     const cleaned = phoneNumber.replace(/\D/g, "");
     if (cleaned.length === VALID_PHONE_NUMBER_LENGTH) {
       try {
-        trigger({
-          id: user?.id,
-          phone_number: parseInt(cleaned),
-        });
+        const sendData = async () => {
+          const postData = {
+            id: user?.id,
+            phone_number: parseInt(cleaned),
+          };
+          const userResp = (await trigger(postData)) as GCEUser;
+          if (!user?.id) setUser(userResp);
+        };
+        sendData();
         setShowFieldError(false);
         setShowSuccess(true);
         gtmPush("gce_phone_submit", {

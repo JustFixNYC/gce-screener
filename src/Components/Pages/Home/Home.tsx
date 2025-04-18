@@ -25,7 +25,7 @@ export type Address = {
 
 export const Home: React.FC = () => {
   const navigate = useNavigate();
-  const [, setUser] = useSessionStorage<GCEUser>("user");
+  const [sessionUser, setUser] = useSessionStorage<GCEUser>("user");
   const [address, setAddress, removeAddress] =
     useSessionStorage<Address>("address");
   const [, , removeFormFields] = useSessionStorage<FormFields>("fields");
@@ -50,6 +50,7 @@ export const Home: React.FC = () => {
     }
     setAddress(geoAddress);
     const postData: GCEPostData = {
+      id: sessionUser?.id,
       bbl: geoAddress.bbl,
       house_number: geoAddress.houseNumber,
       street_name: geoAddress.streetName,
@@ -59,7 +60,7 @@ export const Home: React.FC = () => {
 
     try {
       const userResp = (await trigger(postData)) as GCEUser;
-      setUser(userResp);
+      if (!sessionUser?.id) setUser(userResp);
     } catch {
       rollbar.critical("Cannot connect to tenant platform");
     }
