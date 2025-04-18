@@ -85,6 +85,7 @@ export const Results: React.FC = () => {
         const postData = {
           id: user?.id,
           ...cleanAddressFields(address),
+          nycdb_results: bldgData,
           form_answers: cleanFormFields(fields),
           result_coverage: coverageResult,
           result_criteria: criteriaResults,
