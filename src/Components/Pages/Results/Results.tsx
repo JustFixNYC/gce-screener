@@ -38,7 +38,7 @@ import {
 } from "../../KYRContent/KYRContent";
 import { Header } from "../../Header/Header";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
-import { ProgressStep } from "../../../helpers";
+import { ProgressStep, toTitleCase } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
@@ -71,7 +71,12 @@ export const Results: React.FC = () => {
     }
   }, [lastStepReached, setLastStepReached]);
   const headlineRef = useRef<HTMLSpanElement>(null);
-  const EMAIL_SUBJECT = "Good Cause NYC | Your Coverage Result";
+  const { emailSubject, emailBody } = getEmailSubjectBody(
+    address,
+    searchParams,
+    coverageResult
+  );
+  const EMAIL_SUBJECT = `${address.address}`;
   const EMAIL_BODY = headlineRef?.current?.textContent;
 
   useAccordionsOpenForPrint();
@@ -132,8 +137,8 @@ export const Results: React.FC = () => {
               ["download", "Download coverage"],
               ["print", "Print coverage"],
             ]}
-            emailSubject={EMAIL_SUBJECT}
-            emailBody={EMAIL_BODY}
+            emailSubject={emailSubject}
+            emailBody={emailBody}
           />
         )}
 
@@ -652,4 +657,52 @@ const CopyURLButton: React.FC = () => {
       )}
     </>
   );
+};
+
+const getEmailSubjectBody = (
+  address: Address,
+  searchParams: URLSearchParams,
+  coverageResult?: CoverageResult
+) => {
+  const addrShort = `${toTitleCase(
+    `${address?.houseNumber || ""} ${address?.streetName}`
+  )}, ${toTitleCase(address.borough)}`;
+  const aptCoverage =
+    coverageResult &&
+    ["NOT_COVERED", "RENT_STABILIZED"].includes(coverageResult);
+  const encodedSearchParams = searchParams.toString().replace("&", "%26");
+  const emailSubject =
+    coverageResult === "COVERED"
+      ? `${addrShort} is likely covered by Good Cause.`
+      : coverageResult === "NOT_COVERED"
+      ? "My apartment is likely not covered by Good Cause."
+      : coverageResult === "NYCHA"
+      ? `${addrShort} is part of NYCHA or PACT/RAD, which provides stronger protections than Good Cause.`
+      : coverageResult === "RENT_STABILIZED"
+      ? "My apartment’s rent stabilization status provides stronger eviction protections than Good Cause."
+      : coverageResult === "SUBSIDIZED"
+      ? `${addrShort} is subsidized, which provides existing eviction protections.`
+      : `${addrShort} might be covered by Good Cause.`;
+  const rentStabilizedAddition =
+    coverageResult === "RENT_STABILIZED"
+      ? "Learn more about rent stabilization %0D%0A" +
+        `${window.location.origin}/rent_stabilization?${encodedSearchParams}`
+      : "";
+  const emailBody =
+    "I used the Good Cause NYC screener, to see if my building is covered by the new Good Cause Eviction law in New York.%0D%0A%0D%0A" +
+    "Based on publicly available data about the building, and information I provided, " +
+    `${
+      emailSubject.charAt(0).toLowerCase() + emailSubject.slice(1)
+    }%0D%0A%0D%0A` +
+    `See coverage details for ${
+      aptCoverage ? "my apartment at " : ""
+    }${addrShort} %0D%0A` +
+    `${window.location.origin}${window.location.pathname}?${encodedSearchParams} %0D%0A%0D%0A` +
+    "Find out if you’re covered by Good Cause %0D%0A" +
+    `${window.location.origin} %0D%0A%0D%0A` +
+    "Learn more about Good Cause Eviction %0D%0A" +
+    "https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page %0D%0A%0D%0A" +
+    rentStabilizedAddition;
+
+  return { emailSubject, emailBody };
 };
