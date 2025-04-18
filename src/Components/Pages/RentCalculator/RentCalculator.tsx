@@ -139,7 +139,7 @@ export const RentCalculator: React.FC = () => {
               linkTo="/"
               linkOnClick={() =>
                 gtmPush("gce_return_survey", {
-                  from: "rent-calculator-page_accordion",
+                  from: "rent-calculator-page",
                 })
               }
             />
