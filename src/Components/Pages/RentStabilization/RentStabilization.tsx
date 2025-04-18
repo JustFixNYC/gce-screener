@@ -7,7 +7,6 @@ import {
 } from "../../ContentBox/ContentBox";
 import { Address } from "../Home/Home";
 import { Header } from "../../Header/Header";
-import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { GCEUser } from "../../../types/APIDataTypes";
 import { FormFields } from "../Form/Survey";
@@ -16,10 +15,6 @@ import { JFCLLinkExternal } from "../../JFCLLink";
 import { gtmPush } from "../../../google-tag-manager";
 import "./RentStabilization.scss";
 import { RentStabilizedProtections } from "../../KYRContent/KYRContent";
-
-const EMAIL_SUBJECT =
-  "Good Cause NYC | Find out if your apartment is rent stabilized";
-const EMAIL_BODY = "...";
 
 export const RentStabilization: React.FC = () => {
   const { user, address, fields } = useLoaderData() as {
@@ -39,13 +34,7 @@ export const RentStabilization: React.FC = () => {
         address={address}
         showProgressBar={false}
         isGuide
-      >
-        <ShareButtons
-          buttonsInfo={[["email", "Email this page"]]}
-          emailSubject={EMAIL_SUBJECT}
-          emailBody={EMAIL_BODY}
-        />
-      </Header>
+      />
 
       <div className="content-section">
         <div className="content-section__content">

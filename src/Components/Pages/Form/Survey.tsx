@@ -21,20 +21,13 @@ import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
 import { BackLink, JFCLLinkExternal } from "../../JFCLLink";
 import "./Survey.scss";
+import Modal from "../../Modal/Modal";
 
 export type FormFields = {
   bedrooms: "STUDIO" | "1" | "2" | "3" | "4+" | null;
   rent: string | null;
   rentStabilized: "YES" | "NO" | "UNSURE" | null;
-  housingType:
-    | "NYCHA"
-    | "SUBSIDIZED_ML"
-    | "SUBSIDIZED_LIHTC"
-    | "SUBSIDIZED_OTHER"
-    | "SUBSIDIZED_HDFC"
-    | "NONE"
-    | "UNSURE"
-    | null;
+  housingType: "NYCHA" | "SUBSIDIZED" | "NONE" | null;
   landlord?: "YES" | "NO" | null;
   portfolioSize?: "YES" | "NO" | "UNSURE" | null;
 };
@@ -67,6 +60,8 @@ export const Survey: React.FC = () => {
     fields || initialFields
   );
   const [showErrors, setShowErrors] = useState(false);
+  const [showSubsidyModal, setShowSubsidyModal] = useState(false);
+  const toggleModalVisibility = () => setShowSubsidyModal((prev) => !prev);
 
   const bbl = address.bbl;
 
@@ -85,6 +80,11 @@ export const Survey: React.FC = () => {
     useRef<HTMLFieldSetElement | null>(null),
     useRef<HTMLFieldSetElement | null>(null),
   ];
+
+  const { subsidyHelperText, subsidyHelperElement } = getSubsidyHelperInfo(
+    bldgData,
+    toggleModalVisibility
+  );
 
   const navigate = useNavigate();
 
@@ -231,12 +231,8 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.housingType === null}
             >
               <FormGroup
-                legendText="4. Is your apartment part of any subsidized housing programs?"
-                helperElement={
-                  getSubsidyHelperText(bldgData) && (
-                    <InfoBox>{getSubsidyHelperText(bldgData)}</InfoBox>
-                  )
-                }
+                legendText="4. Is your building part of any of these subsidy programs?"
+                helperElement={<InfoBox>{subsidyHelperElement}</InfoBox>}
                 invalid={showErrors && localFields.housingType === null}
                 invalidText="Please specify if your apartment is part of any subsidized housing programs."
                 invalidRole="status"
@@ -246,12 +242,11 @@ export const Survey: React.FC = () => {
                   radioGroup={{
                     name: "housingType",
                     options: [
-                      { label: "NYCHA or PACT/RAD", value: "NYCHA" },
-                      { label: "Mitchell-Lama", value: "SUBSIDIZED_ML" },
-                      { label: "LIHTC", value: "SUBSIDIZED_LIHTC" },
-                      { label: "HDFC", value: "SUBSIDIZED_HDFC" },
-                      { label: "Other", value: "SUBSIDIZED_OTHER" },
-                      { label: "I'm not sure", value: "UNSURE" },
+                      { label: "Yes, NYCHA / PACT-RAD", value: "NYCHA" },
+                      {
+                        label: "Yes, Mitchell-Lama, HDFC, or other",
+                        value: "SUBSIDIZED",
+                      },
                       {
                         label: "No, my building is not subsidized",
                         value: "NONE",
@@ -297,7 +292,7 @@ export const Survey: React.FC = () => {
                     legendText="6. Does your landlord own more than 10 apartments across multiple buildings?"
                     helperElement={
                       <InfoBox>
-                        {`It looks like there ${
+                        {`Publicly available data sources indicate that there ${
                           bldgData.unitsres == 1
                             ? "is 1 apartment"
                             : `are ${bldgData.unitsres} apartments`
@@ -339,6 +334,60 @@ export const Survey: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <Modal
+        isOpen={showSubsidyModal}
+        onClose={() => setShowSubsidyModal(false)}
+        hasCloseBtn={true}
+      >
+        <h3>FAQs to help guide your answer</h3>
+        <p>
+          <strong>{subsidyHelperText}</strong> We check for NYCHA,
+          Mitchell-Lama, HDFC, LIHTC, Project Section 8, and various HPD and HUD
+          programs. If you know the public data is incorrect, use these tips to
+          guide your answer:
+        </p>
+        <div className="callout-box">
+          <p>
+            If you applied for your apartment through “NYC Housing Connect,”
+            your building is very likely subsidized, and you should select the
+            option: <strong>“Yes, Mitchell-Lama, HDFC, or other”</strong>
+          </p>
+        </div>
+        <div className="callout-box">
+          <p>
+            If you know that your building is part of Low-Income Housing Tax
+            Credit (LIHTC) program, select the option:{" "}
+            <strong>“Yes, Mitchell-Lama, HDFC, or other”</strong>
+          </p>
+        </div>
+        <div className="callout-box">
+          <p>
+            If you know that your building is part of public housing (NYCHA or
+            PACT-RAD), select: <strong>“Yes, NYCHA / PACT-RAD”</strong>
+          </p>
+        </div>
+        <div className="callout-box">
+          <p>
+            If you know that your building receives 421a or J51 tax abatement,
+            select the option:{" "}
+            <strong>“No, my building is not subsidized”</strong>
+          </p>
+          <p>
+            <i>
+              Note: if your building is part of 42a or J51, your apartment
+              should be rent stabilized
+            </i>
+          </p>
+        </div>
+        <div className="callout-box">
+          <p>
+            If you use a voucher that covers some or all of your rent, and you
+            can use that voucher in another apartment if you move, select the
+            option: <strong>“No, my building is not subsidized”</strong>
+          </p>
+        </div>
+      </Modal>
     </div>
   );
 };
@@ -407,10 +456,14 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
   }
 };
 
-const getSubsidyHelperText = (
-  bldgData?: BuildingData
-): ReactNode | undefined => {
-  if (!bldgData) return undefined;
+const getSubsidyHelperInfo = (
+  bldgData?: BuildingData,
+  learnMoreOnClick?: () => void
+) => {
+  let subsidyHelperText: ReactNode;
+  let subsidyHelperElement: ReactNode;
+
+  if (!bldgData) return { subsidyHelperText, subsidyHelperElement };
 
   const { bbl, is_nycha, is_subsidized, subsidy_name } = bldgData;
 
@@ -419,41 +472,45 @@ const getSubsidyHelperText = (
       View source
     </JFCLLinkExternal>
   );
+  const learnMoreLink = (
+    <button
+      type="button"
+      className="modal-link jfcl-link"
+      onClick={learnMoreOnClick}
+    >
+      Learn more
+    </button>
+  );
 
   if (is_nycha) {
-    return (
+    subsidyHelperText =
+      "Publicly available data sources indicate that your building is part of NYCHA.";
+    subsidyHelperElement = (
       <>
-        Publicly available data sources indicate that your building is part of
-        NYCHA.
+        {subsidyHelperText}
         <br />
         {sourceLink}
       </>
     );
   } else if (is_subsidized) {
-    const namedSubsidies = [
-      "Low-Income Housing Tax Credit (LIHTC)",
-      "Mitchell-Lama",
-    ];
-
-    return (
+    subsidyHelperText = `Publicly available data sources indicate that your building ${buildingSubsidyLanguage(
+      subsidy_name
+    )}, which is considered subsidized housing.`;
+    subsidyHelperElement = (
       <>
-        {`Publicly available data sources indicate that your building ${buildingSubsidyLanguage(
-          subsidy_name
-        )}${
-          namedSubsidies.includes(subsidy_name)
-            ? "."
-            : ", which is considered subsidized housing."
-        }`}
+        {subsidyHelperText}
         <br />
         {sourceLink}
       </>
     );
   } else {
-    return (
+    subsidyHelperText =
+      "Publicly available data sources do not indicate that your building is part of a subsidized housing program.";
+    subsidyHelperElement = (
       <>
-        Publicly available data sources do not indicate that your building is
-        part of any subsidized housing programs.
+        {subsidyHelperText} {learnMoreLink}
       </>
     );
   }
+  return { subsidyHelperText, subsidyHelperElement };
 };

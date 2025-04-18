@@ -22,8 +22,8 @@ import { TopBar } from "./Components/TopBar/TopBar";
 import { NetworkError } from "./api/error-reporting";
 import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
+import { decodeFromURI } from "./helpers";
 import "./App.scss";
-import { Subsidy } from "./Components/Pages/Subsidy/Subsidy";
 import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
 
 const Layout = () => {
@@ -92,14 +92,19 @@ const LoadURLSessionRequired = ({ request }: { request: Request }) => {
       fields: JSON.parse(sessionFields as string),
     };
   } else if (addressParam && fieldsParam) {
+    const addressParamDecoded = decodeFromURI(addressParam);
+    const fieldsParamDecoded = decodeFromURI(fieldsParam);
+    const userParamDecoded = userParam ? decodeFromURI(userParam) : undefined;
     // set session values
-    if (userParam) window.sessionStorage.setItem("user", userParam);
-    window.sessionStorage.setItem("address", addressParam);
-    window.sessionStorage.setItem("fields", fieldsParam);
+    if (userParam) {
+      window.sessionStorage.setItem("user", userParamDecoded);
+    }
+    window.sessionStorage.setItem("address", addressParamDecoded);
+    window.sessionStorage.setItem("fields", fieldsParamDecoded);
     return {
-      user: !userParam ? undefined : JSON.parse(userParam),
-      address: JSON.parse(addressParam),
-      fields: JSON.parse(fieldsParam),
+      user: userParamDecoded,
+      address: addressParamDecoded,
+      fields: fieldsParamDecoded,
     };
   } else {
     return redirect("/");
@@ -134,14 +139,24 @@ const LoadURLSessionOptional = ({ request }: { request: Request }) => {
         : JSON.parse(sessionFields as string),
     };
   } else {
+    const addressParamDecoded = addressParam
+      ? decodeFromURI(addressParam)
+      : undefined;
+    const fieldsParamDecoded = fieldsParam
+      ? decodeFromURI(fieldsParam)
+      : undefined;
+    const userParamDecoded = userParam ? decodeFromURI(userParam) : undefined;
     // set session values
-    if (userParam) window.sessionStorage.setItem("user", userParam);
-    if (addressParam) window.sessionStorage.setItem("address", addressParam);
-    if (fieldsParam) window.sessionStorage.setItem("fields", fieldsParam);
+    if (addressParamDecoded)
+      window.sessionStorage.setItem("user", addressParamDecoded);
+    if (fieldsParamDecoded)
+      window.sessionStorage.setItem("address", fieldsParamDecoded);
+    if (userParamDecoded)
+      window.sessionStorage.setItem("fields", userParamDecoded);
     return {
-      user: !userParam ? undefined : JSON.parse(userParam),
-      address: !addressParam ? undefined : JSON.parse(addressParam),
-      fields: !fieldsParam ? undefined : JSON.parse(fieldsParam),
+      user: userParamDecoded,
+      address: addressParamDecoded,
+      fields: fieldsParamDecoded,
     };
   }
 };
@@ -174,11 +189,6 @@ const router = createBrowserRouter(
         path="portfolio_size"
         element={<PortfolioSize />}
         loader={LoadURLSessionRequired}
-      />
-      <Route
-        path="subsidy"
-        element={<Subsidy />}
-        loader={LoadURLSessionOptional}
       />
       <Route
         path="rent_calculator"

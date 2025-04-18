@@ -19,7 +19,7 @@ type KYRContentBoxProps = Omit<ContentBoxProps, "children"> & {
 
 export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
   title = undefined,
-  subtitle = "Protections that all New Yorkers have",
+  subtitle = "Protections that all NYC tenants have",
   children,
   coverageResult,
   className,
@@ -129,7 +129,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         </JFCLLinkExternal>
       </ContentBoxItem>
       <ContentBoxItem
-        title="Your rights if you’re being discriminated against"
+        title="Your rights against discrimination"
         gtmId="universal_discrimination"
       >
         <p>
@@ -222,7 +222,7 @@ export const GoodCauseProtections: React.FC<
   KYRContentBoxProps & { rent?: number }
 > = ({
   title = undefined,
-  subtitle = "Protections you have under Good Cause",
+  subtitle = "Protections if you’re covered by Good Cause",
   rent,
   children,
   coverageResult,
@@ -289,7 +289,7 @@ export const GoodCauseProtections: React.FC<
           coverageResult={coverageResult}
         >
           <p>
-            Your landlord will need to provide a good cause reason for ending a
+            Your landlord will need to provide a good reason for ending a
             tenancy. Even if your lease expires, your landlord cannot evict you,
             as long as you abide by the terms of your expired lease.{" "}
           </p>
@@ -384,23 +384,26 @@ export const GoodCauseExercisingRights: React.FC<
           <li>
             <strong>Tell them it’s unreasonable</strong>
             <br />
-            If your rent increase is more than 10% (or CPI+5%, whichever is
-            lower), tell your landlord it is an unreasonable increase and that a
-            judge could force your landlord to justify it based on increased
-            costs.
+            {`If your rent increase is more than ${
+              CPI + 5
+            }%, tell your landlord it is
+            an unreasonable increase and that a judge could force your landlord
+            to justify it based on increased costs.`}
           </li>
           <li>
             <strong>Withhold the unreasonable increase</strong>
             <br />
-            You can withhold the rent increase above the ‘reasonable’ threshold.
-            Pay your old rent plus CPI+5% or 10%, whichever is lower. To be
-            safe, set aside the extra rent in a separate escrow account until
-            your negotiations with your landlord have totally resolved.
+            {`You can withhold the rent increase above the ‘reasonable’ threshold.
+            Pay your old rent plus ${
+              CPI + 5
+            }%. To be safe, set aside the extra rent
+            in a separate escrow account until your negotiations with your
+            landlord have totally resolved.`}
           </li>
           <li>
-            <strong>Invoke Good Cause to a judge</strong>
+            <strong>Invoke “Good Cause” to a judge</strong>
             <br />
-            If your landlord takes you to court, you can raise a Good Cause
+            If your landlord takes you to court, you can raise a “Good Cause”
             defense. Your landlord would then have to demonstrate to the judge
             that they raised the rent because of increased costs (taxes,
             maintenance costs, etc.) or be forced to lower the increase.
@@ -446,7 +449,7 @@ export const GoodCauseExercisingRights: React.FC<
 
 export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
   title = undefined,
-  subtitle = "Protections you have as a rent stabilized tenant",
+  subtitle = "Protections if you live in a rent stabilized apartment",
   children,
   coverageResult,
   className,
@@ -521,7 +524,7 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
 
 export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
   title = undefined,
-  subtitle = "Protections you have as a NYCHA or PACT/RAD tenant",
+  subtitle = "Protections if you live in NYCHA or PACT/RAD housing",
   children,
   coverageResult,
   className,
@@ -660,7 +663,7 @@ export const SubsidizedProtections: React.FC<
 
 export const UnknownProtections: React.FC<KYRContentBoxProps> = ({
   title = undefined,
-  subtitle = "Regardless of whether you’re covered by Good Cause, learn more about your rights as a NYC tenant",
+  subtitle = "Whether or not you are covered by Good Cause, you still have important tenant rights",
   children,
   coverageResult,
   className,
@@ -671,13 +674,9 @@ export const UnknownProtections: React.FC<KYRContentBoxProps> = ({
       gtmId="unknown_learn"
       coverageResult={coverageResult}
     >
-      <p>
-        Our guide to understanding your rights helps you learn more about all
-        the rights you have as an NYC tenant and the rights you might have
-        depending on the type of housing you live in.
-      </p>
+      <p>Read our guide to tenant rights in NYC</p>
       <JFCLLinkInternal to="/tenant_rights">
-        Understand your rights
+        Learn more about your rights
       </JFCLLinkInternal>
     </ContentBoxItem>
     {children}

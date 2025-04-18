@@ -1,4 +1,5 @@
 import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
+import LZString from "lz-string";
 import { RelatedProperty } from "./types/APIDataTypes";
 
 export enum ProgressStep {
@@ -192,4 +193,25 @@ export const buildingSubsidyLanguage = (subsidyName?: string): string => {
     : subsidyName === "NYCHA"
     ? "is part of NYCHA or PACT/RAD"
     : "";
+};
+
+// URL param encoding/compression, copied from signature-dashboard
+
+// given an object, return a compressed, encoded string for adding to the URI
+export const encodeForURI = (obj: object) => {
+  return LZString.compressToEncodedURIComponent(JSON.stringify(obj));
+};
+
+// given an encoded string from the URI, decode it and return the original object
+export const decodeFromURI = (str: string) => {
+  return JSON.parse(LZString.decompressFromEncodedURIComponent(str));
+};
+
+// given a URLSearchParams object and a key, return the original object
+export const getObjFromEncodedParam = (
+  params: URLSearchParams,
+  key: string
+) => {
+  const encodedStr = params.get(key);
+  return encodedStr ? decodeFromURI(encodedStr) : null;
 };

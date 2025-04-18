@@ -25,7 +25,6 @@ import {
 } from "../../../helpers";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { Header } from "../../Header/Header";
-import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkExternal } from "../../JFCLLink";
@@ -34,10 +33,6 @@ import "./PortfolioSize.scss";
 
 const VIDEO_EMBED_URL =
   "https://www.youtube.com/embed/dSnDgmGH_6E?si=G9wM6P8LHgAynN5O";
-
-const EMAIL_SUBJECT =
-  "Good Cause NYC | Find out if your landlord owns other apartments";
-const EMAIL_BODY = "...";
 
 export const PortfolioSize: React.FC = () => {
   const { user, address, fields } = useLoaderData() as {
@@ -79,11 +74,6 @@ export const PortfolioSize: React.FC = () => {
             minutes.
           </div>
         )}
-        <ShareButtons
-          buttonsInfo={[["email", "Email this page"]]}
-          emailSubject={EMAIL_SUBJECT}
-          emailBody={EMAIL_BODY}
-        />
       </Header>
 
       <div className="content-section">
