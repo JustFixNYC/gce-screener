@@ -60,7 +60,7 @@ export const ConfirmAddress: React.FC = () => {
     <div id="confirm-address-page">
       <Header
         title="Please confirm your address"
-        subtitle="We’ll use publicly available information about your building to help learn if you're covered."
+        subtitle="We’ll use publicly available information about your building to help learn if you’re covered."
         address={address}
         lastStepReached={lastStepReached}
       />
@@ -106,7 +106,7 @@ export const ConfirmAddress: React.FC = () => {
             </BackLink>
             <Button
               className="confirmation__button"
-              labelText="Next"
+              labelText="Confirm"
               onClick={handleSubmit}
             />
           </div>

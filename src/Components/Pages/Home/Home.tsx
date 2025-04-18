@@ -137,14 +137,14 @@ export const Home: React.FC = () => {
               protections throughout New York State.
             </p>
             <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause/">
-              Learn where Good Cause Protections have already been won
+              Learn where Good Cause protections have been won
             </JFCLLinkExternal>
           </div>
         </div>
       </div>
       <div className="content-section home__about-project">
         <div className="content-section__content">
-          <h3>About the site</h3>
+          <h3>About this site</h3>
           <p>
             Good Cause law can be complex to understand and to use to protect
             yourself. This site exists to make it easier for you and your
@@ -152,9 +152,9 @@ export const Home: React.FC = () => {
             rights.
           </p>
           <p>
-            This site is a collaboration between Housing Justice for All
+            This site is a collaboration between the Housing Justice for All
             Coalition and JustFix. We thank all individuals who contributed to
-            this site and to all the tenants and advocates who fought for Good
+            this site and to all the tenants and advocates who fight for Good
             Cause protections.
           </p>
           <div className="about-project__orgs-container">

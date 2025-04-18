@@ -628,8 +628,8 @@ const PhoneNumberCallout: React.FC<{ coverageResult?: CoverageResult }> = ({
                 Something went wrong. Try again later.
               </div>
             )}
-            Your phone number will never be saved or used outside of this
-            message
+            We will never call you or share your phone number. You can opt-out
+            at any time.
           </div>
         </div>
         <div className="phone-number-submit__mobile">

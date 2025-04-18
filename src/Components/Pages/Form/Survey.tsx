@@ -297,7 +297,7 @@ export const Survey: React.FC = () => {
                     legendText="6. Does your landlord own more than 10 apartments across multiple buildings?"
                     helperElement={
                       <InfoBox>
-                        {`It looks like there ${
+                        {`Publicly available data sources indicate that there ${
                           bldgData.unitsres == 1
                             ? "is 1 apartment"
                             : `are ${bldgData.unitsres} apartments`
