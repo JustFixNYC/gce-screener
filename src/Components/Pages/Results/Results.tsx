@@ -597,11 +597,7 @@ export const PhoneNumberCallout: React.FC<{
           We’ll use your answers to better advocate for your rights.
         </p>
       </div>
-      <form
-        className="callout-box__column"
-        onSubmit={handleSubmit}
-        aria-label="Phone number"
-      >
+      <form className="callout-box__column" onSubmit={handleSubmit}>
         <div className="phone-number-input-container">
           <TextInput
             labelText="Phone number"
