@@ -462,12 +462,16 @@
 
 @media print {
   #results-page {
-    .coverage-pill {
-      background-color: unset;
-      padding: unset;
-      text-decoration: underline;
-      text-underline-offset: 0.5rem;
-      color: $OFF_BLACK;
+    .result-headline .coverage-pill {
+      &.green,
+      &.yellow,
+      &.orange {
+        background-color: unset;
+        padding: unset;
+        text-decoration: underline;
+        text-underline-offset: 0.5rem;
+        color: $OFF_BLACK;
+      }
     }
 
     .headline-section__address__print {

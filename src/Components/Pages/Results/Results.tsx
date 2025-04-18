@@ -497,8 +497,8 @@ const CoverageResultHeadline: React.FC<{
       headlineContent = (
         <>
           <span className="result-headline__top">Your building is</span>{" "}
-          <span className="coverage-pill green">subsidized</span>
-          which provides existing eviction protections
+          <span className="coverage-pill green">subsidized</span> which provides
+          existing eviction protections
         </>
       );
       break;
