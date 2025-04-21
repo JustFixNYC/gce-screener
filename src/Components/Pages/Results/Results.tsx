@@ -390,7 +390,7 @@ const EligibilityNextSteps: React.FC<{
             gtmId="next-step_portfolio"
           >
             <p>
-              {`Good Cause Eviction law only covers tenants whose landlord owns more than 10 units. ` +
+              {`Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. ` +
                 `Your building has only ${bldgData.unitsres} apartments, but your landlord may own other buildings. ` +
                 `Good Cause Eviction law only covers tenants whose landlord owns`}
             </p>

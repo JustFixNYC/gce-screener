@@ -67,7 +67,7 @@ function eligibilityPortfolioSize(
 
   const criteria = "portfolioSize";
   const requirement =
-    "The landlord of the building must own more than 10 units.";
+    "The landlord of the building must own more than 10 apartments.";
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
