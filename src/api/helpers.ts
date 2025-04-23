@@ -89,12 +89,16 @@ export const cleanFormFields = ({
   };
 };
 
+function toMacroCase(x: string) {
+  return x.replace(/\s+/g, "_").toUpperCase();
+}
+
 export const cleanAddressFields = (address: Address) => {
   return {
     bbl: address.bbl,
     house_number: address.houseNumber,
     street_name: address.streetName,
-    borough: address.borough,
+    borough: toMacroCase(address.borough),
     zipcode: address.zipcode,
   };
 };
