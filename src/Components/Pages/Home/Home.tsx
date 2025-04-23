@@ -9,10 +9,11 @@ import { FormFields } from "../Form/Survey";
 import { useSendGceData } from "../../../api/hooks";
 import { GCEPostData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
-import { ProgressStep, toMacroCase } from "../../../helpers";
+import { ProgressStep } from "../../../helpers";
 import { JFCLLinkExternal, JFCLLinkInternal } from "../../JFCLLink";
-import "./Home.scss";
+import { cleanAddressFields } from "../../../api/helpers";
 import { gtmPush } from "../../../google-tag-manager";
+import "./Home.scss";
 
 export type Address = {
   bbl: string;
@@ -53,11 +54,7 @@ export const Home: React.FC = () => {
     setAddress(geoAddress);
     const postData: GCEPostData = {
       id: sessionUser?.id,
-      bbl: geoAddress.bbl,
-      house_number: geoAddress.houseNumber,
-      street_name: geoAddress.streetName,
-      borough: toMacroCase(geoAddress.borough),
-      zipcode: geoAddress.zipcode,
+      ...cleanAddressFields(geoAddress),
     };
 
     try {
