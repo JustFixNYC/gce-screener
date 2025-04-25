@@ -375,7 +375,7 @@ export const Survey: React.FC = () => {
           </p>
           <p>
             <i>
-              Note: if your building is part of 42a or J51, your apartment
+              Note: if your building is part of 421a or J51, your apartment
               should be rent stabilized
             </i>
           </p>

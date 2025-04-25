@@ -109,7 +109,6 @@ export const Home: React.FC = () => {
               Calculate your max rent increase.
             </JFCLLinkInternal>
           </p>
-          <br />
           <p>
             To be covered by the law, your apartment must meet several
             requirements.{" "}
