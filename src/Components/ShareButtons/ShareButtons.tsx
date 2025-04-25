@@ -37,7 +37,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
       className="share-button share-button__download jfcl-link"
       key={key}
       onClick={() => {
-        window.print();
+        window?.print();
         gtmPush("gce_share_button", { type: "download" });
       }}
     >
@@ -51,7 +51,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
       className="share-button share-button__print jfcl-link"
       key={key}
       onClick={() => {
-        window.print();
+        window?.print();
         gtmPush("gce_share_button", { type: "download" });
       }}
     >
