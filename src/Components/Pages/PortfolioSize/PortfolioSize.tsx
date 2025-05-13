@@ -194,8 +194,8 @@ export const PortfolioSize: React.FC = () => {
                       {`Remember, your building has ${bldgData.unitsres}
                     apartments, so `}
                       <strong>{`you only need to confirm that your landlord
-                    owns ${10 - bldgData.unitsres} additional ${
-                        10 - bldgData.unitsres == 1 ? "apartment" : "apartments"
+                    owns ${11 - bldgData.unitsres} additional ${
+                        11 - bldgData.unitsres == 1 ? "apartment" : "apartments"
                       } across other buildings.`}</strong>
                     </>
                   </InfoBox>
