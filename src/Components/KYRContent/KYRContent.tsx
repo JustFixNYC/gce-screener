@@ -9,7 +9,7 @@ import { JFCLLinkExternal, JFCLLinkInternal } from "../JFCLLink";
 import { CoverageResult } from "../../types/APIDataTypes";
 
 // This needs to be updated each year when DHCR publishes the new number
-export const CPI = 3.82;
+export const CPI = 3.79;
 
 type KYRContentBoxProps = Omit<ContentBoxProps, "children"> & {
   children?: React.ReactNode;
