@@ -4,7 +4,6 @@ import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPr
 import { JFCLLinkInternal } from "../../JFCLLink";
 import "./RentCalculator.scss";
 import {
-  CPI,
   GoodCauseProtections,
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
@@ -13,6 +12,10 @@ import { Button, TextInput } from "@justfixnyc/component-library";
 import { useState } from "react";
 import { PhoneNumberCallout } from "../Results/Results";
 import { gtmPush } from "../../../google-tag-manager";
+
+// This needs to be updated each year when DHCR publishes the new number
+export const CPI = 3.79;
+export const CPI_EFFECTIVE_DATE = "February 19, 2025";
 
 export const RentCalculator: React.FC = () => {
   useAccordionsOpenForPrint();
@@ -100,11 +103,11 @@ export const RentCalculator: React.FC = () => {
               increase could be found unreasonable by housing court.
             </p>
             <p>
-              The Good Cause law establishes a Reasonable Rent Increase, which
+              {`The Good Cause law establishes a Reasonable Rent Increase, which
               is set every year at the rate of inflation plus 5%, with a maximum
-              of 10% total. As of May 1, 2024, the rate of inflation for New
-              York City is 3.82%, meaning that the current local Reasonable Rent
-              Increase is 8.82%.
+              of 10% total. As of ${CPI_EFFECTIVE_DATE}, the rate of inflation for New
+              York City is ${CPI}%, meaning that the current local Reasonable Rent
+              Increase is ${CPI + 5}%.`}
             </p>
             <p>
               Note: Landlords can increase the rent beyond the Reasonable Rent
