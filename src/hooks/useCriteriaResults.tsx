@@ -12,6 +12,15 @@ import {
 } from "../helpers";
 import { JFCLLinkExternal, JFCLLinkInternal } from "../Components/JFCLLink";
 
+// These values need to be updated annually. They are published by DHCR on or before August 1 each year
+const RENT_CUTOFFS = {
+  STUDIO: 5895,
+  "1": 6152,
+  "2": 6811,
+  "3": 8489,
+  "4+": 9158,
+};
+
 export type Criteria =
   | "portfolioSize"
   | "landlord"
@@ -168,16 +177,7 @@ function eligibilityLandlord(criteriaData: CriteriaData): CriterionDetails {
 
 function eligibilityRent(criteriaData: CriteriaData): CriterionDetails {
   const { bedrooms, rent: rentString } = criteriaData;
-
   const rent = parseFloat(rentString || "");
-
-  const rentCutoffs = {
-    STUDIO: "$5,846",
-    "1": "$6,005",
-    "2": "$6,742",
-    "3": "$8,413",
-    "4+": "$9,065",
-  };
   const criteria = "rent";
   let determination: CriterionResult;
 
@@ -186,17 +186,20 @@ function eligibilityRent(criteriaData: CriteriaData): CriterionDetails {
 
   const requirement = `For a ${
     bedrooms === "STUDIO" ? "studio" : `${bedrooms} bedroom`
-  }, the monthly total rent must be less than ${rentCutoffs[bedrooms]}`;
+  }, the monthly total rent must be less than ${formatMoney(
+    RENT_CUTOFFS[bedrooms],
+    0
+  )}`;
   if (bedrooms === "STUDIO") {
-    determination = rent < 5846 ? "ELIGIBLE" : "INELIGIBLE";
+    determination = rent < RENT_CUTOFFS["STUDIO"] ? "ELIGIBLE" : "INELIGIBLE";
   } else if (bedrooms === "1") {
-    determination = rent < 6005 ? "ELIGIBLE" : "INELIGIBLE";
+    determination = rent < RENT_CUTOFFS["1"] ? "ELIGIBLE" : "INELIGIBLE";
   } else if (bedrooms === "2") {
-    determination = rent < 6742 ? "ELIGIBLE" : "INELIGIBLE";
+    determination = rent < RENT_CUTOFFS["2"] ? "ELIGIBLE" : "INELIGIBLE";
   } else if (bedrooms === "3") {
-    determination = rent < 8413 ? "ELIGIBLE" : "INELIGIBLE";
+    determination = rent < RENT_CUTOFFS["3"] ? "ELIGIBLE" : "INELIGIBLE";
   } else {
-    determination = rent < 9065 ? "ELIGIBLE" : "INELIGIBLE";
+    determination = rent < RENT_CUTOFFS["4+"] ? "ELIGIBLE" : "INELIGIBLE";
   }
 
   const userValue = `You reported that your rent is ${formatMoney(rent, 0)}.`;
