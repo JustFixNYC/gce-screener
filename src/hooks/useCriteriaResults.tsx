@@ -105,7 +105,7 @@ function eligibilityPortfolioSize(
           unitsres === 1 ? "apartment" : "apartments"
         }, but ${
           relatedProperties
-            ? `publicly available data sources indicate that your landlord may be associated ${formatNumber(
+            ? `publicly available data sources indicate that your landlord may be associated with ${formatNumber(
                 relatedProperties
               )}`
             : "your landlord may own"
@@ -383,7 +383,7 @@ function eligibilityCertificateOfOccupancy(
   const userValue = (
     <>
       {determination === "ELIGIBLE"
-        ? "Your building has no recorded certificate of occupancy since 2009."
+        ? "Your building has no new recorded certificate of occupancy since 2009."
         : `Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`}
       <br />
       <JFCLLinkExternal
