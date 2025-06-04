@@ -451,6 +451,13 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
       "No rent stabilized apartments were registered in your building in recent years, " +
       "but based on the size and age of your building some of the apartments may still be rent stabilized."
     );
+  } else if (yearbuilt >= 1974 && bldgUnits < 6) {
+    // Start of NOT Rent Stabilized helper text cases
+    return "Because your building has fewer than 6 units and was built in or after 1974, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available data, no rent stabilized apartments were registered in your building in recent years.";
+  } else if (yearbuilt >= 1974 && !(active421a || activeJ51)) {
+    return "Because your building was built in or after 1974 and is not part of 421a or J51 tax incentive programs, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years.";
+  } else if (bldgUnits < 6) {
+    return "Because your building has fewer than 6 units it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years.";
   } else {
     return undefined;
   }
