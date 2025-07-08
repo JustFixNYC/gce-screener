@@ -7,6 +7,7 @@ import {
   urlDOBBBL,
   urlDOBBIN,
   urlFCSubsidized,
+  urlWOWBldg,
   urlWOWTimelineRS,
   urlZOLA,
 } from "../helpers";
@@ -71,7 +72,13 @@ function eligibilityPortfolioSize(
   criteriaData: CriteriaData,
   searchParams: URLSearchParams
 ): CriterionDetails {
-  const { unitsres, related_properties, portfolioSize } = criteriaData;
+  const {
+    bbl,
+    unitsres,
+    related_properties,
+    portfolioSize,
+    wow_portfolio_bbls,
+  } = criteriaData;
   const relatedProperties = related_properties.length || 0;
 
   const criteria = "portfolioSize";
@@ -80,18 +87,45 @@ function eligibilityPortfolioSize(
   let determination: CriterionResult;
   let userValue: React.ReactNode;
 
+  const wowLink = (
+    <JFCLLinkExternal to={urlWOWBldg(bbl)} className="criteria-link">
+      View source
+    </JFCLLinkExternal>
+  );
+
   if (unitsres === undefined) {
     determination = "UNKNOWN";
     userValue =
       "No data available for the number of apartments in your building.";
-  } else if (unitsres > 10) {
+  } else if (portfolioSize === "YES" && wow_portfolio_bbls) {
     determination = "ELIGIBLE";
-    userValue = `Your building has ${formatNumber(unitsres)} apartments.`;
+    userValue = (
+      <>
+        {`Your building has ${formatNumber(unitsres)} ${
+          unitsres === 1 ? "apartment" : "apartments"
+        }, and you reported that your landlord owns more than 10 apartments across multiple buildings.` +
+          "Additionally, your landlord may own other buildings in the city. "}
+        {wowLink}
+      </>
+    );
   } else if (portfolioSize === "YES") {
     determination = "ELIGIBLE";
     userValue = `Your building has ${formatNumber(unitsres)} ${
       unitsres === 1 ? "apartment" : "apartments"
     }, and you reported that your landlord owns more than 10 apartments across multiple buildings.`;
+  } else if (unitsres > 10 && wow_portfolio_bbls) {
+    determination = "ELIGIBLE";
+    userValue = (
+      <>
+        {`Your building has ${formatNumber(
+          unitsres
+        )} apartments. Additionally, your landlord may own other buildings in the city.`}{" "}
+        {wowLink}
+      </>
+    );
+  } else if (unitsres > 10) {
+    determination = "ELIGIBLE";
+    userValue = `Your building has ${formatNumber(unitsres)} apartments.`;
   } else if (portfolioSize === "NO") {
     determination = "INELIGIBLE";
     userValue = `Your building has ${formatNumber(
@@ -159,8 +193,7 @@ function eligibilityLandlord(criteriaData: CriteriaData): CriterionDetails {
 
   const userValue = (
     <>
-      {userValueText}
-      <br />
+      {userValueText}{" "}
       <JFCLLinkExternal to={urlZOLA(bbl)} className="criteria-link">
         View source
       </JFCLLinkExternal>
@@ -278,8 +311,7 @@ function eligibilityRentStabilized(
                   activeJ51 ? "421a" : "J51"
                 } tax incentive, which means your apartment should be rent stabilized.`) +
             " If those sources are correct, then you may already have stronger tenant " +
-            "protections than Good Cause Eviction provides."}
-          <br />
+            "protections than Good Cause Eviction provides."}{" "}
           {allUnitsRS ? wowLink : subsidyLink}
           <br />
           {guideLink}
@@ -347,8 +379,7 @@ function eligibilityBuildingClass(
     <>
       {bldgTypeName === ""
         ? "Public data sources indicate that your building is not a condo, co-op, or other exempt category."
-        : `Public data sources indicate that your building is ${bldgTypeName}, and so is not covered by Good Cause Eviction.`}
-      <br />
+        : `Public data sources indicate that your building is ${bldgTypeName}, and so is not covered by Good Cause Eviction.`}{" "}
       <JFCLLinkExternal to={urlZOLA(bbl)} className="criteria-link">
         View source
       </JFCLLinkExternal>
@@ -384,8 +415,7 @@ function eligibilityCertificateOfOccupancy(
     <>
       {determination === "ELIGIBLE"
         ? "Your building has no new recorded certificate of occupancy since 2009."
-        : `Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`}
-      <br />
+        : `Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`}{" "}
       <JFCLLinkExternal
         to={determination === "ELIGIBLE" ? urlDOBBBL(bbl) : urlDOBBIN(co_bin)}
         className="criteria-link"
@@ -465,8 +495,7 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
           programs, and we are using your answer as part of our coverage
           assessment. Note: publicly available data sources indicate that your
           building is part of NYCHA or PACT/RAD. If those sources are correct,
-          you may have existing tenant protections through NYCHA or PACT/RAD.
-          <br />
+          you may have existing tenant protections through NYCHA or PACT/RAD.{" "}
           {sourceLink}
         </>
       );

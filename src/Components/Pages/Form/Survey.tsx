@@ -419,8 +419,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
         {`Publicly available data sources indicate that your building receives the ${
           active421a ? "421a" : "J51"
         } tax incentive. This means your
-        apartment is rent stabilized.`}
-        <br />
+        apartment is rent stabilized.`}{" "}
         <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
           View source
         </JFCLLinkExternal>
@@ -430,8 +429,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
     return (
       <>
         Publicly available data sources indicate that all apartments in your
-        building are registered as rent stabilized. <br />
-        {wowLink}
+        building are registered as rent stabilized. {wowLink}
       </>
     );
   } else if (rsUnits > 0) {
@@ -441,8 +439,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
           rsUnits
         )} of the ${formatNumber(
           bldgUnits
-        )} apartments in your building are registered as rent stabilized.`}
-        <br />
+        )} apartments in your building are registered as rent stabilized.`}{" "}
         {wowLink}
       </>
     );
@@ -494,9 +491,7 @@ const getSubsidyHelperInfo = (
       "Publicly available data sources indicate that your building is part of NYCHA.";
     subsidyHelperElement = (
       <>
-        {subsidyHelperText}
-        <br />
-        {sourceLink}
+        {subsidyHelperText} {sourceLink}
       </>
     );
   } else if (is_subsidized) {
@@ -505,9 +500,7 @@ const getSubsidyHelperInfo = (
     )}, which is considered subsidized housing.`;
     subsidyHelperElement = (
       <>
-        {subsidyHelperText}
-        <br />
-        {sourceLink}
+        {subsidyHelperText} {sourceLink}
       </>
     );
   } else {

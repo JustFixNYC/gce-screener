@@ -37,6 +37,7 @@
       }
       .source-link {
         @include small_text_desktop;
+        white-space: nowrap;
       }
       .modal-link {
         padding: 0;

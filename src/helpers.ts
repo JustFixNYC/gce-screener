@@ -60,6 +60,10 @@ export const urlFCSubsidized = (bbl: string): string => {
   return `https://app.coredata.nyc/?ptsb=${bbl}`;
 };
 
+export const urlWOWBldg = (bbl: string): string => {
+  return `https://whoownswhat.justfix.org/bbl/${bbl}`;
+};
+
 export const urlWOWTimelineRS = (bbl: string): string => {
   return `https://whoownswhat.justfix.org/bbl/${bbl}/timeline/rentstabilizedunits`;
 };

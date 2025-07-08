@@ -223,6 +223,7 @@
       }
       .criteria-link {
         @include small_text_desktop;
+        white-space: nowrap;
         &:nth-of-type(2) {
           display: block;
           margin-top: 0.75rem;
