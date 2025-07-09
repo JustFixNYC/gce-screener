@@ -10,8 +10,8 @@ import {
 import { formatMoney } from "../../../helpers";
 import { Button, TextInput } from "@justfixnyc/component-library";
 import { useState } from "react";
-import { PhoneNumberCallout } from "../Results/Results";
 import { gtmPush } from "../../../google-tag-manager";
+import { PhoneNumberCallout } from "../../PhoneNumberCallout/PhoneNumberCallout";
 
 // This needs to be updated each year when DHCR publishes the new number
 export const CPI = 3.79;

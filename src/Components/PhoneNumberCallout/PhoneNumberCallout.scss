@@ -1,0 +1,88 @@
+@import "../../colors.scss";
+@import "../../mixins.scss";
+
+.phone-number-callout-box {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem; // 24px
+  padding: 2.25rem; // 36px
+  background-color: $OFF_WHITE_200;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  @include for-phone-only() {
+    flex-direction: column;
+    padding: 1.5rem; // 24px
+  }
+
+  .callout-box__column {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+
+    .phone-number-input-container {
+      align-items: flex-end;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      @include for-phone-only {
+        grid-template-columns: 1fr;
+      }
+
+      @include for-phone-only() {
+        width: -webkit-fill-available;
+        .phone-number-submit__desktop {
+          display: none;
+        }
+      }
+
+      label {
+        @include body_standard_desktop;
+        font-weight: 500;
+      }
+      .jfcl-input-header__invalid_text {
+        margin-bottom: 4px;
+      }
+      .jfcl-text-input {
+        margin: unset;
+        margin-right: 1rem;
+        & :focus-visible {
+          outline-color: $BLUE;
+        }
+        @include for-phone-only {
+          width: 100%;
+        }
+      }
+    }
+    .success-message,
+    .error-message {
+      margin-bottom: 0.5rem;
+    }
+
+    .phone-number-description {
+      @include small_text_desktop;
+      margin-top: 0.5rem;
+    }
+
+    .phone-number-submit__mobile {
+      margin-top: 1.5rem; // 24px
+
+      @include for-tablet-portrait-up {
+        display: none;
+      }
+    }
+  }
+  .callout-box__header {
+    @include body_large_desktop;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    @include for-phone-only {
+      @include body_large_mobile;
+    }
+  }
+  p {
+    @include body_standard_desktop;
+    margin: 0;
+    @include for-phone-only {
+      @include body_standard_mobile;
+    }
+  }
+}
