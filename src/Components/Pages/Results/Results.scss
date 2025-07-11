@@ -172,7 +172,7 @@
             background: $OFF_WHITE_100;
             margin-bottom: 0;
             &,
-            .criteria-link {
+            .jfcl-link {
               @include body_standard_mobile;
             }
           }
@@ -220,14 +220,6 @@
 
       p {
         margin: 0 0 0.625rem 0;
-      }
-      .criteria-link {
-        @include small_text_desktop;
-        white-space: nowrap;
-        &:nth-of-type(2) {
-          display: block;
-          margin-top: 0.75rem;
-        }
       }
     }
   }

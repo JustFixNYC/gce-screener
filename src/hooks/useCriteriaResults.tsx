@@ -88,7 +88,7 @@ function eligibilityPortfolioSize(
   let userValue: React.ReactNode;
 
   const wowLink = (
-    <JFCLLinkExternal to={urlWOWBldg(bbl)} className="criteria-link">
+    <JFCLLinkExternal to={urlWOWBldg(bbl)} className="source-link">
       View source
     </JFCLLinkExternal>
   );
@@ -144,11 +144,7 @@ function eligibilityPortfolioSize(
               )}`
             : "your landlord may own"
         } other buildings.`}
-        <br />
-        <JFCLLinkInternal
-          to={`/portfolio_size?${searchParams.toString()}`}
-          className="criteria-link"
-        >
+        <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
           Find your landlord’s other buildings
         </JFCLLinkInternal>
       </>
@@ -194,7 +190,7 @@ function eligibilityLandlord(criteriaData: CriteriaData): CriterionDetails {
   const userValue = (
     <>
       {userValueText}{" "}
-      <JFCLLinkExternal to={urlZOLA(bbl)} className="criteria-link">
+      <JFCLLinkExternal to={urlZOLA(bbl)} className="source-link">
         View source
       </JFCLLinkExternal>
     </>
@@ -266,20 +262,17 @@ function eligibilityRentStabilized(
   const active421a = new Date(end_421a) > new Date();
   const activeJ51 = new Date(end_j51) > new Date();
   const wowLink = (
-    <JFCLLinkExternal to={urlWOWTimelineRS(bbl)} className="criteria-link">
+    <JFCLLinkExternal to={urlWOWTimelineRS(bbl)} className="source-link">
       View source
     </JFCLLinkExternal>
   );
   const subsidyLink = (
-    <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="criteria-link">
+    <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
       View source
     </JFCLLinkExternal>
   );
   const guideLink = (
-    <JFCLLinkInternal
-      to={`/rent_stabilization?${searchParams.toString()}`}
-      className="criteria-link"
-    >
+    <JFCLLinkInternal to={`/rent_stabilization?${searchParams.toString()}`}>
       Find out if you are rent stabilized
     </JFCLLinkInternal>
   );
@@ -312,18 +305,14 @@ function eligibilityRentStabilized(
                 } tax incentive, which means your apartment should be rent stabilized.`) +
             " If those sources are correct, then you may already have stronger tenant " +
             "protections than Good Cause Eviction provides."}{" "}
-          {allUnitsRS ? wowLink : subsidyLink}
-          <br />
-          {guideLink}
+          {allUnitsRS ? wowLink : subsidyLink} {guideLink}
         </>
       ) : rentStabilized === "NO" ? (
         "You reported that your apartment is not rent stabilized."
       ) : (
         <>
           You reported that you are not sure if your apartment is rent
-          stabilized.
-          <br />
-          {guideLink}
+          stabilized. {guideLink}
         </>
       );
   }
@@ -380,7 +369,7 @@ function eligibilityBuildingClass(
       {bldgTypeName === ""
         ? "Public data sources indicate that your building is not a condo, co-op, or other exempt category."
         : `Public data sources indicate that your building is ${bldgTypeName}, and so is not covered by Good Cause Eviction.`}{" "}
-      <JFCLLinkExternal to={urlZOLA(bbl)} className="criteria-link">
+      <JFCLLinkExternal to={urlZOLA(bbl)} className="source-link">
         View source
       </JFCLLinkExternal>
     </>
@@ -418,7 +407,7 @@ function eligibilityCertificateOfOccupancy(
         : `Your building was issued a certificate of occupancy on ${latestCoDateFormatted}.`}{" "}
       <JFCLLinkExternal
         to={determination === "ELIGIBLE" ? urlDOBBBL(bbl) : urlDOBBIN(co_bin)}
-        className="criteria-link"
+        className="source-link"
       >
         View source
       </JFCLLinkExternal>
@@ -441,7 +430,7 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
   let userValue: React.ReactNode;
 
   const sourceLink = (
-    <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="criteria-link">
+    <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
       View source
     </JFCLLinkExternal>
   );
@@ -512,8 +501,7 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
             "as part of our coverage assessment. Note: publicly available data sources indicate " +
             `that your building ${buildingSubsidyLanguage(subsidy_name)}` +
             ", which is considered subsidized housing. If those sources are correct, then " +
-            "your protections may be different than the protections of NYCHA or PACT/RAD."}
-          <br />
+            "your protections may be different than the protections of NYCHA or PACT/RAD. "}
           {sourceLink}
         </>
       );
@@ -534,8 +522,7 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
             "coverage assessment. Note: publicly available data sources indicate " +
             `that your building  ${buildingSubsidyLanguage(subsidy_name)}` +
             ", which is considered subsidized housing. If those sources are correct, " +
-            "you may have existing tenant protections through your building’s subsidy program."}
-          <br />
+            "you may have existing tenant protections through your building’s subsidy program. "}
           {sourceLink}
         </>
       );
