@@ -15,6 +15,8 @@ import { JFCLLinkExternal } from "../../JFCLLink";
 import { gtmPush } from "../../../google-tag-manager";
 import "./RentStabilization.scss";
 import { RentStabilizedProtections } from "../../KYRContent/KYRContent";
+import { RentStabLeaseModal } from "../../Modal/Modal";
+import { useState } from "react";
 
 export const RentStabilization: React.FC = () => {
   const { user, address, fields } = useLoaderData() as {
@@ -26,6 +28,9 @@ export const RentStabilization: React.FC = () => {
 
   useAccordionsOpenForPrint();
   useSearchParamsURL(setSearchParams, address, fields, user);
+
+  const [showLeaseModal, setShowLeaseModal] = useState(false);
+  const openLeaseModal = () => setShowLeaseModal(true);
 
   return (
     <div id="rent-stabilization-page">
@@ -75,7 +80,25 @@ export const RentStabilization: React.FC = () => {
               </JFCLLinkExternal>
             </ContentBoxItem>
 
-            <ContentBoxItem title="Attend a walk-in Clinic hosted by the Met Council on Housing ">
+            <ContentBoxItem title="Check your most recent lease renewal">
+              <p>
+                If your most recent lease renewal{" "}
+                <button
+                  type="button"
+                  className="text-link-button jfcl-link"
+                  onClick={openLeaseModal}
+                >
+                  looks like this
+                </button>
+                , then your apartment is likely rent stabilized.
+              </p>
+              <RentStabLeaseModal
+                isOpen={showLeaseModal}
+                onClose={() => setShowLeaseModal(false)}
+                hasCloseBtn={true}
+              />
+            </ContentBoxItem>
+            <ContentBoxItem title="Attend a walk-in Clinic hosted by the Met Council on Housing">
               <p>
                 Met Council on Housing’s free clinic offers tenants assistance
                 with understanding their rent stabilization status and

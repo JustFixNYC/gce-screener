@@ -59,6 +59,17 @@ a.back-link.jfcl-link {
   }
 }
 
+button.text-link-button {
+  display: inline;
+  width: unset;
+  padding: 0;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  @include body_standard_desktop;
+}
+
 .pill {
   display: flex;
   justify-content: center;

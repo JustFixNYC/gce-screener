@@ -35,18 +35,6 @@
       @include for-phone-only {
         @include body_standard_mobile;
       }
-      .source-link {
-        @include small_text_desktop;
-        white-space: nowrap;
-      }
-      .modal-link {
-        padding: 0;
-        background: none;
-        border: none;
-        text-decoration: underline;
-        cursor: pointer;
-        @include body_standard_desktop;
-      }
     }
     &.orange {
       border-width: 2px;
@@ -103,27 +91,5 @@
   .jfcl-input-header__invalid_text {
     font-size: 1rem;
     font-weight: 400;
-  }
-
-  .modal {
-    @include body_standard_desktop;
-    h3 {
-      @include h3_mobile;
-      margin: 0;
-    }
-
-    .callout-box {
-      background-color: $OFF_WHITE_200;
-      padding: 1rem 1.5rem;
-      &:not(:first-of-type) {
-        margin-top: 1rem;
-      }
-      p {
-        margin: 0;
-        &:nth-of-type(2) {
-          margin-top: 1rem;
-        }
-      }
-    }
   }
 }

@@ -9,33 +9,67 @@
   position: fixed;
   box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem;
   background-color: $OFF_WHITE_100;
-
   &::backdrop {
     background: hsl(0 0% 0% / 50%);
+  }
+  button.modal__close.jfcl-button {
+    margin: 1.5rem 1.5rem 0 auto !important;
+    color: $OFF_BLACK;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    .jfcl-button__icon,
+    svg {
+      height: 2rem;
+      width: 2rem;
+      @include for-phone-only {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+  }
+
+  &.has-close .modal__content {
+    margin-top: -1.5rem;
   }
 
   .modal__content {
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 0 1.5rem 1.5rem 1.5rem;
 
-    .modal__close {
-      position: absolute;
-      top: 0.25em;
-      right: 0.25em;
-      color: $OFF_BLACK;
-      background: none;
-      border: none;
-      padding: 0.5rem;
-      cursor: pointer;
+    @include body_standard_desktop;
 
-      svg {
-        height: 1rem;
-        width: 1rem;
-        @include for-phone-only {
-          height: 1.5rem;
-          width: 1.5rem;
+    .modal__header {
+      @include h3_desktop;
+      @include for-phone-only {
+        @include h3_mobile;
+      }
+      margin: 0 5rem 1rem 0;
+      text-wrap: pretty;
+    }
+
+    .callout-box {
+      background-color: $OFF_WHITE_200;
+      padding: 1rem 1.5rem;
+      &:not(:first-of-type) {
+        margin-top: 1rem;
+      }
+      p {
+        margin: 0;
+        &:nth-of-type(2) {
+          margin-top: 1rem;
         }
+      }
+    }
+    figure {
+      margin: 0;
+      figcaption {
+        margin-bottom: 1rem;
+      }
+      img {
+        width: 100%;
       }
     }
   }
