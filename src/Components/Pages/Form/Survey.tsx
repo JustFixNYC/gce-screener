@@ -348,7 +348,7 @@ export const Survey: React.FC = () => {
         isOpen={showSubsidyModal}
         onClose={() => setShowSubsidyModal(false)}
         hasCloseBtn={true}
-        header="To help guide your answer"
+        header="FAQs to help guide your answer"
       >
         <p>
           <strong>{subsidyHelperText}</strong> We check for NYCHA,
