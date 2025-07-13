@@ -45,10 +45,7 @@ import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPr
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkInternal } from "../../JFCLLink";
 import { gtmPush } from "../../../google-tag-manager";
-import {
-  PhoneNumberCallout,
-  PhoneNumberModal,
-} from "../../PhoneNumberCallout/PhoneNumberCallout";
+import { PhoneNumberCallout } from "../../PhoneNumberCallout/PhoneNumberCallout";
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -85,8 +82,6 @@ export const Results: React.FC = () => {
 
   useAccordionsOpenForPrint();
   useSearchParamsURL(setSearchParams, address, fields, user);
-
-  const [showPhoneModal, setShowPhoneModal] = useState(false);
 
   const resultDataReady = !!coverageResult && !!criteriaResults?.building_class;
   useEffect(() => {
@@ -154,14 +149,7 @@ export const Results: React.FC = () => {
           View tenant protection information on following pages
         </div>
       </Header>
-      {/* TODO: this button is just for debugging until the event listening is set up */}
-      <Button labelText="modal" onClick={() => setShowPhoneModal(true)} />
-      <PhoneNumberModal
-        coverageResult={coverageResult}
-        gtmId="results-page"
-        modalIsOpen={showPhoneModal}
-        modalOnClose={() => setShowPhoneModal(false)}
-      />
+
       <div className="content-section">
         <div className="content-section__content">
           {coverageResult === "UNKNOWN" && bldgData && criteriaDetails && (

@@ -10,7 +10,6 @@ export interface ModalProps {
   hasCloseBtn?: boolean;
   onClose?: () => void;
   header?: string;
-  className?: string;
   children: React.ReactNode;
 }
 
@@ -19,7 +18,6 @@ const Modal = ({
   onClose,
   hasCloseBtn = true,
   header,
-  className,
   children,
 }: ModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -61,7 +59,7 @@ const Modal = ({
   return (
     <dialog
       ref={modalRef}
-      className={classNames("modal", className, hasCloseBtn && "has-close")}
+      className={classNames("modal", hasCloseBtn && "has-close")}
       onKeyDown={handleKeyDown}
       onClick={handleClickOutside}
     >
