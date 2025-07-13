@@ -42,12 +42,12 @@
     @include body_standard_desktop;
 
     .modal__header {
+      margin: 0 5rem 1rem 0;
+      text-wrap: pretty;
       @include h3_desktop;
       @include for-phone-only {
         @include h3_mobile;
       }
-      margin: 0 5rem 1rem 0;
-      text-wrap: pretty;
     }
 
     .callout-box {
