@@ -143,7 +143,7 @@ function eligibilityPortfolioSize(
                 relatedProperties
               )}`
             : "your landlord may own"
-        } other buildings.`}
+        } other buildings.`}{" "}
         <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
           Find your landlord’s other buildings
         </JFCLLinkInternal>
