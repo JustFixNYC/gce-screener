@@ -89,6 +89,9 @@
       .info-box {
         align-content: flex-start;
         width: 75%;
+        @include for-phone-only {
+          width: unset;
+        }
       }
       ul {
         margin: 0;

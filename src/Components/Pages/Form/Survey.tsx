@@ -21,7 +21,7 @@ import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
 import { BackLink, JFCLLinkExternal } from "../../JFCLLink";
 import "./Survey.scss";
-import Modal from "../../Modal/Modal";
+import Modal, { RentStabLeaseModal } from "../../Modal/Modal";
 
 export type FormFields = {
   bedrooms: "STUDIO" | "1" | "2" | "3" | "4+" | null;
@@ -61,7 +61,9 @@ export const Survey: React.FC = () => {
   );
   const [showErrors, setShowErrors] = useState(false);
   const [showSubsidyModal, setShowSubsidyModal] = useState(false);
-  const toggleModalVisibility = () => setShowSubsidyModal((prev) => !prev);
+  const [showLeaseModal, setShowLeaseModal] = useState(false);
+  const openLeaseModal = () => setShowLeaseModal(true);
+  const openSubsidyModal = () => setShowSubsidyModal(true);
 
   const bbl = address.bbl;
 
@@ -83,7 +85,7 @@ export const Survey: React.FC = () => {
 
   const { subsidyHelperText, subsidyHelperElement } = getSubsidyHelperInfo(
     bldgData,
-    toggleModalVisibility
+    openSubsidyModal
   );
 
   const navigate = useNavigate();
@@ -203,8 +205,10 @@ export const Survey: React.FC = () => {
               <FormGroup
                 legendText="3. Is your apartment rent stabilized?"
                 helperElement={
-                  getRsHelperText(bldgData) && (
-                    <InfoBox>{getRsHelperText(bldgData)}</InfoBox>
+                  getRsHelperText(bldgData, openLeaseModal) && (
+                    <InfoBox>
+                      {getRsHelperText(bldgData, openLeaseModal)}
+                    </InfoBox>
                   )
                 }
                 invalid={showErrors && localFields.rentStabilized === null}
@@ -335,12 +339,18 @@ export const Survey: React.FC = () => {
         </div>
       </div>
 
+      <RentStabLeaseModal
+        isOpen={showLeaseModal}
+        onClose={() => setShowLeaseModal(false)}
+        hasCloseBtn={true}
+        header="To help guide your answer"
+      />
       <Modal
         isOpen={showSubsidyModal}
         onClose={() => setShowSubsidyModal(false)}
         hasCloseBtn={true}
+        header="FAQs to help guide your answer"
       >
-        <h3>FAQs to help guide your answer</h3>
         <p>
           <strong>{subsidyHelperText}</strong> We check for NYCHA,
           Mitchell-Lama, HDFC, LIHTC, Project Section 8, and various HPD and HUD
@@ -392,7 +402,10 @@ export const Survey: React.FC = () => {
   );
 };
 
-const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
+const getRsHelperText = (
+  bldgData?: BuildingData,
+  learnMoreOnClick?: () => void
+): ReactNode | undefined => {
   if (!bldgData) return undefined;
 
   const {
@@ -412,6 +425,19 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
       View source
     </JFCLLinkExternal>
   );
+  const leaseText = (
+    <>
+      If your most recent lease renewal{" "}
+      <button
+        type="button"
+        className="text-link-button jfcl-link"
+        onClick={learnMoreOnClick}
+      >
+        looks like this
+      </button>
+      , then your apartment is likely rent stabilized.
+    </>
+  );
 
   if (active421a || activeJ51) {
     return (
@@ -419,8 +445,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
         {`Publicly available data sources indicate that your building receives the ${
           active421a ? "421a" : "J51"
         } tax incentive. This means your
-        apartment is rent stabilized.`}
-        <br />
+        apartment is rent stabilized.`}{" "}
         <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
           View source
         </JFCLLinkExternal>
@@ -430,8 +455,7 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
     return (
       <>
         Publicly available data sources indicate that all apartments in your
-        building are registered as rent stabilized. <br />
-        {wowLink}
+        building are registered as rent stabilized. {wowLink}
       </>
     );
   } else if (rsUnits > 0) {
@@ -441,23 +465,46 @@ const getRsHelperText = (bldgData?: BuildingData): ReactNode | undefined => {
           rsUnits
         )} of the ${formatNumber(
           bldgUnits
-        )} apartments in your building are registered as rent stabilized.`}
-        <br />
-        {wowLink}
+        )} apartments in your building are registered as rent stabilized.`}{" "}
+        {wowLink} {leaseText}
       </>
     );
   } else if (yearbuilt < 1974 && bldgUnits >= 6) {
     return (
-      "No rent stabilized apartments were registered in your building in recent years, " +
-      "but based on the size and age of your building some of the apartments may still be rent stabilized."
+      <>
+        No rent stabilized apartments were registered in your building in recent
+        years, but based on the size and age of your building some of the
+        apartments may still be rent stabilized. {leaseText}
+      </>
     );
   } else if (yearbuilt >= 1974 && bldgUnits < 6) {
     // Start of NOT Rent Stabilized helper text cases
-    return "Because your building has fewer than 6 units and was built in or after 1974, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available data, no rent stabilized apartments were registered in your building in recent years.";
+    return (
+      <>
+        Because your building has fewer than 6 units and was built after 1974,
+        it is very unlikely that your apartment is rent stabilized.
+        Additionally, based on publicly available data, no rent stabilized
+        apartments were registered in your building in recent years.
+      </>
+    );
   } else if (yearbuilt >= 1974 && !(active421a || activeJ51)) {
-    return "Because your building was built in or after 1974 and is not part of 421a or J51 tax incentive programs, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years.";
+    return (
+      <>
+        Because your building was built after 1974 and is not part of 421a or
+        J51 tax incentive programs, it is very unlikely that your apartment is
+        rent stabilized. Additionally, based on publicly available, no rent
+        stabilized apartments were registered in your building in recent years.
+      </>
+    );
   } else if (bldgUnits < 6) {
-    return "Because your building has fewer than 6 units it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years.";
+    return (
+      <>
+        Because your building has fewer than 6 units it is very unlikely that
+        your apartment is rent stabilized. Additionally, based on publicly
+        available, no rent stabilized apartments were registered in your
+        building in recent years.
+      </>
+    );
   } else {
     return undefined;
   }
@@ -482,7 +529,7 @@ const getSubsidyHelperInfo = (
   const learnMoreLink = (
     <button
       type="button"
-      className="modal-link jfcl-link"
+      className="text-link-button jfcl-link"
       onClick={learnMoreOnClick}
     >
       Learn more
@@ -494,9 +541,7 @@ const getSubsidyHelperInfo = (
       "Publicly available data sources indicate that your building is part of NYCHA.";
     subsidyHelperElement = (
       <>
-        {subsidyHelperText}
-        <br />
-        {sourceLink}
+        {subsidyHelperText} {sourceLink}
       </>
     );
   } else if (is_subsidized) {
@@ -505,9 +550,7 @@ const getSubsidyHelperInfo = (
     )}, which is considered subsidized housing.`;
     subsidyHelperElement = (
       <>
-        {subsidyHelperText}
-        <br />
-        {sourceLink}
+        {subsidyHelperText} {sourceLink}
       </>
     );
   } else {

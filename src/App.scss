@@ -40,10 +40,16 @@
   pointer-events: none;
 }
 
-a.jfcl-link .jfcl-link__icon-wrapper {
-  white-space: nowrap;
-  svg.jfcl-link__icon {
-    margin-left: 6px;
+a.jfcl-link {
+  font-weight: 400;
+  &.source-link {
+    white-space: nowrap;
+  }
+  .jfcl-link__icon-wrapper {
+    white-space: nowrap;
+    svg.jfcl-link__icon {
+      margin-left: 6px;
+    }
   }
 }
 
@@ -51,6 +57,17 @@ a.back-link.jfcl-link {
   svg.jfcl-link__icon {
     margin: 0 0.5rem 0 0;
   }
+}
+
+button.text-link-button {
+  display: inline;
+  width: unset;
+  padding: 0;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  @include body_standard_desktop;
 }
 
 .pill {
