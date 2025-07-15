@@ -343,6 +343,7 @@ export const Survey: React.FC = () => {
         isOpen={showLeaseModal}
         onClose={() => setShowLeaseModal(false)}
         hasCloseBtn={true}
+        header="To help guide your answer"
       />
       <Modal
         isOpen={showSubsidyModal}

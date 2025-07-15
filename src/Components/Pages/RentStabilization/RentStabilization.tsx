@@ -96,6 +96,7 @@ export const RentStabilization: React.FC = () => {
                 isOpen={showLeaseModal}
                 onClose={() => setShowLeaseModal(false)}
                 hasCloseBtn={true}
+                header="Check your lease renewal"
               />
             </ContentBoxItem>
             <ContentBoxItem title="Attend a walk-in Clinic hosted by the Met Council on Housing">

@@ -46,7 +46,7 @@
       @include for-phone-only {
         @include h3_mobile;
       }
-      margin: 0 5rem 1rem 0;
+      margin: 0 5rem 0 0;
       text-wrap: pretty;
     }
 
@@ -63,6 +63,7 @@
         }
       }
     }
+
     figure {
       margin: 0;
       figcaption {
@@ -71,6 +72,11 @@
       img {
         width: 100%;
       }
+    }
+
+    .rs-modal-content {
+      margin: unset;
+      padding: 1rem 0;
     }
   }
 }

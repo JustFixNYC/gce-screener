@@ -87,8 +87,8 @@ const Modal = ({
 export const RentStabLeaseModal: React.FC<Omit<ModalProps, "children">> = (
   props
 ) => (
-  <Modal {...props} header="To help guide your answer">
-    <p>
+  <Modal {...props} header={props.header}>
+    <p className="rs-modal-content">
       If your most recent lease renewal looks like the image below, then your
       apartment is almost certainly rent stabilized. If your lease renewal does
       not look like the image below, your apartment could still be rent
@@ -96,7 +96,7 @@ export const RentStabLeaseModal: React.FC<Omit<ModalProps, "children">> = (
     </p>
     <figure>
       <figcaption>
-        Full image of lease can be viewed on{" "}
+        Full image of this example lease can be viewed on{" "}
         <JFCLLinkExternal to="https://hcr.ny.gov/system/files/documents/2024/07/rtp-8-07-2024-fillable_1.pdf">
           hcr.ny.gov
         </JFCLLinkExternal>
