@@ -183,7 +183,7 @@ export const buildingSubsidyLanguage = (subsidyName?: string): string => {
   return subsidyName === "HUD Project-Based"
     ? "receives a HUD Project-Based subsidy"
     : subsidyName === "Low-Income Housing Tax Credit (LIHTC)"
-    ? "receives receives the Low-Income Housing Tax Credit (LIHTC)"
+    ? "receives the Low-Income Housing Tax Credit (LIHTC)"
     : subsidyName === "Article XI"
     ? "is an Article XI"
     : subsidyName === "HPD program"
