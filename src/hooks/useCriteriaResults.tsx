@@ -471,7 +471,7 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
           You reported that your building is subsidized, and we are using your
           answer as part of our coverage assessment. Note: publicly available
           data sources indicate that your building is part of NYCHA or PACT/RAD.
-          If those sources are correct, then you may already have stronger
+          {sourceLink} If those sources are correct, then you may already have stronger
           tenant protections than other subsidized housing programs.
         </>
       );
