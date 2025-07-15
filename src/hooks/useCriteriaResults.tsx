@@ -302,10 +302,11 @@ function eligibilityRentStabilized(
               ? "all apartments in your building are registered as rent stabilized."
               : `your building receives the ${
                   activeJ51 ? "421a" : "J51"
-                } tax incentive, which means your apartment should be rent stabilized.`) +
-            " If those sources are correct, then you may already have stronger tenant " +
+                } tax incentive, which means your apartment should be rent stabilized.`)}{" "}
+          {allUnitsRS ? wowLink : subsidyLink}
+          {" If those sources are correct, then you may already have stronger tenant " +
             "protections than Good Cause Eviction provides."}{" "}
-          {allUnitsRS ? wowLink : subsidyLink} {guideLink}
+          {guideLink}
         </>
       ) : rentStabilized === "NO" ? (
         "You reported that your apartment is not rent stabilized."
@@ -483,9 +484,9 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
           You reported that your building is not part of any subsidized housing
           programs, and we are using your answer as part of our coverage
           assessment. Note: publicly available data sources indicate that your
-          building is part of NYCHA or PACT/RAD. If those sources are correct,
-          you may have existing tenant protections through NYCHA or PACT/RAD.{" "}
-          {sourceLink}
+          building is part of NYCHA or PACT/RAD. {sourceLink} If those sources
+          are correct, you may have existing tenant protections through NYCHA or
+          PACT/RAD.
         </>
       );
     }
@@ -500,9 +501,10 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
           {"You reported that your building is part of NYCHA or PACT/RAD, and we are using your answer " +
             "as part of our coverage assessment. Note: publicly available data sources indicate " +
             `that your building ${buildingSubsidyLanguage(subsidy_name)}` +
-            ", which is considered subsidized housing. If those sources are correct, then " +
-            "your protections may be different than the protections of NYCHA or PACT/RAD. "}
+            ", which is considered subsidized housing."}{" "}
           {sourceLink}
+          {" If those sources are correct, then " +
+            "your protections may be different than the protections of NYCHA or PACT/RAD. "}
         </>
       );
     } else if (housingType === "SUBSIDIZED") {
@@ -521,9 +523,10 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
             "other subsidized housing, and we are using your answer as part of our " +
             "coverage assessment. Note: publicly available data sources indicate " +
             `that your building  ${buildingSubsidyLanguage(subsidy_name)}` +
-            ", which is considered subsidized housing. If those sources are correct, " +
-            "you may have existing tenant protections through your building’s subsidy program. "}
+            ", which is considered subsidized housing."}{" "}
           {sourceLink}
+          {" If those sources are correct, " +
+            "you may have existing tenant protections through your building’s subsidy program. "}
         </>
       );
     }
