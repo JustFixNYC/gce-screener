@@ -42,7 +42,7 @@
     @include body_standard_desktop;
 
     .modal__header {
-      margin: 0 5rem 1rem 0;
+      margin: 0 5rem 0 0;
       text-wrap: pretty;
       @include h3_desktop;
       @include for-phone-only {
@@ -63,6 +63,7 @@
         }
       }
     }
+
     figure {
       margin: 0;
       figcaption {
@@ -71,6 +72,11 @@
       img {
         width: 100%;
       }
+    }
+
+    .rs-modal-content {
+      margin: unset;
+      padding: 1rem 0;
     }
   }
 }

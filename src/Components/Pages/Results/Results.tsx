@@ -390,7 +390,7 @@ const EligibilityNextSteps: React.FC<{
             <JFCLLinkInternal
               to={`/rent_stabilization?${searchParams.toString()}`}
             >
-              Find out if you are rent stabilized
+              Find out if your apartment is rent stabilized
             </JFCLLinkInternal>
           </ContentBoxItem>
         )}
