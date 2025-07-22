@@ -215,3 +215,15 @@ export const getObjFromEncodedParam = (
   const encodedStr = params.get(key);
   return encodedStr ? decodeFromURI(encodedStr) : null;
 };
+
+// Session based cookie setter and getter
+
+export const getCookie = (name: string) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(';').shift();
+}
+
+export const setCookie = (name: string, value: string) => {
+  document.cookie = `${name}=${value}; path=/`;
+}
