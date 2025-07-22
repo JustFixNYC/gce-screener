@@ -50,6 +50,17 @@ import {
   PhoneNumberModal,
 } from "../../PhoneNumberCallout/PhoneNumberCallout";
 
+function getCookie(name: string) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(';').shift();
+}
+
+function setCookie(name: string, value: string, days: number) {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+}
+
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
     address: Address;
@@ -87,6 +98,32 @@ export const Results: React.FC = () => {
   useSearchParamsURL(setSearchParams, address, fields, user);
 
   const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [hasShownPhoneModal, setHasShownPhoneModal] = useState(false);
+  // Remove contentSectionRef and useInViewPort logic
+
+  useEffect(() => {
+    if (hasShownPhoneModal || getCookie("phone_modal_shown")) return;
+    function handleScroll() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      // 65% down means user has scrolled at least 65% of the page height
+      const scrollPercent = (scrollY + windowHeight) / docHeight;
+      if (scrollPercent >= 0.75) {
+        setShowPhoneModal(true);
+        setHasShownPhoneModal(true);
+        window.removeEventListener("scroll", handleScroll);
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [hasShownPhoneModal]);
+
+  // When modal closes, set cookie
+  const handlePhoneModalClose = () => {
+    setShowPhoneModal(false);
+    setCookie("phone_modal_shown", "1", 1); // 1 day expiration
+  };
 
   const resultDataReady = !!coverageResult && !!criteriaResults?.building_class;
   useEffect(() => {
@@ -154,13 +191,11 @@ export const Results: React.FC = () => {
           View tenant protection information on following pages
         </div>
       </Header>
-      {/* TODO: this button is just for debugging until the event listening is set up */}
-      <Button labelText="modal" onClick={() => setShowPhoneModal(true)} />
       <PhoneNumberModal
         coverageResult={coverageResult}
         gtmId="results-page"
         modalIsOpen={showPhoneModal}
-        modalOnClose={() => setShowPhoneModal(false)}
+        modalOnClose={handlePhoneModalClose}
       />
       <div className="content-section">
         <div className="content-section__content">
