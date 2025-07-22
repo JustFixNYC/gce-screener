@@ -87,10 +87,32 @@
   }
 }
 
-// TODO: I wasn't able to finish styling the new modal
 .phone-capture-modal {
-  max-width: 26rem;
+  max-width: 30rem;
+
+  .jfcl-text-input {
+    margin-bottom: .5rem;
+  }
+
+  .phone-number-description {
+    margin-bottom: 2rem;
+    @include small_text_desktop;
+    @include for-phone-only {
+      @include small_text_mobile;
+    }
+  }
+  
   .phone-number-button-container {
     display: flex;
+    align-items: center;
+
+    > button {
+      flex: 1 1 0;
+      width: 100%;
+    }
+
+    > button:not(:last-child) {
+      margin-right: 1.25rem;
+    }
   }
 }

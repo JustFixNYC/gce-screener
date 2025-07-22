@@ -217,6 +217,9 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
           value={phoneNumber}
           onChange={handleInputChange}
         />
+        <div className="phone-number-description">
+          We will never call you or share your phone number. You can opt-out at any time.
+        </div>
         <div className="phone-number-button-container">
           <Button
             className="phone-number-cancel"
@@ -232,7 +235,7 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
             type="submit"
           />
         </div>
-        <div className="phone-number-description">
+        <div className="phone-number-submit-message">
           {showSuccess && (
             <div className="success-message">
               <Icon icon="check" />
@@ -245,8 +248,6 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
               Something went wrong. Try again later.
             </div>
           )}
-          We will never call you or share your phone number. You can opt-out at
-          any time.
         </div>
       </form>
     </Modal>
