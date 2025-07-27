@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useRollbar } from "@rollbar/react";
 import { Button } from "@justfixnyc/component-library";
+import { Trans } from "@lingui/react/macro";
 
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
@@ -106,7 +107,7 @@ export const Home: React.FC = () => {
                 gtmPush("gce_rent_calculator", { from: "home-page" })
               }
             >
-              Calculate your max rent increase.
+              <Trans>Calculate your max rent increase.</Trans>
             </JFCLLinkInternal>
           </p>
           <p>
