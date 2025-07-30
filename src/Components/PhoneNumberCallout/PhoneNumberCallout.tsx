@@ -26,10 +26,12 @@ interface PhoneNumberCaptureProps {
   PhoneNumberUI: React.FC<PhoneNumberUIProps>;
   coverageResult?: CoverageResult;
   gtmId?: string;
+  modalOnClose?: () => void;
 }
 
 const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
-  const { PhoneNumberUI, coverageResult, gtmId, ...UIProps } = props;
+  const { PhoneNumberUI, coverageResult, gtmId, modalOnClose, ...UIProps } =
+    props;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [showFieldError, setShowFieldError] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -92,7 +94,11 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
       };
       sendData();
       setShowFieldError(false);
-      setShowSuccess(true);
+      if (modalOnClose) {
+        modalOnClose();
+      } else {
+        setShowSuccess(true);
+      }
       gtmPush("gce_phone_submit", {
         gce_result: coverageResult,
         from: gtmId,
@@ -254,5 +260,12 @@ export const PhoneNumberModal: React.FC<
   Omit<PhoneNumberCaptureProps, "PhoneNumberUI"> &
     Pick<PhoneNumberUIProps, "modalIsOpen" | "modalOnClose">
 > = (props) => {
-  return <PhoneNumberCapture {...props} PhoneNumberUI={PhoneNumberModalUI} />;
+  const { modalOnClose, ...otherProps } = props;
+  return (
+    <PhoneNumberCapture
+      {...otherProps}
+      PhoneNumberUI={PhoneNumberModalUI}
+      modalOnClose={modalOnClose}
+    />
+  );
 };
