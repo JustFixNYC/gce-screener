@@ -91,4 +91,5 @@ export type GCEPostData = {
   result_coverage?: CoverageResult;
   result_criteria?: CriteriaResults;
   phone_number?: number;
+  result_url?: string;
 };

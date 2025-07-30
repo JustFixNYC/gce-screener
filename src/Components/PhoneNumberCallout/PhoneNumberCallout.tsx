@@ -85,6 +85,7 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
         const postData = {
           id: user?.id,
           phone_number: parseInt(cleaned),
+          result_url: window.location.href,
         };
         const userResp = (await trigger(postData)) as GCEUser;
         if (!user?.id) setUser(userResp);
@@ -127,17 +128,14 @@ const PhoneNumberCalloutUI: React.FC<PhoneNumberUIProps> = ({
     <div className="phone-number-callout-box">
       <div className="callout-box__column">
         <span className="callout-box__header">
-          Help build tenant power in NYC
+          Save your result to your phone
         </span>
-        <p>
-          Get involved in the housing justice movement. We will text you with
-          opportunities to help expand Good Cause and other tenant rights.
-        </p>
+        <p>Get a text with a unique URL to your results page.</p>
       </div>
       <form className="callout-box__column" onSubmit={handleSubmit}>
         <div className="phone-number-input-container">
           <TextInput
-            labelText="Phone number"
+            labelText="Phone number (optional)"
             placeholder="(123) 456-7890"
             invalid={showFieldError}
             invalidText="Enter a valid phone number"
@@ -166,8 +164,8 @@ const PhoneNumberCalloutUI: React.FC<PhoneNumberUIProps> = ({
                 Something went wrong. Try again later.
               </div>
             )}
-            We will never call you or share your phone number. You can opt-out
-            at any time.
+            We will never call you or share your phone number. We may text you
+            later in the year to see how things are going. Opt-out at any time.
           </div>
         </div>
         <div className="phone-number-submit__mobile">
@@ -196,16 +194,13 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
 }) => {
   return (
     <Modal
-      header="Help build tenant power in NYC"
+      header="Save your result to your phone"
       isOpen={modalIsOpen!}
       onClose={modalOnClose}
       hasCloseBtn={true}
       className="phone-capture-modal"
     >
-      <p>
-        Get a text from us once a year to tell us about your housing conditions.
-        We’ll use your answers to better advocate for your rights.
-      </p>
+      <p>Get a text with a unique URL to your results page.</p>
       <form className="phone-number-input-container" onSubmit={handleSubmit}>
         <TextInput
           labelText="Phone number"
@@ -218,7 +213,8 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
           onChange={handleInputChange}
         />
         <div className="phone-number-description">
-          We will never call you or share your phone number. You can opt-out at any time.
+          We will never call you or share your phone number. We may text you
+          later in the year to see how things are going. Opt-out at any time.{" "}
         </div>
         <div className="phone-number-button-container">
           <Button
