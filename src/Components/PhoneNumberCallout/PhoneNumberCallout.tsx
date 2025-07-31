@@ -7,20 +7,42 @@ import { CoverageResult, GCEUser } from "../../types/APIDataTypes";
 import { gtmPush } from "../../google-tag-manager";
 import { useSendGceData } from "../../api/hooks";
 import { useSessionStorage } from "../../hooks/useSessionStorage";
+import Modal from "../Modal/Modal";
 
 import "./PhoneNumberCallout.scss";
 
-export const PhoneNumberCallout: React.FC<{
-  headerText?: string;
-  bodyText?: string;
+interface PhoneNumberUIProps {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  showFieldError: boolean;
+  phoneNumber: string;
+  handleInputChange: React.ChangeEventHandler<HTMLInputElement>;
+  showSuccess: boolean;
+  showError: boolean;
+  modalIsOpen?: boolean;
+  modalOnClose?: () => void;
+  headerText: string;
+  bodyText: string;
+}
+
+interface PhoneNumberCaptureProps {
+  PhoneNumberUI: React.FC<PhoneNumberUIProps>;
   coverageResult?: CoverageResult;
   gtmId?: string;
-}> = ({
-  headerText = "Help build tenant power in NYC",
-  bodyText = "We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights.",
-  coverageResult,
-  gtmId,
-}) => {
+  modalOnClose?: () => void;
+  headerText?: string;
+  bodyText?: string;
+}
+
+const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
+  const {
+    PhoneNumberUI,
+    coverageResult,
+    gtmId,
+    modalOnClose,
+    headerText = "Save your result to your phone",
+    bodyText = "Get a text with a unique URL to your results page.",
+    ...UIProps
+  } = props;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [showFieldError, setShowFieldError] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -73,16 +95,27 @@ export const PhoneNumberCallout: React.FC<{
     }
     try {
       const sendData = async () => {
+        const resultUrlParam =
+          window.location.pathname === "/results"
+            ? {
+                result_url: window.location.href,
+              }
+            : {};
         const postData = {
           id: user?.id,
           phone_number: parseInt(cleaned),
+          ...resultUrlParam,
         };
         const userResp = (await trigger(postData)) as GCEUser;
         if (!user?.id) setUser(userResp);
       };
       sendData();
       setShowFieldError(false);
-      setShowSuccess(true);
+      if (modalOnClose) {
+        modalOnClose();
+      } else {
+        setShowSuccess(true);
+      }
       gtmPush("gce_phone_submit", {
         gce_result: coverageResult,
         from: gtmId,
@@ -94,6 +127,31 @@ export const PhoneNumberCallout: React.FC<{
   };
 
   return (
+    <PhoneNumberUI
+      {...UIProps}
+      handleSubmit={handleSubmit}
+      showFieldError={showFieldError}
+      phoneNumber={phoneNumber}
+      handleInputChange={handleInputChange}
+      showSuccess={showSuccess}
+      showError={showError}
+      headerText={headerText}
+      bodyText={bodyText}
+    />
+  );
+};
+
+const PhoneNumberCalloutUI: React.FC<PhoneNumberUIProps> = ({
+  handleSubmit,
+  showFieldError,
+  phoneNumber,
+  handleInputChange,
+  showSuccess,
+  showError,
+  headerText,
+  bodyText,
+}) => {
+  return (
     <div className="phone-number-callout-box">
       <div className="callout-box__column">
         <span className="callout-box__header">{headerText}</span>
@@ -102,7 +160,7 @@ export const PhoneNumberCallout: React.FC<{
       <form className="callout-box__column" onSubmit={handleSubmit}>
         <div className="phone-number-input-container">
           <TextInput
-            labelText="Phone number"
+            labelText="Phone number (optional)"
             placeholder="(123) 456-7890"
             invalid={showFieldError}
             invalidText="Enter a valid phone number"
@@ -131,8 +189,8 @@ export const PhoneNumberCallout: React.FC<{
                 Something went wrong. Try again later.
               </div>
             )}
-            We will never call you or share your phone number. You can opt-out
-            at any time.
+            We will never call you or share your phone number. We may text you
+            later in the year to see how things are going. Opt-out at any time.
           </div>
         </div>
         <div className="phone-number-submit__mobile">
@@ -140,5 +198,95 @@ export const PhoneNumberCallout: React.FC<{
         </div>
       </form>
     </div>
+  );
+};
+
+export const PhoneNumberCallout: React.FC<
+  Omit<PhoneNumberCaptureProps, "PhoneNumberUI">
+> = (props) => {
+  return <PhoneNumberCapture {...props} PhoneNumberUI={PhoneNumberCalloutUI} />;
+};
+
+const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
+  handleSubmit,
+  showFieldError,
+  phoneNumber,
+  handleInputChange,
+  showSuccess,
+  showError,
+  modalIsOpen,
+  modalOnClose,
+  headerText,
+  bodyText,
+}) => {
+  return (
+    <Modal
+      header={headerText}
+      isOpen={modalIsOpen!}
+      onClose={modalOnClose}
+      hasCloseBtn={true}
+      className="phone-capture-modal"
+    >
+      <p>{bodyText}</p>
+      <form className="phone-number-input-container" onSubmit={handleSubmit}>
+        <TextInput
+          labelText="Phone number"
+          placeholder="(123) 456-7890"
+          invalid={showFieldError}
+          invalidText="Enter a valid phone number"
+          id="phone-number-input"
+          name="phone-number-input"
+          value={phoneNumber}
+          onChange={handleInputChange}
+        />
+        <div className="phone-number-description">
+          We will never call you or share your phone number. We may text you
+          later in the year to see how things are going. Opt-out at any time.{" "}
+        </div>
+        <div className="phone-number-button-container">
+          <Button
+            className="phone-number-cancel"
+            labelText="No, thanks"
+            variant="tertiary"
+            type="button"
+            onClick={modalOnClose}
+          />
+          <Button
+            className="phone-number-submit"
+            labelText="Submit"
+            variant="primary"
+            type="submit"
+          />
+        </div>
+        <div className="phone-number-submit-message">
+          {showSuccess && (
+            <div className="success-message">
+              <Icon icon="check" />
+              Phone number submitted
+            </div>
+          )}
+          {showError && (
+            <div className="error-message">
+              <Icon icon="circleExclamation" />
+              Something went wrong. Try again later.
+            </div>
+          )}
+        </div>
+      </form>
+    </Modal>
+  );
+};
+
+export const PhoneNumberModal: React.FC<
+  Omit<PhoneNumberCaptureProps, "PhoneNumberUI"> &
+    Pick<PhoneNumberUIProps, "modalIsOpen" | "modalOnClose">
+> = (props) => {
+  const { modalOnClose, ...otherProps } = props;
+  return (
+    <PhoneNumberCapture
+      {...otherProps}
+      PhoneNumberUI={PhoneNumberModalUI}
+      modalOnClose={modalOnClose}
+    />
   );
 };

@@ -38,14 +38,22 @@ import {
 } from "../../KYRContent/KYRContent";
 import { Header } from "../../Header/Header";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
-import { ProgressStep, toTitleCase } from "../../../helpers";
+import {
+  getCookie,
+  ProgressStep,
+  setCookie,
+  toTitleCase,
+} from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkInternal } from "../../JFCLLink";
 import { gtmPush } from "../../../google-tag-manager";
-import { PhoneNumberCallout } from "../../PhoneNumberCallout/PhoneNumberCallout";
+import {
+  PhoneNumberCallout,
+  PhoneNumberModal,
+} from "../../PhoneNumberCallout/PhoneNumberCallout";
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -82,6 +90,33 @@ export const Results: React.FC = () => {
 
   useAccordionsOpenForPrint();
   useSearchParamsURL(setSearchParams, address, fields, user);
+
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [hasShownPhoneModal, setHasShownPhoneModal] = useState(false);
+
+  useEffect(() => {
+    if (hasShownPhoneModal || getCookie("phone_modal_shown")) return;
+    function handleScroll() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      // 65% down means user has scrolled at least 65% of the page height
+      const scrollPercent = (scrollY + windowHeight) / docHeight;
+      if (scrollPercent >= 0.75) {
+        setShowPhoneModal(true);
+        setHasShownPhoneModal(true);
+        window.removeEventListener("scroll", handleScroll);
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [hasShownPhoneModal]);
+
+  // When modal closes, set cookie
+  const handlePhoneModalClose = () => {
+    setShowPhoneModal(false);
+    setCookie("phone_modal_shown", "1");
+  };
 
   const resultDataReady = !!coverageResult && !!criteriaResults?.building_class;
   useEffect(() => {
@@ -149,7 +184,12 @@ export const Results: React.FC = () => {
           View tenant protection information on following pages
         </div>
       </Header>
-
+      <PhoneNumberModal
+        coverageResult={coverageResult}
+        gtmId="results-page-modal"
+        modalIsOpen={showPhoneModal}
+        modalOnClose={handlePhoneModalClose}
+      />
       <div className="content-section">
         <div className="content-section__content">
           {coverageResult === "UNKNOWN" && bldgData && criteriaDetails && (
