@@ -38,7 +38,12 @@ import {
 } from "../../KYRContent/KYRContent";
 import { Header } from "../../Header/Header";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
-import { ProgressStep, toTitleCase } from "../../../helpers";
+import {
+  getCookie,
+  ProgressStep,
+  setCookie,
+  toTitleCase,
+} from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
 import "./Results.scss";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
@@ -49,17 +54,6 @@ import {
   PhoneNumberCallout,
   PhoneNumberModal,
 } from "../../PhoneNumberCallout/PhoneNumberCallout";
-
-function getCookie(name: string) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop()?.split(";").shift();
-}
-
-function setCookie(name: string, value: string, days: number) {
-  const expires = new Date(Date.now() + days * 864e5).toUTCString();
-  document.cookie = `${name}=${value}; expires=${expires}; path=/`;
-}
 
 export const Results: React.FC = () => {
   const { address, fields, user } = useLoaderData() as {
@@ -99,7 +93,6 @@ export const Results: React.FC = () => {
 
   const [showPhoneModal, setShowPhoneModal] = useState(false);
   const [hasShownPhoneModal, setHasShownPhoneModal] = useState(false);
-  // Remove contentSectionRef and useInViewPort logic
 
   useEffect(() => {
     if (hasShownPhoneModal || getCookie("phone_modal_shown")) return;
@@ -122,7 +115,7 @@ export const Results: React.FC = () => {
   // When modal closes, set cookie
   const handlePhoneModalClose = () => {
     setShowPhoneModal(false);
-    setCookie("phone_modal_shown", "1", 1); // 1 day expiration
+    setCookie("phone_modal_shown", "1");
   };
 
   const resultDataReady = !!coverageResult && !!criteriaResults?.building_class;
@@ -193,7 +186,7 @@ export const Results: React.FC = () => {
       </Header>
       <PhoneNumberModal
         coverageResult={coverageResult}
-        gtmId="results-page"
+        gtmId="results-page-modal"
         modalIsOpen={showPhoneModal}
         modalOnClose={handlePhoneModalClose}
       />

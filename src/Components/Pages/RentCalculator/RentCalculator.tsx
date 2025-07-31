@@ -131,7 +131,11 @@ export const RentCalculator: React.FC = () => {
             </JFCLLinkInternal>
           </div>
           <div className="divider__print" />
-          <PhoneNumberCallout gtmId="rent-calculator-page" />
+          <PhoneNumberCallout
+            headerText="Help build tenant power in NYC"
+            bodyText="We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights."
+            gtmId="rent-calculator-page"
+          />
 
           <GoodCauseProtections
             rent={showRentInput ? Number(rentInput) : undefined}

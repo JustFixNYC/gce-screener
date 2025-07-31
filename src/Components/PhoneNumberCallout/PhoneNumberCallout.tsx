@@ -20,6 +20,8 @@ interface PhoneNumberUIProps {
   showError: boolean;
   modalIsOpen?: boolean;
   modalOnClose?: () => void;
+  headerText: string;
+  bodyText: string;
 }
 
 interface PhoneNumberCaptureProps {
@@ -27,11 +29,20 @@ interface PhoneNumberCaptureProps {
   coverageResult?: CoverageResult;
   gtmId?: string;
   modalOnClose?: () => void;
+  headerText?: string;
+  bodyText?: string;
 }
 
 const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
-  const { PhoneNumberUI, coverageResult, gtmId, modalOnClose, ...UIProps } =
-    props;
+  const {
+    PhoneNumberUI,
+    coverageResult,
+    gtmId,
+    modalOnClose,
+    headerText = "Save your result to your phone",
+    bodyText = "Get a text with a unique URL to your results page.",
+    ...UIProps
+  } = props;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [showFieldError, setShowFieldError] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -84,10 +95,16 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
     }
     try {
       const sendData = async () => {
+        const resultUrlParam =
+          window.location.pathname === "/results"
+            ? {
+                result_url: window.location.href,
+              }
+            : {};
         const postData = {
           id: user?.id,
           phone_number: parseInt(cleaned),
-          result_url: window.location.href,
+          ...resultUrlParam,
         };
         const userResp = (await trigger(postData)) as GCEUser;
         if (!user?.id) setUser(userResp);
@@ -118,6 +135,8 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
       handleInputChange={handleInputChange}
       showSuccess={showSuccess}
       showError={showError}
+      headerText={headerText}
+      bodyText={bodyText}
     />
   );
 };
@@ -129,14 +148,14 @@ const PhoneNumberCalloutUI: React.FC<PhoneNumberUIProps> = ({
   handleInputChange,
   showSuccess,
   showError,
+  headerText,
+  bodyText,
 }) => {
   return (
     <div className="phone-number-callout-box">
       <div className="callout-box__column">
-        <span className="callout-box__header">
-          Save your result to your phone
-        </span>
-        <p>Get a text with a unique URL to your results page.</p>
+        <span className="callout-box__header">{headerText}</span>
+        <p>{bodyText}</p>
       </div>
       <form className="callout-box__column" onSubmit={handleSubmit}>
         <div className="phone-number-input-container">
@@ -197,16 +216,18 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
   showError,
   modalIsOpen,
   modalOnClose,
+  headerText,
+  bodyText,
 }) => {
   return (
     <Modal
-      header="Save your result to your phone"
+      header={headerText}
       isOpen={modalIsOpen!}
       onClose={modalOnClose}
       hasCloseBtn={true}
       className="phone-capture-modal"
     >
-      <p>Get a text with a unique URL to your results page.</p>
+      <p>{bodyText}</p>
       <form className="phone-number-input-container" onSubmit={handleSubmit}>
         <TextInput
           labelText="Phone number"
