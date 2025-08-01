@@ -137,6 +137,7 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
       showError={showError}
       headerText={headerText}
       bodyText={bodyText}
+      modalOnClose={modalOnClose}
     />
   );
 };
