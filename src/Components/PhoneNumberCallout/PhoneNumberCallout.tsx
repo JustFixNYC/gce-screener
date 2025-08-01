@@ -111,11 +111,7 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
       };
       sendData();
       setShowFieldError(false);
-      if (modalOnClose) {
-        modalOnClose();
-      } else {
-        setShowSuccess(true);
-      }
+      setShowSuccess(true);
       gtmPush("gce_phone_submit", {
         gce_result: coverageResult,
         from: gtmId,
@@ -240,25 +236,6 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
           value={phoneNumber}
           onChange={handleInputChange}
         />
-        <div className="phone-number-description">
-          We will never call you or share your phone number. We may text you
-          later in the year to see how things are going. Opt-out at any time.{" "}
-        </div>
-        <div className="phone-number-button-container">
-          <Button
-            className="phone-number-cancel"
-            labelText="No, thanks"
-            variant="tertiary"
-            type="button"
-            onClick={modalOnClose}
-          />
-          <Button
-            className="phone-number-submit"
-            labelText="Submit"
-            variant="primary"
-            type="submit"
-          />
-        </div>
         <div className="phone-number-submit-message">
           {showSuccess && (
             <div className="success-message">
@@ -272,6 +249,25 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
               Something went wrong. Try again later.
             </div>
           )}
+        </div>
+        <div className="phone-number-description">
+          We will never call you or share your phone number. We may text you
+          later in the year to see how things are going. Opt-out at any time.{" "}
+        </div>
+        <div className="phone-number-button-container">
+          <Button
+            className="phone-number-cancel"
+            labelText="Close"
+            variant="tertiary"
+            type="button"
+            onClick={modalOnClose}
+          />
+          <Button
+            className="phone-number-submit"
+            labelText="Submit"
+            variant="primary"
+            type="submit"
+          />
         </div>
       </form>
     </Modal>
