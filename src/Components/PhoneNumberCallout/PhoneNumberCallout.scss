@@ -50,6 +50,9 @@
         @include for-phone-only {
           width: 100%;
         }
+        input {
+          background: $WHITE;
+        }
       }
     }
     .success-message,
@@ -92,6 +95,10 @@
 
   .jfcl-text-input {
     margin-bottom: 0.5rem;
+
+    input {
+      background: $WHITE;
+    }
   }
 
   .phone-number-description {
@@ -100,6 +107,10 @@
     @include for-phone-only {
       @include small_text_mobile;
     }
+  }
+
+  .phone-number-submit-message {
+    margin-bottom: 0.5rem;
   }
 
   .phone-number-button-container {

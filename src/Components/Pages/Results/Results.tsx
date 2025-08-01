@@ -102,7 +102,7 @@ export const Results: React.FC = () => {
       const docHeight = document.documentElement.scrollHeight;
       // 65% down means user has scrolled at least 65% of the page height
       const scrollPercent = (scrollY + windowHeight) / docHeight;
-      if (scrollPercent >= 0.75) {
+      if (scrollPercent >= 0.65) {
         setShowPhoneModal(true);
         setHasShownPhoneModal(true);
         window.removeEventListener("scroll", handleScroll);
