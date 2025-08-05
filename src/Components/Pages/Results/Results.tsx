@@ -97,24 +97,30 @@ export const Results: React.FC = () => {
   useEffect(() => {
     if (hasShownPhoneModal || getCookie("phone_modal_shown")) return;
 
-    const contentSection = document.querySelector(".content-section");
+    const contentSection = document.querySelector(".content-section__content");
     if (!contentSection) return;
 
-    // Prevents modal from showing on page load by requiring user to scroll down a bit
+    // Checks if user has scrolled down at least a bit before showing modal
+    // Without this, the modal renders on page load
     const hasScrolled = () => {
       const scrollY = window.scrollY || window.pageYOffset;
       return scrollY > 100; // user has scrolled down at least 100px
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && hasScrolled()) {
-          setShowPhoneModal(true);
-          setHasShownPhoneModal(true);
-          observer.disconnect();
-        }
-      });
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && hasScrolled()) {
+            setShowPhoneModal(true);
+            setHasShownPhoneModal(true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        threshold: 0.15, // Trigger when 15% of the element is visible
+      }
+    );
 
     observer.observe(contentSection);
 
