@@ -4,13 +4,18 @@ import spec from "./APISpec.json";
 import { Link } from "react-router-dom";
 import "./style.scss";
 
+// Type assertion to fix React 18 compatibility
+const SwaggerUIComponent = SwaggerUI as React.ComponentType<{
+  spec: object | string;
+}>;
+
 export const APIDocs: React.FC = () => {
   return (
     <>
       <Link className="home-link" to="/">
         Back to Good Cause Screener
       </Link>
-      <SwaggerUI spec={spec} />
+      <SwaggerUIComponent spec={spec} />
     </>
   );
 };
