@@ -13,7 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:113
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:164
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:236
 msgid "(123) 456-7890"
 msgstr "(123) 456-7890"
 
@@ -105,33 +106,38 @@ msgstr "Because your building was built after 1974 and is not part of 421a or J5
 msgid "Calculate your max rent increase."
 msgstr "Calculate your max rent increase."
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:52
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:51
 msgid "Calculate your rent increase"
 msgstr "Calculate your rent increase"
 
-#: src/Components/Modal/Modal.tsx:78
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:267
+msgid "Close"
+msgstr "Close"
+
+#: src/Components/Modal/Modal.tsx:80
 msgid "Close modal"
 msgstr "Close modal"
 
-#: src/Components/Pages/Results/Results.tsx:550
+#: src/Components/Pages/Results/Results.tsx:605
 msgid "Copied"
 msgstr "Copied"
 
-#: src/Components/Pages/Results/Results.tsx:147
-#: src/Components/Pages/Results/Results.tsx:195
+#: src/Components/Pages/Results/Results.tsx:197
+#: src/Components/Pages/Results/Results.tsx:250
 msgid "Download coverage"
 msgstr "Download coverage"
 
-#: src/Components/Pages/Results/Results.tsx:146
-#: src/Components/Pages/Results/Results.tsx:194
+#: src/Components/Pages/Results/Results.tsx:196
+#: src/Components/Pages/Results/Results.tsx:249
 msgid "Email coverage"
 msgstr "Email coverage"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:115
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:166
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:238
 msgid "Enter a valid phone number"
 msgstr "Enter a valid phone number"
 
-#: src/Components/Pages/Results/Results.tsx:214
+#: src/Components/Pages/Results/Results.tsx:269
 msgid "Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights"
 msgstr "Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights"
 
@@ -139,29 +145,33 @@ msgstr "Even though you may not be covered by Good Cause Eviction, all NYC tenan
 msgid "FAQs to help guide your answer"
 msgstr "FAQs to help guide your answer"
 
-#: src/Components/Pages/Results/Results.tsx:410
+#: src/Components/Pages/Results/Results.tsx:465
 msgid "Find other buildings your landlord owns"
 msgstr "Find other buildings your landlord owns"
 
-#: src/Components/Pages/Results/Results.tsx:390
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:41
+#: src/Components/Pages/Results/Results.tsx:445
 msgid "Find out if your apartment is rent stabilized"
 msgstr "Find out if your apartment is rent stabilized"
 
-#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:71
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:69
 msgid "Find out if your landlord owns other buildings"
 msgstr "Find out if your landlord owns other buildings"
 
-#: src/Components/Modal/Modal.tsx:107
+#: src/Components/Modal/Modal.tsx:109
 msgid "Full image of this example lease can be viewed on <0>hcr.ny.gov</0>"
 msgstr "Full image of this example lease can be viewed on <0>hcr.ny.gov</0>"
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:46
+msgid "Get a text with a unique URL to your results page."
+msgstr "Get a text with a unique URL to your results page."
 
 #: src/Components/Pages/Home/Home.tsx:95
 msgid "Get started"
 msgstr "Get started"
 
 #. placeholder {0}: bldgData.unitsres
-#: src/Components/Pages/Results/Results.tsx:403
+#: src/Components/Pages/Results/Results.tsx:458
 msgid "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings. Good Cause Eviction law only covers tenants whose landlord owns"
 msgstr "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings. Good Cause Eviction law only covers tenants whose landlord owns"
 
@@ -174,14 +184,14 @@ msgid "Good Cause law can be complex to understand and to use to protect yoursel
 msgstr "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
 
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:28
-msgid "Help build tenant power in NYC"
-msgstr "Help build tenant power in NYC"
+#~ msgid "Help build tenant power in NYC"
+#~ msgstr "Help build tenant power in NYC"
 
 #: src/Components/Pages/Home/Home.tsx:190
 msgid "Housing Justice for All"
 msgstr "Housing Justice for All"
 
-#: src/Components/Pages/Results/Results.tsx:312
+#: src/Components/Pages/Results/Results.tsx:367
 msgid "How we determined your coverage"
 msgstr "How we determined your coverage"
 
@@ -234,7 +244,7 @@ msgstr "If you're not covered by Good Cause Eviction"
 msgid "If your most recent lease renewal <0>looks like this</0>, then your apartment is likely rent stabilized."
 msgstr "If your most recent lease renewal <0>looks like this</0>, then your apartment is likely rent stabilized."
 
-#: src/Components/Modal/Modal.tsx:98
+#: src/Components/Modal/Modal.tsx:100
 msgid "If your most recent lease renewal looks like the image below, then your apartment is almost certainly rent stabilized. If your lease renewal does not look like the image below, your apartment could still be rent stabilized."
 msgstr "If your most recent lease renewal looks like the image below, then your apartment is almost certainly rent stabilized. If your lease renewal does not look like the image below, your apartment could still be rent stabilized."
 
@@ -270,8 +280,8 @@ msgstr "Learn more about the law."
 msgid "Learn where Good Cause protections have been won"
 msgstr "Learn where Good Cause protections have been won"
 
-#: src/Components/Pages/Results/Results.tsx:123
-#: src/Components/Pages/Results/Results.tsx:139
+#: src/Components/Pages/Results/Results.tsx:173
+#: src/Components/Pages/Results/Results.tsx:189
 msgid "Loading your results..."
 msgstr "Loading your results..."
 
@@ -301,11 +311,16 @@ msgstr "NYCHA or PACT/RAD"
 msgid "Other subsidized housing"
 msgstr "Other subsidized housing"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:112
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:235
 msgid "Phone number"
 msgstr "Phone number"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:132
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:163
+msgid "Phone number (optional)"
+msgstr "Phone number (optional)"
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:183
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:248
 msgid "Phone number submitted"
 msgstr "Phone number submitted"
 
@@ -341,8 +356,8 @@ msgstr "Please specify whether your landlord lives in your apartment building."
 msgid "Please specify whether your landlord owns more than 10 apartments across multiple buildings."
 msgstr "Please specify whether your landlord owns more than 10 apartments across multiple buildings."
 
-#: src/Components/Pages/Results/Results.tsx:148
-#: src/Components/Pages/Results/Results.tsx:196
+#: src/Components/Pages/Results/Results.tsx:198
+#: src/Components/Pages/Results/Results.tsx:251
 msgid "Print coverage"
 msgstr "Print coverage"
 
@@ -378,23 +393,28 @@ msgstr "Publicly available data sources indicate that your building is part of N
 msgid "Publicly available data sources indicate that your building receives the {0} tax incentive. This means your apartment is rent stabilized."
 msgstr "Publicly available data sources indicate that your building receives the {0} tax incentive. This means your apartment is rent stabilized."
 
-#: src/Components/Pages/Results/Results.tsx:315
+#: src/Components/Pages/Results/Results.tsx:370
 msgid "Results are based on publicly available data about your building and the answers you provided. This does not constitute legal advice."
 msgstr "Results are based on publicly available data about your building and the answers you provided. This does not constitute legal advice."
 
-#: src/Components/Modal/Modal.tsx:116
+#: src/Components/Modal/Modal.tsx:118
 msgid "Sample image of blank rent stabilized lease"
 msgstr "Sample image of blank rent stabilized lease"
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:45
+msgid "Save your result to your phone"
+msgstr "Save your result to your phone"
 
 #: src/Components/Pages/Form/Survey.tsx:334
 msgid "See your results"
 msgstr "See your results"
 
-#: src/Components/Pages/Results/Results.tsx:220
+#: src/Components/Pages/Results/Results.tsx:275
 msgid "Share this site with your neighbors"
 msgstr "Share this site with your neighbors"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:138
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:189
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:254
 msgid "Something went wrong. Try again later."
 msgstr "Something went wrong. Try again later."
 
@@ -402,8 +422,9 @@ msgstr "Something went wrong. Try again later."
 msgid "Studio"
 msgstr "Studio"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:123
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:148
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:174
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:199
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:274
 msgid "Submit"
 msgstr "Submit"
 
@@ -415,7 +436,7 @@ msgstr "Tenants and tenant advocates are working to extend Good Cause protection
 msgid "Terms of use"
 msgstr "Terms of use"
 
-#: src/Components/Pages/Results/Results.tsx:131
+#: src/Components/Pages/Results/Results.tsx:181
 msgid "There was an error loading your results, please try again in a few minutes."
 msgstr "There was an error loading your results, please try again in a few minutes."
 
@@ -441,7 +462,7 @@ msgstr "Understanding your rights"
 msgid "View source"
 msgstr "View source"
 
-#: src/Components/Pages/Results/Results.tsx:157
+#: src/Components/Pages/Results/Results.tsx:207
 msgid "View tenant protection information on following pages"
 msgstr "View tenant protection information on following pages"
 
@@ -457,15 +478,20 @@ msgstr "Visit JustFix"
 msgid "We check for NYCHA, Mitchell-Lama, HDFC, LIHTC, Project Section 8, and various HPD and HUD programs. If you know the public data is incorrect, use these tips to guide your answer:"
 msgstr "We check for NYCHA, Mitchell-Lama, HDFC, LIHTC, Project Section 8, and various HPD and HUD programs. If you know the public data is incorrect, use these tips to guide your answer:"
 
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:192
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:259
+msgid "We will never call you or share your phone number. We may text you later in the year to see how things are going. Opt-out at any time."
+msgstr "We will never call you or share your phone number. We may text you later in the year to see how things are going. Opt-out at any time."
+
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:141
-msgid "We will never call you or share your phone number. You can opt-out at any time."
-msgstr "We will never call you or share your phone number. You can opt-out at any time."
+#~ msgid "We will never call you or share your phone number. You can opt-out at any time."
+#~ msgstr "We will never call you or share your phone number. You can opt-out at any time."
 
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:29
-msgid "We'll text you once a year to learn about your housing conditions. We'll use your answers to better advocate for your rights."
-msgstr "We'll text you once a year to learn about your housing conditions. We'll use your answers to better advocate for your rights."
+#~ msgid "We'll text you once a year to learn about your housing conditions. We'll use your answers to better advocate for your rights."
+#~ msgstr "We'll text you once a year to learn about your housing conditions. We'll use your answers to better advocate for your rights."
 
-#: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:66
+#: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:67
 msgid "We'll use publicly available information about your building to help learn if you're covered."
 msgstr "We'll use publicly available information about your building to help learn if you're covered."
 
@@ -479,6 +505,6 @@ msgstr "We'll use your answers and publicly available information about your bui
 msgid "Yes"
 msgstr "Yes"
 
-#: src/Components/Pages/Results/Results.tsx:380
+#: src/Components/Pages/Results/Results.tsx:435
 msgid "You told us that you are unsure if you are rent stabilized. If your apartment is rent stabilized, you are not covered by Good Cause Eviction law, but rent stabilized protections are even stronger than the Good Cause Eviction law."
 msgstr "You told us that you are unsure if you are rent stabilized. If your apartment is rent stabilized, you are not covered by Good Cause Eviction law, but rent stabilized protections are even stronger than the Good Cause Eviction law."
