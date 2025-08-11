@@ -1,20 +1,24 @@
-import { ContentfulPage } from "../../../contentful/ContentfulPage";
 import { Header } from "../../Header/Header";
-import privacyPolicy from "../../../data/privacy-policy.en.json";
+import { ContentfulPage } from "../../../contentful/ContentfulPage";
+import privacyPolicyContent from "../../../data/privacy-policy.en.json";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import "./Legal.scss";
 
 export const PrivacyPolicy: React.FC = () => {
+  const { _ } = useLingui();
+  
   return (
     <div id="privacy-policy-page">
       <Header
-        title="Privacy policy"
-        subtitle="Last modified: Jan 24, 2025"
+        title={_(msg`Privacy policy`)}
+        subtitle={_(msg`Last modified: Jan 24, 2025`)}
         showProgressBar={false}
       />
 
       <div className="content-section">
         <div className="content-section__content">
-          <ContentfulPage pageFields={privacyPolicy} />
+          <ContentfulPage pageFields={privacyPolicyContent} />
         </div>
       </div>
     </div>

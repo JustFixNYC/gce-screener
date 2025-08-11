@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 
 import {
   ContentBox,
@@ -16,9 +19,9 @@ import { gtmPush } from "../../../google-tag-manager";
 import "./RentStabilization.scss";
 import { RentStabilizedProtections } from "../../KYRContent/KYRContent";
 import { RentStabLeaseModal } from "../../Modal/Modal";
-import { useState } from "react";
 
 export const RentStabilization: React.FC = () => {
+  const { _ } = useLingui();
   const { user, address, fields } = useLoaderData() as {
     user: GCEUser;
     address: Address;
@@ -35,7 +38,7 @@ export const RentStabilization: React.FC = () => {
   return (
     <div id="rent-stabilization-page">
       <Header
-        title="Find out if your apartment is rent stabilized"
+        title={_(msg`Find out if your apartment is rent stabilized`)}
         address={address}
         showProgressBar={false}
         isGuide

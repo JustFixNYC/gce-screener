@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { useRollbar } from "@rollbar/react";
 import { Button, Icon, TextInput } from "@justfixnyc/component-library";
+import { Trans } from "@lingui/react/macro";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 
 import { CoverageResult, GCEUser } from "../../types/APIDataTypes";
 import { gtmPush } from "../../google-tag-manager";
@@ -16,11 +19,15 @@ export const PhoneNumberCallout: React.FC<{
   coverageResult?: CoverageResult;
   gtmId?: string;
 }> = ({
-  headerText = "Help build tenant power in NYC",
-  bodyText = "We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights.",
+  headerText,
+  bodyText,
   coverageResult,
   gtmId,
 }) => {
+  const { _ } = useLingui();
+  const defaultHeaderText = _(msg`Help build tenant power in NYC`);
+  const defaultBodyText = _(msg`We'll text you once a year to learn about your housing conditions. We'll use your answers to better advocate for your rights.`);
+  
   const [phoneNumber, setPhoneNumber] = useState("");
   const [showFieldError, setShowFieldError] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -96,16 +103,16 @@ export const PhoneNumberCallout: React.FC<{
   return (
     <div className="phone-number-callout-box">
       <div className="callout-box__column">
-        <span className="callout-box__header">{headerText}</span>
-        <p>{bodyText}</p>
+        <span className="callout-box__header">{headerText || defaultHeaderText}</span>
+        <p>{bodyText || defaultBodyText}</p>
       </div>
       <form className="callout-box__column" onSubmit={handleSubmit}>
         <div className="phone-number-input-container">
           <TextInput
-            labelText="Phone number"
-            placeholder="(123) 456-7890"
+            labelText={_(msg`Phone number`)}
+            placeholder={_(msg`(123) 456-7890`)}
             invalid={showFieldError}
-            invalidText="Enter a valid phone number"
+            invalidText={_(msg`Enter a valid phone number`)}
             id="phone-number-input"
             name="phone-number-input"
             value={phoneNumber}
@@ -113,7 +120,7 @@ export const PhoneNumberCallout: React.FC<{
           />
           <Button
             className="phone-number-submit__desktop"
-            labelText="Submit"
+            labelText={_(msg`Submit`)}
             variant="secondary"
             size="small"
             type="submit"
@@ -122,21 +129,23 @@ export const PhoneNumberCallout: React.FC<{
             {showSuccess && (
               <div className="success-message">
                 <Icon icon="check" />
-                Phone number submitted
+                <Trans>Phone number submitted</Trans>
               </div>
             )}
             {showError && (
               <div className="error-message">
                 <Icon icon="circleExclamation" />
-                Something went wrong. Try again later.
+                <Trans>Something went wrong. Try again later.</Trans>
               </div>
             )}
-            We will never call you or share your phone number. You can opt-out
-            at any time.
+            <Trans>
+              We will never call you or share your phone number. You can opt-out
+              at any time.
+            </Trans>
           </div>
         </div>
         <div className="phone-number-submit__mobile">
-          <Button labelText="Submit" variant="secondary" size="small" />
+          <Button labelText={_(msg`Submit`)} variant="secondary" size="small" />
         </div>
       </form>
     </div>

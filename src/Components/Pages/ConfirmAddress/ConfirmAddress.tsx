@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useRollbar } from "@rollbar/react";
 import { Button } from "@justfixnyc/component-library";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 
 import { Address } from "../Home/Home";
 import { ContentBox } from "../../ContentBox/ContentBox";
@@ -16,6 +18,7 @@ import "./ConfirmAddress.scss";
 
 export const ConfirmAddress: React.FC = () => {
   const navigate = useNavigate();
+  const { _ } = useLingui();
   const { address, user } = useLoaderData() as {
     address: Address;
     user?: GCEUser;
@@ -59,8 +62,10 @@ export const ConfirmAddress: React.FC = () => {
   return (
     <div id="confirm-address-page">
       <Header
-        title="Please confirm your address"
-        subtitle="We’ll use publicly available information about your building to help learn if you’re covered."
+        title={_(msg`Please confirm your address`)}
+        subtitle={_(
+          msg`We'll use publicly available information about your building to help learn if you're covered.`
+        )}
         address={address}
         lastStepReached={lastStepReached}
       />
