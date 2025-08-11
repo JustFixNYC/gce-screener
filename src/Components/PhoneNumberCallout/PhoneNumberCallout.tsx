@@ -4,30 +4,48 @@ import { useRollbar } from "@rollbar/react";
 import { Button, Icon, TextInput } from "@justfixnyc/component-library";
 import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
+import { _ } from "@lingui/core/macro";
 
 import { CoverageResult, GCEUser } from "../../types/APIDataTypes";
 import { gtmPush } from "../../google-tag-manager";
 import { useSendGceData } from "../../api/hooks";
 import { useSessionStorage } from "../../hooks/useSessionStorage";
+import Modal from "../Modal/Modal";
 
 import "./PhoneNumberCallout.scss";
 
-export const PhoneNumberCallout: React.FC<{
-  headerText?: string;
-  bodyText?: string;
+interface PhoneNumberUIProps {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  showFieldError: boolean;
+  phoneNumber: string;
+  handleInputChange: React.ChangeEventHandler<HTMLInputElement>;
+  showSuccess: boolean;
+  showError: boolean;
+  modalIsOpen?: boolean;
+  modalOnClose?: () => void;
+  headerText: string;
+  bodyText: string;
+}
+
+interface PhoneNumberCaptureProps {
+  PhoneNumberUI: React.FC<PhoneNumberUIProps>;
   coverageResult?: CoverageResult;
   gtmId?: string;
-}> = ({
-  headerText,
-  bodyText,
-  coverageResult,
-  gtmId,
-}) => {
-  const { _ } = useLingui();
-  const defaultHeaderText = _(msg`Help build tenant power in NYC`);
-  const defaultBodyText = _(msg`We'll text you once a year to learn about your housing conditions. We'll use your answers to better advocate for your rights.`);
-  
+  modalOnClose?: () => void;
+  headerText?: string;
+  bodyText?: string;
+}
+
+const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
+  const {
+    PhoneNumberUI,
+    coverageResult,
+    gtmId,
+    modalOnClose,
+    headerText = _(msg`Save your result to your phone`),
+    bodyText = _(msg`Get a text with a unique URL to your results page.`),
+    ...UIProps
+  } = props;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [showFieldError, setShowFieldError] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -80,9 +98,16 @@ export const PhoneNumberCallout: React.FC<{
     }
     try {
       const sendData = async () => {
+        const resultUrlParam =
+          window.location.pathname === "/results"
+            ? {
+                result_url: window.location.href,
+              }
+            : {};
         const postData = {
           id: user?.id,
           phone_number: parseInt(cleaned),
+          ...resultUrlParam,
         };
         const userResp = (await trigger(postData)) as GCEUser;
         if (!user?.id) setUser(userResp);
@@ -101,15 +126,41 @@ export const PhoneNumberCallout: React.FC<{
   };
 
   return (
+    <PhoneNumberUI
+      {...UIProps}
+      handleSubmit={handleSubmit}
+      showFieldError={showFieldError}
+      phoneNumber={phoneNumber}
+      handleInputChange={handleInputChange}
+      showSuccess={showSuccess}
+      showError={showError}
+      headerText={headerText}
+      bodyText={bodyText}
+      modalOnClose={modalOnClose}
+    />
+  );
+};
+
+const PhoneNumberCalloutUI: React.FC<PhoneNumberUIProps> = ({
+  handleSubmit,
+  showFieldError,
+  phoneNumber,
+  handleInputChange,
+  showSuccess,
+  showError,
+  headerText,
+  bodyText,
+}) => {
+  return (
     <div className="phone-number-callout-box">
       <div className="callout-box__column">
-        <span className="callout-box__header">{headerText || defaultHeaderText}</span>
-        <p>{bodyText || defaultBodyText}</p>
+        <span className="callout-box__header">{headerText}</span>
+        <p>{bodyText}</p>
       </div>
       <form className="callout-box__column" onSubmit={handleSubmit}>
         <div className="phone-number-input-container">
           <TextInput
-            labelText={_(msg`Phone number`)}
+            labelText={_(msg`Phone number (optional)`)}
             placeholder={_(msg`(123) 456-7890`)}
             invalid={showFieldError}
             invalidText={_(msg`Enter a valid phone number`)}
@@ -139,15 +190,107 @@ export const PhoneNumberCallout: React.FC<{
               </div>
             )}
             <Trans>
-              We will never call you or share your phone number. You can opt-out
-              at any time.
+              We will never call you or share your phone number. We may text you
+              later in the year to see how things are going. Opt-out at any time.
             </Trans>
           </div>
         </div>
         <div className="phone-number-submit__mobile">
-          <Button labelText={_(msg`Submit`)} variant="secondary" size="small" />
+          <Button labelText={_(msg`Submit`)} variant="secondary" size="small" type="submit" />
         </div>
       </form>
     </div>
+  );
+};
+
+export const PhoneNumberCallout: React.FC<
+  Omit<PhoneNumberCaptureProps, "PhoneNumberUI">
+> = (props) => {
+  return <PhoneNumberCapture {...props} PhoneNumberUI={PhoneNumberCalloutUI} />;
+};
+
+const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
+  handleSubmit,
+  showFieldError,
+  phoneNumber,
+  handleInputChange,
+  showSuccess,
+  showError,
+  modalIsOpen,
+  modalOnClose,
+  headerText,
+  bodyText,
+}) => {
+  return (
+    <Modal
+      header={headerText}
+      isOpen={modalIsOpen!}
+      onClose={modalOnClose}
+      hasCloseBtn={true}
+      className="phone-capture-modal"
+    >
+      <p>{bodyText}</p>
+      <form className="phone-number-input-container" onSubmit={handleSubmit}>
+        <TextInput
+          labelText={_(msg`Phone number`)}
+          placeholder={_(msg`(123) 456-7890`)}
+          invalid={showFieldError}
+          invalidText={_(msg`Enter a valid phone number`)}
+          id="phone-number-input"
+          name="phone-number-input"
+          value={phoneNumber}
+          onChange={handleInputChange}
+        />
+        <div className="phone-number-submit-message">
+          {showSuccess && (
+            <div className="success-message">
+              <Icon icon="check" />
+              <Trans>Phone number submitted</Trans>
+            </div>
+          )}
+          {showError && (
+            <div className="error-message">
+              <Icon icon="circleExclamation" />
+              <Trans>Something went wrong. Try again later.</Trans>
+            </div>
+          )}
+        </div>
+        <div className="phone-number-description">
+          <Trans>
+            We will never call you or share your phone number. We may text you
+            later in the year to see how things are going. Opt-out at any time.
+          </Trans>{" "}
+        </div>
+        <div className="phone-number-button-container">
+          <Button
+            className="phone-number-cancel"
+            labelText={_(msg`Close`)}
+            variant="tertiary"
+            type="button"
+            onClick={modalOnClose}
+          />
+          <Button
+            className="phone-number-submit"
+            labelText={_(msg`Submit`)}
+            variant="primary"
+            type="submit"
+          />
+        </div>
+      </form>
+    </Modal>
+  );
+};
+
+export const PhoneNumberModal: React.FC<
+  Omit<PhoneNumberCaptureProps, "PhoneNumberUI"> &
+    Pick<PhoneNumberUIProps, "modalIsOpen" | "modalOnClose">
+> = (props) => {
+  const { modalOnClose, ...otherProps } = props;
+  return (
+    <PhoneNumberCapture
+      {...otherProps}
+      PhoneNumberUI={PhoneNumberModalUI}
+      modalOnClose={modalOnClose}
+    />
   );
 };
