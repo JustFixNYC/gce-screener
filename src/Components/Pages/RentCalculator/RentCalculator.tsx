@@ -12,6 +12,8 @@ import { Button, TextInput } from "@justfixnyc/component-library";
 import { useState } from "react";
 import { gtmPush } from "../../../google-tag-manager";
 import { PhoneNumberCallout } from "../../PhoneNumberCallout/PhoneNumberCallout";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 
 // This needs to be updated each year when DHCR publishes the new number
 export const CPI = 3.79;
@@ -20,6 +22,7 @@ export const CPI = 3.79;
 export const CPI_EFFECTIVE_DATE = "February 19, 2025";
 
 export const RentCalculator: React.FC = () => {
+  const { _ } = useLingui();
   useAccordionsOpenForPrint();
 
   const increase_pct = CPI + 5;
@@ -45,9 +48,10 @@ export const RentCalculator: React.FC = () => {
     <div id="rent-calculator-page">
       <Header
         showProgressBar={false}
-        title="Calculate your rent increase"
-        subtitle="If you are covered by Good Cause legislation, you have a right to limited rent
-            increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
+        title={_(msg`Calculate your rent increase`)}
+        subtitle={_(
+          msg`If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause.`
+        )}
       ></Header>
       <div className="content-section">
         <div className="content-section__content">

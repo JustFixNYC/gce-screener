@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 
 import { Address } from "../Home/Home";
 import {
@@ -41,6 +43,7 @@ export const PortfolioSize: React.FC = () => {
     fields: FormFields;
   };
   const [, setSearchParams] = useSearchParams();
+  const { _ } = useLingui();
 
   useAccordionsOpenForPrint();
   useSearchParamsURL(setSearchParams, address, fields, user);
@@ -63,7 +66,7 @@ export const PortfolioSize: React.FC = () => {
   return (
     <div id="portfolio-size-page">
       <Header
-        title="Find out if your landlord owns other buildings"
+        title={_(msg`Find out if your landlord owns other buildings`)}
         address={address}
         showProgressBar={false}
         isGuide
