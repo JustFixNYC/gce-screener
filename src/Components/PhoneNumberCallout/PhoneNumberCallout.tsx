@@ -4,7 +4,7 @@ import { useRollbar } from "@rollbar/react";
 import { Button, Icon, TextInput } from "@justfixnyc/component-library";
 import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
-import { _ } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 
 import { CoverageResult, GCEUser } from "../../types/APIDataTypes";
 import { gtmPush } from "../../google-tag-manager";
@@ -37,6 +37,7 @@ interface PhoneNumberCaptureProps {
 }
 
 const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
+  const { _ } = useLingui();
   const {
     PhoneNumberUI,
     coverageResult,
@@ -151,6 +152,7 @@ const PhoneNumberCalloutUI: React.FC<PhoneNumberUIProps> = ({
   headerText,
   bodyText,
 }) => {
+  const { _ } = useLingui();
   return (
     <div className="phone-number-callout-box">
       <div className="callout-box__column">
@@ -221,6 +223,7 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
   headerText,
   bodyText,
 }) => {
+  const { _ } = useLingui();
   return (
     <Modal
       header={headerText}
