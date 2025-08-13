@@ -117,3 +117,13 @@ export const getCriteriaResults = (
     landlord: criteriaDetails?.landlord?.determination,
   };
 };
+
+export const separateBbl = (
+  bbl: string
+): { borough: string; block: string; lot: string } => {
+  return {
+    borough: bbl.slice(0, 1),
+    block: bbl.slice(1, 6),
+    lot: bbl.slice(6, 10),
+  };
+};

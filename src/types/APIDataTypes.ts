@@ -39,6 +39,25 @@ export type BuildingData = {
   related_properties: RelatedProperty[];
 };
 
+export type LandlordContact = {
+  title: string;
+  value: string;
+  address: {
+    zip: string;
+    city: string;
+    state: string;
+    apartment: string;
+    streetname: string;
+    housenumber: string;
+  };
+};
+
+export type LandlordData = {
+  bbl: string;
+  registrationenddate: string;
+  allcontacts: LandlordContact[];
+};
+
 // Tenants2 API
 
 export type GCEUser = {

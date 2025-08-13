@@ -1,7 +1,7 @@
 import { Header } from "../../Header/Header";
 import { MultiStepForm } from "./MultiStepForm";
-import { PhoneNumberForm } from "./PhoneNumberForm";
-import { PhoneNumberFormControlled } from "./PhoneNumberFormControlled";
+// import { PhoneNumberForm } from "./PhoneNumberForm";
+// import { PhoneNumberFormControlled } from "./PhoneNumberFormControlled";
 
 import "./LetterSender.scss";
 
@@ -16,10 +16,10 @@ export const LetterSender: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          <PhoneNumberForm />
+          {/* <PhoneNumberForm />
           <hr style={{ width: "100%" }} />
           <PhoneNumberFormControlled />
-          <hr style={{ width: "100%" }} />
+          <hr style={{ width: "100%" }} /> */}
           <MultiStepForm />
         </div>
       </div>

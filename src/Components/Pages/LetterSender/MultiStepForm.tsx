@@ -1,12 +1,17 @@
 import {
   Controller,
-  FieldName,
+  FieldPath,
   Resolver,
   SubmitHandler,
   useForm,
 } from "react-hook-form";
 import z from "zod";
-import { Button, TextInput } from "@justfixnyc/component-library";
+import {
+  Button,
+  FormGroup,
+  RadioButton,
+  TextInput,
+} from "@justfixnyc/component-library";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import {
@@ -16,6 +21,8 @@ import {
 } from "../../../form-utils";
 import { ProgressBar } from "./ProgressBar";
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
+import { useGetLandlordData } from "../../../api/hooks";
+import { LandlordContact, LandlordData } from "../../../types/APIDataTypes";
 
 const FormSchema = z.object({
   firstName: z.string().min(1, "Name is required for the letter"),
@@ -30,27 +37,38 @@ const FormSchema = z.object({
     .length(10, "Please enter a complete US phone number"),
   // Email has god default validator regex, plus alternatives, and way to
   // include custom ({pattern: /<regex>/})
-  // To customize error messages add a function that checks different possible issues with the field
   email: z.email({
+    // To customize error messages add a function that checks different possible
+    // issues with the field, since z.email("invalid format") would also give
+    // the same message even if empty input
     error: (iss) =>
       iss.input === undefined || iss.input === ""
         ? "Email is required to send your copy of the letter"
         : "Please enter a valid email",
   }),
-  houseNumber: z.string(),
-  streetName: z.string(),
-  borough: z.string(),
-  zipcode: z.string().length(5).optional(),
-  bbl: z.string().regex(/^d{10}$/),
+  address: z.object({
+    houseNumber: z.string(),
+    streetName: z.string(),
+    borough: z.string(),
+    zipcode: z.string().length(5).optional(),
+    bbl: z.string().regex(/^\d{10}$/),
+  }),
+  landlordAddress: z.object({
+    houseNumber: z.string(),
+    streetName: z.string(),
+    city: z.string(),
+    state: z.string(),
+    zipcode: z.string().length(5),
+  }),
+  // TODO: add fieldArray of issues (see https://react-hook-form.com/docs/usefieldarray)
 });
 
 type FormFields = z.infer<typeof FormSchema>;
 
-// type Step = { id: string; name: string; fields?: FieldName<FormFields>[] };
 interface Step {
   id: string;
   name: string;
-  fields?: FieldName<FormFields>[];
+  fields?: FieldPath<FormFields>[];
 }
 
 const steps: Step[] = [
@@ -62,14 +80,13 @@ const steps: Step[] = [
   {
     id: "Step 2",
     name: "Your address",
-    fields: ["houseNumber", "streetName", "borough", "zipcode", "bbl"],
+    fields: ["address"],
   },
   {
     id: "Step 3",
     name: "Landlord details",
-    fields: ["houseNumber", "streetName", "borough", "zipcode", "bbl"],
+    fields: ["landlordAddress"],
   },
-
   { id: "Step 4", name: "Complete" },
 ];
 
@@ -85,6 +102,7 @@ export const MultiStepForm: React.FC = () => {
     trigger,
     setValue,
     setError,
+    getValues,
     formState: { errors },
   } = useForm<FormFields>({
     // Issue with the inferred type being "unknown" when preprocess() is used to
@@ -98,16 +116,17 @@ export const MultiStepForm: React.FC = () => {
     reset();
   };
 
-  console.log({ address: watch("houseNumber") });
+  console.log({ address: watch("address") });
 
   const next = async () => {
-    console.log("next");
     const fields = steps[currentStep].fields;
 
     if (!fields) {
       setCurrentStep((step) => step + 1);
       return;
     }
+
+    // console.log(FormSchema.safeParse(getValues()));
 
     const output = await trigger(fields, { shouldFocus: true });
 
@@ -127,6 +146,15 @@ export const MultiStepForm: React.FC = () => {
     }
   };
 
+  const {
+    data: landlordData,
+    isLoading,
+    error,
+  } = useGetLandlordData(getValues("address.bbl"));
+
+  const owners = getOwnerContacts(landlordData);
+  console.log({ step: currentStep, owner: owners });
+
   return (
     <form onSubmit={handleFormNoDefault(next)} className="letter-form">
       <h3>
@@ -134,79 +162,116 @@ export const MultiStepForm: React.FC = () => {
       </h3>
       <p>Multi step state management, customized errors</p>
       <ProgressBar steps={steps} currentStep={currentStep} />
-      {currentStep === 0 && (
-        <>
-          <TextInput
-            {...register("firstName")}
-            id="form-firstName"
-            labelText="First name"
-            invalid={!!errors?.firstName}
-            invalidText={errors?.firstName?.message}
-            invalidRole="status"
-            type="text"
-          />
-          <TextInput
-            {...register("lastName")}
-            id="form-lastName"
-            labelText="Last name"
-            invalid={!!errors?.lastName}
-            invalidText={errors?.lastName?.message}
-            invalidRole="status"
-            type="text"
-          />
-          <TextInput
-            {...register("email")}
-            id="form-email"
-            labelText="Email"
-            invalid={!!errors?.email}
-            invalidText={errors?.email?.message}
-            invalidRole="status"
-            type="email"
-          />
-          <Controller
-            name="phone"
-            control={control}
-            render={({ field }) => (
-              <TextInput
-                {...field}
-                value={formatPhoneNumber(field.value)}
-                onChange={(e) =>
-                  field.onChange(parseFormattedPhoneNumber(e.target.value))
+      <div className="letter-form__content">
+        {currentStep === 0 && (
+          <>
+            <TextInput
+              {...register("firstName")}
+              id="form-firstName"
+              labelText="First name"
+              invalid={!!errors?.firstName}
+              invalidText={errors?.firstName?.message}
+              invalidRole="status"
+              type="text"
+            />
+            <TextInput
+              {...register("lastName")}
+              id="form-lastName"
+              labelText="Last name"
+              invalid={!!errors?.lastName}
+              invalidText={errors?.lastName?.message}
+              invalidRole="status"
+              type="text"
+            />
+            <TextInput
+              {...register("email")}
+              id="form-email"
+              labelText="Email"
+              invalid={!!errors?.email}
+              invalidText={errors?.email?.message}
+              invalidRole="status"
+              type="email"
+            />
+            <Controller
+              name="phone"
+              control={control}
+              render={({ field }) => (
+                <TextInput
+                  {...field}
+                  value={formatPhoneNumber(field.value)}
+                  onChange={(e) =>
+                    field.onChange(parseFormattedPhoneNumber(e.target.value))
+                  }
+                  id="form-phone"
+                  labelText="Phone"
+                  invalid={!!errors?.phone}
+                  invalidText={errors?.phone?.message}
+                  invalidRole="status"
+                  type="tel"
+                />
+              )}
+            />
+          </>
+        )}
+        {currentStep === 1 && (
+          <>
+            <GeoSearchInput
+              // extra keys (eg. longLat) are ignored
+              onChange={(addr) => setValue("address", addr)}
+              invalid={!!errors.address}
+              setInvalid={(isError) => {
+                if (isError) {
+                  setError("address", {
+                    type: "custom",
+                    message: "Error with address selection",
+                  });
                 }
-                id="form-phone"
-                labelText="Phone"
-                invalid={!!errors?.phone}
-                invalidText={errors?.phone?.message}
-                invalidRole="status"
-                type="tel"
-              />
+              }}
+            />
+          </>
+        )}
+
+        {currentStep === 2 && (
+          <>
+            {isLoading && <>Loading...</>}
+            {error && <>Failed to lookup landlord information</>}
+            {!isLoading && !error && owners && (
+              <>
+                <strong>Are any of these your landlord's information?</strong>
+                <FormGroup legendText="Are any of these your landlord's information?">
+                  {errors?.landlordAddress && (
+                    <span className="error">
+                      {errors?.landlordAddress?.message}
+                    </span>
+                  )}
+                  {owners.map((owner, index) => (
+                    // TODO: should update JFCL to allow label to be string or ReactNode
+                    // try changing to controlled component with value={JSON.stringifed LLaddr object}, checked={compared stringifed value with current selection)}, onchange={set value}
+                    <RadioButton
+                      labelText={`${owner.value}: ${formatLandlordAddress(
+                        owner.address
+                      )}`}
+                      id={`landlord-address_${index}`}
+                      key={index}
+                      name="landlord-address-radio-group"
+                    />
+                  ))}
+                  <RadioButton
+                    labelText="Other"
+                    helperText="Enter landlord's contact information yourself"
+                    id={`landlord-address_other`}
+                    key={owners.length}
+                    name="landlord-address-radio-group"
+                  />
+                  {/* when other selected, show inputs to manually enter.
+                  can this use ...register() for same field as above controlled radios? */}
+                </FormGroup>
+              </>
             )}
-          />
-        </>
-      )}
-      {currentStep === 1 && (
-        <>
-          <GeoSearchInput
-            onChange={(addr) => {
-              setValue("bbl", addr.bbl);
-              setValue("houseNumber", addr.houseNumber);
-              setValue("streetName", addr.streetName);
-              setValue("borough", addr.borough);
-              setValue("zipcode", addr.zipcode);
-            }}
-            invalid={!!errors.houseNumber}
-            setInvalid={(val) => {
-              if (val) {
-                setError("houseNumber", {
-                  type: "custom",
-                  message: "Error with address selection",
-                });
-              }
-            }}
-          />
-        </>
-      )}
-      <div className="form-buttons">
+          </>
+        )}
+      </div>
+      <div className="letter-form__buttons">
         {currentStep > 0 && (
           <Button variant="tertiary" labelText="Back" onClick={prev} />
         )}
@@ -217,4 +282,26 @@ export const MultiStepForm: React.FC = () => {
       </div>
     </form>
   );
+};
+
+const getOwnerContacts = (
+  data?: LandlordData
+): LandlordContact[] | undefined => {
+  // TODO: review LOC methodology more closely
+  // https://github.com/JustFixNYC/tenants2/blob/master/loc/landlord_lookup.py
+  if (data === undefined) return;
+
+  const owners = data.allcontacts
+    .filter((contact) =>
+      ["HeadOfficer", "IndividualOwner", "JointOwner"].includes(contact.title)
+    )
+    // Sort by title in above order, just happens to be alpha order by default
+    .sort((a, b) => a.title.localeCompare(b.title));
+  return owners;
+};
+
+const formatLandlordAddress = (addr: LandlordContact["address"]): string => {
+  return `${addr.housenumber} ${addr.streetname}${
+    addr.apartment ? " " + addr.apartment : ""
+  }, ${addr.city}, ${addr.state} ${addr.zip}`;
 };

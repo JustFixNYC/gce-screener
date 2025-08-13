@@ -1,7 +1,12 @@
 import useSWR from "swr";
 import useSWRMutation, { TriggerWithArgs } from "swr/mutation";
-import { BuildingData, GCEPostData, GCEUser } from "../types/APIDataTypes";
-import { Tenants2ApiFetcher, WowApiFetcher } from "./helpers";
+import {
+  BuildingData,
+  GCEPostData,
+  GCEUser,
+  LandlordData,
+} from "../types/APIDataTypes";
+import { separateBbl, Tenants2ApiFetcher, WowApiFetcher } from "./helpers";
 
 type BuildingDataSWRResponse = {
   data: BuildingData | undefined;
@@ -51,5 +56,35 @@ export function useSendGceData(): Tenants2SWRResponse {
     trigger, // (arg, options) a function to trigger a remote mutation
     reset, // a function to reset the state (data, error, isMutating)
     isMutating, // if there's an ongoing remote mutation
+  };
+}
+
+type LandlordDataSWRResponse = {
+  data: LandlordData | undefined;
+  isLoading: boolean;
+  error: Error | undefined;
+};
+
+export function useGetLandlordData(
+  bbl: string | undefined
+): LandlordDataSWRResponse {
+  let url: string | null;
+  if (!bbl || bbl.length !== 10) {
+    url = null;
+  } else {
+    const { borough, block, lot } = separateBbl(bbl);
+    url = `/address/wowza?borough=${borough}&block=${block}&lot=${lot}`;
+  }
+  const { data, error, isLoading } = useSWR(url, WowApiFetcher, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  });
+  console.log({ apiData: data });
+  return {
+    // data: !data ? undefined : data?.addrs[0],
+    data: data?.addrs[0],
+    isLoading,
+    error: error,
   };
 }
