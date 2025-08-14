@@ -116,7 +116,7 @@ export const MultiStepForm: React.FC = () => {
     reset();
   };
 
-  console.log({ address: watch("address") });
+  console.log({ landlordAddress: watch("landlordAddress") });
 
   const next = async () => {
     const fields = steps[currentStep].fields;
@@ -153,7 +153,6 @@ export const MultiStepForm: React.FC = () => {
   } = useGetLandlordData(getValues("address.bbl"));
 
   const owners = getOwnerContacts(landlordData);
-  console.log({ step: currentStep, owner: owners });
 
   return (
     <form onSubmit={handleFormNoDefault(next)} className="letter-form">
@@ -230,42 +229,65 @@ export const MultiStepForm: React.FC = () => {
             />
           </>
         )}
-
         {currentStep === 2 && (
           <>
             {isLoading && <>Loading...</>}
             {error && <>Failed to lookup landlord information</>}
             {!isLoading && !error && owners && (
-              <>
-                <strong>Are any of these your landlord's information?</strong>
-                <FormGroup legendText="Are any of these your landlord's information?">
-                  {errors?.landlordAddress && (
-                    <span className="error">
-                      {errors?.landlordAddress?.message}
-                    </span>
-                  )}
-                  {owners.map((owner, index) => (
-                    // TODO: should update JFCL to allow label to be string or ReactNode
-                    // try changing to controlled component with value={JSON.stringifed LLaddr object}, checked={compared stringifed value with current selection)}, onchange={set value}
-                    <RadioButton
-                      labelText={`${owner.value}: ${formatLandlordAddress(
-                        owner.address
-                      )}`}
-                      id={`landlord-address_${index}`}
-                      key={index}
-                      name="landlord-address-radio-group"
-                    />
-                  ))}
-                  <RadioButton
-                    labelText="Other"
-                    helperText="Enter landlord's contact information yourself"
-                    id={`landlord-address_other`}
-                    key={owners.length}
-                    name="landlord-address-radio-group"
+              <FormGroup legendText="Are any of these your landlord's information?">
+                {errors?.landlordAddress && (
+                  <span className="error">
+                    {errors?.landlordAddress?.message}
+                  </span>
+                )}
+                {owners.map((owner, index) => (
+                  // TODO: should update JFCL to allow label to be string or ReactNode
+                  // try changing to controlled component with value={JSON.stringifed LLaddr object}, checked={compared stringifed value with current selection)}, onchange={set value}
+
+                  <Controller
+                    name="landlordAddress"
+                    control={control}
+                    render={({ field }) => (
+                      <RadioButton
+                        {...field}
+                        value={JSON.stringify(owner.address)}
+                        checked={
+                          JSON.stringify(field.value) ===
+                          JSON.stringify(owner.address)
+                        }
+                        onChange={() => field.onChange(owner.address)}
+                        labelText={`${owner.value}: ${formatLandlordAddress(
+                          owner.address
+                        )}`}
+                        id={`landlord-address_${index}`}
+                        key={index}
+                      />
+                    )}
                   />
-                  {/* when other selected, show inputs to manually enter.
-                  can this use ...register() for same field as above controlled radios? */}
-                </FormGroup>
+                ))}
+              </FormGroup>
+            )}
+            {!isLoading && !landlordData && (
+              // This probably won't make sense in practice, and the typing is
+              // hacky, better to just write out the inputs for each item i
+              // think, we'll probably need to handle some things differently
+              // (eg. dropdown for state?)
+              <>
+                {Object.keys(FormSchema.shape.landlordAddress.shape).map(
+                  (fieldName) => (
+                    <TextInput
+                      {...register(
+                        `landlordAddress.${fieldName}` as FieldPath<FormFields>
+                      )}
+                      id={`form-landlord-${fieldName}`}
+                      labelText={fieldName}
+                      // invalid={!!errors?.[`landlordAddress.${fieldName}` as FieldPath<FormFields>]}
+                      // invalidText={errors?.email?.message}
+                      invalidRole="status"
+                      type="email"
+                    />
+                  )
+                )}
               </>
             )}
           </>
