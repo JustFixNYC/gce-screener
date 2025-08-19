@@ -1,5 +1,6 @@
 import { Header } from "../../Header/Header";
 import { MultiStepForm } from "./MultiStepForm";
+import { GraphqlExample } from "./LocForm";
 // import { PhoneNumberForm } from "./PhoneNumberForm";
 // import { PhoneNumberFormControlled } from "./PhoneNumberFormControlled";
 
@@ -21,6 +22,7 @@ export const LetterSender: React.FC = () => {
           <PhoneNumberFormControlled />
           <hr style={{ width: "100%" }} /> */}
           <MultiStepForm />
+          <GraphqlExample />
         </div>
       </div>
     </div>
