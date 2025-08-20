@@ -2,11 +2,18 @@ import useSWR from "swr";
 import useSWRMutation, { TriggerWithArgs } from "swr/mutation";
 import {
   BuildingData,
+  GCELetter,
+  GCELetterPostData,
   GCEPostData,
   GCEUser,
   LandlordData,
 } from "../types/APIDataTypes";
-import { separateBbl, Tenants2ApiFetcher, WowApiFetcher } from "./helpers";
+import {
+  separateBbl,
+  Tenants2ApiFetcher,
+  Tenants2ApiFetcherLetter,
+  WowApiFetcher,
+} from "./helpers";
 
 type BuildingDataSWRResponse = {
   data: BuildingData | undefined;
@@ -46,6 +53,38 @@ export function useSendGceData(): Tenants2SWRResponse {
     Tenants2ApiFetcher,
     {
       populateCache: (result: GCEUser) => result,
+      revalidate: false,
+    }
+  );
+
+  return {
+    data, // data for the given key returned from fetcher
+    error, // error thrown by fetcher (or undefined)
+    trigger, // (arg, options) a function to trigger a remote mutation
+    reset, // a function to reset the state (data, error, isMutating)
+    isMutating, // if there's an ongoing remote mutation
+  };
+}
+
+type Tenants2LetterSWRResponse = {
+  data: GCELetter | undefined;
+  error: Error | undefined;
+  isMutating: boolean;
+  reset: () => void;
+  trigger: TriggerWithArgs<
+    GCELetter,
+    unknown,
+    "/gceletter/upload",
+    GCELetterPostData
+  >;
+};
+
+export function useSendGceLetterData(): Tenants2LetterSWRResponse {
+  const { data, error, trigger, reset, isMutating } = useSWRMutation(
+    "/gceletter/upload",
+    Tenants2ApiFetcherLetter,
+    {
+      populateCache: (result: GCELetter) => result,
       revalidate: false,
     }
   );

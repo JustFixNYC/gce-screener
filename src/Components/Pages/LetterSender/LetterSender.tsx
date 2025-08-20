@@ -5,8 +5,37 @@ import { GraphqlExample } from "./LocForm";
 // import { PhoneNumberFormControlled } from "./PhoneNumberFormControlled";
 
 import "./LetterSender.scss";
+import { useSendGceLetterData } from "../../../api/hooks";
+import { Button } from "@justfixnyc/component-library";
+import { GCELetter, GCELetterPostData } from "../../../types/APIDataTypes";
+import { useState } from "react";
 
 export const LetterSender: React.FC = () => {
+  const { trigger } = useSendGceLetterData();
+
+  const [letterResp, setLetterResp] = useState<GCELetter>();
+
+  const letterPostData: GCELetterPostData = {
+    first_name: "Maxwell",
+    last_name: "Austensen",
+    phone_number: "3475551234",
+    email: "maxwell@justfix.org",
+    bbl: "3000010001",
+    house_number: "123",
+    street_name: "Main St",
+    apt_no: "Apt 1",
+    borough: "BROOKLYN",
+    zipcode: "11209",
+    mail_choice: "WE_WILL_MAIL",
+    ll_full_name: "John Doe",
+    ll_email: "john@landlord.com",
+    ll_house_number: "100",
+    ll_street_name: "Fake St",
+    ll_apt_no: "Fl 10",
+    ll_borough: "MANHATTAN",
+    ll_zipcode: "10002",
+  };
+
   return (
     <div id="letter-sender-page">
       <Header
@@ -17,6 +46,17 @@ export const LetterSender: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
+          <h3>Test Tenants2 GCE Letter API</h3>
+          <pre>{JSON.stringify(letterPostData, null, 2)}</pre>
+          <Button
+            labelText="submit letter"
+            onClick={async () => {
+              const resp = await trigger(letterPostData);
+              setLetterResp(resp);
+            }}
+          />
+          <pre>{JSON.stringify(letterResp, null, 2)}</pre>
+
           {/* <PhoneNumberForm />
           <hr style={{ width: "100%" }} />
           <PhoneNumberFormControlled />

@@ -112,3 +112,29 @@ export type GCEPostData = {
   phone_number?: number;
   result_url?: string;
 };
+
+export type GCELetter = {
+  error: string | null;
+  data: unknown;
+};
+
+export type GCELetterPostData = {
+  first_name: string;
+  last_name: string;
+  phone_number: string;
+  email: string;
+  bbl: string;
+  house_number: string;
+  apt_no?: string;
+  street_name: string;
+  borough: string;
+  zipcode: string;
+  mail_choice: string;
+  ll_full_name: string;
+  ll_email: string;
+  ll_house_number: string;
+  ll_apt_no?: string;
+  ll_street_name: string;
+  ll_borough: string;
+  ll_zipcode: string;
+};
