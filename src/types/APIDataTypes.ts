@@ -116,6 +116,7 @@ export type GCEPostData = {
 export type GCELetter = {
   error: string | null;
   data: unknown;
+  pdf_content: string;
 };
 
 export type GCELetterPostData = {
@@ -137,4 +138,5 @@ export type GCELetterPostData = {
   ll_street_name: string;
   ll_borough: string;
   ll_zipcode: string;
+  html_content: string;
 };

@@ -1,6 +1,6 @@
 import { Header } from "../../Header/Header";
 import { MultiStepForm } from "./MultiStepForm";
-import { GraphqlExample } from "./LocForm";
+// import { GraphqlExample } from "./LocForm";
 // import { PhoneNumberForm } from "./PhoneNumberForm";
 // import { PhoneNumberFormControlled } from "./PhoneNumberFormControlled";
 
@@ -9,13 +9,16 @@ import { useSendGceLetterData } from "../../../api/hooks";
 import { Button } from "@justfixnyc/component-library";
 import { GCELetter, GCELetterPostData } from "../../../types/APIDataTypes";
 import { useState } from "react";
+import { base64ToBlob, buildLetterHtml } from "./LetterContent";
 
 export const LetterSender: React.FC = () => {
   const { trigger } = useSendGceLetterData();
 
   const [letterResp, setLetterResp] = useState<GCELetter>();
+  // const [pdfBlob, setPdfBlob] = useState<Blob>();
 
-  const letterPostData: GCELetterPostData = {
+  // const letterPostData: GCELetterPostData = {
+  const letterProps: Omit<GCELetterPostData, "html_content"> = {
     first_name: "Maxwell",
     last_name: "Austensen",
     phone_number: "3475551234",
@@ -35,6 +38,9 @@ export const LetterSender: React.FC = () => {
     ll_borough: "MANHATTAN",
     ll_zipcode: "10002",
   };
+  const letterPreview = buildLetterHtml(letterProps, false);
+  const letterHtml = buildLetterHtml(letterProps, true);
+  const letterPostData = { ...letterProps, html_content: letterHtml };
 
   return (
     <div id="letter-sender-page">
@@ -47,22 +53,34 @@ export const LetterSender: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           <h3>Test Tenants2 GCE Letter API</h3>
-          <pre>{JSON.stringify(letterPostData, null, 2)}</pre>
+          Letter Data
+          <pre>{JSON.stringify(letterProps, null, 2)}</pre>
+          <br />
+          Letter Preview
+          <iframe
+            title="letter preview"
+            srcDoc={letterPreview}
+            width="600"
+            height="600"
+          />
           <Button
             labelText="submit letter"
             onClick={async () => {
               const resp = await trigger(letterPostData);
               setLetterResp(resp);
+              // setPdfBlob(base64ToBlob(resp.pdf_content, 'application/pdf'))
+              const pdfBlob = base64ToBlob(resp.pdf_content, "application/pdf");
+              const fileURL = URL.createObjectURL(pdfBlob);
+              window.open(fileURL);
             }}
           />
           <pre>{JSON.stringify(letterResp, null, 2)}</pre>
-
           {/* <PhoneNumberForm />
           <hr style={{ width: "100%" }} />
           <PhoneNumberFormControlled />
           <hr style={{ width: "100%" }} /> */}
           <MultiStepForm />
-          <GraphqlExample />
+          {/* <GraphqlExample /> */}
         </div>
       </div>
     </div>
