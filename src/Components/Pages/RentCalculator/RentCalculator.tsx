@@ -7,11 +7,14 @@ import {
   GoodCauseProtections,
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
-import { formatMoney } from "../../../helpers";
+import { formatMoney, getCookie, setCookie } from "../../../helpers";
 import { Button, TextInput } from "@justfixnyc/component-library";
 import { useState } from "react";
 import { gtmPush } from "../../../google-tag-manager";
-import { PhoneNumberCallout } from "../../PhoneNumberCallout/PhoneNumberCallout";
+import {
+  PhoneNumberCallout,
+  PhoneNumberModal,
+} from "../../PhoneNumberCallout/PhoneNumberCallout";
 
 // This needs to be updated each year when DHCR publishes the new number
 export const CPI = 3.79;
@@ -35,10 +38,25 @@ export const RentCalculator: React.FC = () => {
     setRentInput(value);
   };
 
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [hasShownPhoneModal, setHasShownPhoneModal] = useState(false);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setShowRentInput(true);
     gtmPush("gce_rent_calculator_submit");
+
+    if (!hasShownPhoneModal && !getCookie("phone_modal_shown")) {
+      setTimeout(() => {
+        setShowPhoneModal(true);
+        setHasShownPhoneModal(true);
+      }, 3000);
+    }
+  };
+
+  const handlePhoneModalClose = () => {
+    setShowPhoneModal(false);
+    setCookie("phone_modal_shown", "1");
   };
 
   return (
@@ -49,6 +67,13 @@ export const RentCalculator: React.FC = () => {
         subtitle="If you are covered by Good Cause legislation, you have a right to limited rent
             increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
       ></Header>
+      <PhoneNumberModal
+        gtmId="rent-calculator-page-modal"
+        modalIsOpen={showPhoneModal}
+        modalOnClose={handlePhoneModalClose}
+        headerText="Save your allowable rent increase to your phone"
+        bodyText="Get a text of this information."
+      />
       <div className="content-section">
         <div className="content-section__content">
           <div className="rent-calculator-callout-box">
