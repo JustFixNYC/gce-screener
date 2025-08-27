@@ -15,9 +15,7 @@ export const LetterSender: React.FC = () => {
   const { trigger } = useSendGceLetterData();
 
   const [letterResp, setLetterResp] = useState<GCELetter>();
-  // const [pdfBlob, setPdfBlob] = useState<Blob>();
 
-  // const letterPostData: GCELetterPostData = {
   const letterProps: Omit<GCELetterPostData, "html_content"> = {
     user_details: {
       first_name: "Maxwell",
@@ -74,7 +72,6 @@ export const LetterSender: React.FC = () => {
             onClick={async () => {
               const resp = await trigger(letterPostData);
               setLetterResp(resp);
-              // setPdfBlob(base64ToBlob(resp.pdf_content, 'application/pdf'))
               const pdfBlob = base64ToBlob(resp.pdf_content, "application/pdf");
               const fileURL = URL.createObjectURL(pdfBlob);
               window.open(fileURL);

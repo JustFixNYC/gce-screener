@@ -98,7 +98,7 @@ export function useSendGceLetterData(): Tenants2LetterSWRResponse {
   };
 }
 
-type LandlordDataSWRResponse = {
+export type LandlordDataSWRResponse = {
   data: LandlordData | undefined;
   isLoading: boolean;
   error: Error | undefined;

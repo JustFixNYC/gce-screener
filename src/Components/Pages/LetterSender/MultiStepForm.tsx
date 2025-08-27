@@ -4,6 +4,7 @@ import {
   Resolver,
   SubmitHandler,
   useForm,
+  UseFormReturn,
 } from "react-hook-form";
 import z from "zod";
 import {
@@ -21,7 +22,10 @@ import {
 } from "../../../form-utils";
 import { ProgressBar } from "./ProgressBar";
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
-import { useGetLandlordData } from "../../../api/hooks";
+import {
+  LandlordDataSWRResponse,
+  useGetLandlordData,
+} from "../../../api/hooks";
 import { LandlordContact, LandlordData } from "../../../types/APIDataTypes";
 
 const FormSchema = z.object({
@@ -103,13 +107,17 @@ export const MultiStepForm: React.FC = () => {
     setValue,
     setError,
     getValues,
-    formState: { errors },
+    formState,
   } = useForm<FormFields>({
     // Issue with the inferred type being "unknown" when preprocess() is used to
     // handle values that should be changed to undefined
     resolver: zodResolver(FormSchema) as Resolver<FormFields>,
     mode: "onSubmit",
   });
+
+  const landlordDataResp = useGetLandlordData(getValues("address.bbl"));
+
+  const owners = getOwnerContacts(landlordDataResp.data);
 
   const processForm: SubmitHandler<FormFields> = (data: FormFields) => {
     console.log({ data });
@@ -146,14 +154,6 @@ export const MultiStepForm: React.FC = () => {
     }
   };
 
-  const {
-    data: landlordData,
-    isLoading,
-    error,
-  } = useGetLandlordData(getValues("address.bbl"));
-
-  const owners = getOwnerContacts(landlordData);
-
   return (
     <form onSubmit={handleFormNoDefault(next)} className="letter-form">
       <h3>
@@ -163,134 +163,27 @@ export const MultiStepForm: React.FC = () => {
       <ProgressBar steps={steps} currentStep={currentStep} />
       <div className="letter-form__content">
         {currentStep === 0 && (
-          <>
-            <TextInput
-              {...register("firstName")}
-              id="form-firstName"
-              labelText="First name"
-              invalid={!!errors?.firstName}
-              invalidText={errors?.firstName?.message}
-              invalidRole="status"
-              type="text"
-            />
-            <TextInput
-              {...register("lastName")}
-              id="form-lastName"
-              labelText="Last name"
-              invalid={!!errors?.lastName}
-              invalidText={errors?.lastName?.message}
-              invalidRole="status"
-              type="text"
-            />
-            <TextInput
-              {...register("email")}
-              id="form-email"
-              labelText="Email"
-              invalid={!!errors?.email}
-              invalidText={errors?.email?.message}
-              invalidRole="status"
-              type="email"
-            />
-            <Controller
-              name="phone"
-              control={control}
-              render={({ field }) => (
-                <TextInput
-                  {...field}
-                  value={formatPhoneNumber(field.value)}
-                  onChange={(e) =>
-                    field.onChange(parseFormattedPhoneNumber(e.target.value))
-                  }
-                  id="form-phone"
-                  labelText="Phone"
-                  invalid={!!errors?.phone}
-                  invalidText={errors?.phone?.message}
-                  invalidRole="status"
-                  type="tel"
-                />
-              )}
-            />
-          </>
+          <UserDetailsStep
+            register={register}
+            control={control}
+            formState={formState}
+          />
         )}
         {currentStep === 1 && (
-          <>
-            <GeoSearchInput
-              // extra keys (eg. longLat) are ignored
-              onChange={(addr) => setValue("address", addr)}
-              invalid={!!errors.address}
-              setInvalid={(isError) => {
-                if (isError) {
-                  setError("address", {
-                    type: "custom",
-                    message: "Error with address selection",
-                  });
-                }
-              }}
-            />
-          </>
+          <UserAddressStep
+            setValue={setValue}
+            setError={setError}
+            formState={formState}
+          />
         )}
         {currentStep === 2 && (
-          <>
-            {isLoading && <>Loading...</>}
-            {error && <>Failed to lookup landlord information</>}
-            {!isLoading && !error && owners && (
-              <FormGroup legendText="Are any of these your landlord's information?">
-                {errors?.landlordAddress && (
-                  <span className="error">
-                    {errors?.landlordAddress?.message}
-                  </span>
-                )}
-                {owners.map((owner, index) => (
-                  // TODO: should update JFCL to allow label to be string or ReactNode
-                  // try changing to controlled component with value={JSON.stringifed LLaddr object}, checked={compared stringifed value with current selection)}, onchange={set value}
-
-                  <Controller
-                    name="landlordAddress"
-                    control={control}
-                    render={({ field }) => (
-                      <RadioButton
-                        {...field}
-                        value={JSON.stringify(owner.address)}
-                        checked={
-                          JSON.stringify(field.value) ===
-                          JSON.stringify(owner.address)
-                        }
-                        onChange={() => field.onChange(owner.address)}
-                        labelText={`${owner.value}: ${formatLandlordAddress(
-                          owner.address
-                        )}`}
-                        id={`landlord-address_${index}`}
-                        key={index}
-                      />
-                    )}
-                  />
-                ))}
-              </FormGroup>
-            )}
-            {!isLoading && !landlordData && (
-              // This probably won't make sense in practice, and the typing is
-              // hacky, better to just write out the inputs for each item i
-              // think, we'll probably need to handle some things differently
-              // (eg. dropdown for state?)
-              <>
-                {Object.keys(FormSchema.shape.landlordAddress.shape).map(
-                  (fieldName) => (
-                    <TextInput
-                      {...register(
-                        `landlordAddress.${fieldName}` as FieldPath<FormFields>
-                      )}
-                      id={`form-landlord-${fieldName}`}
-                      labelText={fieldName}
-                      // invalid={!!errors?.[`landlordAddress.${fieldName}` as FieldPath<FormFields>]}
-                      // invalidText={errors?.email?.message}
-                      invalidRole="status"
-                      type="email"
-                    />
-                  )
-                )}
-              </>
-            )}
-          </>
+          <LandlordDetailsStep
+            register={register}
+            control={control}
+            formState={formState}
+            landlordDataResp={landlordDataResp}
+            owners={owners}
+          />
         )}
       </div>
       <div className="letter-form__buttons">
@@ -326,4 +219,175 @@ const formatLandlordAddress = (addr: LandlordContact["address"]): string => {
   return `${addr.housenumber} ${addr.streetname}${
     addr.apartment ? " " + addr.apartment : ""
   }, ${addr.city}, ${addr.state} ${addr.zip}`;
+};
+
+type FormProps = UseFormReturn<FormFields>;
+
+type UserAddressStepProps = Pick<
+  FormProps,
+  "setValue" | "setError" | "formState"
+>;
+
+const UserAddressStep: React.FC<UserAddressStepProps> = (props) => {
+  const {
+    setValue,
+    setError,
+    formState: { errors },
+  } = props;
+  return (
+    <GeoSearchInput
+      // extra keys (eg. longLat) are ignored
+      onChange={(addr) => setValue("address", addr)}
+      invalid={!!errors.address}
+      setInvalid={(isError) => {
+        if (isError) {
+          setError("address", {
+            type: "custom",
+            message: "Error with address selection",
+          });
+        }
+      }}
+    />
+  );
+};
+
+type LandlordDetailsStepProps = Pick<
+  FormProps,
+  "register" | "formState" | "control"
+> & {
+  landlordDataResp: LandlordDataSWRResponse;
+  owners?: LandlordContact[];
+};
+
+const LandlordDetailsStep: React.FC<LandlordDetailsStepProps> = (props) => {
+  const {
+    register,
+    control,
+    formState: { errors },
+    landlordDataResp,
+    owners,
+  } = props;
+  const { data: landlordData, isLoading, error } = landlordDataResp;
+  return (
+    <>
+      {isLoading && <>Loading...</>}
+      {error && <>Failed to lookup landlord information</>}
+      {!isLoading && !error && owners && (
+        <FormGroup legendText="Are any of these your landlord's information?">
+          {errors?.landlordAddress && (
+            <span className="error">{errors?.landlordAddress?.message}</span>
+          )}
+          {owners.map((owner, index) => (
+            // TODO: should update JFCL to allow label to be string or ReactNode
+
+            <Controller
+              name="landlordAddress"
+              control={control}
+              render={({ field }) => (
+                <RadioButton
+                  {...field}
+                  value={JSON.stringify(owner.address)}
+                  checked={
+                    JSON.stringify(field.value) ===
+                    JSON.stringify(owner.address)
+                  }
+                  onChange={() => field.onChange(owner.address)}
+                  labelText={`${owner.value}: ${formatLandlordAddress(
+                    owner.address
+                  )}`}
+                  id={`landlord-address_${index}`}
+                  key={index}
+                />
+              )}
+            />
+          ))}
+        </FormGroup>
+      )}
+      {!isLoading && !landlordData && (
+        // This probably won't make sense in practice, and the typing is
+        // hacky, better to just write out the inputs for each item i
+        // think, we'll probably need to handle some things differently
+        // (eg. dropdown for state?)
+        <>
+          {Object.keys(FormSchema.shape.landlordAddress.shape).map(
+            (fieldName) => (
+              <TextInput
+                {...register(
+                  `landlordAddress.${fieldName}` as FieldPath<FormFields>
+                )}
+                id={`form-landlord-${fieldName}`}
+                labelText={fieldName}
+                // invalid={!!errors?.[`landlordAddress.${fieldName}` as FieldPath<FormFields>]}
+                // invalidText={errors?.email?.message}
+                invalidRole="status"
+                type="email"
+              />
+            )
+          )}
+        </>
+      )}
+    </>
+  );
+};
+type UserDetailsStepProps = Pick<
+  FormProps,
+  "register" | "formState" | "control"
+>;
+
+const UserDetailsStep: React.FC<UserDetailsStepProps> = (props) => {
+  const {
+    register,
+    control,
+    formState: { errors },
+  } = props;
+  return (
+    <>
+      <TextInput
+        {...register("firstName")}
+        id="form-firstName"
+        labelText="First name"
+        invalid={!!errors?.firstName}
+        invalidText={errors?.firstName?.message}
+        invalidRole="status"
+        type="text"
+      />
+      <TextInput
+        {...register("lastName")}
+        id="form-lastName"
+        labelText="Last name"
+        invalid={!!errors?.lastName}
+        invalidText={errors?.lastName?.message}
+        invalidRole="status"
+        type="text"
+      />
+      <TextInput
+        {...register("email")}
+        id="form-email"
+        labelText="Email"
+        invalid={!!errors?.email}
+        invalidText={errors?.email?.message}
+        invalidRole="status"
+        type="email"
+      />
+      <Controller
+        name="phone"
+        control={control}
+        render={({ field }) => (
+          <TextInput
+            {...field}
+            value={formatPhoneNumber(field.value)}
+            onChange={(e) =>
+              field.onChange(parseFormattedPhoneNumber(e.target.value))
+            }
+            id="form-phone"
+            labelText="Phone"
+            invalid={!!errors?.phone}
+            invalidText={errors?.phone?.message}
+            invalidRole="status"
+            type="tel"
+          />
+        )}
+      />
+    </>
+  );
 };
