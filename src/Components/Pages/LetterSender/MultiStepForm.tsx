@@ -22,10 +22,7 @@ import {
 } from "../../../form-utils";
 import { ProgressBar } from "./ProgressBar";
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
-import {
-  LandlordDataSWRResponse,
-  useGetLandlordData,
-} from "../../../api/hooks";
+import { useGetLandlordData } from "../../../api/hooks";
 import { LandlordContact, LandlordData } from "../../../types/APIDataTypes";
 
 const FormSchema = z.object({
@@ -57,7 +54,7 @@ const FormSchema = z.object({
     zipcode: z.string().length(5).optional(),
     bbl: z.string().regex(/^\d{10}$/),
   }),
-  landlordAddress: z.object({
+  landlordDetails: z.object({
     houseNumber: z.string(),
     streetName: z.string(),
     city: z.string(),
@@ -89,42 +86,28 @@ const steps: Step[] = [
   {
     id: "Step 3",
     name: "Landlord details",
-    fields: ["landlordAddress"],
+    fields: ["landlordDetails"],
   },
   { id: "Step 4", name: "Complete" },
 ];
 
 export const MultiStepForm: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-
-  const {
-    control,
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    trigger,
-    setValue,
-    setError,
-    getValues,
-    formState,
-  } = useForm<FormFields>({
+  const formHookReturn = useForm<FormFields>({
     // Issue with the inferred type being "unknown" when preprocess() is used to
     // handle values that should be changed to undefined
     resolver: zodResolver(FormSchema) as Resolver<FormFields>,
     mode: "onSubmit",
   });
+  const { reset, watch, trigger, handleSubmit } = formHookReturn;
 
-  const landlordDataResp = useGetLandlordData(getValues("address.bbl"));
-
-  const owners = getOwnerContacts(landlordDataResp.data);
+  const [currentStep, setCurrentStep] = useState(0);
 
   const processForm: SubmitHandler<FormFields> = (data: FormFields) => {
     console.log({ data });
     reset();
   };
 
-  console.log({ landlordAddress: watch("landlordAddress") });
+  console.log({ landlordDetails: watch("landlordDetails") });
 
   const next = async () => {
     const fields = steps[currentStep].fields;
@@ -162,29 +145,9 @@ export const MultiStepForm: React.FC = () => {
       <p>Multi step state management, customized errors</p>
       <ProgressBar steps={steps} currentStep={currentStep} />
       <div className="letter-form__content">
-        {currentStep === 0 && (
-          <UserDetailsStep
-            register={register}
-            control={control}
-            formState={formState}
-          />
-        )}
-        {currentStep === 1 && (
-          <UserAddressStep
-            setValue={setValue}
-            setError={setError}
-            formState={formState}
-          />
-        )}
-        {currentStep === 2 && (
-          <LandlordDetailsStep
-            register={register}
-            control={control}
-            formState={formState}
-            landlordDataResp={landlordDataResp}
-            owners={owners}
-          />
-        )}
+        {currentStep === 0 && <UserDetailsStep {...formHookReturn} />}
+        {currentStep === 1 && <UserAddressStep {...formHookReturn} />}
+        {currentStep === 2 && <LandlordDetailsStep {...formHookReturn} />}
       </div>
       <div className="letter-form__buttons">
         {currentStep > 0 && (
@@ -221,14 +184,9 @@ const formatLandlordAddress = (addr: LandlordContact["address"]): string => {
   }, ${addr.city}, ${addr.state} ${addr.zip}`;
 };
 
-type FormProps = UseFormReturn<FormFields>;
+type FormHookProps = UseFormReturn<FormFields>;
 
-type UserAddressStepProps = Pick<
-  FormProps,
-  "setValue" | "setError" | "formState"
->;
-
-const UserAddressStep: React.FC<UserAddressStepProps> = (props) => {
+const UserAddressStep: React.FC<FormHookProps> = (props) => {
   const {
     setValue,
     setError,
@@ -251,37 +209,36 @@ const UserAddressStep: React.FC<UserAddressStepProps> = (props) => {
   );
 };
 
-type LandlordDetailsStepProps = Pick<
-  FormProps,
-  "register" | "formState" | "control"
-> & {
-  landlordDataResp: LandlordDataSWRResponse;
-  owners?: LandlordContact[];
-};
-
-const LandlordDetailsStep: React.FC<LandlordDetailsStepProps> = (props) => {
+const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
   const {
     register,
     control,
     formState: { errors },
-    landlordDataResp,
-    owners,
+    getValues,
   } = props;
-  const { data: landlordData, isLoading, error } = landlordDataResp;
+
+  const {
+    data: landlordData,
+    isLoading,
+    error,
+  } = useGetLandlordData(getValues("address.bbl"));
+
+  const owners = getOwnerContacts(landlordData);
+
   return (
     <>
       {isLoading && <>Loading...</>}
       {error && <>Failed to lookup landlord information</>}
       {!isLoading && !error && owners && (
         <FormGroup legendText="Are any of these your landlord's information?">
-          {errors?.landlordAddress && (
-            <span className="error">{errors?.landlordAddress?.message}</span>
+          {errors?.landlordDetails && (
+            <span className="error">{errors?.landlordDetails?.message}</span>
           )}
           {owners.map((owner, index) => (
             // TODO: should update JFCL to allow label to be string or ReactNode
 
             <Controller
-              name="landlordAddress"
+              name="landlordDetails"
               control={control}
               render={({ field }) => (
                 <RadioButton
@@ -309,15 +266,15 @@ const LandlordDetailsStep: React.FC<LandlordDetailsStepProps> = (props) => {
         // think, we'll probably need to handle some things differently
         // (eg. dropdown for state?)
         <>
-          {Object.keys(FormSchema.shape.landlordAddress.shape).map(
+          {Object.keys(FormSchema.shape.landlordDetails.shape).map(
             (fieldName) => (
               <TextInput
                 {...register(
-                  `landlordAddress.${fieldName}` as FieldPath<FormFields>
+                  `landlordDetails.${fieldName}` as FieldPath<FormFields>
                 )}
                 id={`form-landlord-${fieldName}`}
                 labelText={fieldName}
-                // invalid={!!errors?.[`landlordAddress.${fieldName}` as FieldPath<FormFields>]}
+                // invalid={!!errors?.[`landlordDetails.${fieldName}` as FieldPath<FormFields>]}
                 // invalidText={errors?.email?.message}
                 invalidRole="status"
                 type="email"
@@ -329,12 +286,8 @@ const LandlordDetailsStep: React.FC<LandlordDetailsStepProps> = (props) => {
     </>
   );
 };
-type UserDetailsStepProps = Pick<
-  FormProps,
-  "register" | "formState" | "control"
->;
 
-const UserDetailsStep: React.FC<UserDetailsStepProps> = (props) => {
+const UserDetailsStep: React.FC<FormHookProps> = (props) => {
   const {
     register,
     control,
