@@ -19,24 +19,29 @@ export const LetterSender: React.FC = () => {
 
   // const letterPostData: GCELetterPostData = {
   const letterProps: Omit<GCELetterPostData, "html_content"> = {
-    first_name: "Maxwell",
-    last_name: "Austensen",
-    phone_number: "3475551234",
-    email: "maxwell@justfix.org",
-    bbl: "3000010001",
-    house_number: "123",
-    street_name: "Main St",
-    apt_no: "Apt 1",
-    borough: "BROOKLYN",
-    zipcode: "11209",
+    user_details: {
+      first_name: "Maxwell",
+      last_name: "Austensen",
+      phone_number: "3475551234",
+      email: "maxwell@justfix.org",
+      bbl: "3000010001",
+      primary_line: "deliverable",
+      secondary_line: "Apt 1",
+      city: "BROOKLYN",
+      state: "NY",
+      zip_code: "11111",
+    },
+    landlord_details: {
+      name: "Maxwell Austensen",
+      email: "maxwell@justfix.org",
+      primary_line: "deliverable",
+      secondary_line: "Apt 1",
+      city: "BROOKLYN",
+      state: "NY",
+      zip_code: "11111",
+    },
     mail_choice: "WE_WILL_MAIL",
-    ll_full_name: "John Doe",
-    ll_email: "john@landlord.com",
-    ll_house_number: "100",
-    ll_street_name: "Fake St",
-    ll_apt_no: "Fl 10",
-    ll_borough: "MANHATTAN",
-    ll_zipcode: "10002",
+    email_to_landlord: true,
   };
   const letterPreview = buildLetterHtml(letterProps, false);
   const letterHtml = buildLetterHtml(letterProps, true);
@@ -52,6 +57,7 @@ export const LetterSender: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
+          <MultiStepForm />
           <h3>Test Tenants2 GCE Letter API</h3>
           Letter Data
           <pre>{JSON.stringify(letterProps, null, 2)}</pre>
@@ -79,7 +85,6 @@ export const LetterSender: React.FC = () => {
           <hr style={{ width: "100%" }} />
           <PhoneNumberFormControlled />
           <hr style={{ width: "100%" }} /> */}
-          <MultiStepForm />
           {/* <GraphqlExample /> */}
         </div>
       </div>

@@ -119,24 +119,32 @@ export type GCELetter = {
   pdf_content: string;
 };
 
-export type GCELetterPostData = {
+export type GCEUserDetails = {
   first_name: string;
   last_name: string;
   phone_number: string;
   email: string;
   bbl: string;
-  house_number: string;
-  apt_no?: string;
-  street_name: string;
-  borough: string;
-  zipcode: string;
+  primary_line: string;
+  secondary_line?: string;
+  city: string;
+  state: string;
+  zip_code: string;
+};
+
+export type GCELandlordDetails = {
+  name: string;
+  email: string;
+  primary_line: string;
+  secondary_line?: string;
+  city: string;
+  state: string;
+  zip_code: string;
+};
+export type GCELetterPostData = {
+  user_details: GCEUserDetails;
+  landlord_details: GCELandlordDetails;
   mail_choice: string;
-  ll_full_name: string;
-  ll_email: string;
-  ll_house_number: string;
-  ll_apt_no?: string;
-  ll_street_name: string;
-  ll_borough: string;
-  ll_zipcode: string;
+  email_to_landlord: boolean;
   html_content: string;
 };

@@ -7,6 +7,7 @@ export const buildLetterHtml = (
   letterData: Omit<GCELetterPostData, "html_content">,
   isPdf: boolean
 ): string => {
+  const { user_details: user, landlord_details: landlord } = letterData;
   const cssPdf = pdfStyles.replace(/\s+/g, "");
   return renderToStaticMarkup(
     <html lang="en">
@@ -25,16 +26,28 @@ export const buildLetterHtml = (
           <section>
             From:
             <br />
-            {letterData.first_name} {letterData.last_name}
+            {user.first_name} {user.last_name}
             <br />
-            {letterData.house_number} {letterData.street_name}
+            {user.primary_line}
+            {!!user.secondary_line && (
+              <>
+                <br />
+                {user.secondary_line}
+              </>
+            )}
             <br />
             <br />
             To:
             <br />
-            {letterData.ll_full_name}
+            {landlord.name}
             <br />
-            {letterData.ll_house_number} {letterData.ll_street_name}
+            {landlord.primary_line}
+            {!!landlord.secondary_line && (
+              <>
+                <br />
+                {landlord.secondary_line}
+              </>
+            )}
           </section>
           <br />
           <br />
