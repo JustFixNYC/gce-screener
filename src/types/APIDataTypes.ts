@@ -148,3 +148,65 @@ export type GCELetterPostData = {
   email_to_landlord: boolean;
   html_content: string;
 };
+
+export type LOBVerificationResponse = {
+  id: string;
+  recipient: string;
+  primary_line: string;
+  secondary_line: string;
+  urbanization: string;
+  last_line: string;
+  deliverability: string;
+  valid_address: boolean;
+  components: {
+    primary_number: string;
+    street_predirection: string;
+    street_name: string;
+    street_suffix: string;
+    street_postdirection: string;
+    secondary_designator: string;
+    secondary_number: string;
+    pmb_designator: string;
+    pmb_number: string;
+    extra_secondary_designator: string;
+    extra_secondary_number: string;
+    city: string;
+    state: string;
+    zip_code: string;
+    zip_code_plus_4: string;
+    zip_code_type: string;
+    delivery_point_barcode: string;
+    address_type: string;
+    record_type: string;
+    default_building_address: boolean;
+    county: string;
+    county_fips: string;
+    carrier_route: string;
+    carrier_route_type: string;
+    po_box_only_flag: string;
+    latitude: number;
+    longitude: number;
+  };
+  deliverability_analysis: {
+    dpv_confirmation: string;
+    dpv_cmra: string;
+    dpv_vacant: string;
+    dpv_active: string;
+    dpv_inactive_reason: string;
+    dpv_throwback: string;
+    dpv_non_delivery_day_flag: string;
+    dpv_non_delivery_day_values: string;
+    dpv_no_secure_location: string;
+    dpv_door_not_accessible: string;
+    dpv_footnotes: string[];
+    ews_match: boolean;
+    lacs_indicator: string;
+    lacs_return_code: string;
+    suite_return_code: string;
+  };
+  lob_confidence_score: {
+    score: number;
+    level: string;
+  };
+  object: string;
+};

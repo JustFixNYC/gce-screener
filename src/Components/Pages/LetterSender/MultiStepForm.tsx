@@ -24,6 +24,7 @@ import { ProgressBar } from "./ProgressBar";
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import { useGetLandlordData } from "../../../api/hooks";
 import { LandlordContact, LandlordData } from "../../../types/APIDataTypes";
+import { Tenants2ApiFetcherVerifyAddress } from "../../../api/helpers";
 
 const FormSchema = z.object({
   firstName: z.string().min(1, "Name is required for the letter"),
@@ -51,15 +52,27 @@ const FormSchema = z.object({
     houseNumber: z.string(),
     streetName: z.string(),
     borough: z.string(),
-    zipcode: z.string().length(5).optional(),
+    zip_code: z
+      .string()
+      .regex(
+        /^\d{5}((-)?\d{4})?$/,
+        "ZIP Code must be of format 12345 or 12345-1234"
+      )
+      .optional(),
     bbl: z.string().regex(/^\d{10}$/),
   }),
   landlordDetails: z.object({
-    houseNumber: z.string(),
-    streetName: z.string(),
+    primary_line: z.string(),
+    secondary_line: z.string(),
     city: z.string(),
     state: z.string(),
-    zipcode: z.string().length(5),
+    zip_code: z
+      .string()
+      .regex(
+        /^\d{5}((-)?\d{4})?$/,
+        "ZIP Code must be of format 12345 or 12345-1234"
+      ),
+    urbanization: z.string().optional(),
   }),
   // TODO: add fieldArray of issues (see https://react-hook-form.com/docs/usefieldarray)
 });
@@ -98,7 +111,7 @@ export const MultiStepForm: React.FC = () => {
     resolver: zodResolver(FormSchema) as Resolver<FormFields>,
     mode: "onSubmit",
   });
-  const { reset, watch, trigger, handleSubmit } = formHookReturn;
+  const { reset, watch, trigger, handleSubmit, setError } = formHookReturn;
 
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -107,11 +120,33 @@ export const MultiStepForm: React.FC = () => {
     reset();
   };
 
+  const verifyAddress: SubmitHandler<FormFields> = async (data: FormFields) => {
+    try {
+      const verification = await Tenants2ApiFetcherVerifyAddress(
+        "/gceletter/verify_address",
+        { arg: data.landlordDetails }
+      );
+      const isUndeliverable =
+        verification.deliverability !== "deliverable" &&
+        !verification.valid_address;
+      if (isUndeliverable) {
+        setError("landlordDetails", {
+          type: "lob_verification",
+          message: "Landlord address as entered is not deliverable by USPS",
+        });
+      }
+    } catch (error) {
+      // Handle network or other errors
+      console.error("Unable to check address deliverability: ", error);
+    }
+  };
+
   console.log({ landlordDetails: watch("landlordDetails") });
 
   const next = async () => {
     const fields = steps[currentStep].fields;
 
+    // TODO: clean up logic to handle final confirmation step with no fields
     if (!fields) {
       setCurrentStep((step) => step + 1);
       return;
@@ -122,6 +157,13 @@ export const MultiStepForm: React.FC = () => {
     const output = await trigger(fields, { shouldFocus: true });
 
     if (!output) return;
+
+    if (fields.includes("landlordDetails")) {
+      // TODO: need to change how steps work when the landlord details step can
+      // have two sub-steps (lookup address then manual enter)
+      await handleSubmit(verifyAddress)();
+      // return;
+    }
 
     if (currentStep < steps.length - 1) {
       if (currentStep === steps.length - 2) {
@@ -184,6 +226,26 @@ const formatLandlordAddress = (addr: LandlordContact["address"]): string => {
   }, ${addr.city}, ${addr.state} ${addr.zip}`;
 };
 
+const landlordContactLOBAddress = (
+  addr: LandlordContact["address"]
+): FormFields["landlordDetails"] => {
+  return {
+    primary_line: `${addr.housenumber} ${addr.streetname}`,
+    secondary_line: addr.apartment,
+    city: addr.city,
+    state: addr.state,
+    zip_code: addr.zip,
+  };
+};
+
+const defaultLandlordDetails = {
+  primary_line: "",
+  secondary_line: undefined,
+  city: "",
+  state: "",
+  zip_code: "",
+};
+
 type FormHookProps = UseFormReturn<FormFields>;
 
 const UserAddressStep: React.FC<FormHookProps> = (props) => {
@@ -217,6 +279,8 @@ const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
     getValues,
   } = props;
 
+  const [lookupComplete, setLookupComplete] = useState(false);
+
   const {
     data: landlordData,
     isLoading,
@@ -225,63 +289,141 @@ const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
 
   const owners = getOwnerContacts(landlordData);
 
+  const showLookup = !isLoading && !error && owners && !lookupComplete;
+  const showManual = !isLoading && (!landlordData || lookupComplete);
+
   return (
     <>
       {isLoading && <>Loading...</>}
       {error && <>Failed to lookup landlord information</>}
-      {!isLoading && !error && owners && (
-        <FormGroup legendText="Are any of these your landlord's information?">
-          {errors?.landlordDetails && (
-            <span className="error">{errors?.landlordDetails?.message}</span>
-          )}
-          {owners.map((owner, index) => (
-            // TODO: should update JFCL to allow label to be string or ReactNode
+      {showLookup && (
+        <>
+          <FormGroup
+            legendText="Are any of these your landlord's information?"
+            key="lookup-suggestions"
+          >
+            {errors?.landlordDetails && (
+              <span className="error">{errors?.landlordDetails?.message}</span>
+            )}
+            {owners.map((owner, index) => (
+              // TODO: should update JFCL to allow label to be string or ReactNode
 
+              <Controller
+                name="landlordDetails"
+                control={control}
+                render={({ field }) => (
+                  <RadioButton
+                    {...field}
+                    value={JSON.stringify(
+                      landlordContactLOBAddress(owner.address)
+                    )}
+                    checked={
+                      JSON.stringify(field.value) ===
+                      JSON.stringify(landlordContactLOBAddress(owner.address))
+                    }
+                    onChange={() =>
+                      field.onChange(landlordContactLOBAddress(owner.address))
+                    }
+                    labelText={`${owner.value}: ${formatLandlordAddress(
+                      owner.address
+                    )}`}
+                    id={`landlord-address_${index}`}
+                    key={index}
+                  />
+                )}
+              />
+            ))}
             <Controller
               name="landlordDetails"
               control={control}
               render={({ field }) => (
                 <RadioButton
                   {...field}
-                  value={JSON.stringify(owner.address)}
+                  value={JSON.stringify(defaultLandlordDetails)}
                   checked={
                     JSON.stringify(field.value) ===
-                    JSON.stringify(owner.address)
+                    JSON.stringify(defaultLandlordDetails)
                   }
-                  onChange={() => field.onChange(owner.address)}
-                  labelText={`${owner.value}: ${formatLandlordAddress(
-                    owner.address
-                  )}`}
-                  id={`landlord-address_${index}`}
-                  key={index}
+                  onChange={() => field.onChange(defaultLandlordDetails)}
+                  labelText="None of the above"
+                  id={`landlord-address_none`}
+                  key="none-option"
                 />
               )}
             />
-          ))}
-        </FormGroup>
-      )}
-      {!isLoading && !landlordData && (
-        // This probably won't make sense in practice, and the typing is
-        // hacky, better to just write out the inputs for each item i
-        // think, we'll probably need to handle some things differently
-        // (eg. dropdown for state?)
-        <>
-          {Object.keys(FormSchema.shape.landlordDetails.shape).map(
-            (fieldName) => (
-              <TextInput
-                {...register(
-                  `landlordDetails.${fieldName}` as FieldPath<FormFields>
-                )}
-                id={`form-landlord-${fieldName}`}
-                labelText={fieldName}
-                // invalid={!!errors?.[`landlordDetails.${fieldName}` as FieldPath<FormFields>]}
-                // invalidText={errors?.email?.message}
-                invalidRole="status"
-                type="email"
-              />
-            )
-          )}
+          </FormGroup>
+          <Button
+            labelText="Manually enter"
+            type="button"
+            onClick={() => setLookupComplete(true)}
+          />
         </>
+      )}
+      {showManual && (
+        <FormGroup
+          legendText="Please provide your landlord's mailing address"
+          invalid={!!errors?.landlordDetails}
+          invalidText={errors?.landlordDetails?.message}
+          key="manual-input"
+        >
+          <TextInput
+            {...register("landlordDetails.primary_line")}
+            id={`form-landlord-primary-line`}
+            labelText="Primary line"
+            invalid={!!errors?.landlordDetails?.primary_line}
+            invalidText={errors?.landlordDetails?.primary_line?.message}
+            invalidRole="status"
+            type="text"
+          />
+          <TextInput
+            {...register("landlordDetails.secondary_line")}
+            id={`form-landlord-secondary-line`}
+            labelText="Secondary line (optional)"
+            invalid={!!errors?.landlordDetails?.secondary_line}
+            invalidText={errors?.landlordDetails?.secondary_line?.message}
+            invalidRole="status"
+            type="text"
+          />
+          <TextInput
+            {...register("landlordDetails.city")}
+            id={`form-landlord-city`}
+            labelText="City/Borough"
+            invalid={!!errors?.landlordDetails?.city}
+            invalidText={errors?.landlordDetails?.city?.message}
+            invalidRole="status"
+            type="text"
+          />
+          {/* TODO: use dropdown for state to ensure correct format */}
+          <TextInput
+            {...register("landlordDetails.state")}
+            id={`form-landlord-state`}
+            labelText="State"
+            invalid={!!errors?.landlordDetails?.state}
+            invalidText={errors?.landlordDetails?.state?.message}
+            invalidRole="status"
+            type="text"
+          />
+          {getValues("landlordDetails.state") === "PR" && (
+            <TextInput
+              {...register("landlordDetails.urbanization")}
+              id={`form-landlord-urbanization`}
+              labelText="Urbanization (Puerto Rico only)"
+              invalid={!!errors?.landlordDetails?.urbanization}
+              invalidText={errors?.landlordDetails?.urbanization?.message}
+              invalidRole="status"
+              type="text"
+            />
+          )}
+          <TextInput
+            {...register("landlordDetails.zip_code")}
+            id={`form-landlord-zip-code`}
+            labelText="ZIP Code"
+            invalid={!!errors?.landlordDetails?.zip_code}
+            invalidText={errors?.landlordDetails?.zip_code?.message}
+            invalidRole="status"
+            type="text"
+          />
+        </FormGroup>
       )}
     </>
   );
