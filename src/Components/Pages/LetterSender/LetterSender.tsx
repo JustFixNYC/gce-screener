@@ -1,15 +1,15 @@
-import { Header } from "../../Header/Header";
-import { MultiStepForm } from "./MultiStepForm";
-// import { GraphqlExample } from "./LocForm";
-// import { PhoneNumberForm } from "./PhoneNumberForm";
-// import { PhoneNumberFormControlled } from "./PhoneNumberFormControlled";
-
-import "./LetterSender.scss";
-import { useSendGceLetterData } from "../../../api/hooks";
-import { Button } from "@justfixnyc/component-library";
-import { GCELetter, GCELetterPostData } from "../../../types/APIDataTypes";
 import { useState } from "react";
-import { base64ToBlob, buildLetterHtml } from "./LetterContent";
+import { Button } from "@justfixnyc/component-library";
+
+import { Header } from "../../Header/Header";
+import { LetterBuilderForm } from "../../LetterBuilder/LetterBuilderForm";
+import { useSendGceLetterData } from "../../../api/hooks";
+import { GCELetter, GCELetterPostData } from "../../../types/APIDataTypes";
+import {
+  base64ToBlob,
+  buildLetterHtml,
+} from "../../LetterBuilder/LetterContent";
+import "./LetterSender.scss";
 
 export const LetterSender: React.FC = () => {
   const { trigger } = useSendGceLetterData();
@@ -55,7 +55,7 @@ export const LetterSender: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          <MultiStepForm />
+          <LetterBuilderForm />
           <h3>Test Tenants2 GCE Letter API</h3>
           Letter Data
           <pre>{JSON.stringify(letterProps, null, 2)}</pre>
@@ -78,11 +78,6 @@ export const LetterSender: React.FC = () => {
             }}
           />
           <pre>{JSON.stringify(letterResp, null, 2)}</pre>
-          {/* <PhoneNumberForm />
-          <hr style={{ width: "100%" }} />
-          <PhoneNumberFormControlled />
-          <hr style={{ width: "100%" }} /> */}
-          {/* <GraphqlExample /> */}
         </div>
       </div>
     </div>

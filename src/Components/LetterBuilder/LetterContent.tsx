@@ -1,5 +1,5 @@
 import { renderToStaticMarkup } from "react-dom/server";
-import { GCELetterPostData } from "../../../types/APIDataTypes";
+import { GCELetterPostData } from "../../types/APIDataTypes";
 
 import pdfStyles from "./letter-styles-pdf.css?raw";
 
