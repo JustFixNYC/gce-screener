@@ -13,14 +13,16 @@ import "./TenantRights.scss";
 
 export const TenantRights: React.FC = () => {
   const { _ } = useLingui();
-  
+
   useAccordionsOpenForPrint();
 
   return (
     <div id="tenant-rights-page">
       <Header
         title={_(msg`Understanding your rights`)}
-        subtitle={_(msg`All tenants in NYC are protected by important rights. This guide provides information about many of those rights depending on the type of housing you live in.`)}
+        subtitle={_(
+          msg`All tenants in NYC are protected by important rights. This guide provides information about many of those rights depending on the type of housing you live in.`
+        )}
         showProgressBar={false}
       />
 
@@ -30,7 +32,7 @@ export const TenantRights: React.FC = () => {
 
           <GoodCauseProtections>
             <ContentBoxFooter
-              message="Find out if you're covered by Good Cause"
+              message="Find out if you’re covered by Good Cause"
               linkText="Take the survey"
               linkTo="/"
             />

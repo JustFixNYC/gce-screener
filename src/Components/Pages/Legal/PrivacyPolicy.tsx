@@ -1,13 +1,13 @@
 import { Header } from "../../Header/Header";
 import { ContentfulPage } from "../../../contentful/ContentfulPage";
-import privacyPolicyContent from "../../../data/privacy-policy.en.json";
+import privacyPolicy from "../../../data/privacy-policy.en.json";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import "./Legal.scss";
 
 export const PrivacyPolicy: React.FC = () => {
   const { _ } = useLingui();
-  
+
   return (
     <div id="privacy-policy-page">
       <Header
@@ -18,7 +18,7 @@ export const PrivacyPolicy: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          <ContentfulPage pageFields={privacyPolicyContent} />
+          <ContentfulPage pageFields={privacyPolicy} />
         </div>
       </div>
     </div>

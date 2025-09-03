@@ -64,7 +64,7 @@ export const ConfirmAddress: React.FC = () => {
       <Header
         title={_(msg`Please confirm your address`)}
         subtitle={_(
-          msg`We'll use publicly available information about your building to help learn if you're covered.`
+          msg`We’ll use publicly available information about your building to help learn if you’re covered.`
         )}
         address={address}
         lastStepReached={lastStepReached}

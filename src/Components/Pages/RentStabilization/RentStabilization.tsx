@@ -60,7 +60,7 @@ export const RentStabilization: React.FC = () => {
             <ContentBoxItem title="Request your rent history">
               <p>
                 Request your rent history to help find out if your apartment is
-                rent stabilized and if you're being overcharged.
+                rent stabilized and if you’re being overcharged.
               </p>
               <br />
               <p>

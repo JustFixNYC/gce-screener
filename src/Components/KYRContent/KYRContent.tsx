@@ -184,7 +184,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
 
         <p>
           When tenants come together, we have power. Tenants across our state
-          are forming tenant unions to fight back. If you're interested in
+          are forming tenant unions to fight back. If you’re interested in
           organizing a tenant union with your neighbors, fill out this form to
           get support from a tenant group near you.
         </p>

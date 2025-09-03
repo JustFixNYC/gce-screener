@@ -6,7 +6,6 @@ import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 
-
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { FormFields } from "../Form/Survey";
@@ -79,7 +78,7 @@ export const Home: React.FC = () => {
       <Header
         title={
           <Trans>
-            Learn if you're covered <br />
+            Learn if you’re covered <br />
             by Good Cause <br />
             Eviction law in NYC
           </Trans>
@@ -99,13 +98,16 @@ export const Home: React.FC = () => {
 
       <div className="content-section home__about-law">
         <div className="content-section__content">
-          <h3><Trans>About the law</Trans></h3>
+          <h3>
+            <Trans>About the law</Trans>
+          </h3>
           <p>
             <Trans>
               Good Cause Eviction protections went into effect on April 20th,
               2024. If you are covered by the law, you have strong legal
-              protections against eviction as long as you follow your lease. There
-              are also limits to how much your landlord can raise your rent.{" "}
+              protections against eviction as long as you follow your lease.
+              There are also limits to how much your landlord can raise your
+              rent.{" "}
             </Trans>
             <JFCLLinkInternal
               to="/rent_calculator"
@@ -136,14 +138,14 @@ export const Home: React.FC = () => {
           </p>
           <div className="callout-box">
             <span className="callout-box__header">
-              <Trans>If you're not covered by Good Cause Eviction</Trans>
+              <Trans>If you’re not covered by Good Cause Eviction</Trans>
             </span>
             <p>
               <Trans>
-                If you live in NYC and are not covered by Good Cause Eviction, you
-                still have important tenant protections. Depending on the type of
-                housing you live in, your protections may be even stronger than
-                those provided by Good Cause.
+                If you live in NYC and are not covered by Good Cause Eviction,
+                you still have important tenant protections. Depending on the
+                type of housing you live in, your protections may be even
+                stronger than those provided by Good Cause.
               </Trans>
             </p>
             <JFCLLinkInternal to="/tenant_rights">
@@ -168,7 +170,9 @@ export const Home: React.FC = () => {
       </div>
       <div className="content-section home__about-project">
         <div className="content-section__content">
-          <h3><Trans>About this site</Trans></h3>
+          <h3>
+            <Trans>About this site</Trans>
+          </h3>
           <p>
             <Trans>
               Good Cause law can be complex to understand and to use to protect
@@ -192,8 +196,8 @@ export const Home: React.FC = () => {
               </span>
               <p>
                 <Trans>
-                  A statewide coalition of tenants and homeless New Yorkers united
-                  in our fight for housing as a human right.
+                  A statewide coalition of tenants and homeless New Yorkers
+                  united in our fight for housing as a human right.
                 </Trans>
               </p>
               <JFCLLinkExternal to="https://housingjusticeforall.org/">

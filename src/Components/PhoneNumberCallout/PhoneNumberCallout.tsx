@@ -193,12 +193,18 @@ const PhoneNumberCalloutUI: React.FC<PhoneNumberUIProps> = ({
             )}
             <Trans>
               We will never call you or share your phone number. We may text you
-              later in the year to see how things are going. Opt-out at any time.
+              later in the year to see how things are going. Opt-out at any
+              time.
             </Trans>
           </div>
         </div>
         <div className="phone-number-submit__mobile">
-          <Button labelText={_(msg`Submit`)} variant="secondary" size="small" type="submit" />
+          <Button
+            labelText={_(msg`Submit`)}
+            variant="secondary"
+            size="small"
+            type="submit"
+          />
         </div>
       </form>
     </div>
@@ -276,7 +282,6 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
             className="phone-number-submit"
             labelText={_(msg`Submit`)}
             variant="primary"
-            type="submit"
           />
         </div>
       </form>

@@ -100,35 +100,20 @@ export const Results: React.FC = () => {
 
   useEffect(() => {
     if (hasShownPhoneModal || getCookie("phone_modal_shown")) return;
-
-    const contentSection = document.querySelector(".content-section__content");
-    if (!contentSection) return;
-
-    // Checks if user has scrolled down at least a bit before showing modal
-    // Without this, the modal renders on page load
-    const hasScrolled = () => {
+    function handleScroll() {
       const scrollY = window.scrollY || window.pageYOffset;
-      return scrollY > 100; // user has scrolled down at least 100px
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && hasScrolled()) {
-            setShowPhoneModal(true);
-            setHasShownPhoneModal(true);
-            observer.disconnect();
-          }
-        });
-      },
-      {
-        threshold: 0.15, // Trigger when 15% of the element is visible
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      // 65% down means user has scrolled at least 65% of the page height
+      const scrollPercent = (scrollY + windowHeight) / docHeight;
+      if (scrollPercent >= 0.65) {
+        setShowPhoneModal(true);
+        setHasShownPhoneModal(true);
+        window.removeEventListener("scroll", handleScroll);
       }
-    );
-
-    observer.observe(contentSection);
-
-    return () => observer.disconnect();
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [hasShownPhoneModal]);
 
   // When modal closes, set cookie
@@ -266,7 +251,9 @@ export const Results: React.FC = () => {
           {coverageResult === "NOT_COVERED" && (
             <UniversalProtections
               coverageResult={coverageResult}
-              subtitle={_(msg`Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights`)}
+              subtitle={_(
+                msg`Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights`
+              )}
             />
           )}
           <PhoneNumberCallout coverageResult={coverageResult} />
@@ -368,8 +355,8 @@ const CriteriaTable: React.FC<{
       </span>
       <p>
         <Trans>
-          Results are based on publicly available data about your building and the
-          answers you provided. This does not constitute legal advice.
+          Results are based on publicly available data about your building and
+          the answers you provided. This does not constitute legal advice.
         </Trans>
       </p>
     </div>
@@ -456,9 +443,11 @@ const EligibilityNextSteps: React.FC<{
           >
             <p>
               <Trans>
-                Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments.
-                Your building has only {bldgData.unitsres} apartments, but your landlord may own other buildings.
                 Good Cause Eviction law only covers tenants whose landlord owns
+                more than 10 apartments. Your building has only{" "}
+                {bldgData.unitsres} apartments, but your landlord may own other
+                buildings. Good Cause Eviction law only covers tenants whose
+                landlord owns
               </Trans>
             </p>
             <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
