@@ -390,7 +390,7 @@ export const Survey: React.FC = () => {
             <Trans>
               If you applied for your apartment through "NYC Housing Connect,"
               your building is very likely subsidized, and you should select the
-              option: <strong>"Other subsidized housing"</strong>
+              option: <strong>“Yes, Mitchell-Lama, HDFC, or other”</strong>
             </Trans>
           </p>
         </div>
@@ -399,7 +399,7 @@ export const Survey: React.FC = () => {
             <Trans>
               If you know that your building is part of Low-Income Housing Tax
               Credit (LIHTC) program, select the option:{" "}
-              <strong>"Other subsidized housing"</strong>
+              <strong>“Yes, Mitchell-Lama, HDFC, or other”</strong>{" "}
             </Trans>
           </p>
         </div>

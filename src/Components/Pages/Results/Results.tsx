@@ -256,7 +256,10 @@ export const Results: React.FC = () => {
               )}
             />
           )}
-          <PhoneNumberCallout coverageResult={coverageResult} />
+          <PhoneNumberCallout
+            coverageResult={coverageResult}
+            gtmId="results-page"
+          />
           <div className="share-footer">
             <h3 className="share-footer__header">
               <Trans>Share this site with your neighbors</Trans>
@@ -446,8 +449,7 @@ const EligibilityNextSteps: React.FC<{
                 Good Cause Eviction law only covers tenants whose landlord owns
                 more than 10 apartments. Your building has only{" "}
                 {bldgData.unitsres} apartments, but your landlord may own other
-                buildings. Good Cause Eviction law only covers tenants whose
-                landlord owns
+                buildings.
               </Trans>
             </p>
             <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
