@@ -2,6 +2,9 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { useRollbar } from "@rollbar/react";
 import { Button, FormGroup, TextInput } from "@justfixnyc/component-library";
+import { Trans } from "@lingui/react/macro";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 
 import { FormStep } from "../../FormStep/FormStep";
 import { Address } from "../Home/Home";
@@ -20,8 +23,8 @@ import { cleanFormFields } from "../../../api/helpers";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
 import { BackLink, JFCLLinkExternal } from "../../JFCLLink";
-import "./Survey.scss";
 import Modal, { RentStabLeaseModal } from "../../Modal/Modal";
+import "./Survey.scss";
 
 export type FormFields = {
   bedrooms: "STUDIO" | "1" | "2" | "3" | "4+" | null;
@@ -43,6 +46,7 @@ const initialFields: FormFields = {
 };
 
 export const Survey: React.FC = () => {
+  const { _ } = useLingui();
   const { address, user } = useLoaderData() as {
     address: Address;
     user?: GCEUser;
@@ -82,11 +86,6 @@ export const Survey: React.FC = () => {
     useRef<HTMLFieldSetElement | null>(null),
     useRef<HTMLFieldSetElement | null>(null),
   ];
-
-  const { subsidyHelperText, subsidyHelperElement } = getSubsidyHelperInfo(
-    bldgData,
-    openSubsidyModal
-  );
 
   const navigate = useNavigate();
 
@@ -135,8 +134,10 @@ export const Survey: React.FC = () => {
   return (
     <div id="survey-page">
       <Header
-        title="A few questions about your apartment"
-        subtitle="We'll use your answers and publicly available information about your building to help learn if you’re covered."
+        title={_(msg`A few questions about your apartment`)}
+        subtitle={_(
+          msg`We’ll use your answers and publicly available information about your building to help learn if you’re covered.`
+        )}
         address={address}
         lastStepReached={lastStepReached}
       />
@@ -144,7 +145,9 @@ export const Survey: React.FC = () => {
         <div className="content-section__content">
           {showErrors && (
             <InfoBox color="orange" role="alert">
-              Please complete the unanswered questions before continuing.
+              <Trans>
+                Please complete the unanswered questions before continuing.
+              </Trans>
             </InfoBox>
           )}
           <form id="survey-form" onSubmit={handleSubmit}>
@@ -153,9 +156,11 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.bedrooms === null}
             >
               <FormGroup
-                legendText="1. How many bedrooms are in your apartment?"
+                legendText={_(msg`1. How many bedrooms are in your apartment?`)}
                 invalid={showErrors && localFields.bedrooms === null}
-                invalidText="Please specify the number of bedrooms in your apartment."
+                invalidText={_(
+                  msg`Please specify the number of bedrooms in your apartment.`
+                )}
                 invalidRole="status"
               >
                 <RadioGroup
@@ -163,11 +168,11 @@ export const Survey: React.FC = () => {
                   radioGroup={{
                     name: "bedrooms",
                     options: [
-                      { label: "Studio", value: "STUDIO" },
-                      { label: "1", value: "1" },
-                      { label: "2", value: "2" },
-                      { label: "3", value: "3" },
-                      { label: "4+", value: "4+" },
+                      { label: _(msg`Studio`), value: "STUDIO" },
+                      { label: _(msg`1`), value: "1" },
+                      { label: _(msg`2`), value: "2" },
+                      { label: _(msg`3`), value: "3" },
+                      { label: _(msg`4+`), value: "4+" },
                     ],
                   }}
                   onChange={handleRadioChange}
@@ -180,9 +185,11 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.rent === null}
             >
               <TextInput
-                labelText="2. What is the total monthly rent for your entire apartment?"
+                labelText={_(
+                  msg`2. What is the total monthly rent for your entire apartment?`
+                )}
                 invalid={showErrors && localFields.rent === null}
-                invalidText="Please enter your total rent amount."
+                invalidText={_(msg`Please enter your total rent amount.`)}
                 invalidRole="status"
                 id="rent-input"
                 type="money"
@@ -203,7 +210,7 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.rentStabilized === null}
             >
               <FormGroup
-                legendText="3. Is your apartment rent stabilized?"
+                legendText={_(msg`3. Is your apartment rent stabilized?`)}
                 helperElement={
                   getRsHelperText(bldgData, openLeaseModal) && (
                     <InfoBox>
@@ -212,7 +219,9 @@ export const Survey: React.FC = () => {
                   )
                 }
                 invalid={showErrors && localFields.rentStabilized === null}
-                invalidText="Please specify if your apartment is rent stabilized."
+                invalidText={_(
+                  msg`Please specify if your apartment is rent stabilized.`
+                )}
                 invalidRole="status"
               >
                 <RadioGroup
@@ -220,9 +229,9 @@ export const Survey: React.FC = () => {
                   radioGroup={{
                     name: "rentStabilized",
                     options: [
-                      { label: "Yes", value: "YES" },
-                      { label: "No", value: "NO" },
-                      { label: "I'm not sure", value: "UNSURE" },
+                      { label: _(msg`Yes`), value: "YES" },
+                      { label: _(msg`No`), value: "NO" },
+                      { label: _(msg`I'm not sure`), value: "UNSURE" },
                     ],
                   }}
                   onChange={handleRadioChange}
@@ -235,10 +244,22 @@ export const Survey: React.FC = () => {
               invalid={showErrors && localFields.housingType === null}
             >
               <FormGroup
-                legendText="4. Is your building part of any of these subsidy programs?"
-                helperElement={<InfoBox>{subsidyHelperElement}</InfoBox>}
+                legendText={_(
+                  msg`4. Is your building part of any of these subsidy programs?`
+                )}
+                helperElement={
+                  <InfoBox>
+                    <SubsidyHelperText
+                      bldgData={bldgData}
+                      learnMoreOnClick={openSubsidyModal}
+                      textOnly={false}
+                    />
+                  </InfoBox>
+                }
                 invalid={showErrors && localFields.housingType === null}
-                invalidText="Please specify if your apartment is part of any subsidized housing programs."
+                invalidText={_(
+                  msg`Please specify if your apartment is part of any subsidized housing programs.`
+                )}
                 invalidRole="status"
               >
                 <RadioGroup
@@ -246,13 +267,13 @@ export const Survey: React.FC = () => {
                   radioGroup={{
                     name: "housingType",
                     options: [
-                      { label: "Yes, NYCHA / PACT-RAD", value: "NYCHA" },
+                      { label: _(msg`Yes, NYCHA / PACT-RAD`), value: "NYCHA" },
                       {
-                        label: "Yes, Mitchell-Lama, HDFC, or other",
+                        label: _(msg`Yes, Mitchell-Lama, HDFC, or other`),
                         value: "SUBSIDIZED",
                       },
                       {
-                        label: "No, my building is not subsidized",
+                        label: _(msg`No, my building is not subsidized`),
                         value: "NONE",
                       },
                     ],
@@ -269,9 +290,13 @@ export const Survey: React.FC = () => {
                   invalid={showErrors && localFields.landlord === null}
                 >
                   <FormGroup
-                    legendText="5. Does your landlord live in the building?"
+                    legendText={_(
+                      msg`5. Does your landlord live in the building?`
+                    )}
                     invalid={showErrors && localFields.landlord === null}
-                    invalidText="Please specify whether your landlord lives in your apartment building."
+                    invalidText={_(
+                      msg`Please specify whether your landlord lives in your apartment building.`
+                    )}
                     invalidRole="status"
                   >
                     <RadioGroup
@@ -279,8 +304,8 @@ export const Survey: React.FC = () => {
                       radioGroup={{
                         name: "landlord",
                         options: [
-                          { label: "Yes", value: "YES" },
-                          { label: "No", value: "NO" },
+                          { label: _(msg`Yes`), value: "YES" },
+                          { label: _(msg`No`), value: "NO" },
                         ],
                       }}
                       onChange={handleRadioChange}
@@ -293,20 +318,24 @@ export const Survey: React.FC = () => {
                   invalid={showErrors && localFields.portfolioSize === null}
                 >
                   <FormGroup
-                    legendText="6. Does your landlord own more than 10 apartments across multiple buildings?"
+                    legendText={_(
+                      msg`6. Does your landlord own more than 10 apartments across multiple buildings?`
+                    )}
                     helperElement={
                       <InfoBox>
-                        {`Publicly available data sources indicate that there ${
-                          bldgData.unitsres == 1
-                            ? "is 1 apartment"
-                            : `are ${bldgData.unitsres} apartments`
-                        } in your building. ` +
-                          "Good Cause protections only apply to tenants whose landlord owns more than 10 " +
-                          "apartments, even if those apartments are spread across multiple buildings."}
+                        {_(
+                          msg`Publicly available data sources indicate that there ${
+                            bldgData.unitsres == 1
+                              ? "is 1 apartment"
+                              : `are ${bldgData.unitsres} apartments`
+                          } in your building. Good Cause protections only apply to tenants whose landlord owns more than 10 apartments, even if those apartments are spread across multiple buildings.`
+                        )}
                       </InfoBox>
                     }
                     invalid={showErrors && localFields.portfolioSize === null}
-                    invalidText="Please specify whether your landlord owns more than 10 apartments across multiple buildings."
+                    invalidText={_(
+                      msg`Please specify whether your landlord owns more than 10 apartments across multiple buildings.`
+                    )}
                     invalidRole="status"
                   >
                     <RadioGroup
@@ -314,9 +343,9 @@ export const Survey: React.FC = () => {
                       radioGroup={{
                         name: "portfolioSize",
                         options: [
-                          { label: "Yes", value: "YES" },
-                          { label: "No", value: "NO" },
-                          { label: "I'm not sure", value: "UNSURE" },
+                          { label: _(msg`Yes`), value: "YES" },
+                          { label: _(msg`No`), value: "NO" },
+                          { label: _(msg`I'm not sure`), value: "UNSURE" },
                         ],
                       }}
                       onChange={handleRadioChange}
@@ -328,12 +357,12 @@ export const Survey: React.FC = () => {
           </form>
           <div className="form__buttons">
             <BackLink to="/confirm_address" className="survey__back">
-              Back
+              <Trans>Back</Trans>
             </BackLink>
             <Button
               type="submit"
               form="survey-form"
-              labelText="See your results"
+              labelText={_(msg`See your results`)}
             />
           </div>
         </div>
@@ -343,58 +372,78 @@ export const Survey: React.FC = () => {
         isOpen={showLeaseModal}
         onClose={() => setShowLeaseModal(false)}
         hasCloseBtn={true}
-        header="To help guide your answer"
+        header={_(msg`To help guide your answer`)}
       />
       <Modal
         isOpen={showSubsidyModal}
         onClose={() => setShowSubsidyModal(false)}
         hasCloseBtn={true}
-        header="FAQs to help guide your answer"
+        header={_(msg`FAQs to help guide your answer`)}
       >
         <p>
-          <strong>{subsidyHelperText}</strong> We check for NYCHA,
-          Mitchell-Lama, HDFC, LIHTC, Project Section 8, and various HPD and HUD
-          programs. If you know the public data is incorrect, use these tips to
-          guide your answer:
+          <strong>
+            <SubsidyHelperText
+              bldgData={bldgData}
+              learnMoreOnClick={openSubsidyModal}
+              textOnly={true}
+            />
+          </strong>{" "}
+          <Trans>
+            We check for NYCHA, Mitchell-Lama, HDFC, LIHTC, Project Section 8,
+            and various HPD and HUD programs. If you know the public data is
+            incorrect, use these tips to guide your answer:
+          </Trans>
         </p>
         <div className="callout-box">
           <p>
-            If you applied for your apartment through “NYC Housing Connect,”
-            your building is very likely subsidized, and you should select the
-            option: <strong>“Yes, Mitchell-Lama, HDFC, or other”</strong>
+            <Trans>
+              If you applied for your apartment through "NYC Housing Connect,"
+              your building is very likely subsidized, and you should select the
+              option: <strong>“Yes, Mitchell-Lama, HDFC, or other”</strong>
+            </Trans>
           </p>
         </div>
         <div className="callout-box">
           <p>
-            If you know that your building is part of Low-Income Housing Tax
-            Credit (LIHTC) program, select the option:{" "}
-            <strong>“Yes, Mitchell-Lama, HDFC, or other”</strong>
+            <Trans>
+              If you know that your building is part of Low-Income Housing Tax
+              Credit (LIHTC) program, select the option:{" "}
+              <strong>“Yes, Mitchell-Lama, HDFC, or other”</strong>{" "}
+            </Trans>
           </p>
         </div>
         <div className="callout-box">
           <p>
-            If you know that your building is part of public housing (NYCHA or
-            PACT-RAD), select: <strong>“Yes, NYCHA / PACT-RAD”</strong>
+            <Trans>
+              If you know that your building is part of public housing (NYCHA or
+              PACT-RAD), select: <strong>"NYCHA or PACT/RAD"</strong>
+            </Trans>
           </p>
         </div>
         <div className="callout-box">
           <p>
-            If you know that your building receives 421a or J51 tax abatement,
-            select the option:{" "}
-            <strong>“No, my building is not subsidized”</strong>
+            <Trans>
+              If you know that your building receives 421a or J51 tax abatement,
+              select the option:
+              <strong>“No, my building is not subsidized”</strong>
+            </Trans>
           </p>
           <p>
             <i>
-              Note: if your building is part of 421a or J51, your apartment
-              should be rent stabilized
+              <Trans>
+                Note: if your building is part of 421a or J51, your apartment
+                should be rent stabilized
+              </Trans>
             </i>
           </p>
         </div>
         <div className="callout-box">
           <p>
-            If you use a voucher that covers some or all of your rent, and you
-            can use that voucher in another apartment if you move, select the
-            option: <strong>“No, my building is not subsidized”</strong>
+            <Trans>
+              If you use a voucher that covers some or all of your rent, and you
+              can use that voucher in another apartment if you move, select the
+              option: <strong>“No, my building is not subsidized”</strong>
+            </Trans>
           </p>
         </div>
       </Modal>
@@ -422,87 +471,103 @@ const getRsHelperText = (
 
   const wowLink = (
     <JFCLLinkExternal to={urlWOWTimelineRS(bbl)} className="source-link">
-      View source
+      <Trans>View source</Trans>
     </JFCLLinkExternal>
   );
   const leaseText = (
     <>
-      If your most recent lease renewal{" "}
-      <button
-        type="button"
-        className="text-link-button jfcl-link"
-        onClick={learnMoreOnClick}
-      >
-        looks like this
-      </button>
-      , then your apartment is likely rent stabilized.
+      <Trans>
+        If your most recent lease renewal{" "}
+        <button
+          type="button"
+          className="text-link-button jfcl-link"
+          onClick={learnMoreOnClick}
+        >
+          looks like this
+        </button>
+        , then your apartment is likely rent stabilized.
+      </Trans>
     </>
   );
 
   if (active421a || activeJ51) {
     return (
       <>
-        {`Publicly available data sources indicate that your building receives the ${
-          active421a ? "421a" : "J51"
-        } tax incentive. This means your
-        apartment is rent stabilized.`}{" "}
+        <Trans>
+          Publicly available data sources indicate that your building receives
+          the {active421a ? "421a" : "J51"} tax incentive. This means your
+          apartment is rent stabilized.
+        </Trans>{" "}
         <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
-          View source
+          <Trans>View source</Trans>
         </JFCLLinkExternal>
       </>
     );
   } else if (bldgUnits > 0 && rsUnits >= bldgUnits) {
     return (
       <>
-        Publicly available data sources indicate that all apartments in your
-        building are registered as rent stabilized. {wowLink}
+        <Trans>
+          Publicly available data sources indicate that all apartments in your
+          building are registered as rent stabilized.
+        </Trans>{" "}
+        {wowLink}
       </>
     );
   } else if (rsUnits > 0) {
     return (
       <>
-        {`Publicly available data sources indicate that ${formatNumber(
-          rsUnits
-        )} of the ${formatNumber(
-          bldgUnits
-        )} apartments in your building are registered as rent stabilized.`}{" "}
+        <Trans>
+          Publicly available data sources indicate that {formatNumber(rsUnits)}{" "}
+          of the {formatNumber(bldgUnits)} apartments in your building are
+          registered as rent stabilized.
+        </Trans>{" "}
         {wowLink} {leaseText}
       </>
     );
   } else if (yearbuilt < 1974 && bldgUnits >= 6) {
     return (
       <>
-        No rent stabilized apartments were registered in your building in recent
-        years, but based on the size and age of your building some of the
-        apartments may still be rent stabilized. {leaseText}
+        <Trans>
+          No rent stabilized apartments were registered in your building in
+          recent years, but based on the size and age of your building some of
+          the apartments may still be rent stabilized.
+        </Trans>{" "}
+        {leaseText}
       </>
     );
   } else if (yearbuilt >= 1974 && bldgUnits < 6) {
     // Start of NOT Rent Stabilized helper text cases
     return (
       <>
-        Because your building has fewer than 6 units and was built after 1974,
-        it is very unlikely that your apartment is rent stabilized.
-        Additionally, based on publicly available data, no rent stabilized
-        apartments were registered in your building in recent years.
+        <Trans>
+          Because your building has fewer than 6 units and was built after 1974,
+          it is very unlikely that your apartment is rent stabilized.
+          Additionally, based on publicly available data, no rent stabilized
+          apartments were registered in your building in recent years.
+        </Trans>
       </>
     );
   } else if (yearbuilt >= 1974 && !(active421a || activeJ51)) {
     return (
       <>
-        Because your building was built after 1974 and is not part of 421a or
-        J51 tax incentive programs, it is very unlikely that your apartment is
-        rent stabilized. Additionally, based on publicly available, no rent
-        stabilized apartments were registered in your building in recent years.
+        <Trans>
+          Because your building was built after 1974 and is not part of 421a or
+          J51 tax incentive programs, it is very unlikely that your apartment is
+          rent stabilized. Additionally, based on publicly available, no rent
+          stabilized apartments were registered in your building in recent
+          years.
+        </Trans>
       </>
     );
   } else if (bldgUnits < 6) {
     return (
       <>
-        Because your building has fewer than 6 units it is very unlikely that
-        your apartment is rent stabilized. Additionally, based on publicly
-        available, no rent stabilized apartments were registered in your
-        building in recent years.
+        <Trans>
+          Because your building has fewer than 6 units it is very unlikely that
+          your apartment is rent stabilized. Additionally, based on publicly
+          available, no rent stabilized apartments were registered in your
+          building in recent years.
+        </Trans>
       </>
     );
   } else {
@@ -510,20 +575,22 @@ const getRsHelperText = (
   }
 };
 
-const getSubsidyHelperInfo = (
-  bldgData?: BuildingData,
-  learnMoreOnClick?: () => void
-) => {
+const SubsidyHelperText: React.FC<{
+  bldgData?: BuildingData;
+  learnMoreOnClick?: () => void;
+  textOnly: boolean;
+}> = ({ bldgData, learnMoreOnClick, textOnly = false }) => {
+  const { _ } = useLingui();
   let subsidyHelperText: ReactNode;
   let subsidyHelperElement: ReactNode;
 
-  if (!bldgData) return { subsidyHelperText, subsidyHelperElement };
+  if (!bldgData) return <></>;
 
   const { bbl, is_nycha, is_subsidized, subsidy_name } = bldgData;
 
   const sourceLink = (
     <JFCLLinkExternal to={urlFCSubsidized(bbl)} className="source-link">
-      View source
+      <Trans>View source</Trans>
     </JFCLLinkExternal>
   );
   const learnMoreLink = (
@@ -532,35 +599,47 @@ const getSubsidyHelperInfo = (
       className="text-link-button jfcl-link"
       onClick={learnMoreOnClick}
     >
-      Learn more
+      <Trans>Learn more</Trans>
     </button>
   );
 
   if (is_nycha) {
-    subsidyHelperText =
-      "Publicly available data sources indicate that your building is part of NYCHA.";
+    subsidyHelperText = (
+      <Trans>
+        Publicly available data sources indicate that your building is part of
+        NYCHA.
+      </Trans>
+    );
     subsidyHelperElement = (
       <>
         {subsidyHelperText} {sourceLink}
       </>
     );
   } else if (is_subsidized) {
-    subsidyHelperText = `Publicly available data sources indicate that your building ${buildingSubsidyLanguage(
-      subsidy_name
-    )}, which is considered subsidized housing.`;
+    subsidyHelperText = (
+      <Trans>
+        Publicly available data sources indicate that your building{" "}
+        {_(buildingSubsidyLanguage(subsidy_name))}, which is considered
+        subsidized housing.
+      </Trans>
+    );
     subsidyHelperElement = (
       <>
         {subsidyHelperText} {sourceLink}
       </>
     );
   } else {
-    subsidyHelperText =
-      "Publicly available data sources do not indicate that your building is part of a subsidized housing program.";
+    subsidyHelperText = (
+      <Trans>
+        Publicly available data sources do not indicate that your building is
+        part of a subsidized housing program.
+      </Trans>
+    );
     subsidyHelperElement = (
       <>
         {subsidyHelperText} {learnMoreLink}
       </>
     );
   }
-  return { subsidyHelperText, subsidyHelperElement };
+  return textOnly ? subsidyHelperText : subsidyHelperElement;
 };

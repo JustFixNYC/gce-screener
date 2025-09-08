@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 
 import { Address } from "../Home/Home";
 import {
@@ -30,6 +32,7 @@ import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { gtmPush } from "../../../google-tag-manager";
 import "./PortfolioSize.scss";
+import { Plural, Trans } from "@lingui/react/macro";
 
 const VIDEO_EMBED_URL =
   "https://www.youtube.com/embed/dSnDgmGH_6E?si=G9wM6P8LHgAynN5O";
@@ -41,6 +44,7 @@ export const PortfolioSize: React.FC = () => {
     fields: FormFields;
   };
   const [, setSearchParams] = useSearchParams();
+  const { _ } = useLingui();
 
   useAccordionsOpenForPrint();
   useSearchParamsURL(setSearchParams, address, fields, user);
@@ -63,15 +67,17 @@ export const PortfolioSize: React.FC = () => {
   return (
     <div id="portfolio-size-page">
       <Header
-        title="Find out if your landlord owns other buildings"
+        title={_(msg`Find out if your landlord owns other buildings`)}
         address={address}
         showProgressBar={false}
         isGuide
       >
         {error && (
           <div className="data__error">
-            There was an error loading your results, please try again in a few
-            minutes.
+            <Trans>
+              There was an error loading your results, please try again in a few
+              minutes.
+            </Trans>
           </div>
         )}
       </Header>
@@ -79,24 +85,29 @@ export const PortfolioSize: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           <ContentBox
-            subtitle="To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments"
+            subtitle={_(
+              msg`To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments`
+            )}
             className="portfolio-video-box"
           >
             <ContentBoxItem accordion={false}>
-              <p>
-                If your building has fewer than 11 apartments, you need to learn
-                if your landlord owns other residential buildings.
-              </p>
-              <p>
-                Unfortunately, it can be difficult to find out who your landlord
-                really is and if your landlord owns other buildings. This is
-                especially true if your building is owned by a corporation.
-              </p>
-              <p>
-                This guide will walk you through two steps that will help you
-                prove who you landlord is and if they own other buildings.
-                Please watch the instruction video, below, to get started.
-              </p>
+              <Trans>
+                <p>
+                  If your building has fewer than 11 apartments, you need to
+                  learn if your landlord owns other residential buildings.
+                </p>
+                <p>
+                  Unfortunately, it can be difficult to find out who your
+                  landlord really is and if your landlord owns other buildings.
+                  This is especially true if your building is owned by a
+                  corporation.
+                </p>
+                <p>
+                  This guide will walk you through two steps that will help you
+                  prove who you landlord is and if they own other buildings.
+                  Please watch the instruction video, below, to get started.
+                </p>
+              </Trans>
               <VideoEmbed url={VIDEO_EMBED_URL} />
             </ContentBoxItem>
           </ContentBox>
@@ -104,46 +115,56 @@ export const PortfolioSize: React.FC = () => {
           <ContentBox subtitle="How to find other apartments your landlord owns">
             <ContentBoxItem className="mobile-video-prompt" accordion={false}>
               <InfoBox color="blue">
-                <>
+                <Trans>
                   <strong>Tip:</strong> We recommend doing the following
                   research on a desktop computer. If you have not already,
                   please watch the video, above, for step-by-step instructions
                   on how to complete Steps 1 and 2.
-                </>
+                </Trans>
               </InfoBox>
             </ContentBoxItem>
             <ContentBoxItem
               title={
-                <>
+                <Trans>
                   <strong>Step 1:</strong> Find out who owns your building
-                </>
+                </Trans>
               }
             >
               <p>
                 <strong>
-                  The owner of the building may be different than the person
-                  listed on your lease.
+                  <Trans>
+                    The owner of the building may be different than the person
+                    listed on your lease.
+                  </Trans>
                 </strong>{" "}
-                The best way to confirm the owner of your building is to review
-                your building’s official real estate transaction documents and
-                look for the owner’s signature. We have provided links to these
-                documents, below.
+                <Trans>
+                  The best way to confirm the owner of your building is to
+                  review your building’s official real estate transaction
+                  documents and look for the owner’s signature. We have provided
+                  links to these documents, below.
+                </Trans>
               </p>
               <InfoBox color="blue">
                 <span>
-                  Tip: The signature page is often located toward the end of the
-                  document
+                  <Trans>
+                    Tip: The signature page is often located toward the end of
+                    the document
+                  </Trans>
                 </span>
               </InfoBox>
               <div className="content-box__section__search-building">
                 <AcrisLinks {...bldgData} address={address.address}>
                   <p>
-                    You only need to find the name or signature of your
-                    building’s owner on one of these documents before moving to
-                    Step 2.{" "}
+                    <Trans>
+                      You only need to find the name or signature of your
+                      building’s owner on one of these documents before moving
+                      to Step 2.
+                    </Trans>{" "}
                     <strong>
-                      Once you find the name of your building’s owner, remember
-                      it because you’ll need it in Step 2.
+                      <Trans>
+                        Once you find the name of your building’s owner,
+                        remember it because you’ll need it in Step 2.
+                      </Trans>
                     </strong>
                   </p>
                 </AcrisLinks>
@@ -152,10 +173,10 @@ export const PortfolioSize: React.FC = () => {
 
             <ContentBoxItem
               title={
-                <>
+                <Trans>
                   <strong>Step 2:</strong> Find other properties associated with
                   the owner of your building
-                </>
+                </Trans>
               }
             >
               {bldgData && (
@@ -163,41 +184,62 @@ export const PortfolioSize: React.FC = () => {
                   {!!bldgData?.related_properties &&
                   bldgData?.related_properties.length > 0 ? (
                     <p>
-                      Based on data from the website {wowLink}, we have gathered
-                      a list of properties that the owner of your building may
-                      be associated with. For each property, we have included
-                      links to important real estate transaction documents.
+                      <Trans>
+                        Based on data from the website {wowLink}, we have
+                        gathered a list of properties that the owner of your
+                        building may be associated with. For each property, we
+                        have included links to important real estate transaction
+                        documents.
+                      </Trans>
                     </p>
                   ) : (
                     <p>
-                      Based on data from the website {wowLink}, we gather a list
-                      of properties that the owner of your building may be
-                      associated with. For each property, we include links to
-                      important real estate transaction documents.
+                      <Trans>
+                        Based on data from the website {wowLink}, we gather a
+                        list of properties that the owner of your building may
+                        be associated with. For each property, we include links
+                        to important real estate transaction documents.
+                      </Trans>
                     </p>
                   )}
                   <p>
-                    Please review these documents to learn if the owner of your
-                    building also owns any of the properties below. If you find
-                    the name or signature of your building’s owner on any of the
-                    documents below, that's a good sign they own the property.
+                    <Trans>
+                      Please review these documents to learn if the owner of
+                      your building also owns any of the properties below. If
+                      you find the name or signature of your building’s owner on
+                      any of the documents below, that's a good sign they own
+                      the property.
+                    </Trans>
                   </p>
                   <p>
                     <strong>
-                      For any of the addresses listed below, you only need to
-                      find your building’s owner’s name or signature on one of
-                      the documents to know if they own that property.
+                      <Trans>
+                        For any of the addresses listed below, you only need to
+                        find your building’s owner’s name or signature on one of
+                        the documents to know if they own that property.
+                      </Trans>
                     </strong>
                   </p>
                   <InfoBox color="blue">
-                    <>
-                      {`Remember, your building has ${bldgData.unitsres}
-                    apartments, so `}
-                      <strong>{`you only need to confirm that your landlord
-                    owns ${11 - bldgData.unitsres} additional ${
-                        11 - bldgData.unitsres == 1 ? "apartment" : "apartments"
-                      } across other buildings.`}</strong>
-                    </>
+                    <Trans>
+                      Remember, your building has{" "}
+                      <Plural
+                        value={bldgData.unitsres || 0}
+                        one="# apartment"
+                        other="# apartments"
+                      />
+                      , so
+                      <strong>
+                        {" "}
+                        you only need to confirm that your landlord owns{" "}
+                        <Plural
+                          value={11 - bldgData.unitsres}
+                          one="# apartment"
+                          other="# apartments"
+                        />{" "}
+                        across other buildings.
+                      </strong>
+                    </Trans>
                   </InfoBox>
                 </>
               )}
@@ -205,15 +247,17 @@ export const PortfolioSize: React.FC = () => {
                 {!!bldgData?.related_properties &&
                 bldgData?.related_properties.length > 0 ? (
                   <>
-                    {isLoading && <>Loading document links...</>}
+                    {isLoading && <Trans>Loading document links...</Trans>}
                     <AcrisAccordions {...bldgData} />
                   </>
                 ) : (
                   <>
                     <InfoBox color="blue">
                       <span>
-                        Our data is not showing additional buildings that may be
-                        owned by your landlord.
+                        <Trans>
+                          Our data is not showing additional buildings that may
+                          be owned by your landlord.
+                        </Trans>
                       </span>
                     </InfoBox>
                     <FindOtherBuildings />
@@ -223,8 +267,8 @@ export const PortfolioSize: React.FC = () => {
             </ContentBoxItem>
 
             <ContentBoxFooter
-              message="Have you learned something new?"
-              linkText="Adjust survey answers"
+              message={_(msg`Have you learned something new?`)}
+              linkText={_(msg`Adjust survey answers`)}
               linkTo="/survey"
               linkOnClick={() =>
                 gtmPush("gce_return_survey", { from: "portfolio-guide-page" })
@@ -238,19 +282,24 @@ export const PortfolioSize: React.FC = () => {
   );
 };
 
-const VideoEmbed: React.FC<{ url: string }> = ({ url }) => (
-  <div className="content-box__section__video">
-    <iframe
-      width="560"
-      height="315"
-      src={url}
-      title="YouTube video for how to find other apartments your landlord owns"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerPolicy="strict-origin-when-cross-origin"
-      allowFullScreen
-    ></iframe>
-  </div>
-);
+const VideoEmbed: React.FC<{ url: string }> = ({ url }) => {
+  const { _ } = useLingui();
+  return (
+    <div className="content-box__section__video">
+      <iframe
+        width="560"
+        height="315"
+        src={url}
+        title={_(
+          msg`YouTube video for how to find other apartments your landlord owns`
+        )}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      ></iframe>
+    </div>
+  );
+};
 
 type ACRISLinksProps = {
   bbl?: string;
@@ -271,14 +320,17 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
   open = false,
   children,
 }) => {
+  const { _ } = useLingui();
   const isStatenIsland = bbl ? bbl[0] === "5" : false;
 
   const header = (
     <div className="acris-links__header">
       <span className="acris-links__address">{toTitleCase(address || "")}</span>
-      <span className="acris-links__pill pill">{`${unitsres} ${
-        unitsres === 1 ? "apartment" : "apartments"
-      }`}</span>
+      {unitsres && (
+        <span className="acris-links__pill pill">
+          <Plural value={unitsres} one="# apartment" other="# apartments" />
+        </span>
+      )}
     </div>
   );
 
@@ -286,15 +338,14 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
     <>
       <div className="acris-links__content">
         {children}
-        {!bbl && <>Loading document links...</>}
+        {!bbl && <Trans>Loading document links...</Trans>}
         {acris_docs && (
           <ul>
             {acris_docs.map((docInfo, i) => (
               <li key={i}>
                 <JFCLLinkExternal to={urlAcrisDoc(docInfo.doc_id)}>
-                  {`${acrisDocTypeFull(
-                    docInfo.doc_type
-                  )} (${docInfo.doc_date.slice(0, 4)})`}
+                  {_(acrisDocTypeFull(docInfo.doc_type)) +
+                    ` (${docInfo.doc_date.slice(0, 4)})`}
                 </JFCLLinkExternal>
               </li>
             ))}
@@ -306,11 +357,11 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
           <>
             {isStatenIsland ? (
               <JFCLLinkExternal to={urlCountyClerkBbl(bbl)}>
-                View all documents from Richmond County Clerk
+                <Trans>View all documents from Richmond County Clerk</Trans>
               </JFCLLinkExternal>
             ) : (
               <JFCLLinkExternal to={urlAcrisBbl(bbl)}>
-                View all documents in ACRIS
+                <Trans>View all documents in ACRIS</Trans>
               </JFCLLinkExternal>
             )}
           </>
@@ -333,15 +384,21 @@ export const AcrisLinks: React.FC<ACRISLinksProps> = ({
 const FindOtherBuildings: React.FC = () => {
   return (
     <div className="callout-box">
-      <strong>To find other buildings your landlord might own, you can:</strong>
+      <strong>
+        <Trans>To find other buildings your landlord might own, you can:</Trans>
+      </strong>
       <ul>
         <li>
-          Google your landlord’s name and find mentions of other buildings they
-          may own in the press.
+          <Trans>
+            Google your landlord’s name and find mentions of other buildings
+            they may own in the press.
+          </Trans>
         </li>
         <li>
-          Talk to your neighbors to see if they know of any other buildings your
-          landlord may own.
+          <Trans>
+            Talk to your neighbors to see if they know of any other buildings
+            your landlord may own.
+          </Trans>
         </li>
       </ul>
     </div>
@@ -351,6 +408,8 @@ const FindOtherBuildings: React.FC = () => {
 export const AcrisAccordions: React.FC<BuildingData> = (props) => {
   const INIT_DISPLAY = 5;
   const LOAD_MORE_AMOUNT = 5;
+
+  const { _ } = useLingui();
 
   // Generate a sort function that takes into account how many additional units
   // we need to find
@@ -387,25 +446,25 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
               <AcrisLinks {...bldg} accordion>
                 <InfoBox color="blue">
                   {bldg.acris_docs.length ? (
-                    <>
+                    <Trans>
                       <strong>Tip:</strong> If, in any one of the documents
                       below, you find an owner’s name that does not match your
                       building’s owner’s name, then move on to the next building
                       address.
-                    </>
+                    </Trans>
                   ) : isStatenIsland ? (
-                    <>
+                    <Trans>
                       We are unable to directly link to specific documents for
                       properties in Staten Island. Please view all documents for
                       this property, and refer to the video above to learn how
                       to identify the documents most likely to contain the
                       owner's name and signature.
-                    </>
+                    </Trans>
                   ) : (
-                    <>
+                    <Trans>
                       We were unable to find relevant documents containing owner
                       names and/or signatures for this building.
-                    </>
+                    </Trans>
                   )}
                 </InfoBox>
               </AcrisLinks>
@@ -414,18 +473,22 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
         })}
       </ul>
       <div className="related-buildings__footer">
-        {`Showing ${visibleCount} of ${totalCount} buildings that your landlord may own`}
+        {_(
+          msg`Showing ${visibleCount} of ${totalCount} buildings that your landlord may own`
+        )}
         {showLoadMoreButton ? (
           <button
             onClick={loadMoreBuildings}
             className="load-more-button jfcl-link"
           >
-            Load more buildings
+            <Trans>Load more buildings</Trans>
           </button>
         ) : (
           <div className="load-more-end">
-            We’ve loaded all buildings that we could find related to your
-            landlord.
+            <Trans>
+              We’ve loaded all buildings that we could find related to your
+              landlord.
+            </Trans>
             <FindOtherBuildings />
           </div>
         )}

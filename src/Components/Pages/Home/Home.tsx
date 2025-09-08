@@ -3,6 +3,8 @@ import { useNavigate } from "react-router";
 import { useRollbar } from "@rollbar/react";
 import { Button } from "@justfixnyc/component-library";
 import { Trans } from "@lingui/react/macro";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import { useSessionStorage } from "../../../hooks/useSessionStorage";
@@ -27,6 +29,7 @@ export type Address = {
 };
 
 export const Home: React.FC = () => {
+  const { _ } = useLingui();
   const navigate = useNavigate();
   const [sessionUser, setUser] = useSessionStorage<GCEUser>("user");
   const [address, setAddress, removeAddress] =
@@ -74,11 +77,11 @@ export const Home: React.FC = () => {
     <div id="home-page">
       <Header
         title={
-          <>
+          <Trans>
             Learn if you’re covered <br />
             by Good Cause <br />
             Eviction law in NYC
-          </>
+          </Trans>
         }
         lastStepReached={lastStepReached}
       >
@@ -89,18 +92,23 @@ export const Home: React.FC = () => {
             invalid={inputInvalid}
             setInvalid={setInputInvalid}
           />
-          <Button type="submit" labelText="Get started" />
+          <Button type="submit" labelText={_(msg`Get started`)} />
         </form>
       </Header>
 
       <div className="content-section home__about-law">
         <div className="content-section__content">
-          <h3>About the law</h3>
+          <h3>
+            <Trans>About the law</Trans>
+          </h3>
           <p>
-            Good Cause Eviction protections went into effect on April 20th,
-            2024. If you are covered by the law, you have strong legal
-            protections against eviction as long as you follow your lease. There
-            are also limits to how much your landlord can raise your rent.{" "}
+            <Trans>
+              Good Cause Eviction protections went into effect on April 20th,
+              2024. If you are covered by the law, you have strong legal
+              protections against eviction as long as you follow your lease.
+              There are also limits to how much your landlord can raise your
+              rent.{" "}
+            </Trans>
             <JFCLLinkInternal
               to="/rent_calculator"
               onClick={() =>
@@ -111,83 +119,103 @@ export const Home: React.FC = () => {
             </JFCLLinkInternal>
           </p>
           <p>
-            To be covered by the law, your apartment must meet several
-            requirements.{" "}
+            <Trans>
+              To be covered by the law, your apartment must meet several
+              requirements.{" "}
+            </Trans>
             <a
               href="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page"
               target="_blank"
               rel="noopener noreferrer"
               className="jfcl-link"
             >
-              Learn more about the law.
+              <Trans>Learn more about the law.</Trans>
             </a>{" "}
-            If you live in New York City, you can use this site to learn which
-            requirements you meet and how to assert your rights.
+            <Trans>
+              If you live in New York City, you can use this site to learn which
+              requirements you meet and how to assert your rights.
+            </Trans>
           </p>
           <div className="callout-box">
             <span className="callout-box__header">
-              If you’re not covered by Good Cause Eviction
+              <Trans>If you’re not covered by Good Cause Eviction</Trans>
             </span>
             <p>
-              If you live in NYC and are not covered by Good Cause Eviction, you
-              still have important tenant protections. Depending on the type of
-              housing you live in, your protections may be even stronger than
-              those provided by Good Cause.
+              <Trans>
+                If you live in NYC and are not covered by Good Cause Eviction,
+                you still have important tenant protections. Depending on the
+                type of housing you live in, your protections may be even
+                stronger than those provided by Good Cause.
+              </Trans>
             </p>
             <JFCLLinkInternal to="/tenant_rights">
-              Learn more about tenant protections in NYC
+              <Trans>Learn more about tenant protections in NYC</Trans>
             </JFCLLinkInternal>
           </div>
           <div className="callout-box">
             <span className="callout-box__header">
-              If you live outside of NYC
+              <Trans>If you live outside of NYC</Trans>
             </span>
             <p>
-              Tenants and tenant advocates are working to extend Good Cause
-              protections throughout New York State.
+              <Trans>
+                Tenants and tenant advocates are working to extend Good Cause
+                protections throughout New York State.
+              </Trans>
             </p>
             <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause/">
-              Learn where Good Cause protections have been won
+              <Trans>Learn where Good Cause protections have been won</Trans>
             </JFCLLinkExternal>
           </div>
         </div>
       </div>
       <div className="content-section home__about-project">
         <div className="content-section__content">
-          <h3>About this site</h3>
+          <h3>
+            <Trans>About this site</Trans>
+          </h3>
           <p>
-            Good Cause law can be complex to understand and to use to protect
-            yourself. This site exists to make it easier for you and your
-            neighbors to understand your tenant protections and to assert your
-            rights.
+            <Trans>
+              Good Cause law can be complex to understand and to use to protect
+              yourself. This site exists to make it easier for you and your
+              neighbors to understand your tenant protections and to assert your
+              rights.
+            </Trans>
           </p>
           <p>
-            This site is a collaboration between the Housing Justice for All
-            Coalition and JustFix. We thank all individuals who contributed to
-            this site and to all the tenants and advocates who fight for Good
-            Cause protections.
+            <Trans>
+              This site is a collaboration between the Housing Justice for All
+              Coalition and JustFix. We thank all individuals who contributed to
+              this site and to all the tenants and advocates who fight for Good
+              Cause protections.
+            </Trans>
           </p>
           <div className="about-project__orgs-container">
             <div className="callout-box">
               <span className="callout-box__header">
-                Housing Justice for All
+                <Trans>Housing Justice for All</Trans>
               </span>
               <p>
-                A statewide coalition of tenants and homeless New Yorkers united
-                in our fight for housing as a human right.
+                <Trans>
+                  A statewide coalition of tenants and homeless New Yorkers
+                  united in our fight for housing as a human right.
+                </Trans>
               </p>
               <JFCLLinkExternal to="https://housingjusticeforall.org/">
-                Visit Housing Justice for All
+                <Trans>Visit Housing Justice for All</Trans>
               </JFCLLinkExternal>
             </div>
             <div className="callout-box">
-              <span className="callout-box__header">JustFix</span>
+              <span className="callout-box__header">
+                <Trans>JustFix</Trans>
+              </span>
               <p>
-                A nonprofit organization that builds online tools to help New
-                Yorkers achieve affordable, healthy, eviction-free housing.
+                <Trans>
+                  A nonprofit organization that builds online tools to help New
+                  Yorkers achieve affordable, healthy, eviction-free housing.
+                </Trans>
               </p>
               <JFCLLinkExternal to="https://www.justfix.org/">
-                Visit JustFix
+                <Trans>Visit JustFix</Trans>
               </JFCLLinkExternal>
             </div>
           </div>
