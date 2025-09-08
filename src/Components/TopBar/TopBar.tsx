@@ -1,11 +1,13 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
+import { Trans } from "@lingui/react/macro";
+
 import { gtmPush } from "../../google-tag-manager";
 import { useScrollDirection } from "../../hooks/useScrollDirection";
 import useInViewPort from "../../hooks/useInViewport";
-import "./TopBar.scss";
 import { JFCLLinkInternal } from "../JFCLLink";
+import "./TopBar.scss";
 
 export const TopBar: React.FC = () => {
   const isScrollingUp = useScrollDirection() === "up";
@@ -18,33 +20,37 @@ export const TopBar: React.FC = () => {
       <header id="topbar" className={classNames(hideTopbar && "hide")}>
         <div className="topbar__name">
           <h1>
-            <Link to="/">Good Cause NYC</Link>
+            <Link to="/">
+              <Trans>Good Cause NYC</Trans>
+            </Link>
           </h1>
         </div>
         <div className="topbar__collab">
-          <span>By</span>{" "}
-          <a
-            href="https://housingjusticeforall.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Housing Justice for All
-          </a>{" "}
-          <span>&</span>{" "}
-          <a
-            href="https://justfix.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            JustFix
-          </a>
+          <Trans>
+            <span>By</span>{" "}
+            <a
+              href="https://housingjusticeforall.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Housing Justice for All
+            </a>{" "}
+            <span>&</span>{" "}
+            <a
+              href="https://justfix.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              JustFix
+            </a>
+          </Trans>
         </div>
         <div className="topbar__rent-calculator">
           <JFCLLinkInternal
             to="/rent_calculator"
             onClick={() => gtmPush("gce_rent_calculator", { from: "navbar" })}
           >
-            Rent increase calculator
+            <Trans>Rent increase calculator</Trans>
           </JFCLLinkInternal>
         </div>
       </header>
