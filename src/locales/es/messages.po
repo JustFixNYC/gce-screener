@@ -1414,6 +1414,1425 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-09-08 23:13\n"
+"Last-Translator: \n"
+"Language-Team: Spanish\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: good-cause-nyc\n"
+"X-Crowdin-Project-ID: 805594\n"
+"X-Crowdin-Language: es-ES\n"
+"X-Crowdin-File: /translations/src/locales/en/messages.po\n"
+"X-Crowdin-File-ID: 64\n"
+
+#. js-lingui-explicit-id
+#: src/helpers.ts:199
+msgid "/+Z5u4"
+msgstr "/+Z5u4"
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:52
+msgid "\"Good Cause Eviction only applies to tenants who are not rent stabilized."
+msgstr "\"Buena causa de desalojo sólo se aplica a los inquilinos que no están estabilizados."
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:68
+msgid "\"How to find out if your apartment is rent stabilized"
+msgstr "\"Cómo averiguar si su apartamento está estabilizado"
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:166
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:245
+msgid "(123) 456-7890"
+msgstr "(123) 456-7890"
+
+#. placeholder {0}: formatMoney( rent )
+#: src/Components/KYRContent/KYRContent.tsx:318
+msgid "(Your current monthly rent {0} + {increase_pct}%)"
+msgstr "(Tu alquiler mensual actual {0} + {increase_pct}%)"
+
+#. placeholder {0}: formatMoney(rent * (1 + increase_pct / 100))
+#: src/Components/KYRContent/KYRContent.tsx:307
+msgid "{0} "
+msgstr "{0} "
+
+#: src/helpers.ts:170
+msgid "{docType}"
+msgstr "{docType}"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:331
+msgid "{unitsres, plural, one {# apartment} other {# apartments}}"
+msgstr "{unitsres, plural, one {# apartamento} other {# apartamentos}}"
+
+#: src/Components/TopBar/TopBar.tsx:29
+msgid "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
+msgstr "<0>Por</0> <1>Justicia para todos</1> <2>&</2> <3>JustFix</3>"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:94
+msgid "<0>If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings.</0><1>Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation.</1><2>This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started.</2>"
+msgstr "<0>Si tu edificio tiene menos de 11 apartamentos, necesitas aprender si tu propietario posee otros edificios residenciales. /0><1>Desafortunadamente, puede ser difícil averiguar quién es realmente tu propietario y si tu propietario posee otros edificios. Esto es especialmente cierto si su edificio es propiedad de una corporación. /1><2>Esta guía te guiará a través de dos pasos que te ayudarán a demostrar quién es tu propietario y si son dueños de otros edificios. Por favor mira el vídeo de instrucciones, abajo, para empezar.</2>"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:128
+msgid "<0>Step 1:</0> Find out who owns your building"
+msgstr "<0>Paso 1:</0> Descubre quién es propietario de tu edificio"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:176
+msgid "<0>Step 2:</0> Find other properties associated with the owner of your building"
+msgstr "<0>Paso 2:</0> Encuentra otras propiedades asociadas con el dueño de tu edificio"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:449
+msgid "<0>Tip:</0> If, in any one of the documents below, you find an owner’s name that does not match your building’s owner’s name, then move on to the next building address."
+msgstr "<0>Consejo:</0> Si, en cualquiera de los siguientes documentos, encuentras el nombre de un dueño que no coincide con el nombre del dueño de tu edificio, y luego pasas a la siguiente dirección del edificio."
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:118
+msgid "<0>Tip:</0> We recommend doing the following research on a desktop computer. If you have not already, please watch the video, above, for step-by-step instructions on how to complete Steps 1 and 2."
+msgstr "<0>Consejo:</0> Recomendamos hacer la siguiente investigación en un ordenador de escritorio. Si aún no lo has hecho, por favor mira el vídeo de arriba, para instrucciones paso a paso sobre cómo completar los pasos 1 y 2."
+
+#: src/Components/Pages/Results/Results.tsx:550
+msgid "<0>You are</0> <1>likely covered</1> by Good Cause Eviction"
+msgstr "<0>Eres </0> <1>probablemente cubierto</1> por Buen Causa"
+
+#: src/Components/Pages/Results/Results.tsx:531
+msgid "<0>You are</0> <1>likely not covered</1> <2/>by Good Cause Eviction"
+msgstr "<0>Eres </0> <1>probablemente no esté cubierto</1> <2/>por Buen Causa"
+
+#: src/Components/Pages/Results/Results.tsx:522
+msgid "<0>You</0> <1>might be covered</1> by Good Cause Eviction"
+msgstr "<0>Tú</0> <1>podría estar cubierto</1> por Buen Causa"
+
+#: src/Components/Pages/Results/Results.tsx:559
+msgid "<0>Your apartment is part of</0> <1>NYCHA or PACT/RAD</1> which provides stronger protections than Good Cause Eviction"
+msgstr "<0>Tu apartamento es parte de </0> <1>NYCHA o PACT/RAD</1> que proporciona protecciones más fuertes que Buena Causa"
+
+#: src/Components/Pages/Results/Results.tsx:541
+msgid "<0>Your apartment is</0> <1>rent stabilized</1> which provides stronger protections than Good Cause Eviction"
+msgstr "<0>Tu apartamento está</0> <1>alquiler estabilizado</1> que proporciona una protección más fuerte que Buena Causa"
+
+#: src/Components/Pages/Results/Results.tsx:570
+msgid "<0>Your building is</0> <1>subsidized</1> which provides existing eviction protections"
+msgstr "<0>Tu edificio está</0> <1>subsidiado</1> que proporciona protecciones de desalojo existentes"
+
+#: src/Components/Pages/Form/Survey.tsx:172
+msgid "1"
+msgstr "1"
+
+#: src/Components/Pages/Form/Survey.tsx:159
+msgid "1. How many bedrooms are in your apartment?"
+msgstr "1. ¿Cuántos dormitorios hay en su apartamento?"
+
+#: src/Components/Pages/Form/Survey.tsx:173
+msgid "2"
+msgstr "2"
+
+#: src/Components/Pages/Form/Survey.tsx:189
+msgid "2. What is the total monthly rent for your entire apartment?"
+msgstr "2. ¿Cuál es el total mensual de alquiler de todo el apartamento?"
+
+#: src/Components/Pages/Form/Survey.tsx:174
+msgid "3"
+msgstr "3"
+
+#: src/Components/Pages/Form/Survey.tsx:213
+msgid "3. Is your apartment rent stabilized?"
+msgstr "3. ¿Se estabiliza el alquiler de su apartamento?"
+
+#: src/Components/Pages/Form/Survey.tsx:248
+msgid "4. Is your building part of any of these subsidy programs?"
+msgstr "4. ¿Es su edificio parte de alguno de estos programas de subvenciones?"
+
+#: src/Components/Pages/Form/Survey.tsx:175
+msgid "4+"
+msgstr "4+"
+
+#: src/Components/Pages/Form/Survey.tsx:294
+msgid "5. Does your landlord live in the building?"
+msgstr "5. ¿Vive tu dueño en el edificio?"
+
+#: src/Components/Pages/Form/Survey.tsx:322
+msgid "6. Does your landlord own more than 10 apartments across multiple buildings?"
+msgstr "6. ¿Su propietario posee más de 10 apartamentos en varios edificios?"
+
+#: src/Components/Pages/Form/Survey.tsx:137
+msgid "A few questions about your apartment"
+msgstr "Algunas preguntas sobre su apartamento"
+
+#: src/Components/Pages/Home/Home.tsx:212
+msgid "A nonprofit organization that builds online tools to help New Yorkers achieve affordable, healthy, eviction-free housing."
+msgstr "Una organización sin fines de lucro que construye herramientas en línea para ayudar a los Nuevos partidarios a lograr viviendas asequibles, saludables y sin desalojo."
+
+#: src/Components/Pages/Home/Home.tsx:198
+msgid "A statewide coalition of tenants and homeless New Yorkers united in our fight for housing as a human right."
+msgstr "Una coalición estatal de inquilinos y neoyorquinos sin hogar se unieron en nuestra lucha por la vivienda como un derecho humano."
+
+#: src/Components/Pages/Home/Home.tsx:102
+msgid "About the law"
+msgstr "Acerca de la ley"
+
+#: src/Components/Pages/Home/Home.tsx:174
+msgid "About this site"
+msgstr "Acerca de este sitio"
+
+#: src/Components/ProgressBar/ProgressBar.tsx:25
+msgid "Address"
+msgstr "Dirección"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:271
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:144
+#: src/Components/Pages/Results/Results.tsx:477
+msgid "Adjust survey answers"
+msgstr "Ajustar respuestas de la encuesta"
+
+#: src/helpers.ts:164
+msgid "Agreement"
+msgstr "Acuerdo"
+
+#: src/Components/KYRContent/KYRContent.tsx:881
+#: src/Components/Pages/TenantRights/TenantRights.tsx:25
+msgid "All tenants in NYC are protected by important rights. This guide provides information about many of those rights depending on the type of housing you live in."
+msgstr "Todos los inquilinos de NYC están protegidos por derechos importantes. Esta guía proporciona información sobre muchos de esos derechos dependiendo del tipo de vivienda en la que vivas."
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:89
+msgid "Allowable rent increase amount:"
+msgstr "Monto de aumento permitido de alquiler:"
+
+#: src/Components/KYRContent/KYRContent.tsx:554
+msgid "Assert your rights by printing your coverage results and sharing with your landlord. You can use these results as an indicator that your apartment is covered by Good Cause Eviction Law."
+msgstr "Introduzca sus derechos imprimiendo los resultados de su cobertura y compartiendo con su dueño. Usted puede usar estos resultados como un indicador de que su apartamento está cubierto por Good Cause Eviction Law."
+
+#: src/helpers.ts:168
+msgid "Assignment of leases & rents"
+msgstr "Asignación de Leases y alquileres"
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:128
+msgid "Attend a walk-in Clinic hosted by the Met Council on Housing"
+msgstr "Asista a un Clinic de Caminata organizado por el Met Council en Housing"
+
+#: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:113
+#: src/Components/Pages/Form/Survey.tsx:360
+msgid "Back"
+msgstr "Atrás"
+
+#: src/Components/Header/Header.tsx:37
+msgid "Back to Result"
+msgstr "Volver al resultado"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:197
+msgid "Based on data from the website {wowLink}, we gather a list of properties that the owner of your building may be associated with. For each property, we include links to important real estate transaction documents."
+msgstr "Basándonos en los datos del sitio web {wowLink}, reunimos una lista de propiedades con las que el propietario de su edificio puede estar asociado. Para cada inmueble incluimos enlaces a documentos importantes de transacciones inmobiliarias."
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:187
+msgid "Based on data from the website {wowLink}, we have gathered a list of properties that the owner of your building may be associated with. For each property, we have included links to important real estate transaction documents."
+msgstr "Basado en los datos del sitio web {wowLink}, hemos reunido una lista de propiedades con las que el propietario de su edificio puede estar asociado. Para cada inmueble hemos incluido enlaces a documentos importantes de transacciones inmobiliarias."
+
+#: src/Components/Pages/Form/Survey.tsx:542
+msgid "Because your building has fewer than 6 units and was built after 1974, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available data, no rent stabilized apartments were registered in your building in recent years."
+msgstr "Debido a que su edificio tiene menos de 6 unidades y fue construido después de 1974, es muy poco probable que su apartamento esté estabilizado en alquiler. Adicionalmente, basándose en datos disponibles públicamente, en los últimos años no se registraron apartamentos estables en su edificio."
+
+#: src/Components/Pages/Form/Survey.tsx:565
+msgid "Because your building has fewer than 6 units it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years."
+msgstr "Debido a que su edificio tiene menos de 6 unidades, es muy poco probable que su apartamento esté estabilizado en alquiler. Adicionalmente, sobre la base de la disponibilidad pública, en los últimos años no se registraron apartamentos estables en su edificio."
+
+#: src/Components/Pages/Form/Survey.tsx:553
+msgid "Because your building was built after 1974 and is not part of 421a or J51 tax incentive programs, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years."
+msgstr "Debido a que su edificio fue construido después de 1974 y no forma parte de los programas de incentivos fiscales 421a o J51, Es muy improbable que su apartamento esté estabilizado en alquiler. Adicionalmente, sobre la base de la disponibilidad pública, en los últimos años no se registraron apartamentos estables en su edificio."
+
+#: src/Components/Footer/Footer.tsx:53
+msgid "By <0>Housing Justice for All</0> & <1>JustFix</1>"
+msgstr "Por <0>Housing Justice for All</0> & <1>JustFix</1>"
+
+#: src/Components/Pages/Home/Home.tsx:118
+msgid "Calculate your max rent increase."
+msgstr "Calcula tu aumento máximo de alquiler."
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:53
+msgid "Calculate your rent increase"
+msgstr "Calcula tu aumento de alquiler"
+
+#: src/Components/KYRContent/KYRContent.tsx:580
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:139
+msgid "Call Met Council on Housing Hotline"
+msgstr "Llamar al Consejo Conocido en línea de emergencia de Housing"
+
+#: src/Components/Pages/Results/Results.tsx:282
+msgid "Certificate of occupancy"
+msgstr "Certificado de ocupación"
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:123
+msgid "Check your lease renewal"
+msgstr "Compruebe su renovación de arrendamiento"
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:104
+msgid "Check your most recent lease renewal"
+msgstr "Compruebe su renovación de arrendamiento más reciente"
+
+#: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:79
+msgid "City data indicates that there aren’t any residential units at this address."
+msgstr "Los datos de la ciudad indican que no hay unidades residenciales en esta dirección."
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:276
+msgid "Close"
+msgstr "Cerrar"
+
+#: src/Components/Modal/Modal.tsx:80
+msgid "Close modal"
+msgstr "Cerrar modal"
+
+#: src/Components/Pages/Results/Results.tsx:610
+msgid "Copied"
+msgstr "Copiado"
+
+#: src/Components/KYRContent/KYRContent.tsx:489
+msgid "Demand notice"
+msgstr "Notificación de demanda"
+
+#: src/Components/KYRContent/KYRContent.tsx:380
+msgid "Demolition"
+msgstr "Demolición"
+
+#: src/Components/Footer/Footer.tsx:10
+msgid "Disclaimer"
+msgstr "Descargo de responsabilidad"
+
+#: src/Components/Pages/Results/Results.tsx:182
+#: src/Components/Pages/Results/Results.tsx:235
+msgid "Download coverage"
+msgstr "Descargar cobertura"
+
+#: src/Components/Pages/Results/Results.tsx:303
+msgid "Eligible"
+msgstr "Elegible"
+
+#: src/Components/Pages/Results/Results.tsx:181
+#: src/Components/Pages/Results/Results.tsx:234
+msgid "Email coverage"
+msgstr "Cobertura de correo"
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:168
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:247
+msgid "Enter a valid phone number"
+msgstr "Introduzca un número de teléfono válido"
+
+#: src/Components/GeoSearchInput/GeoSearchInput.tsx:96
+msgid "Enter an address to get started"
+msgstr "Introduzca una dirección para empezar"
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:67
+msgid "Enter the total monthly rent for your entire apartment"
+msgstr "Introduzca el alquiler mensual total de su apartamento"
+
+#: src/Components/GeoSearchInput/GeoSearchInput.tsx:36
+msgid "Enter your address"
+msgstr "Introduzca su dirección"
+
+#: src/Components/Pages/Results/Results.tsx:255
+msgid "Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights"
+msgstr "Aunque no esté cubierto por Buena Causa, todos los inquilinos de NYC tienen garantizado los siguientes derechos"
+
+#: src/Components/KYRContent/KYRContent.tsx:711
+msgid "Everyone has the right to live in a safe and habitable environment. This includes timely repairs to your apartment. NYCHA Residents have the right to request repairs and expect prompt action from management. If NYCHA is not responding to ticket requests, residents can file housing court cases (HP actions) seeking a judicial order requiring NYCHA to make repairs."
+msgstr "Toda persona tiene derecho a vivir en un ambiente seguro y habitable, lo que incluye reparaciones oportunas para su apartamento. Los residentes de la NYCHA tienen derecho a solicitar reparaciones y esperar una acción inmediata de la dirección. Si NYCHA no está respondiendo a peticiones de entradas, los residentes pueden presentar demandas ante tribunales de vivienda (acciones de HP) en busca de una orden judicial que requiera a la NYCHA para hacer reparaciones."
+
+#: src/Components/KYRContent/KYRContent.tsx:90
+msgid "Eviction Free NYC"
+msgstr "NYC libre de desalojo"
+
+#: src/Components/KYRContent/KYRContent.tsx:383
+msgid "Failure to sign lease renewal or provide access to apartment"
+msgstr "No firmar renovación de arrendamiento o proporcionar acceso al apartamento"
+
+#: src/Components/KYRContent/KYRContent.tsx:191
+msgid "Fair Housing NYC"
+msgstr "Feria de Housing NYC"
+
+#: src/Components/Pages/Form/Survey.tsx:381
+msgid "FAQs to help guide your answer"
+msgstr "Preguntas frecuentes para ayudar a guiar tu respuesta"
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:24
+msgid "February 19, 2025"
+msgstr "19 de febrero de 2025"
+
+#: src/Components/Footer/Footer.tsx:41
+msgid "Feedback Form"
+msgstr "Formulario de comentarios"
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:99
+msgid "Fill out the request form"
+msgstr "Rellene el formulario de solicitud"
+
+#: src/Components/Pages/Results/Results.tsx:470
+msgid "Find other buildings your landlord owns"
+msgstr "Encuentra otros edificios que sean tus propietarios"
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:135
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:163
+#: src/Components/Pages/TenantRights/TenantRights.tsx:36
+msgid "Find out if you’re covered by Good Cause"
+msgstr "Averigua si estás cubierto por Buena Causa"
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:42
+#: src/Components/Pages/Results/Results.tsx:447
+#: src/Components/Pages/TenantRights/TenantRights.tsx:44
+msgid "Find out if your apartment is rent stabilized"
+msgstr "Descubre si tu apartamento está estabilizado"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:70
+msgid "Find out if your landlord owns other buildings"
+msgstr "Descubre si tu propietario posee otros edificios"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:216
+msgid "For any of the addresses listed below, you only need to find your building’s owner’s name or signature on one of the documents to know if they own that property."
+msgstr "Para cualquiera de las direcciones listadas a continuación, Usted sólo necesita encontrar el nombre o la firma de su edificio en uno de los documentos para saber si es el propietario de ese inmueble."
+
+#: src/Components/KYRContent/KYRContent.tsx:616
+msgid "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
+msgstr "Para las ligas estabilizadas de alquiler que se renuevan entre el 1 de octubre de 2024 y el 30 de septiembre 2025 el alquiler legal puede incrementarse en los siguientes niveles: para una renovación de un año hay un 2. Aumento del 5 %, o para una renovación de dos años hay un aumento del 5,25 %."
+
+#: src/Components/Modal/Modal.tsx:109
+msgid "Full image of this example lease can be viewed on <0>hcr.ny.gov</0>"
+msgstr "La imagen completa de este arrendamiento de ejemplo se puede ver en <0>hcr.ny.gov</0>"
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:47
+msgid "Get a text with a unique URL to your results page."
+msgstr "Consigue un texto con una URL única a tu página de resultados."
+
+#: src/Components/Pages/Home/Home.tsx:95
+msgid "Get started"
+msgstr "Empezar"
+
+#. placeholder {0}: bldgData.unitsres
+#: src/Components/Pages/Results/Results.tsx:462
+msgid "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings."
+msgstr "La ley de Buena Causa Eviction sólo cubre a los inquilinos cuyo propietario posee más de 10 apartamentos. Tu edificio solo tiene apartamentos {0} , pero tu propietario puede poseer otros edificios."
+
+#: src/Components/Pages/Results/Results.tsx:458
+#~ msgid "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings. Good Cause Eviction law only covers tenants whose landlord owns"
+#~ msgstr "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings. Good Cause Eviction law only covers tenants whose landlord owns"
+
+#: src/Components/Pages/Home/Home.tsx:105
+msgid "Good Cause Eviction protections went into effect on April 20th, 2024. If you are covered by the law, you have strong legal protections against eviction as long as you follow your lease. There are also limits to how much your landlord can raise your rent. "
+msgstr "Las protecciones de la Buena Causa entraron en vigor el 20 de abril de 2024. Si usted está cubierto por la ley, usted tiene fuertes protecciones legales contra el desalojo siempre que siga su arrendamiento. También hay límites a cuánto puede aumentar su alquiler. "
+
+#: src/Components/Pages/Home/Home.tsx:177
+msgid "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
+msgstr "Buena Causa la ley puede ser compleja de entender y usar para protegerse. Este sitio existe para facilitarle a usted y a sus vecinos entender sus protecciones de inquilinos y para asegurar sus derechos."
+
+#: src/Components/Footer/Footer.tsx:49
+#: src/Components/TopBar/TopBar.tsx:24
+msgid "Good Cause NYC"
+msgstr "Buena causa NYC"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:392
+msgid "Google your landlord’s name and find mentions of other buildings they may own in the press."
+msgstr "Google el nombre de tu propietario y encuentra menciones de otros edificios que pueden poseer en la prensa."
+
+#: src/Components/KYRContent/KYRContent.tsx:219
+msgid "Has your landlord raised your rent? Is your landlord refusing to do basic repairs? Are you worried about getting evicted or non-renewed?"
+msgstr "¿Su dueño ha levantado su renta? ¿Está su dueño negándose a hacer reparaciones básicas? ¿Está preocupado por ser desalojado o no renovado?"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:270
+#: src/Components/Pages/Results/Results.tsx:476
+msgid "Have you learned something new?"
+msgstr "¿Has aprendido algo nuevo?"
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:151
+msgid "Help build tenant power in NYC"
+msgstr "Ayuda a construir el poder del inquilino en NYC"
+
+#: src/Components/KYRContent/KYRContent.tsx:78
+#: src/Components/KYRContent/KYRContent.tsx:257
+msgid "Housing Court Answers"
+msgstr "Respuestas de la Corte de Casas"
+
+#: src/Components/KYRContent/KYRContent.tsx:145
+msgid "Housing Court Answers repairs resources"
+msgstr "Recurso de Reparación de Reparaciones de la Corte de Housing"
+
+#: src/Components/Pages/Home/Home.tsx:195
+msgid "Housing Justice for All"
+msgstr "Justicia de la casa para todos"
+
+#: src/Components/KYRContent/KYRContent.tsx:403
+msgid "Housing Justice for All Good Cause Eviction fact sheet"
+msgstr "Hoja informativa de Justicia de Casas Buenas Causas"
+
+#: src/Components/KYRContent/KYRContent.tsx:242
+msgid "Housing Justice for All tenant organizing form"
+msgstr "Justicia de Casas para Todos los inquilinos forma de organización"
+
+#: src/Components/KYRContent/KYRContent.tsx:411
+msgid "Housing Preservation and Development Good Cause Eviction overview"
+msgstr "Visión general de la Preocupación y Desarrollo de Casas Buenas"
+
+#: src/Components/KYRContent/KYRContent.tsx:435
+msgid "How to assert your Good Cause rights"
+msgstr "Cómo confirmar tus derechos de Buena Causa"
+
+#: src/Components/Pages/Results/Results.tsx:363
+msgid "How we determined your coverage"
+msgstr "Cómo determinamos tu cobertura"
+
+#: src/Components/Pages/Form/Survey.tsx:234
+#: src/Components/Pages/Form/Survey.tsx:348
+msgid "I'm not sure"
+msgstr "No estoy seguro"
+
+#: src/Components/Pages/Form/Survey.tsx:360
+#~ msgid "If you applied for your apartment through \"NYC Housing Connect,\" your building is very likely subsidized, and you should select the option: <0>\"Other subsidized housing\"</0>"
+#~ msgstr "If you applied for your apartment through \"NYC Housing Connect,\" your building is very likely subsidized, and you should select the option: <0>\"Other subsidized housing\"</0>"
+
+#: src/Components/Pages/Form/Survey.tsx:399
+msgid "If you applied for your apartment through \"NYC Housing Connect,\" your building is very likely subsidized, and you should select the option: <0>“Yes, Mitchell-Lama, HDFC, or other”</0>"
+msgstr "Si usted solicitó su apartamento a través de \"NYC Housing Connect\", es muy probable que su edificio sea subsidiado, y deberías seleccionar la opción: <0>“Sí, Mitchell-Lama, HDFC, u otro”</0>"
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:55
+msgid "If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
+msgstr "Si usted está cubierto por la legislación de Buena Causa, usted tiene derecho a un aumento limitado de alquiler. Utilice esta calculadora para determinar el aumento de alquiler permitido para su apartamento bajo Buena Causa."
+
+#: src/Components/KYRContent/KYRContent.tsx:298
+msgid "If you are offered a new lease after April 20th, 2024, then your landlord can’t raise your apartment’s monthly rent higher than:"
+msgstr "Si se le ofrece un nuevo arrendamiento después del 20 de abril de 2024, entonces su arrendatario no puede aumentar el alquiler mensual de su apartamento más de lo siguiente:"
+
+#: src/Components/KYRContent/KYRContent.tsx:634
+msgid "If you are rent-stabilized your landlord cannot simply decide they don’t want you as a tenant anymore, they are limited to certain reasons for evicting you."
+msgstr "Si estás estabilizado por el alquiler, el propietario no puede decidir simplemente que ya no te quieras como inquilino se limitan a ciertas razones para desalojarle."
+
+#: src/Components/KYRContent/KYRContent.tsx:651
+#: src/Components/KYRContent/KYRContent.tsx:668
+msgid "If you are the immediate family member of a rent-stabilized tenant and have been living with them immediately prior to their moving or passing away, you might be entitled to take over the lease."
+msgstr "Si usted es el miembro inmediato de la familia de un arrendatario estable y ha estado viviendo con ellos inmediatamente antes de su mudanza o de su fallecimiento, usted podría tener derecho a hacerse cargo del arrendamiento."
+
+#: src/Components/Pages/Form/Survey.tsx:369
+#~ msgid "If you know that your building is part of Low-Income Housing Tax Credit (LIHTC) program, select the option: <0>\"Other subsidized housing\"</0>"
+#~ msgstr "If you know that your building is part of Low-Income Housing Tax Credit (LIHTC) program, select the option: <0>\"Other subsidized housing\"</0>"
+
+#: src/Components/Pages/Form/Survey.tsx:408
+msgid "If you know that your building is part of Low-Income Housing Tax Credit (LIHTC) program, select the option: <0>“Yes, Mitchell-Lama, HDFC, or other”</0> "
+msgstr "Si sabe que su edificio forma parte del programa de Crédito de Impuesto de Bajo Ingreso (LIHTC), seleccione la opción: <0>“Sí, Mitchell-Lama, HDFC, u otro”</0> "
+
+#: src/Components/Pages/Form/Survey.tsx:417
+msgid "If you know that your building is part of public housing (NYCHA or PACT-RAD), select: <0>\"NYCHA or PACT/RAD\"</0>"
+msgstr "Si sabes que tu edificio es parte de la vivienda pública (NYCHA o PACT-RAD), selecciona: <0>\"NYCHA o PACT/RAD\"</0>"
+
+#: src/Components/Pages/Form/Survey.tsx:386
+#~ msgid "If you know that your building receives 421a or J51 tax abatement, select the option: <0>\"None of the above\"</0>"
+#~ msgstr "If you know that your building receives 421a or J51 tax abatement, select the option: <0>\"None of the above\"</0>"
+
+#: src/Components/Pages/Form/Survey.tsx:425
+msgid "If you know that your building receives 421a or J51 tax abatement, select the option:<0>“No, my building is not subsidized”</0>"
+msgstr "Si sabes que tu edificio recibe una reducción de impuestos 421a o J51, selecciona la opción: <0>“No, mi edificio no está subvencionado”</0>"
+
+#: src/Components/Pages/Home/Home.tsx:134
+msgid "If you live in New York City, you can use this site to learn which requirements you meet and how to assert your rights."
+msgstr "Si vives en la ciudad de Nueva York, puedes usar este sitio para conocer los requisitos que cumples y cómo establecer tus derechos."
+
+#: src/Components/Pages/Home/Home.tsx:144
+msgid "If you live in NYC and are not covered by Good Cause Eviction, you still have important tenant protections. Depending on the type of housing you live in, your protections may be even stronger than those provided by Good Cause."
+msgstr "Si usted vive en Nueva York y no está cubierto por Buena Causa, todavía tiene importantes protecciones de inquilinos. Dependiendo del tipo de vivienda en la que vivas, tus protecciones pueden ser incluso más fuertes que las ofrecidas por Buena causa."
+
+#: src/Components/Pages/Home/Home.tsx:157
+msgid "If you live outside of NYC"
+msgstr "Si vives fuera de NYC"
+
+#: src/Components/Pages/Form/Survey.tsx:442
+msgid "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>“No, my building is not subsidized”</0>"
+msgstr "Si utiliza un cupón que cubre parte o la totalidad de su alquiler, y puede utilizar ese cupón en otro apartamento si se mueve, selecciona la opción: <0>“No, mi edificio no está subvencionado”</0>"
+
+#: src/Components/Pages/Form/Survey.tsx:403
+#~ msgid "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>\"None of the above\"</0>"
+#~ msgstr "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>\"None of the above\"</0>"
+
+#: src/Components/Pages/Home/Home.tsx:141
+msgid "If you’re not covered by Good Cause Eviction"
+msgstr "Si no estás cubierto por Buena Causa"
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:80
+msgid "If your apartment has ever been rent stabilized, you’ll receive a document showing the rents that your landlord has registered since 1984. This document will help you learn if your apartment is still rent stabilized."
+msgstr "Si su apartamento se ha estabilizado alguna vez, recibirá un documento en el que se muestran los alquileres que su propietario ha registrado desde 1984. Este documento le ayudará a aprender si su apartamento todavía está estabilizado en alquiler."
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:89
+msgid "If your apartment has never been rent stabilized, you should receive get an email the day after you submit your request letting you know that New York State does not have a registration on file. This means your apartment is not rent stabilized, and therefore you may be eligible for Good Cause Eviction protections."
+msgstr "Si su apartamento nunca ha sido estabilizado en alquiler, usted debe recibir un correo electrónico al día siguiente de enviar su solicitud informándole de que el estado de Nueva York no tiene un registro en el archivo. Esto significa que su apartamento no está estabilizado en alquiler, y por lo tanto usted puede ser elegible para las protecciones de Buena Causa."
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:57
+msgid "If your apartment is rent stabilized, you are not covered by Good Cause because you already have stronger existing protections through rent stabilization law."
+msgstr "Si su apartamento está estabilizado en alquiler, usted no está cubierto por Buena Causa porque ya tiene más protecciones existentes a través de la ley de estabilidad de alquiler."
+
+#: src/Components/KYRContent/KYRContent.tsx:450
+msgid "If your landlord refuses to renew your lease, tells you that you have to leave for no reason, or tries to evict you for no reason, stay in your home!"
+msgstr "Si su propietario se niega a renovar su arrendamiento, le dice que tiene que marcharse sin razón o intenta evitarlo sin razón, ¡permanezca en su casa!"
+
+#: src/Components/KYRContent/KYRContent.tsx:538
+msgid "If your landlord takes you to court, you can raise a “Good Cause” defense. Your landlord would then have to demonstrate to the judge that they raised the rent because of increased costs (taxes, maintenance costs, etc.) or be forced to lower the increase."
+msgstr "Si tu propietario te lleva a la corte, puedes levantar una defensa de “Buena causa”. Su propietario tendría que demostrar al juez que levantó el alquiler debido al aumento de los costos (impuestos, gastos de mantenimiento, etc.). o verse obligados a reducir el aumento."
+
+#: src/Components/Pages/Form/Survey.tsx:479
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:107
+msgid "If your most recent lease renewal <0>looks like this</0>, then your apartment is likely rent stabilized."
+msgstr "Si su renovación de arrendamiento más reciente <0>se ve así</0>, entonces su apartamento probablemente esté estabilizado en alquiler."
+
+#: src/Components/Modal/Modal.tsx:100
+msgid "If your most recent lease renewal looks like the image below, then your apartment is almost certainly rent stabilized. If your lease renewal does not look like the image below, your apartment could still be rent stabilized."
+msgstr "Si su última renovación de arrendamiento se parece a la imagen de abajo, entonces su apartamento está casi con toda seguridad estable de alquiler. Si su renovación de arrendamiento no se parece a la imagen de abajo, su apartamento podría todavía ser estabilizado de alquiler."
+
+#. placeholder {0}: CPI + 5
+#: src/Components/KYRContent/KYRContent.tsx:515
+msgid "If your rent increase is more than {0}%, tell your landlord it is\n"
+"            an unreasonable increase and that a judge could force your landlord\n"
+"            to justify it based on increased costs."
+msgstr "Si tu aumento de alquiler es superior a {0}%, decirle a su propietario que es\n"
+"            un aumento poco razonable y que un juez podría obligar a su propietario\n"
+"            a justificarlo en base a un aumento de costos."
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:111
+msgid "If your rent was increased after April 20, 2024 beyond the allowable rent increase amount calculated above, your rent increase could be found unreasonable by housing court."
+msgstr "Si su alquiler se incrementó después del 20 de abril de 2024 más allá de la cantidad de aumento permitido de alquiler calculada arriba, su aumento de alquiler podría ser encontrado poco razonable por la corte de vivienda."
+
+#: src/Components/KYRContent/KYRContent.tsx:374
+msgid "Illegal Activity"
+msgstr "Actividad ilegal"
+
+#: src/Components/KYRContent/KYRContent.tsx:749
+msgid "In instances where residents disagree with management decisions or believe their rights have been violated, they have the right to grieve these issues through a formal process. Residents can file grievances online through the resident portal or on paper by visiting the management office."
+msgstr "En casos en los que los residentes no están de acuerdo con las decisiones de gestión o creen que sus derechos han sido violados, tienen derecho a afligir estas cuestiones a través de un proceso formal. Los residentes pueden presentar grietas en línea a través del portal residente o en papel visitando la oficina de administración."
+
+#: src/Components/Pages/Results/Results.tsx:312
+msgid "Ineligible"
+msgstr "Ineligible"
+
+#: src/Components/KYRContent/KYRContent.tsx:535
+msgid "Invoke “Good Cause” to a judge"
+msgstr "Invocar \"Buenas causas\" a un juez"
+
+#: src/helpers.ts:196
+msgid "is a Mitchell-Lama"
+msgstr "es un Mitchell-Lama"
+
+#: src/helpers.ts:192
+msgid "is an Article XI"
+msgstr "es un artículo XI"
+
+#: src/helpers.ts:194
+msgid "is part of an HPD subsidy program"
+msgstr "es parte de un programa de subsidios de HPD"
+
+#: src/helpers.ts:198
+msgid "is part of NYCHA or PACT/RAD"
+msgstr "es parte de NYCHA o PACT/RAD"
+
+#: src/Components/KYRContent/KYRContent.tsx:260
+#: src/Components/Pages/Home/Home.tsx:209
+msgid "JustFix"
+msgstr "Arreglar"
+
+#: src/Components/KYRContent/KYRContent.tsx:158
+msgid "JustFix’s Letter of Complaint"
+msgstr "Carta de queja de JustFix"
+
+#: src/Components/KYRContent/KYRContent.tsx:377
+msgid "Landlord personal use/removal from market"
+msgstr "Uso personal/eliminación de Soberano del mercado"
+
+#: src/Components/Pages/Results/Results.tsx:276
+msgid "Landlord portfolio size"
+msgstr "Tamaño del portafolio de Soberanos"
+
+#: src/Components/KYRContent/KYRContent.tsx:332
+msgid "Landlords can increase the rent more than the reasonable rent increase but they must explain why and must point to increases in their costs or substantial repairs they did to the apartment or building."
+msgstr "Los señores de los terrenos pueden aumentar el alquiler más que el razonable aumento del alquiler, pero deben explicar por qué y deben apuntar a aumentos en sus costos o reparaciones sustanciales que hicieron al apartamento o edificio."
+
+#: src/Components/Pages/Legal/TermsOfUse.tsx:15
+msgid "Last modified: August 16, 2024"
+msgstr "Última modificación: 16 de agosto de 2024"
+
+#: src/Components/Pages/Legal/PrivacyPolicy.tsx:15
+msgid "Last modified: Jan 24, 2025"
+msgstr "Última modificación: 24 de enero de 2025"
+
+#: src/Components/KYRContent/KYRContent.tsx:203
+msgid "Lawful source of income"
+msgstr "Fuente inmensa de ingresos"
+
+#: src/Components/KYRContent/KYRContent.tsx:641
+msgid "Learn about lease renewal rights"
+msgstr "Aprenda sobre los derechos de renovación del arrendamiento"
+
+#: src/Components/KYRContent/KYRContent.tsx:624
+msgid "Learn about rent increase rights"
+msgstr "Aprende sobre los derechos de aumento del alquiler"
+
+#: src/Components/KYRContent/KYRContent.tsx:658
+msgid "Learn about succession rights"
+msgstr "Aprende sobre los derechos de sucesión"
+
+#: src/Components/KYRContent/KYRContent.tsx:111
+msgid "Learn about Warranty of Habitability"
+msgstr "Aprende sobre la garantía de Habitabilidad"
+
+#: src/Components/KYRContent/KYRContent.tsx:121
+msgid "Learn how tenant associations can help"
+msgstr "Aprende cómo las asociaciones de inquilinos pueden ayudar"
+
+#: src/Components/Pages/Home/Home.tsx:80
+msgid "Learn if you’re covered <0/>by Good Cause <1/>Eviction law in NYC"
+msgstr "Aprende si estás cubierto <0/>por Buena causa <1/>Derecho de desconfianza en el NYC"
+
+#: src/Components/Pages/Form/Survey.tsx:602
+msgid "Learn more"
+msgstr "Aprende más"
+
+#: src/Components/KYRContent/KYRContent.tsx:185
+msgid "Learn more about fair housing"
+msgstr "Aprenda más sobre vivienda justa"
+
+#: src/Components/KYRContent/KYRContent.tsx:398
+msgid "Learn more about Good Cause Eviction Law protections"
+msgstr "Aprenda más sobre las protecciones de la Ley de Buena Causa"
+
+#: src/Components/KYRContent/KYRContent.tsx:392
+msgid "Learn more about Good Cause reasons for eviction"
+msgstr "Más información sobre Buena Causa por motivos de desalojo"
+
+#: src/Components/KYRContent/KYRContent.tsx:72
+msgid "Learn more about housing court"
+msgstr "Más información sobre la corte de vivienda"
+
+#: src/Components/KYRContent/KYRContent.tsx:737
+msgid "Learn more about income-based rent and recertification"
+msgstr "Más información sobre el alquiler y recertificación en base a ingresos"
+
+#: src/Components/KYRContent/KYRContent.tsx:195
+msgid "Learn more about lawful source of income discrimination"
+msgstr "Aprenda más sobre la discriminación de ingresos legítima"
+
+#: src/Components/KYRContent/KYRContent.tsx:784
+msgid "Learn more about NYCHA and PACT/RAD’s tenant protections"
+msgstr "Aprenda más sobre las protecciones de los inquilinos de NYCHA y PACT/RAD"
+
+#: src/Components/KYRContent/KYRContent.tsx:778
+msgid "Learn more about NYCHA lease terminations"
+msgstr "Más información sobre las terminaciones de arrendamiento de NYCHA"
+
+#: src/Components/KYRContent/KYRContent.tsx:343
+msgid "Learn more about Reasonable Rent Increase"
+msgstr "Más información sobre el aumento del alquiler razonable"
+
+#: src/Components/KYRContent/KYRContent.tsx:663
+msgid "Learn more about rent stabilization"
+msgstr "Más información sobre la estabilización del alquiler"
+
+#: src/Components/KYRContent/KYRContent.tsx:133
+msgid "Learn more about requesting repairs"
+msgstr "Más información sobre la solicitud de reparaciones"
+
+#: src/Components/Pages/Home/Home.tsx:152
+msgid "Learn more about tenant protections in NYC"
+msgstr "Más información sobre la protección de los inquilinos en NYC"
+
+#: src/Components/KYRContent/KYRContent.tsx:54
+msgid "Learn more about the eviction process"
+msgstr "Más información sobre el proceso de desalojo"
+
+#: src/Components/KYRContent/KYRContent.tsx:758
+msgid "Learn more about the grievance procedures"
+msgstr "Aprenda más sobre los procedimientos de dolor"
+
+#: src/Components/Pages/Home/Home.tsx:132
+msgid "Learn more about the law."
+msgstr "Más información sobre la ley."
+
+#: src/Components/KYRContent/KYRContent.tsx:888
+msgid "Learn more about your rights"
+msgstr "Más información sobre tus derechos"
+
+#: src/Components/Pages/Home/Home.tsx:166
+msgid "Learn where Good Cause protections have been won"
+msgstr "Aprende donde se han ganado buenas protecciones de causa"
+
+#: src/Components/KYRContent/KYRContent.tsx:368
+msgid "Lease violations"
+msgstr "Violaciones de arrendamiento"
+
+#: src/Components/KYRContent/KYRContent.tsx:768
+msgid "Legal representation can make a significant difference in ensuring a fair and just resolution to housing disputes, protecting residents from wrongful eviction or other adverse outcomes. If you do not have a lawyer and are facing a termination of tenancy at the Office of Impartial Hearings, you can ask for your case to be adjourned in order for you to seek counsel."
+msgstr "La representación legal puede marcar una diferencia significativa a la hora de garantizar una resolución justa y justa de las disputas en materia de vivienda, proteger a los residentes de los desalojos injustos u otros resultados adversos. Si usted no tiene un abogado y se enfrenta a una rescisión de arrendamiento en la Oficina de Escuchas Imparciales, Usted puede solicitar que su caso sea suspendido para que usted solicite consejo."
+
+#: src/Components/Pages/Results/Results.tsx:278
+msgid "Live-in landlord"
+msgstr "Propietario vivo"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:484
+msgid "Load more buildings"
+msgstr "Cargar más edificios"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:250
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:341
+msgid "Loading document links..."
+msgstr "Cargando enlaces de documentos..."
+
+#: src/Components/Pages/Results/Results.tsx:158
+#: src/Components/Pages/Results/Results.tsx:174
+msgid "Loading your results..."
+msgstr "Cargando resultados..."
+
+#: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:95
+msgid "Map showing location of the entered address."
+msgstr "Mapa mostrando la ubicación de la dirección introducida."
+
+#: src/Components/KYRContent/KYRContent.tsx:254
+#: src/Components/KYRContent/KYRContent.tsx:577
+msgid "Met Council on Housing"
+msgstr "Consejo reunido en Housing"
+
+#: src/Components/KYRContent/KYRContent.tsx:408
+msgid "Met Council on Housing Good Cause Eviction fact sheet"
+msgstr "Conoce la hoja informativa de Housing Good Cause Eviction"
+
+#: src/Components/KYRContent/KYRContent.tsx:139
+msgid "Met Council on Housing guide to getting repairs"
+msgstr "Conoce al Consejo de Housing para conseguir reparaciones"
+
+#: src/Components/KYRContent/KYRContent.tsx:66
+msgid "Met Council on Housing Nonpayment of Rent Eviction information"
+msgstr "Consejo congregado en Housing No payment of Rent Eviction information"
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:132
+msgid "Met Council on Housing’s free clinic offers tenants assistance with understanding their rent stabilization status and landlord-tenant disputes."
+msgstr "El Met Council sobre la clínica gratuita de Housing ofrece asistencia a los inquilinos para entender su estatus de estabilidad de alquileres y disputas de arrendatarios."
+
+#: src/Components/KYRContent/KYRContent.tsx:127
+msgid "Met Council on Housing’s Guide to forming a tenant association"
+msgstr "Conoce la Guía de Housing para formar una asociación de inquilinos"
+
+#: src/Components/KYRContent/KYRContent.tsx:849
+msgid "Met Council on Housing’s Hotline"
+msgstr "Conoció la línea de acceso directo de la Casa"
+
+#: src/Components/KYRContent/KYRContent.tsx:675
+msgid "Met Council on Housing’s Rent Stabilization overview"
+msgstr "Conocí la visión general de la estabilización de alquiler de Housing"
+
+#: src/Components/KYRContent/KYRContent.tsx:246
+msgid "More resources about your rights as an NYC tenant"
+msgstr "Más recursos sobre tus derechos como inquilino de NYC"
+
+#: src/helpers.ts:166
+msgid "Mortgage"
+msgstr "Hipoteca"
+
+#: src/Components/Pages/Form/Survey.tsx:233
+#: src/Components/Pages/Form/Survey.tsx:308
+#: src/Components/Pages/Form/Survey.tsx:347
+msgid "No"
+msgstr "Nu"
+
+#: src/Components/Pages/Form/Survey.tsx:530
+msgid "No rent stabilized apartments were registered in your building in recent years, but based on the size and age of your building some of the apartments may still be rent stabilized."
+msgstr "No se registraron apartamentos estables en su edificio en los últimos años pero en función del tamaño y la edad de su edificio, algunos de los apartamentos pueden todavía estar estabilizados."
+
+#: src/Components/Pages/Form/Survey.tsx:276
+msgid "No, my building is not subsidized"
+msgstr "No, mi edificio no está subvencionado"
+
+#: src/Components/KYRContent/KYRContent.tsx:365
+msgid "Non payment of rent"
+msgstr "No pago del alquiler"
+
+#: src/Components/Pages/Form/Survey.tsx:255
+#~ msgid "None of the above"
+#~ msgstr "None of the above"
+
+#: src/Components/KYRContent/KYRContent.tsx:329
+msgid "Note"
+msgstr "Nota"
+
+#: src/Components/Pages/Form/Survey.tsx:433
+msgid "Note: if your building is part of 421a or J51, your apartment should be rent stabilized"
+msgstr "Nota: si su edificio es parte de 421a o J51, su apartamento debe ser estabilizado"
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:127
+msgid "Note: Landlords can increase the rent beyond the Reasonable Rent Increase limit, but they must explain why and must prove increases in their costs or substantial repairs they did to the apartment or building."
+msgstr "Nota: Los Soberanos Landrios pueden incrementar el alquiler más allá del límite de aumento de alquiler razonable, pero deben explicar por qué y deben probar incrementos en sus costos o reparaciones sustanciales que hicieron al apartamento o edificio."
+
+#: src/Components/KYRContent/KYRContent.tsx:371
+msgid "Nuisance activity"
+msgstr "Actividad de Nuisance"
+
+#: src/Components/KYRContent/KYRContent.tsx:117
+msgid "NY Courts Warranty of Habitability fact sheet"
+msgstr "Hoja informativa de NY Courts Garantía de Habitabilidad"
+
+#: src/Components/KYRContent/KYRContent.tsx:60
+msgid "NY Homes and Community Renewal eviction information"
+msgstr "NY Homes and Community Renewal eviction information"
+
+#: src/Components/Pages/Form/Survey.tsx:253
+#~ msgid "NYCHA or PACT/RAD"
+#~ msgstr "NYCHA or PACT/RAD"
+
+#: src/Components/KYRContent/KYRContent.tsx:790
+msgid "NYCHA policies"
+msgstr "Políticas NYCHA"
+
+#: src/Components/KYRContent/KYRContent.tsx:793
+msgid "NYLAG's Public Housing Justice Project"
+msgstr "Proyecto de Justicia de Casas Públicas de NYLAG"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:164
+msgid "Once you find the name of your building’s owner, remember it because you’ll need it in Step 2."
+msgstr "Una vez que encuentres el nombre del dueño de tu edificio, recuérdalo porque lo necesitarás en el Paso 2."
+
+#: src/Components/Pages/Form/Survey.tsx:254
+#~ msgid "Other subsidized housing"
+#~ msgstr "Other subsidized housing"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:257
+msgid "Our data is not showing additional buildings that may be owned by your landlord."
+msgstr "Nuestros datos no muestran edificios adicionales que pueden ser propiedad de su dueño."
+
+#: src/Components/KYRContent/KYRContent.tsx:796
+msgid "PACT Fact Sheet"
+msgstr "Hoja de hechos PACT"
+
+#: src/Components/KYRContent/KYRContent.tsx:799
+msgid "PACT Rights and Responsibilities Fact Sheet"
+msgstr "PACT Derechos y Responsibilidades hoja informativa"
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:244
+msgid "Phone number"
+msgstr "Número de teléfono"
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:165
+msgid "Phone number (optional)"
+msgstr "Número de teléfono (opcional)"
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:185
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:257
+msgid "Phone number submitted"
+msgstr "Número de teléfono enviado"
+
+#: src/Components/Pages/Form/Survey.tsx:148
+msgid "Please complete the unanswered questions before continuing."
+msgstr "Por favor, complete las preguntas sin responder antes de continuar."
+
+#: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:66
+msgid "Please confirm your address"
+msgstr "Por favor, confirma tu dirección"
+
+#: src/Components/Pages/Form/Survey.tsx:192
+msgid "Please enter your total rent amount."
+msgstr "Por favor, introduzca el importe total del alquiler."
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:206
+msgid "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that's a good sign they own the property."
+msgstr "Por favor revise estos documentos para saber si el propietario de su edificio también posee cualquiera de las propiedades a continuación. Si encuentras el nombre o la firma del propietario de tu edificio en cualquiera de los documentos de abajo, eso es una buena señal que ellos son dueños de la propiedad."
+
+#: src/Components/Pages/Form/Survey.tsx:261
+msgid "Please specify if your apartment is part of any subsidized housing programs."
+msgstr "Por favor especifique si su apartamento es parte de cualquier programa de vivienda subvencionada."
+
+#: src/Components/Pages/Form/Survey.tsx:223
+msgid "Please specify if your apartment is rent stabilized."
+msgstr "Por favor especifique si su apartamento está estabilizado en alquiler."
+
+#: src/Components/Pages/Form/Survey.tsx:162
+msgid "Please specify the number of bedrooms in your apartment."
+msgstr "Por favor especifique el número de habitaciones en su apartamento."
+
+#: src/Components/Pages/Form/Survey.tsx:298
+msgid "Please specify whether your landlord lives in your apartment building."
+msgstr "Por favor especifique si su dueño vive en el edificio de su apartamento."
+
+#: src/Components/Pages/Form/Survey.tsx:337
+msgid "Please specify whether your landlord owns more than 10 apartments across multiple buildings."
+msgstr "Por favor especifica si tu propietario posee más de 10 apartamentos en varios edificios."
+
+#: src/Components/Pages/Results/Results.tsx:183
+#: src/Components/Pages/Results/Results.tsx:236
+msgid "Print coverage"
+msgstr "Imprimir cobertura"
+
+#: src/Components/Pages/Legal/PrivacyPolicy.tsx:14
+msgid "Privacy policy"
+msgstr "Política de privacidad"
+
+#: src/Components/Footer/Footer.tsx:25
+msgid "Privacy Policy"
+msgstr "Política de privacidad"
+
+#: src/Components/KYRContent/KYRContent.tsx:600
+msgid "Protections if you live in a rent stabilized apartment"
+msgstr "Protege si vives en un apartamento estabilizado de alquiler"
+
+#: src/Components/KYRContent/KYRContent.tsx:695
+msgid "Protections if you live in NYCHA or PACT/RAD housing"
+msgstr "Protege si vives en viviendas NYCHA o PACT/RAD"
+
+#: src/Components/KYRContent/KYRContent.tsx:274
+msgid "Protections if you’re covered by Good Cause"
+msgstr "Protege si estás cubierto por una buena causa"
+
+#: src/Components/KYRContent/KYRContent.tsx:29
+msgid "Protections that all NYC tenants have"
+msgstr "Protección que todos los inquilinos de NYC tienen"
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:160
+msgid "Protections under Good Cause"
+msgstr "Protección bajo Buena Causa"
+
+#: src/Components/Pages/Form/Survey.tsx:633
+msgid "Publicly available data sources do not indicate that your building is part of a subsidized housing program."
+msgstr "Las fuentes de datos disponibles públicamente no indican que su edificio forma parte de un programa de vivienda subvencionado."
+
+#. placeholder {0}: formatNumber(rsUnits)
+#. placeholder {1}: formatNumber(bldgUnits)
+#: src/Components/Pages/Form/Survey.tsx:519
+msgid "Publicly available data sources indicate that {0} of the {1} apartments in your building are registered as rent stabilized."
+msgstr "Fuentes de datos disponibles públicamente indican que {0} de los apartamentos {1} en tu edificio están registrados como estabilizado el alquiler."
+
+#: src/Components/Pages/Form/Survey.tsx:509
+msgid "Publicly available data sources indicate that all apartments in your building are registered as rent stabilized."
+msgstr "Las fuentes de datos disponibles públicamente indican que todos los apartamentos de su edificio están registrados como estabilizados de alquiler."
+
+#. placeholder {0}: bldgData.unitsres == 1 ? "is 1 apartment" : `are ${bldgData.unitsres} apartments`
+#: src/Components/Pages/Form/Survey.tsx:327
+msgid "Publicly available data sources indicate that there {0} in your building. Good Cause protections only apply to tenants whose landlord owns more than 10 apartments, even if those apartments are spread across multiple buildings."
+msgstr "Fuentes de datos disponibles públicamente indican que hay {0} en tu edificio. Las protecciones de Buena Causa sólo se aplican a los inquilinos cuyo propietario posee más de 10 apartamentos, incluso si esos apartamentos se difunden por varios edificios."
+
+#. placeholder {0}: _(buildingSubsidyLanguage(subsidy_name))
+#: src/Components/Pages/Form/Survey.tsx:620
+msgid "Publicly available data sources indicate that your building {0}, which is considered subsidized housing."
+msgstr "Fuentes de datos disponibles públicamente indican que tu edificio {0}, que se considera vivienda subsidiada."
+
+#: src/Components/Pages/Form/Survey.tsx:608
+msgid "Publicly available data sources indicate that your building is part of NYCHA."
+msgstr "Las fuentes de datos disponibles públicamente indican que su edificio es parte de la NYCHA."
+
+#. placeholder {0}: active421a ? "421a" : "J51"
+#: src/Components/Pages/Form/Survey.tsx:496
+msgid "Publicly available data sources indicate that your building receives the {0} tax incentive. This means your apartment is rent stabilized."
+msgstr "Las fuentes de datos disponibles públicamente indican que tu edificio recibe el incentivo del impuesto {0} . Esto significa que tu apartamento está estabilizado para el alquiler."
+
+#: src/Components/KYRContent/KYRContent.tsx:563
+msgid "Reach out to external resources"
+msgstr "Llegar a recursos externos"
+
+#: src/helpers.ts:188
+msgid "receives a HUD Project-Based subsidy"
+msgstr "recibe un subsidio basado en proyectos HUD"
+
+#: src/helpers.ts:190
+msgid "receives the Low-Income Housing Tax Credit (LIHTC)"
+msgstr "recibe el crédito de bajo ingreso Housing Tax (LIHTC)"
+
+#. placeholder {0}: bldgData.unitsres || 0
+#. placeholder {1}: 11 - bldgData.unitsres
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:224
+msgid "Remember, your building has {0, plural, one {# apartment} other {# apartments}}, so<0> you only need to confirm that your landlord owns {1, plural, one {# apartment} other {# apartments}} across other buildings.</0>"
+msgstr "Recuerda, tu edificio tiene {0, plural, one {# apartamento} other {# apartamentos}}, ¡así que <0> solo necesitas confirmar que tu propietario posee {1, plural, one {# ¡apartamento} other {# apartamentos}} ¡A lo largo de otros edificios. /0>"
+
+#: src/Components/Pages/Results/Results.tsx:279
+msgid "Rent Amount"
+msgstr "Monto del alquiler"
+
+#: src/Components/TopBar/TopBar.tsx:53
+msgid "Rent increase calculator"
+msgstr "Calculadora de aumento de alquiler"
+
+#: src/Components/Pages/Results/Results.tsx:281
+msgid "Rent stabilization"
+msgstr "Rentar estabilidad"
+
+#: src/Components/KYRContent/KYRContent.tsx:207
+msgid "Report source of income discrimination"
+msgstr "Discriminación de los ingresos en el informe"
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:71
+msgid "Request your rent history"
+msgstr "Solicitar su historial de alquiler"
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:73
+msgid "Request your rent history to help find out if your apartment is rent stabilized and if you’re being overcharged."
+msgstr "Solicite su historial de alquileres para ayudarle a averiguar si su apartamento está estabilizado y si está siendo recargado."
+
+#: src/Components/KYRContent/KYRContent.tsx:251
+msgid "Residential Tenants Guide"
+msgstr "Guía Residencial de inquilinos"
+
+#: src/Components/ProgressBar/ProgressBar.tsx:28
+msgid "Result"
+msgstr "Resultado"
+
+#: src/Components/Pages/Results/Results.tsx:366
+msgid "Results are based on publicly available data about your building and the answers you provided. This does not constitute legal advice."
+msgstr "Los resultados se basan en datos disponibles públicamente sobre su edificio y las respuestas que usted proporcionó. Esto no constituye asesoramiento legal."
+
+#: src/Components/Modal/Modal.tsx:118
+msgid "Sample image of blank rent stabilized lease"
+msgstr "Imagen de ejemplo de arrendamiento en blanco estable"
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:46
+msgid "Save your result to your phone"
+msgstr "Guarda el resultado en tu teléfono"
+
+#: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:85
+msgid "Search new address"
+msgstr "Buscar nueva dirección"
+
+#: src/Components/KYRContent/KYRContent.tsx:82
+msgid "See if you are eligible for a free attorney in housing court"
+msgstr "Vea si usted es elegible para un abogado gratuito en la corte de vivienda"
+
+#: src/Components/Pages/Form/Survey.tsx:365
+msgid "See your results"
+msgstr "Ver tus resultados"
+
+#: src/Components/KYRContent/KYRContent.tsx:149
+msgid "Send a free, legally vetted letter to notify your landlord of repair issues"
+msgstr "Envía una carta gratuita para notificar a tu propietario de problemas de reparación"
+
+#: src/Components/Pages/Results/Results.tsx:265
+msgid "Share this site with your neighbors"
+msgstr "Compartir este sitio con sus vecinos"
+
+#: src/Components/KYRContent/KYRContent.tsx:549
+msgid "Share your coverage with your landlord"
+msgstr "Comparte tu cobertura con tu propietario"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:477
+msgid "Showing {visibleCount} of {totalCount} buildings that your landlord may own"
+msgstr "Mostrando {visibleCount} de {totalCount} edificios que tu propietario puede poseer"
+
+#: src/Components/KYRContent/KYRContent.tsx:468
+msgid "Since your apartment is covered by Good Cause Eviction, there is a good chance other apartments in your building are covered as well. Organizing with your neighbors can help you assert your rights as a group."
+msgstr "Ya que su apartamento está cubierto por Buena Causa, hay una buena oportunidad de que otros apartamentos en su edificio también estén cubiertos. Organizar con sus vecinos puede ayudarle a establecer sus derechos como grupo."
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:191
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:263
+msgid "Something went wrong. Try again later."
+msgstr "Algo salió mal. Inténtalo de nuevo más tarde."
+
+#: src/Components/KYRContent/KYRContent.tsx:175
+msgid "Source of income discrimination is the illegal practice by landlords, owners, and real estate brokers of refusing to rent to current or prospective tenants seeking to pay for housing with housing assistance vouchers, subsidies, or other forms of public assistance."
+msgstr "La discriminación de la fuente de ingresos es la práctica ilegal de los arrendadores, propietarios, y corredores inmobiliarios que se niegan a alquilar a inquilinos actuales o potenciales que busquen pagar por viviendas con vales de asistencia para la vivienda, subvenciones, u otras formas de asistencia pública."
+
+#: src/Components/Pages/Results/Results.tsx:295
+msgid "Stronger protections"
+msgstr "Protección más fuerte"
+
+#: src/Components/Pages/Form/Survey.tsx:171
+msgid "Studio"
+msgstr "Estudio"
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:176
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:203
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:283
+msgid "Submit"
+msgstr "Enviar"
+
+#: src/Components/Pages/Results/Results.tsx:280
+msgid "Subsidized housing"
+msgstr "Vivienda subsidiada"
+
+#: src/Components/ProgressBar/ProgressBar.tsx:27
+msgid "Survey"
+msgstr "Encuesta"
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:146
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:164
+#: src/Components/Pages/TenantRights/TenantRights.tsx:37
+msgid "Take the survey"
+msgstr "Hacer la encuesta"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:398
+msgid "Talk to your neighbors to see if they know of any other buildings your landlord may own."
+msgstr "Habla con tus vecinos para ver si conocen cualquier otro edificio que tu propietario pueda poseer."
+
+#: src/Components/KYRContent/KYRContent.tsx:512
+msgid "Tell them it’s unreasonable"
+msgstr "Dígales que no es razonable"
+
+#: src/Components/KYRContent/KYRContent.tsx:458
+msgid "Tell your landlord you have a right to stay unless your landlord has a “Good Cause” to evict you. If your landlord then tries to formally evict you in court, you can raise a Good Cause defense and require your landlord to demonstrate they have a “Good Cause” to evict you."
+msgstr "Dile a tu dueño que tienes derecho a permanecer a menos que tu dueño tenga una “Buena Causa” para evitarte. Si su propietario trata de evocarle formalmente en la corte, Usted puede levantar una defensa de Buena Causa y exigir a su propietario que demuestre que tiene una “Buena Causa” para evitarle."
+
+#: src/Components/KYRContent/KYRContent.tsx:477
+msgid "Tenant Organizing Toolkit from Housing Justice for All"
+msgstr "Juego de herramientas organizativas de Housing Justice para todos"
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:155
+msgid "Tenant rights under rent stabilization"
+msgstr "Derechos de arrendatario bajo la estabilización del alquiler"
+
+#: src/Components/Pages/Home/Home.tsx:160
+msgid "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State."
+msgstr "Inquilinos y defensores de inquilinos están trabajando para extender protecciones por Buena Causa en todo el estado de Nueva York."
+
+#: src/Components/KYRContent/KYRContent.tsx:100
+msgid "Tenants have the right to live in a safe, sanitary, and well-maintained apartment, including public areas of the building. This right is implied in every residential lease, and any lease provision that waives it is void. If your landlord is not providing these conditions in your apartment or building, there are actions you can take to exercise your rights."
+msgstr "Los inquilinos tienen derecho a vivir en un apartamento seguro, sanitario y bien mantenido, incluyendo áreas públicas del edificio. Este derecho está implícito en cada arrendamiento residencial, y cualquier cláusula de arrendamiento que lo anula es nula. Si su dueño no proporciona estas condiciones en su apartamento o edificio, hay acciones que puede tomar para ejercer sus derechos."
+
+#: src/Components/Pages/Legal/TermsOfUse.tsx:14
+msgid "Terms of use"
+msgstr "Términos de uso"
+
+#: src/Components/Footer/Footer.tsx:33
+msgid "Terms of Use"
+msgstr "Términos de uso"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:140
+msgid "The best way to confirm the owner of your building is to review your building’s official real estate transaction documents and look for the owner’s signature. We have provided links to these documents, below."
+msgstr "La mejor manera de confirmar el propietario de su edificio es revisar los documentos oficiales de transacción inmobiliaria de su edificio y buscar la firma del propietario. A continuación hemos proporcionado enlaces a estos documentos."
+
+#. placeholder {0}: _(CPI_EFFECTIVE_DATE)
+#. placeholder {1}: CPI + 5
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:118
+msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
+msgstr "La ley de Buena Causa establece un aumento del alquiler razonable, que se fija cada año a la tasa de inflación más 5%, con un máximo del 10% total. A partir de ${0}, la tasa de inflación de la ciudad de Nueva York es ${CPI}%, lo que significa que el actual incremento de Alquiler Razonable local es ${1}%."
+
+#: src/Components/Footer/Footer.tsx:12
+msgid "The information on this website does not constitute legal advice and must not be used as a substitute for the advice of a lawyer qualified to give advice on legal issues pertaining to housing."
+msgstr "La información contenida en este sitio web no constituye asesoramiento legal y no debe utilizarse como sustituto del asesoramiento de un abogado cualificado para asesorar sobre cuestiones legales relativas a la vivienda."
+
+#: src/Components/KYRContent/KYRContent.tsx:567
+msgid "The Met Council on Housing helps organize tenants to stand up not only for their individual rights, but also for changes to housing policies. You can visit the website, or use their hotline to get answers to your rights as a tenant, and understand your options for dealing with a housing situation."
+msgstr "El Met Council on Housing ayuda a organizar a los inquilinos a defender no sólo sus derechos individuales, sino también los cambios en las políticas de vivienda. Usted puede visitar el sitio web, o utilizar su línea directa para obtener respuestas a sus derechos como inquilino, y entender sus opciones para hacer frente a una situación de vivienda."
+
+#: src/Components/KYRContent/KYRContent.tsx:43
+msgid "The only way your landlord can legally evict you is through an eviction lawsuit in housing court. Lockouts (also known as unlawful evictions or self-help evictions) are illegal. All tenants, including those in private residential programs, have the right to stay in their home unless they choose to leave or are evicted through a court process."
+msgstr "La única forma en que su propietario puede evicarle legalmente es a través de una demanda por desalojo en la corte de vivienda. Las detenciones (también conocidas como desalojos ilegales o desalojos de autoayuda) son ilegales. Todos los inquilinos, incluidos los de programas residenciales privados, tienen derecho a quedarse en su hogar a menos que decidan salir o sean desalojados a través de un proceso judicial."
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:135
+msgid "The owner of the building may be different than the person listed on your lease."
+msgstr "El propietario del edificio puede ser diferente de la persona que aparece en su arrendamiento."
+
+#: src/Components/KYRContent/KYRContent.tsx:289
+#~ msgid ""
+#~ "The state housing agency must publish each year’s Reasonable Rent\n"
+#~ "          Increase by August. This year the maximum amount your landlord can\n"
+#~ "          increase your rent by is {increase_pct}%."
+#~ msgstr ""
+#~ "The state housing agency must publish each year’s Reasonable Rent\n"
+#~ "          Increase by August. This year the maximum amount your landlord can\n"
+#~ "          increase your rent by is {increase_pct}%."
+
+#: src/Components/KYRContent/KYRContent.tsx:289
+msgid "The state housing agency must publish each year’s Reasonable Rent Increase by August. This year the maximum amount your landlord can increase your rent by is ${increase_pct}%."
+msgstr "La agencia estatal de vivienda debe publicar el aumento de alquileres razonables de cada año en agosto. Este año, la cantidad máxima que tu propietario puede aumentar tu alquiler en un ${increase_pct}%."
+
+#: src/Components/Pages/Results/Results.tsx:421
+msgid "There {steps, plural, one {is # thing} other {are # things}} you need to verify to confirm your coverage"
+msgstr "¡Hay {steps, plural, one {¡# cosa} other {¡Son # cosas}} ¡Necesitas verificar para confirmar tu cobertura"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:77
+#: src/Components/Pages/Results/Results.tsx:166
+msgid "There was an error loading your results, please try again in a few minutes."
+msgstr "Se ha producido un error al cargar sus resultados. Por favor, inténtelo de nuevo en unos minutos."
+
+#: src/Components/KYRContent/KYRContent.tsx:728
+msgid "This ensures that housing remains affordable and equitable for all residents, regardless of financial circumstances. Residents who have recently experienced a change in income can request an interim recertification to ensure that their apartment remains affordable."
+msgstr "Esto garantiza que la vivienda siga siendo asequible y equitativa para todos los residentes, independientemente de las circunstancias financieras. Los residentes que han experimentado recientemente un cambio en los ingresos pueden solicitar una recertificación provisional para garantizar que su apartamento siga siendo asequible."
+
+#: src/Components/Pages/Home/Home.tsx:185
+msgid "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for Good Cause protections."
+msgstr "Este sitio es una colaboración entre Housing Justice for All Coalition y JustFix. Agradecemos a todas las personas que han contribuido a este sitio y a todos los inquilinos y defensores que luchan por la protección de Buena Causa."
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:149
+msgid "Tip: The signature page is often located toward the end of the document"
+msgstr "Consejo: La página de la firma se encuentra a menudo hacia el final del documento"
+
+#: src/Components/Pages/Home/Home.tsx:122
+msgid "To be covered by the law, your apartment must meet several requirements. "
+msgstr "Para estar cubierto por la ley, su apartamento debe cumplir con varios requisitos. "
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:388
+msgid "To find other buildings your landlord might own, you can:"
+msgstr "Para encontrar otros edificios que tu propietario pueda poseer, puedes:"
+
+#: src/Components/Pages/Form/Survey.tsx:375
+msgid "To help guide your answer"
+msgstr "Para ayudar a guiar tu respuesta"
+
+#: src/Components/KYRContent/KYRContent.tsx:839
+msgid "To learn what protections you have through your building’s subsidy program we recommend that you speak to your landlord and your neighbors. For further assistance you can also try contacting:"
+msgstr "Para conocer las protecciones que tiene a través del programa de subsidios de su edificio, le recomendamos que hable con su dueño y sus vecinos. Para más ayuda también puedes intentar contactar:"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:89
+msgid "To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments"
+msgstr "Para cumplir con el requisito de \"Tamaño de la cartera de los soberanos en buenas causas\" de Eviction, debes averiguar si tu propietario posee más de 10 apartamentos"
+
+#: src/Components/Pages/Results/Results.tsx:277
+msgid "Type of building"
+msgstr "Tipo de edificio"
+
+#: src/Components/KYRContent/KYRContent.tsx:358
+#~ msgid ""
+#~ "Under the Good Cause Eviction law, landlords are allowed to evict\n"
+#~ "              tenants for the following “good cause” reasons:"
+#~ msgstr ""
+#~ "Under the Good Cause Eviction law, landlords are allowed to evict\n"
+#~ "              tenants for the following “good cause” reasons:"
+
+#: src/Components/KYRContent/KYRContent.tsx:361
+msgid "Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:"
+msgstr "Bajo la ley de Buena Causa, los propietarios pueden evicar a los inquilinos por las siguientes “buenas causas”:"
+
+#: src/Components/Pages/TenantRights/TenantRights.tsx:23
+msgid "Understanding your rights"
+msgstr "Subrayando tus derechos"
+
+#: src/Components/Pages/Results/Results.tsx:321
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: src/Components/KYRContent/KYRContent.tsx:210
+msgid "Unlock NYC"
+msgstr "Desbloquear NYC"
+
+#: src/Components/Pages/RentStabilization/RentStabilization.tsx:143
+msgid "Update your coverage result"
+msgstr "Actualiza el resultado de tu cobertura"
+
+#: src/Components/KYRContent/KYRContent.tsx:483
+msgid "Use Good Cause to fight your rent hike"
+msgstr "Usa una buena causa para luchar contra tu alza"
+
+#: src/Components/KYRContent/KYRContent.tsx:445
+msgid "Use Good Cause to stay in your home"
+msgstr "Usa una buena causa para permanecer en tu casa"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:360
+msgid "View all documents from Richmond County Clerk"
+msgstr "Ver todos los documentos de Richmond County Clerk"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:364
+msgid "View all documents in ACRIS"
+msgstr "Ver todos los documentos en ACRIS"
+
+#: src/Components/Pages/Form/Survey.tsx:474
+#: src/Components/Pages/Form/Survey.tsx:502
+#: src/Components/Pages/Form/Survey.tsx:593
+msgid "View source"
+msgstr "Ver fuente"
+
+#: src/Components/Pages/Results/Results.tsx:192
+msgid "View tenant protection information on following pages"
+msgstr "Ver información de protección del inquilino en las páginas siguientes"
+
+#: src/Components/Pages/TenantRights/TenantRights.tsx:45
+msgid "View the guide"
+msgstr "Ver la guía"
+
+#: src/Components/Pages/Home/Home.tsx:204
+msgid "Visit Housing Justice for All"
+msgstr "Visita a la justicia de Housing para todos"
+
+#: src/Components/Pages/Home/Home.tsx:218
+msgid "Visit JustFix"
+msgstr "Visita JustFix"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:456
+msgid "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner's name and signature."
+msgstr "No podemos enlazar directamente a documentos específicos para propiedades en la Isla Estatal. Por favor, vea todos los documentos de esta propiedad, y refiérase al vídeo anterior para aprender a identificar los documentos que más probablemente contengan el nombre y la firma del propietario."
+
+#: src/Components/Pages/Form/Survey.tsx:391
+msgid "We check for NYCHA, Mitchell-Lama, HDFC, LIHTC, Project Section 8, and various HPD and HUD programs. If you know the public data is incorrect, use these tips to guide your answer:"
+msgstr "Comprobamos por NYCHA, Mitchell-Lama, HDFC, LIHTC, Proyecto Sección 8, y varios programas HPD y HUD. Si sabes que los datos públicos son incorrectos, utiliza estos consejos para guiar tu respuesta:"
+
+#: src/Components/Pages/Results/Results.tsx:430
+msgid "We need to confirm if your apartment is rent stabilized"
+msgstr "Necesitamos confirmar si su apartamento está estabilizado"
+
+#: src/Components/Pages/Results/Results.tsx:455
+msgid "We need to confirm if your landlord owns more than 10 apartments"
+msgstr "Tenemos que confirmar si tu propietario posee más de 10 apartamentos"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:464
+msgid "We were unable to find relevant documents containing owner names and/or signatures for this building."
+msgstr "No hemos podido encontrar documentos relevantes que contengan nombres de propietarios y/o firmas para este edificio."
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:194
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:268
+msgid "We will never call you or share your phone number. We may text you later in the year to see how things are going. Opt-out at any time."
+msgstr "Nunca te llamaremos ni compartiremos tu número de teléfono. Podemos enviarle un mensaje de texto más adelante en el año para ver cómo van las cosas. Opt-out en cualquier momento."
+
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:141
+#~ msgid "We will never call you or share your phone number. You can opt-out at any time."
+#~ msgstr "We will never call you or share your phone number. You can opt-out at any time."
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:153
+msgid "We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights."
+msgstr "Te enviaremos un mensaje de texto una vez al año para conocer tus condiciones de vivienda. Utilizaremos tus respuestas para abogar mejor por tus derechos."
+
+#: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:68
+msgid "We’ll use publicly available information about your building to help learn if you’re covered."
+msgstr "Utilizaremos información disponible públicamente sobre tu edificio para ayudar a aprender si estás cubierto."
+
+#: src/Components/Pages/Form/Survey.tsx:139
+msgid "We’ll use your answers and publicly available information about your building to help learn if you’re covered."
+msgstr "Utilizaremos tus respuestas e información pública sobre tu edificio para ayudarte a aprender si estás cubierto."
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:488
+msgid "We’ve loaded all buildings that we could find related to your landlord."
+msgstr "Hemos cargado todos los edificios que pudimos encontrar relacionados con tu dueño."
+
+#: src/Components/KYRContent/KYRContent.tsx:234
+msgid "When tenants come together, we have power. Tenants across our state are forming tenant unions to fight back. If you’re interested in organizing a tenant union with your neighbors, fill out this form to get support from a tenant group near you."
+msgstr "Cuando los inquilinos se reúnen, tenemos poder. Si está interesado en organizar una unión de arrendatarios con sus vecinos, rellene este formulario para obtener el apoyo de un grupo de arrendatarios cerca de usted."
+
+#: src/Components/KYRContent/KYRContent.tsx:867
+msgid "Whether or not you are covered by Good Cause, you still have important tenant rights"
+msgstr "Si usted está cubierto o no por Buena Causa, todavía tiene importantes derechos de arrendatario"
+
+#: src/Components/KYRContent/KYRContent.tsx:523
+msgid "Withhold the unreasonable increase"
+msgstr "Retire el aumento poco razonable"
+
+#: src/Components/Pages/Form/Survey.tsx:232
+#: src/Components/Pages/Form/Survey.tsx:307
+#: src/Components/Pages/Form/Survey.tsx:346
+msgid "Yes"
+msgstr "Sí"
+
+#: src/Components/Pages/Form/Survey.tsx:272
+msgid "Yes, Mitchell-Lama, HDFC, or other"
+msgstr "Sí, Mitchell-Lama, HDFC, u otros"
+
+#: src/Components/Pages/Form/Survey.tsx:270
+msgid "Yes, NYCHA / PACT-RAD"
+msgstr "Sí, NYCHA / PACT-RAD"
+
+#: src/Components/KYRContent/KYRContent.tsx:816
+msgid "You are not covered by Good Cause because you have existing eviction protections through your building’s subsidy program"
+msgstr "Usted no está cubierto por Buena Causa porque tiene protecciones de desalojo existentes a través del programa de subsidios de su edificio"
+
+#. placeholder {0}: CPI + 5
+#: src/Components/KYRContent/KYRContent.tsx:526
+msgid "You can withhold the rent increase above the ‘reasonable’ threshold.\n"
+"            Pay your old rent plus {0}%. To be safe, set aside the extra rent\n"
+"            in a separate escrow account until your negotiations with your\n"
+"            landlord have totally resolved."
+msgstr "Puede retener el aumento del alquiler por encima del umbral “razonable”.\n"
+"            Paga tu antiguo alquiler más {0}%. Ser seguro dejar a un lado el alquiler extra\n"
+"            en una cuenta de escrow separada hasta que tus negociaciones con tu propietario\n"
+"            hayan sido resueltas por completo."
+
+#: src/Components/GeoSearchInput/GeoSearchInput.tsx:76
+msgid "You must enter an address"
+msgstr "Debe introducir una dirección"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:158
+msgid "You only need to find the name or signature of your building’s owner on one of these documents before moving to Step 2."
+msgstr "Sólo necesita encontrar el nombre o la firma del propietario de su edificio en uno de estos documentos antes de mudarse al Paso 2."
+
+#: src/Components/KYRContent/KYRContent.tsx:830
+msgid "You told us that that you live subsidized housing. If your building is subsidized then you are not covered by Good Cause Eviction law because you should already have important tenant protections associated with your building’s subsidy."
+msgstr "Nos ha dicho que vive usted una vivienda subvencionada. Si tu edificio está subvencionado, entonces no estarás cubierto por la ley de Buena Causa de la Denuncia porque ya deberías tener importantes protecciones de inquilinos asociados con la subvención de tu edificio."
+
+#: src/Components/Pages/Results/Results.tsx:437
+msgid "You told us that you are unsure if you are rent stabilized. If your apartment is rent stabilized, you are not covered by Good Cause Eviction law, but rent stabilized protections are even stronger than the Good Cause Eviction law."
+msgstr "=======Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: es\n"
+"Project-Id-Version: good-cause-nyc\n"
+"Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2025-08-06 19:08\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
@@ -1427,7 +2846,76 @@ msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:227
 msgid "You’re not alone. Too many landlords care more about getting rich off our rent money than providing us with decent homes."
-msgstr ""
+msgstr "No estás solo. A demasiados arrendatarios les importa más enriquecer nuestro dinero de alquiler que proporcionarnos casas decentes."
+
+#: src/Components/KYRContent/KYRContent.tsx:310
+msgid "Your current monthly rent + {increase_pct}%"
+msgstr "Tu alquiler mensual actual + {increase_pct}%"
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:104
+msgid "Your current monthly rent + ${increase_pct}%"
+msgstr "Tu alquiler mensual actual + ${increase_pct}%"
+
+#: src/Components/KYRContent/KYRContent.tsx:38
+msgid "Your eviction protections"
+msgstr "Sus protecciones de desalojo"
+
+#: src/Components/KYRContent/KYRContent.tsx:166
+msgid "Your landlord can’t evict you based on your race, religion, gender, national origin, familial status, or disability. New York State law promises protection from discrimination, banning bias based on age, sexual orientation, and military status."
+msgstr "Tu propietario no puede evitarte en base a tu raza, religión, género, origen nacional, estatus familiar o discapacidad. La ley del Estado de Nueva York promete protección contra la discriminación, prohibiendo el sesgo basado en la edad, la orientación sexual y la condición militar."
+
+#: src/Components/KYRContent/KYRContent.tsx:492
+msgid "Your landlord must give you written notice to raise your rent more than 5% (30 days notice if you’ve lived there less than 1 year, 60 days if you’ve lived there 1-2 years, and 90 days notice if you’ve lived there longer than 2 years). If your landlord tries to raise rent without proper notice, inform them they are violating <0>Real Property Law L Section 226-C</0>. Do not pay any rent increase until they give written notice."
+msgstr "Tu propietario debe notificarte por escrito para aumentar tu alquiler más del 5% (30 días de antelación si has vivido allí menos de 1 año, 60 días si has vivido allí de 1 a 2 años, y 90 días de antelación si has vivido allí más de 2 años). Si su propietario intenta aumentar el alquiler sin previo aviso, infórmele que está violando la Ley de Propiedad <0>Real L Sección 226-C</0>. No pague ningún aumento de alquileres hasta que comunique un aviso por escrito."
+
+#: src/Components/KYRContent/KYRContent.tsx:353
+msgid "Your landlord will need to provide a good reason for ending a tenancy. Even if your lease expires, your landlord cannot evict you, as long as you abide by the terms of your expired lease."
+msgstr "Tu propietario tendrá que proporcionar una buena razón para poner fin a un arrendamiento. Incluso si su arrendamiento caduca, su propietario no le puede evicar, siempre y cuando se atenga a los términos de su arrendamiento caducado."
+
+#: src/Components/KYRContent/KYRContent.tsx:846
+msgid "Your local City Council representative"
+msgstr "Tu representante del Ayuntamiento local"
+
+#: src/Components/KYRContent/KYRContent.tsx:629
+msgid "Your right to a lease renewal"
+msgstr "Su derecho a una renovación de arrendamiento"
+
+#: src/Components/KYRContent/KYRContent.tsx:744
+msgid "Your right to grieve management decisions"
+msgstr "Tu derecho a lamentar las decisiones de gestión"
+
+#: src/Components/KYRContent/KYRContent.tsx:723
+msgid "Your right to income-based rent"
+msgstr "Tu derecho al alquiler basado en ingresos"
+
+#: src/Components/KYRContent/KYRContent.tsx:763
+msgid "Your right to legal representation if facing eviction"
+msgstr "Su derecho a la representación legal si se enfrenta al desalojo"
+
+#: src/Components/KYRContent/KYRContent.tsx:284
+#: src/Components/KYRContent/KYRContent.tsx:611
+msgid "Your right to limited rent increases"
+msgstr "Tu derecho a aumentar el alquiler limitado"
+
+#: src/Components/KYRContent/KYRContent.tsx:214
+msgid "Your right to organize"
+msgstr "Tu derecho a organizar"
+
+#: src/Components/KYRContent/KYRContent.tsx:706
+msgid "Your right to repairs"
+msgstr "Tu derecho a reparaciones"
+
+#: src/Components/KYRContent/KYRContent.tsx:347
+msgid "Your right to stay in your home"
+msgstr "Tu derecho a permanecer en tu casa"
+
+#: src/Components/KYRContent/KYRContent.tsx:646
+msgid "Your right to succession"
+msgstr "Tu derecho a la sucesión"
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:294
+msgid "YouTube video for how to find other apartments your landlord owns"
+msgstr "Video de YouTube sobre cómo encontrar otros apartamentos en tus propietarios"
 
 #: src/Components/KYRContent/KYRContent.tsx:310
 msgid "Your current monthly rent + {increase_pct}%"
