@@ -286,9 +286,11 @@ export const GoodCauseProtections: React.FC<
           coverageResult={coverageResult}
         >
           <p>
-            {_(msg`The state housing agency must publish each year’s Reasonable Rent
-          Increase by August. This year the maximum amount your landlord can
-          increase your rent by is ${increase_pct}%.`)}
+            <Trans>
+              The state housing agency must publish each year’s Reasonable Rent
+              Increase by August. This year the maximum amount your landlord can
+              increase your rent by is ${increase_pct}%.
+            </Trans>
           </p>
 
           <div className="callout-box">
@@ -355,8 +357,9 @@ export const GoodCauseProtections: React.FC<
               </Trans>
             </p>
             <ul
-              aria-label={_(msg`Under the Good Cause Eviction law, landlords are allowed to evict
-              tenants for the following “good cause” reasons:`)}
+              aria-label={_(
+                msg`Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:`
+              )}
             >
               <li>
                 <Trans>Non payment of rent</Trans>
