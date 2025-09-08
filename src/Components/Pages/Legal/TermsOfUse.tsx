@@ -7,7 +7,7 @@ import "./Legal.scss";
 
 export const TermsOfUse: React.FC = () => {
   const { _ } = useLingui();
-  
+
   return (
     <div id="terms-of-use-page">
       <Header

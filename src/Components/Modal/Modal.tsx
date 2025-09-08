@@ -95,29 +95,29 @@ export const RentStabLeaseModal: React.FC<Omit<ModalProps, "children">> = (
 ) => {
   const { _ } = useLingui();
   return (
-  <Modal {...props} header={props.header}>
-    <p className="rs-modal-content">
-      <Trans>
-        If your most recent lease renewal looks like the image below, then your
-        apartment is almost certainly rent stabilized. If your lease renewal does
-        not look like the image below, your apartment could still be rent
-        stabilized.
-      </Trans>
-    </p>
-    <figure>
-      <figcaption>
+    <Modal {...props} header={props.header}>
+      <p className="rs-modal-content">
         <Trans>
-          Full image of this example lease can be viewed on{" "}
-          <JFCLLinkExternal to="https://hcr.ny.gov/system/files/documents/2024/07/rtp-8-07-2024-fillable_1.pdf">
-            hcr.ny.gov
-          </JFCLLinkExternal>
+          If your most recent lease renewal looks like the image below, then
+          your apartment is almost certainly rent stabilized. If your lease
+          renewal does not look like the image below, your apartment could still
+          be rent stabilized.
         </Trans>
-      </figcaption>
-      <img
-        src="/rent-stabilized-lease-sample.png"
-        alt={_(msg`Sample image of blank rent stabilized lease`)}
-      />
-          </figure>
+      </p>
+      <figure>
+        <figcaption>
+          <Trans>
+            Full image of this example lease can be viewed on{" "}
+            <JFCLLinkExternal to="https://hcr.ny.gov/system/files/documents/2024/07/rtp-8-07-2024-fillable_1.pdf">
+              hcr.ny.gov
+            </JFCLLinkExternal>
+          </Trans>
+        </figcaption>
+        <img
+          src="/rent-stabilized-lease-sample.png"
+          alt={_(msg`Sample image of blank rent stabilized lease`)}
+        />
+      </figure>
     </Modal>
   );
 };

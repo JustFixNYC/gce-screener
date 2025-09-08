@@ -1,3 +1,6 @@
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
+
 import { ContentBoxFooter } from "../../ContentBox/ContentBox";
 import { Header } from "../../Header/Header";
 import {
@@ -7,8 +10,6 @@ import {
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
 import "./TenantRights.scss";
 
 export const TenantRights: React.FC = () => {
@@ -32,16 +33,16 @@ export const TenantRights: React.FC = () => {
 
           <GoodCauseProtections>
             <ContentBoxFooter
-              message="Find out if you’re covered by Good Cause"
-              linkText="Take the survey"
+              message={_(msg`Find out if you’re covered by Good Cause`)}
+              linkText={_(msg`Take the survey`)}
               linkTo="/"
             />
           </GoodCauseProtections>
 
           <RentStabilizedProtections>
             <ContentBoxFooter
-              message="Find out if your apartment is rent stabilized"
-              linkText="View the guide"
+              message={_(msg`Find out if your apartment is rent stabilized`)}
+              linkText={_(msg`View the guide`)}
               linkTo="/rent_stabilization"
             />
           </RentStabilizedProtections>

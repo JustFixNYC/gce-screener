@@ -3,7 +3,7 @@ import { useLoaderData, useLocation, useSearchParams } from "react-router-dom";
 import { Button, Icon } from "@justfixnyc/component-library";
 import { useRollbar } from "@rollbar/react";
 import { Trans } from "@lingui/react/macro";
-import { msg } from "@lingui/core/macro";
+import { msg, plural } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
@@ -273,30 +273,35 @@ export const Results: React.FC = () => {
 };
 
 const CRITERIA_LABELS = {
-  portfolioSize: "Landlord portfolio size",
-  buildingClass: "Type of building",
-  landlord: "Live-in landlord",
-  rent: "Rent Amount",
-  subsidy: "Subsidized housing",
-  rentStabilized: "Rent stabilization",
-  certificateOfOccupancy: "Certificate of occupancy",
+  portfolioSize: msg`Landlord portfolio size`,
+  buildingClass: msg`Type of building`,
+  landlord: msg`Live-in landlord`,
+  rent: msg`Rent Amount`,
+  subsidy: msg`Subsidized housing`,
+  rentStabilized: msg`Rent stabilization`,
+  certificateOfOccupancy: msg`Certificate of occupancy`,
 };
 
 const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
   determination,
 }) => {
+  const { _ } = useLingui();
   switch (determination) {
     case "OTHER_PROTECTION":
       return (
         <Icon
           icon="checkDouble"
           className="criteria-icon green"
-          title="Stronger protections"
+          title={_(msg`Stronger protections`)}
         />
       );
     case "ELIGIBLE":
       return (
-        <Icon icon="check" className="criteria-icon green" title="Eligible" />
+        <Icon
+          icon="check"
+          className="criteria-icon green"
+          title={_(msg`Eligible`)}
+        />
       );
     case "INELIGIBLE":
       return (
@@ -304,7 +309,7 @@ const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
           icon="circleExclamation"
           type="regular"
           className="criteria-icon orange"
-          title="Ineligible"
+          title={_(msg`Ineligible`)}
         />
       );
     case "UNKNOWN":
@@ -313,7 +318,7 @@ const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
           icon="circleExclamation"
           type="regular"
           className="criteria-icon yellow"
-          title="Unknown"
+          title={_(msg`Unknown`)}
         />
       );
     default:
@@ -322,13 +327,14 @@ const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
 };
 
 const CriterionRow: React.FC<CriterionDetails> = (props) => {
+  const { _ } = useLingui();
   return (
     <li className="criteria-table__row">
       <div className="criteria-table__row__desktop">
         <EligibilityIcon {...props} />
         <div className="criteria-table__row__info">
           <span className="criteria-table__row__criteria">
-            {CRITERIA_LABELS[props?.criteria]}
+            {_(CRITERIA_LABELS[props?.criteria])}
           </span>
           <span className="criteria-table__row__requirement">
             {props?.requirement}
@@ -338,7 +344,7 @@ const CriterionRow: React.FC<CriterionDetails> = (props) => {
       </div>
       <ContentBoxItem
         className="criteria-table__row__mobile"
-        title={CRITERIA_LABELS[props?.criteria]}
+        title={_(CRITERIA_LABELS[props?.criteria])}
         subtitle={props?.requirement}
         icon={<EligibilityIcon {...props} />}
       >
@@ -393,6 +399,7 @@ const EligibilityNextSteps: React.FC<{
   criteriaDetails: CriteriaDetails;
   searchParams: URLSearchParams;
 }> = ({ bldgData, criteriaDetails, searchParams }) => {
+  const { _ } = useLingui();
   const rentStabilizedUnknown =
     criteriaDetails?.rentStabilized?.determination === "UNKNOWN";
   const portfolioSizeUnknown =
@@ -410,13 +417,18 @@ const EligibilityNextSteps: React.FC<{
   return (
     <>
       <ContentBox
-        subtitle={`There ${
-          steps === 1 ? "is 1 thing" : `are ${steps} things`
-        } you need to verify to confirm your coverage`}
+        subtitle={_(
+          msg`There ${plural(steps, {
+            one: "is # thing",
+            other: "are # things",
+          })} you need to verify to confirm your coverage`
+        )}
       >
         {rentStabilizedUnknown && (
           <ContentBoxItem
-            title="We need to confirm if your apartment is rent stabilized"
+            title={_(
+              msg`We need to confirm if your apartment is rent stabilized`
+            )}
             icon={unsureIcon}
             className="next-step"
             gtmId="next-step_rs"
@@ -439,7 +451,9 @@ const EligibilityNextSteps: React.FC<{
 
         {portfolioSizeUnknown && (
           <ContentBoxItem
-            title="We need to confirm if your landlord owns more than 10 apartments"
+            title={_(
+              msg`We need to confirm if your landlord owns more than 10 apartments`
+            )}
             icon={unsureIcon}
             className="next-step"
             gtmId="next-step_portfolio"
@@ -459,8 +473,8 @@ const EligibilityNextSteps: React.FC<{
         )}
 
         <ContentBoxFooter
-          message="Have you learned something new?"
-          linkText="Adjust survey answers"
+          message={_(msg`Have you learned something new?`)}
+          linkText={_(msg`Adjust survey answers`)}
           linkTo="/survey"
           linkOnClick={() =>
             gtmPush("gce_return_survey", { from: "results-page_next-steps" })
@@ -505,59 +519,59 @@ const CoverageResultHeadline: React.FC<{
   switch (result) {
     case "UNKNOWN":
       headlineContent = (
-        <>
+        <Trans>
           <span className="result-headline__top">You</span>{" "}
           <span className="coverage-pill yellow">might be covered</span> by Good
           Cause Eviction
-        </>
+        </Trans>
       );
       break;
     case "NOT_COVERED":
       headlineContent = (
-        <>
+        <Trans>
           <span className="result-headline__top">You are</span>{" "}
           <span className="coverage-pill orange">likely not covered</span>{" "}
           <br />
           by Good Cause Eviction
-        </>
+        </Trans>
       );
       break;
     case "RENT_STABILIZED":
       headlineContent = (
-        <>
+        <Trans>
           <span className="result-headline__top">Your apartment is</span>{" "}
           <span className="coverage-pill green">rent stabilized</span> which
           provides stronger protections than Good Cause Eviction
-        </>
+        </Trans>
       );
       break;
     case "COVERED":
       headlineContent = (
-        <>
+        <Trans>
           <span className="result-headline__top">You are</span>{" "}
           <span className="coverage-pill green">likely covered</span> by Good
           Cause Eviction
-        </>
+        </Trans>
       );
       break;
     case "NYCHA":
       headlineContent = (
-        <>
+        <Trans>
           <span className="result-headline__top">
             Your apartment is part of
           </span>{" "}
           <span className="coverage-pill green">NYCHA or PACT/RAD</span> which
           provides stronger protections than Good Cause Eviction
-        </>
+        </Trans>
       );
       break;
     case "SUBSIDIZED":
       headlineContent = (
-        <>
+        <Trans>
           <span className="result-headline__top">Your building is</span>{" "}
           <span className="coverage-pill green">subsidized</span> which provides
           existing eviction protections
-        </>
+        </Trans>
       );
       break;
   }
@@ -600,6 +614,7 @@ const CopyURLButton: React.FC = () => {
   );
 };
 
+// TODO: translate results email copy
 const getEmailSubjectBody = (
   address: Address,
   searchParams: URLSearchParams,

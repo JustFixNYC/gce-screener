@@ -4,6 +4,7 @@ import { useRollbar } from "@rollbar/react";
 import { Button } from "@justfixnyc/component-library";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 
 import { Address } from "../Home/Home";
 import { ContentBox } from "../../ContentBox/ContentBox";
@@ -75,11 +76,13 @@ export const ConfirmAddress: React.FC = () => {
           {bldgData?.unitsres === 0 && (
             <InfoBox color="orange">
               <span>
-                City data indicates that there aren’t any residential units at
-                this address.
+                <Trans>
+                  City data indicates that there aren’t any residential units at
+                  this address.
+                </Trans>
               </span>
               <Link to="/" className="jfcl-link">
-                Search new address
+                <Trans>Search new address</Trans>
               </Link>
             </InfoBox>
           )}
@@ -89,7 +92,7 @@ export const ConfirmAddress: React.FC = () => {
                 <img
                   className="img-wrapper__img"
                   src={mapImageURL}
-                  alt="Map showing location of the entered address."
+                  alt={_(msg`Map showing location of the entered address.`)}
                   width={width}
                   height={height}
                 />
@@ -107,7 +110,7 @@ export const ConfirmAddress: React.FC = () => {
 
           <div className="confirmation__buttons">
             <BackLink to="/" className="confirmation__back">
-              Back
+              <Trans>Back</Trans>
             </BackLink>
             <Button
               className="confirmation__button"

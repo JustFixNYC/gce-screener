@@ -23,8 +23,8 @@ import { cleanFormFields } from "../../../api/helpers";
 import { BuildingData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
 import { BackLink, JFCLLinkExternal } from "../../JFCLLink";
-import "./Survey.scss";
 import Modal, { RentStabLeaseModal } from "../../Modal/Modal";
+import "./Survey.scss";
 
 export type FormFields = {
   bedrooms: "STUDIO" | "1" | "2" | "3" | "4+" | null;
@@ -86,11 +86,6 @@ export const Survey: React.FC = () => {
     useRef<HTMLFieldSetElement | null>(null),
     useRef<HTMLFieldSetElement | null>(null),
   ];
-
-  const { subsidyHelperText, subsidyHelperElement } = getSubsidyHelperInfo(
-    bldgData,
-    openSubsidyModal
-  );
 
   const navigate = useNavigate();
 
@@ -252,7 +247,15 @@ export const Survey: React.FC = () => {
                 legendText={_(
                   msg`4. Is your building part of any of these subsidy programs?`
                 )}
-                helperElement={<InfoBox>{subsidyHelperElement}</InfoBox>}
+                helperElement={
+                  <InfoBox>
+                    <SubsidyHelperText
+                      bldgData={bldgData}
+                      learnMoreOnClick={openSubsidyModal}
+                      textOnly={false}
+                    />
+                  </InfoBox>
+                }
                 invalid={showErrors && localFields.housingType === null}
                 invalidText={_(
                   msg`Please specify if your apartment is part of any subsidized housing programs.`
@@ -320,13 +323,13 @@ export const Survey: React.FC = () => {
                     )}
                     helperElement={
                       <InfoBox>
-                        {`Publicly available data sources indicate that there ${
-                          bldgData.unitsres == 1
-                            ? "is 1 apartment"
-                            : `are ${bldgData.unitsres} apartments`
-                        } in your building. ` +
-                          "Good Cause protections only apply to tenants whose landlord owns more than 10 " +
-                          "apartments, even if those apartments are spread across multiple buildings."}
+                        {_(
+                          msg`Publicly available data sources indicate that there ${
+                            bldgData.unitsres == 1
+                              ? "is 1 apartment"
+                              : `are ${bldgData.unitsres} apartments`
+                          } in your building. Good Cause protections only apply to tenants whose landlord owns more than 10 apartments, even if those apartments are spread across multiple buildings.`
+                        )}
                       </InfoBox>
                     }
                     invalid={showErrors && localFields.portfolioSize === null}
@@ -378,7 +381,13 @@ export const Survey: React.FC = () => {
         header={_(msg`FAQs to help guide your answer`)}
       >
         <p>
-          <strong>{subsidyHelperText}</strong>{" "}
+          <strong>
+            <SubsidyHelperText
+              bldgData={bldgData}
+              learnMoreOnClick={openSubsidyModal}
+              textOnly={true}
+            />
+          </strong>{" "}
           <Trans>
             We check for NYCHA, Mitchell-Lama, HDFC, LIHTC, Project Section 8,
             and various HPD and HUD programs. If you know the public data is
@@ -566,14 +575,16 @@ const getRsHelperText = (
   }
 };
 
-const getSubsidyHelperInfo = (
-  bldgData?: BuildingData,
-  learnMoreOnClick?: () => void
-) => {
+const SubsidyHelperText: React.FC<{
+  bldgData?: BuildingData;
+  learnMoreOnClick?: () => void;
+  textOnly: boolean;
+}> = ({ bldgData, learnMoreOnClick, textOnly = false }) => {
+  const { _ } = useLingui();
   let subsidyHelperText: ReactNode;
   let subsidyHelperElement: ReactNode;
 
-  if (!bldgData) return { subsidyHelperText, subsidyHelperElement };
+  if (!bldgData) return <></>;
 
   const { bbl, is_nycha, is_subsidized, subsidy_name } = bldgData;
 
@@ -608,8 +619,8 @@ const getSubsidyHelperInfo = (
     subsidyHelperText = (
       <Trans>
         Publicly available data sources indicate that your building{" "}
-        {buildingSubsidyLanguage(subsidy_name)}, which is considered subsidized
-        housing.
+        {_(buildingSubsidyLanguage(subsidy_name))}, which is considered
+        subsidized housing.
       </Trans>
     );
     subsidyHelperElement = (
@@ -630,5 +641,5 @@ const getSubsidyHelperInfo = (
       </>
     );
   }
-  return { subsidyHelperText, subsidyHelperElement };
+  return textOnly ? subsidyHelperText : subsidyHelperElement;
 };

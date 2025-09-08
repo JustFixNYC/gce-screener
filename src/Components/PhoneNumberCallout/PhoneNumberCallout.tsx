@@ -268,7 +268,7 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
           <Trans>
             We will never call you or share your phone number. We may text you
             later in the year to see how things are going. Opt-out at any time.
-          </Trans>{" "}
+          </Trans>
         </div>
         <div className="phone-number-button-container">
           <Button
