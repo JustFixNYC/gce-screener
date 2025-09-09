@@ -29,7 +29,7 @@ import { decodeFromURI } from "./helpers";
 import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
 import { defaultLocale, dynamicActivate } from "./i18n";
 import { messages as esMessages } from "./locales/es/messages";
-import { messages as enMessages } from "./locales/es/messages";
+import { messages as enMessages } from "./locales/en/messages";
 import "./App.scss";
 
 i18n.load({
