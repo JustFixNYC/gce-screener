@@ -8,7 +8,7 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-09-09 16:05\n"
+"PO-Revision-Date: 2025-09-09 16:12\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -533,10 +533,14 @@ msgstr "Si el edificio tiene 10 o menos apartamentos, el propietario tampoco deb
 
 #: src/hooks/useCriteriaResults.tsx:585
 msgid "If those sources are correct, then you may already have stronger tenant protections than other subsidized housing programs."
-msgstr ""
+msgstr "Si esas fuentes son correctas, es posible que usted ya tenga protecciones más sólidas para los inquilinos que otros programas de vivienda subsidiados."
 
 #: src/hooks/useCriteriaResults.tsx:608
 msgid "If those sources are correct, you may have existing tenant protections through NYCHA or PACT/RAD."
+msgstr "Si estas fuentes son correctas, es posible que tenga protecciones de inquilinos existentes a través de NYCHA o PACT/RAD."
+
+#: src/hooks/useCriteriaResults.tsx:665
+msgid "If those sources are correct, you may have existing tenant protections through your building’s subsidy program."
 msgstr ""
 
 #: src/Components/Pages/Form/Survey.tsx:360
@@ -670,19 +674,19 @@ msgstr "Ineligible"
 msgid "Invoke “Good Cause” to a judge"
 msgstr "Invocar \"Buenas causas\" a un juez"
 
-#: src/Components/Pages/Form/Survey.tsx:656
+#: src/Components/Pages/Form/Survey.tsx:657
 msgid "is a Mitchell-Lama"
 msgstr "es un Mitchell-Lama"
 
-#: src/Components/Pages/Form/Survey.tsx:652
+#: src/Components/Pages/Form/Survey.tsx:653
 msgid "is an Article XI"
 msgstr "es un artículo XI"
 
-#: src/Components/Pages/Form/Survey.tsx:654
+#: src/Components/Pages/Form/Survey.tsx:655
 msgid "is part of an HPD subsidy program"
 msgstr "es parte de un programa de subsidios de HPD"
 
-#: src/Components/Pages/Form/Survey.tsx:658
+#: src/Components/Pages/Form/Survey.tsx:659
 msgid "is part of NYCHA or PACT/RAD"
 msgstr "es parte de NYCHA o PACT/RAD"
 
@@ -1101,7 +1105,7 @@ msgstr "Fuentes de datos disponibles públicamente indican que hay {0} en tu edi
 
 #: src/Components/Pages/Form/Survey.tsx:618
 msgid "Publicly available data sources indicate that your building <0/>, which is considered subsidized housing."
-msgstr ""
+msgstr "Las fuentes de datos disponibles públicamente indican que su edificio <0/>, que se considera vivienda subsidiada."
 
 #: src/Components/Pages/Form/Survey.tsx:606
 msgid "Publicly available data sources indicate that your building is part of NYCHA."
@@ -1121,11 +1125,11 @@ msgstr "fuentes de datos disponibles públicamente indican que tu propietario pu
 msgid "Reach out to external resources"
 msgstr "Llegar a recursos externos"
 
-#: src/Components/Pages/Form/Survey.tsx:648
+#: src/Components/Pages/Form/Survey.tsx:649
 msgid "receives a HUD Project-Based subsidy"
 msgstr "recibe un subsidio basado en proyectos HUD"
 
-#: src/Components/Pages/Form/Survey.tsx:650
+#: src/Components/Pages/Form/Survey.tsx:651
 msgid "receives the Low-Income Housing Tax Credit (LIHTC)"
 msgstr "recibe el crédito de bajo ingreso Housing Tax (LIHTC)"
 
@@ -1605,7 +1609,7 @@ msgstr "Usted informó de que su apartamento está estabilizado en alquiler."
 
 #: src/hooks/useCriteriaResults.tsx:601
 msgid "You reported that your building is not part of any subsidized housing programs, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD."
-msgstr ""
+msgstr "Usted informó de que su edificio no es parte de ningún programa de vivienda subvencionado, y estamos utilizando su respuesta como parte de nuestra evaluación de cobertura. Nota: fuentes de datos disponibles públicamente indican que su edificio es parte de NYCHA o PACT/RAD."
 
 #: src/hooks/useCriteriaResults.tsx:592
 #~ msgid "You reported that your building is not part of any subsidized housing programs, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD. {sourceLink} If those sources are correct, you may have existing tenant protections through NYCHA or PACT/RAD."
@@ -1619,9 +1623,13 @@ msgstr "Usted informó de que su edificio no es parte de NYCHA, PACT/RAD, u otro
 #~ msgid "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building {0} , which is considered subsidized housing. {sourceLink} If those sources are correct, you may have existing tenant protections through your building’s subsidy program."
 #~ msgstr "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building {0} , which is considered subsidized housing. {sourceLink} If those sources are correct, you may have existing tenant protections through your building’s subsidy program."
 
-#: src/hooks/useCriteriaResults.tsx:655
-msgid "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building <0/> , which is considered subsidized housing. {sourceLink} If those sources are correct, you may have existing tenant protections through your building’s subsidy program."
+#: src/hooks/useCriteriaResults.tsx:656
+msgid "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building <0/> , which is considered subsidized housing."
 msgstr ""
+
+#: src/hooks/useCriteriaResults.tsx:655
+#~ msgid "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building <0/> , which is considered subsidized housing. {sourceLink} If those sources are correct, you may have existing tenant protections through your building’s subsidy program."
+#~ msgstr "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building <0/> , which is considered subsidized housing. {sourceLink} If those sources are correct, you may have existing tenant protections through your building’s subsidy program."
 
 #: src/hooks/useCriteriaResults.tsx:613
 #~ msgid "You reported that your building is part of NYCHA or PACT/RAD, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building {0}, which is considered subsidized housing. {sourceLink} If those sources are correct, then your protections may be different than the protections of NYCHA or PACT/RAD."
@@ -1638,7 +1646,7 @@ msgstr "Usted informó de que su edificio es parte de NYCHA o PACT/RAD."
 
 #: src/hooks/useCriteriaResults.tsx:578
 msgid "You reported that your building is subsidized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD."
-msgstr ""
+msgstr "Usted informó de que su edificio está subvencionado, y estamos utilizando su respuesta como parte de nuestra evaluación de cobertura. Nota: fuentes de datos disponibles públicamente indican que su edificio es parte de NYCHA o PACT/RAD."
 
 #: src/hooks/useCriteriaResults.tsx:575
 #~ msgid "You reported that your building is subsidized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD. {sourceLink} If those sources are correct, then you may already have stronger tenant protections than other subsidized housing programs."
