@@ -652,16 +652,21 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
       );
       determination = "ELIGIBLE";
       userValue = (
-        <Trans>
-          You reported that your building is not part of NYCHA, PACT/RAD, or
-          other subsidized housing, and we are using your answer as part of our
-          coverage assessment. Note: publicly available data sources indicate
-          that your building{" "}
-          <BuildingSubsidyLanguage subsidyName={subsidy_name} /> , which is
-          considered subsidized housing. {sourceLink} If those sources are
-          correct, you may have existing tenant protections through your
-          building’s subsidy program.
-        </Trans>
+        <>
+          <Trans>
+            You reported that your building is not part of NYCHA, PACT/RAD, or
+            other subsidized housing, and we are using your answer as part of
+            our coverage assessment. Note: publicly available data sources
+            indicate that your building{" "}
+            <BuildingSubsidyLanguage subsidyName={subsidy_name} /> , which is
+            considered subsidized housing.
+          </Trans>{" "}
+          {sourceLink}{" "}
+          <Trans>
+            If those sources are correct, you may have existing tenant
+            protections through your building’s subsidy program.
+          </Trans>
+        </>
       );
     }
   }
