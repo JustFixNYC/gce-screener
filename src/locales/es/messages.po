@@ -8,7 +8,7 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-09-09 16:14\n"
+"PO-Revision-Date: 2025-09-09 16:18\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -416,7 +416,7 @@ msgstr "Descubre si tu propietario posee otros edificios"
 #. placeholder {1}: formatMoney(RENT_CUTOFFS[bedrooms], 0)
 #: src/hooks/useCriteriaResults.tsx:253
 msgid "For a {0}, the monthly total rent must be less than {1}"
-msgstr ""
+msgstr "Para un {0}, el alquiler mensual total debe ser inferior a {1}"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:222
 msgid "For any of the addresses listed below, you only need to find your building’s owner’s name or signature on one of the documents to know if they own that property."
@@ -1637,7 +1637,7 @@ msgstr "Usted informó de que su edificio no es parte de NYCHA, PACT/RAD, u otra
 
 #: src/hooks/useCriteriaResults.tsx:626
 msgid "You reported that your building is part of NYCHA or PACT/RAD, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building <0/>, which is considered subsidized housing. {sourceLink} If those sources are correct, then your protections may be different than the protections of NYCHA or PACT/RAD."
-msgstr ""
+msgstr "Usted ha informado de que su edificio forma parte de NYCHA o PACT/RAD, y estamos utilizando su respuesta como parte de nuestra evaluación de cobertura. Nota: las fuentes de datos disponibles públicamente indican que su edificio <0/>, por lo que se considera vivienda subvencionada. {sourceLink} Si esas fuentes son correctas, entonces sus protecciones pueden ser diferentes a las protecciones de NYCHA o PACT/RAD."
 
 #: src/hooks/useCriteriaResults.tsx:525
 #: src/hooks/useCriteriaResults.tsx:564
