@@ -15,8 +15,8 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/helpers.ts:199
-msgid "/+Z5u4"
-msgstr "/+Z5u4"
+#~ msgid "/+Z5u4"
+#~ msgstr "/+Z5u4"
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:52
 #~ msgid "\"Good Cause Eviction only applies to tenants who are not rent stabilized."
@@ -41,16 +41,16 @@ msgstr "(Your current monthly rent {0} + {increase_pct}%)"
 msgid "{0} "
 msgstr "{0} "
 
-#: src/hooks/useCriteriaResults.tsx:256
+#: src/hooks/useCriteriaResults.tsx:258
 msgid "{bedrooms} bedroom"
 msgstr "{bedrooms} bedroom"
 
-#: src/helpers.ts:170
+#: src/helpers.ts:169
 msgid "{docType}"
 msgstr "{docType}"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:337
-#: src/hooks/useCriteriaResults.tsx:102
+#: src/hooks/useCriteriaResults.tsx:104
 msgid "{unitsres, plural, one {# apartment} other {# apartments}}"
 msgstr "{unitsres, plural, one {# apartment} other {# apartments}}"
 
@@ -102,55 +102,55 @@ msgstr "<0>Your apartment is</0> <1>rent stabilized</1> which provides stronger 
 msgid "<0>Your building is</0> <1>subsidized</1> which provides existing eviction protections"
 msgstr "<0>Your building is</0> <1>subsidized</1> which provides existing eviction protections"
 
-#: src/Components/Pages/Form/Survey.tsx:172
+#: src/Components/Pages/Form/Survey.tsx:171
 msgid "1"
 msgstr "1"
 
-#: src/Components/Pages/Form/Survey.tsx:159
+#: src/Components/Pages/Form/Survey.tsx:158
 msgid "1. How many bedrooms are in your apartment?"
 msgstr "1. How many bedrooms are in your apartment?"
 
-#: src/Components/Pages/Form/Survey.tsx:173
+#: src/Components/Pages/Form/Survey.tsx:172
 msgid "2"
 msgstr "2"
 
-#: src/Components/Pages/Form/Survey.tsx:189
+#: src/Components/Pages/Form/Survey.tsx:188
 msgid "2. What is the total monthly rent for your entire apartment?"
 msgstr "2. What is the total monthly rent for your entire apartment?"
 
-#: src/Components/Pages/Form/Survey.tsx:174
+#: src/Components/Pages/Form/Survey.tsx:173
 msgid "3"
 msgstr "3"
 
-#: src/Components/Pages/Form/Survey.tsx:213
+#: src/Components/Pages/Form/Survey.tsx:212
 msgid "3. Is your apartment rent stabilized?"
 msgstr "3. Is your apartment rent stabilized?"
 
-#: src/Components/Pages/Form/Survey.tsx:248
+#: src/Components/Pages/Form/Survey.tsx:247
 msgid "4. Is your building part of any of these subsidy programs?"
 msgstr "4. Is your building part of any of these subsidy programs?"
 
-#: src/Components/Pages/Form/Survey.tsx:175
+#: src/Components/Pages/Form/Survey.tsx:174
 msgid "4+"
 msgstr "4+"
 
-#: src/Components/Pages/Form/Survey.tsx:294
+#: src/Components/Pages/Form/Survey.tsx:293
 msgid "5. Does your landlord live in the building?"
 msgstr "5. Does your landlord live in the building?"
 
-#: src/Components/Pages/Form/Survey.tsx:322
+#: src/Components/Pages/Form/Survey.tsx:321
 msgid "6. Does your landlord own more than 10 apartments across multiple buildings?"
 msgstr "6. Does your landlord own more than 10 apartments across multiple buildings?"
 
-#: src/hooks/useCriteriaResults.tsx:406
+#: src/hooks/useCriteriaResults.tsx:408
 msgid "a co-op"
 msgstr "a co-op"
 
-#: src/hooks/useCriteriaResults.tsx:403
+#: src/hooks/useCriteriaResults.tsx:405
 msgid "a condo"
 msgstr "a condo"
 
-#: src/Components/Pages/Form/Survey.tsx:137
+#: src/Components/Pages/Form/Survey.tsx:136
 msgid "A few questions about your apartment"
 msgstr "A few questions about your apartment"
 
@@ -180,11 +180,11 @@ msgstr "Address"
 msgid "Adjust survey answers"
 msgstr "Adjust survey answers"
 
-#: src/helpers.ts:164
+#: src/helpers.ts:163
 msgid "Agreement"
 msgstr "Agreement"
 
-#: src/hooks/useCriteriaResults.tsx:351
+#: src/hooks/useCriteriaResults.tsx:353
 msgid "all apartments in your building are registered as rent stabilized."
 msgstr "all apartments in your building are registered as rent stabilized."
 
@@ -201,7 +201,7 @@ msgstr "Allowable rent increase amount:"
 msgid "Assert your rights by printing your coverage results and sharing with your landlord. You can use these results as an indicator that your apartment is covered by Good Cause Eviction Law."
 msgstr "Assert your rights by printing your coverage results and sharing with your landlord. You can use these results as an indicator that your apartment is covered by Good Cause Eviction Law."
 
-#: src/helpers.ts:168
+#: src/helpers.ts:167
 msgid "Assignment of leases & rents"
 msgstr "Assignment of leases & rents"
 
@@ -210,7 +210,7 @@ msgid "Attend a walk-in Clinic hosted by the Met Council on Housing"
 msgstr "Attend a walk-in Clinic hosted by the Met Council on Housing"
 
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:113
-#: src/Components/Pages/Form/Survey.tsx:360
+#: src/Components/Pages/Form/Survey.tsx:359
 msgid "Back"
 msgstr "Back"
 
@@ -226,15 +226,15 @@ msgstr "Based on data from the website {wowLink}, we gather a list of properties
 msgid "Based on data from the website {wowLink}, we have gathered a list of properties that the owner of your building may be associated with. For each property, we have included links to important real estate transaction documents."
 msgstr "Based on data from the website {wowLink}, we have gathered a list of properties that the owner of your building may be associated with. For each property, we have included links to important real estate transaction documents."
 
-#: src/Components/Pages/Form/Survey.tsx:542
+#: src/Components/Pages/Form/Survey.tsx:541
 msgid "Because your building has fewer than 6 units and was built after 1974, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available data, no rent stabilized apartments were registered in your building in recent years."
 msgstr "Because your building has fewer than 6 units and was built after 1974, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available data, no rent stabilized apartments were registered in your building in recent years."
 
-#: src/Components/Pages/Form/Survey.tsx:565
+#: src/Components/Pages/Form/Survey.tsx:564
 msgid "Because your building has fewer than 6 units it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years."
 msgstr "Because your building has fewer than 6 units it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years."
 
-#: src/Components/Pages/Form/Survey.tsx:553
+#: src/Components/Pages/Form/Survey.tsx:552
 msgid "Because your building was built after 1974 and is not part of 421a or J51 tax incentive programs, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years."
 msgstr "Because your building was built after 1974 and is not part of 421a or J51 tax incentive programs, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years."
 
@@ -271,19 +271,19 @@ msgstr "Check your most recent lease renewal"
 msgid "City data indicates that there aren’t any residential units at this address."
 msgstr "City data indicates that there aren’t any residential units at this address."
 
-#: src/hooks/useCriteriaResults.tsx:418
+#: src/hooks/useCriteriaResults.tsx:420
 msgid "classified as a health facility"
 msgstr "classified as a health facility"
 
-#: src/hooks/useCriteriaResults.tsx:412
+#: src/hooks/useCriteriaResults.tsx:414
 msgid "classified as a hotel"
 msgstr "classified as a hotel"
 
-#: src/hooks/useCriteriaResults.tsx:415
+#: src/hooks/useCriteriaResults.tsx:417
 msgid "classified as a religious facility"
 msgstr "classified as a religious facility"
 
-#: src/hooks/useCriteriaResults.tsx:409
+#: src/hooks/useCriteriaResults.tsx:411
 msgid "classified as an educational building"
 msgstr "classified as an educational building"
 
@@ -366,7 +366,7 @@ msgstr "Failure to sign lease renewal or provide access to apartment"
 msgid "Fair Housing NYC"
 msgstr "Fair Housing NYC"
 
-#: src/Components/Pages/Form/Survey.tsx:381
+#: src/Components/Pages/Form/Survey.tsx:380
 msgid "FAQs to help guide your answer"
 msgstr "FAQs to help guide your answer"
 
@@ -399,7 +399,7 @@ msgstr "Find out if you’re covered by Good Cause"
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:42
 #: src/Components/Pages/Results/Results.tsx:462
 #: src/Components/Pages/TenantRights/TenantRights.tsx:44
-#: src/hooks/useCriteriaResults.tsx:319
+#: src/hooks/useCriteriaResults.tsx:321
 msgid "Find out if your apartment is rent stabilized"
 msgstr "Find out if your apartment is rent stabilized"
 
@@ -409,7 +409,7 @@ msgstr "Find out if your landlord owns other buildings"
 
 #. placeholder {0}: bedrooms === "STUDIO" ? ( <Trans>studio</Trans> ) : ( <Trans>{bedrooms} bedroom</Trans> )
 #. placeholder {1}: formatMoney(RENT_CUTOFFS[bedrooms], 0)
-#: src/hooks/useCriteriaResults.tsx:251
+#: src/hooks/useCriteriaResults.tsx:253
 msgid "For a {0}, the monthly total rent must be less than {1}"
 msgstr "For a {0}, the monthly total rent must be less than {1}"
 
@@ -517,20 +517,28 @@ msgstr "How to find out if your apartment is rent stabilized"
 msgid "How we determined your coverage"
 msgstr "How we determined your coverage"
 
-#: src/Components/Pages/Form/Survey.tsx:234
-#: src/Components/Pages/Form/Survey.tsx:348
+#: src/Components/Pages/Form/Survey.tsx:233
+#: src/Components/Pages/Form/Survey.tsx:347
 msgid "I'm not sure"
 msgstr "I'm not sure"
 
-#: src/hooks/useCriteriaResults.tsx:186
+#: src/hooks/useCriteriaResults.tsx:188
 msgid "If the building has 10 or fewer apartments, the landlord must not also live in it."
 msgstr "If the building has 10 or fewer apartments, the landlord must not also live in it."
+
+#: src/hooks/useCriteriaResults.tsx:585
+msgid "If those sources are correct, then you may already have stronger tenant protections than other subsidized housing programs."
+msgstr "If those sources are correct, then you may already have stronger tenant protections than other subsidized housing programs."
+
+#: src/hooks/useCriteriaResults.tsx:608
+msgid "If those sources are correct, you may have existing tenant protections through NYCHA or PACT/RAD."
+msgstr "If those sources are correct, you may have existing tenant protections through NYCHA or PACT/RAD."
 
 #: src/Components/Pages/Form/Survey.tsx:360
 #~ msgid "If you applied for your apartment through \"NYC Housing Connect,\" your building is very likely subsidized, and you should select the option: <0>\"Other subsidized housing\"</0>"
 #~ msgstr "If you applied for your apartment through \"NYC Housing Connect,\" your building is very likely subsidized, and you should select the option: <0>\"Other subsidized housing\"</0>"
 
-#: src/Components/Pages/Form/Survey.tsx:399
+#: src/Components/Pages/Form/Survey.tsx:398
 msgid "If you applied for your apartment through \"NYC Housing Connect,\" your building is very likely subsidized, and you should select the option: <0>“Yes, Mitchell-Lama, HDFC, or other”</0>"
 msgstr "If you applied for your apartment through \"NYC Housing Connect,\" your building is very likely subsidized, and you should select the option: <0>“Yes, Mitchell-Lama, HDFC, or other”</0>"
 
@@ -555,11 +563,11 @@ msgstr "If you are the immediate family member of a rent-stabilized tenant and h
 #~ msgid "If you know that your building is part of Low-Income Housing Tax Credit (LIHTC) program, select the option: <0>\"Other subsidized housing\"</0>"
 #~ msgstr "If you know that your building is part of Low-Income Housing Tax Credit (LIHTC) program, select the option: <0>\"Other subsidized housing\"</0>"
 
-#: src/Components/Pages/Form/Survey.tsx:408
+#: src/Components/Pages/Form/Survey.tsx:407
 msgid "If you know that your building is part of Low-Income Housing Tax Credit (LIHTC) program, select the option: <0>“Yes, Mitchell-Lama, HDFC, or other”</0> "
 msgstr "If you know that your building is part of Low-Income Housing Tax Credit (LIHTC) program, select the option: <0>“Yes, Mitchell-Lama, HDFC, or other”</0> "
 
-#: src/Components/Pages/Form/Survey.tsx:417
+#: src/Components/Pages/Form/Survey.tsx:416
 msgid "If you know that your building is part of public housing (NYCHA or PACT-RAD), select: <0>\"NYCHA or PACT/RAD\"</0>"
 msgstr "If you know that your building is part of public housing (NYCHA or PACT-RAD), select: <0>\"NYCHA or PACT/RAD\"</0>"
 
@@ -567,7 +575,7 @@ msgstr "If you know that your building is part of public housing (NYCHA or PACT-
 #~ msgid "If you know that your building receives 421a or J51 tax abatement, select the option: <0>\"None of the above\"</0>"
 #~ msgstr "If you know that your building receives 421a or J51 tax abatement, select the option: <0>\"None of the above\"</0>"
 
-#: src/Components/Pages/Form/Survey.tsx:425
+#: src/Components/Pages/Form/Survey.tsx:424
 msgid "If you know that your building receives 421a or J51 tax abatement, select the option:<0>“No, my building is not subsidized”</0>"
 msgstr "If you know that your building receives 421a or J51 tax abatement, select the option:<0>“No, my building is not subsidized”</0>"
 
@@ -583,7 +591,7 @@ msgstr "If you live in NYC and are not covered by Good Cause Eviction, you still
 msgid "If you live outside of NYC"
 msgstr "If you live outside of NYC"
 
-#: src/Components/Pages/Form/Survey.tsx:442
+#: src/Components/Pages/Form/Survey.tsx:441
 msgid "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>“No, my building is not subsidized”</0>"
 msgstr "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>“No, my building is not subsidized”</0>"
 
@@ -619,7 +627,7 @@ msgstr "If your landlord refuses to renew your lease, tells you that you have to
 msgid "If your landlord takes you to court, you can raise a “Good Cause” defense. Your landlord would then have to demonstrate to the judge that they raised the rent because of increased costs (taxes, maintenance costs, etc.) or be forced to lower the increase."
 msgstr "If your landlord takes you to court, you can raise a “Good Cause” defense. Your landlord would then have to demonstrate to the judge that they raised the rent because of increased costs (taxes, maintenance costs, etc.) or be forced to lower the increase."
 
-#: src/Components/Pages/Form/Survey.tsx:479
+#: src/Components/Pages/Form/Survey.tsx:478
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:107
 msgid "If your most recent lease renewal <0>looks like this</0>, then your apartment is likely rent stabilized."
 msgstr "If your most recent lease renewal <0>looks like this</0>, then your apartment is likely rent stabilized."
@@ -659,19 +667,19 @@ msgstr "Ineligible"
 msgid "Invoke “Good Cause” to a judge"
 msgstr "Invoke “Good Cause” to a judge"
 
-#: src/helpers.ts:196
+#: src/Components/Pages/Form/Survey.tsx:656
 msgid "is a Mitchell-Lama"
 msgstr "is a Mitchell-Lama"
 
-#: src/helpers.ts:192
+#: src/Components/Pages/Form/Survey.tsx:652
 msgid "is an Article XI"
 msgstr "is an Article XI"
 
-#: src/helpers.ts:194
+#: src/Components/Pages/Form/Survey.tsx:654
 msgid "is part of an HPD subsidy program"
 msgstr "is part of an HPD subsidy program"
 
-#: src/helpers.ts:198
+#: src/Components/Pages/Form/Survey.tsx:658
 msgid "is part of NYCHA or PACT/RAD"
 msgstr "is part of NYCHA or PACT/RAD"
 
@@ -732,7 +740,7 @@ msgstr "Learn how tenant associations can help"
 msgid "Learn if you’re covered <0/>by Good Cause <1/>Eviction law in NYC"
 msgstr "Learn if you’re covered <0/>by Good Cause <1/>Eviction law in NYC"
 
-#: src/Components/Pages/Form/Survey.tsx:602
+#: src/Components/Pages/Form/Survey.tsx:600
 msgid "Learn more"
 msgstr "Learn more"
 
@@ -830,7 +838,7 @@ msgstr "Loading document links..."
 msgid "Loading your results..."
 msgstr "Loading your results..."
 
-#: src/hooks/useCriteriaResults.tsx:397
+#: src/hooks/useCriteriaResults.tsx:399
 msgid "manufactured housing"
 msgstr "manufactured housing"
 
@@ -871,7 +879,7 @@ msgstr "Met Council on Housing’s Hotline"
 msgid "Met Council on Housing’s Rent Stabilization overview"
 msgstr "Met Council on Housing’s Rent Stabilization overview"
 
-#: src/hooks/useCriteriaResults.tsx:400
+#: src/hooks/useCriteriaResults.tsx:402
 msgid "missing class information"
 msgstr "missing class information"
 
@@ -879,26 +887,26 @@ msgstr "missing class information"
 msgid "More resources about your rights as an NYC tenant"
 msgstr "More resources about your rights as an NYC tenant"
 
-#: src/helpers.ts:166
+#: src/helpers.ts:165
 msgid "Mortgage"
 msgstr "Mortgage"
 
-#: src/Components/Pages/Form/Survey.tsx:233
-#: src/Components/Pages/Form/Survey.tsx:308
-#: src/Components/Pages/Form/Survey.tsx:347
+#: src/Components/Pages/Form/Survey.tsx:232
+#: src/Components/Pages/Form/Survey.tsx:307
+#: src/Components/Pages/Form/Survey.tsx:346
 msgid "No"
 msgstr "No"
 
-#: src/hooks/useCriteriaResults.tsx:108
-#: src/hooks/useCriteriaResults.tsx:197
+#: src/hooks/useCriteriaResults.tsx:110
+#: src/hooks/useCriteriaResults.tsx:199
 msgid "No data available for the number of apartments in your building."
 msgstr "No data available for the number of apartments in your building."
 
-#: src/Components/Pages/Form/Survey.tsx:530
+#: src/Components/Pages/Form/Survey.tsx:529
 msgid "No rent stabilized apartments were registered in your building in recent years, but based on the size and age of your building some of the apartments may still be rent stabilized."
 msgstr "No rent stabilized apartments were registered in your building in recent years, but based on the size and age of your building some of the apartments may still be rent stabilized."
 
-#: src/Components/Pages/Form/Survey.tsx:276
+#: src/Components/Pages/Form/Survey.tsx:275
 msgid "No, my building is not subsidized"
 msgstr "No, my building is not subsidized"
 
@@ -914,7 +922,7 @@ msgstr "Non payment of rent"
 msgid "Note"
 msgstr "Note"
 
-#: src/Components/Pages/Form/Survey.tsx:433
+#: src/Components/Pages/Form/Survey.tsx:432
 msgid "Note: if your building is part of 421a or J51, your apartment should be rent stabilized"
 msgstr "Note: if your building is part of 421a or J51, your apartment should be rent stabilized"
 
@@ -934,12 +942,12 @@ msgstr "NY Courts Warranty of Habitability fact sheet"
 msgid "NY Homes and Community Renewal eviction information"
 msgstr "NY Homes and Community Renewal eviction information"
 
-#: src/hooks/useCriteriaResults.tsx:605
+#: src/hooks/useCriteriaResults.tsx:618
 msgid "NYCHA and PACT/RAD apartments are not covered by Good Cause because they already have stronger tenant protections than Good Cause provides."
 msgstr "NYCHA and PACT/RAD apartments are not covered by Good Cause because they already have stronger tenant protections than Good Cause provides."
 
-#: src/hooks/useCriteriaResults.tsx:529
-#: src/hooks/useCriteriaResults.tsx:555
+#: src/hooks/useCriteriaResults.tsx:531
+#: src/hooks/useCriteriaResults.tsx:557
 msgid "NYCHA and PACT/RAD apartments are not covered by Good Cause because they already have stronger tenant protections than Good Cause."
 msgstr "NYCHA and PACT/RAD apartments are not covered by Good Cause because they already have stronger tenant protections than Good Cause."
 
@@ -988,7 +996,7 @@ msgstr "Phone number (optional)"
 msgid "Phone number submitted"
 msgstr "Phone number submitted"
 
-#: src/Components/Pages/Form/Survey.tsx:148
+#: src/Components/Pages/Form/Survey.tsx:147
 msgid "Please complete the unanswered questions before continuing."
 msgstr "Please complete the unanswered questions before continuing."
 
@@ -996,7 +1004,7 @@ msgstr "Please complete the unanswered questions before continuing."
 msgid "Please confirm your address"
 msgstr "Please confirm your address"
 
-#: src/Components/Pages/Form/Survey.tsx:192
+#: src/Components/Pages/Form/Survey.tsx:191
 msgid "Please enter your total rent amount."
 msgstr "Please enter your total rent amount."
 
@@ -1004,23 +1012,23 @@ msgstr "Please enter your total rent amount."
 msgid "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that's a good sign they own the property."
 msgstr "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that's a good sign they own the property."
 
-#: src/Components/Pages/Form/Survey.tsx:261
+#: src/Components/Pages/Form/Survey.tsx:260
 msgid "Please specify if your apartment is part of any subsidized housing programs."
 msgstr "Please specify if your apartment is part of any subsidized housing programs."
 
-#: src/Components/Pages/Form/Survey.tsx:223
+#: src/Components/Pages/Form/Survey.tsx:222
 msgid "Please specify if your apartment is rent stabilized."
 msgstr "Please specify if your apartment is rent stabilized."
 
-#: src/Components/Pages/Form/Survey.tsx:162
+#: src/Components/Pages/Form/Survey.tsx:161
 msgid "Please specify the number of bedrooms in your apartment."
 msgstr "Please specify the number of bedrooms in your apartment."
 
-#: src/Components/Pages/Form/Survey.tsx:298
+#: src/Components/Pages/Form/Survey.tsx:297
 msgid "Please specify whether your landlord lives in your apartment building."
 msgstr "Please specify whether your landlord lives in your apartment building."
 
-#: src/Components/Pages/Form/Survey.tsx:337
+#: src/Components/Pages/Form/Survey.tsx:336
 msgid "Please specify whether your landlord owns more than 10 apartments across multiple buildings."
 msgstr "Please specify whether your landlord owns more than 10 apartments across multiple buildings."
 
@@ -1057,49 +1065,52 @@ msgstr "Protections that all NYC tenants have"
 msgid "Protections under Good Cause"
 msgstr "Protections under Good Cause"
 
-#: src/hooks/useCriteriaResults.tsx:432
+#: src/hooks/useCriteriaResults.tsx:434
 msgid "Public data sources indicate that your building is {bldgTypeName}, and so is not covered by Good Cause Eviction."
 msgstr "Public data sources indicate that your building is {bldgTypeName}, and so is not covered by Good Cause Eviction."
 
-#: src/hooks/useCriteriaResults.tsx:427
+#: src/hooks/useCriteriaResults.tsx:429
 msgid "Public data sources indicate that your building is not a condo, co-op, or other exempt category."
 msgstr "Public data sources indicate that your building is not a condo, co-op, or other exempt category."
 
-#: src/Components/Pages/Form/Survey.tsx:633
+#: src/Components/Pages/Form/Survey.tsx:631
 msgid "Publicly available data sources do not indicate that your building is part of a subsidized housing program."
 msgstr "Publicly available data sources do not indicate that your building is part of a subsidized housing program."
 
 #. placeholder {0}: formatNumber(rsUnits)
 #. placeholder {1}: formatNumber(bldgUnits)
-#: src/Components/Pages/Form/Survey.tsx:519
+#: src/Components/Pages/Form/Survey.tsx:518
 msgid "Publicly available data sources indicate that {0} of the {1} apartments in your building are registered as rent stabilized."
 msgstr "Publicly available data sources indicate that {0} of the {1} apartments in your building are registered as rent stabilized."
 
-#: src/Components/Pages/Form/Survey.tsx:509
+#: src/Components/Pages/Form/Survey.tsx:508
 msgid "Publicly available data sources indicate that all apartments in your building are registered as rent stabilized."
 msgstr "Publicly available data sources indicate that all apartments in your building are registered as rent stabilized."
 
 #. placeholder {0}: bldgData.unitsres == 1 ? "is 1 apartment" : `are ${bldgData.unitsres} apartments`
-#: src/Components/Pages/Form/Survey.tsx:327
+#: src/Components/Pages/Form/Survey.tsx:326
 msgid "Publicly available data sources indicate that there {0} in your building. Good Cause protections only apply to tenants whose landlord owns more than 10 apartments, even if those apartments are spread across multiple buildings."
 msgstr "Publicly available data sources indicate that there {0} in your building. Good Cause protections only apply to tenants whose landlord owns more than 10 apartments, even if those apartments are spread across multiple buildings."
 
-#. placeholder {0}: _(buildingSubsidyLanguage(subsidy_name))
 #: src/Components/Pages/Form/Survey.tsx:620
-msgid "Publicly available data sources indicate that your building {0}, which is considered subsidized housing."
-msgstr "Publicly available data sources indicate that your building {0}, which is considered subsidized housing."
+#~ msgid "Publicly available data sources indicate that your building {0}, which is considered subsidized housing."
+#~ msgstr "Publicly available data sources indicate that your building {0}, which is considered subsidized housing."
 
-#: src/Components/Pages/Form/Survey.tsx:608
+#: src/Components/Pages/Form/Survey.tsx:618
+msgid "Publicly available data sources indicate that your building <0/>, which is considered subsidized housing."
+msgstr "Publicly available data sources indicate that your building <0/>, which is considered subsidized housing."
+
+#: src/Components/Pages/Form/Survey.tsx:606
 msgid "Publicly available data sources indicate that your building is part of NYCHA."
 msgstr "Publicly available data sources indicate that your building is part of NYCHA."
 
 #. placeholder {0}: active421a ? "421a" : "J51"
-#: src/Components/Pages/Form/Survey.tsx:496
+#: src/Components/Pages/Form/Survey.tsx:495
 msgid "Publicly available data sources indicate that your building receives the {0} tax incentive. This means your apartment is rent stabilized."
 msgstr "Publicly available data sources indicate that your building receives the {0} tax incentive. This means your apartment is rent stabilized."
 
 #. placeholder {0}: formatNumber(relatedProperties)
-#: src/hooks/useCriteriaResults.tsx:158
+#: src/hooks/useCriteriaResults.tsx:160
 msgid "publicly available data sources indicate that your landlord may be associated with {0}"
 msgstr "publicly available data sources indicate that your landlord may be associated with {0}"
 
@@ -1107,11 +1118,11 @@ msgstr "publicly available data sources indicate that your landlord may be assoc
 msgid "Reach out to external resources"
 msgstr "Reach out to external resources"
 
-#: src/helpers.ts:188
+#: src/Components/Pages/Form/Survey.tsx:648
 msgid "receives a HUD Project-Based subsidy"
 msgstr "receives a HUD Project-Based subsidy"
 
-#: src/helpers.ts:190
+#: src/Components/Pages/Form/Survey.tsx:650
 msgid "receives the Low-Income Housing Tax Credit (LIHTC)"
 msgstr "receives the Low-Income Housing Tax Credit (LIHTC)"
 
@@ -1133,7 +1144,7 @@ msgstr "Rent increase calculator"
 msgid "Rent stabilization"
 msgstr "Rent stabilization"
 
-#: src/hooks/useCriteriaResults.tsx:329
+#: src/hooks/useCriteriaResults.tsx:331
 msgid "Rent stabilized apartments are not covered by Good Cause Eviction because they already have stronger tenant protections than Good Cause."
 msgstr "Rent stabilized apartments are not covered by Good Cause Eviction because they already have stronger tenant protections than Good Cause."
 
@@ -1177,7 +1188,7 @@ msgstr "Search new address"
 msgid "See if you are eligible for a free attorney in housing court"
 msgstr "See if you are eligible for a free attorney in housing court"
 
-#: src/Components/Pages/Form/Survey.tsx:365
+#: src/Components/Pages/Form/Survey.tsx:364
 msgid "See your results"
 msgstr "See your results"
 
@@ -1214,11 +1225,11 @@ msgstr "Source of income discrimination is the illegal practice by landlords, ow
 msgid "Stronger protections"
 msgstr "Stronger protections"
 
-#: src/hooks/useCriteriaResults.tsx:254
+#: src/hooks/useCriteriaResults.tsx:256
 msgid "studio"
 msgstr "studio"
 
-#: src/Components/Pages/Form/Survey.tsx:171
+#: src/Components/Pages/Form/Survey.tsx:170
 msgid "Studio"
 msgstr "Studio"
 
@@ -1228,8 +1239,8 @@ msgstr "Studio"
 msgid "Submit"
 msgstr "Submit"
 
-#: src/hooks/useCriteriaResults.tsx:538
-#: src/hooks/useCriteriaResults.tsx:625
+#: src/hooks/useCriteriaResults.tsx:540
+#: src/hooks/useCriteriaResults.tsx:638
 msgid "Subsidized buildings are not covered by Good Cause Eviction because they already have similar, and sometimes stronger, existing tenant protections."
 msgstr "Subsidized buildings are not covered by Good Cause Eviction because they already have similar, and sometimes stronger, existing tenant protections."
 
@@ -1283,7 +1294,7 @@ msgstr "Terms of use"
 msgid "Terms of Use"
 msgstr "Terms of Use"
 
-#: src/hooks/useCriteriaResults.tsx:300
+#: src/hooks/useCriteriaResults.tsx:302
 msgid "The apartment must not be rent stabilized."
 msgstr "The apartment must not be rent stabilized."
 
@@ -1291,18 +1302,18 @@ msgstr "The apartment must not be rent stabilized."
 msgid "The best way to confirm the owner of your building is to review your building’s official real estate transaction documents and look for the owner’s signature. We have provided links to these documents, below."
 msgstr "The best way to confirm the owner of your building is to review your building’s official real estate transaction documents and look for the owner’s signature. We have provided links to these documents, below."
 
-#: src/hooks/useCriteriaResults.tsx:465
+#: src/hooks/useCriteriaResults.tsx:467
 msgid "The building must have received its certificate of occupancy before 2009."
 msgstr "The building must have received its certificate of occupancy before 2009."
 
-#: src/hooks/useCriteriaResults.tsx:388
+#: src/hooks/useCriteriaResults.tsx:390
 msgid "The building must not be a condo, co-op, or other exempt building types."
 msgstr "The building must not be a condo, co-op, or other exempt building types."
 
-#: src/hooks/useCriteriaResults.tsx:516
-#: src/hooks/useCriteriaResults.tsx:568
-#: src/hooks/useCriteriaResults.tsx:585
-#: src/hooks/useCriteriaResults.tsx:635
+#: src/hooks/useCriteriaResults.tsx:518
+#: src/hooks/useCriteriaResults.tsx:570
+#: src/hooks/useCriteriaResults.tsx:593
+#: src/hooks/useCriteriaResults.tsx:648
 msgid "The building must not be part of NYCHA, PACT/RAD, or other subsidized housing."
 msgstr "The building must not be part of NYCHA, PACT/RAD, or other subsidized housing."
 
@@ -1316,7 +1327,7 @@ msgstr "The Good Cause law establishes a Reasonable Rent Increase, which is set 
 msgid "The information on this website does not constitute legal advice and must not be used as a substitute for the advice of a lawyer qualified to give advice on legal issues pertaining to housing."
 msgstr "The information on this website does not constitute legal advice and must not be used as a substitute for the advice of a lawyer qualified to give advice on legal issues pertaining to housing."
 
-#: src/hooks/useCriteriaResults.tsx:88
+#: src/hooks/useCriteriaResults.tsx:90
 msgid "The landlord of the building must own more than 10 apartments."
 msgstr "The landlord of the building must own more than 10 apartments."
 
@@ -1379,7 +1390,7 @@ msgstr "To be covered by the law, your apartment must meet several requirements.
 msgid "To find other buildings your landlord might own, you can:"
 msgstr "To find other buildings your landlord might own, you can:"
 
-#: src/Components/Pages/Form/Survey.tsx:375
+#: src/Components/Pages/Form/Survey.tsx:374
 msgid "To help guide your answer"
 msgstr "To help guide your answer"
 
@@ -1443,16 +1454,16 @@ msgstr "View all documents from Richmond County Clerk"
 msgid "View all documents in ACRIS"
 msgstr "View all documents in ACRIS"
 
-#: src/Components/Pages/Form/Survey.tsx:474
-#: src/Components/Pages/Form/Survey.tsx:502
-#: src/Components/Pages/Form/Survey.tsx:593
-#: src/hooks/useCriteriaResults.tsx:97
-#: src/hooks/useCriteriaResults.tsx:228
-#: src/hooks/useCriteriaResults.tsx:309
-#: src/hooks/useCriteriaResults.tsx:314
-#: src/hooks/useCriteriaResults.tsx:438
-#: src/hooks/useCriteriaResults.tsx:487
-#: src/hooks/useCriteriaResults.tsx:509
+#: src/Components/Pages/Form/Survey.tsx:473
+#: src/Components/Pages/Form/Survey.tsx:501
+#: src/Components/Pages/Form/Survey.tsx:591
+#: src/hooks/useCriteriaResults.tsx:99
+#: src/hooks/useCriteriaResults.tsx:230
+#: src/hooks/useCriteriaResults.tsx:311
+#: src/hooks/useCriteriaResults.tsx:316
+#: src/hooks/useCriteriaResults.tsx:440
+#: src/hooks/useCriteriaResults.tsx:489
+#: src/hooks/useCriteriaResults.tsx:511
 msgid "View source"
 msgstr "View source"
 
@@ -1476,7 +1487,7 @@ msgstr "Visit JustFix"
 msgid "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner's name and signature."
 msgstr "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner's name and signature."
 
-#: src/Components/Pages/Form/Survey.tsx:391
+#: src/Components/Pages/Form/Survey.tsx:390
 msgid "We check for NYCHA, Mitchell-Lama, HDFC, LIHTC, Project Section 8, and various HPD and HUD programs. If you know the public data is incorrect, use these tips to guide your answer:"
 msgstr "We check for NYCHA, Mitchell-Lama, HDFC, LIHTC, Project Section 8, and various HPD and HUD programs. If you know the public data is incorrect, use these tips to guide your answer:"
 
@@ -1509,7 +1520,7 @@ msgstr "We’ll text you once a year to learn about your housing conditions. We�
 msgid "We’ll use publicly available information about your building to help learn if you’re covered."
 msgstr "We’ll use publicly available information about your building to help learn if you’re covered."
 
-#: src/Components/Pages/Form/Survey.tsx:139
+#: src/Components/Pages/Form/Survey.tsx:138
 msgid "We’ll use your answers and publicly available information about your building to help learn if you’re covered."
 msgstr "We’ll use your answers and publicly available information about your building to help learn if you’re covered."
 
@@ -1529,17 +1540,17 @@ msgstr "Whether or not you are covered by Good Cause, you still have important t
 msgid "Withhold the unreasonable increase"
 msgstr "Withhold the unreasonable increase"
 
-#: src/Components/Pages/Form/Survey.tsx:232
-#: src/Components/Pages/Form/Survey.tsx:307
-#: src/Components/Pages/Form/Survey.tsx:346
+#: src/Components/Pages/Form/Survey.tsx:231
+#: src/Components/Pages/Form/Survey.tsx:306
+#: src/Components/Pages/Form/Survey.tsx:345
 msgid "Yes"
 msgstr "Yes"
 
-#: src/Components/Pages/Form/Survey.tsx:272
+#: src/Components/Pages/Form/Survey.tsx:271
 msgid "Yes, Mitchell-Lama, HDFC, or other"
 msgstr "Yes, Mitchell-Lama, HDFC, or other"
 
-#: src/Components/Pages/Form/Survey.tsx:270
+#: src/Components/Pages/Form/Survey.tsx:269
 msgid "Yes, NYCHA / PACT-RAD"
 msgstr "Yes, NYCHA / PACT-RAD"
 
@@ -1547,7 +1558,7 @@ msgstr "Yes, NYCHA / PACT-RAD"
 msgid "You are not covered by Good Cause because you have existing eviction protections through your building’s subsidy program"
 msgstr "You are not covered by Good Cause because you have existing eviction protections through your building’s subsidy program"
 
-#: src/hooks/useCriteriaResults.tsx:346
+#: src/hooks/useCriteriaResults.tsx:348
 msgid "you are not sure if your apartment is"
 msgstr "you are not sure if your apartment is"
 
@@ -1575,56 +1586,70 @@ msgstr "You only need to find the name or signature of your building’s owner o
 #. placeholder {0}: rentStabilized === "NO" ? ( <Trans>your apartment is not</Trans> ) : ( <Trans>you are not sure if your apartment is</Trans> )
 #. placeholder {2}: allUnitsRS ? ( <Trans> all apartments in your building are registered as rent stabilized. </Trans> ) : ( <Trans> your building receives the {activeJ51 ? "421a" : "J51"} tax incentive, which means your apartment should be rent stabilized. </Trans> )
 #. placeholder {3}: allUnitsRS ? wowLink : subsidyLink
-#: src/hooks/useCriteriaResults.tsx:341
+#: src/hooks/useCriteriaResults.tsx:343
 msgid "You reported that {0} rent stabilized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that{2} {3}If those sources are correct, then you may already have stronger tenant protections than Good Cause Eviction provides. {guideLink}"
 msgstr "You reported that {0} rent stabilized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that{2} {3}If those sources are correct, then you may already have stronger tenant protections than Good Cause Eviction provides. {guideLink}"
 
-#: src/hooks/useCriteriaResults.tsx:367
+#: src/hooks/useCriteriaResults.tsx:369
 msgid "You reported that you are not sure if your apartment is rent stabilized. {guideLink}"
 msgstr "You reported that you are not sure if your apartment is rent stabilized. {guideLink}"
 
-#: src/hooks/useCriteriaResults.tsx:365
+#: src/hooks/useCriteriaResults.tsx:367
 msgid "You reported that your apartment is not rent stabilized."
 msgstr "You reported that your apartment is not rent stabilized."
 
-#: src/hooks/useCriteriaResults.tsx:335
+#: src/hooks/useCriteriaResults.tsx:337
 msgid "You reported that your apartment is rent stabilized."
 msgstr "You reported that your apartment is rent stabilized."
 
-#: src/hooks/useCriteriaResults.tsx:592
-msgid "You reported that your building is not part of any subsidized housing programs, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD. {sourceLink} If those sources are correct, you may have existing tenant protections through NYCHA or PACT/RAD."
-msgstr "You reported that your building is not part of any subsidized housing programs, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD. {sourceLink} If those sources are correct, you may have existing tenant protections through NYCHA or PACT/RAD."
+#: src/hooks/useCriteriaResults.tsx:601
+msgid "You reported that your building is not part of any subsidized housing programs, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD."
+msgstr "You reported that your building is not part of any subsidized housing programs, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD."
 
-#: src/hooks/useCriteriaResults.tsx:546
+#: src/hooks/useCriteriaResults.tsx:592
+#~ msgid "You reported that your building is not part of any subsidized housing programs, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD. {sourceLink} If those sources are correct, you may have existing tenant protections through NYCHA or PACT/RAD."
+#~ msgstr "You reported that your building is not part of any subsidized housing programs, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD. {sourceLink} If those sources are correct, you may have existing tenant protections through NYCHA or PACT/RAD."
+
+#: src/hooks/useCriteriaResults.tsx:548
 msgid "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing programs."
 msgstr "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing programs."
 
-#. placeholder {0}: <>{buildingSubsidyLanguage(subsidy_name)}</>
 #: src/hooks/useCriteriaResults.tsx:642
-msgid "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building {0} , which is considered subsidized housing. {sourceLink} If those sources are correct, you may have existing tenant protections through your building’s subsidy program."
-msgstr "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building {0} , which is considered subsidized housing. {sourceLink} If those sources are correct, you may have existing tenant protections through your building’s subsidy program."
+#~ msgid "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building {0} , which is considered subsidized housing. {sourceLink} If those sources are correct, you may have existing tenant protections through your building’s subsidy program."
+#~ msgstr "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building {0} , which is considered subsidized housing. {sourceLink} If those sources are correct, you may have existing tenant protections through your building’s subsidy program."
 
-#. placeholder {0}: <>{buildingSubsidyLanguage(subsidy_name)}</>
+#: src/hooks/useCriteriaResults.tsx:655
+msgid "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building <0/> , which is considered subsidized housing. {sourceLink} If those sources are correct, you may have existing tenant protections through your building’s subsidy program."
+msgstr "You reported that your building is not part of NYCHA, PACT/RAD, or other subsidized housing, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building <0/> , which is considered subsidized housing. {sourceLink} If those sources are correct, you may have existing tenant protections through your building’s subsidy program."
+
 #: src/hooks/useCriteriaResults.tsx:613
-msgid "You reported that your building is part of NYCHA or PACT/RAD, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building {0}, which is considered subsidized housing. {sourceLink} If those sources are correct, then your protections may be different than the protections of NYCHA or PACT/RAD."
-msgstr "You reported that your building is part of NYCHA or PACT/RAD, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building {0}, which is considered subsidized housing. {sourceLink} If those sources are correct, then your protections may be different than the protections of NYCHA or PACT/RAD."
+#~ msgid "You reported that your building is part of NYCHA or PACT/RAD, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building {0}, which is considered subsidized housing. {sourceLink} If those sources are correct, then your protections may be different than the protections of NYCHA or PACT/RAD."
+#~ msgstr "You reported that your building is part of NYCHA or PACT/RAD, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building {0}, which is considered subsidized housing. {sourceLink} If those sources are correct, then your protections may be different than the protections of NYCHA or PACT/RAD."
 
-#: src/hooks/useCriteriaResults.tsx:523
-#: src/hooks/useCriteriaResults.tsx:562
+#: src/hooks/useCriteriaResults.tsx:626
+msgid "You reported that your building is part of NYCHA or PACT/RAD, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building <0/>, which is considered subsidized housing. {sourceLink} If those sources are correct, then your protections may be different than the protections of NYCHA or PACT/RAD."
+msgstr "You reported that your building is part of NYCHA or PACT/RAD, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building <0/>, which is considered subsidized housing. {sourceLink} If those sources are correct, then your protections may be different than the protections of NYCHA or PACT/RAD."
+
+#: src/hooks/useCriteriaResults.tsx:525
+#: src/hooks/useCriteriaResults.tsx:564
 msgid "You reported that your building is part of NYCHA or PACT/RAD."
 msgstr "You reported that your building is part of NYCHA or PACT/RAD."
 
-#: src/hooks/useCriteriaResults.tsx:575
-msgid "You reported that your building is subsidized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD. {sourceLink} If those sources are correct, then you may already have stronger tenant protections than other subsidized housing programs."
-msgstr "You reported that your building is subsidized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD. {sourceLink} If those sources are correct, then you may already have stronger tenant protections than other subsidized housing programs."
+#: src/hooks/useCriteriaResults.tsx:578
+msgid "You reported that your building is subsidized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD."
+msgstr "You reported that your building is subsidized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD."
 
-#: src/hooks/useCriteriaResults.tsx:535
-#: src/hooks/useCriteriaResults.tsx:632
+#: src/hooks/useCriteriaResults.tsx:575
+#~ msgid "You reported that your building is subsidized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD. {sourceLink} If those sources are correct, then you may already have stronger tenant protections than other subsidized housing programs."
+#~ msgstr "You reported that your building is subsidized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building is part of NYCHA or PACT/RAD. {sourceLink} If those sources are correct, then you may already have stronger tenant protections than other subsidized housing programs."
+
+#: src/hooks/useCriteriaResults.tsx:537
+#: src/hooks/useCriteriaResults.tsx:645
 msgid "You reported that your building is subsidized."
 msgstr "You reported that your building is subsidized."
 
 #. placeholder {0}: formatMoney(rent, 0)
-#: src/hooks/useCriteriaResults.tsx:276
+#: src/hooks/useCriteriaResults.tsx:278
 msgid "You reported that your rent is {0}."
 msgstr "You reported that your rent is {0}."
 
@@ -1640,59 +1665,59 @@ msgstr "You told us that you are unsure if you are rent stabilized. If your apar
 msgid "You’re not alone. Too many landlords care more about getting rich off our rent money than providing us with decent homes."
 msgstr "You’re not alone. Too many landlords care more about getting rich off our rent money than providing us with decent homes."
 
-#: src/hooks/useCriteriaResults.tsx:344
+#: src/hooks/useCriteriaResults.tsx:346
 msgid "your apartment is not"
 msgstr "your apartment is not"
 
 #. placeholder {0}: formatNumber(unitsres)
-#: src/hooks/useCriteriaResults.tsx:147
+#: src/hooks/useCriteriaResults.tsx:149
 msgid "Your building has {0} apartments and you reported that your landlord does not own other buildings."
 msgstr "Your building has {0} apartments and you reported that your landlord does not own other buildings."
 
 #. placeholder {0}: formatNumber(unitsres)
-#: src/hooks/useCriteriaResults.tsx:209
+#: src/hooks/useCriteriaResults.tsx:211
 msgid "Your building has {0} apartments and you reported that your landlord lives in the building."
 msgstr "Your building has {0} apartments and you reported that your landlord lives in the building."
 
 #. placeholder {0}: formatNumber(unitsres)
-#: src/hooks/useCriteriaResults.tsx:142
-#: src/hooks/useCriteriaResults.tsx:204
+#: src/hooks/useCriteriaResults.tsx:144
+#: src/hooks/useCriteriaResults.tsx:206
 msgid "Your building has {0} apartments."
 msgstr "Your building has {0} apartments."
 
 #. placeholder {0}: formatNumber(unitsres)
-#: src/hooks/useCriteriaResults.tsx:134
+#: src/hooks/useCriteriaResults.tsx:136
 msgid "Your building has {0} apartments. Additionally, your landlord may own other buildings in the city. {wowLink}"
 msgstr "Your building has {0} apartments. Additionally, your landlord may own other buildings in the city. {wowLink}"
 
-#: src/hooks/useCriteriaResults.tsx:115
+#: src/hooks/useCriteriaResults.tsx:117
 msgid "Your building has {pluralApartments} and you reported that your landlord owns more than 10 apartments across multiple buildings. Additionally, your landlord may own other buildings in the city. {wowLink}"
 msgstr "Your building has {pluralApartments} and you reported that your landlord owns more than 10 apartments across multiple buildings. Additionally, your landlord may own other buildings in the city. {wowLink}"
 
-#: src/hooks/useCriteriaResults.tsx:124
+#: src/hooks/useCriteriaResults.tsx:126
 msgid "Your building has {unitsres, plural, one {# apartment} other {# apartments}}, and you reported that your landlord owns more than 10 apartments across multiple buildings."
 msgstr "Your building has {unitsres, plural, one {# apartment} other {# apartments}}, and you reported that your landlord owns more than 10 apartments across multiple buildings."
 
 #. placeholder {0}: formatNumber(unitsres)
-#: src/hooks/useCriteriaResults.tsx:217
+#: src/hooks/useCriteriaResults.tsx:219
 msgid "Your building has ${0} apartments and you reported that your landlord does not live in the building."
 msgstr "Your building has ${0} apartments and you reported that your landlord does not live in the building."
 
-#: src/hooks/useCriteriaResults.tsx:474
+#: src/hooks/useCriteriaResults.tsx:476
 msgid "Your building has no new recorded certificate of occupancy since 2009."
 msgstr "Your building has no new recorded certificate of occupancy since 2009."
 
 #. placeholder {1}: relatedProperties ? ( <Trans> publicly available data sources indicate that your landlord may be associated with {formatNumber(relatedProperties)} </Trans> ) : ( <Trans>your landlord may own</Trans> )
-#: src/hooks/useCriteriaResults.tsx:155
+#: src/hooks/useCriteriaResults.tsx:157
 msgid "Your building has only {pluralApartments}, but{1} other buildings. <0>Find your landlord’s other buildings</0>"
 msgstr "Your building has only {pluralApartments}, but{1} other buildings. <0>Find your landlord’s other buildings</0>"
 
 #. placeholder {0}: activeJ51 ? "421a" : "J51"
-#: src/hooks/useCriteriaResults.tsx:355
+#: src/hooks/useCriteriaResults.tsx:357
 msgid "your building receives the {0} tax incentive, which means your apartment should be rent stabilized."
 msgstr "your building receives the {0} tax incentive, which means your apartment should be rent stabilized."
 
-#: src/hooks/useCriteriaResults.tsx:478
+#: src/hooks/useCriteriaResults.tsx:480
 msgid "Your building was issued a certificate of occupancy on {latestCoDateFormatted}."
 msgstr "Your building was issued a certificate of occupancy on {latestCoDateFormatted}."
 
@@ -1716,7 +1741,7 @@ msgstr "Your eviction protections"
 msgid "Your landlord can’t evict you based on your race, religion, gender, national origin, familial status, or disability. New York State law promises protection from discrimination, banning bias based on age, sexual orientation, and military status."
 msgstr "Your landlord can’t evict you based on your race, religion, gender, national origin, familial status, or disability. New York State law promises protection from discrimination, banning bias based on age, sexual orientation, and military status."
 
-#: src/hooks/useCriteriaResults.tsx:163
+#: src/hooks/useCriteriaResults.tsx:165
 msgid "your landlord may own"
 msgstr "your landlord may own"
 
