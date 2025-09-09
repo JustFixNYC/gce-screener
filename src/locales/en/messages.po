@@ -238,7 +238,7 @@ msgstr "Because your building has fewer than 6 units it is very unlikely that yo
 msgid "Because your building was built after 1974 and is not part of 421a or J51 tax incentive programs, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years."
 msgstr "Because your building was built after 1974 and is not part of 421a or J51 tax incentive programs, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years."
 
-#: src/Components/Footer/Footer.tsx:53
+#: src/Components/Footer/Footer.tsx:64
 msgid "By <0>Housing Justice for All</0> & <1>JustFix</1>"
 msgstr "By <0>Housing Justice for All</0> & <1>JustFix</1>"
 
@@ -311,7 +311,7 @@ msgstr "Demand notice"
 msgid "Demolition"
 msgstr "Demolition"
 
-#: src/Components/Footer/Footer.tsx:10
+#: src/Components/Footer/Footer.tsx:20
 msgid "Disclaimer"
 msgstr "Disclaimer"
 
@@ -374,7 +374,7 @@ msgstr "FAQs to help guide your answer"
 msgid "February 19, 2025"
 msgstr "February 19, 2025"
 
-#: src/Components/Footer/Footer.tsx:41
+#: src/Components/Footer/Footer.tsx:52
 msgid "Feedback Form"
 msgstr "Feedback Form"
 
@@ -454,7 +454,7 @@ msgstr "Good Cause Eviction protections went into effect on April 20th, 2024. If
 msgid "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
 msgstr "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
 
-#: src/Components/Footer/Footer.tsx:49
+#: src/Components/Footer/Footer.tsx:60
 #: src/Components/TopBar/TopBar.tsx:24
 msgid "Good Cause NYC"
 msgstr "Good Cause NYC"
@@ -707,6 +707,10 @@ msgstr "Landlord portfolio size"
 #: src/Components/KYRContent/KYRContent.tsx:332
 msgid "Landlords can increase the rent more than the reasonable rent increase but they must explain why and must point to increases in their costs or substantial repairs they did to the apartment or building."
 msgstr "Landlords can increase the rent more than the reasonable rent increase but they must explain why and must point to increases in their costs or substantial repairs they did to the apartment or building."
+
+#: src/Components/Footer/Footer.tsx:13
+msgid "Language"
+msgstr "Language"
 
 #: src/Components/Pages/Legal/TermsOfUse.tsx:15
 msgid "Last modified: August 16, 2024"
@@ -1045,7 +1049,7 @@ msgstr "Print coverage"
 msgid "Privacy policy"
 msgstr "Privacy policy"
 
-#: src/Components/Footer/Footer.tsx:25
+#: src/Components/Footer/Footer.tsx:36
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
@@ -1294,7 +1298,7 @@ msgstr "Tenants have the right to live in a safe, sanitary, and well-maintained 
 msgid "Terms of use"
 msgstr "Terms of use"
 
-#: src/Components/Footer/Footer.tsx:33
+#: src/Components/Footer/Footer.tsx:44
 msgid "Terms of Use"
 msgstr "Terms of Use"
 
@@ -1327,7 +1331,7 @@ msgstr "The building must not be part of NYCHA, PACT/RAD, or other subsidized ho
 msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
 msgstr "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
 
-#: src/Components/Footer/Footer.tsx:12
+#: src/Components/Footer/Footer.tsx:22
 msgid "The information on this website does not constitute legal advice and must not be used as a substitute for the advice of a lawyer qualified to give advice on legal issues pertaining to housing."
 msgstr "The information on this website does not constitute legal advice and must not be used as a substitute for the advice of a lawyer qualified to give advice on legal issues pertaining to housing."
 
