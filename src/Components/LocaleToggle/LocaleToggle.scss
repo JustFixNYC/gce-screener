@@ -1,3 +1,5 @@
+@import "../../colors.scss";
+
 .locale-toggle {
   display: inline;
   button {
@@ -5,12 +7,14 @@
     border: none;
     text-decoration: underline;
     cursor: pointer;
+    color: inherit;
+    &:hover {
+      color: $GREY_700;
+    }
     &:disabled {
       text-decoration: none;
       cursor: default;
-      &:hover {
-        color: inherit;
-      }
+      color: $GREY_600;
     }
   }
 }
