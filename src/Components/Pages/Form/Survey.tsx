@@ -13,7 +13,6 @@ import { useSessionStorage } from "../../../hooks/useSessionStorage";
 import { RadioGroup } from "../../RadioGroup/RadioGroup";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import {
-  buildingSubsidyLanguage,
   formatNumber,
   ProgressStep,
   urlFCSubsidized,
@@ -580,7 +579,6 @@ const SubsidyHelperText: React.FC<{
   learnMoreOnClick?: () => void;
   textOnly: boolean;
 }> = ({ bldgData, learnMoreOnClick, textOnly = false }) => {
-  const { _ } = useLingui();
   let subsidyHelperText: ReactNode;
   let subsidyHelperElement: ReactNode;
 
@@ -619,8 +617,8 @@ const SubsidyHelperText: React.FC<{
     subsidyHelperText = (
       <Trans>
         Publicly available data sources indicate that your building{" "}
-        {_(buildingSubsidyLanguage(subsidy_name))}, which is considered
-        subsidized housing.
+        <BuildingSubsidyLanguage subsidyName={subsidy_name} />, which is
+        considered subsidized housing.
       </Trans>
     );
     subsidyHelperElement = (
@@ -642,4 +640,24 @@ const SubsidyHelperText: React.FC<{
     );
   }
   return textOnly ? subsidyHelperText : subsidyHelperElement;
+};
+
+export const BuildingSubsidyLanguage: React.FC<{ subsidyName?: string }> = ({
+  subsidyName,
+}) => {
+  return subsidyName === "HUD Project-Based" ? (
+    <Trans>receives a HUD Project-Based subsidy</Trans>
+  ) : subsidyName === "Low-Income Housing Tax Credit (LIHTC)" ? (
+    <Trans>receives the Low-Income Housing Tax Credit (LIHTC)</Trans>
+  ) : subsidyName === "Article XI" ? (
+    <Trans>is an Article XI</Trans>
+  ) : subsidyName === "HPD program" ? (
+    <Trans>is part of an HPD subsidy program</Trans>
+  ) : subsidyName === "Mitchell-Lama" ? (
+    <Trans>is a Mitchell-Lama</Trans>
+  ) : subsidyName === "NYCHA" ? (
+    <Trans>is part of NYCHA or PACT/RAD</Trans>
+  ) : (
+    <></>
+  );
 };

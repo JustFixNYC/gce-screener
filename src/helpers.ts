@@ -2,7 +2,6 @@ import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { msg } from "@lingui/core/macro";
 import LZString from "lz-string";
 import { RelatedProperty } from "./types/APIDataTypes";
-import { MessageDescriptor } from "@lingui/core";
 
 export enum ProgressStep {
   Home = -1,
@@ -180,24 +179,6 @@ export const formatMoney = (n: number, decimalDigits?: number) =>
     currency: "USD",
     maximumFractionDigits: decimalDigits,
   }).format(n);
-
-export const buildingSubsidyLanguage = (
-  subsidyName?: string
-): MessageDescriptor => {
-  return subsidyName === "HUD Project-Based"
-    ? msg`receives a HUD Project-Based subsidy`
-    : subsidyName === "Low-Income Housing Tax Credit (LIHTC)"
-    ? msg`receives the Low-Income Housing Tax Credit (LIHTC)`
-    : subsidyName === "Article XI"
-    ? msg`is an Article XI`
-    : subsidyName === "HPD program"
-    ? msg`is part of an HPD subsidy program`
-    : subsidyName === "Mitchell-Lama"
-    ? msg`is a Mitchell-Lama`
-    : subsidyName === "NYCHA"
-    ? msg`is part of NYCHA or PACT/RAD`
-    : msg``;
-};
 
 // URL param encoding/compression, copied from signature-dashboard
 

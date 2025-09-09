@@ -1,10 +1,12 @@
 import { Plural, Trans } from "@lingui/react/macro";
 
 import { JFCLLinkExternal, JFCLLinkInternal } from "../Components/JFCLLink";
-import { FormFields } from "../Components/Pages/Form/Survey";
+import {
+  BuildingSubsidyLanguage,
+  FormFields,
+} from "../Components/Pages/Form/Survey";
 import { BuildingData, CriterionResult } from "../types/APIDataTypes";
 import {
-  buildingSubsidyLanguage,
   formatMoney,
   formatNumber,
   urlDOBBBL,
@@ -572,13 +574,19 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
       );
       determination = "OTHER_PROTECTION";
       userValue = (
-        <Trans>
-          You reported that your building is subsidized, and we are using your
-          answer as part of our coverage assessment. Note: publicly available
-          data sources indicate that your building is part of NYCHA or PACT/RAD.{" "}
-          {sourceLink} If those sources are correct, then you may already have
-          stronger tenant protections than other subsidized housing programs.
-        </Trans>
+        <>
+          <Trans>
+            You reported that your building is subsidized, and we are using your
+            answer as part of our coverage assessment. Note: publicly available
+            data sources indicate that your building is part of NYCHA or
+            PACT/RAD.
+          </Trans>{" "}
+          {sourceLink}{" "}
+          <Trans>
+            If those sources are correct, then you may already have stronger
+            tenant protections than other subsidized housing programs.
+          </Trans>
+        </>
       );
     } else {
       requirement = (
@@ -589,14 +597,19 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
       );
       determination = "ELIGIBLE";
       userValue = (
-        <Trans>
-          You reported that your building is not part of any subsidized housing
-          programs, and we are using your answer as part of our coverage
-          assessment. Note: publicly available data sources indicate that your
-          building is part of NYCHA or PACT/RAD. {sourceLink} If those sources
-          are correct, you may have existing tenant protections through NYCHA or
-          PACT/RAD.
-        </Trans>
+        <>
+          <Trans>
+            You reported that your building is not part of any subsidized
+            housing programs, and we are using your answer as part of our
+            coverage assessment. Note: publicly available data sources indicate
+            that your building is part of NYCHA or PACT/RAD.
+          </Trans>{" "}
+          {sourceLink}{" "}
+          <Trans>
+            If those sources are correct, you may have existing tenant
+            protections through NYCHA or PACT/RAD.
+          </Trans>
+        </>
       );
     }
   } else {
@@ -614,10 +627,10 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
           You reported that your building is part of NYCHA or PACT/RAD, and we
           are using your answer as part of our coverage assessment. Note:
           publicly available data sources indicate that your building{" "}
-          {<>{buildingSubsidyLanguage(subsidy_name)}</>}, which is considered
-          subsidized housing. {sourceLink} If those sources are correct, then
-          your protections may be different than the protections of NYCHA or
-          PACT/RAD.
+          <BuildingSubsidyLanguage subsidyName={subsidy_name} />, which is
+          considered subsidized housing. {sourceLink} If those sources are
+          correct, then your protections may be different than the protections
+          of NYCHA or PACT/RAD.
         </Trans>
       );
     } else if (housingType === "SUBSIDIZED") {
@@ -643,9 +656,10 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
           You reported that your building is not part of NYCHA, PACT/RAD, or
           other subsidized housing, and we are using your answer as part of our
           coverage assessment. Note: publicly available data sources indicate
-          that your building {<>{buildingSubsidyLanguage(subsidy_name)}</>} ,
-          which is considered subsidized housing. {sourceLink} If those sources
-          are correct, you may have existing tenant protections through your
+          that your building{" "}
+          <BuildingSubsidyLanguage subsidyName={subsidy_name} /> , which is
+          considered subsidized housing. {sourceLink} If those sources are
+          correct, you may have existing tenant protections through your
           building’s subsidy program.
         </Trans>
       );
