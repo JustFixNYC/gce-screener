@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {
   Route,
   Outlet,
@@ -27,7 +26,6 @@ import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import { decodeFromURI } from "./helpers";
 import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
-import { defaultLocale, dynamicActivate } from "./i18n";
 import { messages as esMessages } from "./locales/es/messages";
 import { messages as enMessages } from "./locales/en/messages";
 import "./App.scss";
@@ -217,10 +215,6 @@ const router = createBrowserRouter(
 );
 function App() {
   const rollbar = useRollbar();
-
-  useEffect(() => {
-    dynamicActivate(defaultLocale);
-  }, []);
 
   return (
     <I18nProvider i18n={i18n}>
