@@ -7,6 +7,7 @@ export const LocaleToggle: React.FC = () => {
   return (
     <div className="locale-toggle">
       <button
+        className="jfcl-link"
         type="button"
         onClick={() => dynamicActivate("en")}
         disabled={i18n.locale == "en"}
@@ -15,6 +16,7 @@ export const LocaleToggle: React.FC = () => {
       </button>{" "}
       /{" "}
       <button
+        className="jfcl-link"
         type="button"
         onClick={() => dynamicActivate("es")}
         disabled={i18n.locale == "es"}

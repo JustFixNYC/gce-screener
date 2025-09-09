@@ -1,16 +1,16 @@
 .locale-toggle {
   display: inline;
   button {
-    font-size: inherit;
-    color: inherit;
     background: none;
     border: none;
     text-decoration: underline;
-    text-underline-offset: 0.3em;
     cursor: pointer;
     &:disabled {
       text-decoration: none;
       cursor: default;
+      &:hover {
+        color: inherit;
+      }
     }
   }
 }
