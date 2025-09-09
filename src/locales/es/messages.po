@@ -243,7 +243,7 @@ msgstr "Debido a que su edificio tiene menos de 6 unidades, es muy poco probable
 msgid "Because your building was built after 1974 and is not part of 421a or J51 tax incentive programs, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years."
 msgstr "Debido a que su edificio fue construido después de 1974 y no forma parte de los programas de incentivos fiscales 421a o J51, Es muy improbable que su apartamento esté estabilizado en alquiler. Adicionalmente, sobre la base de la disponibilidad pública, en los últimos años no se registraron apartamentos estables en su edificio."
 
-#: src/Components/Footer/Footer.tsx:53
+#: src/Components/Footer/Footer.tsx:64
 msgid "By <0>Housing Justice for All</0> & <1>JustFix</1>"
 msgstr "Por <0>Housing Justice for All</0> & <1>JustFix</1>"
 
@@ -316,7 +316,7 @@ msgstr "Notificación de demanda"
 msgid "Demolition"
 msgstr "Demolición"
 
-#: src/Components/Footer/Footer.tsx:10
+#: src/Components/Footer/Footer.tsx:20
 msgid "Disclaimer"
 msgstr "Descargo de responsabilidad"
 
@@ -379,7 +379,7 @@ msgstr "Preguntas frecuentes para ayudar a guiar tu respuesta"
 msgid "February 19, 2025"
 msgstr "19 de febrero de 2025"
 
-#: src/Components/Footer/Footer.tsx:41
+#: src/Components/Footer/Footer.tsx:52
 msgid "Feedback Form"
 msgstr "Formulario de comentarios"
 
@@ -459,7 +459,7 @@ msgstr "Las protecciones de la Buena Causa entraron en vigor el 20 de abril de 2
 msgid "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
 msgstr "Buena Causa la ley puede ser compleja de entender y usar para protegerse. Este sitio existe para facilitarle a usted y a sus vecinos entender sus protecciones de inquilinos y para asegurar sus derechos."
 
-#: src/Components/Footer/Footer.tsx:49
+#: src/Components/Footer/Footer.tsx:60
 #: src/Components/TopBar/TopBar.tsx:24
 msgid "Good Cause NYC"
 msgstr "Buena causa NYC"
@@ -647,10 +647,12 @@ msgstr "Si su última renovación de arrendamiento se parece a la imagen de abaj
 
 #. placeholder {0}: CPI + 5
 #: src/Components/KYRContent/KYRContent.tsx:515
-msgid "If your rent increase is more than {0}%, tell your landlord it is\n"
+msgid ""
+"If your rent increase is more than {0}%, tell your landlord it is\n"
 "            an unreasonable increase and that a judge could force your landlord\n"
 "            to justify it based on increased costs."
-msgstr "Si tu aumento de alquiler es superior a {0}%, decirle a su propietario que es\n"
+msgstr ""
+"Si tu aumento de alquiler es superior a {0}%, decirle a su propietario que es\n"
 "            un aumento poco razonable y que un juez podría obligar a su propietario\n"
 "            a justificarlo en base a un aumento de costos."
 
@@ -710,6 +712,10 @@ msgstr "Tamaño del portafolio de Soberanos"
 #: src/Components/KYRContent/KYRContent.tsx:332
 msgid "Landlords can increase the rent more than the reasonable rent increase but they must explain why and must point to increases in their costs or substantial repairs they did to the apartment or building."
 msgstr "Los señores de los terrenos pueden aumentar el alquiler más que el razonable aumento del alquiler, pero deben explicar por qué y deben apuntar a aumentos en sus costos o reparaciones sustanciales que hicieron al apartamento o edificio."
+
+#: src/Components/Footer/Footer.tsx:13
+msgid "Language"
+msgstr ""
 
 #: src/Components/Pages/Legal/TermsOfUse.tsx:15
 msgid "Last modified: August 16, 2024"
@@ -1048,7 +1054,7 @@ msgstr "Imprimir cobertura"
 msgid "Privacy policy"
 msgstr "Política de privacidad"
 
-#: src/Components/Footer/Footer.tsx:25
+#: src/Components/Footer/Footer.tsx:36
 msgid "Privacy Policy"
 msgstr "Política de privacidad"
 
@@ -1297,7 +1303,7 @@ msgstr "Los inquilinos tienen derecho a vivir en un apartamento seguro, sanitari
 msgid "Terms of use"
 msgstr "Términos de uso"
 
-#: src/Components/Footer/Footer.tsx:33
+#: src/Components/Footer/Footer.tsx:44
 msgid "Terms of Use"
 msgstr "Términos de uso"
 
@@ -1330,7 +1336,7 @@ msgstr "El edificio no debe ser parte de NYCHA, PACT/RAD, u otras viviendas subs
 msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
 msgstr "La ley de Buena Causa establece un aumento del alquiler razonable, que se fija cada año a la tasa de inflación más 5%, con un máximo del 10% total. A partir de ${0}, la tasa de inflación de la ciudad de Nueva York es ${CPI}%, lo que significa que el actual incremento de Alquiler Razonable local es ${1}%."
 
-#: src/Components/Footer/Footer.tsx:12
+#: src/Components/Footer/Footer.tsx:22
 msgid "The information on this website does not constitute legal advice and must not be used as a substitute for the advice of a lawyer qualified to give advice on legal issues pertaining to housing."
 msgstr "La información contenida en este sitio web no constituye asesoramiento legal y no debe utilizarse como sustituto del asesoramiento de un abogado cualificado para asesorar sobre cuestiones legales relativas a la vivienda."
 
@@ -1571,11 +1577,13 @@ msgstr "no estás seguro de si tu apartamento está"
 
 #. placeholder {0}: CPI + 5
 #: src/Components/KYRContent/KYRContent.tsx:526
-msgid "You can withhold the rent increase above the ‘reasonable’ threshold.\n"
+msgid ""
+"You can withhold the rent increase above the ‘reasonable’ threshold.\n"
 "            Pay your old rent plus {0}%. To be safe, set aside the extra rent\n"
 "            in a separate escrow account until your negotiations with your\n"
 "            landlord have totally resolved."
-msgstr "Puede retener el aumento del alquiler por encima del umbral “razonable”.\n"
+msgstr ""
+"Puede retener el aumento del alquiler por encima del umbral “razonable”.\n"
 "            Paga tu antiguo alquiler más {0}%. Ser seguro dejar a un lado el alquiler extra\n"
 "            en una cuenta de escrow separada hasta que tus negociaciones con tu propietario\n"
 "            hayan sido resueltas por completo."
@@ -1668,7 +1676,8 @@ msgstr "Nos ha dicho que vive usted una vivienda subvencionada. Si tu edificio e
 
 #: src/Components/Pages/Results/Results.tsx:452
 msgid "You told us that you are unsure if you are rent stabilized. If your apartment is rent stabilized, you are not covered by Good Cause Eviction law, but rent stabilized protections are even stronger than the Good Cause Eviction law."
-msgstr "=======Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"=======Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: es\n"
@@ -1683,6 +1692,7 @@ msgstr "=======Content-Type: text/plain; charset=UTF-8\n"
 "X-Crowdin-Language: es-ES\n"
 "X-Crowdin-File: /translations/src/locales/en/messages.po\n"
 "X-Crowdin-File-ID: 64\n"
+""
 
 #: src/Components/KYRContent/KYRContent.tsx:227
 msgid "You’re not alone. Too many landlords care more about getting rich off our rent money than providing us with decent homes."
@@ -1820,4 +1830,3 @@ msgstr "Tu derecho a la sucesión"
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:300
 msgid "YouTube video for how to find other apartments your landlord owns"
 msgstr "Video de YouTube sobre cómo encontrar otros apartamentos en tus propietarios"
-

@@ -1,6 +1,6 @@
 import { i18n } from "@lingui/core";
 
-export const defaultLocale = "es";
+export const defaultLocale = "en";
 
 export async function dynamicActivate(locale: string) {
   const { messages } = await import(`./locales/${locale}/messages.po`);
