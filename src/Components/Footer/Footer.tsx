@@ -1,19 +1,30 @@
 import { Link } from "react-router-dom";
 import { Trans } from "@lingui/react/macro";
+
+import { LocaleToggle } from "../LocaleToggle/LocaleToggle";
 import "./Footer.scss";
 
 export const Footer: React.FC = () => (
   <footer className="footer">
     <div className="footer__content">
-      <div className="footer__legal-disclaimer">
-        <span>
-          <Trans>Disclaimer</Trans>
-        </span>
-        <Trans>
-          The information on this website does not constitute legal advice and
-          must not be used as a substitute for the advice of a lawyer qualified
-          to give advice on legal issues pertaining to housing.
-        </Trans>
+      <div>
+        <div className="footer__locale-toggle">
+          <span>
+            <Trans>Language</Trans>:
+          </span>{" "}
+          <LocaleToggle />
+        </div>
+
+        <div className="footer__legal-disclaimer">
+          <span>
+            <Trans>Disclaimer</Trans>
+          </span>
+          <Trans>
+            The information on this website does not constitute legal advice and
+            must not be used as a substitute for the advice of a lawyer
+            qualified to give advice on legal issues pertaining to housing.
+          </Trans>
+        </div>
       </div>
       <nav className="footer__legal-pages">
         <a
