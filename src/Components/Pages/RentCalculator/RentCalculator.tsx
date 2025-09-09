@@ -59,7 +59,9 @@ export const RentCalculator: React.FC = () => {
         <div className="content-section__content">
           <div className="rent-calculator-callout-box">
             <span className="callout-box__header">
-              Find out how much your landlord can increase your rent
+              <Trans>
+                Find out how much your landlord can increase your rent
+              </Trans>
             </span>
             <form className="rent-input-container" onSubmit={handleSubmit}>
               <TextInput
@@ -101,7 +103,9 @@ export const RentCalculator: React.FC = () => {
                     </span>
                   </>
                 ) : (
-                  <Trans>Your current monthly rent + ${increase_pct}%</Trans>
+                  <>
+                    <Trans>Your current monthly rent</Trans> + {increase_pct}%
+                  </>
                 )}
               </p>
             </div>

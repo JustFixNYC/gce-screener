@@ -598,6 +598,7 @@ const CoverageResultHeadline: React.FC<{
 };
 
 const CopyURLButton: React.FC = () => {
+  const { _ } = useLingui();
   const successDuration = 3000;
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -614,7 +615,7 @@ const CopyURLButton: React.FC = () => {
     <>
       <Button
         className="copy-url-button"
-        labelText="Copy goodcausenyc.org"
+        labelText={_(msg`Copy goodcausenyc.org`)}
         labelIcon="copy"
         onClick={handleClick}
         size="small"

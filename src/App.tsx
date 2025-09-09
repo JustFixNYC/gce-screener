@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Route,
   Outlet,
@@ -8,7 +9,9 @@ import {
 import { SWRConfig } from "swr";
 import { useRollbar } from "@rollbar/react";
 import { createBrowserRouter, ScrollRestoration } from "react-router-dom";
+import { i18n } from "@lingui/core";
 
+import { I18nProvider } from "@lingui/react";
 import { Home } from "./Components/Pages/Home/Home";
 import { Survey } from "./Components/Pages/Form/Survey";
 import { Results } from "./Components/Pages/Results/Results";
@@ -23,8 +26,17 @@ import { NetworkError } from "./api/error-reporting";
 import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import { decodeFromURI } from "./helpers";
-import "./App.scss";
 import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
+import { defaultLocale, dynamicActivate } from "./i18n";
+import { messages as esMessages } from "./locales/es/messages";
+import { messages as enMessages } from "./locales/es/messages";
+import "./App.scss";
+
+i18n.load({
+  en: enMessages,
+  es: esMessages,
+});
+i18n.activate("es");
 
 const Layout = () => {
   return (
@@ -206,17 +218,23 @@ const router = createBrowserRouter(
 function App() {
   const rollbar = useRollbar();
 
+  useEffect(() => {
+    dynamicActivate(defaultLocale);
+  }, []);
+
   return (
-    <SWRConfig
-      value={{
-        onError: (error) => {
-          if (error instanceof NetworkError && !error.shouldReport) return;
-          rollbar.error(error);
-        },
-      }}
-    >
-      <RouterProvider router={router} />
-    </SWRConfig>
+    <I18nProvider i18n={i18n}>
+      <SWRConfig
+        value={{
+          onError: (error) => {
+            if (error instanceof NetworkError && !error.shouldReport) return;
+            rollbar.error(error);
+          },
+        }}
+      >
+        <RouterProvider router={router} />
+      </SWRConfig>
+    </I18nProvider>
   );
 }
 
