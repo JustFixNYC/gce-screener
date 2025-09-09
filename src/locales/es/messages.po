@@ -8,7 +8,7 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-09-09 16:18\n"
+"PO-Revision-Date: 2025-09-09 18:36\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -647,12 +647,10 @@ msgstr "Si su última renovación de arrendamiento se parece a la imagen de abaj
 
 #. placeholder {0}: CPI + 5
 #: src/Components/KYRContent/KYRContent.tsx:515
-msgid ""
-"If your rent increase is more than {0}%, tell your landlord it is\n"
+msgid "If your rent increase is more than {0}%, tell your landlord it is\n"
 "            an unreasonable increase and that a judge could force your landlord\n"
 "            to justify it based on increased costs."
-msgstr ""
-"Si tu aumento de alquiler es superior a {0}%, decirle a su propietario que es\n"
+msgstr "Si tu aumento de alquiler es superior a {0}%, decirle a su propietario que es\n"
 "            un aumento poco razonable y que un juez podría obligar a su propietario\n"
 "            a justificarlo en base a un aumento de costos."
 
@@ -715,7 +713,7 @@ msgstr "Los señores de los terrenos pueden aumentar el alquiler más que el raz
 
 #: src/Components/Footer/Footer.tsx:13
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: src/Components/Pages/Legal/TermsOfUse.tsx:15
 msgid "Last modified: August 16, 2024"
@@ -1577,13 +1575,11 @@ msgstr "no estás seguro de si tu apartamento está"
 
 #. placeholder {0}: CPI + 5
 #: src/Components/KYRContent/KYRContent.tsx:526
-msgid ""
-"You can withhold the rent increase above the ‘reasonable’ threshold.\n"
+msgid "You can withhold the rent increase above the ‘reasonable’ threshold.\n"
 "            Pay your old rent plus {0}%. To be safe, set aside the extra rent\n"
 "            in a separate escrow account until your negotiations with your\n"
 "            landlord have totally resolved."
-msgstr ""
-"Puede retener el aumento del alquiler por encima del umbral “razonable”.\n"
+msgstr "Puede retener el aumento del alquiler por encima del umbral “razonable”.\n"
 "            Paga tu antiguo alquiler más {0}%. Ser seguro dejar a un lado el alquiler extra\n"
 "            en una cuenta de escrow separada hasta que tus negociaciones con tu propietario\n"
 "            hayan sido resueltas por completo."
@@ -1676,8 +1672,7 @@ msgstr "Nos ha dicho que vive usted una vivienda subvencionada. Si tu edificio e
 
 #: src/Components/Pages/Results/Results.tsx:452
 msgid "You told us that you are unsure if you are rent stabilized. If your apartment is rent stabilized, you are not covered by Good Cause Eviction law, but rent stabilized protections are even stronger than the Good Cause Eviction law."
-msgstr ""
-"=======Content-Type: text/plain; charset=UTF-8\n"
+msgstr "=======Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: es\n"
@@ -1692,7 +1687,6 @@ msgstr ""
 "X-Crowdin-Language: es-ES\n"
 "X-Crowdin-File: /translations/src/locales/en/messages.po\n"
 "X-Crowdin-File-ID: 64\n"
-""
 
 #: src/Components/KYRContent/KYRContent.tsx:227
 msgid "You’re not alone. Too many landlords care more about getting rich off our rent money than providing us with decent homes."
@@ -1830,3 +1824,4 @@ msgstr "Tu derecho a la sucesión"
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:300
 msgid "YouTube video for how to find other apartments your landlord owns"
 msgstr "Video de YouTube sobre cómo encontrar otros apartamentos en tus propietarios"
+
