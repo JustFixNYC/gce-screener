@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 
 import {
   ContentBox,
@@ -19,7 +20,6 @@ import { gtmPush } from "../../../google-tag-manager";
 import "./RentStabilization.scss";
 import { RentStabilizedProtections } from "../../KYRContent/KYRContent";
 import { RentStabLeaseModal } from "../../Modal/Modal";
-import { Trans } from "@lingui/react/macro";
 
 export const RentStabilization: React.FC = () => {
   const { _ } = useLingui();
@@ -49,7 +49,7 @@ export const RentStabilization: React.FC = () => {
         <div className="content-section__content">
           <ContentBox
             subtitle={_(
-              msg`"Good Cause Eviction only applies to tenants who are not rent stabilized.`
+              msg`Good Cause Eviction only applies to tenants who are not rent stabilized.`
             )}
           >
             <ContentBoxItem accordion={false}>
@@ -65,7 +65,7 @@ export const RentStabilization: React.FC = () => {
           <div className="divider__print" />
           <ContentBox
             subtitle={_(
-              msg`"How to find out if your apartment is rent stabilized`
+              msg`How to find out if your apartment is rent stabilized`
             )}
           >
             <ContentBoxItem title={_(msg`Request your rent history`)}>

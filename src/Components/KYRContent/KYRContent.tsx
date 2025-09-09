@@ -643,7 +643,7 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
         </ContentBoxItem>
 
         <ContentBoxItem
-          title={-msg`Your right to succession`}
+          title={_(msg`Your right to succession`)}
           gtmId="rs_succession"
           coverageResult={coverageResult}
         >
