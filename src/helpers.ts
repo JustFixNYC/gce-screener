@@ -2,7 +2,6 @@ import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { msg } from "@lingui/core/macro";
 import LZString from "lz-string";
 import { RelatedProperty } from "./types/APIDataTypes";
-import { MessageDescriptor } from "@lingui/core";
 
 export enum ProgressStep {
   Home = -1,
