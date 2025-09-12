@@ -7,6 +7,7 @@ import { gtmPush } from "../../google-tag-manager";
 import { useScrollDirection } from "../../hooks/useScrollDirection";
 import useInViewPort from "../../hooks/useInViewport";
 import { JFCLLinkInternal } from "../JFCLLink";
+import { LocaleSwitcher } from "../../i18n";
 import "./TopBar.scss";
 
 export const TopBar: React.FC = () => {
@@ -52,6 +53,9 @@ export const TopBar: React.FC = () => {
           >
             <Trans>Rent increase calculator</Trans>
           </JFCLLinkInternal>
+        </div>
+        <div className="topbar__language-switcher">
+          <LocaleSwitcher />
         </div>
       </header>
       <div
