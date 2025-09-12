@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
+import { Plural, Trans } from "@lingui/react/macro";
 
 import { Address } from "../Home/Home";
 import {
@@ -91,28 +92,34 @@ export const PortfolioSize: React.FC = () => {
             className="portfolio-video-box"
           >
             <ContentBoxItem accordion={false}>
-              <Trans>
-                <p>
+              <p>
+                <Trans>
                   If your building has fewer than 11 apartments, you need to
                   learn if your landlord owns other residential buildings.
-                </p>
-                <p>
+                </Trans>
+              </p>
+              <p>
+                <Trans>
                   Unfortunately, it can be difficult to find out who your
                   landlord really is and if your landlord owns other buildings.
                   This is especially true if your building is owned by a
                   corporation.
-                </p>
-                <p>
+                </Trans>
+              </p>
+              <p>
+                <Trans>
                   This guide will walk you through two steps that will help you
                   prove who you landlord is and if they own other buildings.
                   Please watch the instruction video, below, to get started.
-                </p>
-              </Trans>
+                </Trans>
+              </p>
               <VideoEmbed url={VIDEO_EMBED_URL} />
             </ContentBoxItem>
           </ContentBox>
           <div className="divider__print" />
-          <ContentBox subtitle="How to find other apartments your landlord owns">
+          <ContentBox
+            subtitle={_(msg`How to find other apartments your landlord owns`)}
+          >
             <ContentBoxItem className="mobile-video-prompt" accordion={false}>
               <InfoBox color="blue">
                 <Trans>

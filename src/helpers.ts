@@ -181,24 +181,6 @@ export const formatMoney = (n: number, decimalDigits?: number) =>
     maximumFractionDigits: decimalDigits,
   }).format(n);
 
-export const buildingSubsidyLanguage = (
-  subsidyName?: string
-): MessageDescriptor => {
-  return subsidyName === "HUD Project-Based"
-    ? msg`receives a HUD Project-Based subsidy`
-    : subsidyName === "Low-Income Housing Tax Credit (LIHTC)"
-    ? msg`receives the Low-Income Housing Tax Credit (LIHTC)`
-    : subsidyName === "Article XI"
-    ? msg`is an Article XI`
-    : subsidyName === "HPD program"
-    ? msg`is part of an HPD subsidy program`
-    : subsidyName === "Mitchell-Lama"
-    ? msg`is a Mitchell-Lama`
-    : subsidyName === "NYCHA"
-    ? msg`is part of NYCHA or PACT/RAD`
-    : msg``;
-};
-
 // URL param encoding/compression, copied from signature-dashboard
 
 // given an object, return a compressed, encoded string for adding to the URI

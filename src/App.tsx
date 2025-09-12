@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Route,
   Outlet,
@@ -26,8 +27,9 @@ import { NetworkError } from "./api/error-reporting";
 import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import { decodeFromURI } from "./helpers";
-import "./App.scss";
 import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
+import { defaultLocale, dynamicActivate } from "./i18n";
+import "./App.scss";
 
 const Layout = () => {
   return (
@@ -218,6 +220,10 @@ const router = createBrowserRouter(
 
 function App() {
   const rollbar = useRollbar();
+
+  useEffect(() => {
+    dynamicActivate(defaultLocale);
+  }, []);
 
   return (
     <SWRConfig

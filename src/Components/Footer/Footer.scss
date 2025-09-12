@@ -27,6 +27,7 @@
     }
   }
 
+  .footer__locale-toggle,
   .footer__legal-disclaimer {
     align-self: start;
     @include body_standard_desktop;
@@ -34,6 +35,12 @@
       display: block;
       margin-bottom: 0.5rem;
       font-weight: 600;
+    }
+  }
+  .footer__locale-toggle {
+    margin-bottom: 1.5rem;
+    span {
+      display: inline;
     }
   }
 
