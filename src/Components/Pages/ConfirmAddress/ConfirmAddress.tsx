@@ -114,7 +114,7 @@ export const ConfirmAddress: React.FC = () => {
             </BackLink>
             <Button
               className="confirmation__button"
-              labelText="Confirm"
+              labelText={_(msg`Confirm`)}
               onClick={handleSubmit}
             />
           </div>

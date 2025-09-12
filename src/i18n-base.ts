@@ -15,11 +15,6 @@ export const languageNames: LocaleLanguages = {
   es: "Español",
 };
 
-/** Return a list of all supported locales. */
-export function getSupportedLocales(): SupportedLocale[] {
-  return Object.keys(languageNames) as SupportedLocale[];
-}
-
 /**
  * The fallback default locale to use if we don't support the
  * browser's preferred locale.
