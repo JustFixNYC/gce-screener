@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
+import { Plural, Trans } from "@lingui/react/macro";
 
 import { Address } from "../Home/Home";
 import {
@@ -32,7 +33,6 @@ import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { gtmPush } from "../../../google-tag-manager";
 import "./PortfolioSize.scss";
-import { Plural, Trans } from "@lingui/react/macro";
 
 const VIDEO_EMBED_URL =
   "https://www.youtube.com/embed/dSnDgmGH_6E?si=G9wM6P8LHgAynN5O";
