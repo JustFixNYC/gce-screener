@@ -100,10 +100,8 @@ export const Results: React.FC = () => {
 
   useEffect(() => {
     if (hasShownPhoneModal || getCookie("phone_modal_shown")) return;
-
     const contentSection = document.querySelector(".content-section__content");
     if (!contentSection) return;
-
     // Checks if user has scrolled down at least a bit before showing modal
     // Without this, the modal renders on page load
     const hasScrolled = () => {

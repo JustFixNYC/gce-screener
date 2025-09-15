@@ -1,17 +1,17 @@
-import { useEffect } from "react";
 import {
   Route,
   Outlet,
-  createRoutesFromElements,
-  RouterProvider,
   redirect,
-} from "react-router";
+  createBrowserRouter,
+  RouterProvider,
+  createRoutesFromElements,
+} from "react-router-dom";
+
 import { SWRConfig } from "swr";
 import { useRollbar } from "@rollbar/react";
-import { createBrowserRouter, ScrollRestoration } from "react-router-dom";
-import { i18n } from "@lingui/core";
+import { ScrollRestoration } from "react-router-dom";
 
-import { I18nProvider } from "@lingui/react";
+import { I18n } from "./i18n";
 import { Home } from "./Components/Pages/Home/Home";
 import { Survey } from "./Components/Pages/Form/Survey";
 import { Results } from "./Components/Pages/Results/Results";
@@ -27,23 +27,24 @@ import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import { decodeFromURI } from "./helpers";
 import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
-import { defaultLocale, dynamicActivate } from "./i18n";
 import "./App.scss";
 
 const Layout = () => {
   return (
-    <div id="container">
-      <TopBar />
+    <I18n>
+      <div id="container">
+        <TopBar />
 
-      <main id="main">
-        <div id="content">
-          <Outlet />
-        </div>
-      </main>
+        <main id="main">
+          <div id="content">
+            <Outlet />
+          </div>
+        </main>
 
-      <Footer />
-      <ScrollRestoration />
-    </div>
+        <Footer />
+        <ScrollRestoration />
+      </div>
+    </I18n>
   );
 };
 
@@ -167,66 +168,68 @@ const LoadURLSessionOptional = ({ request }: { request: Request }) => {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} />
-      <Route
-        path="confirm_address"
-        element={<ConfirmAddress />}
-        loader={LoadAddressAndUserSession}
-      />
-      <Route
-        path="survey"
-        element={<Survey />}
-        loader={LoadAddressAndUserSession}
-      />
-      <Route
-        path="results"
-        element={<Results />}
-        loader={LoadURLSessionRequired}
-      />
-      <Route
-        path="rent_stabilization"
-        element={<RentStabilization />}
-        loader={LoadURLSessionOptional}
-      />
-      <Route
-        path="portfolio_size"
-        element={<PortfolioSize />}
-        loader={LoadURLSessionRequired}
-      />
-      <Route
-        path="rent_calculator"
-        element={<RentCalculator />}
-        loader={LoadURLSessionOptional}
-      />
-      <Route path="tenant_rights" element={<TenantRights />} />
-      <Route path="privacy_policy" element={<PrivacyPolicy />} />
-      <Route path="terms_of_use" element={<TermsOfUse />} />
-      <Route path="api_docs" element={<APIDocs />} />
-      <Route path="*" element={<Home />} />
-    </Route>
+    <>
+      {/* Routes with locale prefix */}
+      <Route path="/:locale" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route
+          path="confirm_address"
+          element={<ConfirmAddress />}
+          loader={LoadAddressAndUserSession}
+        />
+        <Route
+          path="survey"
+          element={<Survey />}
+          loader={LoadAddressAndUserSession}
+        />
+        <Route
+          path="results"
+          element={<Results />}
+          loader={LoadURLSessionRequired}
+        />
+        <Route
+          path="rent_stabilization"
+          element={<RentStabilization />}
+          loader={LoadURLSessionOptional}
+        />
+        <Route
+          path="portfolio_size"
+          element={<PortfolioSize />}
+          loader={LoadURLSessionRequired}
+        />
+        <Route
+          path="rent_calculator"
+          element={<RentCalculator />}
+          loader={LoadURLSessionOptional}
+        />
+        <Route path="tenant_rights" element={<TenantRights />} />
+        <Route path="privacy_policy" element={<PrivacyPolicy />} />
+        <Route path="terms_of_use" element={<TermsOfUse />} />
+        <Route path="api_docs" element={<APIDocs />} />
+      </Route>
+      {/* Catch-all route for paths without locale - will redirect */}
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="*" element={<Home />} />
+      </Route>
+    </>
   )
 );
+
 function App() {
   const rollbar = useRollbar();
 
-  useEffect(() => {
-    dynamicActivate(defaultLocale);
-  }, []);
-
   return (
-    <I18nProvider i18n={i18n}>
-      <SWRConfig
-        value={{
-          onError: (error) => {
-            if (error instanceof NetworkError && !error.shouldReport) return;
-            rollbar.error(error);
-          },
-        }}
-      >
-        <RouterProvider router={router} />
-      </SWRConfig>
-    </I18nProvider>
+    <SWRConfig
+      value={{
+        onError: (error) => {
+          if (error instanceof NetworkError && !error.shouldReport) return;
+          rollbar.error(error);
+        },
+      }}
+    >
+      <RouterProvider router={router} />
+    </SWRConfig>
   );
 }
 

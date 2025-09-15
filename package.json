@@ -9,8 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write --ignore-unknown \"src/**/*\"",
-    "extract": "lingui extract",
-    "compile": "lingui compile --typescript"
+    "extract": "lingui extract"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "16.1.0",

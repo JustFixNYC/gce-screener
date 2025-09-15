@@ -92,7 +92,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         </ContentBoxItem>
 
         <ContentBoxItem
-          title="Your right to a liveable home"
+          title={_(msg`Your right to a liveable home`)}
           gtmId="universal_habitability"
           coverageResult={coverageResult}
         >
@@ -159,7 +159,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           </JFCLLinkExternal>
         </ContentBoxItem>
         <ContentBoxItem
-          title="Your rights against discrimination"
+          title={_(msg`Your rights against discrimination`)}
           gtmId="universal_discrimination"
         >
           <p>
