@@ -512,23 +512,23 @@ export const GoodCauseExercisingRights: React.FC<
                 <Trans>Tell them it’s unreasonable</Trans>
               </strong>
               <br />
-              {_(msg`If your rent increase is more than ${
-                CPI + 5
-              }%, tell your landlord it is
-            an unreasonable increase and that a judge could force your landlord
-            to justify it based on increased costs.`)}
+              <Trans>
+                If your rent increase is more than {CPI + 5}%, tell your
+                landlord it is an unreasonable increase and that a judge could
+                force your landlord to justify it based on increased costs.
+              </Trans>
             </li>
             <li>
               <strong>
                 <Trans>Withhold the unreasonable increase</Trans>
               </strong>
               <br />
-              {_(msg`You can withhold the rent increase above the ‘reasonable’ threshold.
-            Pay your old rent plus ${
-              CPI + 5
-            }%. To be safe, set aside the extra rent
-            in a separate escrow account until your negotiations with your
-            landlord have totally resolved.`)}
+              <Trans>
+                You can withhold the rent increase above the ‘reasonable’
+                threshold. Pay your old rent plus {CPI + 5}%. To be safe, set
+                aside the extra rent in a separate escrow account until your
+                negotiations with your landlord have totally resolved.
+              </Trans>
             </li>
             <li>
               <strong>

@@ -643,16 +643,20 @@ msgstr "Si la renovación más reciente de su contrato de arrendamiento <0>se pa
 msgid "If your most recent lease renewal looks like the image below, then your apartment is almost certainly rent stabilized. If your lease renewal does not look like the image below, your apartment could still be rent stabilized."
 msgstr "Si la renovación más reciente de su contrato de alquiler se parece a la imagen que aparece a continuación, es casi seguro que su departamento tiene renta estabilizada. Si la renovación de su contrato de alquiler no se parece a la imagen que aparece a continuación, es posible que su departamento siga teniendo renta estabilizada."
 
+#: src/Components/KYRContent/KYRContent.tsx:515
+#~ msgid ""
+#~ "If your rent increase is more than {0}%, tell your landlord it is\n"
+#~ "            an unreasonable increase and that a judge could force your landlord\n"
+#~ "            to justify it based on increased costs."
+#~ msgstr ""
+#~ "Si el aumento de su renta es superior al {0}%, comunique a su arrendador que se trata de un aumento irrazonable y que un juez podría obligarle\n"
+#~ "            a justificarlo basándose en el aumento de los costos.\n"
+#~ ""
+
 #. placeholder {0}: CPI + 5
 #: src/Components/KYRContent/KYRContent.tsx:515
-msgid ""
-"If your rent increase is more than {0}%, tell your landlord it is\n"
-"            an unreasonable increase and that a judge could force your landlord\n"
-"            to justify it based on increased costs."
+msgid "If your rent increase is more than {0}%, tell your landlord it is an unreasonable increase and that a judge could force your landlord to justify it based on increased costs."
 msgstr ""
-"Si el aumento de su renta es superior al {0}%, comunique a su arrendador que se trata de un aumento irrazonable y que un juez podría obligarle\n"
-"            a justificarlo basándose en el aumento de los costos.\n"
-""
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:115
 msgid "If your rent was increased after April 20, 2024 beyond the allowable rent increase amount calculated above, your rent increase could be found unreasonable by housing court."
@@ -1573,18 +1577,22 @@ msgstr "No está cubierto por la causa justificada porque ya cuenta con protecci
 msgid "you are not sure if your apartment is"
 msgstr "no estás seguro de si tu departamento es"
 
+#: src/Components/KYRContent/KYRContent.tsx:526
+#~ msgid ""
+#~ "You can withhold the rent increase above the ‘reasonable’ threshold.\n"
+#~ "            Pay your old rent plus {0}%. To be safe, set aside the extra rent\n"
+#~ "            in a separate escrow account until your negotiations with your\n"
+#~ "            landlord have totally resolved."
+#~ msgstr ""
+#~ "Puede rechazar el aumento de renta por encima del umbral «razonable».\n"
+#~ "            Pague su antigua renta más {0}%. Para mayor seguridad, guarde la renta adicional\n"
+#~ "            en una cuenta de depósito en garantía separada hasta que sus negociaciones con el propietario\n"
+#~ "            hayan concluido por completo."
+
 #. placeholder {0}: CPI + 5
 #: src/Components/KYRContent/KYRContent.tsx:526
-msgid ""
-"You can withhold the rent increase above the ‘reasonable’ threshold.\n"
-"            Pay your old rent plus {0}%. To be safe, set aside the extra rent\n"
-"            in a separate escrow account until your negotiations with your\n"
-"            landlord have totally resolved."
+msgid "You can withhold the rent increase above the ‘reasonable’ threshold. Pay your old rent plus {0}%. To be safe, set aside the extra rent in a separate escrow account until your negotiations with your landlord have totally resolved."
 msgstr ""
-"Puede rechazar el aumento de renta por encima del umbral «razonable».\n"
-"            Pague su antigua renta más {0}%. Para mayor seguridad, guarde la renta adicional\n"
-"            en una cuenta de depósito en garantía separada hasta que sus negociaciones con el propietario\n"
-"            hayan concluido por completo."
 
 #: src/Components/GeoSearchInput/GeoSearchInput.tsx:76
 msgid "You must enter an address"
