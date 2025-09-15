@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-09-15 19:31\n"
+"PO-Revision-Date: 2025-09-15 19:37\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -61,7 +61,7 @@ msgstr "{unitsres, plural, one {# departamento} other {# departamentos}}"
 
 #: src/Components/TopBar/TopBar.tsx:29
 msgid "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
-msgstr "<0>Por</0> <1>Justicia en materia de vivienda para todos</1> <2>y</2> <3>JustFix</3>"
+msgstr "<0>Por</0> <1>Housing Justice for All</1> <2>y</2> <3>JustFix</3>"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:94
 #~ msgid "<0>If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings.</0><1>Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation.</1><2>This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started.</2>"
@@ -245,7 +245,7 @@ msgstr "Dado que su edificio fue construido después de 1974 y no forma parte de
 
 #: src/Components/Footer/Footer.tsx:64
 msgid "By <0>Housing Justice for All</0> & <1>JustFix</1>"
-msgstr "Por <0>Justicia en la Vivienda para Todos</0> y <1>JustFix</1>"
+msgstr "Por <0>Housing Justice for All</0> y <1>JustFix</1>"
 
 #: src/Components/Pages/Home/Home.tsx:118
 msgid "Calculate your max rent increase."
@@ -496,15 +496,15 @@ msgstr "El Tribunal de Vivienda responde a las preguntas sobre recursos para rep
 
 #: src/Components/Pages/Home/Home.tsx:195
 msgid "Housing Justice for All"
-msgstr "Justicia habitacional para todos"
+msgstr "Housing Justice for All"
 
 #: src/Components/KYRContent/KYRContent.tsx:403
 msgid "Housing Justice for All Good Cause Eviction fact sheet"
-msgstr "Justicia en materia de vivienda para todos Hoja informativa sobre desalojos por causa justificada"
+msgstr "Housing Justice for All Hoja informativa sobre desalojos por causa justificada"
 
 #: src/Components/KYRContent/KYRContent.tsx:242
 msgid "Housing Justice for All tenant organizing form"
-msgstr "Formulario de organización de inquilinos de Justicia de Vivienda para Todos"
+msgstr "Formulario de organización de inquilinos de Housing Justice for All"
 
 #: src/Components/KYRContent/KYRContent.tsx:411
 msgid "Housing Preservation and Development Good Cause Eviction overview"
@@ -1397,7 +1397,7 @@ msgstr "Esta guía le guiará a través de dos pasos que le ayudarán a demostra
 
 #: src/Components/Pages/Home/Home.tsx:185
 msgid "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for Good Cause protections."
-msgstr "Este sitio es una colaboración entre la Coalición Justicia de Vivienda para Todos y JustFix. Agradecemos a todas las personas que contribuyeron a este sitio y a todos los inquilinos y defensores que luchan por las protecciones de buena causa."
+msgstr "Este sitio es una colaboración entre Housing Justice for All y JustFix. Agradecemos a todas las personas que contribuyeron a este sitio y a todos los inquilinos y defensores que luchan por las protecciones de buena causa."
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:155
 msgid "Tip: The signature page is often located toward the end of the document"
@@ -1498,7 +1498,7 @@ msgstr "Ver la guía"
 
 #: src/Components/Pages/Home/Home.tsx:204
 msgid "Visit Housing Justice for All"
-msgstr "Visite Vivienda Justa para Todos"
+msgstr "Visite Housing Justice for All"
 
 #: src/Components/Pages/Home/Home.tsx:218
 msgid "Visit JustFix"
