@@ -2,15 +2,21 @@ msgid ""
 msgstr ""
 "POT-Creation-Date: 2025-07-27 14:09-0400\n"
 "MIME-Version: 1.0\n"
-"Project-Id-Version: \n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: es_419\n"
+"Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2025-09-15 19:10\n"
 "Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
-"Content-Type: \n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Language-Team: Spanish, Latin America\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: good-cause-nyc\n"
+"X-Crowdin-Project-ID: 805594\n"
+"X-Crowdin-Language: es-419\n"
+"X-Crowdin-File: /translations/src/locales/en/messages.po\n"
+"X-Crowdin-File-ID: 64\n"
 
 #. js-lingui-explicit-id
 #: src/helpers.ts:199
@@ -296,7 +302,7 @@ msgstr "Cerrar modal"
 
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:117
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmar"
 
 #: src/Components/Pages/Results/Results.tsx:624
 msgid "Copied"
@@ -645,14 +651,11 @@ msgstr "Si la renovación más reciente de su contrato de alquiler se parece a l
 
 #. placeholder {0}: CPI + 5
 #: src/Components/KYRContent/KYRContent.tsx:515
-msgid ""
-"If your rent increase is more than {0}%, tell your landlord it is\n"
+msgid "If your rent increase is more than {0}%, tell your landlord it is\n"
 "            an unreasonable increase and that a judge could force your landlord\n"
 "            to justify it based on increased costs."
-msgstr ""
-"Si el aumento de su renta es superior al {0}%, comunique a su arrendador que se trata de un aumento irrazonable y que un juez podría obligarle\n"
+msgstr "Si el aumento de su renta es superior al {0}%, comunique a su arrendador que se trata de un aumento irrazonable y que un juez podría obligarle\n"
 "            a justificarlo basándose en el aumento de los costos.\n"
-""
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:115
 msgid "If your rent was increased after April 20, 2024 beyond the allowable rent increase amount calculated above, your rent increase could be found unreasonable by housing court."
@@ -1575,13 +1578,11 @@ msgstr "no estás seguro de si tu departamento es"
 
 #. placeholder {0}: CPI + 5
 #: src/Components/KYRContent/KYRContent.tsx:526
-msgid ""
-"You can withhold the rent increase above the ‘reasonable’ threshold.\n"
+msgid "You can withhold the rent increase above the ‘reasonable’ threshold.\n"
 "            Pay your old rent plus {0}%. To be safe, set aside the extra rent\n"
 "            in a separate escrow account until your negotiations with your\n"
 "            landlord have totally resolved."
-msgstr ""
-"Puede rechazar el aumento de renta por encima del umbral «razonable».\n"
+msgstr "Puede rechazar el aumento de renta por encima del umbral «razonable».\n"
 "            Pague su antigua renta más {0}%. Para mayor seguridad, guarde la renta adicional\n"
 "            en una cuenta de depósito en garantía separada hasta que sus negociaciones con el propietario\n"
 "            hayan concluido por completo."
@@ -1742,19 +1743,19 @@ msgstr "Tu renta mensual actual"
 
 #: src/Components/KYRContent/KYRContent.tsx:310
 msgid "Your current monthly rent + {increase_pct}%"
-msgstr ""
+msgstr "Tu renta mensual actual + {increase_pct}%"
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:104
 #~ msgid "Your current monthly rent + ${increase_pct}%"
-#~ msgstr ""
+#~ msgstr "Your current monthly rent + ${increase_pct}%"
 
 #: src/Components/KYRContent/KYRContent.tsx:38
 msgid "Your eviction protections"
-msgstr ""
+msgstr "Sus protecciones contra el desalojo"
 
 #: src/Components/KYRContent/KYRContent.tsx:166
 msgid "Your landlord can’t evict you based on your race, religion, gender, national origin, familial status, or disability. New York State law promises protection from discrimination, banning bias based on age, sexual orientation, and military status."
-msgstr ""
+msgstr "Tu arrendador no puede desalojarte por motivos de raza, religión, género, nacionalidad, situación familiar o discapacidad. La ley del estado de Nueva York garantiza protección contra la discriminación y prohíbe los prejuicios por motivos de edad, orientación sexual y condición militar."
 
 #: src/hooks/useCriteriaResults.tsx:165
 msgid "your landlord may own"
@@ -1762,61 +1763,62 @@ msgstr "tu arrendador puede ser propietario de"
 
 #: src/Components/KYRContent/KYRContent.tsx:492
 msgid "Your landlord must give you written notice to raise your rent more than 5% (30 days notice if you’ve lived there less than 1 year, 60 days if you’ve lived there 1-2 years, and 90 days notice if you’ve lived there longer than 2 years). If your landlord tries to raise rent without proper notice, inform them they are violating <0>Real Property Law L Section 226-C</0>. Do not pay any rent increase until they give written notice."
-msgstr ""
+msgstr "Tu arrendador debe notificarte por escrito cualquier aumento del alquiler superior al 5 % (con 30 días de antelación si llevas menos de un año viviendo allí, 60 días si llevas entre uno y dos años, y 90 días si llevas más de dos años). Si su arrendador intenta aumentar el alquiler sin la notificación adecuada, infórmele de que está infringiendo <0>la Ley de Bienes Inmuebles, sección 226-C</0>. No pague ningún aumento de alquiler hasta que le envíe una notificación por escrito."
 
 #: src/Components/KYRContent/KYRContent.tsx:353
 msgid "Your landlord will need to provide a good reason for ending a tenancy. Even if your lease expires, your landlord cannot evict you, as long as you abide by the terms of your expired lease."
-msgstr ""
+msgstr "El propietario deberá proporcionar una razón válida para rescindir el contrato de alquiler. Aunque el contrato haya vencido, el propietario no puede desalojarlo, siempre y cuando usted cumpla con los términos del contrato vencido."
 
 #: src/Components/KYRContent/KYRContent.tsx:846
 msgid "Your local City Council representative"
-msgstr ""
+msgstr "Su representante local en el Ayuntamiento"
 
 #: src/Components/KYRContent/KYRContent.tsx:629
 msgid "Your right to a lease renewal"
-msgstr ""
+msgstr "Tu derecho a renovar el contrato de arrendamiento"
 
 #: src/Components/KYRContent/KYRContent.tsx:95
 msgid "Your right to a liveable home"
-msgstr ""
+msgstr "Tu derecho a una vivienda digna"
 
 #: src/Components/KYRContent/KYRContent.tsx:744
 msgid "Your right to grieve management decisions"
-msgstr ""
+msgstr "Tu derecho a impugnar las decisiones de la dirección"
 
 #: src/Components/KYRContent/KYRContent.tsx:723
 msgid "Your right to income-based rent"
-msgstr ""
+msgstr "Tu derecho a un alquiler basado en tus ingresos"
 
 #: src/Components/KYRContent/KYRContent.tsx:763
 msgid "Your right to legal representation if facing eviction"
-msgstr ""
+msgstr "Tu derecho a representación legal si te enfrentas a un desalojo"
 
 #: src/Components/KYRContent/KYRContent.tsx:284
 #: src/Components/KYRContent/KYRContent.tsx:611
 msgid "Your right to limited rent increases"
-msgstr ""
+msgstr "Su derecho a aumentos limitados del alquiler"
 
 #: src/Components/KYRContent/KYRContent.tsx:214
 msgid "Your right to organize"
-msgstr ""
+msgstr "Tu derecho a organizarte"
 
 #: src/Components/KYRContent/KYRContent.tsx:706
 msgid "Your right to repairs"
-msgstr ""
+msgstr "Tu derecho a las reparaciones"
 
 #: src/Components/KYRContent/KYRContent.tsx:347
 msgid "Your right to stay in your home"
-msgstr ""
+msgstr "Tu derecho a permanecer en tu hogar"
 
 #: src/Components/KYRContent/KYRContent.tsx:646
 msgid "Your right to succession"
-msgstr ""
+msgstr "Tu derecho a la sucesión"
 
 #: src/Components/KYRContent/KYRContent.tsx:162
 msgid "Your rights against discrimination"
-msgstr ""
+msgstr "Sus derechos contra la discriminación"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:300
 msgid "YouTube video for how to find other apartments your landlord owns"
-msgstr ""
+msgstr "Video de YouTube sobre cómo encontrar otros departamentos que sean propiedad de tu arrendador."
+
