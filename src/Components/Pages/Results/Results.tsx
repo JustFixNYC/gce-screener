@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { useLoaderData, useLocation, useSearchParams } from "react-router-dom";
 import { Button, Icon } from "@justfixnyc/component-library";
 import { useRollbar } from "@rollbar/react";
+import { Trans } from "@lingui/react/macro";
+import { msg, plural } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 
 import { useGetBuildingData, useSendGceData } from "../../../api/hooks";
 import {
@@ -56,6 +59,7 @@ import {
 } from "../../PhoneNumberCallout/PhoneNumberCallout";
 
 export const Results: React.FC = () => {
+  const { _ } = useLingui();
   const { address, fields, user } = useLoaderData() as {
     address: Address;
     fields: FormFields;
@@ -96,20 +100,33 @@ export const Results: React.FC = () => {
 
   useEffect(() => {
     if (hasShownPhoneModal || getCookie("phone_modal_shown")) return;
-    function handleScroll() {
+    const contentSection = document.querySelector(".content-section__content");
+    if (!contentSection) return;
+    // Checks if user has scrolled down at least a bit before showing modal
+    // Without this, the modal renders on page load
+    const hasScrolled = () => {
       const scrollY = window.scrollY || window.pageYOffset;
-      const windowHeight = window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
-      // 65% down means user has scrolled at least 65% of the page height
-      const scrollPercent = (scrollY + windowHeight) / docHeight;
-      if (scrollPercent >= 0.65) {
-        setShowPhoneModal(true);
-        setHasShownPhoneModal(true);
-        window.removeEventListener("scroll", handleScroll);
+      return scrollY > 100; // user has scrolled down at least 100px
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && hasScrolled()) {
+            setShowPhoneModal(true);
+            setHasShownPhoneModal(true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        threshold: 0.15, // Trigger when 15% of the element is visible
       }
-    }
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    );
+
+    observer.observe(contentSection);
+
+    return () => observer.disconnect();
   }, [hasShownPhoneModal]);
 
   // When modal closes, set cookie
@@ -151,7 +168,7 @@ export const Results: React.FC = () => {
               headlineRef={headlineRef}
             />
           ) : (
-            "Loading your results..."
+            <Trans>Loading your results...</Trans>
           )
         }
         address={address}
@@ -159,20 +176,24 @@ export const Results: React.FC = () => {
       >
         {error && (
           <div className="data__error">
-            There was an error loading your results, please try again in a few
-            minutes.
+            <Trans>
+              There was an error loading your results, please try again in a few
+              minutes.
+            </Trans>
           </div>
         )}
         {isLoading && (
-          <div className="data__loading">Loading your results...</div>
+          <div className="data__loading">
+            <Trans>Loading your results...</Trans>
+          </div>
         )}
 
         {bldgData && coverageResult && (
           <ShareButtons
             buttonsInfo={[
-              ["email", "Email coverage"],
-              ["download", "Download coverage"],
-              ["print", "Print coverage"],
+              ["email", _(msg`Email coverage`)],
+              ["download", _(msg`Download coverage`)],
+              ["print", _(msg`Print coverage`)],
             ]}
             emailSubject={emailSubject}
             emailBody={emailBody}
@@ -181,7 +202,7 @@ export const Results: React.FC = () => {
 
         {bldgData && <CriteriaTable criteria={criteriaDetails} />}
         <div className="protections-on-next-page__print">
-          View tenant protection information on following pages
+          <Trans>View tenant protection information on following pages</Trans>
         </div>
       </Header>
       <PhoneNumberModal
@@ -223,9 +244,9 @@ export const Results: React.FC = () => {
                 shareButtons={
                   <ShareButtons
                     buttonsInfo={[
-                      ["email", "Email coverage"],
-                      ["download", "Download coverage"],
-                      ["print", "Print coverage"],
+                      ["email", _(msg`Email coverage`)],
+                      ["download", _(msg`Download coverage`)],
+                      ["print", _(msg`Print coverage`)],
                     ]}
                     emailSubject={EMAIL_SUBJECT}
                     emailBody={EMAIL_BODY}
@@ -243,7 +264,9 @@ export const Results: React.FC = () => {
           {coverageResult === "NOT_COVERED" && (
             <UniversalProtections
               coverageResult={coverageResult}
-              subtitle="Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights"
+              subtitle={_(
+                msg`Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights`
+              )}
             />
           )}
           <PhoneNumberCallout
@@ -252,7 +275,7 @@ export const Results: React.FC = () => {
           />
           <div className="share-footer">
             <h3 className="share-footer__header">
-              Share this site with your neighbors
+              <Trans>Share this site with your neighbors</Trans>
             </h3>
             <CopyURLButton />
           </div>
@@ -263,30 +286,35 @@ export const Results: React.FC = () => {
 };
 
 const CRITERIA_LABELS = {
-  portfolioSize: "Landlord portfolio size",
-  buildingClass: "Type of building",
-  landlord: "Live-in landlord",
-  rent: "Rent Amount",
-  subsidy: "Subsidized housing",
-  rentStabilized: "Rent stabilization",
-  certificateOfOccupancy: "Certificate of occupancy",
+  portfolioSize: msg`Landlord portfolio size`,
+  buildingClass: msg`Type of building`,
+  landlord: msg`Live-in landlord`,
+  rent: msg`Rent Amount`,
+  subsidy: msg`Subsidized housing`,
+  rentStabilized: msg`Rent stabilization`,
+  certificateOfOccupancy: msg`Certificate of occupancy`,
 };
 
 const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
   determination,
 }) => {
+  const { _ } = useLingui();
   switch (determination) {
     case "OTHER_PROTECTION":
       return (
         <Icon
           icon="checkDouble"
           className="criteria-icon green"
-          title="Stronger protections"
+          title={_(msg`Stronger protections`)}
         />
       );
     case "ELIGIBLE":
       return (
-        <Icon icon="check" className="criteria-icon green" title="Eligible" />
+        <Icon
+          icon="check"
+          className="criteria-icon green"
+          title={_(msg`Eligible`)}
+        />
       );
     case "INELIGIBLE":
       return (
@@ -294,7 +322,7 @@ const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
           icon="circleExclamation"
           type="regular"
           className="criteria-icon orange"
-          title="Ineligible"
+          title={_(msg`Ineligible`)}
         />
       );
     case "UNKNOWN":
@@ -303,7 +331,7 @@ const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
           icon="circleExclamation"
           type="regular"
           className="criteria-icon yellow"
-          title="Unknown"
+          title={_(msg`Unknown`)}
         />
       );
     default:
@@ -312,13 +340,14 @@ const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
 };
 
 const CriterionRow: React.FC<CriterionDetails> = (props) => {
+  const { _ } = useLingui();
   return (
     <li className="criteria-table__row">
       <div className="criteria-table__row__desktop">
         <EligibilityIcon {...props} />
         <div className="criteria-table__row__info">
           <span className="criteria-table__row__criteria">
-            {CRITERIA_LABELS[props?.criteria]}
+            {_(CRITERIA_LABELS[props?.criteria])}
           </span>
           <span className="criteria-table__row__requirement">
             {props?.requirement}
@@ -328,7 +357,7 @@ const CriterionRow: React.FC<CriterionDetails> = (props) => {
       </div>
       <ContentBoxItem
         className="criteria-table__row__mobile"
-        title={CRITERIA_LABELS[props?.criteria]}
+        title={_(CRITERIA_LABELS[props?.criteria])}
         subtitle={props?.requirement}
         icon={<EligibilityIcon {...props} />}
       >
@@ -344,11 +373,13 @@ const CriteriaTable: React.FC<{
   <ContentBox className="criteria-table">
     <div className="criteria-table__header">
       <span className="criteria-table__header__title">
-        How we determined your coverage
+        <Trans>How we determined your coverage</Trans>
       </span>
       <p>
-        Results are based on publicly available data about your building and the
-        answers you provided. This does not constitute legal advice.
+        <Trans>
+          Results are based on publicly available data about your building and
+          the answers you provided. This does not constitute legal advice.
+        </Trans>
       </p>
     </div>
     <ul className="criteria-table__list">
@@ -381,6 +412,7 @@ const EligibilityNextSteps: React.FC<{
   criteriaDetails: CriteriaDetails;
   searchParams: URLSearchParams;
 }> = ({ bldgData, criteriaDetails, searchParams }) => {
+  const { _ } = useLingui();
   const rentStabilizedUnknown =
     criteriaDetails?.rentStabilized?.determination === "UNKNOWN";
   const portfolioSizeUnknown =
@@ -398,52 +430,64 @@ const EligibilityNextSteps: React.FC<{
   return (
     <>
       <ContentBox
-        subtitle={`There ${
-          steps === 1 ? "is 1 thing" : `are ${steps} things`
-        } you need to verify to confirm your coverage`}
+        subtitle={_(
+          msg`There ${plural(steps, {
+            one: "is # thing",
+            other: "are # things",
+          })} you need to verify to confirm your coverage`
+        )}
       >
         {rentStabilizedUnknown && (
           <ContentBoxItem
-            title="We need to confirm if your apartment is rent stabilized"
+            title={_(
+              msg`We need to confirm if your apartment is rent stabilized`
+            )}
             icon={unsureIcon}
             className="next-step"
             gtmId="next-step_rs"
           >
             <p>
-              You told us that you are unsure if you are rent stabilized. If
-              your apartment is rent stabilized, you are not covered by Good
-              Cause Eviction law, but rent stabilized protections are even
-              stronger than the Good Cause Eviction law.
+              <Trans>
+                You told us that you are unsure if you are rent stabilized. If
+                your apartment is rent stabilized, you are not covered by Good
+                Cause Eviction law, but rent stabilized protections are even
+                stronger than the Good Cause Eviction law.
+              </Trans>
             </p>
             <JFCLLinkInternal
               to={`/rent_stabilization?${searchParams.toString()}`}
             >
-              Find out if your apartment is rent stabilized
+              <Trans>Find out if your apartment is rent stabilized</Trans>
             </JFCLLinkInternal>
           </ContentBoxItem>
         )}
 
         {portfolioSizeUnknown && (
           <ContentBoxItem
-            title="We need to confirm if your landlord owns more than 10 apartments"
+            title={_(
+              msg`We need to confirm if your landlord owns more than 10 apartments`
+            )}
             icon={unsureIcon}
             className="next-step"
             gtmId="next-step_portfolio"
           >
             <p>
-              {`Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. ` +
-                `Your building has only ${bldgData.unitsres} apartments, but your landlord may own other buildings. ` +
-                `Good Cause Eviction law only covers tenants whose landlord owns`}
+              <Trans>
+                Good Cause Eviction law only covers tenants whose landlord owns
+                more than 10 apartments. Your building has only{" "}
+                {bldgData.unitsres} apartments, but your landlord may own other
+                buildings.
+              </Trans>
             </p>
             <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
-              Find other buildings your landlord owns
+              <Trans>Find other buildings your landlord owns</Trans>
             </JFCLLinkInternal>
           </ContentBoxItem>
         )}
 
         <ContentBoxFooter
-          message="Have you learned something new?"
-          linkText="Adjust survey answers"
+          message={_(msg`Have you learned something new?`)}
+          linkText={_(msg`Adjust survey answers`)}
           linkTo="/survey"
           linkOnClick={() =>
             gtmPush("gce_return_survey", { from: "results-page_next-steps" })
@@ -488,59 +532,59 @@ const CoverageResultHeadline: React.FC<{
   switch (result) {
     case "UNKNOWN":
       headlineContent = (
-        <>
+        <Trans>
           <span className="result-headline__top">You</span>{" "}
           <span className="coverage-pill yellow">might be covered</span> by Good
           Cause Eviction
-        </>
+        </Trans>
       );
       break;
     case "NOT_COVERED":
       headlineContent = (
-        <>
+        <Trans>
           <span className="result-headline__top">You are</span>{" "}
           <span className="coverage-pill orange">likely not covered</span>{" "}
           <br />
           by Good Cause Eviction
-        </>
+        </Trans>
       );
       break;
     case "RENT_STABILIZED":
       headlineContent = (
-        <>
+        <Trans>
           <span className="result-headline__top">Your apartment is</span>{" "}
           <span className="coverage-pill green">rent stabilized</span> which
           provides stronger protections than Good Cause Eviction
-        </>
+        </Trans>
       );
       break;
     case "COVERED":
       headlineContent = (
-        <>
+        <Trans>
           <span className="result-headline__top">You are</span>{" "}
           <span className="coverage-pill green">likely covered</span> by Good
           Cause Eviction
-        </>
+        </Trans>
       );
       break;
     case "NYCHA":
       headlineContent = (
-        <>
+        <Trans>
           <span className="result-headline__top">
             Your apartment is part of
           </span>{" "}
           <span className="coverage-pill green">NYCHA or PACT/RAD</span> which
           provides stronger protections than Good Cause Eviction
-        </>
+        </Trans>
       );
       break;
     case "SUBSIDIZED":
       headlineContent = (
-        <>
+        <Trans>
           <span className="result-headline__top">Your building is</span>{" "}
           <span className="coverage-pill green">subsidized</span> which provides
           existing eviction protections
-        </>
+        </Trans>
       );
       break;
   }
@@ -552,6 +596,7 @@ const CoverageResultHeadline: React.FC<{
 };
 
 const CopyURLButton: React.FC = () => {
+  const { _ } = useLingui();
   const successDuration = 3000;
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -568,7 +613,7 @@ const CopyURLButton: React.FC = () => {
     <>
       <Button
         className="copy-url-button"
-        labelText="Copy goodcausenyc.org"
+        labelText={_(msg`Copy goodcausenyc.org`)}
         labelIcon="copy"
         onClick={handleClick}
         size="small"
@@ -576,13 +621,14 @@ const CopyURLButton: React.FC = () => {
       {showSuccess && (
         <div className="success-message">
           <Icon icon="check" />
-          Copied
+          <Trans>Copied</Trans>
         </div>
       )}
     </>
   );
 };
 
+// TODO: translate results email copy
 const getEmailSubjectBody = (
   address: Address,
   searchParams: URLSearchParams,
