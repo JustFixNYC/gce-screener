@@ -1,5 +1,8 @@
 import { Controller } from "react-hook-form";
 import { TextInput } from "@justfixnyc/component-library";
+import { useLingui } from "@lingui/react";
+import { msg } from "@lingui/core/macro";
+
 import {
   formatPhoneNumber,
   parseFormattedPhoneNumber,
@@ -15,12 +18,14 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
 
   const userErrors = errors.userDetails;
 
+  const { _ } = useLingui();
+
   return (
     <>
       <TextInput
         {...register("userDetails.firstName")}
         id="form-firstName"
-        labelText="First name"
+        labelText={_(msg`First name`)}
         invalid={!!userErrors?.firstName}
         invalidText={userErrors?.firstName?.message}
         invalidRole="status"
@@ -29,7 +34,7 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
       <TextInput
         {...register("userDetails.lastName")}
         id="form-lastName"
-        labelText="Last name"
+        labelText={_(msg`Last name`)}
         invalid={!!userErrors?.lastName}
         invalidText={userErrors?.lastName?.message}
         invalidRole="status"
@@ -38,7 +43,7 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
       <TextInput
         {...register("userDetails.email")}
         id="form-email"
-        labelText="Email"
+        labelText={_(msg`Email`)}
         invalid={!!userErrors?.email}
         invalidText={userErrors?.email?.message}
         invalidRole="status"
@@ -55,7 +60,7 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
               field.onChange(parseFormattedPhoneNumber(e.target.value))
             }
             id="form-phone"
-            labelText="Phone"
+            labelText={_(msg`Phone`)}
             invalid={!!userErrors?.phone}
             invalidText={userErrors?.phone?.message}
             invalidRole="status"
