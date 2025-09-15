@@ -1,20 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, NavLink, useLocation } from "react-router-dom";
 import { I18nProvider } from "@lingui/react";
 import { i18n } from "@lingui/core";
 
-import { messages as catalogEn } from "./locales/en/messages";
-import { messages as catalogEs } from "./locales/es/messages";
 import { SupportedLocale, defaultLocale, isSupportedLocale } from "./i18n-base";
 
-// Load all catalogs
-i18n.load({
-  en: catalogEn,
-  es: catalogEs,
-});
+// Dynamic activation function that loads catalogs on demand
+export async function dynamicActivate(locale: SupportedLocale) {
+  const { messages } = await import(`./locales/${locale}/messages.po`);
 
-// Activate default locale initially
-i18n.activate(defaultLocale);
+  i18n.load(locale, messages);
+  i18n.activate(locale);
+}
 
 /**
  * Return the best possible guess at what the default locale
@@ -76,11 +73,22 @@ export function I18n({ children }: { children: React.ReactNode }): JSX.Element {
   const location = useLocation();
   const { pathname, search } = location;
   const locale = parseLocaleFromPath(pathname);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Initialize with default locale on first render
+  useEffect(() => {
+    dynamicActivate(defaultLocale).then(() => {
+      setIsLoading(false);
+    });
+  }, []);
 
   // Activate the locale when it changes
   useEffect(() => {
     if (locale) {
-      i18n.activate(locale);
+      setIsLoading(true);
+      dynamicActivate(locale).then(() => {
+        setIsLoading(false);
+      });
     }
   }, [locale]);
 
@@ -88,6 +96,11 @@ export function I18n({ children }: { children: React.ReactNode }): JSX.Element {
     return (
       <Navigate to={`/${getBestDefaultLocale()}${pathname}${search}`} replace />
     );
+  }
+
+  // Show loading state while catalogs are being loaded
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
   return <I18nProvider i18n={i18n}>{children}</I18nProvider>;
@@ -120,4 +133,3 @@ export function LocaleSwitcher() {
     </span>
   );
 }
-

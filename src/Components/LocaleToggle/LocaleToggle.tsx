@@ -1,6 +1,7 @@
 import { useLingui } from "@lingui/react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { removeLocalePrefix } from "../../i18n";
+import type { SupportedLocale } from "../../i18n-base";
 import "./LocaleToggle.scss";
 
 export const LocaleToggle: React.FC = () => {
@@ -8,7 +9,7 @@ export const LocaleToggle: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const switchToLocale = (locale: string) => {
+  const switchToLocale = (locale: SupportedLocale) => {
     const pathWithoutLocale = removeLocalePrefix(location.pathname);
     navigate(`/${locale}${pathWithoutLocale}${location.search}`);
   };
