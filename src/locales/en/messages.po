@@ -644,16 +644,20 @@ msgstr "If your most recent lease renewal <0>looks like this</0>, then your apar
 msgid "If your most recent lease renewal looks like the image below, then your apartment is almost certainly rent stabilized. If your lease renewal does not look like the image below, your apartment could still be rent stabilized."
 msgstr "If your most recent lease renewal looks like the image below, then your apartment is almost certainly rent stabilized. If your lease renewal does not look like the image below, your apartment could still be rent stabilized."
 
+#: src/Components/KYRContent/KYRContent.tsx:515
+#~ msgid ""
+#~ "If your rent increase is more than {0}%, tell your landlord it is\n"
+#~ "            an unreasonable increase and that a judge could force your landlord\n"
+#~ "            to justify it based on increased costs."
+#~ msgstr ""
+#~ "If your rent increase is more than {0}%, tell your landlord it is\n"
+#~ "            an unreasonable increase and that a judge could force your landlord\n"
+#~ "            to justify it based on increased costs."
+
 #. placeholder {0}: CPI + 5
 #: src/Components/KYRContent/KYRContent.tsx:515
-msgid ""
-"If your rent increase is more than {0}%, tell your landlord it is\n"
-"            an unreasonable increase and that a judge could force your landlord\n"
-"            to justify it based on increased costs."
-msgstr ""
-"If your rent increase is more than {0}%, tell your landlord it is\n"
-"            an unreasonable increase and that a judge could force your landlord\n"
-"            to justify it based on increased costs."
+msgid "If your rent increase is more than {0}%, tell your landlord it is an unreasonable increase and that a judge could force your landlord to justify it based on increased costs."
+msgstr "If your rent increase is more than {0}%, tell your landlord it is an unreasonable increase and that a judge could force your landlord to justify it based on increased costs."
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:115
 msgid "If your rent was increased after April 20, 2024 beyond the allowable rent increase amount calculated above, your rent increase could be found unreasonable by housing court."
@@ -1574,18 +1578,22 @@ msgstr "You are not covered by Good Cause because you have existing eviction pro
 msgid "you are not sure if your apartment is"
 msgstr "you are not sure if your apartment is"
 
+#: src/Components/KYRContent/KYRContent.tsx:526
+#~ msgid ""
+#~ "You can withhold the rent increase above the ‘reasonable’ threshold.\n"
+#~ "            Pay your old rent plus {0}%. To be safe, set aside the extra rent\n"
+#~ "            in a separate escrow account until your negotiations with your\n"
+#~ "            landlord have totally resolved."
+#~ msgstr ""
+#~ "You can withhold the rent increase above the ‘reasonable’ threshold.\n"
+#~ "            Pay your old rent plus {0}%. To be safe, set aside the extra rent\n"
+#~ "            in a separate escrow account until your negotiations with your\n"
+#~ "            landlord have totally resolved."
+
 #. placeholder {0}: CPI + 5
 #: src/Components/KYRContent/KYRContent.tsx:526
-msgid ""
-"You can withhold the rent increase above the ‘reasonable’ threshold.\n"
-"            Pay your old rent plus {0}%. To be safe, set aside the extra rent\n"
-"            in a separate escrow account until your negotiations with your\n"
-"            landlord have totally resolved."
-msgstr ""
-"You can withhold the rent increase above the ‘reasonable’ threshold.\n"
-"            Pay your old rent plus {0}%. To be safe, set aside the extra rent\n"
-"            in a separate escrow account until your negotiations with your\n"
-"            landlord have totally resolved."
+msgid "You can withhold the rent increase above the ‘reasonable’ threshold. Pay your old rent plus {0}%. To be safe, set aside the extra rent in a separate escrow account until your negotiations with your landlord have totally resolved."
+msgstr "You can withhold the rent increase above the ‘reasonable’ threshold. Pay your old rent plus {0}%. To be safe, set aside the extra rent in a separate escrow account until your negotiations with your landlord have totally resolved."
 
 #: src/Components/GeoSearchInput/GeoSearchInput.tsx:76
 msgid "You must enter an address"
