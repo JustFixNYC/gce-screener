@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { ErrorBoundary, Provider as RollbarProvider } from "@rollbar/react";
-
 import App from "./App.tsx";
 import "./index.scss";
 

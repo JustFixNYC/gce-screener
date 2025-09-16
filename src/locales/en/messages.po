@@ -209,6 +209,7 @@ msgstr "Assignment of leases & rents"
 msgid "Attend a walk-in Clinic hosted by the Met Council on Housing"
 msgstr "Attend a walk-in Clinic hosted by the Met Council on Housing"
 
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:154
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:113
 #: src/Components/Pages/Form/Survey.tsx:359
 msgid "Back"
@@ -328,6 +329,10 @@ msgstr "Download coverage"
 msgid "Eligible"
 msgstr "Eligible"
 
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:46
+msgid "Email"
+msgstr "Email"
+
 #: src/Components/Pages/Results/Results.tsx:194
 #: src/Components/Pages/Results/Results.tsx:247
 msgid "Email coverage"
@@ -411,6 +416,10 @@ msgstr "Find out if your apartment is rent stabilized"
 msgid "Find out if your landlord owns other buildings"
 msgstr "Find out if your landlord owns other buildings"
 
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:28
+msgid "First name"
+msgstr "First name"
+
 #. placeholder {0}: bedrooms === "STUDIO" ? ( <Trans>studio</Trans> ) : ( <Trans>{bedrooms} bedroom</Trans> )
 #. placeholder {1}: formatMoney(RENT_CUTOFFS[bedrooms], 0)
 #: src/hooks/useCriteriaResults.tsx:253
@@ -446,6 +455,10 @@ msgstr "Good Cause Eviction law only covers tenants whose landlord owns more tha
 #~ msgid "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings. Good Cause Eviction law only covers tenants whose landlord owns"
 #~ msgstr "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings. Good Cause Eviction law only covers tenants whose landlord owns"
 
+#: src/Components/LetterBuilder/Letter/Letter.tsx:34
+msgid "Good Cause Eviction Letter"
+msgstr "Good Cause Eviction Letter"
+
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:52
 msgid "Good Cause Eviction only applies to tenants who are not rent stabilized."
 msgstr "Good Cause Eviction only applies to tenants who are not rent stabilized."
@@ -457,6 +470,14 @@ msgstr "Good Cause Eviction protections went into effect on April 20th, 2024. If
 #: src/Components/Pages/Home/Home.tsx:177
 msgid "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
 msgstr "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
+
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:138
+msgid "Good Cause Letter Builder"
+msgstr "Good Cause Letter Builder"
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:117
+msgid "Good Cause Letter Preview"
+msgstr "Good Cause Letter Preview"
 
 #: src/Components/Footer/Footer.tsx:60
 #: src/Components/TopBar/TopBar.tsx:24
@@ -728,6 +749,10 @@ msgstr "Last modified: August 16, 2024"
 msgid "Last modified: Jan 24, 2025"
 msgstr "Last modified: Jan 24, 2025"
 
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:37
+msgid "Last name"
+msgstr "Last name"
+
 #: src/Components/KYRContent/KYRContent.tsx:203
 msgid "Lawful source of income"
 msgstr "Lawful source of income"
@@ -836,6 +861,10 @@ msgstr "Lease violations"
 msgid "Legal representation can make a significant difference in ensuring a fair and just resolution to housing disputes, protecting residents from wrongful eviction or other adverse outcomes. If you do not have a lawyer and are facing a termination of tenancy at the Office of Impartial Hearings, you can ask for your case to be adjourned in order for you to seek counsel."
 msgstr "Legal representation can make a significant difference in ensuring a fair and just resolution to housing disputes, protecting residents from wrongful eviction or other adverse outcomes. If you do not have a lawyer and are facing a termination of tenancy at the Office of Impartial Hearings, you can ask for your case to be adjourned in order for you to seek counsel."
 
+#: src/Components/LetterBuilder/Letter/Letter.tsx:97
+msgid "Letter Preview"
+msgstr "Letter Preview"
+
 #: src/Components/Pages/Results/Results.tsx:291
 msgid "Live-in landlord"
 msgstr "Live-in landlord"
@@ -906,6 +935,10 @@ msgstr "More resources about your rights as an NYC tenant"
 #: src/helpers.ts:165
 msgid "Mortgage"
 msgstr "Mortgage"
+
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:158
+msgid "Next"
+msgstr "Next"
 
 #: src/Components/Pages/Form/Survey.tsx:232
 #: src/Components/Pages/Form/Survey.tsx:307
@@ -999,6 +1032,10 @@ msgstr "PACT Fact Sheet"
 msgid "PACT Rights and Responsibilities Fact Sheet"
 msgstr "PACT Rights and Responsibilities Fact Sheet"
 
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:63
+msgid "Phone"
+msgstr "Phone"
+
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:244
 msgid "Phone number"
 msgstr "Phone number"
@@ -1047,6 +1084,10 @@ msgstr "Please specify whether your landlord lives in your apartment building."
 #: src/Components/Pages/Form/Survey.tsx:336
 msgid "Please specify whether your landlord owns more than 10 apartments across multiple buildings."
 msgstr "Please specify whether your landlord owns more than 10 apartments across multiple buildings."
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:100
+msgid "Preview language:"
+msgstr "Preview language:"
 
 #: src/Components/Pages/Results/Results.tsx:196
 #: src/Components/Pages/Results/Results.tsx:249
@@ -1208,9 +1249,17 @@ msgstr "See if you are eligible for a free attorney in housing court"
 msgid "See your results"
 msgstr "See your results"
 
+#: src/Components/Pages/LetterSender/LetterSender.tsx:71
+msgid "Send a free letter asserting your rights under Good Cause"
+msgstr "Send a free letter asserting your rights under Good Cause"
+
 #: src/Components/KYRContent/KYRContent.tsx:149
 msgid "Send a free, legally vetted letter to notify your landlord of repair issues"
 msgstr "Send a free, legally vetted letter to notify your landlord of repair issues"
+
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:141
+msgid "Send a letter to your landlord via certified mail asserting your Good Cause"
+msgstr "Send a letter to your landlord via certified mail asserting your Good Cause"
 
 #: src/Components/Pages/Results/Results.tsx:278
 msgid "Share this site with your neighbors"
@@ -1249,6 +1298,7 @@ msgstr "studio"
 msgid "Studio"
 msgstr "Studio"
 
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:158
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:176
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:203
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:283

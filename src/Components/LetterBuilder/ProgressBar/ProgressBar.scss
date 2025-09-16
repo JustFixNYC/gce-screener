@@ -1,0 +1,9 @@
+.progress-bar {
+  display: flex;
+  gap: 1rem;
+  .progress-bar__step {
+    &.active {
+      font-weight: bold;
+    }
+  }
+}
