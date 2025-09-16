@@ -203,8 +203,8 @@ const router = createBrowserRouter(
           element={<RentCalculator />}
           loader={LoadURLSessionOptional}
         />
-        <Route path="tenant_rights" element={<TenantRights />} />
         <Route path="letter" element={<LetterSender />} />
+        <Route path="tenant_rights" element={<TenantRights />} />
         <Route path="privacy_policy" element={<PrivacyPolicy />} />
         <Route path="terms_of_use" element={<TermsOfUse />} />
         <Route path="api_docs" element={<APIDocs />} />
