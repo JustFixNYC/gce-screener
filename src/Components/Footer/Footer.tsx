@@ -1,14 +1,30 @@
 import { Link } from "react-router-dom";
+import { Trans } from "@lingui/react/macro";
+
+import { LocaleToggle } from "../LocaleToggle/LocaleToggle";
 import "./Footer.scss";
 
 export const Footer: React.FC = () => (
   <footer className="footer">
     <div className="footer__content">
-      <div className="footer__legal-disclaimer">
-        <span>Disclaimer</span>
-        The information on this website does not constitute legal advice and
-        must not be used as a substitute for the advice of a lawyer qualified to
-        give advice on legal issues pertaining to housing.
+      <div>
+        <div className="footer__locale-toggle">
+          <span>
+            <Trans>Language</Trans>:
+          </span>{" "}
+          <LocaleToggle />
+        </div>
+
+        <div className="footer__legal-disclaimer">
+          <span>
+            <Trans>Disclaimer</Trans>
+          </span>
+          <Trans>
+            The information on this website does not constitute legal advice and
+            must not be used as a substitute for the advice of a lawyer
+            qualified to give advice on legal issues pertaining to housing.
+          </Trans>
+        </div>
       </div>
       <nav className="footer__legal-pages">
         <a
@@ -17,7 +33,7 @@ export const Footer: React.FC = () => (
           rel="noopener noreferrer"
           className="jfcl-link"
         >
-          Privacy Policy
+          <Trans>Privacy Policy</Trans>
         </a>
         <a
           href="terms_of_use"
@@ -25,7 +41,7 @@ export const Footer: React.FC = () => (
           rel="noopener noreferrer"
           className="jfcl-link"
         >
-          Terms of Use
+          <Trans>Terms of Use</Trans>
         </a>
         <a
           href="https://form.typeform.com/to/QUPQjBlI"
@@ -33,7 +49,7 @@ export const Footer: React.FC = () => (
           rel="noopener noreferrer"
           className="jfcl-link"
         >
-          Feedback Form
+          <Trans>Feedback Form</Trans>
         </a>
       </nav>
     </div>
@@ -41,28 +57,30 @@ export const Footer: React.FC = () => (
     <div className="footer__bottom-bar">
       <div className="footer__name">
         <Link to="/" className="jfcl-link">
-          Good Cause NYC
+          <Trans>Good Cause NYC</Trans>
         </Link>
       </div>
       <div className="footer__collab">
-        By{" "}
-        <a
-          href="https://housingjusticeforall.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="jfcl-link"
-        >
-          Housing Justice for All
-        </a>{" "}
-        &{" "}
-        <a
-          href="https://justfix.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="jfcl-link"
-        >
-          JustFix
-        </a>
+        <Trans>
+          By{" "}
+          <a
+            href="https://housingjusticeforall.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="jfcl-link"
+          >
+            Housing Justice for All
+          </a>{" "}
+          &{" "}
+          <a
+            href="https://justfix.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="jfcl-link"
+          >
+            JustFix
+          </a>
+        </Trans>
       </div>
     </div>
   </footer>
