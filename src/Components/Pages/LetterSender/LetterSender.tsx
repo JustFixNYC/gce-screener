@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button } from "@justfixnyc/component-library";
+import { useLingui } from "@lingui/react";
+import { msg } from "@lingui/core/macro";
 
 import { Header } from "../../Header/Header";
 import { LetterBuilderForm } from "../../LetterBuilder/LetterBuilderForm";
@@ -8,10 +10,13 @@ import { GCELetter, GCELetterPostData } from "../../../types/APIDataTypes";
 import {
   base64ToBlob,
   buildLetterHtml,
-} from "../../LetterBuilder/LetterContent";
+} from "../../LetterBuilder/Letter/letter-utils";
+import { SupportedLocale } from "../../../i18n-base";
+import { LetterPreview } from "../../LetterBuilder/Letter/Letter";
 import "./LetterSender.scss";
 
 export const LetterSender: React.FC = () => {
+  const { _ } = useLingui();
   const { trigger } = useSendGceLetterData();
 
   const [letterResp, setLetterResp] = useState<GCELetter>();
@@ -41,14 +46,30 @@ export const LetterSender: React.FC = () => {
     mail_choice: "WE_WILL_MAIL",
     email_to_landlord: true,
   };
-  const letterPreview = buildLetterHtml(letterProps, false);
-  const letterHtml = buildLetterHtml(letterProps, true);
-  const letterPostData = { ...letterProps, html_content: letterHtml };
+
+  const onLetterSubmit = async () => {
+    const letterHtml = await buildLetterHtml(
+      letterProps,
+      "en" as SupportedLocale,
+      true
+    );
+    const letterPostData = {
+      ...letterProps,
+      html_content: letterHtml,
+    };
+    const resp = await trigger(letterPostData);
+    setLetterResp(resp);
+    const pdfBlob = base64ToBlob(resp.pdf_content, "application/pdf");
+    const fileURL = URL.createObjectURL(pdfBlob);
+    window.open(fileURL);
+  };
 
   return (
     <div id="letter-sender-page">
       <Header
-        title="Send a free letter asserting your rights under Good Cause"
+        title={_(
+          msg`Send a free letter asserting your rights under Good Cause`
+        )}
         showProgressBar={false}
         isGuide
       />
@@ -60,23 +81,8 @@ export const LetterSender: React.FC = () => {
           Letter Data
           <pre>{JSON.stringify(letterProps, null, 2)}</pre>
           <br />
-          Letter Preview
-          <iframe
-            title="letter preview"
-            srcDoc={letterPreview}
-            width="600"
-            height="600"
-          />
-          <Button
-            labelText="submit letter"
-            onClick={async () => {
-              const resp = await trigger(letterPostData);
-              setLetterResp(resp);
-              const pdfBlob = base64ToBlob(resp.pdf_content, "application/pdf");
-              const fileURL = URL.createObjectURL(pdfBlob);
-              window.open(fileURL);
-            }}
-          />
+          <LetterPreview letterData={letterProps} />
+          <Button labelText="submit letter" onClick={onLetterSubmit} />
           <pre>{JSON.stringify(letterResp, null, 2)}</pre>
         </div>
       </div>

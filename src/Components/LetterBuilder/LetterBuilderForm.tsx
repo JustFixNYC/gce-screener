@@ -2,6 +2,9 @@ import { useState } from "react";
 import { FieldPath, Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@justfixnyc/component-library";
+import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
+import { msg } from "@lingui/core/macro";
 
 import { handleFormNoDefault } from "../../form-utils";
 import { Tenants2ApiFetcherVerifyAddress } from "../../api/helpers";
@@ -43,6 +46,7 @@ const steps: Step[] = [
 ];
 
 export const LetterBuilderForm: React.FC = () => {
+  const { _ } = useLingui();
   const formHookReturn = useForm<FormFields>({
     // Issue with the inferred type being "unknown" when preprocess() is used to
     // handle values that should be changed to undefined
@@ -131,11 +135,13 @@ export const LetterBuilderForm: React.FC = () => {
   return (
     <form onSubmit={handleFormNoDefault(next)} className="letter-form">
       <h3>
-        <pre>Good Cause Letter Builder</pre>
+        <Trans>Good Cause Letter Builder</Trans>
       </h3>
       <p>
-        Send a letter to your landlord via certified mail asserting your Good
-        Cause
+        <Trans>
+          Send a letter to your landlord via certified mail asserting your Good
+          Cause
+        </Trans>
       </p>
       <ProgressBar steps={steps} currentStep={currentStep} />
       <div className="letter-form__content">
@@ -145,10 +151,12 @@ export const LetterBuilderForm: React.FC = () => {
       </div>
       <div className="letter-form__buttons">
         {currentStep > 0 && (
-          <Button variant="tertiary" labelText="Back" onClick={prev} />
+          <Button variant="tertiary" labelText={_(msg`Back`)} onClick={prev} />
         )}
         <Button
-          labelText={currentStep < steps.length - 1 ? "Next" : "Submit"}
+          labelText={
+            currentStep < steps.length - 1 ? _(msg`Next`) : _(msg`Submit`)
+          }
           type="submit"
         />
       </div>

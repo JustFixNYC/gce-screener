@@ -214,6 +214,7 @@ msgstr "Cesión de arrendamientos y rentas"
 msgid "Attend a walk-in Clinic hosted by the Met Council on Housing"
 msgstr "Asista a una clínica sin cita previa organizada por el Consejo Metropolitano de Vivienda."
 
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:154
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:113
 #: src/Components/Pages/Form/Survey.tsx:359
 msgid "Back"
@@ -333,6 +334,10 @@ msgstr "Descargar cobertura"
 msgid "Eligible"
 msgstr "Elegible"
 
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:46
+msgid "Email"
+msgstr ""
+
 #: src/Components/Pages/Results/Results.tsx:194
 #: src/Components/Pages/Results/Results.tsx:247
 msgid "Email coverage"
@@ -416,6 +421,10 @@ msgstr "Averigüe si su departamento tiene renta estabilizada."
 msgid "Find out if your landlord owns other buildings"
 msgstr "Averigüe si su arrendador es propietario de otros edificios."
 
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:28
+msgid "First name"
+msgstr ""
+
 #. placeholder {0}: bedrooms === "STUDIO" ? ( <Trans>studio</Trans> ) : ( <Trans>{bedrooms} bedroom</Trans> )
 #. placeholder {1}: formatMoney(RENT_CUTOFFS[bedrooms], 0)
 #: src/hooks/useCriteriaResults.tsx:253
@@ -451,6 +460,10 @@ msgstr "La ley de desalojo por causa justificada solo cubre a los inquilinos cuy
 #~ msgid "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings. Good Cause Eviction law only covers tenants whose landlord owns"
 #~ msgstr "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings. Good Cause Eviction law only covers tenants whose landlord owns"
 
+#: src/Components/LetterBuilder/Letter/Letter.tsx:34
+msgid "Good Cause Eviction Letter"
+msgstr ""
+
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:52
 msgid "Good Cause Eviction only applies to tenants who are not rent stabilized."
 msgstr "El desalojo por causa justificada solo se aplica a los inquilinos que no tienen renta estabilizada."
@@ -462,6 +475,14 @@ msgstr "Las protecciones contra el desalojo por causa justificada entraron en vi
 #: src/Components/Pages/Home/Home.tsx:177
 msgid "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
 msgstr "La ley de causa justificada puede ser difícil de entender y de utilizar para protegerse. Este sitio web existe para facilitarle a usted y a sus vecinos la comprensión de las protecciones de los inquilinos y la defensa de sus derechos."
+
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:138
+msgid "Good Cause Letter Builder"
+msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:117
+msgid "Good Cause Letter Preview"
+msgstr ""
 
 #: src/Components/Footer/Footer.tsx:60
 #: src/Components/TopBar/TopBar.tsx:24
@@ -733,6 +754,10 @@ msgstr "Última modificación: 16 de agosto de 2024"
 msgid "Last modified: Jan 24, 2025"
 msgstr "Última modificación: 24 de enero de 2025"
 
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:37
+msgid "Last name"
+msgstr ""
+
 #: src/Components/KYRContent/KYRContent.tsx:203
 msgid "Lawful source of income"
 msgstr "Fuente de ingresos legal"
@@ -841,6 +866,10 @@ msgstr "Infracciones del contrato de arrendamiento"
 msgid "Legal representation can make a significant difference in ensuring a fair and just resolution to housing disputes, protecting residents from wrongful eviction or other adverse outcomes. If you do not have a lawyer and are facing a termination of tenancy at the Office of Impartial Hearings, you can ask for your case to be adjourned in order for you to seek counsel."
 msgstr "La representación legal puede marcar una diferencia significativa a la hora de garantizar una resolución justa y equitativa de los conflictos relacionados con la vivienda, protegiendo a los residentes de desalojos injustificados u otras consecuencias adversas. Si no cuenta con un abogado y se enfrenta a la terminación de su contrato de arrendamiento en la Oficina de Audiencias Imparciales, puede solicitar que se aplace su caso para poder buscar asesoramiento legal."
 
+#: src/Components/LetterBuilder/Letter/Letter.tsx:97
+msgid "Letter Preview"
+msgstr ""
+
 #: src/Components/Pages/Results/Results.tsx:291
 msgid "Live-in landlord"
 msgstr "Propietario que vive en la propiedad"
@@ -911,6 +940,10 @@ msgstr "Más recursos sobre sus derechos como inquilino en la ciudad de Nueva Yo
 #: src/helpers.ts:165
 msgid "Mortgage"
 msgstr "Hipoteca"
+
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:158
+msgid "Next"
+msgstr ""
 
 #: src/Components/Pages/Form/Survey.tsx:232
 #: src/Components/Pages/Form/Survey.tsx:307
@@ -1004,6 +1037,10 @@ msgstr "Hoja informativa sobre el Pacto"
 msgid "PACT Rights and Responsibilities Fact Sheet"
 msgstr "Hoja informativa sobre los derechos y responsabilidades del PACT"
 
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:63
+msgid "Phone"
+msgstr ""
+
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:244
 msgid "Phone number"
 msgstr "Número de teléfono"
@@ -1052,6 +1089,10 @@ msgstr "Por favor, especifique si su arrendador vive en su edificio de apartamen
 #: src/Components/Pages/Form/Survey.tsx:336
 msgid "Please specify whether your landlord owns more than 10 apartments across multiple buildings."
 msgstr "Por favor, especifique si su arrendador es propietario de más de 10 apartamentos en varios edificios."
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:100
+msgid "Preview language:"
+msgstr ""
 
 #: src/Components/Pages/Results/Results.tsx:196
 #: src/Components/Pages/Results/Results.tsx:249
@@ -1213,9 +1254,17 @@ msgstr "Averigüe si reúne los requisitos para obtener un abogado gratuito en e
 msgid "See your results"
 msgstr "Vea sus resultados"
 
+#: src/Components/Pages/LetterSender/LetterSender.tsx:71
+msgid "Send a free letter asserting your rights under Good Cause"
+msgstr ""
+
 #: src/Components/KYRContent/KYRContent.tsx:149
 msgid "Send a free, legally vetted letter to notify your landlord of repair issues"
 msgstr "Envíe una carta gratuita y revisada legalmente para notificar a su arrendador los problemas de reparación."
+
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:141
+msgid "Send a letter to your landlord via certified mail asserting your Good Cause"
+msgstr ""
 
 #: src/Components/Pages/Results/Results.tsx:278
 msgid "Share this site with your neighbors"
@@ -1254,6 +1303,7 @@ msgstr "estudio"
 msgid "Studio"
 msgstr "Estudio"
 
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:158
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:176
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:203
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:283
@@ -1834,4 +1884,3 @@ msgstr "Sus derechos contra la discriminación"
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:300
 msgid "YouTube video for how to find other apartments your landlord owns"
 msgstr "Video de YouTube sobre cómo encontrar otros departamentos que sean propiedad de tu arrendador."
-
