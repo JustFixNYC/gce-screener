@@ -8,15 +8,15 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-09-15 19:37\n"
+"PO-Revision-Date: 2025-09-16 15:39\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: good-cause-nyc\n"
 "X-Crowdin-Project-ID: 805594\n"
 "X-Crowdin-Language: es-419\n"
-"X-Crowdin-File: /translations/src/locales/en/messages.po\n"
-"X-Crowdin-File-ID: 64\n"
+"X-Crowdin-File: /main/src/locales/en/messages.po\n"
+"X-Crowdin-File-ID: 74\n"
 
 #. js-lingui-explicit-id
 #: src/helpers.ts:199
@@ -34,7 +34,7 @@ msgstr ""
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:166
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:245
 msgid "(123) 456-7890"
-msgstr "(123) 456-7890"
+msgstr ""
 
 #. placeholder {0}: formatMoney( rent )
 #: src/Components/KYRContent/KYRContent.tsx:318
@@ -44,7 +44,7 @@ msgstr "(Tu renta mensual actual {0} + {increase_pct}%)"
 #. placeholder {0}: formatMoney(rent * (1 + increase_pct / 100))
 #: src/Components/KYRContent/KYRContent.tsx:307
 msgid "{0} "
-msgstr "{0} "
+msgstr ""
 
 #: src/hooks/useCriteriaResults.tsx:258
 msgid "{bedrooms} bedroom"
@@ -52,7 +52,7 @@ msgstr "{bedrooms} cuarto"
 
 #: src/helpers.ts:169
 msgid "{docType}"
-msgstr "{docType}"
+msgstr ""
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:337
 #: src/hooks/useCriteriaResults.tsx:104
@@ -109,7 +109,7 @@ msgstr "<0>Tu edificio está</0> <1>subsidiado</1>, lo que te brinda protección
 
 #: src/Components/Pages/Form/Survey.tsx:171
 msgid "1"
-msgstr "1"
+msgstr ""
 
 #: src/Components/Pages/Form/Survey.tsx:158
 msgid "1. How many bedrooms are in your apartment?"
@@ -117,7 +117,7 @@ msgstr "1. ¿Cuántas habitaciones tiene tu departamento?"
 
 #: src/Components/Pages/Form/Survey.tsx:172
 msgid "2"
-msgstr "2"
+msgstr ""
 
 #: src/Components/Pages/Form/Survey.tsx:188
 msgid "2. What is the total monthly rent for your entire apartment?"
@@ -125,7 +125,7 @@ msgstr "2. ¿Cuál es el alquiler mensual total de todo tu departamento?"
 
 #: src/Components/Pages/Form/Survey.tsx:173
 msgid "3"
-msgstr "3"
+msgstr ""
 
 #: src/Components/Pages/Form/Survey.tsx:212
 msgid "3. Is your apartment rent stabilized?"
@@ -137,7 +137,7 @@ msgstr "4. ¿Su edificio forma parte de alguno de estos programas de subsidios?"
 
 #: src/Components/Pages/Form/Survey.tsx:174
 msgid "4+"
-msgstr "4+"
+msgstr ""
 
 #: src/Components/Pages/Form/Survey.tsx:293
 msgid "5. Does your landlord live in the building?"
@@ -496,7 +496,7 @@ msgstr "El Tribunal de Vivienda responde a las preguntas sobre recursos para rep
 
 #: src/Components/Pages/Home/Home.tsx:195
 msgid "Housing Justice for All"
-msgstr "Housing Justice for All"
+msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:403
 msgid "Housing Justice for All Good Cause Eviction fact sheet"
@@ -703,7 +703,7 @@ msgstr "forma parte de NYCHA o PACT/RAD"
 #: src/Components/KYRContent/KYRContent.tsx:260
 #: src/Components/Pages/Home/Home.tsx:209
 msgid "JustFix"
-msgstr "JustFix"
+msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:158
 msgid "JustFix’s Letter of Complaint"
@@ -916,7 +916,7 @@ msgstr "Hipoteca"
 #: src/Components/Pages/Form/Survey.tsx:307
 #: src/Components/Pages/Form/Survey.tsx:346
 msgid "No"
-msgstr "No"
+msgstr ""
 
 #: src/hooks/useCriteriaResults.tsx:110
 #: src/hooks/useCriteriaResults.tsx:199
