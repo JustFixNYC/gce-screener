@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-09-15 19:37\n"
+"PO-Revision-Date: 2025-09-16 19:05\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -403,7 +403,7 @@ msgstr "Averigüe cuánto puede aumentar el alquiler su arrendador."
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:167
 #: src/Components/Pages/TenantRights/TenantRights.tsx:36
 msgid "Find out if you’re covered by Good Cause"
-msgstr "Averigüe si está cubierto por una causa justificada."
+msgstr "Averigüe si está cubierto por una justa causa"
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:42
 #: src/Components/Pages/Results/Results.tsx:460
@@ -445,7 +445,7 @@ msgstr "Comenzar"
 #. placeholder {0}: bldgData.unitsres
 #: src/Components/Pages/Results/Results.tsx:475
 msgid "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings."
-msgstr "La ley de desalojo por causa justificada solo cubre a los inquilinos cuyo propietario posea más de 10 departamentos. Su edificio solo tiene {0} departamentos, pero es posible que su propietario posea otros edificios."
+msgstr "La ley de desalojo por justa causa solo cubre a los inquilinos cuyo propietario posea más de 10 departamentos. Su edificio solo tiene {0} departamentos, pero es posible que su propietario posea otros edificios."
 
 #: src/Components/Pages/Results/Results.tsx:458
 #~ msgid "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings. Good Cause Eviction law only covers tenants whose landlord owns"
@@ -453,20 +453,20 @@ msgstr "La ley de desalojo por causa justificada solo cubre a los inquilinos cuy
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:52
 msgid "Good Cause Eviction only applies to tenants who are not rent stabilized."
-msgstr "El desalojo por causa justificada solo se aplica a los inquilinos que no tienen renta estabilizada."
+msgstr "El desalojo por justa causa solo se aplica a los inquilinos que no tienen renta estabilizada."
 
 #: src/Components/Pages/Home/Home.tsx:105
 msgid "Good Cause Eviction protections went into effect on April 20th, 2024. If you are covered by the law, you have strong legal protections against eviction as long as you follow your lease. There are also limits to how much your landlord can raise your rent. "
-msgstr "Las protecciones contra el desalojo por causa justificada entraron en vigor el 20 de abril de 2024. Si usted está cubierto por la ley, cuenta con sólidas protecciones legales contra el desalojo siempre y cuando cumpla con su contrato de alquiler. También hay límites en cuanto al aumento del alquiler que puede aplicar el propietario. "
+msgstr "Las protecciones contra el desalojo por justa causa entraron en vigor el 20 de abril de 2024. Si usted está cubierto por la ley, cuenta con sólidas protecciones legales contra el desalojo siempre y cuando cumpla con su contrato de alquiler. También hay límites en cuanto al aumento del alquiler que puede aplicar el propietario. "
 
 #: src/Components/Pages/Home/Home.tsx:177
 msgid "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
-msgstr "La ley de causa justificada puede ser difícil de entender y de utilizar para protegerse. Este sitio web existe para facilitarle a usted y a sus vecinos la comprensión de las protecciones de los inquilinos y la defensa de sus derechos."
+msgstr "La ley de justa causa puede ser difícil de entender y de utilizar para protegerse. Este sitio web existe para facilitarle a usted y a sus vecinos la comprensión de las protecciones de los inquilinos y la defensa de sus derechos."
 
 #: src/Components/Footer/Footer.tsx:60
 #: src/Components/TopBar/TopBar.tsx:24
 msgid "Good Cause NYC"
-msgstr "Buena causa NYC"
+msgstr "Justa causa NYC"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:398
 msgid "Google your landlord’s name and find mentions of other buildings they may own in the press."
@@ -512,7 +512,7 @@ msgstr "Preservación y desarrollo de la vivienda Resumen del desalojo por causa
 
 #: src/Components/KYRContent/KYRContent.tsx:435
 msgid "How to assert your Good Cause rights"
-msgstr "Cómo hacer valer sus derechos por causa justificada"
+msgstr "Cómo hacer valer sus derechos por justa causa"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:120
 msgid "How to find other apartments your landlord owns"
@@ -614,7 +614,7 @@ msgstr "Si utiliza un vale que cubre parte o la totalidad de su renta, y puede u
 
 #: src/Components/Pages/Home/Home.tsx:141
 msgid "If you’re not covered by Good Cause Eviction"
-msgstr "Si no estás cubierto por el desalojo por causa justificada"
+msgstr "Si no estás cubierto por el desalojo por justa causa"
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:80
 msgid "If your apartment has ever been rent stabilized, you’ll receive a document showing the rents that your landlord has registered since 1984. This document will help you learn if your apartment is still rent stabilized."
@@ -965,12 +965,12 @@ msgstr "Información sobre desalojos de NY Homes and Community Renewal"
 
 #: src/hooks/useCriteriaResults.tsx:618
 msgid "NYCHA and PACT/RAD apartments are not covered by Good Cause because they already have stronger tenant protections than Good Cause provides."
-msgstr "Los departamentos de NYCHA y PACT/RAD no están cubiertos por Good Cause porque ya cuentan con protecciones para los inquilinos más sólidas que las que ofrece Good Cause."
+msgstr "Los departamentos de NYCHA y PACT/RAD no están cubiertos por Good Cause porque ya cuentan con protecciones para los inquilinos más sólidas que las que ofrece justa causa."
 
 #: src/hooks/useCriteriaResults.tsx:531
 #: src/hooks/useCriteriaResults.tsx:557
 msgid "NYCHA and PACT/RAD apartments are not covered by Good Cause because they already have stronger tenant protections than Good Cause."
-msgstr "Los apartamentos de NYCHA y PACT/RAD no están cubiertos por la cláusula de causa justificada, ya que cuentan con protecciones para los inquilinos más sólidas que las que ofrece dicha cláusula."
+msgstr "Los apartamentos de NYCHA y PACT/RAD no están cubiertos por la cláusula de justa causa, ya que cuentan con protecciones para los inquilinos más sólidas que las que ofrece dicha cláusula."
 
 #: src/Components/Pages/Form/Survey.tsx:253
 #~ msgid "NYCHA or PACT/RAD"
@@ -1084,7 +1084,7 @@ msgstr "Protecciones que tienen todos los inquilinos de la ciudad de Nueva York"
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:164
 msgid "Protections under Good Cause"
-msgstr "Protecciones por causa justificada"
+msgstr "Protecciones por justa causa"
 
 #: src/hooks/useCriteriaResults.tsx:434
 msgid "Public data sources indicate that your building is {bldgTypeName}, and so is not covered by Good Cause Eviction."
@@ -1834,4 +1834,3 @@ msgstr "Sus derechos contra la discriminación"
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:300
 msgid "YouTube video for how to find other apartments your landlord owns"
 msgstr "Video de YouTube sobre cómo encontrar otros departamentos que sean propiedad de tu arrendador."
-
