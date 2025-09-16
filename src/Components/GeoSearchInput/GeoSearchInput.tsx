@@ -1,4 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import { Dropdown, Icon } from "@justfixnyc/component-library";
 import {
   GeoSearchRequester,
@@ -22,6 +25,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
   invalid,
   setInvalid,
 }) => {
+  const { _ } = useLingui();
   const [results, setResults] = useState<GeoSearchFeature[]>([]);
   const [isFocused, setIsFocused] = useState(false);
   const [isHighlighted, setIsHighlighted] = useState(false);
@@ -29,7 +33,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
   const placeholder = (
     <>
       <Icon icon="locationDot" />
-      Enter your address
+      <Trans>Enter your address</Trans>
     </>
   );
 
@@ -69,7 +73,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
         aria-label={placeholder}
         placeholder={!isFocused && placeholder}
         invalid={!isFocused && invalid}
-        invalidText="You must enter an address"
+        invalidText={_(msg`You must enter an address`)}
         invalidRole="alert"
         onFocus={() => {
           setInvalid(false);
@@ -89,7 +93,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
         defaultOptions={[
           { value: initialAddress?.address, label: initialAddress?.address },
         ]}
-        noOptionsMessage={() => "Enter an address to get started"}
+        noOptionsMessage={() => _(msg`Enter an address to get started`)}
         // @ts-expect-error We need to update the JFCL onChange props to match react-select
         onChange={({ value }) => {
           setIsHighlighted(false);
