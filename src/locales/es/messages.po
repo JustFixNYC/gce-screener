@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-09-17 22:19\n"
+"PO-Revision-Date: 2025-09-17 23:25\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -196,7 +196,7 @@ msgstr "Acuerdo"
 #: src/Components/KYRContent/KYRContent.tsx:881
 #: src/Components/Pages/TenantRights/TenantRights.tsx:25
 msgid "All tenants in NYC are protected by important rights. This guide provides information about many of those rights depending on the type of housing you live in."
-msgstr "Todos los inquilinos de la ciudad de Nueva York están protegidos por derechos importantes. Esta guía proporciona información sobre muchos de esos derechos en función del tipo de vivienda en la que vivas."
+msgstr "Todos los inquilinos de la ciudad de Nueva York están protegidos por derechos importantes. Esta guía proporciona información sobre muchos de esos derechos en función del tipo de vivienda en la que viva."
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:91
 msgid "Allowable rent increase amount:"
@@ -212,7 +212,7 @@ msgstr "Cesión de arrendamientos y rentas"
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:128
 msgid "Attend a walk-in Clinic hosted by the Met Council on Housing"
-msgstr "Asista a una clínica sin cita previa organizada por el Consejo Metropolitano de Vivienda."
+msgstr "Asista a una clínica sin cita previa organizada por el Consejo Metropolitano de Vivienda"
 
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:114
 #: src/Components/Pages/Form/Survey.tsx:362
@@ -261,12 +261,12 @@ msgstr "Calcule el aumento máximo de su renta."
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:53
 msgid "Calculate your rent increase"
-msgstr "Calcule el aumento de su renta"
+msgstr "Calcule el aumento de su alquiler"
 
 #: src/Components/KYRContent/KYRContent.tsx:580
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:139
 msgid "Call Met Council on Housing Hotline"
-msgstr "Llame a la línea directa del Consejo Metropolitano sobre Vivienda."
+msgstr "Llame a la línea directa del Consejo Metropolitano sobre Vivienda"
 
 #: src/Components/Pages/Results/Results.tsx:295
 msgid "Certificate of occupancy"
@@ -274,11 +274,11 @@ msgstr "Certificado de ocupación"
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:123
 msgid "Check your lease renewal"
-msgstr "Revisa la renovación de tu contrato de alquiler."
+msgstr "Revise la renovación de su contrato de alquiler"
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:104
 msgid "Check your most recent lease renewal"
-msgstr "Revisa la renovación más reciente de tu contrato de arrendamiento."
+msgstr "Revise la renovación más reciente de su contrato de arrendamiento"
 
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:80
 msgid "City data indicates that there aren’t any residential units at this address."
@@ -349,7 +349,7 @@ msgstr "Cobertura de correo electrónico"
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:167
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:246
 msgid "Enter a valid phone number"
-msgstr "Ingresa un número de teléfono válido."
+msgstr "Ingrese un número de teléfono válido"
 
 #: src/Components/GeoSearchInput/GeoSearchInput.tsx:96
 msgid "Enter an address to get started"
@@ -357,7 +357,7 @@ msgstr "Ingresa una dirección para comenzar."
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:69
 msgid "Enter the total monthly rent for your entire apartment"
-msgstr "Ingresa el alquiler mensual total de todo tu departamento."
+msgstr "Ingrese el alquiler mensual total de todo su departamento"
 
 #: src/Components/GeoSearchInput/GeoSearchInput.tsx:36
 msgid "Enter your address"
@@ -465,7 +465,7 @@ msgstr "La ley de desalojo por justa causa solo cubre a los inquilinos cuyo prop
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:52
 msgid "Good Cause Eviction only applies to tenants who are not rent stabilized."
-msgstr "El desalojo por justa causa solo se aplica a los inquilinos que no tienen renta estabilizada."
+msgstr "La Ley de Desalojo por Justa Causa solo se aplica a los inquilinos que no están sujetos a un alquiler estabilizado."
 
 #: src/Components/Pages/Home/Home.tsx:105
 msgid "Good Cause Eviction protections went into effect on April 20th, 2024. If you are covered by the law, you have strong legal protections against eviction as long as you follow your lease. There are also limits to how much your landlord can raise your rent. "
@@ -655,7 +655,7 @@ msgstr "Si su arrendador lo lleva a juicio, usted puede presentar una defensa po
 #: src/Components/Pages/Form/Survey.tsx:481
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:107
 msgid "If your most recent lease renewal <0>looks like this</0>, then your apartment is likely rent stabilized."
-msgstr "Si la renovación más reciente de su contrato de arrendamiento <0>se parece a esta</0>, es probable que su departamento tenga renta estabilizada."
+msgstr "Si la renovación más reciente de su contrato de arrendamiento <0>se parece a esta</0>, es probable que su departamento esté sujeto a un alquiler estabilizado."
 
 #: src/Components/Modal/Modal.tsx:100
 msgid "If your most recent lease renewal looks like the image below, then your apartment is almost certainly rent stabilized. If your lease renewal does not look like the image below, your apartment could still be rent stabilized."
