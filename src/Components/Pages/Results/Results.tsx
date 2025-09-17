@@ -369,50 +369,57 @@ const CriterionRow: React.FC<CriterionDetails> = (props) => {
 
 const CriteriaTable: React.FC<{
   criteria?: CriteriaDetails;
-}> = ({ criteria }) => (
-  <ContentBox className="criteria-table">
-    <div className="criteria-table__header">
-      <span className="criteria-table__header__title">
-        <Trans>How we determined your coverage</Trans>
-      </span>
-      <p>
-        <Trans>
-          Results are based on publicly available data about your building and
-          the answers you provided. This does not constitute legal advice.
-        </Trans>
-      </p>
-    </div>
-    <ul className="criteria-table__list">
-      {criteria?.rent && <CriterionRow {...criteria.rent} />}
-      {criteria?.rentStabilized && (
-        <CriterionRow {...criteria.rentStabilized} />
-      )}
-      {criteria?.buildingClass && <CriterionRow {...criteria.buildingClass} />}
-      {criteria?.certificateOfOccupancy && (
-        <CriterionRow {...criteria.certificateOfOccupancy} />
-      )}
-      {criteria?.subsidy && <CriterionRow {...criteria.subsidy} />}
-      {criteria?.landlord && <CriterionRow {...criteria.landlord} />}
-      {criteria?.portfolioSize && <CriterionRow {...criteria.portfolioSize} />}
-    </ul>
-    <ContentBoxFooter
-      message="Need to update your information?"
-      linkText="Back to survey"
-      linkTo="/survey"
-      linkOnClick={() =>
-        gtmPush("gce_return_survey", { from: "results-page_criteria-table" })
-      }
-      className="criteria-table__footer"
-    />
-  </ContentBox>
-);
+}> = ({ criteria }) => {
+  const { _, i18n } = useLingui();
+  return (
+    <ContentBox className="criteria-table">
+      <div className="criteria-table__header">
+        <span className="criteria-table__header__title">
+          <Trans>How we determined your coverage</Trans>
+        </span>
+        <p>
+          <Trans>
+            Results are based on publicly available data about your building and
+            the answers you provided. This does not constitute legal advice.
+          </Trans>
+        </p>
+      </div>
+      <ul className="criteria-table__list">
+        {criteria?.rent && <CriterionRow {...criteria.rent} />}
+        {criteria?.rentStabilized && (
+          <CriterionRow {...criteria.rentStabilized} />
+        )}
+        {criteria?.buildingClass && (
+          <CriterionRow {...criteria.buildingClass} />
+        )}
+        {criteria?.certificateOfOccupancy && (
+          <CriterionRow {...criteria.certificateOfOccupancy} />
+        )}
+        {criteria?.subsidy && <CriterionRow {...criteria.subsidy} />}
+        {criteria?.landlord && <CriterionRow {...criteria.landlord} />}
+        {criteria?.portfolioSize && (
+          <CriterionRow {...criteria.portfolioSize} />
+        )}
+      </ul>
+      <ContentBoxFooter
+        message={_(msg`Need to update your information?`)}
+        linkText={_(msg`Back to survey`)}
+        linkTo={`/${i18n.locale}/survey`}
+        linkOnClick={() =>
+          gtmPush("gce_return_survey", { from: "results-page_criteria-table" })
+        }
+        className="criteria-table__footer"
+      />
+    </ContentBox>
+  );
+};
 
 const EligibilityNextSteps: React.FC<{
   bldgData: BuildingData;
   criteriaDetails: CriteriaDetails;
   searchParams: URLSearchParams;
 }> = ({ bldgData, criteriaDetails, searchParams }) => {
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
   const rentStabilizedUnknown =
     criteriaDetails?.rentStabilized?.determination === "UNKNOWN";
   const portfolioSizeUnknown =
@@ -455,7 +462,9 @@ const EligibilityNextSteps: React.FC<{
               </Trans>
             </p>
             <JFCLLinkInternal
-              to={`/rent_stabilization?${searchParams.toString()}`}
+              to={`/${
+                i18n.locale
+              }/rent_stabilization?${searchParams.toString()}`}
             >
               <Trans>Find out if your apartment is rent stabilized</Trans>
             </JFCLLinkInternal>
@@ -479,7 +488,9 @@ const EligibilityNextSteps: React.FC<{
                 buildings.
               </Trans>
             </p>
-            <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
+            <JFCLLinkInternal
+              to={`/${i18n.locale}/portfolio_size?${searchParams.toString()}`}
+            >
               <Trans>Find other buildings your landlord owns</Trans>
             </JFCLLinkInternal>
           </ContentBoxItem>
@@ -488,7 +499,7 @@ const EligibilityNextSteps: React.FC<{
         <ContentBoxFooter
           message={_(msg`Have you learned something new?`)}
           linkText={_(msg`Adjust survey answers`)}
-          linkTo="/survey"
+          linkTo={`${i18n.locale}/survey`}
           linkOnClick={() =>
             gtmPush("gce_return_survey", { from: "results-page_next-steps" })
           }

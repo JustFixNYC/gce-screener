@@ -99,12 +99,11 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
     }
     try {
       const sendData = async () => {
-        const resultUrlParam =
-          window.location.pathname === "/results"
-            ? {
-                result_url: window.location.href,
-              }
-            : {};
+        const resultUrlParam = window.location.pathname.includes("/results")
+          ? {
+              result_url: window.location.href,
+            }
+          : {};
         const postData = {
           id: user?.id,
           phone_number: parseInt(cleaned),

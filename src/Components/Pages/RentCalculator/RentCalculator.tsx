@@ -24,7 +24,7 @@ export const CPI = 3.79;
 const CPI_EFFECTIVE_DATE = msg`February 19, 2025`;
 
 export const RentCalculator: React.FC = () => {
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
   useAccordionsOpenForPrint();
 
   const increase_pct = CPI + 5;
@@ -83,7 +83,7 @@ export const RentCalculator: React.FC = () => {
                 type="submit"
                 variant="primary"
                 size="small"
-                labelText="Calculate"
+                labelText={_(msg`Calculate`)}
               />
             </form>
             <div className="rent-increase-container">
@@ -140,7 +140,7 @@ export const RentCalculator: React.FC = () => {
             </strong>{" "}
             <p className="mobile-breakpoint"></p>
             <JFCLLinkInternal
-              to="/"
+              to={`/${i18n.locale}`}
               onClick={() =>
                 gtmPush("gce_return_survey", {
                   from: "rent-calculator-page",
@@ -166,7 +166,7 @@ export const RentCalculator: React.FC = () => {
             <ContentBoxFooter
               message={_(msg`Find out if you’re covered by Good Cause`)}
               linkText={_(msg`Take the survey`)}
-              linkTo="/"
+              linkTo={`/${i18n.locale}}`}
               linkOnClick={() =>
                 gtmPush("gce_return_survey", {
                   from: "rent-calculator-page",

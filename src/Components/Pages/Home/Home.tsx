@@ -29,7 +29,7 @@ export type Address = {
 };
 
 export const Home: React.FC = () => {
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
   const navigate = useNavigate();
   const [sessionUser, setUser] = useSessionStorage<GCEUser>("user");
   const [address, setAddress, removeAddress] =
@@ -70,7 +70,7 @@ export const Home: React.FC = () => {
 
     removeFormFields();
     setLastStepReached(ProgressStep.Address);
-    navigate("confirm_address");
+    navigate(`/${i18n.locale}/confirm_address`);
   };
 
   return (
@@ -110,7 +110,7 @@ export const Home: React.FC = () => {
               rent.{" "}
             </Trans>
             <JFCLLinkInternal
-              to="/rent_calculator"
+              to={`/${i18n.locale}/rent_calculator`}
               onClick={() =>
                 gtmPush("gce_rent_calculator", { from: "home-page" })
               }
@@ -148,7 +148,7 @@ export const Home: React.FC = () => {
                 stronger than those provided by Good Cause.
               </Trans>
             </p>
-            <JFCLLinkInternal to="/tenant_rights">
+            <JFCLLinkInternal to={`/${i18n.locale}/tenant_rights`}>
               <Trans>Learn more about tenant protections in NYC</Trans>
             </JFCLLinkInternal>
           </div>

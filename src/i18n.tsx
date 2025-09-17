@@ -111,9 +111,9 @@ export function I18n({ children }: { children: React.ReactNode }): JSX.Element {
  * without the locale prefix (e.g. `/boop`).
  */
 export function removeLocalePrefix(path: string): string {
-  const pathParts = path.split("/");
-  pathParts.splice(1, 1);
-  return pathParts.join("/");
+  const match = path.match(/^\/([a-z]{2})\/(.*)$/);
+  if (!match || !isSupportedLocale(match[1])) return path;
+  return `/${match[2]}`;
 }
 
 /**
