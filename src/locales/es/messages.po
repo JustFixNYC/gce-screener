@@ -8,15 +8,15 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-09-16 19:05\n"
+"PO-Revision-Date: 2025-09-17 18:51\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: good-cause-nyc\n"
 "X-Crowdin-Project-ID: 805594\n"
 "X-Crowdin-Language: es-419\n"
-"X-Crowdin-File: /translations/src/locales/en/messages.po\n"
-"X-Crowdin-File-ID: 64\n"
+"X-Crowdin-File: /main/src/locales/en/messages.po\n"
+"X-Crowdin-File-ID: 74\n"
 
 #. js-lingui-explicit-id
 #: src/helpers.ts:199
@@ -39,7 +39,7 @@ msgstr "(123) 456-7890"
 #. placeholder {0}: formatMoney( rent )
 #: src/Components/KYRContent/KYRContent.tsx:318
 msgid "(Your current monthly rent {0} + {increase_pct}%)"
-msgstr "(Tu renta mensual actual {0} + {increase_pct}%)"
+msgstr "(Su renta mensual actual {0} + {increase_pct}%)"
 
 #. placeholder {0}: formatMoney(rent * (1 + increase_pct / 100))
 #: src/Components/KYRContent/KYRContent.tsx:307
@@ -48,7 +48,7 @@ msgstr "{0} "
 
 #: src/hooks/useCriteriaResults.tsx:263
 msgid "{bedrooms} bedroom"
-msgstr "{bedrooms} cuarto"
+msgstr "{bedrooms} habitación"
 
 #: src/helpers.ts:169
 msgid "{docType}"
@@ -69,19 +69,19 @@ msgstr "<0>Por</0> <1>Housing Justice for All</1> <2>y</2> <3>JustFix</3>"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:134
 msgid "<0>Step 1:</0> Find out who owns your building"
-msgstr "<0>Paso 1:</0> Averigüe quién es el propietario de su edificio."
+msgstr "<0>Paso 1:</0> averigüe quién es el propietario de su edificio"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:182
 msgid "<0>Step 2:</0> Find other properties associated with the owner of your building"
-msgstr "<0>Paso 2:</0> Busque otras propiedades asociadas con el propietario de su edificio."
+msgstr "<0>Paso 2:</0> busque otras propiedades asociadas con el propietario de su edificio"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:455
 msgid "<0>Tip:</0> If, in any one of the documents below, you find an owner’s name that does not match your building’s owner’s name, then move on to the next building address."
-msgstr "<0>Consejo:</0> Si en alguno de los documentos que se indican a continuación encuentra el nombre de un propietario que no coincide con el nombre del propietario de su edificio, pase a la siguiente dirección."
+msgstr "<0>Consejo:</0> si en alguno de los documentos que se indican a continuación encuentra el nombre de un propietario que no coincide con el nombre del propietario de su edificio, pase a la siguiente dirección."
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:124
 msgid "<0>Tip:</0> We recommend doing the following research on a desktop computer. If you have not already, please watch the video, above, for step-by-step instructions on how to complete Steps 1 and 2."
-msgstr "<0>Consejo:</0> Recomendamos realizar la siguiente investigación en una computadora de escritorio. Si aún no lo ha hecho, vea el video anterior para obtener instrucciones paso a paso sobre cómo completar los pasos 1 y 2."
+msgstr "<0>Consejo:</0> recomendamos realizar la siguiente investigación en una computadora de escritorio. Si aún no lo ha hecho, vea el video anterior para obtener instrucciones paso a paso sobre cómo completar los pasos 1 y 2."
 
 #: src/Components/Pages/Results/Results.tsx:574
 msgid "<0>You are</0> <1>likely covered</1> by Good Cause Eviction"
@@ -93,7 +93,7 @@ msgstr "<1>Es probable que no</1> <0>esté</0> <1>cubierto</1> <2/>por el desalo
 
 #: src/Components/Pages/Results/Results.tsx:546
 msgid "<0>You</0> <1>might be covered</1> by Good Cause Eviction"
-msgstr "<1>Es posible que</1> <0>usted</0> <1>esté protegido</1> por la expulsión por justa causa."
+msgstr "<1>Es posible que</1> <0>usted</0> <1>esté protegido</1> por el desalojo por justa causa."
 
 #: src/Components/Pages/Results/Results.tsx:583
 msgid "<0>Your apartment is part of</0> <1>NYCHA or PACT/RAD</1> which provides stronger protections than Good Cause Eviction"
@@ -101,11 +101,11 @@ msgstr "<0>Tu departamento forma parte de</0> <1>NYCHA o PACT/RAD</1>, que ofrec
 
 #: src/Components/Pages/Results/Results.tsx:565
 msgid "<0>Your apartment is</0> <1>rent stabilized</1> which provides stronger protections than Good Cause Eviction"
-msgstr "<0>Tu departamento tiene</0> <1>renta estabilizada</1>, lo que te brinda mayor protección que la expulsión por justa causa."
+msgstr "<0>Su departamento tiene</0> <1>renta estabilizada</1>, lo que te brinda mayor protección que el desalojo por justa causa."
 
 #: src/Components/Pages/Results/Results.tsx:594
 msgid "<0>Your building is</0> <1>subsidized</1> which provides existing eviction protections"
-msgstr "<0>Tu edificio está</0> <1>subsidiado</1>, lo que te brinda protección contra el desalojo."
+msgstr "<0>Su edificio está</0> <1>subsidiado</1>, lo que le brinda protección contra el desalojo."
 
 #: src/Components/Pages/Form/Survey.tsx:171
 msgid "1"
@@ -113,7 +113,7 @@ msgstr "1"
 
 #: src/Components/Pages/Form/Survey.tsx:158
 msgid "1. How many bedrooms are in your apartment?"
-msgstr "1. ¿Cuántas habitaciones tiene tu departamento?"
+msgstr "1. ¿Cuántas habitaciones tiene su departamento?"
 
 #: src/Components/Pages/Form/Survey.tsx:172
 msgid "2"
@@ -121,7 +121,7 @@ msgstr "2"
 
 #: src/Components/Pages/Form/Survey.tsx:188
 msgid "2. What is the total monthly rent for your entire apartment?"
-msgstr "2. ¿Cuál es el alquiler mensual total de todo tu departamento?"
+msgstr "2. ¿Cuál es el alquiler mensual total de todo su departamento?"
 
 #: src/Components/Pages/Form/Survey.tsx:173
 msgid "3"
@@ -129,7 +129,7 @@ msgstr "3"
 
 #: src/Components/Pages/Form/Survey.tsx:212
 msgid "3. Is your apartment rent stabilized?"
-msgstr "3. ¿Tu departamento tiene renta estabilizada?"
+msgstr "3. ¿Su departamento tiene renta estabilizada?"
 
 #: src/Components/Pages/Form/Survey.tsx:247
 msgid "4. Is your building part of any of these subsidy programs?"
@@ -141,11 +141,11 @@ msgstr "4+"
 
 #: src/Components/Pages/Form/Survey.tsx:293
 msgid "5. Does your landlord live in the building?"
-msgstr "5. ¿Tu arrendador vive en el edificio?"
+msgstr "5. ¿Su arrendador vive en el edificio?"
 
 #: src/Components/Pages/Form/Survey.tsx:321
 msgid "6. Does your landlord own more than 10 apartments across multiple buildings?"
-msgstr "6. ¿Tu arrendador es dueño de más de 10 departamentos en varios edificios?"
+msgstr "6. ¿Su arrendador es dueño de más de 10 departamentos en varios edificios?"
 
 #: src/hooks/useCriteriaResults.tsx:416
 msgid "a co-op"
@@ -157,7 +157,7 @@ msgstr "un departamento"
 
 #: src/Components/Pages/Form/Survey.tsx:136
 msgid "A few questions about your apartment"
-msgstr "Algunas preguntas sobre tu departamento"
+msgstr "Algunas preguntas sobre su departamento"
 
 #: src/Components/Pages/Home/Home.tsx:212
 msgid "A nonprofit organization that builds online tools to help New Yorkers achieve affordable, healthy, eviction-free housing."
@@ -225,7 +225,7 @@ msgstr "Volver a los resultados"
 
 #: src/Components/Pages/Results/Results.tsx:406
 msgid "Back to survey"
-msgstr ""
+msgstr "Volver a la encuesta"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:203
 msgid "Based on data from the website {wowLink}, we gather a list of properties that the owner of your building may be associated with. For each property, we include links to important real estate transaction documents."
@@ -253,7 +253,7 @@ msgstr "Por <0>Housing Justice for All</0> y <1>JustFix</1>"
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:86
 msgid "Calculate"
-msgstr ""
+msgstr "Calcular"
 
 #: src/Components/Pages/Home/Home.tsx:118
 msgid "Calculate your max rent increase."
@@ -426,7 +426,7 @@ msgstr "Averigüe si su arrendador es propietario de otros edificios."
 
 #: src/hooks/useCriteriaResults.tsx:174
 msgid "Find your landlord’s other buildings"
-msgstr ""
+msgstr "Busca otros edificios de tu propietario"
 
 #. placeholder {0}: bedrooms === "STUDIO" ? ( <Trans>studio</Trans> ) : ( <Trans>{bedrooms} bedroom</Trans> )
 #. placeholder {1}: formatMoney(RENT_CUTOFFS[bedrooms], 0)
@@ -926,7 +926,7 @@ msgstr "Hipoteca"
 
 #: src/Components/Pages/Results/Results.tsx:405
 msgid "Need to update your information?"
-msgstr ""
+msgstr "¿Necesita actualizar su información?"
 
 #: src/Components/Pages/Form/Survey.tsx:232
 #: src/Components/Pages/Form/Survey.tsx:307
@@ -1762,7 +1762,7 @@ msgstr "Tu edificio solo tiene {pluralApartments}, pero"
 
 #: src/hooks/useCriteriaResults.tsx:157
 #~ msgid "Your building has only {pluralApartments}, but{1} other buildings. <0>Find your landlord’s other buildings</0>"
-#~ msgstr "Tu edificio solo tiene {pluralApartments}, pero{1} otros edificios. <0>Busca los otros edificios de tu propietario</0>."
+#~ msgstr "Your building has only {pluralApartments}, but{1} other buildings. <0>Find your landlord’s other buildings</0>"
 
 #. placeholder {0}: activeJ51 ? "421a" : "J51"
 #: src/hooks/useCriteriaResults.tsx:365
@@ -1857,3 +1857,4 @@ msgstr "Sus derechos contra la discriminación"
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:300
 msgid "YouTube video for how to find other apartments your landlord owns"
 msgstr "Video de YouTube sobre cómo encontrar otros departamentos que sean propiedad de tu arrendador."
+
