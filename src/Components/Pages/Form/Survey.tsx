@@ -45,7 +45,7 @@ const initialFields: FormFields = {
 };
 
 export const Survey: React.FC = () => {
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
   const { address, user } = useLoaderData() as {
     address: Address;
     user?: GCEUser;
@@ -107,7 +107,7 @@ export const Survey: React.FC = () => {
     } catch {
       rollbar.error("Cannot connect to tenant platform");
     }
-    navigate(`/results`);
+    navigate(`/${i18n.locale}/results`);
   };
 
   const handleRadioChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -355,7 +355,10 @@ export const Survey: React.FC = () => {
             )}
           </form>
           <div className="form__buttons">
-            <BackLink to="/confirm_address" className="survey__back">
+            <BackLink
+              to={`/${i18n.locale}/confirm_address`}
+              className="survey__back"
+            >
               <Trans>Back</Trans>
             </BackLink>
             <Button

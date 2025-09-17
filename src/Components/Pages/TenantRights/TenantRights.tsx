@@ -13,7 +13,7 @@ import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPr
 import "./TenantRights.scss";
 
 export const TenantRights: React.FC = () => {
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
 
   useAccordionsOpenForPrint();
 
@@ -35,7 +35,7 @@ export const TenantRights: React.FC = () => {
             <ContentBoxFooter
               message={_(msg`Find out if you’re covered by Good Cause`)}
               linkText={_(msg`Take the survey`)}
-              linkTo="/"
+              linkTo={`/${i18n.locale}`}
             />
           </GoodCauseProtections>
 
@@ -43,7 +43,7 @@ export const TenantRights: React.FC = () => {
             <ContentBoxFooter
               message={_(msg`Find out if your apartment is rent stabilized`)}
               linkText={_(msg`View the guide`)}
-              linkTo="/rent_stabilization"
+              linkTo={`/${i18n.locale}/rent_stabilization`}
             />
           </RentStabilizedProtections>
 

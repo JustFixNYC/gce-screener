@@ -5,6 +5,7 @@ import { BackLink } from "../JFCLLink";
 import { abbreviateBoro, ProgressStep, toTitleCase } from "../../helpers";
 import { gtmPush } from "../../google-tag-manager";
 import { Trans } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
 
 type HeaderProps = {
   title: string | React.ReactNode;
@@ -25,13 +26,14 @@ export const Header: React.FC<HeaderProps> = ({
   lastStepReached,
   children,
 }) => {
+  const { i18n } = useLingui();
   return (
     <div className="headline-section">
       <div className="headline-section__content">
         {isGuide && (
           <nav className="headline-section__back-link">
             <BackLink
-              to="/results"
+              to={`/${i18n.locale}/results`}
               onClick={() => gtmPush("gce_back_to_result")}
             >
               <Trans>Back to Result</Trans>
