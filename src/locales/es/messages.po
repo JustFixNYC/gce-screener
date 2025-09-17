@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-09-17 18:51\n"
+"PO-Revision-Date: 2025-09-17 22:19\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -190,8 +190,8 @@ msgid "Agreement"
 msgstr "Acuerdo"
 
 #: src/hooks/useCriteriaResults.tsx:361
-msgid "all apartments in your building are registered as rent stabilized."
-msgstr "Todos los departamentos de su edificio están registrados como de renta estabilizada."
+#~ msgid "all apartments in your building are registered as rent stabilized."
+#~ msgstr "all apartments in your building are registered as rent stabilized."
 
 #: src/Components/KYRContent/KYRContent.tsx:881
 #: src/Components/Pages/TenantRights/TenantRights.tsx:25
@@ -1600,8 +1600,8 @@ msgid "You are not covered by Good Cause because you have existing eviction prot
 msgstr "No está cubierto por la justa causa porque ya cuenta con protecciones contra el desalojo a través del programa de subsidios de su edificio."
 
 #: src/hooks/useCriteriaResults.tsx:356
-msgid "you are not sure if your apartment is"
-msgstr "no estás seguro de si tu departamento es"
+#~ msgid "you are not sure if your apartment is"
+#~ msgstr "you are not sure if your apartment is"
 
 #: src/Components/KYRContent/KYRContent.tsx:526
 #~ msgid ""
@@ -1628,20 +1628,17 @@ msgstr "Debe ingresar una dirección."
 msgid "You only need to find the name or signature of your building’s owner on one of these documents before moving to Step 2."
 msgstr "Solo necesita encontrar el nombre o la firma del propietario de su edificio en uno de estos documentos antes de pasar al paso 2."
 
-#. placeholder {0}: rentStabilized === "NO" ? ( <Trans>your apartment is not</Trans> ) : ( <Trans>you are not sure if your apartment is</Trans> )
-#. placeholder {2}: allUnitsRS ? ( <Trans> all apartments in your building are registered as rent stabilized. </Trans> ) : ( <Trans> your building receives the {activeJ51 ? "421a" : "J51"} tax incentive, which means your apartment should be rent stabilized. </Trans> )
-#. placeholder {3}: allUnitsRS ? wowLink : subsidyLink
 #: src/hooks/useCriteriaResults.tsx:351
-msgid "You reported that {0} rent stabilized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that{2} {3}If those sources are correct, then you may already have stronger tenant protections than Good Cause Eviction provides. {guideLink}"
-msgstr "Usted informó que {0} tiene renta estabilizada, y estamos utilizando su respuesta como parte de nuestra evaluación de cobertura. Nota: las fuentes de datos disponibles públicamente indican que{2} {3}Si esas fuentes son correctas, es posible que ya cuente con protecciones para inquilinos más sólidas que las que ofrece Good Cause Eviction. {guideLink}"
+#~ msgid "You reported that {0} rent stabilized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that{2} {3}If those sources are correct, then you may already have stronger tenant protections than Good Cause Eviction provides. {guideLink}"
+#~ msgstr "You reported that {0} rent stabilized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that{2} {3}If those sources are correct, then you may already have stronger tenant protections than Good Cause Eviction provides. {guideLink}"
 
 #: src/hooks/useCriteriaResults.tsx:377
-msgid "You reported that you are not sure if your apartment is rent stabilized. {guideLink}"
-msgstr "Usted informó que no está seguro de si su departamento tiene renta estabilizada. {guideLink}"
+#~ msgid "You reported that you are not sure if your apartment is rent stabilized. {guideLink}"
+#~ msgstr "You reported that you are not sure if your apartment is rent stabilized. {guideLink}"
 
 #: src/hooks/useCriteriaResults.tsx:375
-msgid "You reported that your apartment is not rent stabilized."
-msgstr "Usted informó que su departamento no tiene renta estabilizada."
+#~ msgid "You reported that your apartment is not rent stabilized."
+#~ msgstr "You reported that your apartment is not rent stabilized."
 
 #: src/hooks/useCriteriaResults.tsx:345
 msgid "You reported that your apartment is rent stabilized."
@@ -1715,8 +1712,8 @@ msgid "You’re not alone. Too many landlords care more about getting rich off o
 msgstr "No estás solo. Demasiados propietarios se preocupan más por enriquecerse con el dinero de nuestro alquiler que por proporcionarnos viviendas dignas."
 
 #: src/hooks/useCriteriaResults.tsx:354
-msgid "your apartment is not"
-msgstr "tu departamento no es"
+#~ msgid "your apartment is not"
+#~ msgstr "your apartment is not"
 
 #. placeholder {0}: formatNumber(unitsres)
 #: src/hooks/useCriteriaResults.tsx:152
@@ -1764,10 +1761,9 @@ msgstr "Tu edificio solo tiene {pluralApartments}, pero"
 #~ msgid "Your building has only {pluralApartments}, but{1} other buildings. <0>Find your landlord’s other buildings</0>"
 #~ msgstr "Your building has only {pluralApartments}, but{1} other buildings. <0>Find your landlord’s other buildings</0>"
 
-#. placeholder {0}: activeJ51 ? "421a" : "J51"
 #: src/hooks/useCriteriaResults.tsx:365
-msgid "your building receives the {0} tax incentive, which means your apartment should be rent stabilized."
-msgstr "Su edificio recibe el incentivo fiscal « {0} », lo que significa que su departamento debería tener un alquiler estabilizado."
+#~ msgid "your building receives the {0} tax incentive, which means your apartment should be rent stabilized."
+#~ msgstr "your building receives the {0} tax incentive, which means your apartment should be rent stabilized."
 
 #: src/hooks/useCriteriaResults.tsx:488
 msgid "Your building was issued a certificate of occupancy on {latestCoDateFormatted}."
