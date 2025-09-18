@@ -344,41 +344,44 @@ function eligibilityRentStabilized(
     userValue = (
       <Trans>You reported that your apartment is rent stabilized.</Trans>
     );
-  } else {
-    determination = rentStabilized === "NO" ? "ELIGIBLE" : "UNKNOWN";
-    userValue =
-      allUnitsRS || active421a || activeJ51 ? (
-        <>
-          You reported that{" "}
-          {rentStabilized === "NO" ? (
-            <>your apartment is not</>
-          ) : (
-            <>you are not sure if your apartment is</>
-          )}{" "}
-          rent stabilized, and we are using your answer as part of our coverage
-          assessment. Note: publicly available data sources indicate that
-          {allUnitsRS ? (
-            <>
-              all apartments in your building are registered as rent stabilized.
-            </>
-          ) : (
-            <>
-              your building receives the {activeJ51 ? "421a" : "J51"} tax
-              incentive, which means your apartment should be rent stabilized.
-            </>
-          )}{" "}
-          {allUnitsRS ? wowLink : subsidyLink}{" "}
-          If those sources are correct, then you may already have stronger
-          tenant protections than Good Cause Eviction provides. {guideLink}
-        </>
-      ) : rentStabilized === "NO" ? (
-        <>You reported that your apartment is not rent stabilized.</>
-      ) : (
-        <>
-          You reported that you are not sure if your apartment is rent
-          stabilized. {guideLink}
-        </>
+  } else if (rentStabilized === "NO") {
+    determination = "ELIGIBLE";
+    if (allUnitsRS) {
+      userValue = (
+        <Trans>
+          You reported that your apartment is not rent stabilized, and we are
+          using your answer as part of our coverage assessment. Note: publicly
+          available data sources indicate that all apartments in your building
+          are registered as rent stabilized. {wowLink} If those sources are
+          correct, then you may already have stronger tenant protections than
+          Good Cause Eviction provides. {guideLink}
+        </Trans>
       );
+    } else if (active421a || activeJ51) {
+      userValue = (
+        <Trans>
+          You reported that your apartment is not rent stabilized, and we are
+          using your answer as part of our coverage assessment. Note: publicly
+          available data sources indicate that your building receives the{" "}
+          {activeJ51 ? "421a" : "J51"} tax incentive, which means your apartment
+          should be rent stabilized. {subsidyLink} If those sources are correct,
+          then you may already have stronger tenant protections than Good Cause
+          Eviction provides. {guideLink}
+        </Trans>
+      );
+    } else {
+      userValue = (
+        <Trans>You reported that your apartment is not rent stabilized.</Trans>
+      );
+    }
+  } else {
+    determination = "UNKNOWN";
+    userValue = (
+      <Trans>
+        You reported that you are not sure if your apartment is rent stabilized.{" "}
+        {guideLink}
+      </Trans>
+    );
   }
 
   return {
