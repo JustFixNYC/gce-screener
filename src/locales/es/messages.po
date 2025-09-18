@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-09-18 18:47\n"
+"PO-Revision-Date: 2025-09-18 19:52\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -153,7 +153,7 @@ msgstr "una cooperativa"
 
 #: src/hooks/useCriteriaResults.tsx:416
 msgid "a condo"
-msgstr "un departamento"
+msgstr "un condominio"
 
 #: src/Components/Pages/Form/Survey.tsx:136
 msgid "A few questions about your apartment"
@@ -274,7 +274,7 @@ msgstr "Certificado de ocupación"
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:123
 msgid "Check your lease renewal"
-msgstr "Revise la renovación de su contrato de alquiler"
+msgstr "Revise la renovación de su contrato de arrendamiento"
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:104
 msgid "Check your most recent lease renewal"
@@ -422,7 +422,7 @@ msgstr "Averigüe si su departamento tiene alquiler estabilizado"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:70
 msgid "Find out if your landlord owns other buildings"
-msgstr "Averigüe si su arrendador es propietario de otros edificios"
+msgstr "Averigüe si su arrendador es propietario de otros edificios."
 
 #: src/hooks/useCriteriaResults.tsx:174
 msgid "Find your landlord’s other buildings"
@@ -469,7 +469,7 @@ msgstr "La Ley de Desalojo por Justa Causa solo se aplica a los inquilinos que n
 
 #: src/Components/Pages/Home/Home.tsx:105
 msgid "Good Cause Eviction protections went into effect on April 20th, 2024. If you are covered by the law, you have strong legal protections against eviction as long as you follow your lease. There are also limits to how much your landlord can raise your rent. "
-msgstr "Las protecciones por Desalojo por Justa Causa entraron en vigor el 20 de abril de 2024. Si usted está amparado por la ley, cuenta con sólidas protecciones legales contra el desalojo siempre y cuando cumpla con su contrato de alquiler. También hay límites en cuanto al aumento del alquiler que puede aplicar el propietario."
+msgstr "Las protecciones por Desalojo por Justa Causa entraron en vigor el 20 de abril de 2024. Si usted está amparado por la ley, cuenta con sólidas protecciones legales contra el desalojo siempre y cuando cumpla con su contrato de arrendamiento. También hay límites en cuanto al aumento del alquiler que puede aplicar el propietario. "
 
 #: src/Components/Pages/Home/Home.tsx:177
 msgid "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
@@ -545,7 +545,7 @@ msgstr "No estoy seguro"
 
 #: src/hooks/useCriteriaResults.tsx:193
 msgid "If the building has 10 or fewer apartments, the landlord must not also live in it."
-msgstr "Si el edificio tiene 10 o menos departamentos, el propietario no debe vivir también en él."
+msgstr "Si el edificio tiene 10 o menos departamentos, el arrendador no debe vivir también en él."
 
 #: src/hooks/useCriteriaResults.tsx:596
 msgid "If those sources are correct, then you may already have stronger tenant protections than other subsidized housing programs."
@@ -582,7 +582,7 @@ msgstr "Si usted tiene un alquiler estabilizado, su arrendador no puede simpleme
 #: src/Components/KYRContent/KYRContent.tsx:651
 #: src/Components/KYRContent/KYRContent.tsx:668
 msgid "If you are the immediate family member of a rent-stabilized tenant and have been living with them immediately prior to their moving or passing away, you might be entitled to take over the lease."
-msgstr "Si usted es familiar directo de un inquilino con alquiler estabilizado y ha estado viviendo con él inmediatamente antes de su mudanza o fallecimiento, es posible que tenga derecho a hacerse cargo del contrato de alquiler."
+msgstr "Si usted es familiar directo de un inquilino con alquiler estabilizado y ha estado viviendo con él inmediatamente antes de su mudanza o fallecimiento, es posible que tenga derecho a hacerse cargo del contrato de arrendamiento."
 
 #: src/Components/Pages/Form/Survey.tsx:369
 #~ msgid "If you know that your building is part of Low-Income Housing Tax Credit (LIHTC) program, select the option: <0>\"Other subsidized housing\"</0>"
@@ -646,7 +646,7 @@ msgstr "Si su edificio tiene menos de 11 departamentos, debe averiguar si su arr
 
 #: src/Components/KYRContent/KYRContent.tsx:450
 msgid "If your landlord refuses to renew your lease, tells you that you have to leave for no reason, or tries to evict you for no reason, stay in your home!"
-msgstr "Si su arrendador se niega a renovar su contrato de alquiler, le dice que tiene que irse sin motivo alguno o intenta desalojarlo sin razón aparente, ¡quédese en su casa!"
+msgstr "Si su arrendador se niega a renovar su contrato de arrendamiento, le dice que tiene que irse sin motivo alguno o intenta desalojarlo sin razón aparente, ¡quédese en su casa!"
 
 #: src/Components/KYRContent/KYRContent.tsx:538
 msgid "If your landlord takes you to court, you can raise a “Good Cause” defense. Your landlord would then have to demonstrate to the judge that they raised the rent because of increased costs (taxes, maintenance costs, etc.) or be forced to lower the increase."
@@ -659,7 +659,7 @@ msgstr "Si la renovación más reciente de su contrato de arrendamiento <0>se pa
 
 #: src/Components/Modal/Modal.tsx:100
 msgid "If your most recent lease renewal looks like the image below, then your apartment is almost certainly rent stabilized. If your lease renewal does not look like the image below, your apartment could still be rent stabilized."
-msgstr "Si la renovación más reciente de su contrato de alquiler se parece a la imagen que aparece a continuación, es casi seguro que su departamento está sujeto a un alquiler estabilizado. Si la renovación de su contrato de alquiler no se parece a la imagen que aparece a continuación, es posible que su departamento siga estando sujeto a un alquiler estabilizado."
+msgstr "Si la renovación más reciente de su contrato de arrendamiento se parece a la imagen que aparece a continuación, es casi seguro que su departamento está sujeto a un alquiler estabilizado. Si la renovación de su contrato de alquiler no se parece a la imagen que aparece a continuación, es posible que su departamento siga estando sujeto a un alquiler estabilizado."
 
 #: src/Components/KYRContent/KYRContent.tsx:515
 #~ msgid ""
@@ -723,15 +723,15 @@ msgstr "Carta de queja de JustFix"
 
 #: src/Components/KYRContent/KYRContent.tsx:377
 msgid "Landlord personal use/removal from market"
-msgstr "Uso personal por parte del propietario/retirada del mercado"
+msgstr "Uso personal por parte del arrendador/retirada del mercado"
 
 #: src/Components/Pages/Results/Results.tsx:289
 msgid "Landlord portfolio size"
-msgstr "Tamaño de la cartera del propietario"
+msgstr "Tamaño de la cartera del arrendador"
 
 #: src/Components/KYRContent/KYRContent.tsx:332
 msgid "Landlords can increase the rent more than the reasonable rent increase but they must explain why and must point to increases in their costs or substantial repairs they did to the apartment or building."
-msgstr "Los propietarios pueden aumentar el alquiler más allá del incremento razonable, pero deben explicar por qué y señalar los aumentos en sus costos o las reparaciones sustanciales que realizaron en el departamento o el edificio."
+msgstr "Los arrendadores pueden aumentar el alquiler más allá del incremento razonable, pero deben explicar por qué y señalar los aumentos en sus costos o las reparaciones sustanciales que realizaron en el departamento o el edificio."
 
 #: src/Components/Footer/Footer.tsx:16
 msgid "Language"
@@ -1131,7 +1131,7 @@ msgstr "Las fuentes de datos disponibles públicamente indican que todos los dep
 #. placeholder {0}: bldgData.unitsres == 1 ? "is 1 apartment" : `are ${bldgData.unitsres} apartments`
 #: src/Components/Pages/Form/Survey.tsx:326
 msgid "Publicly available data sources indicate that there {0} in your building. Good Cause protections only apply to tenants whose landlord owns more than 10 apartments, even if those apartments are spread across multiple buildings."
-msgstr "Las fuentes de datos disponibles públicamente indican que hay {0} en su edificio. Las protecciones por justa causa solo se aplican a los inquilinos cuyo propietario posea más de 10 apartamentos, incluso si esos departamentos están repartidos en varios edificios."
+msgstr "Las fuentes de datos disponibles públicamente indican que hay {0} en su edificio. Las protecciones por justa causa solo se aplican a los inquilinos cuyo arrendador posea más de 10 apartamentos, incluso si esos departamentos están repartidos en varios edificios."
 
 #: src/Components/Pages/Form/Survey.tsx:620
 #~ msgid "Publicly available data sources indicate that your building {0}, which is considered subsidized housing."
@@ -1382,7 +1382,7 @@ msgstr "La única forma en que su arrendador puede desalojarlo legalmente es med
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:141
 msgid "The owner of the building may be different than the person listed on your lease."
-msgstr "El propietario del edificio puede ser diferente de la persona que figura en su contrato de alquiler."
+msgstr "El propietario del edificio puede ser diferente de la persona que figura en su contrato de arrendamiento."
 
 #: src/Components/KYRContent/KYRContent.tsx:289
 #~ msgid ""
@@ -1441,7 +1441,7 @@ msgstr "Para saber qué protecciones tiene a través del programa de subsidios d
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:89
 msgid "To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments"
-msgstr "Para cumplir con el requisito de \"tamaño de la cartera del propietario\" de Desalojo por Justa Causa, debe averiguar si su propietario tiene más de 10 departamentos"
+msgstr "Para cumplir con el requisito de \"tamaño de la cartera del propietario\" de Desalojo por Justa Causa, debe averiguar si su arrendador tiene más de 10 departamentos"
 
 #: src/Components/Pages/Results/Results.tsx:290
 msgid "Type of building"
@@ -1457,7 +1457,7 @@ msgstr "Tipo de edificio"
 
 #: src/Components/KYRContent/KYRContent.tsx:361
 msgid "Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:"
-msgstr "Según la Ley de Desalojo por Justa Causa, los propietarios pueden desalojar a los inquilinos por las siguientes \"causas justificadas\":"
+msgstr "Según la Ley de Desalojo por Justa Causa, los arrendadores pueden desalojar a los inquilinos por las siguientes \"causas justificadas\":"
 
 #: src/Components/Pages/TenantRights/TenantRights.tsx:23
 msgid "Understanding your rights"
@@ -1618,7 +1618,7 @@ msgstr "No está amparado por la Ley por Justa Causa porque ya cuenta con protec
 #. placeholder {0}: CPI + 5
 #: src/Components/KYRContent/KYRContent.tsx:526
 msgid "You can withhold the rent increase above the ‘reasonable’ threshold. Pay your old rent plus {0}%. To be safe, set aside the extra rent in a separate escrow account until your negotiations with your landlord have totally resolved."
-msgstr "Puede retener el aumento del alquiler que supere el límite \"razonable\". Pague su antiguo alquiler más {0} %. Para mayor seguridad, guarde el alquiler adicional en una cuenta de depósito en garantía separada hasta que las negociaciones con el propietario se hayan resuelto por completo."
+msgstr "Puede retener el aumento del alquiler que supere el límite \"razonable\". Pague su antiguo alquiler más {0} %. Para mayor seguridad, guarde el alquiler adicional en una cuenta de depósito en garantía separada hasta que las negociaciones con su arrendador se hayan resuelto por completo."
 
 #: src/Components/GeoSearchInput/GeoSearchInput.tsx:76
 msgid "You must enter an address"
@@ -1808,7 +1808,7 @@ msgstr "Su arrendador debe notificarle por escrito cualquier aumento del alquile
 
 #: src/Components/KYRContent/KYRContent.tsx:353
 msgid "Your landlord will need to provide a good reason for ending a tenancy. Even if your lease expires, your landlord cannot evict you, as long as you abide by the terms of your expired lease."
-msgstr "El propietario deberá proporcionar una razón válida para rescindir el contrato de alquiler. Aunque el contrato haya vencido, el propietario no puede desalojarlo, siempre y cuando usted cumpla con los términos del contrato vencido."
+msgstr "El arrendador deberá proporcionar una razón válida para rescindir el contrato de alquiler. Aunque el contrato haya vencido, su arrendador no puede desalojarlo, siempre y cuando usted cumpla con los términos del contrato vencido."
 
 #: src/Components/KYRContent/KYRContent.tsx:846
 msgid "Your local City Council representative"
