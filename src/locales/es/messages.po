@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-09-18 19:52\n"
+"PO-Revision-Date: 2025-09-18 21:00\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -85,15 +85,15 @@ msgstr "<0>Consejo:</0> recomendamos realizar la siguiente investigación en una
 
 #: src/Components/Pages/Results/Results.tsx:574
 msgid "<0>You are</0> <1>likely covered</1> by Good Cause Eviction"
-msgstr "<1>Es probable que</1> <0>usted esté</0> <1>cubierto</1> por el desalojo por justa causa."
+msgstr "<1>Es probable que</1> <0>usted esté</0> <1>amparado</1> por el Desalojo por Justa Causa"
 
 #: src/Components/Pages/Results/Results.tsx:555
 msgid "<0>You are</0> <1>likely not covered</1> <2/>by Good Cause Eviction"
-msgstr "<1>Es probable que no</1> <0>esté</0> <1>cubierto</1> <2/>por el desalojo por justa causa."
+msgstr "<1>Es probable que no</1> <0>esté</0> <1>amparado</1> <2/>por el Desalojo por Justa Causa"
 
 #: src/Components/Pages/Results/Results.tsx:546
 msgid "<0>You</0> <1>might be covered</1> by Good Cause Eviction"
-msgstr "<1>Es posible que</1> <0>usted</0> <1>esté protegido</1> por el desalojo por justa causa."
+msgstr "<1>Es posible que</1> <0>usted</0> <1>esté amparado</1> por el Desalojo por Justa Causa"
 
 #: src/Components/Pages/Results/Results.tsx:583
 msgid "<0>Your apartment is part of</0> <1>NYCHA or PACT/RAD</1> which provides stronger protections than Good Cause Eviction"
@@ -1043,11 +1043,11 @@ msgstr "Por favor, responda las preguntas sin contestar antes de continuar."
 
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:67
 msgid "Please confirm your address"
-msgstr "Por favor, confirme su dirección."
+msgstr "Confirme su dirección"
 
 #: src/Components/Pages/Form/Survey.tsx:191
 msgid "Please enter your total rent amount."
-msgstr "Por favor, ingrese el monto total de su alquiler."
+msgstr "Ingrese el monto total de su alquiler."
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:212
 msgid "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that's a good sign they own the property."
@@ -1055,15 +1055,15 @@ msgstr "Revise estos documentos para saber si el propietario de su edificio tamb
 
 #: src/Components/Pages/Form/Survey.tsx:260
 msgid "Please specify if your apartment is part of any subsidized housing programs."
-msgstr "Por favor, especifique si su departamento forma parte de algún programa de vivienda subsidiada."
+msgstr "Especifique si su departamento forma parte de algún programa de vivienda subsidiada."
 
 #: src/Components/Pages/Form/Survey.tsx:222
 msgid "Please specify if your apartment is rent stabilized."
-msgstr "Por favor, especifique si su departamento tiene alquiler estabilizado."
+msgstr "Especifique si su departamento tiene alquiler estabilizado."
 
 #: src/Components/Pages/Form/Survey.tsx:161
 msgid "Please specify the number of bedrooms in your apartment."
-msgstr "Por favor, especifique el número de habitaciones que tiene su departamento."
+msgstr "Especifique el número de habitaciones que tiene su departamento."
 
 #: src/Components/Pages/Form/Survey.tsx:297
 msgid "Please specify whether your landlord lives in your apartment building."
@@ -1148,7 +1148,7 @@ msgstr "Las fuentes de datos disponibles públicamente indican que su edificio f
 #. placeholder {0}: active421a ? "421a" : "J51"
 #: src/Components/Pages/Form/Survey.tsx:498
 msgid "Publicly available data sources indicate that your building receives the {0} tax incentive. This means your apartment is rent stabilized."
-msgstr "Las fuentes de datos disponibles públicamente indican que su edificio recibe el incentivo fiscal del Programa de Estabilización de Alquileres {0}. Esto significa que su departamento está sujeto a un alquiler estabilizado."
+msgstr "Las fuentes de datos disponibles públicamente indican que su edificio recibe el incentivo fiscal {0} del Programa de Estabilización de Alquileres. Esto significa que su departamento está sujeto a un alquiler estabilizado."
 
 #. placeholder {0}: formatNumber(relatedProperties)
 #: src/hooks/useCriteriaResults.tsx:163
@@ -1251,7 +1251,7 @@ msgstr "Mostrando {visibleCount} de {totalCount} edificios que su arrendador pod
 
 #: src/Components/KYRContent/KYRContent.tsx:468
 msgid "Since your apartment is covered by Good Cause Eviction, there is a good chance other apartments in your building are covered as well. Organizing with your neighbors can help you assert your rights as a group."
-msgstr "Dado que su departamento está protegido por la Ley de Desalojo por Justa Causa, es muy probable que otros departamentos de su edificio también lo estén. Organizarse con sus vecinos puede ayudarle a hacer valer sus derechos como grupo."
+msgstr "Dado que su departamento está amparado por la Ley de Desalojo por Justa Causa, es muy probable que otros departamentos de su edificio también lo estén. Organizarse con sus vecinos puede ayudarle a hacer valer sus derechos como grupo."
 
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:190
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:262
@@ -1485,7 +1485,7 @@ msgstr "Utilice la Ley de Desalojo por Justa Causa para impugnar el aumento de s
 
 #: src/Components/KYRContent/KYRContent.tsx:445
 msgid "Use Good Cause to stay in your home"
-msgstr "Utilice una justa causa para permanecer en su hogar"
+msgstr "Utilice la Ley de Desalojo por Justa Causa para permanecer en su hogar"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:366
 msgid "View all documents from Richmond County Clerk"
@@ -1522,7 +1522,7 @@ msgstr "Visite Housing Justice for All"
 
 #: src/Components/Pages/Home/Home.tsx:218
 msgid "Visit JustFix"
-msgstr "Visita JustFix"
+msgstr "Visite JustFix"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:462
 msgid "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner's name and signature."
@@ -1559,11 +1559,11 @@ msgstr "Le enviaremos un mensaje de texto una vez al año para que conozca sus c
 
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:69
 msgid "We’ll use publicly available information about your building to help learn if you’re covered."
-msgstr "Utilizaremos la información pública disponible sobre su edificio para saber si está cubierto."
+msgstr "Utilizaremos la información pública disponible sobre su edificio para saber si está amparado."
 
 #: src/Components/Pages/Form/Survey.tsx:138
 msgid "We’ll use your answers and publicly available information about your building to help learn if you’re covered."
-msgstr "Utilizaremos sus respuestas y la información disponible públicamente sobre su edificio para determinar si está cubierto."
+msgstr "Utilizaremos sus respuestas y la información disponible públicamente sobre su edificio para determinar si está amparado."
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:494
 msgid "We’ve loaded all buildings that we could find related to your landlord."
@@ -1575,7 +1575,7 @@ msgstr "Cuando los inquilinos se unen, tenemos poder. Los inquilinos de todo nue
 
 #: src/Components/KYRContent/KYRContent.tsx:867
 msgid "Whether or not you are covered by Good Cause, you still have important tenant rights"
-msgstr "Independientemente de si está amparado por una justa causa, sigue teniendo importantes derechos como inquilino"
+msgstr "Independientemente de si está amparado por Justa Causa, sigue teniendo importantes derechos como inquilino"
 
 #: src/Components/KYRContent/KYRContent.tsx:523
 msgid "Withhold the unreasonable increase"
