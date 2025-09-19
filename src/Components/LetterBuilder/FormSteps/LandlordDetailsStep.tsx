@@ -38,17 +38,15 @@ const formatLandlordAddress = (addr: LandlordContact["address"]): string => {
 
 const wowContactToLandlordDetails = (
   contact: LandlordContact
-): FormFields["landlordDetails"] => {
+): FormFields["landlord_details"] => {
   const { address } = contact;
   return {
     name: contact.value,
-    address: {
-      primary_line: `${address.housenumber} ${address.streetname}`,
-      secondary_line: address.apartment,
-      city: address.city,
-      state: address.state,
-      zip_code: address.zip,
-    },
+    primary_line: `${address.housenumber} ${address.streetname}`,
+    secondary_line: address.apartment,
+    city: address.city,
+    state: address.state,
+    zip_code: address.zip,
   };
 };
 
@@ -60,7 +58,7 @@ export const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
     getValues,
   } = props;
 
-  const addressErrors = errors.landlordDetails?.address;
+  const addressErrors = errors.landlord_details;
 
   const [lookupComplete, setLookupComplete] = useState(false);
 
@@ -68,7 +66,7 @@ export const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
     data: landlordData,
     isLoading,
     error,
-  } = useGetLandlordData(getValues("userDetails.address.bbl"));
+  } = useGetLandlordData(getValues("user_details.bbl"));
 
   const owners = getOwnerContacts(landlordData);
 
@@ -85,15 +83,15 @@ export const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
             legendText="Are any of these your landlord's information?"
             key="lookup-suggestions"
           >
-            {errors?.landlordDetails && (
-              <span className="error">{errors?.landlordDetails?.message}</span>
+            {errors?.landlord_details && (
+              <span className="error">{errors?.landlord_details?.message}</span>
             )}
             {owners.map((owner, index) => (
               // TODO: should update JFCL to allow label to be string or ReactNode
 
               <Controller
                 key={index}
-                name="landlordDetails"
+                name="landlord_details"
                 control={control}
                 render={({ field }) => (
                   <RadioButton
@@ -115,18 +113,18 @@ export const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
               />
             ))}
             <Controller
-              name="landlordDetails"
+              name="landlord_details"
               control={control}
               render={({ field }) => (
                 <RadioButton
                   {...field}
-                  value={JSON.stringify(defaultFormValues.landlordDetails)}
+                  value={JSON.stringify(defaultFormValues.landlord_details)}
                   checked={
                     JSON.stringify(field.value) ===
-                    JSON.stringify(defaultFormValues.landlordDetails)
+                    JSON.stringify(defaultFormValues.landlord_details)
                   }
                   onChange={() =>
-                    field.onChange(defaultFormValues.landlordDetails)
+                    field.onChange(defaultFormValues.landlord_details)
                   }
                   labelText="None of the above"
                   id={`landlord-address_none`}
@@ -145,21 +143,22 @@ export const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
       {showManual && (
         <FormGroup
           legendText="Please provide your landlord's mailing address"
-          invalid={!!errors?.landlordDetails}
-          invalidText={errors?.landlordDetails?.message}
+          invalid={!!errors?.landlord_details}
+          invalidText={errors?.landlord_details?.message}
           key="manual-input"
         >
           <TextInput
-            {...register("landlordDetails.name")}
+            {...register("landlord_details.name")}
             id={`form-landlord-name`}
             labelText="Lanldord name"
-            invalid={!!errors.landlordDetails?.name}
-            invalidText={errors.landlordDetails?.name?.message}
+            invalid={!!errors.landlord_details?.name}
+            invalidText={errors.landlord_details?.name?.message}
             invalidRole="status"
             type="text"
+            autoFocus
           />
           <TextInput
-            {...register("landlordDetails.address.primary_line")}
+            {...register("landlord_details.primary_line")}
             id={`form-landlord-primary-line`}
             labelText="Primary line"
             invalid={!!addressErrors?.primary_line}
@@ -168,7 +167,7 @@ export const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
             type="text"
           />
           <TextInput
-            {...register("landlordDetails.address.secondary_line")}
+            {...register("landlord_details.secondary_line")}
             id={`form-landlord-secondary-line`}
             labelText="Secondary line (optional)"
             invalid={!!addressErrors?.secondary_line}
@@ -177,7 +176,7 @@ export const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
             type="text"
           />
           <TextInput
-            {...register("landlordDetails.address.city")}
+            {...register("landlord_details.city")}
             id={`form-landlord-city`}
             labelText="City/Borough"
             invalid={!!addressErrors?.city}
@@ -187,7 +186,7 @@ export const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
           />
           {/* TODO: use dropdown for state to ensure correct format */}
           <TextInput
-            {...register("landlordDetails.address.state")}
+            {...register("landlord_details.state")}
             id={`form-landlord-state`}
             labelText="State"
             invalid={!!addressErrors?.state}
@@ -195,9 +194,9 @@ export const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
             invalidRole="status"
             type="text"
           />
-          {getValues("landlordDetails.address.state") === "PR" && (
+          {getValues("landlord_details.state") === "PR" && (
             <TextInput
-              {...register("landlordDetails.address.urbanization")}
+              {...register("landlord_details.urbanization")}
               id={`form-landlord-urbanization`}
               labelText="Urbanization (Puerto Rico only)"
               invalid={!!addressErrors?.urbanization}
@@ -207,7 +206,7 @@ export const LandlordDetailsStep: React.FC<FormHookProps> = (props) => {
             />
           )}
           <TextInput
-            {...register("landlordDetails.address.zip_code")}
+            {...register("landlord_details.zip_code")}
             id={`form-landlord-zip-code`}
             labelText="ZIP Code"
             invalid={!!addressErrors?.zip_code}

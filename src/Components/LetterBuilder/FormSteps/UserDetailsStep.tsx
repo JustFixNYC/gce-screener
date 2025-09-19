@@ -16,32 +16,32 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
     formState: { errors },
   } = props;
 
-  const userErrors = errors.userDetails;
+  const userErrors = errors.user_details;
 
   const { _ } = useLingui();
 
   return (
     <>
       <TextInput
-        {...register("userDetails.firstName")}
-        id="form-firstName"
+        {...register("user_details.first_name")}
+        id="form-first_name"
         labelText={_(msg`First name`)}
-        invalid={!!userErrors?.firstName}
-        invalidText={userErrors?.firstName?.message}
+        invalid={!!userErrors?.first_name}
+        invalidText={userErrors?.first_name?.message}
         invalidRole="status"
         type="text"
       />
       <TextInput
-        {...register("userDetails.lastName")}
-        id="form-lastName"
+        {...register("user_details.last_name")}
+        id="form-last_name"
         labelText={_(msg`Last name`)}
-        invalid={!!userErrors?.lastName}
-        invalidText={userErrors?.lastName?.message}
+        invalid={!!userErrors?.last_name}
+        invalidText={userErrors?.last_name?.message}
         invalidRole="status"
         type="text"
       />
       <TextInput
-        {...register("userDetails.email")}
+        {...register("user_details.email")}
         id="form-email"
         labelText={_(msg`Email`)}
         invalid={!!userErrors?.email}
@@ -50,7 +50,7 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
         type="email"
       />
       <Controller
-        name="userDetails.phone"
+        name="user_details.phone_number"
         control={control}
         render={({ field }) => (
           <TextInput
@@ -59,10 +59,10 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
             onChange={(e) =>
               field.onChange(parseFormattedPhoneNumber(e.target.value))
             }
-            id="form-phone"
+            id="form-phone_number"
             labelText={_(msg`Phone`)}
-            invalid={!!userErrors?.phone}
-            invalidText={userErrors?.phone?.message}
+            invalid={!!userErrors?.phone_number}
+            invalidText={userErrors?.phone_number?.message}
             invalidRole="status"
             type="tel"
           />

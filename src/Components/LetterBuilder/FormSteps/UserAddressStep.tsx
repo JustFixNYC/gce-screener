@@ -4,7 +4,10 @@ import { Address } from "../../Pages/Home/Home";
 
 const geosearchToLOBAddressWithBBL = (
   addr: Address
-): FormFields["userDetails"]["address"] => {
+): Pick<
+  FormFields["user_details"],
+  "primary_line" | "city" | "zip_code" | "state" | "bbl"
+> => {
   return {
     primary_line: `${addr.houseNumber} ${addr.streetName}`,
     city: addr.borough,
@@ -16,19 +19,25 @@ const geosearchToLOBAddressWithBBL = (
 
 export const UserAddressStep: React.FC<FormHookProps> = (props) => {
   const {
-    setValue,
+    reset,
+    getValues,
     setError,
     formState: { errors },
   } = props;
   return (
     <GeoSearchInput
       onChange={(addr) =>
-        setValue("userDetails.address", geosearchToLOBAddressWithBBL(addr))
+        reset({
+          user_details: {
+            ...getValues("user_details"),
+            ...geosearchToLOBAddressWithBBL(addr),
+          },
+        })
       }
-      invalid={!!errors.userDetails?.address}
+      invalid={!!errors.user_details}
       setInvalid={(isError) => {
         if (isError) {
-          setError("userDetails.address", {
+          setError("user_details", {
             type: "custom",
             message: "Error with address selection",
           });

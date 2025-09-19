@@ -1,5 +1,7 @@
 // WOW API
 
+import { FormFields } from "./LetterFormTypes";
+
 export type AcrisDocument = {
   doc_id: string;
   doc_type: string;
@@ -113,40 +115,26 @@ export type GCEPostData = {
   result_url?: string;
 };
 
-export type GCELetter = {
-  error: string | null;
-  data: unknown;
-  pdf_content: string;
-};
-
-export type GCEUserDetails = {
-  first_name: string;
-  last_name: string;
-  phone_number: string;
-  email: string;
-  bbl: string;
-  primary_line: string;
-  secondary_line?: string;
-  city: string;
-  state: string;
-  zip_code: string;
-};
-
-export type GCELandlordDetails = {
-  name: string;
-  email: string;
-  primary_line: string;
-  secondary_line?: string;
-  city: string;
-  state: string;
-  zip_code: string;
-};
-export type GCELetterPostData = {
-  user_details: GCEUserDetails;
-  landlord_details: GCELandlordDetails;
-  mail_choice: string;
-  email_to_landlord: boolean;
+export type GCELetterPostData = FormFields & {
   html_content: string;
+};
+
+type LetterError = {
+  error: boolean;
+  message?: string;
+};
+
+export type GCELetterConfirmation = {
+  errors: {
+    landlord_email?: LetterError;
+    user_email?: LetterError;
+    letter_mail?: LetterError;
+    textit_campaign?: LetterError;
+  };
+  data: {
+    letter_pdf: string;
+    tracking_number?: string;
+  };
 };
 
 export type LOBVerificationResponse = {

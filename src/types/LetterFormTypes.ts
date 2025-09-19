@@ -16,10 +16,10 @@ const addressLOB = z.object({
 });
 
 export const FormSchema = z.object({
-  userDetails: z.object({
-    firstName: z.string().min(1, "Name is required for the letter"),
-    lastName: z.string().min(1, "Name is required for the letter"),
-    phone: z
+  user_details: z.object({
+    first_name: z.string().min(1, "Name is required for the letter"),
+    last_name: z.string().min(1, "Name is required for the letter"),
+    phone_number: z
       .string({
         error: (iss) =>
           iss.input === undefined || iss.input === ""
@@ -38,46 +38,76 @@ export const FormSchema = z.object({
           ? "Email is required to send your copy of the letter"
           : "Please enter a valid email",
     }),
-    address: addressLOB
+    ...addressLOB
       .omit({ urbanization: true })
-      .extend({ bbl: z.string().regex(/^\d{10}$/) }),
+      .extend({ bbl: z.string().regex(/^\d{10}$/) }).shape,
   }),
-  landlordDetails: z.object({
+  landlord_details: z.object({
     name: z.string().min(1, "Landlord name is required"),
-    address: addressLOB,
+    email: z.email().optional(),
+    ...addressLOB.shape,
   }),
-
+  mail_choice: z.literal(
+    ["WE_WILL_MAIL", "USER_WILL_MAIL"],
+    "Please select an option for mailing the letter"
+  ),
+  email_to_landlord: z.boolean(),
   // TODO: add fieldArray of emails (see https://react-hook-form.com/docs/usefieldarray)
 });
-
-export const defaultFormValues: FormFields = {
-  userDetails: {
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
-    address: {
-      primary_line: "",
-      secondary_line: undefined,
-      city: "",
-      state: "",
-      zip_code: "",
-      bbl: "",
-    },
-  },
-  landlordDetails: {
-    name: "",
-    address: {
-      primary_line: "",
-      secondary_line: undefined,
-      city: "",
-      state: "",
-      zip_code: "",
-      urbanization: undefined,
-    },
-  },
-};
 
 export type FormFields = z.infer<typeof FormSchema>;
 
 export type FormHookProps = UseFormReturn<FormFields>;
+
+export const defaultFormValues: FormFields = {
+  user_details: {
+    first_name: "",
+    last_name: "",
+    phone_number: "",
+    email: "",
+    primary_line: "",
+    secondary_line: undefined,
+    city: "",
+    state: "",
+    zip_code: "",
+    bbl: "",
+  },
+  landlord_details: {
+    name: "",
+    email: "",
+    primary_line: "",
+    secondary_line: undefined,
+    city: "",
+    state: "",
+    zip_code: "",
+    urbanization: undefined,
+  },
+  mail_choice: "WE_WILL_MAIL",
+  email_to_landlord: true,
+};
+
+export const sampleFormValues: FormFields = {
+  user_details: {
+    first_name: "Maxwell",
+    last_name: "Austensen",
+    phone_number: "3475551234",
+    email: "maxwell@justfix.org",
+    primary_line: "deliverable",
+    secondary_line: "Apt 1",
+    city: "BROOKLYN",
+    state: "NY",
+    zip_code: "11111",
+    bbl: "3000010001",
+  },
+  landlord_details: {
+    name: "Maxwell Austensen",
+    email: "maxwell@justfix.org",
+    primary_line: "deliverable",
+    secondary_line: "Apt 1",
+    city: "BROOKLYN",
+    state: "NY",
+    zip_code: "11111",
+  },
+  mail_choice: "WE_WILL_MAIL",
+  email_to_landlord: true,
+};

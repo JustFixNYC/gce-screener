@@ -1,9 +1,9 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { setupI18n } from "@lingui/core";
 
-import { GCELetterPostData } from "../../../types/APIDataTypes";
-import { SupportedLocale } from "../../../i18n-base";
+import { isSupportedLocale, SupportedLocale } from "../../../i18n-base";
 import { Letter } from "./Letter";
+import { FormFields } from "../../../types/LetterFormTypes";
 
 export const i18nLetter = setupI18n();
 
@@ -15,10 +15,12 @@ async function changeLetterLocale(locale: SupportedLocale) {
 }
 
 export const buildLetterHtml = (
-  letterData: Omit<GCELetterPostData, "html_content">,
-  locale: SupportedLocale,
+  letterData: FormFields,
+  locale: string,
   isPdf: boolean
 ): Promise<string> => {
+  if (!isSupportedLocale(locale)) throw new Error(`${locale} is not supported`);
+
   return changeLetterLocale(locale).then(() => {
     return renderToStaticMarkup(
       <Letter letterData={letterData} isPdf={isPdf} />
