@@ -4,13 +4,13 @@ import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
 
 import { buildLetterHtml, i18nLetter } from "./letter-utils";
-import { GCELetterPostData } from "../../../types/APIDataTypes";
 import { languageNames, SupportedLocale } from "../../../i18n-base";
 
 import pdfStyles from "./letter-styles-pdf.css?raw";
+import { FormFields } from "../../../types/LetterFormTypes";
 
 export const Letter: React.FC<{
-  letterData: Omit<GCELetterPostData, "html_content">;
+  letterData: FormFields;
   isPdf: boolean;
 }> = ({ letterData, isPdf }) => {
   const { user_details: user, landlord_details: landlord } = letterData;
@@ -70,7 +70,7 @@ export const Letter: React.FC<{
 };
 
 export const LetterPreview: React.FC<{
-  letterData: Omit<GCELetterPostData, "html_content">;
+  letterData: FormFields;
 }> = ({ letterData }) => {
   const { i18n, _ } = useLingui();
 

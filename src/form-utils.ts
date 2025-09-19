@@ -55,7 +55,6 @@ export const handleFormNoDefault = (
   fun: () => void
 ): React.FormEventHandler<HTMLFormElement> => {
   return (event: React.FormEvent<HTMLFormElement>) => {
-    console.log("onSubmit");
     event.preventDefault();
     event.stopPropagation();
     fun();

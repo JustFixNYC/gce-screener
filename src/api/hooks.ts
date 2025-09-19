@@ -2,7 +2,7 @@ import useSWR from "swr";
 import useSWRMutation, { TriggerWithArgs } from "swr/mutation";
 import {
   BuildingData,
-  GCELetter,
+  GCELetterConfirmation,
   GCELetterPostData,
   GCEPostData,
   GCEUser,
@@ -67,24 +67,24 @@ export function useSendGceData(): Tenants2SWRResponse {
 }
 
 type Tenants2LetterSWRResponse = {
-  data: GCELetter | undefined;
+  data: GCELetterConfirmation | undefined;
   error: Error | undefined;
   isMutating: boolean;
   reset: () => void;
   trigger: TriggerWithArgs<
-    GCELetter,
+    GCELetterConfirmation,
     unknown,
-    "/gceletter/upload",
+    "/gceletter/send-letter",
     GCELetterPostData
   >;
 };
 
 export function useSendGceLetterData(): Tenants2LetterSWRResponse {
   const { data, error, trigger, reset, isMutating } = useSWRMutation(
-    "/gceletter/upload",
+    "/gceletter/send-letter",
     Tenants2ApiFetcherLetter,
     {
-      populateCache: (result: GCELetter) => result,
+      populateCache: (result: GCELetterConfirmation) => result,
       revalidate: false,
     }
   );
@@ -119,9 +119,7 @@ export function useGetLandlordData(
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
   });
-  console.log({ apiData: data });
   return {
-    // data: !data ? undefined : data?.addrs[0],
     data: data?.addrs[0],
     isLoading,
     error: error,
