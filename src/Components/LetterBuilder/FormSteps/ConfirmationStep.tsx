@@ -27,9 +27,13 @@ export const ConfirmationStep: React.FC<{
         ) : errors.landlord_email?.error === false ? (
           <li>
             <Icon icon="check" />
-            <Trans>Your letter has been emailed to your landlord.</Trans>
+            <Trans>
+              Your letter has been emailed to your landlord at{" "}
+              {data.landlord_email}.
+            </Trans>
           </li>
         ) : null}
+
         {errors.user_email?.error ? (
           <li>
             <Icon icon="xmark" />
@@ -37,12 +41,16 @@ export const ConfirmationStep: React.FC<{
               An error occurred when emailing a copy of your letter to you.
             </Trans>
           </li>
-        ) : (
+        ) : errors.user_email?.error === false ? (
           <li>
             <Icon icon="check" />
-            <Trans>A copy of your letter has been emailed to you.</Trans>
+            <Trans>
+              A copy of your letter has been emailed to you at {data.user_email}
+              .
+            </Trans>
           </li>
-        )}
+        ) : null}
+
         {errors.letter_mail?.error ? (
           <li>
             <Icon icon="xmark" />
@@ -50,7 +58,7 @@ export const ConfirmationStep: React.FC<{
               An error occurred when mailing your letter to your landlord.
             </Trans>
           </li>
-        ) : (
+        ) : errors.letter_mail?.error === false ? (
           <li>
             <Icon icon="check" />
             <Trans>Your letter has been mailed to your landlord.</Trans>
@@ -61,7 +69,8 @@ export const ConfirmationStep: React.FC<{
               </Trans>
             )}
           </li>
-        )}
+        ) : null}
+
         {errors.textit_campaign?.error ? (
           <li>
             <Icon icon="xmark" />
@@ -73,12 +82,13 @@ export const ConfirmationStep: React.FC<{
           <li>
             <Icon icon="check" />
             <Trans>
-              We have sent you a text message with the USPS tracking number for
-              your letter.
+              We have sent a text message to you at {data.user_phone_number}{" "}
+              with the USPS tracking number for your letter.
             </Trans>
           </li>
         )}
       </ul>
+
       <JFCLLinkExternal to={fileURL}>
         <Trans>View Letter PDF</Trans>
       </JFCLLinkExternal>

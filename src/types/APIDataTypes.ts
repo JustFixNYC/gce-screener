@@ -132,6 +132,9 @@ export type GCELetterConfirmation = {
     textit_campaign?: LetterError;
   };
   data: {
+    user_email?: string;
+    landlord_email?: string;
+    user_phone_number: string;
     letter_pdf: string;
     tracking_number?: string;
   };
