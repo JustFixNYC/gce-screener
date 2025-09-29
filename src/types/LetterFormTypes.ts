@@ -51,6 +51,13 @@ export const FormSchema = z.object({
     ["WE_WILL_MAIL", "USER_WILL_MAIL"],
     "Please select an option for mailing the letter"
   ),
+  reason: z.literal(
+    ["NON_RENEWAL", "PLANNED_INCREASE", "PAST_INCREASE"],
+    "Please select a reason for your letter"
+  ),
+  // TODO: Need to make required or not based on reason above
+  unreasonable_increase: z.boolean().optional(),
+  good_cause_given: z.boolean().optional(),
   email_to_landlord: z.boolean(),
   // TODO: add fieldArray of emails (see https://react-hook-form.com/docs/usefieldarray)
 });
@@ -83,6 +90,8 @@ export const defaultFormValues: FormFields = {
     urbanization: undefined,
   },
   mail_choice: "WE_WILL_MAIL",
+  reason: "PLANNED_INCREASE",
+  unreasonable_increase: false,
   email_to_landlord: true,
 };
 
@@ -109,5 +118,7 @@ export const sampleFormValues: FormFields = {
     zip_code: "11111",
   },
   mail_choice: "WE_WILL_MAIL",
+  reason: "PLANNED_INCREASE",
+  unreasonable_increase: false,
   email_to_landlord: true,
 };
