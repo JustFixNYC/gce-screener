@@ -7,6 +7,7 @@ import { FormGroup, SelectButton } from "@justfixnyc/component-library";
 import { FormHookProps } from "../../../types/LetterFormTypes";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import Modal from "../../Modal/Modal";
+import { JFCLLinkExternal } from "../../JFCLLink";
 
 export const ReasonStep: React.FC<FormHookProps> = (props) => {
   const {
@@ -67,8 +68,10 @@ export const ReasonStep: React.FC<FormHookProps> = (props) => {
             </li>
             <li>
               <Trans>
-                You’ve received a 226c notice detailing an upcoming rent
-                increase
+                You’ve received a{" "}
+                <JFCLLinkExternal to="https://www.nycourts.gov/legacypdfs/courts/10jd/suffolk/dist/pdf/LandlordRentIncreaseofAtLeast5PercentResidental.pdf">
+                  226c notice detailing an upcoming rent increase
+                </JFCLLinkExternal>
               </Trans>
             </li>
           </ul>
@@ -91,12 +94,17 @@ export const ReasonStep: React.FC<FormHookProps> = (props) => {
             </li>
             <li>
               <Trans>
-                You’ve received a 226c notice stating that your lease will not
-                be renewed
+                You’ve received a{" "}
+                <JFCLLinkExternal to="https://www.nycourts.gov/legacypdfs/courts/10jd/suffolk/dist/pdf/LandlordsNoticeNotToRenewTenancyResidential.pdf">
+                  226c notice stating that your lease will not be renewed
+                </JFCLLinkExternal>
               </Trans>
             </li>
             <li>
-              <Trans>You’ve received a notice of termination</Trans>
+              <Trans>
+                You’ve received a{" "}
+                <JFCLLinkExternal to="">notice of termination</JFCLLinkExternal>
+              </Trans>
             </li>
           </ul>
         </div>
@@ -109,7 +117,7 @@ const ReasonHelperText: React.FC<{ onClick: () => void }> = ({ onClick }) => {
   return (
     <InfoBox>
       <>
-        <Trans>Need help choosing which letter is best for you?</Trans>
+        <Trans>Need help choosing which letter is best for you?</Trans>{" "}
         <button
           type="button"
           className="text-link-button jfcl-link"

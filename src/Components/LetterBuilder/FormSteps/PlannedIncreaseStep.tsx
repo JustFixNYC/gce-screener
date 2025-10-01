@@ -2,10 +2,13 @@ import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { FormGroup, SelectButton } from "@justfixnyc/component-library";
-
-import { FormHookProps } from "../../../types/LetterFormTypes";
-import { InfoBox } from "../../InfoBox/InfoBox";
 import { Controller } from "react-hook-form";
+
+import {
+  FormHookProps,
+  isPlannedIncreaseErrors,
+} from "../../../types/LetterFormTypes";
+import { InfoBox } from "../../InfoBox/InfoBox";
 import {
   CPI,
   CPI_EFFECTIVE_DATE,
@@ -15,14 +18,19 @@ import { JFCLLinkExternal } from "../../JFCLLink";
 export const PlannedIncreaseStep: React.FC<FormHookProps> = (props) => {
   const {
     control,
+    watch,
     formState: { errors },
   } = props;
 
   const { _ } = useLingui();
 
+  if (!isPlannedIncreaseErrors(errors, watch("reason"))) return null;
+
   return (
     <FormGroup
-      legendText={_(msg`Select the reason for your letter`)}
+      legendText={_(
+        msg`Is your landlord increasing your monthly rent beyond ${CPI + 5}%?`
+      )}
       invalid={!!errors?.unreasonable_increase}
       invalidText={errors?.unreasonable_increase?.message}
       invalidRole="status"

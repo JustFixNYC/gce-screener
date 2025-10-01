@@ -2,17 +2,23 @@ import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { FormGroup, SelectButton } from "@justfixnyc/component-library";
-
-import { FormHookProps } from "../../../types/LetterFormTypes";
 import { Controller } from "react-hook-form";
+
+import {
+  FormHookProps,
+  isNonRenewalErrors,
+} from "../../../types/LetterFormTypes";
 
 export const NonRenewalStep: React.FC<FormHookProps> = (props) => {
   const {
     control,
+    watch,
     formState: { errors },
   } = props;
 
   const { _ } = useLingui();
+
+  if (!isNonRenewalErrors(errors, watch("reason"))) return null;
 
   return (
     <FormGroup

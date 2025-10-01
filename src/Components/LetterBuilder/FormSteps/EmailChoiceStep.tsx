@@ -1,5 +1,6 @@
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
+import { Controller } from "react-hook-form";
 import {
   FormGroup,
   RadioButton,
@@ -7,7 +8,6 @@ import {
 } from "@justfixnyc/component-library";
 
 import { FormHookProps } from "../../../types/LetterFormTypes";
-import { Controller } from "react-hook-form";
 
 export const EmailChoiceStep: React.FC<FormHookProps> = (props) => {
   const {
@@ -19,10 +19,7 @@ export const EmailChoiceStep: React.FC<FormHookProps> = (props) => {
   } = props;
 
   const { _ } = useLingui();
-  console.log({
-    email_to_landlord: watch("email_to_landlord"),
-    email: watch("landlord_details.email"),
-  });
+
   return (
     <>
       <FormGroup
