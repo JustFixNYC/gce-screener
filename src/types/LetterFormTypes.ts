@@ -92,16 +92,16 @@ type PlanedIncreaseErrors = FieldErrors<
 type NonRenewalErrors = FieldErrors<z.infer<typeof nonRenewalLetterSchema>>;
 
 export function isPlannedIncreaseErrors(
-  errors: PlanedIncreaseErrors | NonRenewalErrors,
+  _errors: PlanedIncreaseErrors | NonRenewalErrors,
   reason: FormFields["reason"]
-): errors is PlanedIncreaseErrors {
+): _errors is PlanedIncreaseErrors {
   return reason === "PLANNED_INCREASE";
 }
 
 export function isNonRenewalErrors(
-  errors: PlanedIncreaseErrors | NonRenewalErrors,
+  _errors: PlanedIncreaseErrors | NonRenewalErrors,
   reason: FormFields["reason"]
-): errors is NonRenewalErrors {
+): _errors is NonRenewalErrors {
   return reason === "NON_RENEWAL";
 }
 
