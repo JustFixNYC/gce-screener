@@ -68,11 +68,11 @@ export const RentCalculator: React.FC = () => {
             increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
       ></Header>
       <PhoneNumberModal
-        gtmId="rent-calculator-page-modal"
         modalIsOpen={showPhoneModal}
         modalOnClose={handlePhoneModalClose}
-        headerText="Save your allowable rent increase to your phone"
-        bodyText="Get a text of this information."
+        headerText="Send the rent increase calculator to your phone"
+        bodyText="Get a text with a URL to the rent calculator"
+        gtmId="rent-calculator-page-modal"
       />
       <div className="content-section">
         <div className="content-section__content">
@@ -157,8 +157,8 @@ export const RentCalculator: React.FC = () => {
           </div>
           <div className="divider__print" />
           <PhoneNumberCallout
-            headerText="Help build tenant power in NYC"
-            bodyText="We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights."
+            headerText="Send the rent increase calculator to your phone"
+            bodyText="Get a text with a URL to the rent calculator"
             gtmId="rent-calculator-page"
           />
 

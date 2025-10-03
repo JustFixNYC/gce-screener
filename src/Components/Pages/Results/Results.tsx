@@ -100,27 +100,22 @@ export const Results: React.FC = () => {
     const contentSection = document.querySelector(".content-section__content");
     if (!contentSection) return;
 
-    // Checks if user has scrolled down at least a bit before showing modal
-    // Without this, the modal renders on page load
+    // Checks if user has scrolled down a significant amount before showing modal
+    // Without this, the modal renders on page load.
     const hasScrolled = () => {
       const scrollY = window.scrollY || window.pageYOffset;
-      return scrollY > 100; // user has scrolled down at least 100px
+      return scrollY > 500; // require a significant scroll (500px) so modal isn't accidentally triggered
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && hasScrolled()) {
-            setShowPhoneModal(true);
-            setHasShownPhoneModal(true);
-            observer.disconnect();
-          }
-        });
-      },
-      {
-        threshold: 0.15, // Trigger when 15% of the element is visible
-      }
-    );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && hasScrolled()) {
+          setShowPhoneModal(true);
+          setHasShownPhoneModal(true);
+          observer.disconnect();
+        }
+      });
+    });
 
     observer.observe(contentSection);
 
