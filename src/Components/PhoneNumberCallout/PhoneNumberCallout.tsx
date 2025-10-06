@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { useRollbar } from "@rollbar/react";
 import { Button, Icon, TextInput } from "@justfixnyc/component-library";
+import { Trans } from "@lingui/react/macro";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 
 import { CoverageResult, GCEUser } from "../../types/APIDataTypes";
 import { gtmPush } from "../../google-tag-manager";
@@ -34,13 +37,14 @@ interface PhoneNumberCaptureProps {
 }
 
 const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
+  const { _ } = useLingui();
   const {
     PhoneNumberUI,
     coverageResult,
     gtmId,
     modalOnClose,
-    headerText = "Save your result to your phone",
-    bodyText = "Get a text with a unique URL to your results page.",
+    headerText = _(msg`Save your result to your phone`),
+    bodyText = _(msg`Get a text with a unique URL to your results page.`),
     ...UIProps
   } = props;
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -95,12 +99,11 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
     }
     try {
       const sendData = async () => {
-        const resultUrlParam =
-          window.location.pathname === "/results"
-            ? {
-                result_url: window.location.href,
-              }
-            : {};
+        const resultUrlParam = window.location.pathname.includes("/results")
+          ? {
+              result_url: window.location.href,
+            }
+          : {};
         const postData = {
           id: user?.id,
           phone_number: parseInt(cleaned),
@@ -148,6 +151,7 @@ const PhoneNumberCalloutUI: React.FC<PhoneNumberUIProps> = ({
   headerText,
   bodyText,
 }) => {
+  const { _ } = useLingui();
   return (
     <div className="phone-number-callout-box">
       <div className="callout-box__column">
@@ -157,10 +161,10 @@ const PhoneNumberCalloutUI: React.FC<PhoneNumberUIProps> = ({
       <form className="callout-box__column" onSubmit={handleSubmit}>
         <div className="phone-number-input-container">
           <TextInput
-            labelText="Phone number (optional)"
-            placeholder="(123) 456-7890"
+            labelText={_(msg`Phone number (optional)`)}
+            placeholder={_(msg`(123) 456-7890`)}
             invalid={showFieldError}
-            invalidText="Enter a valid phone number"
+            invalidText={_(msg`Enter a valid phone number`)}
             id="phone-number-input"
             name="phone-number-input"
             value={phoneNumber}
@@ -168,7 +172,7 @@ const PhoneNumberCalloutUI: React.FC<PhoneNumberUIProps> = ({
           />
           <Button
             className="phone-number-submit__desktop"
-            labelText="Submit"
+            labelText={_(msg`Submit`)}
             variant="secondary"
             size="small"
             type="submit"
@@ -177,21 +181,29 @@ const PhoneNumberCalloutUI: React.FC<PhoneNumberUIProps> = ({
             {showSuccess && (
               <div className="success-message">
                 <Icon icon="check" />
-                Phone number submitted
+                <Trans>Phone number submitted</Trans>
               </div>
             )}
             {showError && (
               <div className="error-message">
                 <Icon icon="circleExclamation" />
-                Something went wrong. Try again later.
+                <Trans>Something went wrong. Try again later.</Trans>
               </div>
             )}
-            We will never call you or share your phone number. We may text you
-            later in the year to see how things are going. Opt-out at any time.
+            <Trans>
+              We will never call you or share your phone number. We may text you
+              later in the year to see how things are going. Opt-out at any
+              time.
+            </Trans>
           </div>
         </div>
         <div className="phone-number-submit__mobile">
-          <Button labelText="Submit" variant="secondary" size="small" />
+          <Button
+            labelText={_(msg`Submit`)}
+            variant="secondary"
+            size="small"
+            type="submit"
+          />
         </div>
       </form>
     </div>
@@ -216,6 +228,7 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
   headerText,
   bodyText,
 }) => {
+  const { _ } = useLingui();
   return (
     <Modal
       header={headerText}
@@ -227,10 +240,10 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
       <p>{bodyText}</p>
       <form className="phone-number-input-container" onSubmit={handleSubmit}>
         <TextInput
-          labelText="Phone number"
-          placeholder="(123) 456-7890"
+          labelText={_(msg`Phone number`)}
+          placeholder={_(msg`(123) 456-7890`)}
           invalid={showFieldError}
-          invalidText="Enter a valid phone number"
+          invalidText={_(msg`Enter a valid phone number`)}
           id="phone-number-input"
           name="phone-number-input"
           value={phoneNumber}
@@ -240,33 +253,34 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
           {showSuccess && (
             <div className="success-message">
               <Icon icon="check" />
-              Phone number submitted
+              <Trans>Phone number submitted</Trans>
             </div>
           )}
           {showError && (
             <div className="error-message">
               <Icon icon="circleExclamation" />
-              Something went wrong. Try again later.
+              <Trans>Something went wrong. Try again later.</Trans>
             </div>
           )}
         </div>
         <div className="phone-number-description">
-          We will never call you or share your phone number. We may text you
-          later in the year to see how things are going. Opt-out at any time.{" "}
+          <Trans>
+            We will never call you or share your phone number. We may text you
+            later in the year to see how things are going. Opt-out at any time.
+          </Trans>
         </div>
         <div className="phone-number-button-container">
           <Button
             className="phone-number-cancel"
-            labelText="Close"
+            labelText={_(msg`Close`)}
             variant="tertiary"
             type="button"
             onClick={modalOnClose}
           />
           <Button
             className="phone-number-submit"
-            labelText="Submit"
+            labelText={_(msg`Submit`)}
             variant="primary"
-            type="submit"
           />
         </div>
       </form>

@@ -1,5 +1,8 @@
 import classNames from "classnames";
 import { Link, useLocation } from "react-router-dom";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
+
 import { Address } from "../Pages/Home/Home";
 import { abbreviateBoro, ProgressStep, toTitleCase } from "../../helpers";
 import "./ProgressBar.scss";
@@ -15,14 +18,24 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   lastStepReached = ProgressStep.Home,
 }) => {
   const location = useLocation();
-  const steps = makeProgressSteps(location.pathname, lastStepReached, address);
+  const { _, i18n } = useLingui();
+  const steps: StepInfo[] = [
+    {
+      path: `/${i18n.locale}/confirm_address`,
+      name: progressBarAddress(lastStepReached, address) || _(msg`Address`),
+    },
+    { path: `/${i18n.locale}/survey`, name: _(msg`Survey`) },
+    { path: `/${i18n.locale}/results`, name: _(msg`Result`) },
+  ].map((step) => {
+    return { ...step, active: step.path == location.pathname };
+  });
 
   const progressBarSteps = steps.flatMap((step, index, array) => {
     const StepText =
       step.active || index > lastStepReached ? (
         <span>{step.name}</span>
       ) : (
-        <Link to={step.path ?? "/"} className="jfcl-link">
+        <Link to={step.path ?? `/${i18n.locale}`} className="jfcl-link">
           {step.name}
         </Link>
       );
@@ -56,31 +69,14 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   return <nav id="progress-bar">{progressBarSteps}</nav>;
 };
 
-const makeProgressSteps = (
-  pathname: string,
-  lastStepReached: ProgressStep,
-  address?: Address
-) => {
-  const steps: StepInfo[] = [
-    {
-      path: "/confirm_address",
-      name: progressBarAddress(lastStepReached, address),
-    },
-    { path: "/survey", name: "Survey" },
-    { path: "/results", name: "Result" },
-  ];
-
-  return steps.map((step) => {
-    return { ...step, active: step.path == pathname };
-  });
-};
-
 function progressBarAddress(
   lastStepReached: ProgressStep,
   address?: Address,
   maxLength = 45
-) {
-  if (!address || lastStepReached === ProgressStep.Home) return "Address";
+): string | undefined {
+  // Can't include the default "Address" here since it needs to be wrapped with lingui
+  if (!address || lastStepReached === ProgressStep.Home) return;
+
   const addrShort = `${toTitleCase(
     `${address?.houseNumber || ""} ${address?.streetName}`
   )}, ${abbreviateBoro(address.borough)}`;

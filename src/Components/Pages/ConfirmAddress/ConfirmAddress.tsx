@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useRollbar } from "@rollbar/react";
 import { Button } from "@justfixnyc/component-library";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 
 import { Address } from "../Home/Home";
 import { ContentBox } from "../../ContentBox/ContentBox";
@@ -15,7 +18,9 @@ import { InfoBox } from "../../InfoBox/InfoBox";
 import "./ConfirmAddress.scss";
 
 export const ConfirmAddress: React.FC = () => {
+  const { i18n } = useLingui();
   const navigate = useNavigate();
+  const { _ } = useLingui();
   const { address, user } = useLoaderData() as {
     address: Address;
     user?: GCEUser;
@@ -53,14 +58,16 @@ export const ConfirmAddress: React.FC = () => {
     } catch {
       rollbar.error("Cannot connect to tenant platform");
     }
-    navigate("/survey");
+    navigate(`/${i18n.locale}/survey`);
   };
 
   return (
     <div id="confirm-address-page">
       <Header
-        title="Please confirm your address"
-        subtitle="We’ll use publicly available information about your building to help learn if you’re covered."
+        title={_(msg`Please confirm your address`)}
+        subtitle={_(
+          msg`We’ll use publicly available information about your building to help learn if you’re covered.`
+        )}
         address={address}
         lastStepReached={lastStepReached}
       />
@@ -70,11 +77,13 @@ export const ConfirmAddress: React.FC = () => {
           {bldgData?.unitsres === 0 && (
             <InfoBox color="orange">
               <span>
-                City data indicates that there aren’t any residential units at
-                this address.
+                <Trans>
+                  City data indicates that there aren’t any residential units at
+                  this address.
+                </Trans>
               </span>
-              <Link to="/" className="jfcl-link">
-                Search new address
+              <Link to={`/${i18n.locale}`} className="jfcl-link">
+                <Trans>Search new address</Trans>
               </Link>
             </InfoBox>
           )}
@@ -84,7 +93,7 @@ export const ConfirmAddress: React.FC = () => {
                 <img
                   className="img-wrapper__img"
                   src={mapImageURL}
-                  alt="Map showing location of the entered address."
+                  alt={_(msg`Map showing location of the entered address.`)}
                   width={width}
                   height={height}
                 />
@@ -101,12 +110,12 @@ export const ConfirmAddress: React.FC = () => {
           </ContentBox>
 
           <div className="confirmation__buttons">
-            <BackLink to="/" className="confirmation__back">
-              Back
+            <BackLink to={`/${i18n.locale}`} className="confirmation__back">
+              <Trans>Back</Trans>
             </BackLink>
             <Button
               className="confirmation__button"
-              labelText="Confirm"
+              labelText={_(msg`Confirm`)}
               onClick={handleSubmit}
             />
           </div>
