@@ -11,9 +11,12 @@ import {
   GoodCauseProtections,
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
-import { formatMoney } from "../../../helpers";
+import { formatMoney, getCookie, setCookie } from "../../../helpers";
 import { gtmPush } from "../../../google-tag-manager";
-import { PhoneNumberCallout } from "../../PhoneNumberCallout/PhoneNumberCallout";
+import {
+  PhoneNumberCallout,
+  PhoneNumberModal,
+} from "../../PhoneNumberCallout/PhoneNumberCallout";
 import "./RentCalculator.scss";
 import { Trans } from "@lingui/react/macro";
 
@@ -40,10 +43,25 @@ export const RentCalculator: React.FC = () => {
     setRentInput(value);
   };
 
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [hasShownPhoneModal, setHasShownPhoneModal] = useState(false);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setShowRentInput(true);
     gtmPush("gce_rent_calculator_submit");
+
+    if (!hasShownPhoneModal && !getCookie("phone_modal_shown")) {
+      setTimeout(() => {
+        setShowPhoneModal(true);
+        setHasShownPhoneModal(true);
+      }, 3000);
+    }
+  };
+
+  const handlePhoneModalClose = () => {
+    setShowPhoneModal(false);
+    setCookie("phone_modal_shown", "1");
   };
 
   return (
@@ -55,6 +73,13 @@ export const RentCalculator: React.FC = () => {
           msg`If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause.`
         )}
       ></Header>
+      <PhoneNumberModal
+        modalIsOpen={showPhoneModal}
+        modalOnClose={handlePhoneModalClose}
+        headerText={_(msg`Send the rent increase calculator to your phone`)}
+        bodyText={_(msg`Get a text with a URL to the rent calculator`)}
+        gtmId="rent-calculator-page-modal"
+      />
       <div className="content-section">
         <div className="content-section__content">
           <div className="rent-calculator-callout-box">
@@ -152,10 +177,8 @@ export const RentCalculator: React.FC = () => {
           </div>
           <div className="divider__print" />
           <PhoneNumberCallout
-            headerText={_(msg`Help build tenant power in NYC`)}
-            bodyText={_(
-              msg`We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights.`
-            )}
+            headerText={_(msg`Send the rent increase calculator to your phone`)}
+            bodyText={_(msg`Get a text with a URL to the rent calculator`)}
             gtmId="rent-calculator-page"
           />
 
