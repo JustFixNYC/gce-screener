@@ -27,6 +27,7 @@ const Modal = ({
 }: ModalProps) => {
   const { _ } = useLingui();
   const modalRef = useRef<HTMLDialogElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleCloseModal = () => {
     if (onClose) {
@@ -57,6 +58,16 @@ const Modal = ({
     // Open modal when 'isOpen' changes to true
     if (isOpen) {
       modalElement.showModal();
+
+      if (closeButtonRef.current) {
+        // on Results page, the close button gets an autofocus outline on render
+        // this manually blurs it once modal is fully rendered
+        setTimeout(() => {
+          if (closeButtonRef.current) {
+            closeButtonRef.current.blur();
+          }
+        }, 0);
+      }
     } else {
       modalElement.close();
     }
@@ -71,6 +82,7 @@ const Modal = ({
     >
       {hasCloseBtn && (
         <Button
+          ref={closeButtonRef}
           variant="tertiary"
           labelIcon="xmark"
           labelText=""
