@@ -76,8 +76,8 @@ export const RentCalculator: React.FC = () => {
       <PhoneNumberModal
         modalIsOpen={showPhoneModal}
         modalOnClose={handlePhoneModalClose}
-        headerText="Send the rent increase calculator to your phone"
-        bodyText="Get a text with a URL to the rent calculator"
+        headerText={_(`Send the rent increase calculator to your phone`)}
+        bodyText={_(`Get a text with a URL to the rent calculator`)}
         gtmId="rent-calculator-page-modal"
       />
       <div className="content-section">
