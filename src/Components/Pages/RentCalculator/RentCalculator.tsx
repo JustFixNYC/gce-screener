@@ -77,7 +77,9 @@ export const RentCalculator: React.FC = () => {
         modalIsOpen={showPhoneModal}
         modalOnClose={handlePhoneModalClose}
         headerText={_(msg`Send the rent increase calculator to your phone`)}
-        bodyText={_(msg`Get a text with a URL to the rent calculator`)}
+        bodyText={_(
+          msg`We'll also let you know when NYC changes the maximum rent increase amount each year.`
+        )}
         gtmId="rent-calculator-page-modal"
       />
       <div className="content-section">
@@ -147,9 +149,9 @@ export const RentCalculator: React.FC = () => {
               <Trans>
                 The Good Cause law establishes a Reasonable Rent Increase, which
                 is set every year at the rate of inflation plus 5%, with a
-                maximum of 10% total. As of ${_(CPI_EFFECTIVE_DATE)}, the rate
-                of inflation for New York City is ${CPI}%, meaning that the
-                current local Reasonable Rent Increase is ${CPI + 5}%.
+                maximum of 10% total. As of {_(CPI_EFFECTIVE_DATE)}, the rate of
+                inflation for New York City is {CPI}%, meaning that the current
+                local Reasonable Rent Increase is {CPI + 5}%.
               </Trans>
             </p>
             <p>
@@ -178,7 +180,9 @@ export const RentCalculator: React.FC = () => {
           <div className="divider__print" />
           <PhoneNumberCallout
             headerText={_(msg`Send the rent increase calculator to your phone`)}
-            bodyText={_(msg`Get a text with a URL to the rent calculator`)}
+            bodyText={_(
+              msg`We'll also let you know when NYC changes the maximum rent increase amount each year.`
+            )}
             gtmId="rent-calculator-page"
           />
 
