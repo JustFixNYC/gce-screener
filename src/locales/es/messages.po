@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-10-08 18:21\n"
+"PO-Revision-Date: 2025-10-09 16:25\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -453,7 +453,7 @@ msgstr "Reciba un mensaje de texto con una URL única para acceder a su página 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:80
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:181
 #~ msgid "Get a text with a URL to the rent calculator"
-#~ msgstr "Reciba un mensaje de texto con una URL a la calculadora de renta"
+#~ msgstr "Get a text with a URL to the rent calculator"
 
 #: src/Components/Pages/Home/Home.tsx:95
 msgid "Get started"
@@ -500,7 +500,7 @@ msgstr "¿Ha aprendido algo nuevo?"
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:155
 #~ msgid "Help build tenant power in NYC"
-#~ msgstr "Ayude a fortalecer el poder de los inquilinos en la ciudad de Nueva York"
+#~ msgstr "Help build tenant power in NYC"
 
 #: src/Components/KYRContent/KYRContent.tsx:78
 #: src/Components/KYRContent/KYRContent.tsx:257
@@ -1372,11 +1372,11 @@ msgstr "El edificio no debe formar parte de NYCHA, PACT/RAD u otras viviendas su
 #. placeholder {1}: CPI + 5
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:149
 msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of {0}, the rate of inflation for New York City is {CPI}%, meaning that the current local Reasonable Rent Increase is {1}%."
-msgstr ""
+msgstr "La Ley por Justa Causa establece un aumento razonable del alquiler, que se fija cada año según la tasa de inflación más un 5 %, con un máximo del 10 % en total. Según {0}, la tasa de inflación de la ciudad de Nueva York es del {CPI} %, lo que significa que el aumento razonable del alquiler local actual es del {1} %."
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:147
 #~ msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
-#~ msgstr "La Ley por Justa Causa establece un aumento razonable del alquiler, que se fija cada año según la tasa de inflación más un 5 %, con un máximo del 10 % en total. Según ${0}, la tasa de inflación de la ciudad de Nueva York es del ${CPI} %, lo que significa que el aumento razonable del alquiler local actual es del ${1} %."
+#~ msgstr "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
 
 #: src/Components/Footer/Footer.tsx:25
 msgid "The information on this website does not constitute legal advice and must not be used as a substitute for the advice of a lawyer qualified to give advice on legal issues pertaining to housing."
@@ -1570,11 +1570,11 @@ msgstr "Nunca lo llamaremos ni compartiremos su número de teléfono. Es posible
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:81
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:184
 msgid "We'll also let you know when NYC changes the maximum rent increase amount each year."
-msgstr ""
+msgstr "También le informaremos cuando la ciudad de Nueva York modifique el monto máximo de aumento de renta cada año."
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:157
 #~ msgid "We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights."
-#~ msgstr "Le enviaremos un mensaje de texto una vez al año para que conozca sus condiciones de vivienda. Utilizaremos sus respuestas para defender mejor sus derechos."
+#~ msgstr "We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights."
 
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:69
 msgid "We’ll use publicly available information about your building to help learn if you’re covered."
