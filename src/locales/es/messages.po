@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-10-09 16:17\n"
+"PO-Revision-Date: 2025-10-09 16:25\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -1372,7 +1372,7 @@ msgstr "El edificio no debe formar parte de NYCHA, PACT/RAD u otras viviendas su
 #. placeholder {1}: CPI + 5
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:149
 msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of {0}, the rate of inflation for New York City is {CPI}%, meaning that the current local Reasonable Rent Increase is {1}%."
-msgstr ""
+msgstr "La Ley por Justa Causa establece un aumento razonable del alquiler, que se fija cada año según la tasa de inflación más un 5 %, con un máximo del 10 % en total. Según {0}, la tasa de inflación de la ciudad de Nueva York es del {CPI} %, lo que significa que el aumento razonable del alquiler local actual es del {1} %."
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:147
 #~ msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
@@ -1570,7 +1570,7 @@ msgstr "Nunca lo llamaremos ni compartiremos su número de teléfono. Es posible
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:81
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:184
 msgid "We'll also let you know when NYC changes the maximum rent increase amount each year."
-msgstr ""
+msgstr "También le informaremos cuando la ciudad de Nueva York modifique el monto máximo de aumento de renta cada año."
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:157
 #~ msgid "We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights."
