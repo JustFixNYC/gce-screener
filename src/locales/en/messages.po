@@ -193,7 +193,7 @@ msgstr "Agreement"
 msgid "All tenants in NYC are protected by important rights. This guide provides information about many of those rights depending on the type of housing you live in."
 msgstr "All tenants in NYC are protected by important rights. This guide provides information about many of those rights depending on the type of housing you live in."
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:116
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:118
 msgid "Allowable rent increase amount:"
 msgstr "Allowable rent increase amount:"
 
@@ -246,7 +246,7 @@ msgstr "Because your building was built after 1974 and is not part of 421a or J5
 msgid "By <0>Housing Justice for All</0> & <1>JustFix</1>"
 msgstr "By <0>Housing Justice for All</0> & <1>JustFix</1>"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:111
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:113
 msgid "Calculate"
 msgstr "Calculate"
 
@@ -350,7 +350,7 @@ msgstr "Enter a valid phone number"
 msgid "Enter an address to get started"
 msgstr "Enter an address to get started"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:94
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:96
 msgid "Enter the total monthly rent for your entire apartment"
 msgstr "Enter the total monthly rent for your entire apartment"
 
@@ -398,12 +398,12 @@ msgstr "Fill out the request form"
 msgid "Find other buildings your landlord owns"
 msgstr "Find other buildings your landlord owns"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:87
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:89
 msgid "Find out how much your landlord can increase your rent"
 msgstr "Find out how much your landlord can increase your rent"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:164
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:190
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:166
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:194
 #: src/Components/Pages/TenantRights/TenantRights.tsx:36
 msgid "Find out if you’re covered by Good Cause"
 msgstr "Find out if you’re covered by Good Cause"
@@ -447,8 +447,8 @@ msgstr "Get a text with a unique URL to your results page."
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:80
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:181
-msgid "Get a text with a URL to the rent calculator"
-msgstr "Get a text with a URL to the rent calculator"
+#~ msgid "Get a text with a URL to the rent calculator"
+#~ msgstr "Get a text with a URL to the rent calculator"
 
 #: src/Components/Pages/Home/Home.tsx:95
 msgid "Get started"
@@ -676,7 +676,7 @@ msgstr "If your most recent lease renewal looks like the image below, then your 
 msgid "If your rent increase is more than {0}%, tell your landlord it is an unreasonable increase and that a judge could force your landlord to justify it based on increased costs."
 msgstr "If your rent increase is more than {0}%, tell your landlord it is an unreasonable increase and that a judge could force your landlord to justify it based on increased costs."
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:140
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:142
 msgid "If your rent was increased after April 20, 2024 beyond the allowable rent increase amount calculated above, your rent increase could be found unreasonable by housing court."
 msgstr "If your rent was increased after April 20, 2024 beyond the allowable rent increase amount calculated above, your rent increase could be found unreasonable by housing court."
 
@@ -963,7 +963,7 @@ msgstr "Note"
 msgid "Note: if your building is part of 421a or J51, your apartment should be rent stabilized"
 msgstr "Note: if your building is part of 421a or J51, your apartment should be rent stabilized"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:156
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:158
 msgid "Note: Landlords can increase the rent beyond the Reasonable Rent Increase limit, but they must explain why and must prove increases in their costs or substantial repairs they did to the apartment or building."
 msgstr "Note: Landlords can increase the rent beyond the Reasonable Rent Increase limit, but they must explain why and must prove increases in their costs or substantial repairs they did to the apartment or building."
 
@@ -1102,7 +1102,7 @@ msgstr "Protections if you’re covered by Good Cause"
 msgid "Protections that all NYC tenants have"
 msgstr "Protections that all NYC tenants have"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:187
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:191
 msgid "Protections under Good Cause"
 msgstr "Protections under Good Cause"
 
@@ -1238,7 +1238,7 @@ msgid "Send a free, legally vetted letter to notify your landlord of repair issu
 msgstr "Send a free, legally vetted letter to notify your landlord of repair issues"
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:79
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:180
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:182
 msgid "Send the rent increase calculator to your phone"
 msgstr "Send the rent increase calculator to your phone"
 
@@ -1298,8 +1298,8 @@ msgstr "Subsidized housing"
 msgid "Survey"
 msgstr "Survey"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:175
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:191
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:177
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:195
 #: src/Components/Pages/TenantRights/TenantRights.tsx:37
 msgid "Take the survey"
 msgstr "Take the survey"
@@ -1365,9 +1365,13 @@ msgstr "The building must not be part of NYCHA, PACT/RAD, or other subsidized ho
 
 #. placeholder {0}: _(CPI_EFFECTIVE_DATE)
 #. placeholder {1}: CPI + 5
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:149
+msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of {0}, the rate of inflation for New York City is {CPI}%, meaning that the current local Reasonable Rent Increase is {1}%."
+msgstr "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of {0}, the rate of inflation for New York City is {CPI}%, meaning that the current local Reasonable Rent Increase is {1}%."
+
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:147
-msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
-msgstr "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
+#~ msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
+#~ msgstr "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
 
 #: src/Components/Footer/Footer.tsx:25
 msgid "The information on this website does not constitute legal advice and must not be used as a substitute for the advice of a lawyer qualified to give advice on legal issues pertaining to housing."
@@ -1557,6 +1561,11 @@ msgstr "We will never call you or share your phone number. We may text you later
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:141
 #~ msgid "We will never call you or share your phone number. You can opt-out at any time."
 #~ msgstr "We will never call you or share your phone number. You can opt-out at any time."
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:81
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:184
+msgid "We'll also let you know when NYC changes the maximum rent increase amount each year."
+msgstr "We'll also let you know when NYC changes the maximum rent increase amount each year."
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:157
 #~ msgid "We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights."
@@ -1783,7 +1792,7 @@ msgstr "Your building has only {pluralApartments}, but"
 msgid "Your building was issued a certificate of occupancy on {latestCoDateFormatted}."
 msgstr "Your building was issued a certificate of occupancy on {latestCoDateFormatted}."
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:132
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:134
 msgid "Your current monthly rent"
 msgstr "Your current monthly rent"
 
