@@ -4,17 +4,17 @@ import z from "zod";
 import { CPI } from "../Components/Pages/RentCalculator/RentIncreaseValues";
 
 const lobAddressSchema = z.object({
-  primary_line: z.string(),
-  secondary_line: z.string().optional(),
-  city: z.string(),
-  state: z.string(),
+  primary_line: z.string().min(1, "Primary line is required"),
+  secondary_line: z.string().optional().or(z.literal("")),
+  city: z.string().min(1, "City is required"),
+  state: z.string().min(1, "State is required"),
   zip_code: z
     .string()
     .regex(
       /^\d{5}((-)?\d{4})?$/,
       `ZIP Code must be either 5-digit number or 5-digits with hyphen and 4 additional digits.`
     ),
-  urbanization: z.string().optional(),
+  urbanization: z.string().optional().or(z.literal("")),
 });
 
 const userDetailsSchema = z.object({

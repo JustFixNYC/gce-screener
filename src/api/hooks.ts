@@ -120,7 +120,9 @@ export function useGetLandlordData(
     revalidateOnReconnect: false,
   });
   return {
-    data: data?.addrs[0],
+    data: data?.addrs?.find(
+      (addr: { bbl: string | undefined }) => addr.bbl === bbl
+    ),
     isLoading,
     error: error,
   };

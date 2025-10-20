@@ -7,7 +7,6 @@ import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
 
 import { handleFormNoDefault } from "../../form-utils";
-import { Tenants2ApiFetcherVerifyAddress } from "../../api/helpers";
 import { ProgressBar } from "./ProgressBar/ProgressBar";
 import { FormFields, formSchema } from "../../types/LetterFormTypes";
 import { LandlordDetailsStep } from "./FormSteps/LandlordDetailsStep";
@@ -23,6 +22,7 @@ import {
 import { useSendGceLetterData } from "../../api/hooks";
 import { ConfirmationStep } from "./FormSteps/ConfirmationStep";
 import { EmailChoiceStep } from "./FormSteps/EmailChoiceStep";
+import { useAddressModalHelpers } from "./AddressModalHelpers";
 import { ReasonStep } from "./FormSteps/ReasonStep";
 import { PlannedIncreaseStep } from "./FormSteps/PlannedIncreaseStep";
 import { AllowedIncreaseStep } from "./FormSteps/AllowedIncreaseStep";
@@ -92,8 +92,7 @@ export const LetterBuilderForm: React.FC = () => {
     resolver: zodResolver(formSchema) as Resolver<FormFields>,
     mode: "onSubmit",
   });
-  const { reset, trigger, handleSubmit, setError, getValues, setValue } =
-    formHookReturn;
+  const { reset, trigger, handleSubmit, getValues, setValue } = formHookReturn;
 
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -102,36 +101,26 @@ export const LetterBuilderForm: React.FC = () => {
     reset();
   };
 
-  // TODO: refactor to include this within the step if possible
-  const verifyAddressDeliverable = async (
-    data: Omit<FormFields["landlord_details"], "name" | "email">
-  ): Promise<boolean | undefined> => {
-    try {
-      const verification = await Tenants2ApiFetcherVerifyAddress(
-        "/gceletter/verify_address",
-        { arg: data }
-      );
-      const isUndeliverable =
-        verification.deliverability !== "deliverable" &&
-        !verification.valid_address;
-      if (isUndeliverable) {
-        setError("landlord_details", {
-          type: "lob_verification",
-          message: "Landlord address as entered is not deliverable by USPS",
-        });
-        return false;
+  // Same as next() without validation. Useful when validation was already done or needs to be overridden (e.g. modals)
+  const advanceToNextStep = () => {
+    if (currentStep < steps.length - 1) {
+      if (currentStep === steps.length - 2) {
+        handleSubmit(processForm)();
       }
-    } catch (error) {
-      // Handle network or other errors
-      console.error("Unable to check address deliverability: ", error);
-      return;
+      setCurrentStep((step) => step + 1);
     }
-    return true;
   };
+
+  const { handleAddressVerification, addressConfirmationModal } =
+    useAddressModalHelpers({
+      formMethods: formHookReturn,
+      onAddressConfirmed: advanceToNextStep,
+    });
 
   const { trigger: sendLetter } = useSendGceLetterData();
 
   const [letterResp, setLetterResp] = useState<GCELetterConfirmation>();
+
   const onLetterSubmit = async () => {
     const letterData = getValues();
     const letterHtml = await buildLetterHtml(letterData, "en", true);
@@ -157,9 +146,7 @@ export const LetterBuilderForm: React.FC = () => {
     }
 
     if (steps[currentStep].name === "Landlord details") {
-      // TODO: need to change how steps work when the landlord details step can
-      // have two sub-steps (lookup address then manual enter)
-      const isDeliverable = await verifyAddressDeliverable(
+      const isDeliverable = await handleAddressVerification(
         getValues("landlord_details")
       );
       if (!isDeliverable) {
@@ -242,7 +229,12 @@ export const LetterBuilderForm: React.FC = () => {
         )}
 
         {currentStep === 3 && <UserAddressStep {...formHookReturn} />}
-        {currentStep === 4 && <LandlordDetailsStep {...formHookReturn} />}
+        {currentStep === 4 && (
+          <LandlordDetailsStep
+            {...formHookReturn}
+            verifyAddressDeliverable={handleAddressVerification}
+          />
+        )}
         {currentStep === 5 && <MailChoiceStep {...formHookReturn} />}
         {currentStep === 6 && <EmailChoiceStep {...formHookReturn} />}
         {currentStep === 7 && <PreviewStep {...formHookReturn} />}
@@ -261,6 +253,8 @@ export const LetterBuilderForm: React.FC = () => {
           type="submit"
         />
       </div>
+
+      {addressConfirmationModal}
     </form>
   );
 };
