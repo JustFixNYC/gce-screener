@@ -275,7 +275,7 @@ export const PortfolioSize: React.FC = () => {
             <ContentBoxFooter
               message={_(msg`Have you learned something new?`)}
               linkText={_(msg`Adjust survey answers`)}
-              linkTo={`${i18n.locale}/survey`}
+              linkTo={`/${i18n.locale}/survey`}
               linkOnClick={() =>
                 gtmPush("gce_return_survey", { from: "portfolio-guide-page" })
               }
