@@ -54,8 +54,7 @@ export const LetterTester: React.FC<{ letterData: FormFields }> = ({
     const prepLetter = async () => {
       const localizedLetterHtml = await buildLetterHtml(
         letterData,
-        previewLocale,
-        false
+        previewLocale
       );
       setLetter(localizedLetterHtml);
     };
@@ -92,11 +91,7 @@ export const LetterTester: React.FC<{ letterData: FormFields }> = ({
       <Button
         labelText="submit letter"
         onClick={async () => {
-          const letterHtml = await buildLetterHtml(
-            sampleFormValues,
-            "en",
-            true
-          );
+          const letterHtml = await buildLetterHtml(sampleFormValues, "en");
           const letterPostData: GCELetterPostData = {
             ...sampleFormValues,
             html_content: letterHtml,
