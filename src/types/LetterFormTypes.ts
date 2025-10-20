@@ -56,6 +56,7 @@ const letterExtrasSchema = z.object({
     `Please select an option for mailing the letter`
   ),
   email_to_landlord: z.boolean(),
+  extra_emails: z.array(z.email()).optional(),
 });
 
 const plannedIncreaseLetterSchema = z.object({
@@ -140,7 +141,7 @@ export const sampleFormValues: FormFields = {
   user_details: {
     first_name: "Maxwell",
     last_name: "Austensen",
-    phone_number: "3475551234",
+    phone_number: "2125551212",
     email: "maxwell@justfix.org",
     primary_line: "deliverable",
     secondary_line: "Apt 1",
@@ -159,6 +160,7 @@ export const sampleFormValues: FormFields = {
     zip_code: "11111",
   },
   mail_choice: "WE_WILL_MAIL",
+  extra_emails: ["maxwell@justfix.org"],
   reason: "PLANNED_INCREASE",
   unreasonable_increase: false,
   email_to_landlord: true,
