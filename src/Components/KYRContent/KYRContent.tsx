@@ -10,7 +10,7 @@ import {
 import { formatMoney, urlMyGov } from "../../helpers";
 import { JFCLLinkExternal, JFCLLinkInternal } from "../JFCLLink";
 import { CoverageResult } from "../../types/APIDataTypes";
-import { CPI } from "../Pages/RentCalculator/RentCalculator";
+import { CPI } from "../Pages/RentCalculator/RentIncreaseValues";
 
 type KYRContentBoxProps = Omit<ContentBoxProps, "children"> & {
   children?: React.ReactNode;
