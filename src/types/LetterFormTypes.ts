@@ -2,17 +2,17 @@ import { UseFormReturn } from "react-hook-form";
 import z from "zod";
 
 const addressLOB = z.object({
-  primary_line: z.string(),
-  secondary_line: z.string().optional(),
-  city: z.string(),
-  state: z.string(),
+  primary_line: z.string().min(1, "Primary line is required"),
+  secondary_line: z.string().optional().or(z.literal("")),
+  city: z.string().min(1, "City is required"),
+  state: z.string().min(1, "State is required"),
   zip_code: z
     .string()
     .regex(
       /^\d{5}((-)?\d{4})?$/,
       "ZIP Code must be of format 12345 or 12345-1234"
     ),
-  urbanization: z.string().optional(),
+  urbanization: z.string().optional().or(z.literal("")),
 });
 
 export const FormSchema = z.object({

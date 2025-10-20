@@ -2,7 +2,7 @@ import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import { FormFields, FormHookProps } from "../../../types/LetterFormTypes";
 import { Address } from "../../Pages/Home/Home";
 
-const geosearchToLOBAddressWithBBL = (
+export const geosearchToLOBAddressWithBBL = (
   addr: Address
 ): Pick<
   FormFields["user_details"],

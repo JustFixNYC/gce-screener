@@ -1,0 +1,16 @@
+.landlord-details-step {
+  &__landlord-info {
+    margin-bottom: 8px;
+  }
+
+  input[type="text"] {
+    text-transform: uppercase;
+  }
+
+  &__modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+}
