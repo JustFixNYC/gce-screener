@@ -92,8 +92,7 @@ export const LetterBuilderForm: React.FC = () => {
     resolver: zodResolver(formSchema) as Resolver<FormFields>,
     mode: "onSubmit",
   });
-  const { reset, trigger, handleSubmit, getValues, setValue } =
-    formHookReturn;
+  const { reset, trigger, handleSubmit, getValues, setValue } = formHookReturn;
 
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -230,7 +229,7 @@ export const LetterBuilderForm: React.FC = () => {
         )}
 
         {currentStep === 3 && <UserAddressStep {...formHookReturn} />}
-        {currentStep === 2 && (
+        {currentStep === 4 && (
           <LandlordDetailsStep
             {...formHookReturn}
             verifyAddressDeliverable={handleAddressVerification}
