@@ -61,7 +61,6 @@ export const LandlordDetailsStep: React.FC<
   }
 > = (props) => {
   const {
-    register,
     control,
     formState: { errors },
     getValues,
@@ -69,8 +68,6 @@ export const LandlordDetailsStep: React.FC<
     trigger,
     verifyAddressDeliverable,
   } = props;
-
-  const addressErrors = errors.landlord_details;
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const hasPrefilledRef = useRef(false);
@@ -173,30 +170,14 @@ export const LandlordDetailsStep: React.FC<
           )}
         </FormGroup>
       )}
-      {showManual && (
-        <LandlordFormGroup
-          register={register}
-          errors={errors}
-          addressErrors={addressErrors}
-          getValues={getValues}
-          setValue={setValue}
-          idPrefix="form"
-        />
-      )}
+      {showManual && <LandlordFormGroup {...props} idPrefix="form" />}
 
       <Modal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
         header="Edit your landlord's information"
       >
-        <LandlordFormGroup
-          register={register}
-          errors={errors}
-          addressErrors={addressErrors}
-          getValues={getValues}
-          setValue={setValue}
-          idPrefix="modal-form"
-        />
+        <LandlordFormGroup {...props} idPrefix="modal-form" />
         <div className="landlord-details-step__modal-buttons">
           <Button
             type="button"
@@ -238,21 +219,18 @@ export const LandlordDetailsStep: React.FC<
   );
 };
 
-const LandlordFormGroup: React.FC<{
-  register: any;
-  errors: any;
-  addressErrors: any;
-  getValues: any;
-  setValue: any;
-  idPrefix?: string;
-}> = ({
+const LandlordFormGroup: React.FC<
+  FormHookProps & {
+    idPrefix?: string;
+  }
+> = ({
   register,
-  errors,
-  addressErrors,
+  formState: { errors },
   getValues,
   setValue,
   idPrefix = "form",
 }) => {
+  const addressErrors = errors.landlord_details;
   const currentValues = getValues("landlord_details");
   return (
     <FormGroup
