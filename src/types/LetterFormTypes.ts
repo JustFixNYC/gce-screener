@@ -86,6 +86,8 @@ export const formSchema = z.discriminatedUnion(
 
 export type FormFields = z.infer<typeof formSchema>;
 
+export type LobAddressFields = z.infer<typeof lobAddressSchema>;
+
 type PlanedIncreaseErrors = FieldErrors<
   z.infer<typeof plannedIncreaseLetterSchema>
 >;
