@@ -9,7 +9,7 @@ import { msg } from "@lingui/core/macro";
 import { handleFormNoDefault } from "../../form-utils";
 import { Tenants2ApiFetcherVerifyAddress } from "../../api/helpers";
 import { ProgressBar } from "./ProgressBar/ProgressBar";
-import { FormFields, formSchema } from "../../types/LetterFormTypes";
+import { formSchema, FormFields } from "../../types/LetterFormTypes";
 import { LandlordDetailsStep } from "./FormSteps/LandlordDetailsStep";
 import { UserDetailsStep } from "./FormSteps/UserDetailsStep";
 import { UserAddressStep } from "./FormSteps/UserAddressStep";
@@ -85,11 +85,11 @@ const steps: Step[] = [
 ];
 
 export const LetterBuilderForm: React.FC = () => {
-  const { _ } = useLingui();
+  const { i18n, _ } = useLingui();
   const formHookReturn = useForm<FormFields>({
     // Issue with the inferred type being "unknown" when preprocess() is used to
     // handle values that should be changed to undefined
-    resolver: zodResolver(formSchema) as Resolver<FormFields>,
+    resolver: zodResolver(formSchema(i18n)) as Resolver<FormFields>,
     mode: "onSubmit",
   });
   const { reset, trigger, handleSubmit, setError, getValues, setValue } =
