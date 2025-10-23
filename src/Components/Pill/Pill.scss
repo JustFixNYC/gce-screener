@@ -1,0 +1,24 @@
+@import "../../colors.scss";
+
+// Copied from Signature Dashboard - replace with JFCL once available.
+
+.pill {
+  padding: 6px 0;
+  border-radius: 12px;
+
+  width: fit-content;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 1.12px;
+  box-sizing: border-box;
+
+  &.pill-green {
+    background-color: $GREEN;
+  }
+
+  &.pill-black {
+    background-color: $OFF_BLACK;
+    color: $OFF_WHITE_100;
+  }
+}
