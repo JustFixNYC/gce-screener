@@ -2,6 +2,7 @@ import { FieldErrors, UseFormReturn } from "react-hook-form";
 import z from "zod";
 
 import { CPI } from "../Components/Pages/RentCalculator/RentIncreaseValues";
+import { looseOptional } from "../form-utils";
 
 const lobAddressSchema = z.object({
   primary_line: z.string(),
@@ -28,17 +29,7 @@ const userDetailsSchema = z.object({
           : `Please enter a complete US phone number`,
     })
     .length(10, `Please enter a complete US phone number`),
-  // Email has god default validator regex, plus alternatives, and way to
-  // include custom ({pattern: /<regex>/})
-  email: z.email({
-    // To customize error messages add a function that checks different possible
-    // issues with the field, since z.email("invalid format") would also give
-    // the same message even if empty input
-    error: (iss) =>
-      iss.input === undefined || iss.input === ""
-        ? `Email is required to send your copy of the letter`
-        : `Please enter a valid email`,
-  }),
+  email: looseOptional(z.email(`Please enter a valid email`)),
   ...lobAddressSchema
     .omit({ urbanization: true })
     .extend({ bbl: z.string().regex(/^\d{10}$/) }).shape,
@@ -46,7 +37,7 @@ const userDetailsSchema = z.object({
 
 const landlordDetailsSchema = z.object({
   name: z.string().min(1, `Landlord name is required`),
-  email: z.email().optional(),
+  email: looseOptional(z.email(`Please enter a valid email`)),
   ...lobAddressSchema.shape,
 });
 
@@ -55,8 +46,10 @@ const letterExtrasSchema = z.object({
     ["WE_WILL_MAIL", "USER_WILL_MAIL"],
     `Please select an option for mailing the letter`
   ),
-  email_to_landlord: z.boolean(),
-  extra_emails: z.array(z.email()).optional(),
+  // Flat arrays don't work with react-hook-form field array
+  extra_emails: looseOptional(
+    z.array(z.object({ email: looseOptional(z.email()) }))
+  ),
 });
 
 const plannedIncreaseLetterSchema = z.object({
@@ -134,7 +127,6 @@ export const defaultFormValues: FormFields = {
   mail_choice: "WE_WILL_MAIL",
   reason: "PLANNED_INCREASE",
   unreasonable_increase: false,
-  email_to_landlord: true,
 };
 
 export const sampleFormValues: FormFields = {
@@ -160,8 +152,7 @@ export const sampleFormValues: FormFields = {
     zip_code: "11111",
   },
   mail_choice: "WE_WILL_MAIL",
-  extra_emails: ["maxwell@justfix.org"],
+  extra_emails: [{ email: "maxwell@justfix.org" }],
   reason: "PLANNED_INCREASE",
   unreasonable_increase: false,
-  email_to_landlord: true,
 };
