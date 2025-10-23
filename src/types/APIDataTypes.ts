@@ -115,7 +115,8 @@ export type GCEPostData = {
   result_url?: string;
 };
 
-export type GCELetterPostData = FormFields & {
+export type GCELetterPostData = Omit<FormFields, "extra_emails"> & {
+  extra_emails?: string[];
   html_content: string;
 };
 

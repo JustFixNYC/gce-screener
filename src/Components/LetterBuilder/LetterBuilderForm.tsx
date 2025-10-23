@@ -141,6 +141,9 @@ export const LetterBuilderForm: React.FC = () => {
     const letterHtml = await buildLetterHtml(letterData, "en", true);
     const letterPostData: GCELetterPostData = {
       ...letterData,
+      extra_emails: letterData.extra_emails
+        ?.map(({ email }) => email)
+        .filter((email): email is string => !!email),
       html_content: letterHtml,
     };
     const resp = await sendLetter(letterPostData);
