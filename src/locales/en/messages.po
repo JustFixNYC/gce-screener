@@ -360,6 +360,10 @@ msgstr "Email"
 msgid "Email coverage"
 msgstr "Email coverage"
 
+#: src/types/LetterFormTypes.ts:49
+msgid "Email is required to send your copy of the letter"
+msgstr "Email is required to send your copy of the letter"
+
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:168
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:247
 msgid "Enter a valid phone number"
@@ -442,6 +446,10 @@ msgstr "Find out if your landlord owns other buildings"
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:28
 msgid "First name"
 msgstr "First name"
+
+#: src/types/LetterFormTypes.ts:29
+msgid "First name is required for the letter"
+msgstr "First name is required for the letter"
 
 #. placeholder {0}: bedrooms === "STUDIO" ? ( <Trans>studio</Trans> ) : ( <Trans>{bedrooms} bedroom</Trans> )
 #. placeholder {1}: formatMoney(RENT_CUTOFFS[bedrooms], 0)
@@ -772,6 +780,10 @@ msgstr "JustFix’s Letter of Complaint"
 msgid "Landlord email"
 msgstr "Landlord email"
 
+#: src/types/LetterFormTypes.ts:59
+msgid "Landlord name is required"
+msgstr "Landlord name is required"
+
 #: src/Components/KYRContent/KYRContent.tsx:377
 #: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:46
 msgid "Landlord personal use/removal from market"
@@ -800,6 +812,10 @@ msgstr "Last modified: Jan 24, 2025"
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:37
 msgid "Last name"
 msgstr "Last name"
+
+#: src/types/LetterFormTypes.ts:32
+msgid "Last name is required for the letter"
+msgstr "Last name is required for the letter"
 
 #: src/Components/KYRContent/KYRContent.tsx:203
 msgid "Lawful source of income"
@@ -1126,6 +1142,10 @@ msgstr "Phone number"
 msgid "Phone number (optional)"
 msgstr "Phone number (optional)"
 
+#: src/types/LetterFormTypes.ts:37
+msgid "Phone number is required for follow up"
+msgstr "Phone number is required for follow up"
+
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:185
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:257
 msgid "Phone number submitted"
@@ -1139,6 +1159,15 @@ msgstr "Please complete the unanswered questions before continuing."
 msgid "Please confirm your address"
 msgstr "Please confirm your address"
 
+#: src/types/LetterFormTypes.ts:38
+#: src/types/LetterFormTypes.ts:40
+msgid "Please enter a complete US phone number"
+msgstr "Please enter a complete US phone number"
+
+#: src/types/LetterFormTypes.ts:50
+msgid "Please enter a valid email"
+msgstr "Please enter a valid email"
+
 #: src/Components/Pages/Form/Survey.tsx:191
 msgid "Please enter your total rent amount."
 msgstr "Please enter your total rent amount."
@@ -1150,6 +1179,23 @@ msgstr "Please review these documents to learn if the owner of your building als
 #: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:11
 msgid "Please review your letter to ensure all the details are correct."
 msgstr "Please review your letter to ensure all the details are correct."
+
+#: src/types/LetterFormTypes.ts:101
+msgid "Please select a reason for your letter."
+msgstr "Please select a reason for your letter."
+
+#: src/types/LetterFormTypes.ts:68
+msgid "Please select an option for mailing the letter"
+msgstr "Please select an option for mailing the letter"
+
+#. placeholder {0}: CPI + 5
+#: src/types/LetterFormTypes.ts:80
+msgid "Please select whether the increase is beyond {0}%"
+msgstr "Please select whether the increase is beyond {0}%"
+
+#: src/types/LetterFormTypes.ts:92
+msgid "Please select whether your landlord provided one of the listed reasons for not renewing your lease."
+msgstr "Please select whether your landlord provided one of the listed reasons for not renewing your lease."
 
 #: src/Components/Pages/Form/Survey.tsx:260
 msgid "Please specify if your apartment is part of any subsidized housing programs."
@@ -2059,3 +2105,7 @@ msgstr "Your rights against discrimination"
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:300
 msgid "YouTube video for how to find other apartments your landlord owns"
 msgstr "YouTube video for how to find other apartments your landlord owns"
+
+#: src/types/LetterFormTypes.ts:19
+msgid "ZIP Code must be either 5-digit number or 5-digits with hyphen and 4 additional digits."
+msgstr "ZIP Code must be either 5-digit number or 5-digits with hyphen and 4 additional digits."
