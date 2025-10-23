@@ -57,18 +57,7 @@ const steps: Step[] = [
     ],
   },
   {
-    // TODO: Move to after landlord details, it's here only for ease of PR review
     id: "Step 4",
-    name: "Mail Choice",
-    fields: [
-      "mail_choice",
-      "user_details.email",
-      "landlord_details.email",
-      "extra_emails",
-    ],
-  },
-  {
-    id: "Step 5",
     name: "Your address",
     fields: [
       "user_details.primary_line",
@@ -77,6 +66,17 @@ const steps: Step[] = [
       "user_details.state",
       "user_details.zip_code",
       "user_details.bbl",
+    ],
+  },
+  {
+    // TODO: Move to after landlord details, it's here only for ease of PR review
+    id: "Step 5",
+    name: "Mail Choice",
+    fields: [
+      "mail_choice",
+      "user_details.email",
+      "landlord_details.email",
+      "extra_emails",
     ],
   },
   {
@@ -247,8 +247,8 @@ export const LetterBuilderForm: React.FC = () => {
           </>
         )}
 
-        {currentStep === 3 && <MailChoiceStep {...formHookReturn} />}
-        {currentStep === 4 && <UserAddressStep {...formHookReturn} />}
+        {currentStep === 3 && <UserAddressStep {...formHookReturn} />}
+        {currentStep === 4 && <MailChoiceStep {...formHookReturn} />}
         {currentStep === 5 && <LandlordDetailsStep {...formHookReturn} />}
         {currentStep === 6 && <PreviewStep {...formHookReturn} />}
         {currentStep === 7 && (
