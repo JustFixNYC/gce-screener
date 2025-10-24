@@ -1,6 +1,6 @@
-@import "../../../mixins.scss";
-@import "../../../variables.scss";
-@import "../../../colors.scss";
+@use "../../../mixins" as *;
+@use "../../../variables" as *;
+@use "../../../colors" as *;
 
 #home-page {
   border-bottom: 1px solid $OFF_BLACK;

@@ -1,4 +1,4 @@
-@import "../../../mixins.scss";
+@use "../../../mixins" as *;
 
 #privacy-policy-page,
 #terms-of-use-page {

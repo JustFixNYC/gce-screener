@@ -1,6 +1,6 @@
-@import "../../mixins.scss";
-@import "../../colors.scss";
-@import "../../variables.scss";
+@use "../../mixins" as *;
+@use "../../colors" as *;
+@use "../../variables" as *;
 
 .footer {
   display: flex;
