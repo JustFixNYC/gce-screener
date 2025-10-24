@@ -27,7 +27,7 @@ export const PreviewStep: React.FC<FormHookProps> = (props) => {
       setLetter(localizedLetterHtml);
     };
     prepLetter();
-  }, [letterData, previewLocale]);
+  }, [previewLocale]);
 
   return (
     <>
