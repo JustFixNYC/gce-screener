@@ -138,7 +138,7 @@ export const LetterBuilderForm: React.FC = () => {
   const [letterResp, setLetterResp] = useState<GCELetterConfirmation>();
   const onLetterSubmit = async () => {
     const letterData = getValues();
-    const letterHtml = await buildLetterHtml(letterData, "en", true);
+    const letterHtml = await buildLetterHtml(letterData, "en");
     const letterPostData: GCELetterPostData = {
       ...letterData,
       extra_emails: letterData.extra_emails
