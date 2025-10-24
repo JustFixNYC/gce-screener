@@ -135,7 +135,7 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
         <TextInput
           {...register("user_details.email")}
           id="form-email"
-          labelText={_(msg`Email`)}
+          labelText={_(msg`Your email (optional)`)}
           invalid={!!userErrors?.email}
           invalidText={userErrors?.email?.message}
           invalidRole="status"
@@ -152,7 +152,7 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
                 field.onChange(parseFormattedPhoneNumber(e.target.value))
               }
               id="form-phone_number"
-              labelText={_(msg`Phone`)}
+              labelText={_(msg`Your phone number`)}
               invalid={!!userErrors?.phone_number}
               invalidText={userErrors?.phone_number?.message}
               invalidRole="status"
