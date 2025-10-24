@@ -33,15 +33,11 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
     register,
     setValue,
     setError,
-    watch,
     control,
     formState: { errors },
   } = props;
 
   const userErrors = errors.user_details;
-
-  console.log(userErrors);
-  console.log(watch("user_details"));
 
   const { _ } = useLingui();
 

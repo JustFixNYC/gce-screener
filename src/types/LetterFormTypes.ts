@@ -52,7 +52,6 @@ const userDetailsSchema = (i18n: I18n) => {
       // Sadly there's no good way to avoid repeating this for user & landlord
       // since .omit and .extend wipe out .refine
       (data) => {
-        console.log({ refine: data });
         return (
           (!data.secondary_line && data.no_unit) ||
           (!!data.secondary_line && !data.no_unit)
@@ -85,7 +84,6 @@ const landlordDetailsSchema = (i18n: I18n) => {
     })
     .refine(
       (data) => {
-        console.log({ refine: data });
         return (
           (!data.secondary_line && data.no_unit) ||
           (!!data.secondary_line && !data.no_unit)

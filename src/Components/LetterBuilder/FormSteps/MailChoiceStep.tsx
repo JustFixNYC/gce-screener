@@ -28,8 +28,6 @@ export const MailChoiceStep: React.FC<FormHookProps> = (props) => {
 
   const { _ } = useLingui();
 
-  console.log(errors);
-
   return (
     <>
       <FormGroup

@@ -94,7 +94,7 @@ export const LetterBuilderForm: React.FC = () => {
       landlord_details: { no_unit: false },
     },
   });
-  const { reset, trigger, handleSubmit, setError, getValues, setValue, watch } =
+  const { reset, trigger, handleSubmit, setError, getValues, setValue } =
     formHookReturn;
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -158,16 +158,11 @@ export const LetterBuilderForm: React.FC = () => {
     return resp;
   };
 
-  console.log({ stepInfo: steps[currentStep] });
-  console.log({ mail_choice: watch("mail_choice") });
-
   const next = async () => {
     const fields = steps[currentStep].fields;
 
-    console.log({ fields_to_validate: fields });
     if (fields) {
       const output = await trigger(fields, { shouldFocus: true });
-      console.log({ output });
       if (!output) return;
     }
 
