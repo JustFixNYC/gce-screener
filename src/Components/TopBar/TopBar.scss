@@ -1,6 +1,6 @@
-@import "../../colors.scss";
-@import "../../variables.scss";
-@import "../../mixins.scss";
+@use "../../colors" as *;
+@use "../../variables" as *;
+@use "../../mixins" as *;
 
 $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
 

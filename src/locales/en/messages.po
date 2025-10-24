@@ -178,6 +178,15 @@ msgstr "About the law"
 msgid "About this site"
 msgstr "About this site"
 
+#. placeholder {0}: index + 1
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:127
+msgid "Additional email {0}"
+msgstr "Additional email {0}"
+
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:119
+msgid "Additional recipients"
+msgstr "Additional recipients"
+
 #: src/Components/ProgressBar/ProgressBar.tsx:25
 msgid "Address"
 msgstr "Address"
@@ -1999,6 +2008,10 @@ msgstr "Your current monthly rent + {increase_pct}%"
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:104
 #~ msgid "Your current monthly rent + ${increase_pct}%"
 #~ msgstr "Your current monthly rent + ${increase_pct}%"
+
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:101
+msgid "Your email"
+msgstr "Your email"
 
 #: src/Components/KYRContent/KYRContent.tsx:38
 msgid "Your eviction protections"

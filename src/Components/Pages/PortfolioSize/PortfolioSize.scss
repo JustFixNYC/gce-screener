@@ -1,5 +1,6 @@
-@import "../content-page.scss";
-@import "../../../colors.scss";
+@use "../content-page" as *;
+@use "../../../colors" as *;
+@use "../../../mixins" as *;
 
 #portfolio-size-page {
   .content-box__header > .info-box {

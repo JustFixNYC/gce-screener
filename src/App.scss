@@ -1,6 +1,6 @@
-@import "colors.scss";
-@import "variables.scss";
-@import "mixins.scss";
+@use "colors" as *;
+@use "variables" as *;
+@use "mixins" as *;
 
 @media print {
   html {

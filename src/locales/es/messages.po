@@ -183,6 +183,15 @@ msgstr "Acerca de la ley"
 msgid "About this site"
 msgstr "Acerca de este sitio"
 
+#. placeholder {0}: index + 1
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:127
+msgid "Additional email {0}"
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:119
+msgid "Additional recipients"
+msgstr ""
+
 #: src/Components/ProgressBar/ProgressBar.tsx:25
 msgid "Address"
 msgstr "Dirección"
@@ -2004,6 +2013,10 @@ msgstr "Su alquiler mensual actual + {increase_pct} %"
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:104
 #~ msgid "Your current monthly rent + ${increase_pct}%"
 #~ msgstr "Your current monthly rent + ${increase_pct}%"
+
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:101
+msgid "Your email"
+msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:38
 msgid "Your eviction protections"
