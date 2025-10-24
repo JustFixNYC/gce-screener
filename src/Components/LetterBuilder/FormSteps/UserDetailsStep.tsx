@@ -2,7 +2,12 @@ import { Controller, FieldPath } from "react-hook-form";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { Checkbox, FormGroup, TextInput } from "@justfixnyc/component-library";
+import {
+  Button,
+  Checkbox,
+  FormGroup,
+  TextInput,
+} from "@justfixnyc/component-library";
 
 import {
   formatPhoneNumber,
@@ -12,6 +17,8 @@ import { InfoBox } from "../../InfoBox/InfoBox";
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
 import { FormFields, FormHookProps } from "../../../types/LetterFormTypes";
 import { Address } from "../../Pages/Home/Home";
+import { useState } from "react";
+import Modal from "../../Modal/Modal";
 
 const geosearchToLOBAddressWithBBL = (
   addr: Address
@@ -40,6 +47,8 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
   const userErrors = errors.user_details;
 
   const { _ } = useLingui();
+
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
@@ -151,7 +160,53 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
             />
           )}
         />
+        <div>
+          <Trans>Why are we asking for this information?</Trans>
+          <button
+            type="button"
+            className="text-link-button jfcl-link"
+            onClick={() => setShowModal(true)}
+          >
+            <Trans>Learn more</Trans>
+          </button>
+        </div>
       </FormGroup>
+
+      <Modal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        hasCloseBtn={true}
+        header={_(msg`Why we ask for your phone number and email`)}
+      >
+        <section>
+          <Trans>
+            <strong>Phone number</strong>
+          </Trans>
+          <Trans>
+            <p>
+              We’ll text you to check in after your letter is mailed. We will
+              never call you or share your phone number.
+            </p>
+          </Trans>
+        </section>
+        <section>
+          <Trans>
+            <strong>Email</strong>
+          </Trans>
+          <Trans>
+            <p>
+              We’ll include your email in the letter for your landlord to
+              contact you, and send you a PDF copy. We never share your email
+              with anyone.
+            </p>
+          </Trans>
+        </section>
+        <Button
+          variant="secondary"
+          labelText={_(msg`Close`)}
+          onClick={() => setShowModal(false)}
+        />
+      </Modal>
     </>
   );
 };
