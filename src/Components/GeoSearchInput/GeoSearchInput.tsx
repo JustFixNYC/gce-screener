@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
-import { Dropdown, Icon } from "@justfixnyc/component-library";
+import { Dropdown } from "@justfixnyc/component-library";
 import {
   GeoSearchRequester,
   GeoSearchFeature,
@@ -15,27 +14,26 @@ import classNames from "classnames";
 type GeoSearchInputProps = {
   initialAddress?: Address;
   onChange: (selectedAddress: Address) => void;
+  labelText?: string;
   invalid: boolean;
+  invalidText?: string;
   setInvalid: React.Dispatch<React.SetStateAction<boolean>>;
+  placeholder?: React.ReactNode;
 };
 
 export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
   initialAddress,
   onChange,
+  labelText,
   invalid,
+  invalidText,
   setInvalid,
+  placeholder,
 }) => {
   const { _ } = useLingui();
   const [results, setResults] = useState<GeoSearchFeature[]>([]);
   const [isFocused, setIsFocused] = useState(false);
   const [isHighlighted, setIsHighlighted] = useState(false);
-
-  const placeholder = (
-    <>
-      <Icon icon="locationDot" />
-      <Trans>Enter your address</Trans>
-    </>
-  );
 
   const requester = useMemo(
     () =>
@@ -65,15 +63,17 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
 
   return (
     <div className="geo-search">
+      {!!labelText && <label htmlFor="geosearch">{labelText}</label>}
       <Dropdown
+        id="geosearch"
         className={classNames("geo-search", {
           "is-highlighted": isHighlighted,
         })}
         options={options}
-        aria-label={placeholder}
-        placeholder={!isFocused && placeholder}
+        aria-label={_(msg`Enter your address`)}
+        placeholder={!isFocused && !!placeholder ? placeholder : ""}
         invalid={!isFocused && invalid}
-        invalidText={_(msg`You must enter an address`)}
+        invalidText={invalidText}
         invalidRole="alert"
         onFocus={() => {
           setInvalid(false);
