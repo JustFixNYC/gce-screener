@@ -94,6 +94,9 @@ export const LetterTester: React.FC<{ letterData: FormFields }> = ({
           const letterHtml = await buildLetterHtml(sampleFormValues, "en");
           const letterPostData: GCELetterPostData = {
             ...sampleFormValues,
+            extra_emails: letterData.extra_emails
+              ?.map(({ email }) => email)
+              .filter((email): email is string => !!email),
             html_content: letterHtml,
           };
           await sendLetter(letterPostData);
