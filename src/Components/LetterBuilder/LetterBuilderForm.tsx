@@ -12,7 +12,6 @@ import { ProgressBar } from "./ProgressBar/ProgressBar";
 import { formSchema, FormFields } from "../../types/LetterFormTypes";
 import { LandlordDetailsStep } from "./FormSteps/LandlordDetailsStep";
 import { UserDetailsStep } from "./FormSteps/UserDetailsStep";
-import { UserAddressStep } from "./FormSteps/UserAddressStep";
 import { MailChoiceStep } from "./FormSteps/MailChoiceStep";
 import { PreviewStep } from "./FormSteps/PreviewStep";
 import { buildLetterHtml } from "./Letter/letter-utils";
@@ -51,37 +50,32 @@ const steps: Step[] = [
     id: "Step 3",
     name: "Contact information",
     fields: [
-      "user_details.email",
-      "user_details.phone_number",
       "user_details.first_name",
       "user_details.last_name",
-    ],
-  },
-  {
-    id: "Step 4",
-    name: "Your address",
-    fields: [
       "user_details.primary_line",
       "user_details.secondary_line",
+      "user_details.no_unit",
       "user_details.city",
       "user_details.state",
       "user_details.zip_code",
       "user_details.bbl",
+      "user_details.email",
+      "user_details.phone_number",
     ],
   },
   {
-    id: "Step 5",
+    id: "Step 4",
     name: "Landlord details",
     fields: ["landlord_details"],
   },
-  { id: "Step 6", name: "Mail Choice" },
+  { id: "Step 5", name: "Mail Choice" },
   {
-    id: "Step 7",
+    id: "Step 6",
     name: "Email Choice",
     fields: ["email_to_landlord", "landlord_details.email"],
   },
-  { id: "Step 8", name: "Preview" },
-  { id: "Step 9", name: "Confirmation" },
+  { id: "Step 7", name: "Preview" },
+  { id: "Step 8", name: "Confirmation" },
 ];
 
 export const LetterBuilderForm: React.FC = () => {
@@ -91,6 +85,10 @@ export const LetterBuilderForm: React.FC = () => {
     // handle values that should be changed to undefined
     resolver: zodResolver(formSchema(i18n)) as Resolver<FormFields>,
     mode: "onSubmit",
+    defaultValues: {
+      user_details: { no_unit: false },
+      landlord_details: { no_unit: false },
+    },
   });
   const { reset, trigger, handleSubmit, setError, getValues, setValue } =
     formHookReturn;
@@ -135,8 +133,17 @@ export const LetterBuilderForm: React.FC = () => {
   const onLetterSubmit = async () => {
     const letterData = getValues();
     const letterHtml = await buildLetterHtml(letterData, "en", true);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { no_unit: _userNoUnit, ...userDetails } = letterData.user_details;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { no_unit: _landlordNoUnit, ...landlordDetails } =
+      letterData.landlord_details;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { user_details, landlord_details, ...letterFields } = letterData;
     const letterPostData: GCELetterPostData = {
-      ...letterData,
+      ...letterFields,
+      user_details: userDetails,
+      landlord_details: landlordDetails,
       html_content: letterHtml,
     };
     const resp = await sendLetter(letterPostData);
@@ -241,7 +248,6 @@ export const LetterBuilderForm: React.FC = () => {
           </>
         )}
 
-        {currentStep === 3 && <UserAddressStep {...formHookReturn} />}
         {currentStep === 4 && <LandlordDetailsStep {...formHookReturn} />}
         {currentStep === 5 && <MailChoiceStep {...formHookReturn} />}
         {currentStep === 6 && <EmailChoiceStep {...formHookReturn} />}

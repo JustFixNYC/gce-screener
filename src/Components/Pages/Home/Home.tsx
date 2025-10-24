@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useRollbar } from "@rollbar/react";
-import { Button } from "@justfixnyc/component-library";
+import { Button, Icon } from "@justfixnyc/component-library";
 import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
@@ -90,7 +90,14 @@ export const Home: React.FC = () => {
             initialAddress={address}
             onChange={setGeoAddress}
             invalid={inputInvalid}
+            invalidText={_(msg`You must enter an address`)}
             setInvalid={setInputInvalid}
+            placeholder={
+              <>
+                <Icon icon="locationDot" />
+                <Trans>Enter your address</Trans>
+              </>
+            }
           />
           <Button type="submit" labelText={_(msg`Get started`)} />
         </form>

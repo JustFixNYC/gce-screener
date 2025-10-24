@@ -115,7 +115,12 @@ export type GCEPostData = {
   result_url?: string;
 };
 
-export type GCELetterPostData = FormFields & {
+export type GCELetterPostData = Omit<
+  FormFields,
+  "user_details" | "landlord_details"
+> & {
+  user_details: Omit<FormFields["user_details"], "no_unit">;
+  landlord_details: Omit<FormFields["landlord_details"], "no_unit">;
   html_content: string;
 };
 
