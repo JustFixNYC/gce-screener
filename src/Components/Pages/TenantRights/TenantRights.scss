@@ -1,4 +1,4 @@
-@import "../../../mixins.scss";
+@use "../../../mixins" as *;
 
 #tenant-rights-page {
   .headline-section__content {

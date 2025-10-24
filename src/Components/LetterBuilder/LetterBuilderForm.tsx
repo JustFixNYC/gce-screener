@@ -21,7 +21,6 @@ import {
 } from "../../types/APIDataTypes";
 import { useSendGceLetterData } from "../../api/hooks";
 import { ConfirmationStep } from "./FormSteps/ConfirmationStep";
-import { EmailChoiceStep } from "./FormSteps/EmailChoiceStep";
 import { ReasonStep } from "./FormSteps/ReasonStep";
 import { PlannedIncreaseStep } from "./FormSteps/PlannedIncreaseStep";
 import { AllowedIncreaseStep } from "./FormSteps/AllowedIncreaseStep";
@@ -64,18 +63,23 @@ const steps: Step[] = [
     ],
   },
   {
+    // TODO: Move to after landlord details, it's here only for ease of PR review
     id: "Step 4",
+    name: "Mail Choice",
+    fields: [
+      "mail_choice",
+      "user_details.email",
+      "landlord_details.email",
+      "extra_emails",
+    ],
+  },
+  {
+    id: "Step 5",
     name: "Landlord details",
     fields: ["landlord_details"],
   },
-  { id: "Step 5", name: "Mail Choice" },
-  {
-    id: "Step 6",
-    name: "Email Choice",
-    fields: ["email_to_landlord", "landlord_details.email"],
-  },
-  { id: "Step 7", name: "Preview" },
-  { id: "Step 8", name: "Confirmation" },
+  { id: "Step 6", name: "Preview" },
+  { id: "Step 7", name: "Confirmation" },
 ];
 
 export const LetterBuilderForm: React.FC = () => {
@@ -90,7 +94,7 @@ export const LetterBuilderForm: React.FC = () => {
       landlord_details: { no_unit: false },
     },
   });
-  const { reset, trigger, handleSubmit, setError, getValues, setValue } =
+  const { reset, trigger, handleSubmit, setError, getValues, setValue, watch } =
     formHookReturn;
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -132,7 +136,7 @@ export const LetterBuilderForm: React.FC = () => {
   const [letterResp, setLetterResp] = useState<GCELetterConfirmation>();
   const onLetterSubmit = async () => {
     const letterData = getValues();
-    const letterHtml = await buildLetterHtml(letterData, "en", true);
+    const letterHtml = await buildLetterHtml(letterData, "en");
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { no_unit: _userNoUnit, ...userDetails } = letterData.user_details;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -144,6 +148,9 @@ export const LetterBuilderForm: React.FC = () => {
       ...letterFields,
       user_details: userDetails,
       landlord_details: landlordDetails,
+      extra_emails: letterData.extra_emails
+        ?.map(({ email }) => email)
+        .filter((email): email is string => !!email),
       html_content: letterHtml,
     };
     const resp = await sendLetter(letterPostData);
@@ -151,12 +158,13 @@ export const LetterBuilderForm: React.FC = () => {
     return resp;
   };
 
-  // console.log({ landlordDetails: watch("landlord_details") });
+  console.log({ stepInfo: steps[currentStep] });
+  console.log({ mail_choice: watch("mail_choice") });
 
   const next = async () => {
     const fields = steps[currentStep].fields;
 
-    // console.log(FormSchema.safeParse(getValues()));
+    console.log({ fields_to_validate: fields });
     if (fields) {
       const output = await trigger(fields, { shouldFocus: true });
       console.log({ output });
@@ -193,7 +201,8 @@ export const LetterBuilderForm: React.FC = () => {
     const fields = steps[currentStep].fields;
 
     if (currentStep > 0) {
-      // clear value on back
+      // TODO: maybe this shouldn't fully clear the values, but just reset the
+      // errors if possible, so the values will still be prefilled
       if (fields) {
         fields.forEach((field) => {
           setValue(field, undefined);
@@ -248,11 +257,10 @@ export const LetterBuilderForm: React.FC = () => {
           </>
         )}
 
+        {currentStep === 3 && <MailChoiceStep {...formHookReturn} />}
         {currentStep === 4 && <LandlordDetailsStep {...formHookReturn} />}
-        {currentStep === 5 && <MailChoiceStep {...formHookReturn} />}
-        {currentStep === 6 && <EmailChoiceStep {...formHookReturn} />}
-        {currentStep === 7 && <PreviewStep {...formHookReturn} />}
-        {currentStep === 8 && (
+        {currentStep === 5 && <PreviewStep {...formHookReturn} />}
+        {currentStep === 6 && (
           <ConfirmationStep confirmationResponse={letterResp} />
         )}
       </div>

@@ -115,7 +115,10 @@ const letterExtrasSchema = (i18n: I18n) =>
       ["WE_WILL_MAIL", "USER_WILL_MAIL"],
       i18n._(msg`Please select an option for mailing the letter`)
     ),
-    email_to_landlord: z.boolean(),
+    // Flat arrays don't work with react-hook-form field array
+    extra_emails: looseOptional(
+      z.array(z.object({ email: looseOptional(z.email()) }))
+    ),
   });
 
 const plannedIncreaseLetterSchema = (i18n: I18n) =>
@@ -181,14 +184,13 @@ export const defaultFormValues: FormFields = {
   mail_choice: "WE_WILL_MAIL",
   reason: "PLANNED_INCREASE",
   unreasonable_increase: false,
-  email_to_landlord: true,
 };
 
 export const sampleFormValues: FormFields = {
   user_details: {
     first_name: "Maxwell",
     last_name: "Austensen",
-    phone_number: "3475551234",
+    phone_number: "2125551212",
     email: "maxwell@justfix.org",
     primary_line: "deliverable",
     secondary_line: "Apt 1",
@@ -209,9 +211,9 @@ export const sampleFormValues: FormFields = {
     no_unit: false,
   },
   mail_choice: "WE_WILL_MAIL",
+  extra_emails: [{ email: "maxwell@justfix.org" }],
   reason: "PLANNED_INCREASE",
   unreasonable_increase: false,
-  email_to_landlord: true,
 };
 
 // This shouldn't be necessary, but for some reason it's unable to infer the

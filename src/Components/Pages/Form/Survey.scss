@@ -1,6 +1,6 @@
-@import "../../../mixins.scss";
-@import "../../../variables.scss";
-@import "../../../colors.scss";
+@use "../../../mixins" as *;
+@use "../../../variables" as *;
+@use "../../../colors" as *;
 
 #survey-page {
   .headline-section__subtitle {

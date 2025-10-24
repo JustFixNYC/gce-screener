@@ -117,10 +117,11 @@ export type GCEPostData = {
 
 export type GCELetterPostData = Omit<
   FormFields,
-  "user_details" | "landlord_details"
+  "user_details" | "landlord_details" | "extra_emails"
 > & {
   user_details: Omit<FormFields["user_details"], "no_unit">;
   landlord_details: Omit<FormFields["landlord_details"], "no_unit">;
+  extra_emails?: string[];
   html_content: string;
 };
 
