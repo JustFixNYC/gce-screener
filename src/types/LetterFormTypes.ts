@@ -138,7 +138,7 @@ export const sampleFormValues: FormFields = {
   user_details: {
     first_name: "Maxwell",
     last_name: "Austensen",
-    phone_number: "3475551234",
+    phone_number: "2125551212",
     email: "maxwell@justfix.org",
     primary_line: "deliverable",
     secondary_line: "Apt 1",

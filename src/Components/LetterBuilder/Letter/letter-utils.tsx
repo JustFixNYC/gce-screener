@@ -16,15 +16,12 @@ async function changeLetterLocale(locale: SupportedLocale) {
 
 export const buildLetterHtml = (
   letterData: FormFields,
-  locale: string,
-  isPdf: boolean
+  locale: string
 ): Promise<string> => {
   if (!isSupportedLocale(locale)) throw new Error(`${locale} is not supported`);
 
   return changeLetterLocale(locale).then(() => {
-    return renderToStaticMarkup(
-      <Letter letterData={letterData} isPdf={isPdf} />
-    );
+    return renderToStaticMarkup(<Letter letterData={letterData} />);
   });
 };
 
