@@ -1,7 +1,7 @@
-@import "../../../mixins.scss";
-@import "../../../colors.scss";
-@import "../../../variables.scss";
-@import "../content-page.scss";
+@use "../../../mixins" as *;
+@use "../../../colors" as *;
+@use "../../../variables" as *;
+@use "../content-page" as *;
 
 #results-page {
   .data__loading,
