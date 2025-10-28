@@ -249,17 +249,6 @@ export const LetterBuilderForm: React.FC = () => {
           )}
         </FormContext.Provider>
       </div>
-      {/* <div className="letter-form__buttons">
-        {currentStep > 0 && (
-          <Button variant="tertiary" labelText={_(msg`Back`)} onClick={prev} />
-        )}
-        <Button
-          labelText={
-            currentStep < steps.length - 1 ? _(msg`Next`) : _(msg`Submit`)
-          }
-          type="submit"
-        />
-      </div> */}
     </form>
   );
 };

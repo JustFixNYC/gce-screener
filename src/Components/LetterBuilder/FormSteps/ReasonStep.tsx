@@ -4,7 +4,6 @@ import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { FormGroup, SelectButton } from "@justfixnyc/component-library";
 
-// import { FormHookProps } from "../../../types/LetterFormTypes";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import Modal from "../../Modal/Modal";
 import { JFCLLinkExternal } from "../../JFCLLink";
