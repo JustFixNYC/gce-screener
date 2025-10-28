@@ -91,14 +91,21 @@ const steps: Step[] = [
 
 export const LetterBuilderForm: React.FC = () => {
   const { i18n } = useLingui();
-  const formHookReturn = useForm<FormFields>({
+  const formMethods = useForm<FormFields>({
     // Issue with the inferred type being "unknown" when preprocess() is used to
     // handle values that should be changed to undefined
     resolver: zodResolver(formSchema(i18n)) as Resolver<FormFields>,
     mode: "onSubmit",
   });
-  const { reset, trigger, handleSubmit, setError, getValues, setValue, watch } =
-    formHookReturn;
+  const {
+    reset,
+    trigger,
+    handleSubmit,
+    setError,
+    getValues,
+    clearErrors,
+    watch,
+  } = formMethods;
 
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -171,39 +178,28 @@ export const LetterBuilderForm: React.FC = () => {
       const isDeliverable = await verifyAddressDeliverable(
         getValues("landlord_details")
       );
-      if (!isDeliverable) {
-        return;
-      }
+      if (!isDeliverable) return;
     }
 
     if (steps[currentStep].name === "Preview") {
       const resp = await onLetterSubmit();
-      if (!resp) {
-        return;
-      }
+      if (!resp) return;
     }
 
-    if (currentStep < steps.length - 1) {
-      if (currentStep === steps.length - 2) {
-        await handleSubmit(processForm)();
-      }
-      setCurrentStep((step) => step + 1);
+    if (currentStep >= steps.length - 1) return;
+    if (currentStep === steps.length - 2) {
+      await handleSubmit(processForm)();
     }
+    setCurrentStep((step) => step + 1);
   };
 
-  const prev = () => {
+  const back = () => {
+    if (currentStep <= 0) return;
     const fields = steps[currentStep].fields;
-
-    if (currentStep > 0) {
-      // TODO: maybe this shouldn't fully clear the values, but just reset the
-      // errors if possible, so the values will still be prefilled
-      if (fields) {
-        fields.forEach((field) => {
-          setValue(field, undefined);
-        });
-      }
-      setCurrentStep((step) => step - 1);
-    }
+    fields?.forEach((field) => {
+      clearErrors(field);
+    });
+    setCurrentStep((step) => step - 1);
   };
 
   return (
@@ -219,14 +215,12 @@ export const LetterBuilderForm: React.FC = () => {
       </p>
       <ProgressBar steps={steps} currentStep={currentStep} />
       <div className="letter-form__content">
-        <FormContext.Provider
-          value={{ formMethods: formHookReturn, back: prev, next: next }}
-        >
+        <FormContext.Provider value={{ formMethods, back, next }}>
           {currentStep === 0 && <ReasonStep />}
           {currentStep === 1 && (
             <>
               {getValues("reason") === "PLANNED_INCREASE" && (
-                <PlannedIncreaseStep {...formHookReturn} />
+                <PlannedIncreaseStep />
               )}
               {getValues("reason") === "NON_RENEWAL" && <NonRenewalStep />}
             </>
@@ -234,16 +228,16 @@ export const LetterBuilderForm: React.FC = () => {
           {currentStep === 2 && (
             <>
               {getValues("unreasonable_increase") ? (
-                <AllowedIncreaseStep {...formHookReturn} />
+                <AllowedIncreaseStep />
               ) : (
-                <UserDetailsStep {...formHookReturn} />
+                <UserDetailsStep {...formMethods} />
               )}
             </>
           )}
-          {currentStep === 3 && <UserAddressStep {...formHookReturn} />}
-          {currentStep === 4 && <MailChoiceStep {...formHookReturn} />}
-          {currentStep === 5 && <LandlordDetailsStep {...formHookReturn} />}
-          {currentStep === 6 && <PreviewStep {...formHookReturn} />}
+          {currentStep === 3 && <UserAddressStep {...formMethods} />}
+          {currentStep === 4 && <MailChoiceStep />}
+          {currentStep === 5 && <LandlordDetailsStep {...formMethods} />}
+          {currentStep === 6 && <PreviewStep />}
           {currentStep === 7 && (
             <ConfirmationStep confirmationResponse={letterResp} />
           )}
