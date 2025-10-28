@@ -1,3 +1,4 @@
+import { useContext, useState } from "react";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
@@ -13,18 +14,19 @@ import {
   FormContext,
   isNonRenewalErrors,
 } from "../../../types/LetterFormTypes";
-import { useContext, useState } from "react";
 import Modal from "../../Modal/Modal";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 
 // TODO: need to override "next" button if user selects that good cause reason was given to instead launch the modal
 export const NonRenewalStep: React.FC = () => {
-  const { formMethods, next } = useContext(FormContext);
   const {
-    control,
-    watch,
-    formState: { errors },
-  } = formMethods;
+    formMethods: {
+      control,
+      watch,
+      formState: { errors },
+    },
+    next,
+  } = useContext(FormContext);
 
   const { _ } = useLingui();
   const [showModal, setShowModal] = useState(false);

@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
@@ -5,7 +6,7 @@ import { FormGroup, SelectButton } from "@justfixnyc/component-library";
 import { Controller } from "react-hook-form";
 
 import {
-  FormHookProps,
+  FormContext,
   isPlannedIncreaseErrors,
 } from "../../../types/LetterFormTypes";
 import { InfoBox } from "../../InfoBox/InfoBox";
@@ -14,16 +15,20 @@ import {
   CPI_EFFECTIVE_DATE,
 } from "../../Pages/RentCalculator/RentIncreaseValues";
 import { JFCLLinkExternal } from "../../JFCLLink";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 
-export const PlannedIncreaseStep: React.FC<FormHookProps> = (props) => {
+export const PlannedIncreaseStep: React.FC = () => {
   const {
-    control,
-    watch,
-    formState: { errors },
-  } = props;
+    formMethods: {
+      control,
+      watch,
+      formState: { errors },
+    },
+  } = useContext(FormContext);
 
   const { _ } = useLingui();
 
+  // fix issue with type inference with this typeguard
   if (!isPlannedIncreaseErrors(errors, watch("reason"))) return null;
 
   return (
@@ -64,6 +69,7 @@ export const PlannedIncreaseStep: React.FC<FormHookProps> = (props) => {
           />
         )}
       />
+      <BackNextButtons />
     </FormGroup>
   );
 };

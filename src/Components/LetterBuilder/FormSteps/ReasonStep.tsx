@@ -11,11 +11,12 @@ import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { FormContext } from "../../../types/LetterFormTypes";
 
 export const ReasonStep: React.FC = () => {
-  const { formMethods } = useContext(FormContext);
   const {
-    register,
-    formState: { errors },
-  } = formMethods;
+    formMethods: {
+      register,
+      formState: { errors },
+    },
+  } = useContext(FormContext);
 
   const { _ } = useLingui();
   const [showModal, setShowModal] = useState(false);

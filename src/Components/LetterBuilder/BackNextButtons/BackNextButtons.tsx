@@ -24,7 +24,8 @@ export const BackNextButtons: React.FC<BackNextButtonProps> = ({
       {!hideButon1 && (
         <Button
           labelText={_(msg`Back`)}
-          variant="secondary"
+          labelIcon="chevronLeft"
+          variant="tertiary"
           onClick={back}
           {...button1Props}
         />

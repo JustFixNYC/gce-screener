@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
+import { useFieldArray } from "react-hook-form";
 import {
   Button,
   FormGroup,
@@ -9,17 +11,19 @@ import {
   TextInput,
 } from "@justfixnyc/component-library";
 
-import { FormHookProps } from "../../../types/LetterFormTypes";
-import { useFieldArray } from "react-hook-form";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { Pill } from "../../Pill/Pill";
+import { FormContext } from "../../../types/LetterFormTypes";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 
-export const MailChoiceStep: React.FC<FormHookProps> = (props) => {
+export const MailChoiceStep: React.FC = () => {
   const {
-    register,
-    control,
-    formState: { errors },
-  } = props;
+    formMethods: {
+      register,
+      control,
+      formState: { errors },
+    },
+  } = useContext(FormContext);
 
   const { fields, append, remove } = useFieldArray({
     name: "extra_emails",
@@ -27,8 +31,6 @@ export const MailChoiceStep: React.FC<FormHookProps> = (props) => {
   });
 
   const { _ } = useLingui();
-
-  console.log(errors);
 
   return (
     <>
@@ -149,6 +151,7 @@ export const MailChoiceStep: React.FC<FormHookProps> = (props) => {
       >
         <Icon icon="plus" /> Add recipients
       </button>
+      <BackNextButtons />
     </>
   );
 };
