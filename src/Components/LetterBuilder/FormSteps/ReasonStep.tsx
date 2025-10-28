@@ -7,7 +7,7 @@ import { FormGroup, SelectButton } from "@justfixnyc/component-library";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import Modal from "../../Modal/Modal";
 import { JFCLLinkExternal } from "../../JFCLLink";
-import { NextBackButtons } from "../NextBackButtons/NextBackButtons";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { FormContext } from "../../../types/LetterFormTypes";
 
 export const ReasonStep: React.FC = () => {
@@ -41,7 +41,7 @@ export const ReasonStep: React.FC = () => {
           value="NON_RENEWAL"
           id="reason__non-renewal"
         />
-        <NextBackButtons hideButon1 />
+        <BackNextButtons hideButon1 />
       </FormGroup>
 
       <Modal

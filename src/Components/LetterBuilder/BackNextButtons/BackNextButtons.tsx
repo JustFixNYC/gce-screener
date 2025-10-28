@@ -4,14 +4,14 @@ import { useLingui } from "@lingui/react";
 import { useContext } from "react";
 import { FormContext } from "../../../types/LetterFormTypes";
 
-interface NextBackButtonProps {
+interface BackNextButtonProps {
   button1Props?: Partial<ButtonProps>;
   button2Props?: Partial<ButtonProps>;
   hideButon1?: boolean;
   hideButon2?: boolean;
 }
 
-export const NextBackButtons: React.FC<NextBackButtonProps> = ({
+export const BackNextButtons: React.FC<BackNextButtonProps> = ({
   button1Props,
   button2Props,
   hideButon1 = false,

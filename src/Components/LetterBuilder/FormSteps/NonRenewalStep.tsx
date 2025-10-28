@@ -15,7 +15,7 @@ import {
 } from "../../../types/LetterFormTypes";
 import { useContext, useState } from "react";
 import Modal from "../../Modal/Modal";
-import { NextBackButtons } from "../NextBackButtons/NextBackButtons";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 
 // TODO: need to override "next" button if user selects that good cause reason was given to instead launch the modal
 export const NonRenewalStep: React.FC = () => {
@@ -102,7 +102,7 @@ export const NonRenewalStep: React.FC = () => {
             />
           )}
         />
-        <NextBackButtons button2Props={button2Props} />
+        <BackNextButtons button2Props={button2Props} />
       </FormGroup>
 
       <Modal
