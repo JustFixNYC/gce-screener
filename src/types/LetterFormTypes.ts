@@ -5,6 +5,7 @@ import z from "zod";
 
 import { CPI } from "../Components/Pages/RentCalculator/RentIncreaseValues";
 import { looseOptional } from "../form-utils";
+import { createContext } from "react";
 
 const lobAddressSchema = (i18n: I18n) =>
   z.object({
@@ -102,6 +103,12 @@ export const formSchema = (i18n: I18n) =>
 export type FormFields = z.infer<ReturnType<typeof formSchema>>;
 
 export type FormHookProps = UseFormReturn<FormFields>;
+
+export const FormContext = createContext<{
+  formMethods: FormHookProps;
+  back: () => void;
+  next: () => void;
+}>(null!);
 
 export const defaultFormValues: FormFields = {
   user_details: {

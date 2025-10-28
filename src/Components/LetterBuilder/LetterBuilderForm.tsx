@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { FieldPath, Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@justfixnyc/component-library";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
-import { msg } from "@lingui/core/macro";
 
 import { handleFormNoDefault } from "../../form-utils";
 import { Tenants2ApiFetcherVerifyAddress } from "../../api/helpers";
 import { ProgressBar } from "./ProgressBar/ProgressBar";
-import { formSchema, FormFields } from "../../types/LetterFormTypes";
+import {
+  formSchema,
+  FormFields,
+  FormContext,
+} from "../../types/LetterFormTypes";
 import { LandlordDetailsStep } from "./FormSteps/LandlordDetailsStep";
 import { UserDetailsStep } from "./FormSteps/UserDetailsStep";
 import { UserAddressStep } from "./FormSteps/UserAddressStep";
@@ -26,7 +28,6 @@ import { ReasonStep } from "./FormSteps/ReasonStep";
 import { PlannedIncreaseStep } from "./FormSteps/PlannedIncreaseStep";
 import { AllowedIncreaseStep } from "./FormSteps/AllowedIncreaseStep";
 import { NonRenewalStep } from "./FormSteps/NonRenewalStep";
-import { GoodCauseGivenStep } from "./FormSteps/GoodCauseGivenStep";
 
 interface Step {
   id: string;
@@ -89,7 +90,7 @@ const steps: Step[] = [
 ];
 
 export const LetterBuilderForm: React.FC = () => {
-  const { i18n, _ } = useLingui();
+  const { i18n } = useLingui();
   const formHookReturn = useForm<FormFields>({
     // Issue with the inferred type being "unknown" when preprocess() is used to
     // handle values that should be changed to undefined
@@ -218,47 +219,37 @@ export const LetterBuilderForm: React.FC = () => {
       </p>
       <ProgressBar steps={steps} currentStep={currentStep} />
       <div className="letter-form__content">
-        {currentStep === 0 && <ReasonStep {...formHookReturn} />}
-
-        {getValues("reason") === "PLANNED_INCREASE" && (
-          <>
-            {currentStep === 1 && <PlannedIncreaseStep {...formHookReturn} />}
-            {currentStep === 2 && (
-              <>
-                {getValues("unreasonable_increase") === false ? (
-                  <AllowedIncreaseStep {...formHookReturn} />
-                ) : (
-                  <UserDetailsStep {...formHookReturn} />
-                )}
-              </>
-            )}
-          </>
-        )}
-
-        {getValues("reason") === "NON_RENEWAL" && (
-          <>
-            {currentStep === 1 && <NonRenewalStep {...formHookReturn} />}
-            {currentStep === 2 && (
-              <>
-                {getValues("good_cause_given") === true ? (
-                  <GoodCauseGivenStep {...formHookReturn} />
-                ) : (
-                  <UserDetailsStep {...formHookReturn} />
-                )}
-              </>
-            )}
-          </>
-        )}
-
-        {currentStep === 3 && <UserAddressStep {...formHookReturn} />}
-        {currentStep === 4 && <MailChoiceStep {...formHookReturn} />}
-        {currentStep === 5 && <LandlordDetailsStep {...formHookReturn} />}
-        {currentStep === 6 && <PreviewStep {...formHookReturn} />}
-        {currentStep === 7 && (
-          <ConfirmationStep confirmationResponse={letterResp} />
-        )}
+        <FormContext.Provider
+          value={{ formMethods: formHookReturn, back: prev, next: next }}
+        >
+          {currentStep === 0 && <ReasonStep />}
+          {currentStep === 1 && (
+            <>
+              {getValues("reason") === "PLANNED_INCREASE" && (
+                <PlannedIncreaseStep {...formHookReturn} />
+              )}
+              {getValues("reason") === "NON_RENEWAL" && <NonRenewalStep />}
+            </>
+          )}
+          {currentStep === 2 && (
+            <>
+              {getValues("unreasonable_increase") ? (
+                <AllowedIncreaseStep {...formHookReturn} />
+              ) : (
+                <UserDetailsStep {...formHookReturn} />
+              )}
+            </>
+          )}
+          {currentStep === 3 && <UserAddressStep {...formHookReturn} />}
+          {currentStep === 4 && <MailChoiceStep {...formHookReturn} />}
+          {currentStep === 5 && <LandlordDetailsStep {...formHookReturn} />}
+          {currentStep === 6 && <PreviewStep {...formHookReturn} />}
+          {currentStep === 7 && (
+            <ConfirmationStep confirmationResponse={letterResp} />
+          )}
+        </FormContext.Provider>
       </div>
-      <div className="letter-form__buttons">
+      {/* <div className="letter-form__buttons">
         {currentStep > 0 && (
           <Button variant="tertiary" labelText={_(msg`Back`)} onClick={prev} />
         )}
@@ -268,7 +259,7 @@ export const LetterBuilderForm: React.FC = () => {
           }
           type="submit"
         />
-      </div>
+      </div> */}
     </form>
   );
 };
