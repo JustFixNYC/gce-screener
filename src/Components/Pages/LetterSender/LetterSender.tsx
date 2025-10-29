@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
@@ -13,7 +14,7 @@ import { useSendGceLetterData } from "../../../api/hooks";
 import { languageNames, SupportedLocale } from "../../../i18n-base";
 import "./LetterSender.scss";
 
-export const LetterSender: React.FC = () => {
+export const LetterLayout: React.FC = () => {
   const { _ } = useLingui();
 
   return (
@@ -27,12 +28,19 @@ export const LetterSender: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          <p>For testing letter content and backend</p>
-          <LetterTester letterData={sampleFormValues} />
-          <LetterBuilderForm />
+          <Outlet />
         </div>
       </div>
     </div>
+  );
+};
+
+export const LetterSender: React.FC = () => {
+  return (
+    <>
+      <LetterTester letterData={sampleFormValues} />
+      <LetterBuilderForm />
+    </>
   );
 };
 
