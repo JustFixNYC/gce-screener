@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FieldPath, Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLingui } from "@lingui/react";
@@ -32,6 +33,7 @@ import { NonRenewalStep } from "./FormSteps/NonRenewalStep";
 interface Step {
   id: string;
   name: string;
+  routeName: string;
   fields?: FieldPath<FormFields>[];
 }
 
@@ -40,16 +42,19 @@ const steps: Step[] = [
   {
     id: "Step 1",
     name: "Reason for letter",
+    routeName: "reason",
     fields: ["reason"],
   },
   {
     id: "Step 2",
     name: "Reason for letter",
+    routeName: "reason-details",
     fields: ["unreasonable_increase", "good_cause_given"],
   },
   {
     id: "Step 3",
     name: "Contact information",
+    routeName: "contact-info",
     fields: [
       "user_details.email",
       "user_details.phone_number",
@@ -60,6 +65,7 @@ const steps: Step[] = [
   {
     id: "Step 4",
     name: "Your address",
+    routeName: "address",
     fields: [
       "user_details.primary_line",
       "user_details.secondary_line",
@@ -73,6 +79,7 @@ const steps: Step[] = [
     // TODO: Move to after landlord details, it's here only for ease of PR review
     id: "Step 5",
     name: "Mail Choice",
+    routeName: "mail-choice",
     fields: [
       "mail_choice",
       "user_details.email",
@@ -83,14 +90,17 @@ const steps: Step[] = [
   {
     id: "Step 6",
     name: "Landlord details",
+    routeName: "landlord-details",
     fields: ["landlord_details"],
   },
-  { id: "Step 7", name: "Preview" },
-  { id: "Step 8", name: "Confirmation" },
+  { id: "Step 7", name: "Preview", routeName: "preview" },
+  { id: "Step 8", name: "Confirmation", routeName: "confirmation" },
 ];
 
 export const LetterBuilderForm: React.FC = () => {
   const { i18n } = useLingui();
+  const navigate = useNavigate();
+  const location = useLocation();
   const formMethods = useForm<FormFields>({
     // Issue with the inferred type being "unknown" when preprocess() is used to
     // handle values that should be changed to undefined
@@ -108,6 +118,20 @@ export const LetterBuilderForm: React.FC = () => {
   } = formMethods;
 
   const [currentStep, setCurrentStep] = useState(0);
+
+  const getStepIndexFromPathname = (pathname: string): number => {
+    const parts = pathname.split("/").filter(Boolean);
+    const letterIndex = parts.indexOf("letter");
+    const routeSegment = letterIndex >= 0 ? parts[letterIndex + 1] : undefined;
+    const stepIndex = steps.findIndex((s) => s.routeName === routeSegment);
+    return stepIndex >= 0 ? stepIndex : 0;
+  };
+
+  // keeps LetterBuilderForm state in sync with URL
+  useEffect(() => {
+    setCurrentStep(getStepIndexFromPathname(location.pathname));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
 
   const processForm: SubmitHandler<FormFields> = (data: FormFields) => {
     console.log({ data });
@@ -162,6 +186,14 @@ export const LetterBuilderForm: React.FC = () => {
   console.log({ stepInfo: steps[currentStep] });
   console.log({ mail_choice: watch("mail_choice") });
 
+  // for flows with early completione (e.g. rent increase less than maximum %, Good Cause given for non-renewal)
+  const shouldShowFullProgress =
+    currentStep === 2 &&
+    ((getValues("reason") === "PLANNED_INCREASE" &&
+      getValues("unreasonable_increase") === false) ||
+      (getValues("reason") === "NON_RENEWAL" &&
+        getValues("good_cause_given") === true));
+
   const next = async () => {
     const fields = steps[currentStep].fields;
 
@@ -186,20 +218,29 @@ export const LetterBuilderForm: React.FC = () => {
       if (!resp) return;
     }
 
-    if (currentStep >= steps.length - 1) return;
-    if (currentStep === steps.length - 2) {
-      await handleSubmit(processForm)();
+    if (currentStep < steps.length - 1) {
+      if (currentStep === steps.length - 2) {
+        await handleSubmit(processForm)();
+      }
+      const nextStep = steps[currentStep + 1];
+      const nextPath = `/${i18n.locale}/letter/${nextStep.routeName}`;
+      navigate(nextPath, { preventScrollReset: true });
     }
     setCurrentStep((step) => step + 1);
   };
 
   const back = () => {
     if (currentStep <= 0) return;
+
     const fields = steps[currentStep].fields;
     fields?.forEach((field) => {
       clearErrors(field);
     });
+
     setCurrentStep((step) => step - 1);
+    const prevStep = steps[currentStep - 1];
+    const prevPath = `/${i18n.locale}/letter/${prevStep.routeName}`;
+    navigate(prevPath, { preventScrollReset: true });
   };
 
   return (
@@ -213,7 +254,11 @@ export const LetterBuilderForm: React.FC = () => {
           Cause
         </Trans>
       </p>
-      <ProgressBar steps={steps} currentStep={currentStep} />
+      <ProgressBar
+        steps={steps}
+        currentStep={currentStep}
+        progressOverride={shouldShowFullProgress ? 100 : undefined}
+      />
       <div className="letter-form__content">
         <FormContext.Provider value={{ formMethods, back, next }}>
           {currentStep === 0 && <ReasonStep />}

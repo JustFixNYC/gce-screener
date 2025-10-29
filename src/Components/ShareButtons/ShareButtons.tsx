@@ -27,7 +27,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
       key={key}
       onClick={() => gtmPush("gce_share_button", { type: "email" })}
     >
-      <Icon icon="envelope" type="regular" />
+      <Icon icon="envelopeRegular" />
       {x}
     </a>
   );
@@ -41,7 +41,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
         gtmPush("gce_share_button", { type: "download" });
       }}
     >
-      <Icon icon="download" type="regular" />
+      <Icon icon="downloadRegular" />
       {x}
     </button>
   );
@@ -55,7 +55,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
         gtmPush("gce_share_button", { type: "download" });
       }}
     >
-      <Icon icon="print" type="regular" />
+      <Icon icon="print" />
       {x}
     </button>
   );
@@ -66,7 +66,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({
       className="share-button share-button__bookmark jfcl-link"
       key={key}
     >
-      <Icon icon="bookmark" type="regular" />
+      <Icon icon="bookmarkRegular" />
       {x}
     </button>
   );

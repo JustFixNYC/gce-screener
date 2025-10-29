@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Button } from "@justfixnyc/component-library";
 
-import { Header } from "../../Header/Header";
 import { LetterBuilderForm } from "../../LetterBuilder/LetterBuilderForm";
 import { FormFields, sampleFormValues } from "../../../types/LetterFormTypes";
 import { buildLetterHtml } from "../../LetterBuilder/Letter/letter-utils";
@@ -13,24 +13,20 @@ import { useSendGceLetterData } from "../../../api/hooks";
 import { languageNames, SupportedLocale } from "../../../i18n-base";
 import "./LetterSender.scss";
 
-export const LetterSender: React.FC = () => {
-  const { _ } = useLingui();
-
+export const LetterLayout: React.FC = () => {
   return (
     <div id="letter-sender-page">
-      <Header
-        title={_(
-          msg`Send a free letter asserting your rights under Good Cause`
-        )}
-        showProgressBar={false}
-      />
+      <Outlet />
+    </div>
+  );
+};
 
-      <div className="content-section">
-        <div className="content-section__content">
-          <p>For testing letter content and backend</p>
-          <LetterTester letterData={sampleFormValues} />
-          <LetterBuilderForm />
-        </div>
+export const LetterSender: React.FC = () => {
+  return (
+    <div className="content-section">
+      <div className="content-section__content">
+        <LetterTester letterData={sampleFormValues} />
+        <LetterBuilderForm />
       </div>
     </div>
   );
