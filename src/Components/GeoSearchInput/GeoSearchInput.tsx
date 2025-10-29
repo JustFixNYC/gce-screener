@@ -8,7 +8,7 @@ import {
 } from "@justfixnyc/geosearch-requester";
 import "./GeoSearchInput.scss";
 import { Address } from "../Pages/Home/Home";
-import { formatGeosearchAddress } from "../../helpers";
+import { formatGeosearchAddress, toTitleCase } from "../../helpers";
 import classNames from "classnames";
 
 type GeoSearchInputProps = {
@@ -34,6 +34,10 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
   const [results, setResults] = useState<GeoSearchFeature[]>([]);
   const [isFocused, setIsFocused] = useState(false);
   const [isHighlighted, setIsHighlighted] = useState(false);
+  const [selectedValue, setSelectedValue] = useState<{
+    value: string;
+    label: string;
+  } | null>(null);
 
   const requester = useMemo(
     () =>
@@ -49,8 +53,10 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
   );
 
   useEffect(() => {
-    if (initialAddress) {
-      requester.changeSearchRequest(initialAddress?.address);
+    if (initialAddress?.address) {
+      const addressValue = toTitleCase(initialAddress.address);
+      setSelectedValue({ value: addressValue, label: addressValue });
+      requester.changeSearchRequest(addressValue);
     }
   }, [initialAddress, requester]);
 
@@ -70,6 +76,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
           "is-highlighted": isHighlighted,
         })}
         options={options}
+        value={selectedValue}
         aria-label={_(msg`Enter your address`)}
         placeholder={!isFocused && !!placeholder ? placeholder : ""}
         invalid={!isFocused && invalid}
@@ -97,6 +104,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
         // @ts-expect-error We need to update the JFCL onChange props to match react-select
         onChange={({ value }) => {
           setIsHighlighted(false);
+          setSelectedValue({ value, label: value });
 
           const selectedAddress = results.find(
             (result) => formatGeosearchAddress(result.properties) === value

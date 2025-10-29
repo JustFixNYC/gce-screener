@@ -87,7 +87,7 @@ export const Home: React.FC = () => {
       >
         <form className="geo-search-form" onSubmit={handleAddressSearch}>
           <GeoSearchInput
-            initialAddress={address}
+            //initialAddress={address}
             onChange={setGeoAddress}
             invalid={inputInvalid}
             invalidText={_(msg`You must enter an address`)}
