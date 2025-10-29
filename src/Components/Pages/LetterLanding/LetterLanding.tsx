@@ -33,7 +33,7 @@ export const LetterLanding: React.FC = () => {
             <Button
               labelIcon="mailboxOpenLetter"
               labelText={_(msg`I’m covered, start my free letter`)}
-              onClick={() => navigate("build")}
+              onClick={() => navigate("reason")}
             />
             <Button
               labelText={_(msg`Find out if I’m covered`)}

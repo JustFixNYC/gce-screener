@@ -5,7 +5,6 @@ import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Button } from "@justfixnyc/component-library";
 
-import { Header } from "../../Header/Header";
 import { LetterBuilderForm } from "../../LetterBuilder/LetterBuilderForm";
 import { FormFields, sampleFormValues } from "../../../types/LetterFormTypes";
 import { buildLetterHtml } from "../../LetterBuilder/Letter/letter-utils";
@@ -15,32 +14,21 @@ import { languageNames, SupportedLocale } from "../../../i18n-base";
 import "./LetterSender.scss";
 
 export const LetterLayout: React.FC = () => {
-  const { _ } = useLingui();
-
   return (
     <div id="letter-sender-page">
-      <Header
-        title={_(
-          msg`Send a free letter asserting your rights under Good Cause`
-        )}
-        showProgressBar={false}
-      />
-
-      <div className="content-section">
-        <div className="content-section__content">
-          <Outlet />
-        </div>
-      </div>
+      <Outlet />
     </div>
   );
 };
 
 export const LetterSender: React.FC = () => {
   return (
-    <>
-      <LetterTester letterData={sampleFormValues} />
-      <LetterBuilderForm />
-    </>
+    <div className="content-section">
+      <div className="content-section__content">
+        <LetterTester letterData={sampleFormValues} />
+        <LetterBuilderForm />
+      </div>
+    </div>
   );
 };
 
