@@ -8,8 +8,7 @@ import { looseOptional } from "../form-utils";
 
 const lobAddressSchema = (i18n: I18n) =>
   z.object({
-    primary_line: z.string(),
-    secondary_line: z.string().optional(),
+    primary_line: z.string(i18n._(msg`Address is required for the letter`)),
     city: z.string(),
     state: z.string(),
     zip_code: z
@@ -21,40 +20,92 @@ const lobAddressSchema = (i18n: I18n) =>
         )
       ),
     urbanization: z.string().optional(),
+    secondary_line: z.string().optional(),
+    no_unit: z.boolean(),
   });
 
-const userDetailsSchema = (i18n: I18n) =>
-  z.object({
-    first_name: z
-      .string()
-      .min(1, i18n._(msg`First name is required for the letter`)),
-    last_name: z
-      .string()
-      .min(1, i18n._(msg`Last name is required for the letter`)),
-    phone_number: z
-      .string({
-        error: (iss) =>
-          iss.input === undefined || iss.input === ""
-            ? i18n._(msg`Phone number is required for follow up`)
-            : i18n._(msg`Please enter a complete US phone number`),
-      })
-      .length(10, i18n._(msg`Please enter a complete US phone number`)),
-    // Email has god default validator regex, plus alternatives, and way to
-    // include custom ({pattern: /<regex>/})
-    email: looseOptional(
-      z.email(i18n._(msg`Email is required to send your copy of the letter`))
-    ),
-    ...lobAddressSchema(i18n)
-      .omit({ urbanization: true })
-      .extend({ bbl: z.string().regex(/^\d{10}$/) }).shape,
-  });
+const userDetailsSchema = (i18n: I18n) => {
+  const schema = z
+    .object({
+      first_name: z
+        .string()
+        .min(1, i18n._(msg`First name is required for the letter`)),
+      last_name: z
+        .string()
+        .min(1, i18n._(msg`Last name is required for the letter`)),
+      phone_number: z
+        .string({
+          error: (iss) =>
+            iss.input === undefined || iss.input === ""
+              ? i18n._(msg`Phone number is required for follow up`)
+              : i18n._(msg`Please enter a complete US phone number`),
+        })
+        .length(10, i18n._(msg`Please enter a complete US phone number`)),
+      // Email has god default validator regex, plus alternatives, and way to
+      // include custom ({pattern: /<regex>/})
+      email: looseOptional(z.email(i18n._(msg`Please enter a valid email`))),
+      ...lobAddressSchema(i18n)
+        .omit({ urbanization: true })
+        .extend({ bbl: z.string().regex(/^\d{10}$/) }).shape,
+    })
+    .refine(
+      // Sadly there's no good way to avoid repeating this for user & landlord
+      // since .omit and .extend wipe out .refine
+      (data) => {
+        return (
+          (!data.secondary_line && data.no_unit) ||
+          (!!data.secondary_line && !data.no_unit)
+        );
+      },
+      {
+        message: i18n._(
+          msg`Please provide a unit number or check the box to confirm that there is no unit number`
+        ),
+        path: ["secondary_line"],
 
-const landlordDetailsSchema = (i18n: I18n) =>
-  z.object({
-    name: z.string().min(1, i18n._(msg`Landlord name is required`)),
-    email: looseOptional(z.email()),
-    ...lobAddressSchema(i18n).shape,
-  });
+        // necessary for this refine error to run even when there are validation
+        // errors in other fields in the object.
+        when(payload) {
+          return schema
+            .pick({ secondary_line: true, no_unit: true })
+            .safeParse(payload.value).success;
+        },
+      }
+    );
+  return schema;
+};
+
+const landlordDetailsSchema = (i18n: I18n) => {
+  const schema = z
+    .object({
+      name: z.string().min(1, i18n._(msg`Landlord name is required`)),
+      email: z.email().optional(),
+      ...lobAddressSchema(i18n).shape,
+    })
+    .refine(
+      (data) => {
+        return (
+          (!data.secondary_line && data.no_unit) ||
+          (!!data.secondary_line && !data.no_unit)
+        );
+      },
+      {
+        message: i18n._(
+          msg`Please provide a unit number or check the box to confirm that there is no unit number`
+        ),
+        path: ["secondary_line"],
+
+        // necessary for this refine error to run even when there are validation
+        // errors in other fields in the object.
+        when(payload) {
+          return schema
+            .pick({ secondary_line: true, no_unit: true })
+            .safeParse(payload.value).success;
+        },
+      }
+    );
+  return schema;
+};
 
 const letterExtrasSchema = (i18n: I18n) =>
   z.object({
@@ -110,21 +161,23 @@ export const defaultFormValues: FormFields = {
     phone_number: "",
     email: "",
     primary_line: "",
-    secondary_line: undefined,
+    secondary_line: "",
     city: "",
     state: "",
     zip_code: "",
     bbl: "",
+    no_unit: false,
   },
   landlord_details: {
     name: "",
     email: "",
     primary_line: "",
-    secondary_line: undefined,
+    secondary_line: "",
     city: "",
     state: "",
     zip_code: "",
     urbanization: undefined,
+    no_unit: false,
   },
   mail_choice: "WE_WILL_MAIL",
   reason: "PLANNED_INCREASE",
@@ -143,6 +196,7 @@ export const sampleFormValues: FormFields = {
     state: "NY",
     zip_code: "11111",
     bbl: "3000010001",
+    no_unit: false,
   },
   landlord_details: {
     name: "Maxwell Austensen",
@@ -152,6 +206,7 @@ export const sampleFormValues: FormFields = {
     city: "BROOKLYN",
     state: "NY",
     zip_code: "11111",
+    no_unit: false,
   },
   mail_choice: "WE_WILL_MAIL",
   extra_emails: [{ email: "maxwell@justfix.org" }],
