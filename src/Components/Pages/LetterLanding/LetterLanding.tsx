@@ -31,7 +31,7 @@ export const LetterLanding: React.FC = () => {
           </Trans>
           <div>
             <Button
-              labelIcon="envelope" // TODO: change this icon once added to JFCL
+              labelIcon="mailboxOpenLetter"
               labelText={_(msg`I’m covered, start my free letter`)}
               onClick={() => navigate("build")}
             />
@@ -96,37 +96,35 @@ export const LetterLanding: React.FC = () => {
             <h3>
               <Trans>Why send a letter to your landlord?</Trans>
             </h3>
-            <p>
-              <ol>
-                <li>
-                  <Trans>Formally asserts your rights</Trans>
-                  <p>
-                    <Trans>
-                      Sending a letter clearly communicates to your landlord
-                      that you know your legal protections.
-                    </Trans>
-                  </p>
-                </li>
-                <li>
-                  <Trans>Creates a paper trail</Trans>
-                  <p>
-                    <Trans>
-                      Communicating your request to your landlord in writing
-                      provides documented evidence of your complaint.
-                    </Trans>
-                  </p>
-                </li>
-                <li>
-                  <Trans>Opens negotiation</Trans>
-                  <p>
-                    <Trans>
-                      Establishes a professional channel to negotiate solutions
-                      to your rent increase or non-renewal.
-                    </Trans>
-                  </p>
-                </li>
-              </ol>
-            </p>
+            <ol>
+              <li>
+                <Trans>Formally asserts your rights</Trans>
+                <p>
+                  <Trans>
+                    Sending a letter clearly communicates to your landlord that
+                    you know your legal protections.
+                  </Trans>
+                </p>
+              </li>
+              <li>
+                <Trans>Creates a paper trail</Trans>
+                <p>
+                  <Trans>
+                    Communicating your request to your landlord in writing
+                    provides documented evidence of your complaint.
+                  </Trans>
+                </p>
+              </li>
+              <li>
+                <Trans>Opens negotiation</Trans>
+                <p>
+                  <Trans>
+                    Establishes a professional channel to negotiate solutions to
+                    your rent increase or non-renewal.
+                  </Trans>
+                </p>
+              </li>
+            </ol>
           </section>
         </div>
       </div>
