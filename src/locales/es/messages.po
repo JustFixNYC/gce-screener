@@ -67,6 +67,14 @@ msgstr "<0>Por</0> <1>Housing Justice for All</1> <2>y</2> <3>JustFix</3>"
 #~ msgid "<0>If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings.</0><1>Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation.</1><2>This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started.</2>"
 #~ msgstr "<0>If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings.</0><1>Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation.</1><2>This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started.</2>"
 
+#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:68
+msgid "<0>Note:</0> You will be able to download a PDF version of this letter later."
+msgstr ""
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:29
+msgid "<0>Start here:</0> are you covered by Good Cause?"
+msgstr ""
+
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:134
 msgid "<0>Step 1:</0> Find out who owns your building"
 msgstr "<0>Paso 1:</0> averigüe quién es el propietario de su edificio"
@@ -83,27 +91,27 @@ msgstr "<0>Consejo:</0> si en alguno de los documentos que se indican a continua
 msgid "<0>Tip:</0> We recommend doing the following research on a desktop computer. If you have not already, please watch the video, above, for step-by-step instructions on how to complete Steps 1 and 2."
 msgstr "<0>Consejo:</0> recomendamos realizar la siguiente investigación en una computadora de escritorio. Si aún no lo ha hecho, vea el video anterior para obtener instrucciones paso a paso sobre cómo completar los pasos 1 y 2."
 
-#: src/Components/Pages/Results/Results.tsx:570
+#: src/Components/Pages/Results/Results.tsx:557
 msgid "<0>You are</0> <1>likely covered</1> by Good Cause Eviction"
 msgstr "<1>Es probable que</1> <0>usted esté</0> <1>amparado</1> por el Desalojo por Justa Causa"
 
-#: src/Components/Pages/Results/Results.tsx:551
+#: src/Components/Pages/Results/Results.tsx:538
 msgid "<0>You are</0> <1>likely not covered</1> <2/>by Good Cause Eviction"
 msgstr "<1>Es probable que no</1> <0>esté</0> <1>amparado</1> <2/>por el Desalojo por Justa Causa"
 
-#: src/Components/Pages/Results/Results.tsx:542
+#: src/Components/Pages/Results/Results.tsx:529
 msgid "<0>You</0> <1>might be covered</1> by Good Cause Eviction"
 msgstr "<1>Es posible que</1> <0>usted</0> <1>esté amparado</1> por el Desalojo por Justa Causa"
 
-#: src/Components/Pages/Results/Results.tsx:579
+#: src/Components/Pages/Results/Results.tsx:566
 msgid "<0>Your apartment is part of</0> <1>NYCHA or PACT/RAD</1> which provides stronger protections than Good Cause Eviction"
 msgstr "<0>Tu departamento forma parte de</0> <1>NYCHA o PACT/RAD</1>, que ofrecen protecciones más sólidas que el desalojo por justa causa."
 
-#: src/Components/Pages/Results/Results.tsx:561
+#: src/Components/Pages/Results/Results.tsx:548
 msgid "<0>Your apartment is</0> <1>rent stabilized</1> which provides stronger protections than Good Cause Eviction"
 msgstr "<0>Su departamento tiene</0> <1>renta estabilizada</1>, lo que te brinda mayor protección que el desalojo por justa causa."
 
-#: src/Components/Pages/Results/Results.tsx:590
+#: src/Components/Pages/Results/Results.tsx:577
 msgid "<0>Your building is</0> <1>subsidized</1> which provides existing eviction protections"
 msgstr "<0>Su edificio está</0> <1>subsidiado</1>, lo que le brinda protección contra el desalojo."
 
@@ -181,7 +189,7 @@ msgstr "Dirección"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:277
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:144
-#: src/Components/Pages/Results/Results.tsx:497
+#: src/Components/Pages/Results/Results.tsx:484
 msgid "Adjust survey answers"
 msgstr "Ajustar las respuestas de la encuesta"
 
@@ -214,8 +222,9 @@ msgstr "Cesión de arrendamientos y rentas"
 msgid "Attend a walk-in Clinic hosted by the Met Council on Housing"
 msgstr "Asista a una clínica sin cita previa organizada por el Consejo Metropolitano de Vivienda"
 
-#: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:114
-#: src/Components/Pages/Form/Survey.tsx:362
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:304
+#: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:113
+#: src/Components/Pages/Form/Survey.tsx:359
 msgid "Back"
 msgstr "Atrás"
 
@@ -308,17 +317,38 @@ msgstr "Cerrar"
 msgid "Close modal"
 msgstr "Cerrar modal"
 
-#: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:118
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:112
+msgid "Communicating your request to your landlord in writing provides documented evidence of your complaint."
+msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:173
+msgid "Concerning the proposed rent increase:"
+msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:175
+msgid "Concerning your intent to end my tenancy"
+msgstr ""
+
+#: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:117
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: src/Components/Pages/Results/Results.tsx:631
+#: src/Components/Pages/Results/Results.tsx:618
 msgid "Copied"
 msgstr "Copiado"
 
-#: src/Components/Pages/Results/Results.tsx:623
+#: src/Components/Pages/Results/Results.tsx:610
 msgid "Copy goodcausenyc.org"
 msgstr "Copiar goodcausenyc.org"
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:110
+msgid "Creates a paper trail"
+msgstr ""
+
+#. placeholder {0}: ud.name
+#: src/Components/LetterBuilder/Letter/Letter.tsx:91
+msgid "Dear {0},"
+msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:489
 msgid "Demand notice"
@@ -328,7 +358,11 @@ msgstr "Notificación de demanda"
 msgid "Demolition"
 msgstr "Demolición"
 
-#: src/Components/Footer/Footer.tsx:23
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:79
+msgid "Designed with tenants and experts"
+msgstr ""
+
+#: src/Components/Footer/Footer.tsx:20
 msgid "Disclaimer"
 msgstr "Descargo de responsabilidad"
 
@@ -363,7 +397,11 @@ msgstr "Ingrese el alquiler mensual total de todo su departamento"
 msgid "Enter your address"
 msgstr "Ingrese su dirección"
 
-#: src/Components/Pages/Results/Results.tsx:264
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:121
+msgid "Establishes a professional channel to negotiate solutions to your rent increase or non-renewal."
+msgstr ""
+
+#: src/Components/Pages/Results/Results.tsx:268
 msgid "Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights"
 msgstr "Aunque es posible que no esté amparado por la Ley de Desalojo por Justa Causa, todos los inquilinos de la ciudad de Nueva York tienen garantizados los siguientes derechos:"
 
@@ -399,7 +437,7 @@ msgstr "Formulario de comentarios"
 msgid "Fill out the request form"
 msgstr "Llene el formulario de solicitud"
 
-#: src/Components/Pages/Results/Results.tsx:490
+#: src/Components/Pages/Results/Results.tsx:477
 msgid "Find other buildings your landlord owns"
 msgstr "Busca otros edificios que sean propiedad de su arrendador"
 
@@ -407,14 +445,18 @@ msgstr "Busca otros edificios que sean propiedad de su arrendador"
 msgid "Find out how much your landlord can increase your rent"
 msgstr "Averigüe cuánto puede aumentar el alquiler su arrendador"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:166
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:194
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:39
+msgid "Find out if I’m covered"
+msgstr ""
+
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:134
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:162
 #: src/Components/Pages/TenantRights/TenantRights.tsx:36
 msgid "Find out if you’re covered by Good Cause"
 msgstr "Averigüe si está amparado por la Ley de Desalojo por Justa Causa"
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:42
-#: src/Components/Pages/Results/Results.tsx:465
+#: src/Components/Pages/Results/Results.tsx:454
 #: src/Components/Pages/TenantRights/TenantRights.tsx:44
 #: src/hooks/useCriteriaResults.tsx:329
 msgid "Find out if your apartment is rent stabilized"
@@ -442,7 +484,11 @@ msgstr "Para cualquiera de las direcciones que se enumeran a continuación, solo
 msgid "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
 msgstr "Para los contratos de alquiler estabilizado que se renueven entre el 1 de octubre de 2024 y el 30 de septiembre de 2025, el alquiler legal podrá incrementarse en los siguientes porcentajes: para una renovación de un año, el incremento será del 2,75 %, y para una renovación de dos años, el incremento será del 5,25 %."
 
-#: src/Components/Modal/Modal.tsx:121
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:101
+msgid "Formally asserts your rights"
+msgstr ""
+
+#: src/Components/Modal/Modal.tsx:108
 msgid "Full image of this example lease can be viewed on <0>hcr.ny.gov</0>"
 msgstr "La imagen completa de este ejemplo de contrato de arrendamiento se puede ver en <0>hcr.ny.gov.</0>"
 
@@ -460,7 +506,7 @@ msgid "Get started"
 msgstr "Comenzar"
 
 #. placeholder {0}: bldgData.unitsres
-#: src/Components/Pages/Results/Results.tsx:480
+#: src/Components/Pages/Results/Results.tsx:469
 msgid "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings."
 msgstr "La Ley de Desalojo por Justa Causa solo ampara a los inquilinos cuyo propietario posea más de 10 departamentos. Su edificio solo tiene {0} departamentos, pero es posible que su propietario posea otros edificios."
 
@@ -480,8 +526,17 @@ msgstr "Las protecciones por Desalojo por Justa Causa entraron en vigor el 20 de
 msgid "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
 msgstr "La Ley de Desalojo por Justa Causa puede ser difícil de entender y de utilizar para protegerse. Este sitio web existe para facilitarle a usted y a sus vecinos la comprensión de las protecciones de los inquilinos y la defensa de sus derechos."
 
-#: src/Components/Footer/Footer.tsx:63
-#: src/Components/TopBar/TopBar.tsx:26
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:248
+msgid "Good Cause Letter Builder"
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:62
+#: src/Components/Pages/LetterSender/LetterSender.tsx:81
+msgid "Good Cause Letter Preview"
+msgstr ""
+
+#: src/Components/Footer/Footer.tsx:60
+#: src/Components/TopBar/TopBar.tsx:24
 msgid "Good Cause NYC"
 msgstr "Justa Causa de NYC"
 
@@ -494,7 +549,7 @@ msgid "Has your landlord raised your rent? Is your landlord refusing to do basic
 msgstr "¿Su arrendador ha aumentado su alquiler? ¿Su arrendador se niega a hacer reparaciones básicas? ¿Le preocupa que lo desalojen o no le renueven el contrato?"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:276
-#: src/Components/Pages/Results/Results.tsx:496
+#: src/Components/Pages/Results/Results.tsx:483
 msgid "Have you learned something new?"
 msgstr "¿Ha aprendido algo nuevo?"
 
@@ -527,6 +582,10 @@ msgstr "Formulario de organización de inquilinos de Housing Justice for All"
 msgid "Housing Preservation and Development Good Cause Eviction overview"
 msgstr "Resumen de la Ley de Desalojo por Causa Justa del Departamento de Preservación y Desarrollo de la Vivienda"
 
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:51
+msgid "How it works"
+msgstr ""
+
 #: src/Components/KYRContent/KYRContent.tsx:435
 msgid "How to assert your Good Cause rights"
 msgstr "Cómo hacer valer sus derechos por Justa Causa"
@@ -542,6 +601,27 @@ msgstr "Cómo saber si su departamento tiene alquiler estabilizado"
 #: src/Components/Pages/Results/Results.tsx:374
 msgid "How we determined your coverage"
 msgstr "Cómo determinamos su cobertura"
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:95
+msgid "I am writing to inform you that my tenancy at this address is covered under New York State’s Good Cause Eviction Law, which took effect in New York City on April 20, 2024. As a tenant covered by this law, I want to outline both my protections and our mutual responsibilities."
+msgstr ""
+
+#. placeholder {0}: CPI + 5
+#: src/Components/LetterBuilder/Letter/Letter.tsx:180
+msgid "I believe the rent detailed in the new lease you’ve offered exceeds the lawful limit under the Good Cause Eviction law. The difference between my current rent and the proposed rent appears to exceed {0}%."
+msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:200
+msgid "I respectfully request the following:"
+msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:231
+msgid "I value our landlord–tenant relationship and wish to continue it on clear and lawful terms. Please let me know if you’d like to discuss or clarify any of these requirements. I hope we can work cooperatively to uphold both legal obligations and good-faith communication."
+msgstr ""
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:35
+msgid "I’m covered, start my free letter"
+msgstr ""
 
 #: src/Components/Pages/Form/Survey.tsx:233
 #: src/Components/Pages/Form/Survey.tsx:347
@@ -575,6 +655,10 @@ msgstr "Si solicitó su departamento a través de NYC Housing Connect, es muy pr
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:73
 msgid "If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
 msgstr "Si se encuentra amparado por la Ley de Desalojo por Justa Causa, solo se le pueden aplicar aumentos de alquiler limitados. Utilice esta calculadora para determinar el aumento de alquiler permitido para su departamento en virtud de la Ley de Justa Causa."
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:54
+msgid "If you are covered by Good Cause, you have a legal right to limited rent increases and the right to stay in your home."
+msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:298
 msgid "If you are offered a new lease after April 20th, 2024, then your landlord can’t raise your apartment’s monthly rent higher than:"
@@ -629,6 +713,10 @@ msgstr "Si utiliza un vale que cubre parte o la totalidad de su alquiler, y pued
 #~ msgid "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>\"None of the above\"</0>"
 #~ msgstr "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>\"None of the above\"</0>"
 
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:20
+msgid "If you’re covered by Good Cause and your landlord is planning to raise your rent or not offer you a new lease, you can send a letter to your landlord asserting your Good Cause rights."
+msgstr ""
+
 #: src/Components/Pages/Home/Home.tsx:141
 msgid "If you’re not covered by Good Cause Eviction"
 msgstr "Si no está amparado por la Ley de Desalojo por Justa Causa"
@@ -648,6 +736,10 @@ msgstr "Si su departamento está sujeto a un alquiler estabilizado, no está amp
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:95
 msgid "If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings."
 msgstr "Si su edificio tiene menos de 11 departamentos, debe averiguar si su arrendador es propietario de otros edificios residenciales."
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:60
+msgid "If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter asserting your Good Cause rights. We will even send it for you, for free."
+msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:450
 msgid "If your landlord refuses to renew your lease, tells you that you have to leave for no reason, or tries to evict you for no reason, stay in your home!"
@@ -693,7 +785,7 @@ msgstr "Actividad ilegal"
 msgid "In instances where residents disagree with management decisions or believe their rights have been violated, they have the right to grieve these issues through a formal process. Residents can file grievances online through the resident portal or on paper by visiting the management office."
 msgstr "En los casos en que los residentes no estén de acuerdo con las decisiones de la administración o consideren que se han violado sus derechos, tienen derecho a presentar una queja sobre estos asuntos a través de un proceso formal. Los residentes pueden presentar sus quejas en línea a través del portal de residentes o en papel, acudiendo a la oficina de administración."
 
-#: src/Components/Pages/Results/Results.tsx:321
+#: src/Components/Pages/Results/Results.tsx:324
 msgid "Ineligible"
 msgstr "No apto"
 
@@ -876,7 +968,32 @@ msgstr "Cargando enlaces a documentos..."
 msgid "Loading your results..."
 msgstr "Cargando tus resultados..."
 
-#: src/hooks/useCriteriaResults.tsx:410
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:11
+msgid "Loading..."
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:50
+msgid "Lorem ipsum dolor sit amet"
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/GoodCauseGivenStep.tsx:16
+msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit"
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/GoodCauseGivenStep.tsx:21
+msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat alias magni nam beatae aliquam architecto laudantium mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda! Commodi architecto dolor eius perferendis!"
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:66
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:72
+msgid "Mail the letter yourself"
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:38
+msgid "Make sure the information below is accurate. If it is not, you can go back to make changes."
+msgstr ""
+
+#: src/hooks/useCriteriaResults.tsx:399
 msgid "manufactured housing"
 msgstr "vivienda prefabricada"
 
@@ -933,6 +1050,12 @@ msgstr "Hipoteca"
 msgid "Need to update your information?"
 msgstr "¿Necesita actualizar su información?"
 
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:308
+msgid "Next"
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:80
+#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:62
 #: src/Components/Pages/Form/Survey.tsx:232
 #: src/Components/Pages/Form/Survey.tsx:307
 #: src/Components/Pages/Form/Survey.tsx:346
@@ -959,6 +1082,10 @@ msgstr "Incumplimiento del pago del alquiler"
 #: src/Components/Pages/Form/Survey.tsx:255
 #~ msgid "None of the above"
 #~ msgstr "None of the above"
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:69
+msgid "Not sure if you’re covered?"
+msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:329
 msgid "Note"
@@ -1009,9 +1136,9 @@ msgstr "Proyecto de Justicia en Vivienda Pública de NYLAG"
 msgid "Once you find the name of your building’s owner, remember it because you’ll need it in Step 2."
 msgstr "Una vez que encuentres el nombre del propietario de tu edificio, recuérdalo porque lo necesitarás en el paso 2."
 
-#: src/hooks/useCriteriaResults.tsx:170
-msgid "other buildings."
-msgstr "otros edificios."
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:119
+msgid "Opens negotiation"
+msgstr ""
 
 #: src/Components/Pages/Form/Survey.tsx:254
 #~ msgid "Other subsidized housing"
@@ -1058,6 +1185,32 @@ msgstr "Ingrese el monto total de su alquiler."
 msgid "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that's a good sign they own the property."
 msgstr "Revise estos documentos para saber si el propietario de su edificio también es dueño de alguna de las propiedades que se indican a continuación. Si encuentra el nombre o la firma del propietario de su edificio en alguno de los documentos siguientes, es una buena señal de que es el dueño de la propiedad."
 
+#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:11
+#~ msgid "Please review your letter to ensure all the details are correct."
+#~ msgstr ""
+
+#: src/types/LetterFormTypes.ts:99
+msgid "Please select a reason for your letter."
+msgstr ""
+
+#: src/types/LetterFormTypes.ts:63
+msgid "Please select an option for mailing the letter"
+msgstr ""
+
+#. placeholder {0}: CPI + 5
+#: src/types/LetterFormTypes.ts:78
+msgid "Please select whether the increase is beyond {0}%"
+msgstr ""
+
+#: src/types/LetterFormTypes.ts:90
+msgid "Please select whether your landlord provided one of the listed reasons for not renewing your lease."
+msgstr ""
+
+#. placeholder {0}: CPI + 5
+#: src/Components/LetterBuilder/Letter/Letter.tsx:211
+msgid "Please send me a new lease with a rent increase of less than {0}%."
+msgstr ""
+
 #: src/Components/Pages/Form/Survey.tsx:260
 msgid "Please specify if your apartment is part of any subsidized housing programs."
 msgstr "Especifique si su departamento forma parte de algún programa de vivienda subsidiada."
@@ -1078,8 +1231,13 @@ msgstr "Por favor, especifique si su arrendador vive en el edificio donde usted 
 msgid "Please specify whether your landlord owns more than 10 apartments across multiple buildings."
 msgstr "Por favor, especifique si su arrendador es propietario de más de 10 departamentos en varios edificios."
 
-#: src/Components/Pages/Results/Results.tsx:192
-#: src/Components/Pages/Results/Results.tsx:245
+#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:45
+#: src/Components/Pages/LetterSender/LetterSender.tsx:63
+msgid "Preview language:"
+msgstr ""
+
+#: src/Components/Pages/Results/Results.tsx:196
+#: src/Components/Pages/Results/Results.tsx:249
 msgid "Print coverage"
 msgstr "Cobertura impresa"
 
@@ -1218,7 +1376,15 @@ msgstr "Resultado"
 msgid "Results are based on publicly available data about your building and the answers you provided. This does not constitute legal advice."
 msgstr "Los resultados se basan en datos públicos sobre su edificio y en las respuestas que usted ha proporcionado. Esto no constituye asesoramiento legal."
 
-#: src/Components/Modal/Modal.tsx:130
+#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:35
+msgid "Review your letter"
+msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:134
+msgid "Right to lease renewals"
+msgstr ""
+
+#: src/Components/Modal/Modal.tsx:117
 msgid "Sample image of blank rent stabilized lease"
 msgstr "Imagen de ejemplo de contrato de alquiler estabilizado en blanco"
 
@@ -1238,16 +1404,31 @@ msgstr "Averigüe si reúne los requisitos para obtener un abogado gratuito en e
 msgid "See your results"
 msgstr "Vea sus resultados"
 
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:24
+msgid "Select the reason for your letter"
+msgstr ""
+
+#: src/Components/Pages/LetterSender/LetterSender.tsx:23
+#~ msgid "Send a free letter asserting your rights under Good Cause"
+#~ msgstr ""
+
 #: src/Components/KYRContent/KYRContent.tsx:149
 msgid "Send a free, legally vetted letter to notify your landlord of repair issues"
 msgstr "Envíe una carta gratuita y revisada legalmente para notificar a su arrendador los problemas de reparación"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:79
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:182
-msgid "Send the rent increase calculator to your phone"
-msgstr "Envíe la calculadora de aumento de renta a tu teléfono"
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:18
+msgid "Send a letter to your landlord"
+msgstr ""
 
-#: src/Components/Pages/Results/Results.tsx:274
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:251
+msgid "Send a letter to your landlord via certified mail asserting your Good Cause"
+msgstr ""
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:103
+msgid "Sending a letter clearly communicates to your landlord that you know your legal protections."
+msgstr ""
+
+#: src/Components/Pages/Results/Results.tsx:278
 msgid "Share this site with your neighbors"
 msgstr "Comparta este sitio con sus vecinos"
 
@@ -1284,9 +1465,10 @@ msgstr "estudio"
 msgid "Studio"
 msgstr "Estudio"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:175
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:202
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:282
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:308
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:176
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:203
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:283
 msgid "Submit"
 msgstr "Enviar"
 
@@ -1303,8 +1485,9 @@ msgstr "Vivienda social"
 msgid "Survey"
 msgstr "Encuesta"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:177
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:195
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:72
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:145
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:163
 #: src/Components/Pages/TenantRights/TenantRights.tsx:37
 msgid "Take the survey"
 msgstr "Participe en la encuesta"
@@ -1374,11 +1557,11 @@ msgstr "El edificio no debe formar parte de NYCHA, PACT/RAD u otras viviendas su
 msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of {0}, the rate of inflation for New York City is {CPI}%, meaning that the current local Reasonable Rent Increase is {1}%."
 msgstr "La Ley por Justa Causa establece un aumento razonable del alquiler, que se fija cada año según la tasa de inflación más un 5 %, con un máximo del 10 % en total. Según {0}, la tasa de inflación de la ciudad de Nueva York es del {CPI} %, lo que significa que el aumento razonable del alquiler local actual es del {1} %."
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:147
-#~ msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
-#~ msgstr "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:82
+msgid "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants themselves."
+msgstr ""
 
-#: src/Components/Footer/Footer.tsx:25
+#: src/Components/Footer/Footer.tsx:22
 msgid "The information on this website does not constitute legal advice and must not be used as a substitute for the advice of a lawyer qualified to give advice on legal issues pertaining to housing."
 msgstr "La información contenida en este sitio web no constituye asesoramiento jurídico y no debe utilizarse como sustituto del asesoramiento de un abogado calificado para asesorar sobre cuestiones legales relacionadas con la vivienda."
 
@@ -1412,7 +1595,7 @@ msgstr "El propietario del edificio puede ser diferente de la persona que figura
 msgid "The state housing agency must publish each year’s Reasonable Rent Increase by August. This year the maximum amount your landlord can increase your rent by is ${increase_pct}%."
 msgstr "La agencia estatal de vivienda debe publicar cada año el aumento razonable del alquiler antes de agosto. Este año, el monto máximo en que el propietario puede aumentar el alquiler es del ${increase_pct} %."
 
-#: src/Components/Pages/Results/Results.tsx:437
+#: src/Components/Pages/Results/Results.tsx:428
 msgid "There {steps, plural, one {is # thing} other {are # things}} you need to verify to confirm your coverage"
 msgstr "Hay {steps, plural, one {es # cosa} other {son # cosas}} que debe verificar para confirmar su cobertura."
 
@@ -1481,7 +1664,7 @@ msgstr "Comprender sus derechos"
 msgid "Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation."
 msgstr "Desafortunadamente, puede resultar difícil averiguar quién es realmente su arrendador y si este es propietario de otros edificios. Esto es especialmente cierto si su edificio es propiedad de una corporación."
 
-#: src/Components/Pages/Results/Results.tsx:330
+#: src/Components/Pages/Results/Results.tsx:332
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -1546,11 +1729,20 @@ msgstr "No podemos enlazar directamente con documentos específicos de propiedad
 msgid "We check for NYCHA, Mitchell-Lama, HDFC, LIHTC, Project Section 8, and various HPD and HUD programs. If you know the public data is incorrect, use these tips to guide your answer:"
 msgstr "Verificamos los programas NYCHA, Mitchell-Lama, HDFC, LIHTC, Proyecto Sección 8 y varios programas HPD y HUD. Si sabe que los datos públicos son incorrectos, utilice estos consejos para orientar su respuesta:"
 
-#: src/Components/Pages/Results/Results.tsx:446
+#. placeholder {0}: data.user_phone_number
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:84
+msgid "We have sent a text message to you at {0} with the USPS tracking number for your letter."
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:91
+msgid "We highly recommend emailing a copy of the letter to yourself and your landlord. You can also send a copy to other people you trust."
+msgstr ""
+
+#: src/Components/Pages/Results/Results.tsx:437
 msgid "We need to confirm if your apartment is rent stabilized"
 msgstr "Necesitamos confirmar si su departamento está sujeto a un alquiler estabilizado"
 
-#: src/Components/Pages/Results/Results.tsx:473
+#: src/Components/Pages/Results/Results.tsx:462
 msgid "We need to confirm if your landlord owns more than 10 apartments"
 msgstr "Necesitamos confirmar si su arrendador es propietario de más de 10 departamentos"
 
@@ -1595,6 +1787,10 @@ msgstr "Cuando los inquilinos se unen, tenemos poder. Los inquilinos de todo nue
 #: src/Components/KYRContent/KYRContent.tsx:867
 msgid "Whether or not you are covered by Good Cause, you still have important tenant rights"
 msgstr "Independientemente de si está amparado por Justa Causa, sigue teniendo importantes derechos como inquilino"
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:97
+msgid "Why send a letter to your landlord?"
+msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:523
 msgid "Withhold the unreasonable increase"
@@ -1731,7 +1927,7 @@ msgstr "Usted informó que su alquiler es de {0}."
 msgid "You told us that that you live subsidized housing. If your building is subsidized then you are not covered by Good Cause Eviction law because you should already have important tenant protections associated with your building’s subsidy."
 msgstr "Nos dijo que vive en una vivienda subsidiada. Si su edificio está subsidiado, entonces no está amparado por la Ley de Desalojo por Justa Causa, ya que debería contar con importantes protecciones para inquilinos asociadas con el subsidio de su edificio."
 
-#: src/Components/Pages/Results/Results.tsx:453
+#: src/Components/Pages/Results/Results.tsx:444
 msgid "You told us that you are unsure if you are rent stabilized. If your apartment is rent stabilized, you are not covered by Good Cause Eviction law, but rent stabilized protections are even stronger than the Good Cause Eviction law."
 msgstr "Nos ha dicho que no está seguro de si su alquiler está estabilizado. Si su departamento está sujeto a un alquiler estabilizado, no está amparado por la Ley de Desalojo por Justa Causa, pero las protecciones del alquiler estabilizado son aún más sólidas que la Ley de Desalojo por Justa Causa."
 
