@@ -42,8 +42,6 @@ const userDetailsSchema = (i18n: I18n) => {
               : i18n._(msg`Please enter a complete US phone number`),
         })
         .length(10, i18n._(msg`Please enter a complete US phone number`)),
-      // Email has god default validator regex, plus alternatives, and way to
-      // include custom ({pattern: /<regex>/})
       email: looseOptional(z.email(i18n._(msg`Please enter a valid email`))),
       ...lobAddressSchema(i18n)
         .omit({ urbanization: true })
@@ -80,7 +78,7 @@ const landlordDetailsSchema = (i18n: I18n) => {
   const schema = z
     .object({
       name: z.string().min(1, i18n._(msg`Landlord name is required`)),
-      email: z.email().optional(),
+      email: looseOptional(z.email(i18n._(msg`Please enter a valid email`))),
       ...lobAddressSchema(i18n).shape,
     })
     .refine(
