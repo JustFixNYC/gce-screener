@@ -54,9 +54,10 @@ const steps: Step[] = [
     routeName: "contact-info",
     fields: ["user_details"],
   },
+  { id: "Step 4", name: "Preview", routeName: "preview" },
   {
     // TODO: Move to after landlord details, it's here only for ease of PR review
-    id: "Step 4",
+    id: "Step 5",
     name: "Mail Choice",
     routeName: "mail-choice",
     fields: [
@@ -67,12 +68,11 @@ const steps: Step[] = [
     ],
   },
   {
-    id: "Step 5",
+    id: "Step 6",
     name: "Landlord details",
     routeName: "landlord-details",
     fields: ["landlord_details"],
   },
-  { id: "Step 6", name: "Preview", routeName: "preview" },
   { id: "Step 7", name: "Confirmation", routeName: "confirmation" },
 ];
 
@@ -222,6 +222,8 @@ export const LetterBuilderForm: React.FC = () => {
   };
 
   return (
+    // TODO: We should restructure this so steps without inputs aren't within
+    // <form> (ie. AllowedIncreaseStep, PreviewStep, ConfirmationStep)
     <form onSubmit={handleFormNoDefault(next)} className="letter-form">
       <ProgressBar
         steps={steps}
@@ -242,16 +244,16 @@ export const LetterBuilderForm: React.FC = () => {
           {currentStep === 2 && (
             <>
               {getValues("unreasonable_increase") ? (
-                <AllowedIncreaseStep />
+                <UserDetailsStep />
               ) : (
-                <UserDetailsStep {...formMethods} />
+                <AllowedIncreaseStep />
               )}
             </>
           )}
+          {currentStep === 3 && <PreviewStep />}
           {currentStep === 4 && <MailChoiceStep />}
           {currentStep === 5 && <LandlordDetailsStep {...formMethods} />}
-          {currentStep === 6 && <PreviewStep />}
-          {currentStep === 7 && (
+          {currentStep === 6 && (
             <ConfirmationStep confirmationResponse={letterResp} />
           )}
         </FormContext.Provider>
