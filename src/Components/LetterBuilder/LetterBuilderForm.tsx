@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FieldPath, Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
 
 import { handleFormNoDefault } from "../../form-utils";
 import { Tenants2ApiFetcherVerifyAddress } from "../../api/helpers";
@@ -37,7 +36,6 @@ interface Step {
   fields?: FieldPath<FormFields>[];
 }
 
-// TODO: refactor to include step component and/or submission function?
 const steps: Step[] = [
   {
     id: "Step 1",
@@ -245,15 +243,6 @@ export const LetterBuilderForm: React.FC = () => {
 
   return (
     <form onSubmit={handleFormNoDefault(next)} className="letter-form">
-      <h3>
-        <Trans>Good Cause Letter Builder</Trans>
-      </h3>
-      <p>
-        <Trans>
-          Send a letter to your landlord via certified mail asserting your Good
-          Cause
-        </Trans>
-      </p>
       <ProgressBar
         steps={steps}
         currentStep={currentStep}
