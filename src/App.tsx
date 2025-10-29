@@ -5,11 +5,10 @@ import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
+  ScrollRestoration,
 } from "react-router-dom";
-
 import { SWRConfig } from "swr";
 import { useRollbar } from "@rollbar/react";
-import { ScrollRestoration, Navigate } from "react-router-dom";
 
 import { I18n } from "./i18n";
 import { Home } from "./Components/Pages/Home/Home";
@@ -27,6 +26,7 @@ import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import { decodeFromURI } from "./helpers";
 import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
+import { LetterLanding } from "./Components/Pages/LetterLanding/LetterLanding";
 import {
   LetterLayout,
   LetterSender,
@@ -207,7 +207,7 @@ const router = createBrowserRouter(
           loader={LoadURLSessionOptional}
         />
         <Route path="letter" element={<LetterLayout />}>
-          <Route index element={<Navigate to="reason" replace />} />
+          <Route index element={<LetterLanding />} />
           <Route path="reason" element={<LetterSender />} />
           <Route path="reason-details" element={<LetterSender />} />
           <Route path="contact-info" element={<LetterSender />} />

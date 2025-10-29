@@ -319,8 +319,7 @@ const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
     case "INELIGIBLE":
       return (
         <Icon
-          icon="circleExclamation"
-          type="regular"
+          icon="circleExclamationRegular"
           className="criteria-icon orange"
           title={_(msg`Ineligible`)}
         />
@@ -328,8 +327,7 @@ const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
     case "UNKNOWN":
       return (
         <Icon
-          icon="circleExclamation"
-          type="regular"
+          icon="circleExclamationRegular"
           className="criteria-icon yellow"
           title={_(msg`Unknown`)}
         />
@@ -421,11 +419,7 @@ const EligibilityNextSteps: React.FC<{
     Boolean
   ).length;
   const unsureIcon = (
-    <Icon
-      icon="circleExclamation"
-      type="regular"
-      className="criteria-icon yellow"
-    />
+    <Icon icon="circleExclamationRegular" className="criteria-icon yellow" />
   );
   return (
     <>

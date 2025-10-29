@@ -58,10 +58,6 @@ msgstr "{unitsres, plural, one {# apartment} other {# apartments}}"
 msgid "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 msgstr "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:193
-msgid "<0>Email</0>"
-msgstr "<0>Email</0>"
-
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:94
 #~ msgid "<0>If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings.</0><1>Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation.</1><2>This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started.</2>"
 #~ msgstr "<0>If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings.</0><1>Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation.</1><2>This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started.</2>"
@@ -70,9 +66,9 @@ msgstr "<0>Email</0>"
 msgid "<0>Note:</0> You will be able to download a PDF version of this letter later."
 msgstr "<0>Note:</0> You will be able to download a PDF version of this letter later."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:182
-msgid "<0>Phone number</0>"
-msgstr "<0>Phone number</0>"
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:29
+msgid "<0>Start here:</0> are you covered by Good Cause?"
+msgstr "<0>Start here:</0> are you covered by Good Cause?"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:134
 msgid "<0>Step 1:</0> Find out who owns your building"
@@ -90,35 +86,27 @@ msgstr "<0>Tip:</0> If, in any one of the documents below, you find an owner’s
 msgid "<0>Tip:</0> We recommend doing the following research on a desktop computer. If you have not already, please watch the video, above, for step-by-step instructions on how to complete Steps 1 and 2."
 msgstr "<0>Tip:</0> We recommend doing the following research on a desktop computer. If you have not already, please watch the video, above, for step-by-step instructions on how to complete Steps 1 and 2."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:196
-msgid "<0>We’ll include your email in the letter for your landlord to contact you, and send you a PDF copy. We never share your email with anyone.</0>"
-msgstr "<0>We’ll include your email in the letter for your landlord to contact you, and send you a PDF copy. We never share your email with anyone.</0>"
-
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:185
-msgid "<0>We’ll text you to check in after your letter is mailed. We will never call you or share your phone number.</0>"
-msgstr "<0>We’ll text you to check in after your letter is mailed. We will never call you or share your phone number.</0>"
-
-#: src/Components/Pages/Results/Results.tsx:563
+#: src/Components/Pages/Results/Results.tsx:557
 msgid "<0>You are</0> <1>likely covered</1> by Good Cause Eviction"
 msgstr "<0>You are</0> <1>likely covered</1> by Good Cause Eviction"
 
-#: src/Components/Pages/Results/Results.tsx:544
+#: src/Components/Pages/Results/Results.tsx:538
 msgid "<0>You are</0> <1>likely not covered</1> <2/>by Good Cause Eviction"
 msgstr "<0>You are</0> <1>likely not covered</1> <2/>by Good Cause Eviction"
 
-#: src/Components/Pages/Results/Results.tsx:535
+#: src/Components/Pages/Results/Results.tsx:529
 msgid "<0>You</0> <1>might be covered</1> by Good Cause Eviction"
 msgstr "<0>You</0> <1>might be covered</1> by Good Cause Eviction"
 
-#: src/Components/Pages/Results/Results.tsx:572
+#: src/Components/Pages/Results/Results.tsx:566
 msgid "<0>Your apartment is part of</0> <1>NYCHA or PACT/RAD</1> which provides stronger protections than Good Cause Eviction"
 msgstr "<0>Your apartment is part of</0> <1>NYCHA or PACT/RAD</1> which provides stronger protections than Good Cause Eviction"
 
-#: src/Components/Pages/Results/Results.tsx:554
+#: src/Components/Pages/Results/Results.tsx:548
 msgid "<0>Your apartment is</0> <1>rent stabilized</1> which provides stronger protections than Good Cause Eviction"
 msgstr "<0>Your apartment is</0> <1>rent stabilized</1> which provides stronger protections than Good Cause Eviction"
 
-#: src/Components/Pages/Results/Results.tsx:583
+#: src/Components/Pages/Results/Results.tsx:577
 msgid "<0>Your building is</0> <1>subsidized</1> which provides existing eviction protections"
 msgstr "<0>Your building is</0> <1>subsidized</1> which provides existing eviction protections"
 
@@ -196,7 +184,7 @@ msgstr "A new lease or renewal"
 msgid "A non-renewal or eviction notice"
 msgstr "A non-renewal or eviction notice"
 
-#: src/Components/Pages/Home/Home.tsx:219
+#: src/Components/Pages/Home/Home.tsx:212
 msgid "A nonprofit organization that builds online tools to help New Yorkers achieve affordable, healthy, eviction-free housing."
 msgstr "A nonprofit organization that builds online tools to help New Yorkers achieve affordable, healthy, eviction-free housing."
 
@@ -204,24 +192,24 @@ msgstr "A nonprofit organization that builds online tools to help New Yorkers ac
 msgid "A rent increase above the thresholds, or"
 msgstr "A rent increase above the thresholds, or"
 
-#: src/Components/Pages/Home/Home.tsx:205
+#: src/Components/Pages/Home/Home.tsx:198
 msgid "A statewide coalition of tenants and homeless New Yorkers united in our fight for housing as a human right."
 msgstr "A statewide coalition of tenants and homeless New Yorkers united in our fight for housing as a human right."
 
-#: src/Components/Pages/Home/Home.tsx:109
+#: src/Components/Pages/Home/Home.tsx:102
 msgid "About the law"
 msgstr "About the law"
 
-#: src/Components/Pages/Home/Home.tsx:181
+#: src/Components/Pages/Home/Home.tsx:174
 msgid "About this site"
 msgstr "About this site"
 
 #. placeholder {0}: index + 1
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:125
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:127
 msgid "Additional email {0}"
 msgstr "Additional email {0}"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:117
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:119
 msgid "Additional recipients"
 msgstr "Additional recipients"
 
@@ -229,13 +217,9 @@ msgstr "Additional recipients"
 msgid "Address"
 msgstr "Address"
 
-#: src/types/LetterFormTypes.ts:11
-msgid "Address is required for the letter"
-msgstr "Address is required for the letter"
-
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:277
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:144
-#: src/Components/Pages/Results/Results.tsx:490
+#: src/Components/Pages/Results/Results.tsx:484
 msgid "Adjust survey answers"
 msgstr "Adjust survey answers"
 
@@ -284,7 +268,7 @@ msgstr "Assignment of leases & rents"
 msgid "Attend a walk-in Clinic hosted by the Met Council on Housing"
 msgstr "Attend a walk-in Clinic hosted by the Met Council on Housing"
 
-#: src/Components/LetterBuilder/LetterBuilderForm.tsx:264
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:304
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:113
 #: src/Components/Pages/Form/Survey.tsx:359
 msgid "Back"
@@ -322,7 +306,7 @@ msgstr "By <0>Housing Justice for All</0> & <1>JustFix</1>"
 msgid "By law, you must provide a Good Cause Eviction notice when issuing:"
 msgstr "By law, you must provide a Good Cause Eviction notice when issuing:"
 
-#: src/Components/Pages/Home/Home.tsx:125
+#: src/Components/Pages/Home/Home.tsx:118
 msgid "Calculate your max rent increase."
 msgstr "Calculate your max rent increase."
 
@@ -367,7 +351,6 @@ msgstr "classified as a religious facility"
 msgid "classified as an educational building"
 msgstr "classified as an educational building"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:206
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:276
 msgid "Close"
 msgstr "Close"
@@ -375,6 +358,10 @@ msgstr "Close"
 #: src/Components/Modal/Modal.tsx:79
 msgid "Close modal"
 msgstr "Close modal"
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:112
+msgid "Communicating your request to your landlord in writing provides documented evidence of your complaint."
+msgstr "Communicating your request to your landlord in writing provides documented evidence of your complaint."
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:173
 msgid "Concerning the proposed rent increase:"
@@ -388,13 +375,17 @@ msgstr "Concerning your intent to end my tenancy"
 msgid "Confirm"
 msgstr "Confirm"
 
-#: src/Components/Pages/Results/Results.tsx:624
+#: src/Components/Pages/Results/Results.tsx:618
 msgid "Copied"
 msgstr "Copied"
 
-#: src/Components/Pages/Results/Results.tsx:616
+#: src/Components/Pages/Results/Results.tsx:610
 msgid "Copy goodcausenyc.org"
 msgstr "Copy goodcausenyc.org"
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:110
+msgid "Creates a paper trail"
+msgstr "Creates a paper trail"
 
 #. placeholder {0}: ud.name
 #: src/Components/LetterBuilder/Letter/Letter.tsx:91
@@ -410,6 +401,10 @@ msgstr "Demand notice"
 msgid "Demolition"
 msgstr "Demolition"
 
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:79
+msgid "Designed with tenants and experts"
+msgstr "Designed with tenants and experts"
+
 #: src/Components/Footer/Footer.tsx:20
 msgid "Disclaimer"
 msgstr "Disclaimer"
@@ -423,11 +418,11 @@ msgstr "Download coverage"
 msgid "Eligible"
 msgstr "Eligible"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:133
-#~ msgid "Email"
-#~ msgstr "Email"
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:46
+msgid "Email"
+msgstr "Email"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:85
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:87
 msgid "Email a copy to yourself and your landlord or property manager"
 msgstr "Email a copy to yourself and your landlord or property manager"
 
@@ -436,9 +431,9 @@ msgstr "Email a copy to yourself and your landlord or property manager"
 msgid "Email coverage"
 msgstr "Email coverage"
 
-#: src/types/LetterFormTypes.ts:49
-#~ msgid "Email is required to send your copy of the letter"
-#~ msgstr "Email is required to send your copy of the letter"
+#: src/types/LetterFormTypes.ts:45
+msgid "Email is required to send your copy of the letter"
+msgstr "Email is required to send your copy of the letter"
 
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:168
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:247
@@ -453,10 +448,13 @@ msgstr "Enter an address to get started"
 msgid "Enter the total monthly rent for your entire apartment"
 msgstr "Enter the total monthly rent for your entire apartment"
 
-#: src/Components/GeoSearchInput/GeoSearchInput.tsx:73
-#: src/Components/Pages/Home/Home.tsx:98
+#: src/Components/GeoSearchInput/GeoSearchInput.tsx:36
 msgid "Enter your address"
 msgstr "Enter your address"
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:121
+msgid "Establishes a professional channel to negotiate solutions to your rent increase or non-renewal."
+msgstr "Establishes a professional channel to negotiate solutions to your rent increase or non-renewal."
 
 #: src/Components/Pages/Results/Results.tsx:268
 msgid "Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights"
@@ -495,13 +493,17 @@ msgstr "Feedback Form"
 msgid "Fill out the request form"
 msgstr "Fill out the request form"
 
-#: src/Components/Pages/Results/Results.tsx:483
+#: src/Components/Pages/Results/Results.tsx:477
 msgid "Find other buildings your landlord owns"
 msgstr "Find other buildings your landlord owns"
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:57
 msgid "Find out how much your landlord can increase your rent"
 msgstr "Find out how much your landlord can increase your rent"
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:39
+msgid "Find out if I’m covered"
+msgstr "Find out if I’m covered"
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:134
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:162
@@ -510,7 +512,7 @@ msgid "Find out if you’re covered by Good Cause"
 msgstr "Find out if you’re covered by Good Cause"
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:42
-#: src/Components/Pages/Results/Results.tsx:460
+#: src/Components/Pages/Results/Results.tsx:454
 #: src/Components/Pages/TenantRights/TenantRights.tsx:44
 #: src/hooks/useCriteriaResults.tsx:321
 msgid "Find out if your apartment is rent stabilized"
@@ -520,11 +522,11 @@ msgstr "Find out if your apartment is rent stabilized"
 msgid "Find out if your landlord owns other buildings"
 msgstr "Find out if your landlord owns other buildings"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:70
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:28
 msgid "First name"
 msgstr "First name"
 
-#: src/types/LetterFormTypes.ts:32
+#: src/types/LetterFormTypes.ts:30
 msgid "First name is required for the letter"
 msgstr "First name is required for the letter"
 
@@ -548,6 +550,10 @@ msgstr "For leases offered on or after {0}, landlords cannot increase rent more 
 msgid "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
 msgstr "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
 
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:101
+msgid "Formally asserts your rights"
+msgstr "Formally asserts your rights"
+
 #: src/Components/Modal/Modal.tsx:108
 msgid "Full image of this example lease can be viewed on <0>hcr.ny.gov</0>"
 msgstr "Full image of this example lease can be viewed on <0>hcr.ny.gov</0>"
@@ -556,12 +562,12 @@ msgstr "Full image of this example lease can be viewed on <0>hcr.ny.gov</0>"
 msgid "Get a text with a unique URL to your results page."
 msgstr "Get a text with a unique URL to your results page."
 
-#: src/Components/Pages/Home/Home.tsx:102
+#: src/Components/Pages/Home/Home.tsx:95
 msgid "Get started"
 msgstr "Get started"
 
 #. placeholder {0}: bldgData.unitsres
-#: src/Components/Pages/Results/Results.tsx:475
+#: src/Components/Pages/Results/Results.tsx:469
 msgid "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings."
 msgstr "Good Cause Eviction law only covers tenants whose landlord owns more than 10 apartments. Your building has only {0} apartments, but your landlord may own other buildings."
 
@@ -577,20 +583,20 @@ msgstr "Good Cause Eviction law only covers tenants whose landlord owns more tha
 msgid "Good Cause Eviction only applies to tenants who are not rent stabilized."
 msgstr "Good Cause Eviction only applies to tenants who are not rent stabilized."
 
-#: src/Components/Pages/Home/Home.tsx:112
+#: src/Components/Pages/Home/Home.tsx:105
 msgid "Good Cause Eviction protections went into effect on April 20th, 2024. If you are covered by the law, you have strong legal protections against eviction as long as you follow your lease. There are also limits to how much your landlord can raise your rent. "
 msgstr "Good Cause Eviction protections went into effect on April 20th, 2024. If you are covered by the law, you have strong legal protections against eviction as long as you follow your lease. There are also limits to how much your landlord can raise your rent. "
 
-#: src/Components/Pages/Home/Home.tsx:184
+#: src/Components/Pages/Home/Home.tsx:177
 msgid "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
 msgstr "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
 
-#: src/Components/LetterBuilder/LetterBuilderForm.tsx:213
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:248
 msgid "Good Cause Letter Builder"
 msgstr "Good Cause Letter Builder"
 
 #: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:62
-#: src/Components/Pages/LetterSender/LetterSender.tsx:85
+#: src/Components/Pages/LetterSender/LetterSender.tsx:81
 msgid "Good Cause Letter Preview"
 msgstr "Good Cause Letter Preview"
 
@@ -612,7 +618,7 @@ msgid "Has your landlord raised your rent? Is your landlord refusing to do basic
 msgstr "Has your landlord raised your rent? Is your landlord refusing to do basic repairs? Are you worried about getting evicted or non-renewed?"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:276
-#: src/Components/Pages/Results/Results.tsx:489
+#: src/Components/Pages/Results/Results.tsx:483
 msgid "Have you learned something new?"
 msgstr "Have you learned something new?"
 
@@ -629,7 +635,7 @@ msgstr "Housing Court Answers"
 msgid "Housing Court Answers repairs resources"
 msgstr "Housing Court Answers repairs resources"
 
-#: src/Components/Pages/Home/Home.tsx:202
+#: src/Components/Pages/Home/Home.tsx:195
 msgid "Housing Justice for All"
 msgstr "Housing Justice for All"
 
@@ -644,6 +650,10 @@ msgstr "Housing Justice for All tenant organizing form"
 #: src/Components/KYRContent/KYRContent.tsx:411
 msgid "Housing Preservation and Development Good Cause Eviction overview"
 msgstr "Housing Preservation and Development Good Cause Eviction overview"
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:51
+msgid "How it works"
+msgstr "How it works"
 
 #: src/Components/KYRContent/KYRContent.tsx:435
 msgid "How to assert your Good Cause rights"
@@ -661,7 +671,7 @@ msgstr "How to find other apartments your landlord owns"
 msgid "How to find out if your apartment is rent stabilized"
 msgstr "How to find out if your apartment is rent stabilized"
 
-#: src/Components/Pages/Results/Results.tsx:376
+#: src/Components/Pages/Results/Results.tsx:374
 msgid "How we determined your coverage"
 msgstr "How we determined your coverage"
 
@@ -674,10 +684,6 @@ msgstr "I am writing to inform you that my tenancy at this address is covered un
 msgid "I believe the rent detailed in the new lease you’ve offered exceeds the lawful limit under the Good Cause Eviction law. The difference between my current rent and the proposed rent appears to exceed {0}%."
 msgstr "I believe the rent detailed in the new lease you’ve offered exceeds the lawful limit under the Good Cause Eviction law. The difference between my current rent and the proposed rent appears to exceed {0}%."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:127
-msgid "I do not have a unit number"
-msgstr "I do not have a unit number"
-
 #: src/Components/LetterBuilder/Letter/Letter.tsx:200
 msgid "I respectfully request the following:"
 msgstr "I respectfully request the following:"
@@ -685,6 +691,10 @@ msgstr "I respectfully request the following:"
 #: src/Components/LetterBuilder/Letter/Letter.tsx:231
 msgid "I value our landlord–tenant relationship and wish to continue it on clear and lawful terms. Please let me know if you’d like to discuss or clarify any of these requirements. I hope we can work cooperatively to uphold both legal obligations and good-faith communication."
 msgstr "I value our landlord–tenant relationship and wish to continue it on clear and lawful terms. Please let me know if you’d like to discuss or clarify any of these requirements. I hope we can work cooperatively to uphold both legal obligations and good-faith communication."
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:35
+msgid "I’m covered, start my free letter"
+msgstr "I’m covered, start my free letter"
 
 #: src/Components/Pages/Form/Survey.tsx:233
 #: src/Components/Pages/Form/Survey.tsx:347
@@ -719,6 +729,10 @@ msgstr "If you applied for your apartment through \"NYC Housing Connect,\" your 
 msgid "If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
 msgstr "If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
 
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:54
+msgid "If you are covered by Good Cause, you have a legal right to limited rent increases and the right to stay in your home."
+msgstr "If you are covered by Good Cause, you have a legal right to limited rent increases and the right to stay in your home."
+
 #: src/Components/KYRContent/KYRContent.tsx:298
 msgid "If you are offered a new lease after April 20th, 2024, then your landlord can’t raise your apartment’s monthly rent higher than:"
 msgstr "If you are offered a new lease after April 20th, 2024, then your landlord can’t raise your apartment’s monthly rent higher than:"
@@ -752,15 +766,15 @@ msgstr "If you know that your building is part of public housing (NYCHA or PACT-
 msgid "If you know that your building receives 421a or J51 tax abatement, select the option:<0>“No, my building is not subsidized”</0>"
 msgstr "If you know that your building receives 421a or J51 tax abatement, select the option:<0>“No, my building is not subsidized”</0>"
 
-#: src/Components/Pages/Home/Home.tsx:141
+#: src/Components/Pages/Home/Home.tsx:134
 msgid "If you live in New York City, you can use this site to learn which requirements you meet and how to assert your rights."
 msgstr "If you live in New York City, you can use this site to learn which requirements you meet and how to assert your rights."
 
-#: src/Components/Pages/Home/Home.tsx:151
+#: src/Components/Pages/Home/Home.tsx:144
 msgid "If you live in NYC and are not covered by Good Cause Eviction, you still have important tenant protections. Depending on the type of housing you live in, your protections may be even stronger than those provided by Good Cause."
 msgstr "If you live in NYC and are not covered by Good Cause Eviction, you still have important tenant protections. Depending on the type of housing you live in, your protections may be even stronger than those provided by Good Cause."
 
-#: src/Components/Pages/Home/Home.tsx:164
+#: src/Components/Pages/Home/Home.tsx:157
 msgid "If you live outside of NYC"
 msgstr "If you live outside of NYC"
 
@@ -772,7 +786,11 @@ msgstr "If you use a voucher that covers some or all of your rent, and you can u
 #~ msgid "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>\"None of the above\"</0>"
 #~ msgstr "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>\"None of the above\"</0>"
 
-#: src/Components/Pages/Home/Home.tsx:148
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:20
+msgid "If you’re covered by Good Cause and your landlord is planning to raise your rent or not offer you a new lease, you can send a letter to your landlord asserting your Good Cause rights."
+msgstr "If you’re covered by Good Cause and your landlord is planning to raise your rent or not offer you a new lease, you can send a letter to your landlord asserting your Good Cause rights."
+
+#: src/Components/Pages/Home/Home.tsx:141
 msgid "If you’re not covered by Good Cause Eviction"
 msgstr "If you’re not covered by Good Cause Eviction"
 
@@ -791,6 +809,10 @@ msgstr "If your apartment is rent stabilized, you are not covered by Good Cause 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:95
 msgid "If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings."
 msgstr "If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings."
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:60
+msgid "If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter asserting your Good Cause rights. We will even send it for you, for free."
+msgstr "If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter asserting your Good Cause rights. We will even send it for you, for free."
 
 #: src/Components/KYRContent/KYRContent.tsx:450
 msgid "If your landlord refuses to renew your lease, tells you that you have to leave for no reason, or tries to evict you for no reason, stay in your home!"
@@ -837,7 +859,7 @@ msgstr "Illegal Activity"
 msgid "In instances where residents disagree with management decisions or believe their rights have been violated, they have the right to grieve these issues through a formal process. Residents can file grievances online through the resident portal or on paper by visiting the management office."
 msgstr "In instances where residents disagree with management decisions or believe their rights have been violated, they have the right to grieve these issues through a formal process. Residents can file grievances online through the resident portal or on paper by visiting the management office."
 
-#: src/Components/Pages/Results/Results.tsx:325
+#: src/Components/Pages/Results/Results.tsx:324
 msgid "Ineligible"
 msgstr "Ineligible"
 
@@ -867,7 +889,7 @@ msgid "Is your landlord increasing your monthly rent beyond {0}%?"
 msgstr "Is your landlord increasing your monthly rent beyond {0}%?"
 
 #: src/Components/KYRContent/KYRContent.tsx:260
-#: src/Components/Pages/Home/Home.tsx:216
+#: src/Components/Pages/Home/Home.tsx:209
 msgid "JustFix"
 msgstr "JustFix"
 
@@ -879,7 +901,7 @@ msgstr "JustFix’s Letter of Complaint"
 #~ msgid "Landlord email"
 #~ msgstr "Landlord email"
 
-#: src/types/LetterFormTypes.ts:81
+#: src/types/LetterFormTypes.ts:54
 msgid "Landlord name is required"
 msgstr "Landlord name is required"
 
@@ -908,11 +930,11 @@ msgstr "Last modified: August 16, 2024"
 msgid "Last modified: Jan 24, 2025"
 msgstr "Last modified: Jan 24, 2025"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:79
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:37
 msgid "Last name"
 msgstr "Last name"
 
-#: src/types/LetterFormTypes.ts:35
+#: src/types/LetterFormTypes.ts:33
 msgid "Last name is required for the letter"
 msgstr "Last name is required for the letter"
 
@@ -945,7 +967,6 @@ msgid "Learn if you’re covered <0/>by Good Cause <1/>Eviction law in NYC"
 msgstr "Learn if you’re covered <0/>by Good Cause <1/>Eviction law in NYC"
 
 #: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:126
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:170
 #: src/Components/Pages/Form/Survey.tsx:600
 msgid "Learn more"
 msgstr "Learn more"
@@ -994,7 +1015,7 @@ msgstr "Learn more about rent stabilization"
 msgid "Learn more about requesting repairs"
 msgstr "Learn more about requesting repairs"
 
-#: src/Components/Pages/Home/Home.tsx:159
+#: src/Components/Pages/Home/Home.tsx:152
 msgid "Learn more about tenant protections in NYC"
 msgstr "Learn more about tenant protections in NYC"
 
@@ -1006,7 +1027,7 @@ msgstr "Learn more about the eviction process"
 msgid "Learn more about the grievance procedures"
 msgstr "Learn more about the grievance procedures"
 
-#: src/Components/Pages/Home/Home.tsx:139
+#: src/Components/Pages/Home/Home.tsx:132
 msgid "Learn more about the law."
 msgstr "Learn more about the law."
 
@@ -1014,7 +1035,7 @@ msgstr "Learn more about the law."
 msgid "Learn more about your rights"
 msgstr "Learn more about your rights"
 
-#: src/Components/Pages/Home/Home.tsx:173
+#: src/Components/Pages/Home/Home.tsx:166
 msgid "Learn where Good Cause protections have been won"
 msgstr "Learn where Good Cause protections have been won"
 
@@ -1069,8 +1090,8 @@ msgstr "Lorem ipsum dolor sit amet consectetur adipisicing elit"
 msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat alias magni nam beatae aliquam architecto laudantium mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda! Commodi architecto dolor eius perferendis!"
 msgstr "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat alias magni nam beatae aliquam architecto laudantium mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda! Commodi architecto dolor eius perferendis!"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:64
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:70
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:66
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:72
 msgid "Mail the letter yourself"
 msgstr "Mail the letter yourself"
 
@@ -1135,7 +1156,7 @@ msgstr "Mortgage"
 msgid "Need help choosing which letter is best for you?"
 msgstr "Need help choosing which letter is best for you?"
 
-#: src/Components/LetterBuilder/LetterBuilderForm.tsx:268
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:308
 msgid "Next"
 msgstr "Next"
 
@@ -1176,6 +1197,10 @@ msgstr "Non payment of rent"
 #: src/Components/Pages/Form/Survey.tsx:255
 #~ msgid "None of the above"
 #~ msgstr "None of the above"
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:69
+msgid "Not sure if you’re covered?"
+msgstr "Not sure if you’re covered?"
 
 #: src/Components/KYRContent/KYRContent.tsx:329
 msgid "Note"
@@ -1227,6 +1252,10 @@ msgstr "NYLAG's Public Housing Justice Project"
 msgid "Once you find the name of your building’s owner, remember it because you’ll need it in Step 2."
 msgstr "Once you find the name of your building’s owner, remember it because you’ll need it in Step 2."
 
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:119
+msgid "Opens negotiation"
+msgstr "Opens negotiation"
+
 #: src/Components/Pages/Form/Survey.tsx:254
 #~ msgid "Other subsidized housing"
 #~ msgstr "Other subsidized housing"
@@ -1243,9 +1272,9 @@ msgstr "PACT Fact Sheet"
 msgid "PACT Rights and Responsibilities Fact Sheet"
 msgstr "PACT Rights and Responsibilities Fact Sheet"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:150
-#~ msgid "Phone"
-#~ msgstr "Phone"
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:63
+msgid "Phone"
+msgstr "Phone"
 
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:244
 msgid "Phone number"
@@ -1255,7 +1284,7 @@ msgstr "Phone number"
 msgid "Phone number (optional)"
 msgstr "Phone number (optional)"
 
-#: src/types/LetterFormTypes.ts:40
+#: src/types/LetterFormTypes.ts:38
 msgid "Phone number is required for follow up"
 msgstr "Phone number is required for follow up"
 
@@ -1280,23 +1309,18 @@ msgstr "Please confirm whether you intend to renew my lease, and if not, provide
 msgid "Please confirm your address"
 msgstr "Please confirm your address"
 
+#: src/types/LetterFormTypes.ts:39
 #: src/types/LetterFormTypes.ts:41
-#: src/types/LetterFormTypes.ts:43
 msgid "Please enter a complete US phone number"
 msgstr "Please enter a complete US phone number"
 
-#: src/types/LetterFormTypes.ts:46
-msgid "Please enter a valid email"
-msgstr "Please enter a valid email"
+#: src/types/LetterFormTypes.ts:50
+#~ msgid "Please enter a valid email"
+#~ msgstr "Please enter a valid email"
 
 #: src/Components/Pages/Form/Survey.tsx:191
 msgid "Please enter your total rent amount."
 msgstr "Please enter your total rent amount."
-
-#: src/types/LetterFormTypes.ts:62
-#: src/types/LetterFormTypes.ts:94
-msgid "Please provide a unit number or check the box to confirm that there is no unit number"
-msgstr "Please provide a unit number or check the box to confirm that there is no unit number"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:212
 msgid "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that's a good sign they own the property."
@@ -1306,20 +1330,20 @@ msgstr "Please review these documents to learn if the owner of your building als
 #~ msgid "Please review your letter to ensure all the details are correct."
 #~ msgstr "Please review your letter to ensure all the details are correct."
 
-#: src/types/LetterFormTypes.ts:150
+#: src/types/LetterFormTypes.ts:99
 msgid "Please select a reason for your letter."
 msgstr "Please select a reason for your letter."
 
-#: src/types/LetterFormTypes.ts:114
+#: src/types/LetterFormTypes.ts:63
 msgid "Please select an option for mailing the letter"
 msgstr "Please select an option for mailing the letter"
 
 #. placeholder {0}: CPI + 5
-#: src/types/LetterFormTypes.ts:129
+#: src/types/LetterFormTypes.ts:78
 msgid "Please select whether the increase is beyond {0}%"
 msgstr "Please select whether the increase is beyond {0}%"
 
-#: src/types/LetterFormTypes.ts:141
+#: src/types/LetterFormTypes.ts:90
 msgid "Please select whether your landlord provided one of the listed reasons for not renewing your lease."
 msgstr "Please select whether your landlord provided one of the listed reasons for not renewing your lease."
 
@@ -1348,12 +1372,8 @@ msgstr "Please specify whether your landlord lives in your apartment building."
 msgid "Please specify whether your landlord owns more than 10 apartments across multiple buildings."
 msgstr "Please specify whether your landlord owns more than 10 apartments across multiple buildings."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:59
-msgid "Please use the address that is associated with your lease. This is the address that we will use as the return address in your letter."
-msgstr "Please use the address that is associated with your lease. This is the address that we will use as the return address in your letter."
-
 #: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:45
-#: src/Components/Pages/LetterSender/LetterSender.tsx:67
+#: src/Components/Pages/LetterSender/LetterSender.tsx:63
 msgid "Preview language:"
 msgstr "Preview language:"
 
@@ -1501,7 +1521,7 @@ msgstr "Residential Tenants Guide"
 msgid "Result"
 msgstr "Result"
 
-#: src/Components/Pages/Results/Results.tsx:379
+#: src/Components/Pages/Results/Results.tsx:377
 msgid "Results are based on publicly available data about your building and the answers you provided. This does not constitute legal advice."
 msgstr "Results are based on publicly available data about your building and the answers you provided. This does not constitute legal advice."
 
@@ -1538,16 +1558,24 @@ msgid "Select the reason for your letter"
 msgstr "Select the reason for your letter"
 
 #: src/Components/Pages/LetterSender/LetterSender.tsx:23
-msgid "Send a free letter asserting your rights under Good Cause"
-msgstr "Send a free letter asserting your rights under Good Cause"
+#~ msgid "Send a free letter asserting your rights under Good Cause"
+#~ msgstr "Send a free letter asserting your rights under Good Cause"
 
 #: src/Components/KYRContent/KYRContent.tsx:149
 msgid "Send a free, legally vetted letter to notify your landlord of repair issues"
 msgstr "Send a free, legally vetted letter to notify your landlord of repair issues"
 
-#: src/Components/LetterBuilder/LetterBuilderForm.tsx:216
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:18
+msgid "Send a letter to your landlord"
+msgstr "Send a letter to your landlord"
+
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:251
 msgid "Send a letter to your landlord via certified mail asserting your Good Cause"
 msgstr "Send a letter to your landlord via certified mail asserting your Good Cause"
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:103
+msgid "Sending a letter clearly communicates to your landlord that you know your legal protections."
+msgstr "Sending a letter clearly communicates to your landlord that you know your legal protections."
 
 #: src/Components/Pages/Results/Results.tsx:278
 msgid "Share this site with your neighbors"
@@ -1578,10 +1606,6 @@ msgstr "Something went wrong. Try again later."
 msgid "Source of income discrimination is the illegal practice by landlords, owners, and real estate brokers of refusing to rent to current or prospective tenants seeking to pay for housing with housing assistance vouchers, subsidies, or other forms of public assistance."
 msgstr "Source of income discrimination is the illegal practice by landlords, owners, and real estate brokers of refusing to rent to current or prospective tenants seeking to pay for housing with housing assistance vouchers, subsidies, or other forms of public assistance."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:94
-msgid "Street address"
-msgstr "Street address"
-
 #: src/Components/Pages/Results/Results.tsx:308
 msgid "Stronger protections"
 msgstr "Stronger protections"
@@ -1594,7 +1618,7 @@ msgstr "studio"
 msgid "Studio"
 msgstr "Studio"
 
-#: src/Components/LetterBuilder/LetterBuilderForm.tsx:268
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:308
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:176
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:203
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:283
@@ -1614,6 +1638,7 @@ msgstr "Subsidized housing"
 msgid "Survey"
 msgstr "Survey"
 
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:72
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:145
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:163
 #: src/Components/Pages/TenantRights/TenantRights.tsx:37
@@ -1640,7 +1665,7 @@ msgstr "Tenant Organizing Toolkit from Housing Justice for All"
 msgid "Tenant rights under rent stabilization"
 msgstr "Tenant rights under rent stabilization"
 
-#: src/Components/Pages/Home/Home.tsx:167
+#: src/Components/Pages/Home/Home.tsx:160
 msgid "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State."
 msgstr "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State."
 
@@ -1689,6 +1714,10 @@ msgstr "The building must not be part of NYCHA, PACT/RAD, or other subsidized ho
 msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
 msgstr "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of ${0}, the rate of inflation for New York City is ${CPI}%, meaning that the current local Reasonable Rent Increase is ${1}%."
 
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:82
+msgid "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants themselves."
+msgstr "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants themselves."
+
 #: src/Components/Footer/Footer.tsx:22
 msgid "The information on this website does not constitute legal advice and must not be used as a substitute for the advice of a lawyer qualified to give advice on legal issues pertaining to housing."
 msgstr "The information on this website does not constitute legal advice and must not be used as a substitute for the advice of a lawyer qualified to give advice on legal issues pertaining to housing."
@@ -1723,7 +1752,7 @@ msgstr "The owner of the building may be different than the person listed on you
 msgid "The state housing agency must publish each year’s Reasonable Rent Increase by August. This year the maximum amount your landlord can increase your rent by is ${increase_pct}%."
 msgstr "The state housing agency must publish each year’s Reasonable Rent Increase by August. This year the maximum amount your landlord can increase your rent by is ${increase_pct}%."
 
-#: src/Components/Pages/Results/Results.tsx:434
+#: src/Components/Pages/Results/Results.tsx:428
 msgid "There {steps, plural, one {is # thing} other {are # things}} you need to verify to confirm your coverage"
 msgstr "There {steps, plural, one {is # thing} other {are # things}} you need to verify to confirm your coverage"
 
@@ -1740,7 +1769,7 @@ msgstr "This ensures that housing remains affordable and equitable for all resid
 msgid "This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started."
 msgstr "This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started."
 
-#: src/Components/Pages/Home/Home.tsx:192
+#: src/Components/Pages/Home/Home.tsx:185
 msgid "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for Good Cause protections."
 msgstr "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for Good Cause protections."
 
@@ -1753,7 +1782,7 @@ msgstr "Tip 1"
 msgid "Tip: The signature page is often located toward the end of the document"
 msgstr "Tip: The signature page is often located toward the end of the document"
 
-#: src/Components/Pages/Home/Home.tsx:129
+#: src/Components/Pages/Home/Home.tsx:122
 msgid "To be covered by the law, your apartment must meet several requirements. "
 msgstr "To be covered by the law, your apartment must meet several requirements. "
 
@@ -1809,15 +1838,7 @@ msgstr "Understanding your rights"
 msgid "Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation."
 msgstr "Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:111
-msgid "Unit number"
-msgstr "Unit number"
-
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:106
-msgid "Unit Number"
-msgstr "Unit Number"
-
-#: src/Components/Pages/Results/Results.tsx:334
+#: src/Components/Pages/Results/Results.tsx:332
 msgid "Unknown"
 msgstr "Unknown"
 
@@ -1870,11 +1891,11 @@ msgstr "View tenant protection information on following pages"
 msgid "View the guide"
 msgstr "View the guide"
 
-#: src/Components/Pages/Home/Home.tsx:211
+#: src/Components/Pages/Home/Home.tsx:204
 msgid "Visit Housing Justice for All"
 msgstr "Visit Housing Justice for All"
 
-#: src/Components/Pages/Home/Home.tsx:225
+#: src/Components/Pages/Home/Home.tsx:218
 msgid "Visit JustFix"
 msgstr "Visit JustFix"
 
@@ -1891,15 +1912,15 @@ msgstr "We check for NYCHA, Mitchell-Lama, HDFC, LIHTC, Project Section 8, and v
 msgid "We have sent a text message to you at {0} with the USPS tracking number for your letter."
 msgstr "We have sent a text message to you at {0} with the USPS tracking number for your letter."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:89
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:91
 msgid "We highly recommend emailing a copy of the letter to yourself and your landlord. You can also send a copy to other people you trust."
 msgstr "We highly recommend emailing a copy of the letter to yourself and your landlord. You can also send a copy to other people you trust."
 
-#: src/Components/Pages/Results/Results.tsx:443
+#: src/Components/Pages/Results/Results.tsx:437
 msgid "We need to confirm if your apartment is rent stabilized"
 msgstr "We need to confirm if your apartment is rent stabilized"
 
-#: src/Components/Pages/Results/Results.tsx:468
+#: src/Components/Pages/Results/Results.tsx:462
 msgid "We need to confirm if your landlord owns more than 10 apartments"
 msgstr "We need to confirm if your landlord owns more than 10 apartments"
 
@@ -1907,8 +1928,8 @@ msgstr "We need to confirm if your landlord owns more than 10 apartments"
 msgid "We were unable to find relevant documents containing owner names and/or signatures for this building."
 msgstr "We were unable to find relevant documents containing owner names and/or signatures for this building."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:40
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:46
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:42
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:48
 msgid "We will mail the letter for you"
 msgstr "We will mail the letter for you"
 
@@ -1921,11 +1942,11 @@ msgstr "We will never call you or share your phone number. We may text you later
 #~ msgid "We will never call you or share your phone number. You can opt-out at any time."
 #~ msgstr "We will never call you or share your phone number. You can opt-out at any time."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:73
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:75
 msgid "We will provide a PDF for you to download, print, and mail to your landlord or property manager."
 msgstr "We will provide a PDF for you to download, print, and mail to your landlord or property manager."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:53
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:55
 msgid "We will send your letter for you via USPS Certified Mail ® at no cost to you. We will also provide a PDF for you to download for your records."
 msgstr "We will send your letter for you via USPS Certified Mail ® at no cost to you. We will also provide a PDF for you to download for your records."
 
@@ -1953,13 +1974,9 @@ msgstr "When tenants come together, we have power. Tenants across our state are 
 msgid "Whether or not you are covered by Good Cause, you still have important tenant rights"
 msgstr "Whether or not you are covered by Good Cause, you still have important tenant rights"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:164
-msgid "Why are we asking for this information?"
-msgstr "Why are we asking for this information?"
-
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:179
-msgid "Why we ask for your phone number and email"
-msgstr "Why we ask for your phone number and email"
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:97
+msgid "Why send a letter to your landlord?"
+msgstr "Why send a letter to your landlord?"
 
 #: src/Components/KYRContent/KYRContent.tsx:523
 msgid "Withhold the unreasonable increase"
@@ -2027,7 +2044,7 @@ msgstr "You can withhold the rent increase above the ‘reasonable’ threshold.
 msgid "You have reported that your rent increase is less than the allowable amount."
 msgstr "You have reported that your rent increase is less than the allowable amount."
 
-#: src/Components/Pages/Home/Home.tsx:93
+#: src/Components/GeoSearchInput/GeoSearchInput.tsx:76
 msgid "You must enter an address"
 msgstr "You must enter an address"
 
@@ -2121,7 +2138,7 @@ msgstr "You should select “<0>Your landlord has recently proposed a rent incre
 msgid "You told us that that you live subsidized housing. If your building is subsidized then you are not covered by Good Cause Eviction law because you should already have important tenant protections associated with your building’s subsidy."
 msgstr "You told us that that you live subsidized housing. If your building is subsidized then you are not covered by Good Cause Eviction law because you should already have important tenant protections associated with your building’s subsidy."
 
-#: src/Components/Pages/Results/Results.tsx:450
+#: src/Components/Pages/Results/Results.tsx:444
 msgid "You told us that you are unsure if you are rent stabilized. If your apartment is rent stabilized, you are not covered by Good Cause Eviction law, but rent stabilized protections are even stronger than the Good Cause Eviction law."
 msgstr "You told us that you are unsure if you are rent stabilized. If your apartment is rent stabilized, you are not covered by Good Cause Eviction law, but rent stabilized protections are even stronger than the Good Cause Eviction law.======="
 
@@ -2197,10 +2214,6 @@ msgstr "your building receives the {0} tax incentive, which means your apartment
 msgid "Your building was issued a certificate of occupancy on {latestCoDateFormatted}."
 msgstr "Your building was issued a certificate of occupancy on {latestCoDateFormatted}."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:134
-msgid "Your contact information"
-msgstr "Your contact information"
-
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:102
 msgid "Your current monthly rent"
 msgstr "Your current monthly rent"
@@ -2213,13 +2226,9 @@ msgstr "Your current monthly rent + {increase_pct}%"
 #~ msgid "Your current monthly rent + ${increase_pct}%"
 #~ msgstr "Your current monthly rent + ${increase_pct}%"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:99
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:101
 msgid "Your email"
 msgstr "Your email"
-
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:138
-msgid "Your email (optional)"
-msgstr "Your email (optional)"
 
 #: src/Components/KYRContent/KYRContent.tsx:38
 msgid "Your eviction protections"
@@ -2261,7 +2270,7 @@ msgstr "Your landlord must give you written notice to raise your rent more than 
 msgid "Your landlord will need to provide a good reason for ending a tenancy. Even if your lease expires, your landlord cannot evict you, as long as you abide by the terms of your expired lease."
 msgstr "Your landlord will need to provide a good reason for ending a tenancy. Even if your lease expires, your landlord cannot evict you, as long as you abide by the terms of your expired lease."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:109
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:111
 msgid "Your landlord's email"
 msgstr "Your landlord's email"
 
@@ -2277,14 +2286,6 @@ msgstr "Your letter has been mailed to your landlord."
 #: src/Components/KYRContent/KYRContent.tsx:846
 msgid "Your local City Council representative"
 msgstr "Your local City Council representative"
-
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:56
-msgid "Your mailing address"
-msgstr "Your mailing address"
-
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:155
-msgid "Your phone number"
-msgstr "Your phone number"
 
 #: src/Components/KYRContent/KYRContent.tsx:629
 msgid "Your right to a lease renewal"
@@ -2335,6 +2336,6 @@ msgstr "Your rights against discrimination"
 msgid "YouTube video for how to find other apartments your landlord owns"
 msgstr "YouTube video for how to find other apartments your landlord owns"
 
-#: src/types/LetterFormTypes.ts:19
+#: src/types/LetterFormTypes.ts:20
 msgid "ZIP Code must be either 5-digit number or 5-digits with hyphen and 4 additional digits."
 msgstr "ZIP Code must be either 5-digit number or 5-digits with hyphen and 4 additional digits."
