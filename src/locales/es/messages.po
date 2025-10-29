@@ -36,6 +36,16 @@ msgstr ""
 msgid "(123) 456-7890"
 msgstr "(123) 456-7890"
 
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:103
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:112
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:121
+msgid "(optional)"
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:161
+msgid "(Optional)"
+msgstr ""
+
 #. placeholder {0}: formatMoney( rent )
 #: src/Components/KYRContent/KYRContent.tsx:318
 msgid "(Your current monthly rent {0} + {increase_pct}%)"
@@ -63,7 +73,7 @@ msgstr "{unitsres, plural, one {# departamento} other {# departamentos}}"
 msgid "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 msgstr "<0>Por</0> <1>Housing Justice for All</1> <2>y</2> <3>JustFix</3>"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:213
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:217
 msgid "<0>Email</0>"
 msgstr ""
 
@@ -71,11 +81,11 @@ msgstr ""
 #~ msgid "<0>If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings.</0><1>Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation.</1><2>This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started.</2>"
 #~ msgstr "<0>If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings.</0><1>Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation.</1><2>This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started.</2>"
 
-#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:68
+#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:75
 msgid "<0>Note:</0> You will be able to download a PDF version of this letter later."
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:202
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:206
 msgid "<0>Phone number</0>"
 msgstr ""
 
@@ -99,11 +109,11 @@ msgstr "<0>Consejo:</0> Si en alguno de los documentos que se indican a continua
 msgid "<0>Tip:</0> We recommend doing the following research on a desktop computer. If you have not already, please watch the video, above, for step-by-step instructions on how to complete Steps 1 and 2."
 msgstr "<0>Consejo:</0> Recomendamos realizar la siguiente investigación en una computadora de escritorio. Si aún no lo ha hecho, vea el video anterior para obtener instrucciones paso a paso sobre cómo completar los pasos 1 y 2."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:216
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:220
 msgid "<0>We’ll include your email in the letter for your landlord to contact you, and send you a PDF copy. We never share your email with anyone.</0>"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:205
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:209
 msgid "<0>We’ll text you to check in after your letter is mailed. We will never call you or share your phone number.</0>"
 msgstr ""
 
@@ -226,11 +236,11 @@ msgid "About this site"
 msgstr "Acerca de este sitio"
 
 #. placeholder {0}: index + 1
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:125
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:130
 msgid "Additional email {0}"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:117
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:121
 msgid "Additional recipients"
 msgstr ""
 
@@ -238,7 +248,7 @@ msgstr ""
 msgid "Address"
 msgstr "Dirección"
 
-#: src/types/LetterFormTypes.ts:11
+#: src/types/LetterFormTypes.ts:12
 msgid "Address is required for the letter"
 msgstr ""
 
@@ -293,7 +303,8 @@ msgstr "Cesión de arrendamientos y rentas"
 msgid "Attend a walk-in Clinic hosted by the Met Council on Housing"
 msgstr "Asista a una clínica sin cita previa organizada por el Consejo Metropolitano de Vivienda."
 
-#: src/Components/LetterBuilder/LetterBuilderForm.tsx:311
+#: src/Components/LetterBuilder/BackNextButtons/BackNextButtons.tsx:26
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:133
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:113
 #: src/Components/Pages/Form/Survey.tsx:359
 msgid "Back"
@@ -376,7 +387,7 @@ msgstr "clasificado como centro religioso"
 msgid "classified as an educational building"
 msgstr "clasificado como edificio educativo"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:226
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:230
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:276
 msgid "Close"
 msgstr "Cerrar"
@@ -401,6 +412,10 @@ msgstr ""
 msgid "Confirm"
 msgstr "Confirmar"
 
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:136
+msgid "Continue"
+msgstr ""
+
 #: src/Components/Pages/Results/Results.tsx:618
 msgid "Copied"
 msgstr "Copiado"
@@ -423,7 +438,7 @@ msgid "Demand notice"
 msgstr "Notificación de demanda"
 
 #: src/Components/KYRContent/KYRContent.tsx:380
-#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:49
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:70
 msgid "Demolition"
 msgstr "Demolición"
 
@@ -448,7 +463,7 @@ msgstr "Elegible"
 #~ msgid "Email"
 #~ msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:85
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:89
 msgid "Email a copy to yourself and your landlord or property manager"
 msgstr ""
 
@@ -496,7 +511,7 @@ msgid "Eviction Free NYC"
 msgstr "Nueva York sin desalojos"
 
 #: src/Components/KYRContent/KYRContent.tsx:383
-#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:52
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:73
 msgid "Failure to sign lease renewal or provide access to apartment"
 msgstr "No firmar la renovación del contrato de arrendamiento o no permitir el acceso al departamento."
 
@@ -549,11 +564,11 @@ msgstr "Averigüe si su departamento tiene renta estabilizada."
 msgid "Find out if your landlord owns other buildings"
 msgstr "Averigüe si su arrendador es propietario de otros edificios."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:89
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:92
 msgid "First name"
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:32
+#: src/types/LetterFormTypes.ts:33
 msgid "First name is required for the letter"
 msgstr ""
 
@@ -569,7 +584,7 @@ msgstr "Para cualquiera de las direcciones que se enumeran a continuación, solo
 
 #. placeholder {0}: _(CPI_EFFECTIVE_DATE)
 #. placeholder {1}: CPI + 5
-#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:75
+#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:81
 msgid "For leases offered on or after {0}, landlords cannot increase rent more than {1}% without legitimate justification. You can use our <0>rent increase calculator</0> to learn more and determine if your landlord’s proposed rent exceeds the allowable rent increase amount."
 msgstr ""
 
@@ -619,11 +634,11 @@ msgid "Good Cause law can be complex to understand and to use to protect yoursel
 msgstr "La ley de causa justificada puede ser difícil de entender y de utilizar para protegerse. Este sitio web existe para facilitarle a usted y a sus vecinos la comprensión de las protecciones de los inquilinos y la defensa de sus derechos."
 
 #: src/Components/LetterBuilder/LetterBuilderForm.tsx:256
-msgid "Good Cause Letter Builder"
-msgstr ""
+#~ msgid "Good Cause Letter Builder"
+#~ msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:62
-#: src/Components/Pages/LetterSender/LetterSender.tsx:81
+#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:69
+#: src/Components/Pages/LetterSender/LetterSender.tsx:88
 msgid "Good Cause Letter Preview"
 msgstr ""
 
@@ -636,7 +651,7 @@ msgstr "Buena causa NYC"
 msgid "Google your landlord’s name and find mentions of other buildings they may own in the press."
 msgstr "Busca en Google el nombre de tu arrendador y encuentra menciones en la prensa de otros edificios que pueda tener en propiedad."
 
-#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:26
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:47
 msgid "Has your landlord provided any of the following reasons for ending your tenancy?"
 msgstr ""
 
@@ -686,7 +701,7 @@ msgstr ""
 msgid "How to assert your Good Cause rights"
 msgstr "Cómo hacer valer sus derechos por causa justificada"
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:48
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:52
 msgid "How to choose the reason for your letter"
 msgstr ""
 
@@ -711,7 +726,7 @@ msgstr ""
 msgid "I believe the rent detailed in the new lease you’ve offered exceeds the lawful limit under the Good Cause Eviction law. The difference between my current rent and the proposed rent appears to exceed {0}%."
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:147
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:150
 msgid "I do not have a unit number"
 msgstr ""
 
@@ -882,7 +897,7 @@ msgid "If your rent was increased after April 20, 2024 beyond the allowable rent
 msgstr "Si su renta se incrementó después del 20 de abril de 2024 por encima del monto de incremento de renta permitido calculado anteriormente, el tribunal de vivienda podría considerar que el incremento de su renta no es razonable."
 
 #: src/Components/KYRContent/KYRContent.tsx:374
-#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:43
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:64
 msgid "Illegal Activity"
 msgstr "Actividad ilegal"
 
@@ -915,7 +930,7 @@ msgid "is part of NYCHA or PACT/RAD"
 msgstr "forma parte de NYCHA o PACT/RAD"
 
 #. placeholder {0}: CPI + 5
-#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:32
+#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:37
 msgid "Is your landlord increasing your monthly rent beyond {0}%?"
 msgstr ""
 
@@ -932,12 +947,12 @@ msgstr "Carta de queja de JustFix"
 #~ msgid "Landlord email"
 #~ msgstr ""
 
-#: src/types/LetterFormTypes.ts:81
+#: src/types/LetterFormTypes.ts:80
 msgid "Landlord name is required"
 msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:377
-#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:46
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:67
 msgid "Landlord personal use/removal from market"
 msgstr "Uso personal por parte del propietario/retirada del mercado"
 
@@ -961,11 +976,11 @@ msgstr "Última modificación: 16 de agosto de 2024"
 msgid "Last modified: Jan 24, 2025"
 msgstr "Última modificación: 24 de enero de 2025"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:98
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:101
 msgid "Last name"
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:35
+#: src/types/LetterFormTypes.ts:36
 msgid "Last name is required for the letter"
 msgstr ""
 
@@ -997,8 +1012,8 @@ msgstr "Descubra cómo pueden ayudar las asociaciones de inquilinos."
 msgid "Learn if you’re covered <0/>by Good Cause <1/>Eviction law in NYC"
 msgstr "Averigüe si está cubierto <0/>por una causa justificada <1/>Ley de desahucios en la ciudad de Nueva York"
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:126
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:190
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:133
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:193
 #: src/Components/Pages/Form/Survey.tsx:600
 msgid "Learn more"
 msgstr "Más información"
@@ -1072,7 +1087,7 @@ msgid "Learn where Good Cause protections have been won"
 msgstr "Descubra dónde se han conseguido protecciones por causa justificada."
 
 #: src/Components/KYRContent/KYRContent.tsx:368
-#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:37
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:58
 msgid "Lease violations"
 msgstr "Infracciones del contrato de arrendamiento"
 
@@ -1111,23 +1126,27 @@ msgid "Loading..."
 msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:50
-msgid "Lorem ipsum dolor sit amet"
-msgstr ""
+#~ msgid "Lorem ipsum dolor sit amet"
+#~ msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/GoodCauseGivenStep.tsx:16
-msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit"
-msgstr ""
+#~ msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit"
+#~ msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/GoodCauseGivenStep.tsx:21
-msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat alias magni nam beatae aliquam architecto laudantium mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda! Commodi architecto dolor eius perferendis!"
+#~ msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat alias magni nam beatae aliquam architecto laudantium mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda! Commodi architecto dolor eius perferendis!"
+#~ msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:155
+msgid "Mail my letter"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:64
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:70
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:68
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:74
 msgid "Mail the letter yourself"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:38
+#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:43
 msgid "Make sure the information below is accurate. If it is not, you can go back to make changes."
 msgstr ""
 
@@ -1184,16 +1203,16 @@ msgstr "Más recursos sobre sus derechos como inquilino en la ciudad de Nueva Yo
 msgid "Mortgage"
 msgstr "Hipoteca"
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:120
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:127
 msgid "Need help choosing which letter is best for you?"
 msgstr ""
 
-#: src/Components/LetterBuilder/LetterBuilderForm.tsx:315
+#: src/Components/LetterBuilder/BackNextButtons/BackNextButtons.tsx:34
 msgid "Next"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:80
-#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:62
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:101
+#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:67
 #: src/Components/Pages/Form/Survey.tsx:232
 #: src/Components/Pages/Form/Survey.tsx:307
 #: src/Components/Pages/Form/Survey.tsx:346
@@ -1222,7 +1241,7 @@ msgid "No, my building is not subsidized"
 msgstr "No, mi edificio no está subsidiado."
 
 #: src/Components/KYRContent/KYRContent.tsx:365
-#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:34
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:55
 msgid "Non payment of rent"
 msgstr "Incumplimiento del pago del alquiler"
 
@@ -1247,7 +1266,7 @@ msgid "Note: Landlords can increase the rent beyond the Reasonable Rent Increase
 msgstr "Nota: Los propietarios pueden aumentar el alquiler más allá del límite de aumento razonable, pero deben explicar por qué y demostrar el aumento de sus costos o las reparaciones sustanciales que han realizado en el departamento o el edificio."
 
 #: src/Components/KYRContent/KYRContent.tsx:371
-#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:40
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:61
 msgid "Nuisance activity"
 msgstr "Actividad molesta"
 
@@ -1316,7 +1335,7 @@ msgstr "Número de teléfono"
 msgid "Phone number (optional)"
 msgstr "Número de teléfono (opcional)"
 
-#: src/types/LetterFormTypes.ts:40
+#: src/types/LetterFormTypes.ts:41
 msgid "Phone number is required for follow up"
 msgstr ""
 
@@ -1341,12 +1360,13 @@ msgstr ""
 msgid "Please confirm your address"
 msgstr "Por favor, confirme su dirección."
 
-#: src/types/LetterFormTypes.ts:41
-#: src/types/LetterFormTypes.ts:43
+#: src/types/LetterFormTypes.ts:42
+#: src/types/LetterFormTypes.ts:44
 msgid "Please enter a complete US phone number"
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:46
+#: src/types/LetterFormTypes.ts:45
+#: src/types/LetterFormTypes.ts:81
 msgid "Please enter a valid email"
 msgstr ""
 
@@ -1354,8 +1374,8 @@ msgstr ""
 msgid "Please enter your total rent amount."
 msgstr "Por favor, ingrese el monto total de su renta."
 
-#: src/types/LetterFormTypes.ts:62
-#: src/types/LetterFormTypes.ts:94
+#: src/types/LetterFormTypes.ts:61
+#: src/types/LetterFormTypes.ts:93
 msgid "Please provide a unit number or check the box to confirm that there is no unit number"
 msgstr ""
 
@@ -1367,20 +1387,20 @@ msgstr "Revise estos documentos para saber si el propietario de su edificio tamb
 #~ msgid "Please review your letter to ensure all the details are correct."
 #~ msgstr ""
 
-#: src/types/LetterFormTypes.ts:150
+#: src/types/LetterFormTypes.ts:149
 msgid "Please select a reason for your letter."
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:114
+#: src/types/LetterFormTypes.ts:113
 msgid "Please select an option for mailing the letter"
 msgstr ""
 
 #. placeholder {0}: CPI + 5
-#: src/types/LetterFormTypes.ts:129
+#: src/types/LetterFormTypes.ts:128
 msgid "Please select whether the increase is beyond {0}%"
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:141
+#: src/types/LetterFormTypes.ts:140
 msgid "Please select whether your landlord provided one of the listed reasons for not renewing your lease."
 msgstr ""
 
@@ -1409,12 +1429,12 @@ msgstr "Por favor, especifique si su arrendador vive en su edificio de apartamen
 msgid "Please specify whether your landlord owns more than 10 apartments across multiple buildings."
 msgstr "Por favor, especifique si su arrendador es propietario de más de 10 apartamentos en varios edificios."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:78
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:81
 msgid "Please use the address that is associated with your lease. This is the address that we will use as the return address in your letter."
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:45
-#: src/Components/Pages/LetterSender/LetterSender.tsx:63
+#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:52
+#: src/Components/Pages/LetterSender/LetterSender.tsx:70
 msgid "Preview language:"
 msgstr ""
 
@@ -1566,7 +1586,7 @@ msgstr "Resultado"
 msgid "Results are based on publicly available data about your building and the answers you provided. This does not constitute legal advice."
 msgstr "Los resultados se basan en datos públicos sobre su edificio y en las respuestas que usted ha proporcionado. Esto no constituye asesoramiento legal."
 
-#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:35
+#: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:40
 msgid "Review your letter"
 msgstr ""
 
@@ -1594,7 +1614,7 @@ msgstr "Averigüe si reúne los requisitos para obtener un abogado gratuito en e
 msgid "See your results"
 msgstr "Vea sus resultados"
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:24
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:27
 msgid "Select the reason for your letter"
 msgstr ""
 
@@ -1611,8 +1631,8 @@ msgid "Send a letter to your landlord"
 msgstr ""
 
 #: src/Components/LetterBuilder/LetterBuilderForm.tsx:259
-msgid "Send a letter to your landlord via certified mail asserting your Good Cause"
-msgstr ""
+#~ msgid "Send a letter to your landlord via certified mail asserting your Good Cause"
+#~ msgstr ""
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:103
 msgid "Sending a letter clearly communicates to your landlord that you know your legal protections."
@@ -1638,6 +1658,10 @@ msgstr "Dado que su departamento está protegido por la ley de desalojo por caus
 msgid "Since your rent increase is below the allowable rent increase limit under Good Cause, we cannot assert your Good Cause rights in regard to your increase. However, here are some tips to help you negotiate a lower increase."
 msgstr ""
 
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:113
+msgid "Something to know"
+msgstr ""
+
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:191
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:263
 msgid "Something went wrong. Try again later."
@@ -1647,7 +1671,7 @@ msgstr "Algo salió mal. Inténtalo de nuevo más tarde."
 msgid "Source of income discrimination is the illegal practice by landlords, owners, and real estate brokers of refusing to rent to current or prospective tenants seeking to pay for housing with housing assistance vouchers, subsidies, or other forms of public assistance."
 msgstr "La discriminación por fuente de ingresos es la práctica ilegal por parte de los propietarios, arrendadores y agentes inmobiliarios de negarse a alquilar a inquilinos actuales o potenciales que desean pagar su vivienda con vales de asistencia para la vivienda, subsidios u otras formas de asistencia pública."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:114
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:117
 msgid "Street address"
 msgstr ""
 
@@ -1663,7 +1687,6 @@ msgstr "estudio"
 msgid "Studio"
 msgstr "Estudio"
 
-#: src/Components/LetterBuilder/LetterBuilderForm.tsx:315
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:176
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:203
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:283
@@ -1819,7 +1842,6 @@ msgid "This site is a collaboration between the Housing Justice for All Coalitio
 msgstr "Este sitio es una colaboración entre Housing Justice for All y JustFix. Agradecemos a todas las personas que contribuyeron a este sitio y a todos los inquilinos y defensores que luchan por las protecciones de buena causa."
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:29
-#: src/Components/LetterBuilder/FormSteps/GoodCauseGivenStep.tsx:28
 msgid "Tip 1"
 msgstr ""
 
@@ -1883,11 +1905,11 @@ msgstr "Comprender sus derechos"
 msgid "Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation."
 msgstr "Desafortunadamente, puede resultar difícil averiguar quién es realmente su arrendador y si este es propietario de otros edificios. Esto es especialmente cierto si su edificio es propiedad de una corporación."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:131
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:134
 msgid "Unit number"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:126
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:129
 msgid "Unit Number"
 msgstr ""
 
@@ -1965,7 +1987,7 @@ msgstr "Verificamos los programas NYCHA, Mitchell-Lama, HDFC, LIHTC, Proyecto Se
 msgid "We have sent a text message to you at {0} with the USPS tracking number for your letter."
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:89
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:93
 msgid "We highly recommend emailing a copy of the letter to yourself and your landlord. You can also send a copy to other people you trust."
 msgstr ""
 
@@ -1977,12 +1999,16 @@ msgstr "Necesitamos confirmar si su departamento tiene renta estabilizada."
 msgid "We need to confirm if your landlord owns more than 10 apartments"
 msgstr "Necesitamos confirmar si su arrendador es propietario de más de 10 departamentos."
 
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:125
+msgid "We still recommend continuing to send a letter asserting your Good Cause right to a lease renewal."
+msgstr ""
+
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:470
 msgid "We were unable to find relevant documents containing owner names and/or signatures for this building."
 msgstr "No hemos podido encontrar documentos relevantes que contengan los nombres y/o firmas de los propietarios de este edificio."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:40
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:46
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:44
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:50
 msgid "We will mail the letter for you"
 msgstr ""
 
@@ -1995,11 +2021,11 @@ msgstr "Nunca te llamaremos ni compartiremos tu número de teléfono. Es posible
 #~ msgid "We will never call you or share your phone number. You can opt-out at any time."
 #~ msgstr "We will never call you or share your phone number. You can opt-out at any time."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:73
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:77
 msgid "We will provide a PDF for you to download, print, and mail to your landlord or property manager."
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:53
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:57
 msgid "We will send your letter for you via USPS Certified Mail ® at no cost to you. We will also provide a PDF for you to download for your records."
 msgstr ""
 
@@ -2027,7 +2053,7 @@ msgstr "Cuando los inquilinos se unen, tenemos poder. Los inquilinos de todo nue
 msgid "Whether or not you are covered by Good Cause, you still have important tenant rights"
 msgstr "Independientemente de si estás cubierto por una causa justificada, sigues teniendo importantes derechos como inquilino."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:184
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:187
 msgid "Why are we asking for this information?"
 msgstr ""
 
@@ -2035,7 +2061,7 @@ msgstr ""
 msgid "Why send a letter to your landlord?"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:199
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:203
 msgid "Why we ask for your phone number and email"
 msgstr ""
 
@@ -2047,8 +2073,8 @@ msgstr "Retener el aumento injustificado"
 #~ msgid "Would you like us to email a copy of your letter to your landlord?"
 #~ msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:66
-#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:48
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:87
+#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:53
 #: src/Components/Pages/Form/Survey.tsx:231
 #: src/Components/Pages/Form/Survey.tsx:306
 #: src/Components/Pages/Form/Survey.tsx:345
@@ -2188,11 +2214,19 @@ msgid "You reported that your rent is {0}."
 msgstr "Usted informó que su renta es de {0}."
 
 #: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:80
-msgid "You should select “<0>Your landlord has communicated that they do not intend to offer you a new lease</0>” if any of the following apply:"
-msgstr ""
+#~ msgid "You should select “<0>Your landlord has communicated that they do not intend to offer you a new lease</0>” if any of the following apply:"
+#~ msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:52
-msgid "You should select “<0>Your landlord has recently proposed a rent increase</0>” if any of the following apply:"
+#~ msgid "You should select “<0>Your landlord has recently proposed a rent increase</0>” if any of the following apply:"
+#~ msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:87
+msgid "You should select <0>“Your landlord has communicated that they do not intend to offer you a new lease”</0>if any of the following apply:"
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:56
+msgid "You should select <0>“Your landlord has recently proposed a rent increase”</0>if any of the following apply:"
 msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:830
@@ -2207,16 +2241,20 @@ msgstr "Nos ha dicho que no está seguro de si su renta está estabilizada. Si s
 msgid "You’re not alone. Too many landlords care more about getting rich off our rent money than providing us with decent homes."
 msgstr "No estás solo. Demasiados propietarios se preocupan más por enriquecerse con el dinero de nuestro alquiler que por proporcionarnos viviendas dignas."
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:70
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:76
 msgid "You’ve received a <0>226c notice detailing an upcoming rent increase</0>"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:96
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:103
 msgid "You’ve received a <0>226c notice stating that your lease will not be renewed</0>"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:104
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:111
 msgid "You’ve received a <0>notice of termination</0>"
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:117
+msgid "You’ve shared that your landlord has provided a reason for ending your tenancy. If the reason that your landlord provided is legitimate, <0>you may not be guaranteed a lease renewal.</0>"
 msgstr ""
 
 #: src/hooks/useCriteriaResults.tsx:346
@@ -2275,7 +2313,7 @@ msgstr "Su edificio recibe el incentivo fiscal « {0} », lo que significa que s
 msgid "Your building was issued a certificate of occupancy on {latestCoDateFormatted}."
 msgstr "Su edificio obtuvo un certificado de ocupación el {latestCoDateFormatted}."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:154
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:157
 msgid "Your contact information"
 msgstr ""
 
@@ -2291,13 +2329,14 @@ msgstr "Tu renta mensual actual + {increase_pct}%"
 #~ msgid "Your current monthly rent + ${increase_pct}%"
 #~ msgstr "Your current monthly rent + ${increase_pct}%"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:99
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:103
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:161
 msgid "Your email"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:158
-msgid "Your email (optional)"
-msgstr ""
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:161
+#~ msgid "Your email (optional)"
+#~ msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:38
 msgid "Your eviction protections"
@@ -2308,22 +2347,30 @@ msgid "Your landlord can’t evict you based on your race, religion, gender, nat
 msgstr "Tu arrendador no puede desalojarte por motivos de raza, religión, género, nacionalidad, situación familiar o discapacidad. La ley del estado de Nueva York garantiza protección contra la discriminación y prohíbe los prejuicios por motivos de edad, orientación sexual y condición militar."
 
 #: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:64
-msgid "Your landlord has recently given you a new lease with a rent increase"
+#~ msgid "Your landlord has recently given you a new lease with a rent increase"
+#~ msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:70
+msgid "Your landlord has recently given you a new lease with a rent increase."
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:90
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:97
 msgid "Your landlord has told you that you will not be offered a lease renewal"
 msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:59
-msgid "Your landlord has told you your rent will be increasing"
+#~ msgid "Your landlord has told you your rent will be increasing"
+#~ msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:65
+msgid "Your landlord has told you your rent will be increasing."
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:38
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:41
 msgid "Your landlord is not offering you a new lease"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:32
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:35
 msgid "Your landlord is planning to raise your rent"
 msgstr ""
 
@@ -2339,7 +2386,7 @@ msgstr "Tu arrendador debe notificarte por escrito cualquier aumento del alquile
 msgid "Your landlord will need to provide a good reason for ending a tenancy. Even if your lease expires, your landlord cannot evict you, as long as you abide by the terms of your expired lease."
 msgstr "El propietario deberá proporcionar una razón válida para rescindir el contrato de alquiler. Aunque el contrato haya vencido, el propietario no puede desalojarlo, siempre y cuando usted cumpla con los términos del contrato vencido."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:109
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:112
 msgid "Your landlord's email"
 msgstr ""
 
@@ -2356,11 +2403,11 @@ msgstr ""
 msgid "Your local City Council representative"
 msgstr "Su representante local en el Ayuntamiento"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:75
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:78
 msgid "Your mailing address"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:175
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:178
 msgid "Your phone number"
 msgstr ""
 
@@ -2413,6 +2460,6 @@ msgstr "Sus derechos contra la discriminación"
 msgid "YouTube video for how to find other apartments your landlord owns"
 msgstr "Video de YouTube sobre cómo encontrar otros departamentos que sean propiedad de tu arrendador."
 
-#: src/types/LetterFormTypes.ts:19
+#: src/types/LetterFormTypes.ts:20
 msgid "ZIP Code must be either 5-digit number or 5-digits with hyphen and 4 additional digits."
 msgstr ""

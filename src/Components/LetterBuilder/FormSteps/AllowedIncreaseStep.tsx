@@ -2,11 +2,11 @@ import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 
-import { FormHookProps } from "../../../types/LetterFormTypes";
 import { ContentBox, ContentBoxItem } from "../../ContentBox/ContentBox";
 import { GoodCauseProtections } from "../../KYRContent/KYRContent";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 
-export const AllowedIncreaseStep: React.FC<FormHookProps> = () => {
+export const AllowedIncreaseStep: React.FC = () => {
   const { _ } = useLingui();
 
   return (
@@ -34,6 +34,7 @@ export const AllowedIncreaseStep: React.FC<FormHookProps> = () => {
         </ContentBoxItem>
       </ContentBox>
       <GoodCauseProtections />
+      <BackNextButtons hideButon2 />
     </>
   );
 };

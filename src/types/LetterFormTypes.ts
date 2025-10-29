@@ -5,6 +5,7 @@ import z from "zod";
 
 import { CPI } from "../Components/Pages/RentCalculator/RentIncreaseValues";
 import { looseOptional } from "../form-utils";
+import { createContext } from "react";
 
 const lobAddressSchema = (i18n: I18n) =>
   z.object({
@@ -41,8 +42,6 @@ const userDetailsSchema = (i18n: I18n) => {
               : i18n._(msg`Please enter a complete US phone number`),
         })
         .length(10, i18n._(msg`Please enter a complete US phone number`)),
-      // Email has god default validator regex, plus alternatives, and way to
-      // include custom ({pattern: /<regex>/})
       email: looseOptional(z.email(i18n._(msg`Please enter a valid email`))),
       ...lobAddressSchema(i18n)
         .omit({ urbanization: true })
@@ -79,7 +78,7 @@ const landlordDetailsSchema = (i18n: I18n) => {
   const schema = z
     .object({
       name: z.string().min(1, i18n._(msg`Landlord name is required`)),
-      email: z.email().optional(),
+      email: looseOptional(z.email(i18n._(msg`Please enter a valid email`))),
       ...lobAddressSchema(i18n).shape,
     })
     .refine(
@@ -153,6 +152,12 @@ export const formSchema = (i18n: I18n) =>
 export type FormFields = z.infer<ReturnType<typeof formSchema>>;
 
 export type FormHookProps = UseFormReturn<FormFields>;
+
+export const FormContext = createContext<{
+  formMethods: FormHookProps;
+  back: () => void;
+  next: () => void;
+}>(null!);
 
 export const defaultFormValues: FormFields = {
   user_details: {
