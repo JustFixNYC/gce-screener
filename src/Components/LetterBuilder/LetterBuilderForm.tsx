@@ -221,7 +221,7 @@ export const LetterBuilderForm: React.FC = () => {
       }
       const nextStep = steps[currentStep + 1];
       const nextPath = `/${locale}/letter/${nextStep.routeName}`;
-      navigate(nextPath);
+      navigate(nextPath, { preventScrollReset: true });
     }
   };
 
