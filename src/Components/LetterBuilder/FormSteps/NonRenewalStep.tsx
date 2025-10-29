@@ -17,7 +17,6 @@ import {
 import Modal from "../../Modal/Modal";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 
-// TODO: need to override "next" button if user selects that good cause reason was given to instead launch the modal
 export const NonRenewalStep: React.FC = () => {
   const {
     formMethods: {
