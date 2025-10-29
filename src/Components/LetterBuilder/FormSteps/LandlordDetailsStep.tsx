@@ -47,6 +47,7 @@ const wowContactToLandlordDetails = (
     city: address.city,
     state: address.state,
     zip_code: address.zip,
+    no_unit: address.apartment == "",
   };
 };
 
