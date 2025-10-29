@@ -6,6 +6,7 @@ import { msg } from "@lingui/core/macro";
 import { FormContext } from "../../../types/LetterFormTypes";
 import { languageNames, SupportedLocale } from "../../../i18n-base";
 import { buildLetterHtml } from "../Letter/letter-utils";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 
 export const PreviewStep: React.FC = () => {
   const {
@@ -76,6 +77,9 @@ export const PreviewStep: React.FC = () => {
             this letter later.
           </Trans>
         </p>
+        {/* TODO: consider taking this step out of the <form> since there are no inputs, 
+        and then we'd need to change button2 to be type="button" and onClick={next} */}
+        <BackNextButtons />
       </section>
     </>
   );

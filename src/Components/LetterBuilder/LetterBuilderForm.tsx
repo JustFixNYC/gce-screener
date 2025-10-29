@@ -54,10 +54,9 @@ const steps: Step[] = [
     routeName: "contact-info",
     fields: ["user_details"],
   },
-  { id: "Step 4", name: "Preview", routeName: "preview" },
   {
-    // TODO: Move to after landlord details, it's here only for ease of PR review
-    id: "Step 5",
+    // TODO: Reorder steps. Putting landlord at the end until that step is finished
+    id: "Step 4",
     name: "Mail Choice",
     routeName: "mail-choice",
     fields: [
@@ -67,6 +66,7 @@ const steps: Step[] = [
       "extra_emails",
     ],
   },
+  { id: "Step 5", name: "Preview", routeName: "preview" },
   {
     id: "Step 6",
     name: "Landlord details",
@@ -196,15 +196,13 @@ export const LetterBuilderForm: React.FC = () => {
       if (!resp) return;
     }
 
-    if (currentStep < steps.length - 1) {
-      if (currentStep === steps.length - 2) {
-        await handleSubmit(processForm)();
-      }
-      const nextStep = steps[currentStep + 1];
-      const nextPath = `/${i18n.locale}/letter/${nextStep.routeName}`;
-      navigate(nextPath, { preventScrollReset: true });
+    if (currentStep >= steps.length - 1) return;
+    if (currentStep === steps.length - 2) {
+      await handleSubmit(processForm)();
     }
-    setCurrentStep((step) => step + 1);
+    const nextStep = steps[currentStep + 1];
+    const nextPath = `/${i18n.locale}/letter/${nextStep.routeName}`;
+    navigate(nextPath, { preventScrollReset: true });
   };
 
   const back = () => {
@@ -243,15 +241,16 @@ export const LetterBuilderForm: React.FC = () => {
           )}
           {currentStep === 2 && (
             <>
-              {getValues("unreasonable_increase") ? (
-                <UserDetailsStep />
-              ) : (
+              {getValues("reason") === "PLANNED_INCREASE" &&
+              getValues("unreasonable_increase") === false ? (
                 <AllowedIncreaseStep />
+              ) : (
+                <UserDetailsStep />
               )}
             </>
           )}
-          {currentStep === 3 && <PreviewStep />}
-          {currentStep === 4 && <MailChoiceStep />}
+          {currentStep === 3 && <MailChoiceStep />}
+          {currentStep === 4 && <PreviewStep />}
           {currentStep === 5 && <LandlordDetailsStep {...formMethods} />}
           {currentStep === 6 && (
             <ConfirmationStep confirmationResponse={letterResp} />

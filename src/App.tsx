@@ -30,6 +30,7 @@ import { LetterLanding } from "./Components/Pages/LetterLanding/LetterLanding";
 import {
   LetterLayout,
   LetterSender,
+  LetterTestSender,
 } from "./Components/Pages/LetterSender/LetterSender";
 import "./App.scss";
 
@@ -216,6 +217,7 @@ const router = createBrowserRouter(
           <Route path="landlord-details" element={<LetterSender />} />
           <Route path="preview" element={<LetterSender />} />
           <Route path="confirmation" element={<LetterSender />} />
+          <Route path="test" element={<LetterTestSender />} />
         </Route>
         <Route path="tenant_rights" element={<TenantRights />} />
         <Route path="privacy_policy" element={<PrivacyPolicy />} />
