@@ -32,8 +32,7 @@ export const Home: React.FC = () => {
   const { _ } = useLingui();
   const navigate = useNavigate();
   const [sessionUser, setUser] = useSessionStorage<GCEUser>("user");
-  const [address, setAddress, removeAddress] =
-    useSessionStorage<Address>("address");
+  const [, setAddress, removeAddress] = useSessionStorage<Address>("address");
   const [, , removeFormFields] = useSessionStorage<FormFields>("fields");
   const [lastStepReached, setLastStepReached] =
     useSessionStorage<ProgressStep>("lastStepReached");
