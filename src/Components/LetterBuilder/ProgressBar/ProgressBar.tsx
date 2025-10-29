@@ -12,10 +12,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   currentStep,
   progressOverride,
 }) => {
-  const progress =
-    progressOverride !== undefined
-      ? progressOverride
-      : ((currentStep + 1) / steps.length) * 100;
+  const progress = progressOverride || ((currentStep + 1) / steps.length) * 100;
 
   return (
     <div className="progress-bar">
