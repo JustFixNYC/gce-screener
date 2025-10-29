@@ -30,7 +30,7 @@ export const NonRenewalStep: React.FC = () => {
   const { _ } = useLingui();
   const [showModal, setShowModal] = useState(false);
 
-  // fix issue with type inference with this typeguard
+  // fixes issue with type inference with this typeguard
   if (!isNonRenewalErrors(errors, watch("reason"))) return null;
 
   const button2Props: Partial<ButtonProps> = watch("good_cause_given")

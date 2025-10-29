@@ -28,7 +28,7 @@ export const PlannedIncreaseStep: React.FC = () => {
 
   const { _ } = useLingui();
 
-  // fix issue with type inference with this typeguard
+  // fixes issue with type inference with this typeguard
   if (!isPlannedIncreaseErrors(errors, watch("reason"))) return null;
 
   return (
