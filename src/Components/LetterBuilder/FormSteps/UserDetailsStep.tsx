@@ -41,14 +41,33 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
     setValue,
     setError,
     control,
+    watch,
     formState: { errors },
   } = props;
 
   const userErrors = errors.user_details;
+  const userDetails = watch("user_details");
 
   const { _ } = useLingui();
 
   const [showModal, setShowModal] = useState(false);
+
+  // used to prefill address input when user has clicked back from the next step
+  const initialAddress: Address | undefined =
+    userDetails?.primary_line && userDetails?.city && userDetails?.bbl
+      ? {
+          address: `${userDetails.primary_line}, ${userDetails.city}, ${
+            userDetails.zip_code || ""
+          }`,
+          houseNumber: userDetails.primary_line.split(" ")[0] || "",
+          streetName:
+            userDetails.primary_line.split(" ").slice(1).join(" ") || "",
+          borough: userDetails.city,
+          zipcode: userDetails.zip_code,
+          bbl: userDetails.bbl,
+          longLat: "",
+        }
+      : undefined;
 
   return (
     <>
@@ -84,6 +103,7 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
           />
         </div>
         <GeoSearchInput
+          initialAddress={initialAddress}
           onChange={(addr) => {
             geosearchToLOBAddressWithBBL(addr).forEach(
               ({ fieldPath, value }) => {
