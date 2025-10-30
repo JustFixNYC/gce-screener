@@ -140,9 +140,12 @@ export type GCELetterConfirmation = {
   data: {
     user_email?: string;
     landlord_email?: string;
+    extra_emails?: string[];
     user_phone_number: string;
     letter_pdf: string;
     tracking_number?: string;
+    reason: "NONRENEWAL" | "PLANNED_INCREASE";
+    good_cause_given: boolean;
   };
 };
 

@@ -4,6 +4,11 @@ import { Icon } from "@justfixnyc/component-library";
 import { GCELetterConfirmation } from "../../../types/APIDataTypes";
 import { base64ToBlob } from "../Letter/letter-utils";
 import { JFCLLinkExternal } from "../../JFCLLink";
+import {
+  LetterNextSteps,
+  LetterResponsesNonRenewal,
+  LetterResponsesRentIncrease,
+} from "../LetterNextSteps/LetterNextSteps";
 
 export const ConfirmationStep: React.FC<{
   confirmationResponse?: GCELetterConfirmation;
@@ -16,7 +21,7 @@ export const ConfirmationStep: React.FC<{
 
   return (
     <>
-      <ul>
+      {/* <ul>
         {errors.landlord_email?.error ? (
           <li>
             <Icon icon="xmark" />
@@ -91,7 +96,14 @@ export const ConfirmationStep: React.FC<{
 
       <JFCLLinkExternal to={fileURL}>
         <Trans>View Letter PDF</Trans>
-      </JFCLLinkExternal>
+      </JFCLLinkExternal> */}
+
+      <LetterNextSteps />
+      {data.reason === "NONRENEWAL" ? (
+        <LetterResponsesNonRenewal includeUniversal />
+      ) : data.reason === "PLANNED_INCREASE" ? (
+        <LetterResponsesRentIncrease includeUniversal />
+      ) : null}
     </>
   );
 };

@@ -86,6 +86,7 @@ $videoEmbedW: 623px;
     margin-bottom: 0.25rem; // 4px
   }
   .content-box__section__header {
+    display: flex;
     @include body_large_desktop;
     font-weight: 500;
     @include for-phone-only {
