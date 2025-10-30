@@ -53,10 +53,7 @@ const steps: Step[] = [
     id: "Step 3",
     name: "Contact information",
     routeName: "contact-info",
-    fields: [
-      "user_details.first_name",
-      "user_details.last_name",
-    ],
+    fields: ["user_details.first_name", "user_details.last_name"],
   },
   {
     id: "Step 4",

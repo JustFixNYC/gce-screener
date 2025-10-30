@@ -1,0 +1,143 @@
+@use "../../../mixins" as *;
+@use "../../../variables" as *;
+@use "../../../colors" as *;
+@use "../content-page" as *;
+
+#letter-sender-page {
+  .headline-section {
+    padding: 2.5rem 0;
+    .headline-section__subtitle {
+      width: 85%;
+    }
+    .hero-cta {
+      margin-top: 1.25rem;
+      @include body_large_desktop;
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
+
+      .hero-cta__buttons {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1rem;
+
+        @include for-phone-only {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+
+  .content-section {
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+    @include for-phone-only {
+      padding-top: 0;
+      padding-bottom: 2rem;
+    }
+    &:last-of-type {
+      padding-top: 2rem;
+      border-top: 1px solid $OFF_BLACK;
+    }
+
+    h3 {
+      @include h3_desktop;
+      margin-bottom: 2rem;
+      @include for-phone-only {
+        @include h3_mobile;
+      }
+    }
+
+    p {
+      @include body_large_desktop;
+      margin: 0;
+      &:not(:last-of-type) {
+        margin-bottom: 1rem;
+      }
+      @include for-phone-only {
+        @include body_standard_mobile;
+      }
+    }
+
+    .about-section {
+      width: 90%;
+      @include for-phone-only {
+        width: 100%;
+      }
+    }
+    .jfcl-link {
+      @include body_large_desktop;
+      font-weight: 500;
+      svg {
+        display: none; // hide internal link arrow icon
+      }
+    }
+
+    .callout-box {
+      background-color: $OFF_WHITE_200;
+      border-radius: 4px;
+      padding: 2rem;
+      margin-top: 3rem;
+
+      h4 {
+        @include body_large_desktop;
+        font-weight: 600;
+        margin: 0 0 0.5rem 0;
+        @include for-phone-only {
+          @include body_standard_mobile;
+          font-weight: 600;
+        }
+      }
+    }
+
+    ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: step;
+
+      li {
+        counter-increment: step;
+        position: relative;
+        padding-left: 2.5rem;
+        margin-bottom: 2rem;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        // numbered list with circles
+        &::before {
+          content: counter(step);
+          position: absolute;
+          left: 0;
+          top: 0.3rem;
+          display: flex;
+          justify-content: center;
+          border-radius: 1.9375rem;
+          width: 1.25rem;
+          height: 1.25rem;
+          font-family: "Degular Text";
+          font-size: 0.875rem;
+          font-weight: 600;
+          letter-spacing: -0.00963rem;
+          background-color: $OFF_BLACK;
+          color: $OFF_WHITE_100;
+        }
+
+        p {
+          padding-top: 0.5rem;
+        }
+
+        strong {
+          @include body_large_desktop;
+          font-weight: 600;
+          @include for-phone-only {
+            @include body_standard_mobile;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
