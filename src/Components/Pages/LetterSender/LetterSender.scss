@@ -1,10 +1,5 @@
 #letter-sender-page {
-  .letter-form {
-    &__content {
-      padding: 1rem;
-    }
-    &__buttons {
-      display: flex;
-    }
+  .content-section {
+    padding-bottom: 2.25rem;
   }
 }

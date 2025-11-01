@@ -8,6 +8,7 @@ import { FormHookProps } from "../../../types/LetterFormTypes";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import Modal from "../../Modal/Modal";
 import { JFCLLinkExternal } from "../../JFCLLink";
+import "./ReasonStep.scss";
 
 export const ReasonStep: React.FC<FormHookProps> = (props) => {
   const {
@@ -19,7 +20,7 @@ export const ReasonStep: React.FC<FormHookProps> = (props) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <>
+    <div id="reason-step">
       <FormGroup
         legendText={_(msg`Select the reason for your letter`)}
         invalid={!!errors?.reason}
@@ -27,18 +28,20 @@ export const ReasonStep: React.FC<FormHookProps> = (props) => {
         invalidRole="status"
         helperElement={<ReasonHelperText onClick={() => setShowModal(true)} />}
       >
-        <SelectButton
-          {...register("reason")}
-          labelText={_(msg`Your landlord is planning to raise your rent`)}
-          value="PLANNED_INCREASE"
-          id="reason__planned-increase"
-        />
-        <SelectButton
-          {...register("reason")}
-          labelText={_(msg`Your landlord is not offering you a new lease`)}
-          value="NON_RENEWAL"
-          id="reason__non-renewal"
-        />
+        <div className="reason-step__buttons">
+          <SelectButton
+            {...register("reason")}
+            labelText={_(msg`Your landlord is planning to raise your rent`)}
+            value="PLANNED_INCREASE"
+            id="reason__planned-increase"
+          />
+          <SelectButton
+            {...register("reason")}
+            labelText={_(msg`Your landlord is not offering you a new lease`)}
+            value="NON_RENEWAL"
+            id="reason__non-renewal"
+          />
+        </div>
       </FormGroup>
 
       <Modal
@@ -47,7 +50,6 @@ export const ReasonStep: React.FC<FormHookProps> = (props) => {
         hasCloseBtn={true}
         header={_(msg`How to choose the reason for your letter`)}
       >
-        <Trans>Lorem ipsum dolor sit amet</Trans>
         <div className="callout-box">
           <Trans>
             You should select “
@@ -109,7 +111,7 @@ export const ReasonStep: React.FC<FormHookProps> = (props) => {
           </ul>
         </div>
       </Modal>
-    </>
+    </div>
   );
 };
 

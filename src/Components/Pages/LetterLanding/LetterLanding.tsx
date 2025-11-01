@@ -13,7 +13,7 @@ export const LetterLanding: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="letter-sender-page">
+    <div id="letter-sender-landing-page">
       <Header
         title={_(msg`Send a letter to your landlord`)}
         subtitle={

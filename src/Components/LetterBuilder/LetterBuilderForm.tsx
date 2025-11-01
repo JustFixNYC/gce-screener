@@ -27,7 +27,7 @@ import { AllowedIncreaseStep } from "./FormSteps/AllowedIncreaseStep";
 import { NonRenewalStep } from "./FormSteps/NonRenewalStep";
 import { GoodCauseGivenStep } from "./FormSteps/GoodCauseGivenStep";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-
+import "./LetterBuilderForm.scss";
 interface Step {
   id: string;
   name: string;
@@ -249,15 +249,6 @@ export const LetterBuilderForm: React.FC = () => {
 
   return (
     <form onSubmit={handleFormNoDefault(next)} className="letter-form">
-      <h3>
-        <Trans>Good Cause Letter Builder</Trans>
-      </h3>
-      <p>
-        <Trans>
-          Send a letter to your landlord via certified mail asserting your Good
-          Cause
-        </Trans>
-      </p>
       <ProgressBar
         steps={steps}
         currentStep={currentStep}
