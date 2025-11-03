@@ -4,7 +4,8 @@ import { msg } from "@lingui/core/macro";
 import z from "zod";
 
 import { CPI } from "../Components/Pages/RentCalculator/RentIncreaseValues";
-import { looseOptional } from "../form-utils";
+import { flattenExtraEmails, looseOptional } from "../form-utils";
+import { GCELetterConfirmation } from "./APIDataTypes";
 
 const lobAddressSchema = (i18n: I18n) =>
   z.object({
@@ -189,7 +190,7 @@ export const sampleFormValues: FormFields = {
     first_name: "Maxwell",
     last_name: "Austensen",
     phone_number: "2125551212",
-    email: "maxwell@justfix.org",
+    email: "tenant@email.com",
     primary_line: "deliverable",
     secondary_line: "Apt 1",
     city: "BROOKLYN",
@@ -200,7 +201,7 @@ export const sampleFormValues: FormFields = {
   },
   landlord_details: {
     name: "Maxwell Austensen",
-    email: "maxwell@justfix.org",
+    email: "landlord@email.com",
     primary_line: "deliverable",
     secondary_line: "Apt 1",
     city: "BROOKLYN",
@@ -209,7 +210,7 @@ export const sampleFormValues: FormFields = {
     no_unit: false,
   },
   mail_choice: "WE_WILL_MAIL",
-  extra_emails: [{ email: "maxwell@justfix.org" }],
+  extra_emails: [{ email: "extra@email.com" }],
   reason: "PLANNED_INCREASE",
   unreasonable_increase: false,
 };
@@ -237,3 +238,30 @@ export function isNonRenewalErrors(
 ): _errors is NonRenewalErrors {
   return reason === "NON_RENEWAL";
 }
+
+export const sampleConfirmationValues: GCELetterConfirmation = {
+  errors: {
+    landlord_email: {
+      error: false,
+    },
+    user_email: {
+      error: false,
+    },
+    letter_mail: {
+      error: false,
+    },
+    textit_campaign: {
+      error: false,
+    },
+  },
+  data: {
+    user_email: sampleFormValues.user_details.email,
+    landlord_email: sampleFormValues.landlord_details.email,
+    extra_emails: flattenExtraEmails(sampleFormValues.extra_emails),
+    user_phone_number: sampleFormValues.user_details.phone_number,
+    mail_choice: sampleFormValues.mail_choice,
+    letter_pdf: "xxx",
+    tracking_number: "1111111",
+    reason: sampleFormValues.reason,
+  },
+};

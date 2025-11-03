@@ -6,12 +6,18 @@ import { msg } from "@lingui/core/macro";
 import { Button } from "@justfixnyc/component-library";
 
 import { LetterBuilderForm } from "../../LetterBuilder/LetterBuilderForm";
-import { FormFields, sampleFormValues } from "../../../types/LetterFormTypes";
+import {
+  FormFields,
+  sampleConfirmationValues,
+  sampleFormValues,
+} from "../../../types/LetterFormTypes";
 import { buildLetterHtml } from "../../LetterBuilder/Letter/letter-utils";
 import { GCELetterPostData } from "../../../types/APIDataTypes";
 import { useSendGceLetterData } from "../../../api/hooks";
 import { languageNames, SupportedLocale } from "../../../i18n-base";
 import "./LetterSender.scss";
+import { ConfirmationStep } from "../../LetterBuilder/FormSteps/ConfirmationStep";
+import { flattenExtraEmails } from "../../../form-utils";
 
 export const LetterLayout: React.FC = () => {
   return (
@@ -27,6 +33,16 @@ export const LetterSender: React.FC = () => {
       <div className="content-section__content">
         <LetterTester letterData={sampleFormValues} />
         <LetterBuilderForm />
+      </div>
+    </div>
+  );
+};
+
+export const LetterConfirmationTest: React.FC = () => {
+  return (
+    <div className="content-section">
+      <div className="content-section__content">
+        <ConfirmationStep confirmationResponse={sampleConfirmationValues} />
       </div>
     </div>
   );
@@ -90,9 +106,7 @@ export const LetterTester: React.FC<{ letterData: FormFields }> = ({
           const letterHtml = await buildLetterHtml(sampleFormValues, "en");
           const letterPostData: GCELetterPostData = {
             ...sampleFormValues,
-            extra_emails: letterData.extra_emails
-              ?.map(({ email }) => email)
-              .filter((email): email is string => !!email),
+            extra_emails: flattenExtraEmails(letterData.extra_emails),
             html_content: letterHtml,
           };
           await sendLetter(letterPostData);

@@ -5,12 +5,15 @@ import {
   ContentBox,
   ContentBoxItem,
   ContentBoxItemProps,
+  ContentBoxProps,
 } from "../../ContentBox/ContentBox";
 import { Pill } from "../../Pill/Pill";
 import { JFCLLink, JFCLLinkExternal } from "../../JFCLLink";
 import "./LetterNextSteps.scss";
+import { Header } from "../../Header/Header";
 
 type NextStepItemProps = Partial<Omit<ContentBoxItemProps, "children">>;
+type NextStepCollectionProps = Partial<Omit<ContentBoxProps, "children">>;
 
 // Common Links
 
@@ -188,8 +191,8 @@ export const WhileYouWait: React.FC<NextStepItemProps> = (props) => (
   </ContentBoxItem>
 );
 
-export const LetterNextSteps = () => (
-  <ContentBox subtitle={<Trans>What happens next?</Trans>}>
+export const LetterNextSteps: React.FC<NextStepCollectionProps> = (props) => (
+  <ContentBox subtitle={<Trans>What happens next?</Trans>} {...props}>
     <TextFollowup />
     <PayRentAndWait />
     <CommunicateInWriting />
@@ -369,9 +372,12 @@ export const SendsCourtPaper: React.FC<NextStepItemProps> = (props) => (
   </ContentBoxItem>
 );
 
-export const LetterResponsesUniversal = () => (
+export const LetterResponsesUniversal: React.FC<NextStepCollectionProps> = (
+  props
+) => (
   <ContentBox
     subtitle={<Trans>What to expect from your landlord’s response</Trans>}
+    {...props}
   >
     <NewCompliantLease />
     <NoResponse />
@@ -428,13 +434,10 @@ export const SmallerButUnreasonableIncrease: React.FC<NextStepItemProps> = (
 ) => (
   <ContentBoxItem
     title={
-      <>
-        <Pill color="black">1</Pill>
-        <Trans>
-          Your landlord offers a smaller rent increase, but it’s still above the
-          legal limit
-        </Trans>
-      </>
+      <Trans>
+        Your landlord offers a smaller rent increase, but it’s still above the
+        legal limit
+      </Trans>
     }
     {...props}
   >
@@ -591,11 +594,20 @@ export const ProvidesReasonForRentIncrease: React.FC<NextStepItemProps> = (
   </ContentBoxItem>
 );
 
-export const LetterResponsesRentIncrease: React.FC<{
-  includeUniversal: boolean;
-}> = ({ includeUniversal }) => (
+export const LetterResponsesRentIncrease: React.FC<
+  NextStepCollectionProps & {
+    includeUniversal?: boolean;
+  }
+> = ({ includeUniversal, ...props }) => (
   <ContentBox
-    subtitle={<Trans>What to expect from your landlord’s response</Trans>}
+    subtitle={
+      includeUniversal ? (
+        <Trans>What to expect from your landlord’s response</Trans>
+      ) : (
+        <Trans>What to do if your landlord raises your rent</Trans>
+      )
+    }
+    {...props}
   >
     {includeUniversal && <NewCompliantLease />}
     <SmallerButUnreasonableIncrease />
@@ -840,11 +852,20 @@ export const ProofForNonRenewalReason: React.FC<NextStepItemProps> = (
   </ContentBoxItem>
 );
 
-export const LetterResponsesNonRenewal: React.FC<{
-  includeUniversal: boolean;
-}> = ({ includeUniversal }) => (
+export const LetterResponsesNonRenewal: React.FC<
+  NextStepCollectionProps & {
+    includeUniversal?: boolean;
+  }
+> = ({ includeUniversal, ...props }) => (
   <ContentBox
-    subtitle={<Trans>What to expect from your landlord’s response</Trans>}
+    subtitle={
+      includeUniversal ? (
+        <Trans>What to expect from your landlord’s response</Trans>
+      ) : (
+        <Trans>What to do if your landlord won’t renew your lease</Trans>
+      )
+    }
+    {...props}
   >
     {includeUniversal && <NewCompliantLease />}
     <NewLeaseUnreasonableIncrease />
@@ -977,3 +998,39 @@ export const LegalAdviceAssistance: React.FC<NextStepItemProps> = (props) => (
     </section>
   </ContentBoxItem>
 );
+
+export const LetterWhoCanHelp: React.FC<NextStepCollectionProps> = (props) => (
+  <ContentBox subtitle={<Trans>Who can help?</Trans>} {...props}>
+    <CommunityResources />
+    <TenantAdvocacyGroups />
+    <LegalAdviceAssistance />
+  </ContentBox>
+);
+
+export const LetterNextStepsStandalone: React.FC = () => {
+  return (
+    <>
+      <Header
+        title={<Trans>After you send your letter</Trans>}
+        subtitle={
+          <Trans>
+            What to expect, what to do next, and how to respond to your
+            landlord.
+          </Trans>
+        }
+        showProgressBar={false}
+      />
+      <div className="content-section">
+        <div className="content-section__content">
+          <LetterNextSteps
+            subtitle={<Trans>What to do after sending your letter</Trans>}
+          />
+          <LetterResponsesUniversal />
+          <LetterResponsesNonRenewal />
+          <LetterResponsesRentIncrease />
+          <LetterWhoCanHelp subtitle={<Trans>Where to find support</Trans>} />
+        </div>
+      </div>
+    </>
+  );
+};

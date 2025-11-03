@@ -6,7 +6,7 @@ import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
 
-import { handleFormNoDefault } from "../../form-utils";
+import { flattenExtraEmails, handleFormNoDefault } from "../../form-utils";
 import { Tenants2ApiFetcherVerifyAddress } from "../../api/helpers";
 import { ProgressBar } from "./ProgressBar/ProgressBar";
 import { formSchema, FormFields } from "../../types/LetterFormTypes";
@@ -176,9 +176,7 @@ export const LetterBuilderForm: React.FC = () => {
       ...letterFields,
       user_details: userDetails,
       landlord_details: landlordDetails,
-      extra_emails: letterData.extra_emails
-        ?.map(({ email }) => email)
-        .filter((email): email is string => !!email),
+      extra_emails: flattenExtraEmails(letterData.extra_emails),
       html_content: letterHtml,
     };
     const resp = await sendLetter(letterPostData);
