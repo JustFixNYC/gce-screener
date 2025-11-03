@@ -30,8 +30,23 @@
         @include body_standard_mobile;
       }
     }
+
+    .jfcl-form-group {
+      .jfcl-select-button {
+        min-width: 90px;
+      }
+    }
   }
+
   &__buttons {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+
+    .back-link {
+      @include body_standard_desktop;
+      margin-right: 1.5rem;
+    }
   }
 }
