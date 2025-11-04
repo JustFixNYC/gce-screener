@@ -27,8 +27,6 @@ import { ReasonStep } from "./FormSteps/ReasonStep";
 import { PlannedIncreaseStep } from "./FormSteps/PlannedIncreaseStep";
 import { AllowedIncreaseStep } from "./FormSteps/AllowedIncreaseStep";
 import { NonRenewalStep } from "./FormSteps/NonRenewalStep";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { BackLink } from "../JFCLLink";
 import "./LetterBuilderForm.scss";
 interface Step {
   id: string;

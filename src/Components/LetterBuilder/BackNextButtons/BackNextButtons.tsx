@@ -3,6 +3,7 @@ import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { useContext } from "react";
 import { FormContext } from "../../../types/LetterFormTypes";
+import "./BackNextButtons.scss";
 
 interface BackNextButtonProps {
   button1Props?: Partial<ButtonProps>;
@@ -27,11 +28,16 @@ export const BackNextButtons: React.FC<BackNextButtonProps> = ({
           labelIcon="chevronLeft"
           variant="tertiary"
           onClick={back}
+          className="back-link jfcl-link"
           {...button1Props}
         />
       )}
       {!hideButon2 && (
-        <Button labelText={_(msg`Next`)} type="submit" {...button2Props} />
+        <Button
+          labelText={_(msg`Next`)}
+          type="submit"
+          {...button2Props}
+        />
       )}
     </div>
   );
