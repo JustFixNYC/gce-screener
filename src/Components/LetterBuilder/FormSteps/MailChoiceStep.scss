@@ -26,7 +26,6 @@
     display: flex;
     border: 1px solid $GREY_NEW;
     border-radius: 6px;
-    padding: 1rem 1.25rem; // 16px 20px
     background-color: $WHITE;
 
     .jfcl-radio-button {
@@ -59,6 +58,7 @@
       display: flex;
       gap: 0.75rem;
       align-items: flex-start;
+      padding: 1rem 1.25rem; // 16px 20px
     }
 
     strong {
