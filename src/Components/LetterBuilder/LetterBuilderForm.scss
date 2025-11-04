@@ -3,41 +3,6 @@
 @use "../../variables" as *;
 
 .letter-form {
-  &__content {
-    border-radius: 4px;
-    max-width: $contentBoxWidth;
-    background-color: $WHITE;
-    padding: 2rem;
-    margin: 0 0 1.5rem 0; // 24px
-    border: 1px solid $GREY_NEW;
-    scroll-margin-top: 3.75rem; // 60px
-
-    .jfcl-input-header {
-      &__label {
-        margin-bottom: 1rem;
-        @include body_large_desktop;
-        font-weight: 600;
-      }
-      &__invalid_text {
-        font-size: 1rem;
-        font-weight: 400;
-      }
-    }
-
-    .info-box {
-      margin-bottom: 1.5rem;
-      &__content-container {
-        @include body_standard_mobile;
-      }
-    }
-
-    .jfcl-form-group {
-      .jfcl-select-button {
-        min-width: 90px;
-      }
-    }
-  }
-
   &__buttons {
     display: flex;
     justify-content: center;
@@ -47,6 +12,16 @@
     .back-link {
       @include body_standard_desktop;
       margin-right: 1.5rem;
+    }
+  }
+  .modal {
+    .modal__header {
+      margin-bottom: 1rem;
+    }
+    .callout-box {
+      ul {
+        margin-bottom: 0;
+      }
     }
   }
 }

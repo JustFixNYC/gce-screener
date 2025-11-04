@@ -9,6 +9,7 @@ import { InfoBox } from "../../InfoBox/InfoBox";
 import Modal from "../../Modal/Modal";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import "./ReasonStep.scss";
+import "./FormSteps.scss";
 
 export const ReasonStep: React.FC<FormHookProps> = (props) => {
   const {
