@@ -28,6 +28,7 @@ import { PlannedIncreaseStep } from "./FormSteps/PlannedIncreaseStep";
 import { AllowedIncreaseStep } from "./FormSteps/AllowedIncreaseStep";
 import { NonRenewalStep } from "./FormSteps/NonRenewalStep";
 import "./LetterBuilderForm.scss";
+
 interface Step {
   id: string;
   name: string;

@@ -33,11 +33,7 @@ export const BackNextButtons: React.FC<BackNextButtonProps> = ({
         />
       )}
       {!hideButon2 && (
-        <Button
-          labelText={_(msg`Next`)}
-          type="submit"
-          {...button2Props}
-        />
+        <Button labelText={_(msg`Next`)} type="submit" {...button2Props} />
       )}
     </div>
   );

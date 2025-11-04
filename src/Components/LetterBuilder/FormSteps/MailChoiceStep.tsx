@@ -115,7 +115,7 @@ export const MailChoiceStep: React.FC = () => {
           <TextInput
             {...register("user_details.email")}
             id={`form-user-email`}
-          labelText={_(msg`Your email`) + " " + _(msg`(optional)`)}
+            labelText={_(msg`Your email`) + " " + _(msg`(optional)`)}
             invalid={!!errors?.user_details?.email}
             invalidText={errors?.user_details?.email?.message}
             // TODO: confirm existing value from user details is pre populated if available
@@ -125,7 +125,7 @@ export const MailChoiceStep: React.FC = () => {
           <TextInput
             {...register("landlord_details.email")}
             id={`form-landlord-email`}
-          labelText={_(msg`Your landlord's email`) + " " + _(msg`(optional)`)}
+            labelText={_(msg`Your landlord's email`) + " " + _(msg`(optional)`)}
             invalid={!!errors?.landlord_details?.email}
             invalidText={errors?.landlord_details?.email?.message}
             invalidRole="status"
@@ -134,7 +134,9 @@ export const MailChoiceStep: React.FC = () => {
         </FormGroup>
         {!!fields.length && (
           <FormGroup
-          legendText={_(msg`Additional recipients`) + " " + _(msg`(optional)`)}
+            legendText={
+              _(msg`Additional recipients`) + " " + _(msg`(optional)`)
+            }
             className="additional-email-form-group"
           >
             {fields.map((field, index) => {
