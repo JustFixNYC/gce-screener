@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
+import { useFieldArray } from "react-hook-form";
 import {
   Button,
   FormGroup,
@@ -9,18 +11,20 @@ import {
   TextInput,
 } from "@justfixnyc/component-library";
 
-import { FormHookProps } from "../../../types/LetterFormTypes";
-import { useFieldArray } from "react-hook-form";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { Pill } from "../../Pill/Pill";
+import { FormContext } from "../../../types/LetterFormTypes";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import "./MailChoiceStep.scss";
 
-export const MailChoiceStep: React.FC<FormHookProps> = (props) => {
+export const MailChoiceStep: React.FC = () => {
   const {
-    register,
-    control,
-    formState: { errors },
-  } = props;
+    formMethods: {
+      register,
+      control,
+      formState: { errors },
+    },
+  } = useContext(FormContext);
 
   const { fields, append, remove } = useFieldArray({
     name: "extra_emails",
@@ -111,7 +115,7 @@ export const MailChoiceStep: React.FC<FormHookProps> = (props) => {
           <TextInput
             {...register("user_details.email")}
             id={`form-user-email`}
-            labelText={_(msg`Your email (optional)`)}
+            labelText={_(msg`Your email`) + " " + _(msg`(optional)`)}
             invalid={!!errors?.user_details?.email}
             invalidText={errors?.user_details?.email?.message}
             // TODO: confirm existing value from user details is pre populated if available
@@ -121,7 +125,7 @@ export const MailChoiceStep: React.FC<FormHookProps> = (props) => {
           <TextInput
             {...register("landlord_details.email")}
             id={`form-landlord-email`}
-            labelText={_(msg`Your landlord's email (optional)`)}
+            labelText={_(msg`Your landlord's email`) + " " + _(msg`(optional)`)}
             invalid={!!errors?.landlord_details?.email}
             invalidText={errors?.landlord_details?.email?.message}
             invalidRole="status"
@@ -130,7 +134,9 @@ export const MailChoiceStep: React.FC<FormHookProps> = (props) => {
         </FormGroup>
         {!!fields.length && (
           <FormGroup
-            legendText={_(msg`Additional recipients (optional)`)}
+            legendText={
+              _(msg`Additional recipients`) + " " + _(msg`(optional)`)
+            }
             className="additional-email-form-group"
           >
             {fields.map((field, index) => {
@@ -167,6 +173,7 @@ export const MailChoiceStep: React.FC<FormHookProps> = (props) => {
           <Icon icon="plus" /> Add recipients
         </button>
       </div>
+      <BackNextButtons button2Props={{ labelText: _(msg`Mail my letter`) }} />
     </div>
   );
 };

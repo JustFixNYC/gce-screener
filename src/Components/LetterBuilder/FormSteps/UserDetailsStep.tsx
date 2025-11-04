@@ -1,3 +1,4 @@
+import { useContext, useState } from "react";
 import { Controller, FieldPath } from "react-hook-form";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
@@ -15,10 +16,10 @@ import {
 } from "../../../form-utils";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { GeoSearchInput } from "../../GeoSearchInput/GeoSearchInput";
-import { FormFields, FormHookProps } from "../../../types/LetterFormTypes";
+import { FormContext, FormFields } from "../../../types/LetterFormTypes";
 import { Address } from "../../Pages/Home/Home";
-import { useState } from "react";
 import Modal from "../../Modal/Modal";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import "./FormSteps.scss";
 import "./UserDetailsStep.scss";
 
@@ -37,15 +38,17 @@ const geosearchToLOBAddressWithBBL = (
   ];
 };
 
-export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
+export const UserDetailsStep: React.FC = () => {
   const {
-    register,
-    setValue,
-    setError,
-    control,
-    watch,
-    formState: { errors },
-  } = props;
+    formMethods: {
+      register,
+      setValue,
+      setError,
+      control,
+      watch,
+      formState: { errors },
+    },
+  } = useContext(FormContext);
 
   const userErrors = errors.user_details;
   const userDetails = watch("user_details");
@@ -185,7 +188,7 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
         <TextInput
           {...register("user_details.email")}
           id="form-email"
-          labelText={_(msg`Your email (optional)`)}
+          labelText={_(msg`Your email`) + " " + _(msg`(Optional)`)}
           invalid={!!userErrors?.email}
           invalidText={userErrors?.email?.message}
           invalidRole="status"
@@ -204,6 +207,7 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
           </button>
         </div>
       </FormGroup>
+      <BackNextButtons />
 
       <Modal
         isOpen={showModal}

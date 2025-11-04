@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
@@ -5,7 +6,7 @@ import { FormGroup, SelectButton } from "@justfixnyc/component-library";
 import { Controller } from "react-hook-form";
 
 import {
-  FormHookProps,
+  FormContext,
   isPlannedIncreaseErrors,
 } from "../../../types/LetterFormTypes";
 import { InfoBox } from "../../InfoBox/InfoBox";
@@ -14,58 +15,65 @@ import {
   CPI_EFFECTIVE_DATE,
 } from "../../Pages/RentCalculator/RentIncreaseValues";
 import { JFCLLinkExternal } from "../../JFCLLink";
-import "../LetterBuilderForm.scss";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
+import "./FormSteps.scss";
 
-export const PlannedIncreaseStep: React.FC<FormHookProps> = (props) => {
+export const PlannedIncreaseStep: React.FC = () => {
   const {
-    control,
-    watch,
-    formState: { errors },
-  } = props;
+    formMethods: {
+      control,
+      watch,
+      formState: { errors },
+    },
+  } = useContext(FormContext);
 
   const { _ } = useLingui();
 
+  // fixes issue with type inference with this typeguard
   if (!isPlannedIncreaseErrors(errors, watch("reason"))) return null;
 
   return (
-    <FormGroup
-      legendText={_(
-        msg`Is your landlord increasing your monthly rent beyond ${CPI + 5}%?`
-      )}
-      invalid={!!errors?.unreasonable_increase}
-      invalidText={errors?.unreasonable_increase?.message}
-      invalidRole="status"
-      helperElement={<IncreaseHelperText />}
-    >
-      <Controller
-        name="unreasonable_increase"
-        control={control}
-        render={({ field }) => (
-          <SelectButton
-            {...field}
-            value="true"
-            checked={field.value === true}
-            onChange={() => field.onChange(true)}
-            labelText={_(msg`Yes`)}
-            id="reason-verified__yes"
-          />
+    <div className="reason-details-step">
+      <FormGroup
+        legendText={_(
+          msg`Is your landlord increasing your monthly rent beyond ${CPI + 5}%?`
         )}
-      />
-      <Controller
-        name="unreasonable_increase"
-        control={control}
-        render={({ field }) => (
-          <SelectButton
-            {...field}
-            value="false"
-            checked={field.value === false}
-            onChange={() => field.onChange(false)}
-            labelText={_(msg`No`)}
-            id="reason-verified__no"
-          />
-        )}
-      />
-    </FormGroup>
+        invalid={!!errors?.unreasonable_increase}
+        invalidText={errors?.unreasonable_increase?.message}
+        invalidRole="status"
+        helperElement={<IncreaseHelperText />}
+      >
+        <Controller
+          name="unreasonable_increase"
+          control={control}
+          render={({ field }) => (
+            <SelectButton
+              {...field}
+              value="true"
+              checked={field.value === true}
+              onChange={() => field.onChange(true)}
+              labelText={_(msg`Yes`)}
+              id="reason-verified__yes"
+            />
+          )}
+        />
+        <Controller
+          name="unreasonable_increase"
+          control={control}
+          render={({ field }) => (
+            <SelectButton
+              {...field}
+              value="false"
+              checked={field.value === false}
+              onChange={() => field.onChange(false)}
+              labelText={_(msg`No`)}
+              id="reason-verified__no"
+            />
+          )}
+        />
+      </FormGroup>
+      <BackNextButtons />
+    </div>
   );
 };
 

@@ -1,15 +1,18 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useContext, useEffect, useState, useRef, useCallback } from "react";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
 
-import { FormHookProps } from "../../../types/LetterFormTypes";
+import { FormContext } from "../../../types/LetterFormTypes";
 import { languageNames, SupportedLocale } from "../../../i18n-base";
 import { buildLetterHtml } from "../Letter/letter-utils";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import "./PreviewStep.scss";
 
-export const PreviewStep: React.FC<FormHookProps> = (props) => {
-  const { getValues } = props;
+export const PreviewStep: React.FC = () => {
+  const {
+    formMethods: { getValues },
+  } = useContext(FormContext);
 
   const { i18n, _ } = useLingui();
   const letterData = getValues();
@@ -120,6 +123,9 @@ export const PreviewStep: React.FC<FormHookProps> = (props) => {
           this letter later.
         </Trans>
       </div>
+      {/* TODO: consider taking this step out of the <form> since there are no inputs, 
+        and then we'd need to change button2 to be type="button" and onClick={next} */}
+      <BackNextButtons />
     </div>
   );
 };

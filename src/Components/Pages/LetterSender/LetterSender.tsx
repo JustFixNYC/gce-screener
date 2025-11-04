@@ -25,7 +25,6 @@ export const LetterSender: React.FC = () => {
   return (
     <div className="content-section">
       <div className="content-section__content">
-        {/* <LetterTester letterData={sampleFormValues} /> */}
         <LetterBuilderForm />
       </div>
     </div>
@@ -34,9 +33,17 @@ export const LetterSender: React.FC = () => {
 
 // This is just to help with testing letter and backend so you don't have to
 // complete all form steps each time. This should all be removed later
-export const LetterTester: React.FC<{ letterData: FormFields }> = ({
-  letterData,
-}) => {
+export const LetterTestSender: React.FC = () => {
+  return (
+    <div className="content-section">
+      <div className="content-section__content">
+        <LetterTester letterData={sampleFormValues} />
+      </div>
+    </div>
+  );
+};
+
+const LetterTester: React.FC<{ letterData: FormFields }> = ({ letterData }) => {
   const { i18n, _ } = useLingui();
 
   const { trigger: sendLetter } = useSendGceLetterData();

@@ -1,21 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { FormGroup, SelectButton } from "@justfixnyc/component-library";
 
-import { FormHookProps } from "../../../types/LetterFormTypes";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import Modal from "../../Modal/Modal";
 import { JFCLLinkExternal } from "../../JFCLLink";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
+import { FormContext } from "../../../types/LetterFormTypes";
 import "./ReasonStep.scss";
 import "./FormSteps.scss";
 
-export const ReasonStep: React.FC<FormHookProps> = (props) => {
+export const ReasonStep: React.FC = () => {
   const {
-    register,
-    formState: { errors },
-  } = props;
+    formMethods: {
+      register,
+      formState: { errors },
+    },
+  } = useContext(FormContext);
 
   const { _ } = useLingui();
   const [showModal, setShowModal] = useState(false);
@@ -44,6 +47,7 @@ export const ReasonStep: React.FC<FormHookProps> = (props) => {
           />
         </div>
       </FormGroup>
+      <BackNextButtons hideButon1 />
 
       <Modal
         isOpen={showModal}
@@ -52,41 +56,45 @@ export const ReasonStep: React.FC<FormHookProps> = (props) => {
         header={_(msg`How to choose the reason for your letter`)}
       >
         <div className="callout-box">
-          <Trans>
-            You should select “
-            <strong>Your landlord has recently proposed a rent increase</strong>
-            ” if any of the following apply:
-          </Trans>
-          <ul>
-            <li>
-              <Trans>
-                Your landlord has told you your rent will be increasing
-              </Trans>
-            </li>
-            <li>
-              <Trans>
-                Your landlord has recently given you a new lease with a rent
-                increase
-              </Trans>
-            </li>
-            <li>
-              <Trans>
-                You’ve received a{" "}
-                <JFCLLinkExternal to="https://www.nycourts.gov/legacypdfs/courts/10jd/suffolk/dist/pdf/LandlordRentIncreaseofAtLeast5PercentResidental.pdf">
-                  226c notice detailing an upcoming rent increase
-                </JFCLLinkExternal>
-              </Trans>
-            </li>
-          </ul>
+          <section>
+            <Trans>
+              You should select{" "}
+              <strong>
+                “Your landlord has recently proposed a rent increase”
+              </strong>
+              if any of the following apply:
+            </Trans>
+            <ul>
+              <li>
+                <Trans>
+                  Your landlord has told you your rent will be increasing.
+                </Trans>
+              </li>
+              <li>
+                <Trans>
+                  Your landlord has recently given you a new lease with a rent
+                  increase.
+                </Trans>
+              </li>
+              <li>
+                <Trans>
+                  You’ve received a{" "}
+                  <JFCLLinkExternal to="https://www.nycourts.gov/legacypdfs/courts/10jd/suffolk/dist/pdf/LandlordRentIncreaseofAtLeast5PercentResidental.pdf">
+                    226c notice detailing an upcoming rent increase
+                  </JFCLLinkExternal>
+                </Trans>
+              </li>
+            </ul>
+          </section>
         </div>
         <div className="callout-box">
           <Trans>
-            You should select “
+            You should select{" "}
             <strong>
-              Your landlord has communicated that they do not intend to offer
-              you a new lease
+              “Your landlord has communicated that they do not intend to offer
+              you a new lease”
             </strong>
-            ” if any of the following apply:
+            if any of the following apply:
           </Trans>
           <ul>
             <li>
