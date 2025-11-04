@@ -110,9 +110,9 @@ const LetterTester: React.FC<{ letterData: FormFields }> = ({ letterData }) => {
       <Button
         labelText="submit letter"
         onClick={async () => {
-          const letterHtml = await buildLetterHtml(sampleFormValues, "en");
+          const letterHtml = await buildLetterHtml(letterData, "en");
           const letterPostData: GCELetterPostData = {
-            ...sampleFormValues,
+            ...letterData,
             extra_emails: flattenExtraEmails(letterData.extra_emails),
             html_content: letterHtml,
           };
