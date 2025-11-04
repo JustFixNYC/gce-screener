@@ -15,21 +15,25 @@ export const GoodCauseGivenStep: React.FC<FormHookProps> = () => {
         subtitle={_(
           msg`Lorem ipsum dolor sit amet consectetur adipisicing elit`
         )}
-        className="allowed-increase"
+        className="good-cause-given"
       >
         <ContentBoxItem accordion={false}>
-          <Trans>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-            quaerat alias magni nam beatae aliquam architecto laudantium
-            mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda!
-            Commodi architecto dolor eius perferendis!
-          </Trans>
+          <p>
+            <Trans>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+              quaerat alias magni nam beatae aliquam architecto laudantium
+              mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda!
+              Commodi architecto dolor eius perferendis!
+            </Trans>
+          </p>
         </ContentBoxItem>
         <ContentBoxItem title={_(msg`Tip 1`)}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. At deleniti,
-          minus ea laudantium, suscipit saepe explicabo velit quis beatae esse
-          iusto neque fuga rerum optio corporis labore maiores consequuntur
-          necessitatibus?
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+            deleniti, minus ea laudantium, suscipit saepe explicabo velit quis
+            beatae esse iusto neque fuga rerum optio corporis labore maiores
+            consequuntur necessitatibus?
+          </p>
         </ContentBoxItem>
       </ContentBox>
       <GoodCauseProtections />

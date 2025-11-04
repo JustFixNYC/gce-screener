@@ -27,7 +27,8 @@ import { AllowedIncreaseStep } from "./FormSteps/AllowedIncreaseStep";
 import { NonRenewalStep } from "./FormSteps/NonRenewalStep";
 import { GoodCauseGivenStep } from "./FormSteps/GoodCauseGivenStep";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-
+import { BackLink } from "../JFCLLink";
+import "./LetterBuilderForm.scss";
 interface Step {
   id: string;
   name: string;
@@ -53,10 +54,7 @@ const steps: Step[] = [
     id: "Step 3",
     name: "Contact information",
     routeName: "contact-info",
-    fields: [
-      "user_details.first_name",
-      "user_details.last_name",
-    ],
+    fields: ["user_details.first_name", "user_details.last_name"],
   },
   {
     id: "Step 4",
@@ -111,8 +109,7 @@ export const LetterBuilderForm: React.FC = () => {
       landlord_details: { no_unit: false },
     },
   });
-  const { reset, trigger, handleSubmit, setError, getValues, setValue } =
-    formHookReturn;
+  const { reset, trigger, handleSubmit, setError, getValues } = formHookReturn;
 
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -229,38 +226,20 @@ export const LetterBuilderForm: React.FC = () => {
       }
       const nextStep = steps[currentStep + 1];
       const nextPath = `/${locale}/letter/${nextStep.routeName}`;
-      navigate(nextPath, { preventScrollReset: true });
+      navigate(nextPath);
     }
   };
 
-  const prev = () => {
-    const fields = steps[currentStep].fields;
-
-    if (currentStep > 0) {
-      // TODO: maybe this shouldn't fully clear the values, but just reset the
-      // errors if possible, so the values will still be prefilled
-      if (fields) {
-        fields.forEach((field) => {
-          setValue(field, undefined);
-        });
-      }
-      const prevStep = steps[currentStep - 1];
-      const prevPath = `/${locale}/letter/${prevStep.routeName}`;
-      navigate(prevPath, { preventScrollReset: true });
+  const getPrevPath = (): string => {
+    if (currentStep === 0) {
+      return `/${locale}/letter`;
     }
+    const prevStep = steps[currentStep - 1];
+    return `/${locale}/letter/${prevStep.routeName}`;
   };
 
   return (
     <form onSubmit={handleFormNoDefault(next)} className="letter-form">
-      <h3>
-        <Trans>Good Cause Letter Builder</Trans>
-      </h3>
-      <p>
-        <Trans>
-          Send a letter to your landlord via certified mail asserting your Good
-          Cause
-        </Trans>
-      </p>
       <ProgressBar
         steps={steps}
         currentStep={currentStep}
@@ -307,9 +286,9 @@ export const LetterBuilderForm: React.FC = () => {
         )}
       </div>
       <div className="letter-form__buttons">
-        {currentStep > 0 && (
-          <Button variant="tertiary" labelText={_(msg`Back`)} onClick={prev} />
-        )}
+        <BackLink to={getPrevPath()}>
+          <Trans>Back</Trans>
+        </BackLink>
         <Button
           labelText={
             currentStep < steps.length - 1 ? _(msg`Next`) : _(msg`Submit`)

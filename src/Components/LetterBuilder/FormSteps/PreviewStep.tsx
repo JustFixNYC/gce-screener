@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
@@ -6,6 +6,7 @@ import { msg } from "@lingui/core/macro";
 import { FormHookProps } from "../../../types/LetterFormTypes";
 import { languageNames, SupportedLocale } from "../../../i18n-base";
 import { buildLetterHtml } from "../Letter/letter-utils";
+import "./PreviewStep.scss";
 
 export const PreviewStep: React.FC<FormHookProps> = (props) => {
   const { getValues } = props;
@@ -17,6 +18,7 @@ export const PreviewStep: React.FC<FormHookProps> = (props) => {
   const [previewLocale, setPreviewLocale] = useState<SupportedLocale>(
     i18n.locale as SupportedLocale
   );
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     const prepLetter = async () => {
@@ -27,29 +29,66 @@ export const PreviewStep: React.FC<FormHookProps> = (props) => {
       setLetter(localizedLetterHtml);
     };
     prepLetter();
-  }, [previewLocale]);
+  }, [previewLocale, letterData]);
+
+  const resizeIframe = useCallback(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    // make sure content is fully rendered
+    setTimeout(() => {
+      try {
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
+        if (!iframeDoc) return;
+
+        const body = iframeDoc.body;
+        const html = iframeDoc.documentElement;
+
+        // get the actual content height
+        const height = Math.max(
+          body?.scrollHeight || 0,
+          body?.offsetHeight || 0,
+          html?.clientHeight || 0,
+          html?.scrollHeight || 0,
+          html?.offsetHeight || 0
+        );
+
+        if (height > 0) {
+          iframe.style.height = `${height}px`;
+        }
+      } catch (error) {
+        console.warn("Could not resize iframe:", error);
+      }
+    }, 100);
+  }, []);
+
+  // resize iframe when letter content changes
+  useEffect(() => {
+    if (letter && iframeRef.current) {
+      // delay to ensure iframe content is rendered
+      const timer = setTimeout(() => {
+        resizeIframe();
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [letter, resizeIframe]);
 
   return (
-    <>
-      <h4>
-        <Trans>Review your letter</Trans>
-      </h4>
-      <p>
-        <Trans>
-          Make sure the information below is accurate. If it is not, you can go
-          back to make changes.
-        </Trans>
-      </p>
-
-      <div className="locale-toggle">
-        <Trans>Preview language:</Trans>
-        <button
-          className="jfcl-link"
-          onClick={() => setPreviewLocale("es")}
-          disabled={previewLocale === "es"}
-        >
-          {languageNames["es"]}
-        </button>
+    <div id="preview-step">
+      <div className="preview-step__page-header">
+        <h3>
+          <Trans>Review your letter</Trans>
+        </h3>
+        <p>
+          <Trans>
+            Make sure the information below is accurate. If it is not, you can
+            go back to make changes.
+          </Trans>
+        </p>
+      </div>
+      <div className="preview-step__locale-toggle">
+        <Trans>Letter preview language:</Trans>{" "}
         <button
           className="jfcl-link"
           onClick={() => setPreviewLocale("en")}
@@ -57,19 +96,30 @@ export const PreviewStep: React.FC<FormHookProps> = (props) => {
         >
           {languageNames["en"]}
         </button>
+        {" / "}
+        <button
+          className="jfcl-link"
+          onClick={() => setPreviewLocale("es")}
+          disabled={previewLocale === "es"}
+        >
+          {languageNames["es"]}
+        </button>
       </div>
-      <iframe
-        title={_(msg`Good Cause Letter Preview`)}
-        srcDoc={letter}
-        width="600"
-        height="600"
-      />
-      <p>
+      <div className="preview-step__letter-container">
+        <iframe
+          ref={iframeRef}
+          title={_(msg`Good Cause Letter Preview`)}
+          srcDoc={letter}
+          className="preview-step__iframe"
+          onLoad={resizeIframe}
+        />
+      </div>
+      <div className="preview-step__note">
         <Trans>
           <strong>Note:</strong> You will be able to download a PDF version of
           this letter later.
         </Trans>
-      </p>
-    </>
+      </div>
+    </div>
   );
 };

@@ -14,6 +14,7 @@ import {
   CPI_EFFECTIVE_DATE,
 } from "../../Pages/RentCalculator/RentIncreaseValues";
 import { JFCLLinkExternal } from "../../JFCLLink";
+import "../LetterBuilderForm.scss";
 
 export const PlannedIncreaseStep: React.FC<FormHookProps> = (props) => {
   const {

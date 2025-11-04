@@ -13,7 +13,7 @@ export const LetterLanding: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="letter-sender-page">
+    <div id="letter-sender-landing-page">
       <Header
         title={_(msg`Send a letter to your landlord`)}
         subtitle={
@@ -25,11 +25,11 @@ export const LetterLanding: React.FC = () => {
         }
         showProgressBar={false}
       >
-        <div>
+        <div className="hero-cta">
           <Trans>
             <strong>Start here:</strong> are you covered by Good Cause?
           </Trans>
-          <div>
+          <div className="hero-cta__buttons">
             <Button
               labelIcon="mailboxOpenLetter"
               labelText={_(msg`I’m covered, start my free letter`)}
@@ -46,7 +46,7 @@ export const LetterLanding: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          <section>
+          <section className="about-section">
             <h3>
               <Trans>How it works</Trans>
             </h3>
@@ -98,7 +98,9 @@ export const LetterLanding: React.FC = () => {
             </h3>
             <ol>
               <li>
-                <Trans>Formally asserts your rights</Trans>
+                <strong>
+                  <Trans>Formally asserts your rights</Trans>
+                </strong>
                 <p>
                   <Trans>
                     Sending a letter clearly communicates to your landlord that
@@ -107,7 +109,9 @@ export const LetterLanding: React.FC = () => {
                 </p>
               </li>
               <li>
-                <Trans>Creates a paper trail</Trans>
+                <strong>
+                  <Trans>Creates a paper trail</Trans>
+                </strong>
                 <p>
                   <Trans>
                     Communicating your request to your landlord in writing
@@ -116,7 +120,9 @@ export const LetterLanding: React.FC = () => {
                 </p>
               </li>
               <li>
-                <Trans>Opens negotiation</Trans>
+                <strong>
+                  <Trans>Opens negotiation</Trans>
+                </strong>
                 <p>
                   <Trans>
                     Establishes a professional channel to negotiate solutions to

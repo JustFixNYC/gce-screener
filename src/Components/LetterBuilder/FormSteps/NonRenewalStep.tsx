@@ -8,6 +8,7 @@ import {
   FormHookProps,
   isNonRenewalErrors,
 } from "../../../types/LetterFormTypes";
+import "./FormSteps.scss";
 
 export const NonRenewalStep: React.FC<FormHookProps> = (props) => {
   const {

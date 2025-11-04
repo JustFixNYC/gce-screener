@@ -19,6 +19,8 @@ import { FormFields, FormHookProps } from "../../../types/LetterFormTypes";
 import { Address } from "../../Pages/Home/Home";
 import { useState } from "react";
 import Modal from "../../Modal/Modal";
+import "./FormSteps.scss";
+import "./UserDetailsStep.scss";
 
 const geosearchToLOBAddressWithBBL = (
   addr: Address
@@ -70,7 +72,7 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
       : undefined;
 
   return (
-    <>
+    <div id="user-details-step">
       <FormGroup
         legendText={_(msg`Your mailing address`)}
         helperElement={
@@ -82,7 +84,7 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
           </InfoBox>
         }
       >
-        <div>
+        <div className="text-input__two-column">
           <TextInput
             {...register("user_details.first_name")}
             id="form-first_name"
@@ -123,11 +125,17 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
             }
           }}
         />
-        <FormGroup legendText={_(msg`Unit Number`)}>
+        <FormGroup
+          legendText={_(msg`Unit Number`)}
+          className="unit-number-input-group"
+        >
           <TextInput
             {...register("user_details.secondary_line")}
             id="form-secondary_line"
             labelText=""
+            helperText={_(
+              msg`If your address does not have a unit number, please select “I do not have a unit number” below`
+            )}
             aria-label={_(msg`Unit number`)}
             invalid={!!userErrors?.secondary_line}
             invalidText={userErrors?.secondary_line?.message}
@@ -151,16 +159,10 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
           />
         </FormGroup>
       </FormGroup>
-      <FormGroup legendText={_(msg`Your contact information`)}>
-        <TextInput
-          {...register("user_details.email")}
-          id="form-email"
-          labelText={_(msg`Your email (optional)`)}
-          invalid={!!userErrors?.email}
-          invalidText={userErrors?.email?.message}
-          invalidRole="status"
-          type="email"
-        />
+      <FormGroup
+        legendText={_(msg`Your contact information`)}
+        className="form-group__section-header"
+      >
         <Controller
           name="user_details.phone_number"
           control={control}
@@ -180,8 +182,19 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
             />
           )}
         />
-        <div>
-          <Trans>Why are we asking for this information?</Trans>
+        <TextInput
+          {...register("user_details.email")}
+          id="form-email"
+          labelText={_(msg`Your email (optional)`)}
+          invalid={!!userErrors?.email}
+          invalidText={userErrors?.email?.message}
+          invalidRole="status"
+          type="email"
+        />
+        <div className="form-group__footer">
+          <span className="form-group__footer-text">
+            <Trans>Why are we asking for this information?</Trans>
+          </span>
           <button
             type="button"
             className="text-link-button jfcl-link"
@@ -227,6 +240,6 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
           onClick={() => setShowModal(false)}
         />
       </Modal>
-    </>
+    </div>
   );
 };
