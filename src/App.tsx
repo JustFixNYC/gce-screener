@@ -219,12 +219,12 @@ const router = createBrowserRouter(
           <Route path="landlord-details" element={<LetterSender />} />
           <Route path="preview" element={<LetterSender />} />
           <Route path="confirmation" element={<LetterSender />} />
+          <Route path="next-steps" element={<LetterNextStepsStandalone />} />
           <Route
             path="confirmation-test"
             element={<LetterConfirmationTest />}
           />
-          <Route path="next-steps" element={<LetterNextStepsStandalone />} />
-          <Route path="test" element={<LetterTestSender />} />
+          <Route path="submission-test" element={<LetterTestSender />} />
         </Route>
         <Route path="tenant_rights" element={<TenantRights />} />
         <Route path="privacy_policy" element={<PrivacyPolicy />} />
