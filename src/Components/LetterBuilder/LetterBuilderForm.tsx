@@ -4,7 +4,7 @@ import { FieldPath, Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLingui } from "@lingui/react";
 
-import { handleFormNoDefault } from "../../form-utils";
+import { flattenExtraEmails, handleFormNoDefault } from "../../form-utils";
 import { Tenants2ApiFetcherVerifyAddress } from "../../api/helpers";
 import { ProgressBar } from "./ProgressBar/ProgressBar";
 import {
@@ -159,9 +159,7 @@ export const LetterBuilderForm: React.FC = () => {
       ...letterFields,
       user_details: userDetails,
       landlord_details: landlordDetails,
-      extra_emails: letterData.extra_emails
-        ?.map(({ email }) => email)
-        .filter((email): email is string => !!email),
+      extra_emails: flattenExtraEmails(letterData.extra_emails),
       html_content: letterHtml,
     };
     const resp = await sendLetter(letterPostData);

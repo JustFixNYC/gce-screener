@@ -5,6 +5,7 @@ import "./Pill.scss";
 // Copied from Signature Dashboard - replace with JFCL once available.
 
 export type PillColors =
+  | "none"
   | "black"
   | "yellow"
   | "orange"
@@ -18,8 +19,22 @@ type PillProps = {
   children: ReactNode;
   color: PillColors;
   className?: string;
+  circle?: boolean;
 };
 
-export const Pill: React.FC<PillProps> = ({ color, children, className }) => (
-  <div className={classNames(`pill pill-${color}`, className)}>{children}</div>
+export const Pill: React.FC<PillProps> = ({
+  color,
+  children,
+  className,
+  circle,
+}) => (
+  <div
+    className={classNames(
+      `pill pill__${color}`,
+      circle && "pill__circle",
+      className
+    )}
+  >
+    {children}
+  </div>
 );

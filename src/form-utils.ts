@@ -1,4 +1,5 @@
 import z from "zod";
+import { FormFields } from "./types/LetterFormTypes";
 
 // Helps handle the default empty string value that inputs take on
 // https://timjames.dev/blog/building-forms-with-zod-and-react-hook-form-2geg
@@ -10,6 +11,13 @@ export const looseOptional = <T extends z.ZodTypeAny>(schema: T) =>
         : value,
     schema.optional()
   );
+
+export const flattenExtraEmails = (
+  extraEmails: FormFields["extra_emails"]
+): string[] | undefined =>
+  extraEmails
+    ?.map(({ email }) => email)
+    .filter((email): email is string => !!email);
 
 // Handles undefined or string since untouched input will have undefined
 // value, but must always return a string otherwise it messes up the

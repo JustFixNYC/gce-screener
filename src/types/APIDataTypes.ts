@@ -140,9 +140,13 @@ export type GCELetterConfirmation = {
   data: {
     user_email?: string;
     landlord_email?: string;
+    extra_emails?: string[];
     user_phone_number: string;
+    mail_choice: FormFields["mail_choice"];
     letter_pdf: string;
     tracking_number?: string;
+    reason: FormFields["reason"];
+    good_cause_given?: boolean;
   };
 };
 

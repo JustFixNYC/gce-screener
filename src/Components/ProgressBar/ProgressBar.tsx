@@ -5,6 +5,7 @@ import { useLingui } from "@lingui/react";
 
 import { Address } from "../Pages/Home/Home";
 import { abbreviateBoro, ProgressStep, toTitleCase } from "../../helpers";
+import { Pill } from "../Pill/Pill";
 import "./ProgressBar.scss";
 
 type StepInfo = { path?: string; name?: string; active?: boolean };
@@ -48,14 +49,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           index <= lastStepReached && "visited"
         )}
       >
-        <div
-          className={classNames(
-            "progress-bar__step__number",
-            index <= lastStepReached && "visited"
-          )}
-        >
+        <Pill color={index <= lastStepReached ? "black" : "none"} circle>
           {index + 1}
-        </div>
+        </Pill>
         {StepText}
       </div>
     );

@@ -10,7 +10,7 @@ $videoEmbedW: 623px;
   border: 1px solid $GREY_NEW;
   width: 100%;
   max-width: $contentBoxWidth;
-  margin: 36px 0;
+  margin: 24px 0;
   background-color: $WHITE;
 
   @include for-phone-only() {
@@ -86,6 +86,7 @@ $videoEmbedW: 623px;
     margin-bottom: 0.25rem; // 4px
   }
   .content-box__section__header {
+    display: flex;
     @include body_large_desktop;
     font-weight: 500;
     @include for-phone-only {
