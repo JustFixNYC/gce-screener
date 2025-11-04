@@ -133,7 +133,7 @@ export const UserDetailsStep: React.FC<FormHookProps> = (props) => {
             {...register("user_details.secondary_line")}
             id="form-secondary_line"
             labelText=""
-            helperText-={_(
+            helperText={_(
               msg`If your address does not have a unit number, please select “I do not have a unit number” below`
             )}
             aria-label={_(msg`Unit number`)}
