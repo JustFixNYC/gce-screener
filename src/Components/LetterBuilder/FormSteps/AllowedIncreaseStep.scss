@@ -1,0 +1,28 @@
+@use "../../../colors.scss" as *;
+@use "../../../mixins.scss" as *;
+
+.allowed-increase-step {
+  .allowed-increase-warning {
+    padding: 2rem;
+    border-radius: 0.25rem;
+    border: 1px solid $YELLOW;
+    background-color: $YELLOW_LIGHT;
+    h3 {
+      @include h3_desktop;
+      margin: 0 0 1.5rem 0;
+    }
+    p {
+      @include body_large_desktop;
+      margin: 0;
+    }
+
+    @include for-phone-only {
+      h3 {
+        @include h3_mobile;
+      }
+      p {
+        @include body_standard_mobile;
+      }
+    }
+  }
+}

@@ -5,9 +5,25 @@ import { GoodCauseProtections } from "../../KYRContent/KYRContent";
 import { Pill } from "../../Pill/Pill";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
+import "./AllowedIncreaseStep.scss";
 
 export const AllowedIncreaseStep: React.FC = () => (
-  <div className="reason-details-step">
+  <div className="allowed-increase-step">
+    <section className="allowed-increase-warning">
+      <h3>
+        <Trans>
+          Your landlord’s proposed rent increase appears to be within the Good
+          Cause limit.
+        </Trans>
+      </h3>
+      <p>
+        <Trans>
+          You still have rights, and you may be able to negotiate a smaller
+          increase or request more information about how your rent is
+          determined.
+        </Trans>
+      </p>
+    </section>
     <RentNegotiationTips />
     <GoodCauseProtections />
     <BackNextButtons hideButon2 />

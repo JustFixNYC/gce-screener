@@ -10,7 +10,7 @@ $videoEmbedW: 623px;
   border: 1px solid $GREY_NEW;
   width: 100%;
   max-width: $contentBoxWidth;
-  margin: 36px 0;
+  margin: 24px 0;
   background-color: $WHITE;
 
   @include for-phone-only() {

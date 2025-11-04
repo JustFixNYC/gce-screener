@@ -10,6 +10,7 @@ import {
   LetterResponsesRentIncrease,
   LetterWhoCanHelp,
 } from "../LetterNextSteps/LetterNextSteps";
+import "./ConfirmationStep.scss";
 
 const USPS_TRACKING_URL_PREFIX =
   "https://tools.usps.com/go/TrackConfirmAction?tLabels=";
@@ -28,12 +29,12 @@ export const ConfirmationStep: React.FC<{
     .filter((email): email is string => !!email);
 
   return (
-    <>
-      <div>
+    <div className="confirmation-step">
+      <div className="success-container">
         <div>
-          <Icon icon="envelopeCircleCheck" />
+          <Icon icon="envelopeCircleCheck" className="success-icon" />
         </div>
-        <div>
+        <section>
           {data.mail_choice === "WE_WILL_MAIL" ? (
             <>
               <h3>
@@ -65,7 +66,7 @@ export const ConfirmationStep: React.FC<{
             </>
           )}
 
-          <div>
+          <div className="success-letter-buttons">
             {/* TODO: we should probably just give in an make a JFCL link styled as button and button as link */}
             <a
               href={fileURL}
@@ -73,8 +74,12 @@ export const ConfirmationStep: React.FC<{
               rel="noopener noreferrer"
               className="jfcl-button jfcl-variant-primary jfcl-size-small"
             >
-              <Icon icon="downloadRegular" />
-              Download letter (PDF)
+              <span className="jfcl-button__label">
+                <span className="jfcl-button__icon">
+                  <Icon icon="downloadRegular" />
+                </span>
+                <Trans>Download letter (PDF)</Trans>
+              </span>
             </a>
             {data.mail_choice === "WE_WILL_MAIL" && (
               <a
@@ -83,40 +88,42 @@ export const ConfirmationStep: React.FC<{
                 rel="noopener noreferrer"
                 className="jfcl-button jfcl-variant-secondary jfcl-size-small"
               >
-                Track your letter
-                <Icon icon="squareArrowUpRight" />
+                <span className="jfcl-button__label">
+                  <Trans>Track your letter</Trans>
+                  <span className="jfcl-button__icon jfcl-button__icon_right">
+                    <Icon icon="squareArrowUpRight" />
+                  </span>
+                </span>
               </a>
             )}
           </div>
-        </div>
+        </section>
       </div>
 
       {allEmailsSent && (
-        <div>
+        <div className="emails-sent-callout-box">
           <div>
-            <Icon icon="paperPlaneLight" />
+            <Icon icon="paperPlaneLight" className="emails-sent-icon" />
           </div>
-          <div>
-            <section>
-              <h4>
-                <Trans>
-                  A PDF copy of your letter has been sent to the following email
-                  addresses:
-                </Trans>
-              </h4>
-              <ul>
-                {allEmailsSent.map((email) => (
-                  <li>
-                    <Trans>{email}</Trans>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </div>
+          <section>
+            <h4>
+              <Trans>
+                A PDF copy of your letter has been sent to the following email
+                addresses:
+              </Trans>
+            </h4>
+            <ul>
+              {allEmailsSent.map((email) => (
+                <li>
+                  <Trans>{email}</Trans>
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>
       )}
 
-      <LetterNextSteps />
+      <LetterNextSteps className="next-steps" />
 
       {data.reason === "NON_RENEWAL" ? (
         <LetterResponsesNonRenewal includeUniversal />
@@ -125,6 +132,6 @@ export const ConfirmationStep: React.FC<{
       ) : null}
 
       <LetterWhoCanHelp />
-    </>
+    </div>
   );
 };

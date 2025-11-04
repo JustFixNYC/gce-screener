@@ -1,6 +1,20 @@
+@use "../../../colors.scss" as *;
+@use "../../../mixins.scss" as *;
+
 .content-box {
   .content-box__section__header .pill__circle {
     margin-right: 1rem;
     font-size: 1.125rem;
+  }
+  .next-step.while-you-wait {
+    background-color: $OFF_WHITE_100;
+    border-radius: 0 0 4px 4px;
+    .content-box__section__header,
+    p {
+      @include body_standard_desktop;
+    }
+    .content-box__section__header {
+      margin-bottom: 0.75rem;
+    }
   }
 }

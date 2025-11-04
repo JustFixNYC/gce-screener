@@ -11,6 +11,7 @@ import { Pill } from "../../Pill/Pill";
 import { JFCLLink, JFCLLinkExternal } from "../../JFCLLink";
 import "./LetterNextSteps.scss";
 import { Header } from "../../Header/Header";
+import classNames from "classnames";
 
 type NextStepItemProps = Partial<Omit<ContentBoxItemProps, "children">>;
 type NextStepCollectionProps = Partial<Omit<ContentBoxProps, "children">>;
@@ -175,12 +176,13 @@ export const TalkToNeighbors: React.FC<NextStepItemProps> = (props) => (
 export const WhileYouWait: React.FC<NextStepItemProps> = (props) => (
   <ContentBoxItem
     title={
-      <>
+      <strong>
         <Trans>Need support while you wait?</Trans>
-      </>
+      </strong>
     }
     accordion={false}
     {...props}
+    className={classNames("next-step while-you-wait", props.className)}
   >
     <p>
       <Trans>
