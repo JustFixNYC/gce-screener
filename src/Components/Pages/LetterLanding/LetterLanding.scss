@@ -6,6 +6,9 @@
 #letter-sender-landing-page {
   .headline-section {
     padding: 2.5rem 0;
+    @include for-phone-only {
+      padding: 1rem 1rem 2rem;
+    }
     .headline-section__subtitle {
       width: 85%;
     }
@@ -24,6 +27,9 @@
         @include for-phone-only {
           flex-direction: column;
           align-items: flex-start;
+          button {
+            width: 250px;
+          }
         }
       }
     }
@@ -71,6 +77,10 @@
       font-weight: 500;
       svg {
         display: none; // hide internal link arrow icon
+      }
+
+      @include for-phone-only {
+        @include body_standard_mobile;
       }
     }
 
