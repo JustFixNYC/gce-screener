@@ -16,7 +16,7 @@ import {
 } from "../../Pages/RentCalculator/RentIncreaseValues";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
-import "../LetterBuilderForm.scss";
+import "./FormSteps.scss";
 
 export const PlannedIncreaseStep: React.FC = () => {
   const {
@@ -33,45 +33,47 @@ export const PlannedIncreaseStep: React.FC = () => {
   if (!isPlannedIncreaseErrors(errors, watch("reason"))) return null;
 
   return (
-    <FormGroup
-      legendText={_(
-        msg`Is your landlord increasing your monthly rent beyond ${CPI + 5}%?`
-      )}
-      invalid={!!errors?.unreasonable_increase}
-      invalidText={errors?.unreasonable_increase?.message}
-      invalidRole="status"
-      helperElement={<IncreaseHelperText />}
-    >
-      <Controller
-        name="unreasonable_increase"
-        control={control}
-        render={({ field }) => (
-          <SelectButton
-            {...field}
-            value="true"
-            checked={field.value === true}
-            onChange={() => field.onChange(true)}
-            labelText={_(msg`Yes`)}
-            id="reason-verified__yes"
-          />
+    <div className="reason-details-step">
+      <FormGroup
+        legendText={_(
+          msg`Is your landlord increasing your monthly rent beyond ${CPI + 5}%?`
         )}
-      />
-      <Controller
-        name="unreasonable_increase"
-        control={control}
-        render={({ field }) => (
-          <SelectButton
-            {...field}
-            value="false"
-            checked={field.value === false}
-            onChange={() => field.onChange(false)}
-            labelText={_(msg`No`)}
-            id="reason-verified__no"
-          />
-        )}
-      />
+        invalid={!!errors?.unreasonable_increase}
+        invalidText={errors?.unreasonable_increase?.message}
+        invalidRole="status"
+        helperElement={<IncreaseHelperText />}
+      >
+        <Controller
+          name="unreasonable_increase"
+          control={control}
+          render={({ field }) => (
+            <SelectButton
+              {...field}
+              value="true"
+              checked={field.value === true}
+              onChange={() => field.onChange(true)}
+              labelText={_(msg`Yes`)}
+              id="reason-verified__yes"
+            />
+          )}
+        />
+        <Controller
+          name="unreasonable_increase"
+          control={control}
+          render={({ field }) => (
+            <SelectButton
+              {...field}
+              value="false"
+              checked={field.value === false}
+              onChange={() => field.onChange(false)}
+              labelText={_(msg`No`)}
+              id="reason-verified__no"
+            />
+          )}
+        />
+      </FormGroup>
       <BackNextButtons />
-    </FormGroup>
+    </div>
   );
 };
 
