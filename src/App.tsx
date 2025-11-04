@@ -31,6 +31,7 @@ import {
   LetterConfirmationTest,
   LetterLayout,
   LetterSender,
+  LetterTestSender,
 } from "./Components/Pages/LetterSender/LetterSender";
 import "./App.scss";
 import { LetterNextStepsStandalone } from "./Components/LetterBuilder/LetterNextSteps/LetterNextSteps";
@@ -223,6 +224,7 @@ const router = createBrowserRouter(
             element={<LetterConfirmationTest />}
           />
           <Route path="next-steps" element={<LetterNextStepsStandalone />} />
+          <Route path="test" element={<LetterTestSender />} />
         </Route>
         <Route path="tenant_rights" element={<TenantRights />} />
         <Route path="privacy_policy" element={<PrivacyPolicy />} />

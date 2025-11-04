@@ -1,36 +1,18 @@
 import { Trans } from "@lingui/react/macro";
 
-import { FormHookProps } from "../../../types/LetterFormTypes";
 import { ContentBox, ContentBoxItem } from "../../ContentBox/ContentBox";
 import { GoodCauseProtections } from "../../KYRContent/KYRContent";
 import { Pill } from "../../Pill/Pill";
 import { JFCLLinkExternal } from "../../JFCLLink";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 
-export const AllowedIncreaseStep: React.FC<FormHookProps> = () => {
-  return (
-    <>
-      <div>
-        <section>
-          <h3>
-            <Trans>
-              Your landlord’s proposed rent increase appears to be within the
-              Good Cause limit.
-            </Trans>
-          </h3>
-        </section>
-        <p>
-          <Trans>
-            You still have rights, and you may be able to negotiate a smaller
-            increase or request more information about how your rent is
-            determined.
-          </Trans>
-        </p>
-      </div>
-      <RentNegotiationTips />
-      <GoodCauseProtections />
-    </>
-  );
-};
+export const AllowedIncreaseStep: React.FC = () => (
+  <div className="reason-details-step">
+    <RentNegotiationTips />
+    <GoodCauseProtections />
+    <BackNextButtons hideButon2 />
+  </div>
+);
 
 const PhaseInIncrease: React.FC = () => (
   <ContentBoxItem
