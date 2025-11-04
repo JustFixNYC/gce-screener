@@ -9,6 +9,8 @@ import Modal from "../../Modal/Modal";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { FormContext } from "../../../types/LetterFormTypes";
+import "./ReasonStep.scss";
+import "./FormSteps.scss";
 
 export const ReasonStep: React.FC = () => {
   const {
@@ -22,7 +24,7 @@ export const ReasonStep: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <>
+    <div id="reason-step">
       <FormGroup
         legendText={_(msg`Select the reason for your letter`)}
         invalid={!!errors?.reason}
@@ -30,20 +32,22 @@ export const ReasonStep: React.FC = () => {
         invalidRole="status"
         helperElement={<ReasonHelperText onClick={() => setShowModal(true)} />}
       >
-        <SelectButton
-          {...register("reason")}
-          labelText={_(msg`Your landlord is planning to raise your rent`)}
-          value="PLANNED_INCREASE"
-          id="reason__planned-increase"
-        />
-        <SelectButton
-          {...register("reason")}
-          labelText={_(msg`Your landlord is not offering you a new lease`)}
-          value="NON_RENEWAL"
-          id="reason__non-renewal"
-        />
-        <BackNextButtons hideButon1 />
+        <div className="reason-step__buttons">
+          <SelectButton
+            {...register("reason")}
+            labelText={_(msg`Your landlord is planning to raise your rent`)}
+            value="PLANNED_INCREASE"
+            id="reason__planned-increase"
+          />
+          <SelectButton
+            {...register("reason")}
+            labelText={_(msg`Your landlord is not offering you a new lease`)}
+            value="NON_RENEWAL"
+            id="reason__non-renewal"
+          />
+        </div>
       </FormGroup>
+      <BackNextButtons hideButon1 />
 
       <Modal
         isOpen={showModal}
@@ -116,7 +120,7 @@ export const ReasonStep: React.FC = () => {
           </ul>
         </div>
       </Modal>
-    </>
+    </div>
   );
 };
 

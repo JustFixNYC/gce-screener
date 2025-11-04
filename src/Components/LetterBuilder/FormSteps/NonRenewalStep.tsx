@@ -16,6 +16,7 @@ import {
 } from "../../../types/LetterFormTypes";
 import Modal from "../../Modal/Modal";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
+import "./FormSteps.scss";
 
 export const NonRenewalStep: React.FC = () => {
   const {

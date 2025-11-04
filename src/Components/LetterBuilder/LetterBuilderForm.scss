@@ -1,0 +1,27 @@
+@use "../../colors" as *;
+@use "../../mixins" as *;
+@use "../../variables" as *;
+
+.letter-form {
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+
+    .back-link {
+      @include body_standard_desktop;
+      margin-right: 1.5rem;
+    }
+  }
+  .modal {
+    .modal__header {
+      margin-bottom: 1rem;
+    }
+    .callout-box {
+      ul {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -16,6 +16,7 @@ import {
 } from "../../Pages/RentCalculator/RentIncreaseValues";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
+import "../LetterBuilderForm.scss";
 
 export const PlannedIncreaseStep: React.FC = () => {
   const {

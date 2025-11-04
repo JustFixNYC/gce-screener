@@ -27,7 +27,9 @@ import { ReasonStep } from "./FormSteps/ReasonStep";
 import { PlannedIncreaseStep } from "./FormSteps/PlannedIncreaseStep";
 import { AllowedIncreaseStep } from "./FormSteps/AllowedIncreaseStep";
 import { NonRenewalStep } from "./FormSteps/NonRenewalStep";
-
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { BackLink } from "../JFCLLink";
+import "./LetterBuilderForm.scss";
 interface Step {
   id: string;
   name: string;
@@ -205,18 +207,21 @@ export const LetterBuilderForm: React.FC = () => {
     navigate(nextPath, { preventScrollReset: true });
   };
 
-  const back = () => {
-    if (currentStep <= 0) return;
+  const getPrevPath = (): string => {
+    if (currentStep === 0) {
+      return `/${i18n.locale}/letter`;
+    }
+    const prevStep = steps[currentStep - 1];
+    return `/${i18n.locale}/letter/${prevStep.routeName}`;
+  };
 
+  const back = () => {
     const fields = steps[currentStep].fields;
     fields?.forEach((field) => {
       clearErrors(field);
     });
 
-    setCurrentStep((step) => step - 1);
-    const prevStep = steps[currentStep - 1];
-    const prevPath = `/${i18n.locale}/letter/${prevStep.routeName}`;
-    navigate(prevPath, { preventScrollReset: true });
+    navigate(getPrevPath(), { preventScrollReset: true });
   };
 
   return (

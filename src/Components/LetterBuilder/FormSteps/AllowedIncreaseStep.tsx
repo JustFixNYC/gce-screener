@@ -19,18 +19,22 @@ export const AllowedIncreaseStep: React.FC = () => {
       >
         <ContentBoxItem accordion={false}>
           {/* TODO: This is not quite to designs, need to check with corey */}
-          <Trans>
-            Since your rent increase is below the allowable rent increase limit
-            under Good Cause, we cannot assert your Good Cause rights in regard
-            to your increase. However, here are some tips to help you negotiate
-            a lower increase.
-          </Trans>
+          <p>
+            <Trans>
+              Since your rent increase is below the allowable rent increase
+              limit under Good Cause, we cannot assert your Good Cause rights in
+              regard to your increase. However, here are some tips to help you
+              negotiate a lower increase.
+            </Trans>
+          </p>
         </ContentBoxItem>
         <ContentBoxItem title={_(msg`Tip 1`)}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. At deleniti,
-          minus ea laudantium, suscipit saepe explicabo velit quis beatae esse
-          iusto neque fuga rerum optio corporis labore maiores consequuntur
-          necessitatibus?
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+            deleniti, minus ea laudantium, suscipit saepe explicabo velit quis
+            beatae esse iusto neque fuga rerum optio corporis labore maiores
+            consequuntur necessitatibus?
+          </p>
         </ContentBoxItem>
       </ContentBox>
       <GoodCauseProtections />
