@@ -47,53 +47,49 @@ export const MailChoiceStep: React.FC<FormHookProps> = (props) => {
         invalid={!!errors?.mail_choice}
         invalidText={errors?.mail_choice?.message}
       >
-        <div className="mail-choice__option">
-          <RadioButton
-            {...register("mail_choice", { required: true })}
-            aria-label={_(msg`We will mail the letter for you`)}
-            value="WE_WILL_MAIL"
-            id="we-will-mail"
-            labelElement={
-              <div>
-                <strong>
-                  <Trans>We will mail the letter for you</Trans>
-                </strong>
-                <div className="mail-choice__pills">
-                  <Pill color="black">Recommended</Pill>
-                  <Pill color="green">Free</Pill>
-                </div>
-                <p>
-                  <Trans>
-                    We will send your letter for you via USPS Certified Mail in
-                    1-2 business days, at no cost to you. We will also provide a
-                    PDF for you to download for your records.
-                  </Trans>
-                </p>
+        <RadioButton
+          {...register("mail_choice", { required: true })}
+          aria-label={_(msg`We will mail the letter for you`)}
+          value="WE_WILL_MAIL"
+          id="we-will-mail"
+          labelElement={
+            <div>
+              <strong>
+                <Trans>We will mail the letter for you</Trans>
+              </strong>
+              <div className="mail-choice__pills">
+                <Pill color="black">Recommended</Pill>
+                <Pill color="green">Free</Pill>
               </div>
-            }
-          />
-        </div>
-        <div className="mail-choice__option">
-          <RadioButton
-            {...register("mail_choice")}
-            aria-label={_(msg`Mail the letter yourself`)}
-            value="USER_WILL_MAIL"
-            id="user-will-mail"
-            labelElement={
-              <div>
-                <strong>
-                  <Trans>Mail the letter yourself</Trans>
-                </strong>
-                <p>
-                  <Trans>
-                    We will provide a PDF for you to download, print, and mail
-                    to your landlord or property manager.
-                  </Trans>
-                </p>
-              </div>
-            }
-          />
-        </div>
+              <p>
+                <Trans>
+                  We will send your letter for you via USPS Certified Mail in
+                  1-2 business days, at no cost to you. We will also provide a
+                  PDF for you to download for your records.
+                </Trans>
+              </p>
+            </div>
+          }
+        />
+        <RadioButton
+          {...register("mail_choice")}
+          aria-label={_(msg`Mail the letter yourself`)}
+          value="USER_WILL_MAIL"
+          id="user-will-mail"
+          labelElement={
+            <div>
+              <strong>
+                <Trans>Mail the letter yourself</Trans>
+              </strong>
+              <p>
+                <Trans>
+                  We will provide a PDF for you to download, print, and mail to
+                  your landlord or property manager.
+                </Trans>
+              </p>
+            </div>
+          }
+        />
       </FormGroup>
       <div className="mail-choice__email">
         <FormGroup
