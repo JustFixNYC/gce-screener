@@ -25,7 +25,7 @@ export const LetterSender: React.FC = () => {
   return (
     <div className="content-section">
       <div className="content-section__content">
-        <LetterTester letterData={sampleFormValues} />
+        {/* <LetterTester letterData={sampleFormValues} /> */}
         <LetterBuilderForm />
       </div>
     </div>
