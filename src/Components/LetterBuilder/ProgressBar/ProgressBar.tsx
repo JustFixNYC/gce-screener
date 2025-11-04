@@ -1,5 +1,3 @@
-import classNames from "classnames";
-
 import "./ProgressBar.scss";
 
 interface ProgressBarProps {
