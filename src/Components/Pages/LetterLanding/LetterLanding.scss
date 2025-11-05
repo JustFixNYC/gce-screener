@@ -5,7 +5,7 @@
 
 #letter-sender-landing-page {
   .headline-section {
-    padding: 2.5rem 0;
+    padding: 2.5rem 3rem;
     @include for-phone-only {
       padding: 1rem 1rem 2rem;
     }
@@ -36,8 +36,7 @@
   }
 
   .content-section {
-    padding-top: 1rem;
-    padding-bottom: 4rem;
+    padding: 1rem 3rem 4rem 3rem;
     @include for-phone-only {
       padding-top: 0;
       padding-bottom: 2rem;

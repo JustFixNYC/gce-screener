@@ -21,7 +21,30 @@
   height: 100%;
 }
 
+#grid {
+  display: grid;
+  grid-template-columns: $sidebarWidth 1fr;
+  grid-template-areas:
+    "sidebar topbar"
+    "sidebar main"
+    "sidebar footer";
+  height: 100%;
+}
+
+#topbar {
+  grid-area: topbar;
+}
+
+#sidebar {
+  grid-area: sidebar;
+}
+
+#footer {
+  grid-area: footer;
+}
+
 #main {
+  grid-area: main;
   flex-grow: 1;
 
   #content {
