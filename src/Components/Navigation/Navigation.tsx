@@ -8,7 +8,6 @@ import { JFCLLink } from "../JFCLLink";
 import { gtmPush } from "../../google-tag-manager";
 import { useScrollDirection } from "../../hooks/useScrollDirection";
 import useInViewPort from "../../hooks/useInViewport";
-import { JFCLLinkInternal } from "../JFCLLink";
 import { removeLocalePrefix } from "../../i18n";
 import "./Navigation.scss";
 
@@ -41,14 +40,6 @@ export const TopBar: React.FC = () => {
               JustFix
             </a>
           </Trans>
-        </div>
-        <div className="topbar__rent-calculator">
-          <JFCLLinkInternal
-            to="/rent_calculator"
-            onClick={() => gtmPush("gce_rent_calculator", { from: "navbar" })}
-          >
-            <Trans>Rent increase calculator</Trans>
-          </JFCLLinkInternal>
         </div>
       </header>
       <div
