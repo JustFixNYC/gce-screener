@@ -37,7 +37,7 @@
   }
 
   .content-section {
-    padding: 3rem 0;
+    padding: 3rem;
     @include for-phone-only() {
       padding: 2rem 1.5rem;
     }

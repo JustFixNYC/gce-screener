@@ -4,31 +4,76 @@
 
 $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
 
+#sidebar {
+  background-color: $OFF_WHITE_200;
+  border-right: 1px solid $OFF_BLACK;
+  .nameplate {
+    border-bottom: 1px solid $OFF_BLACK;
+  }
+  .sidebar__content {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 2.3125rem 1.5rem 2.3125rem 2.25rem;
+      li {
+        margin-bottom: 2.5rem;
+        a {
+          @include body_large_desktop;
+          text-decoration: none;
+          &.active {
+            text-decoration: underline;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+.nameplate {
+  height: calc($headerH - (1.5rem * 2));
+  width: calc(240px - 2.25rem - 2.25rem - 1px);
+  padding: 1.5rem 2.25rem;
+  border-right: 1px solid $OFF_BLACK;
+  h1,
+  a {
+    margin: 0;
+    font-family: "Degular Display";
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 100%; /* 1.5rem */
+    letter-spacing: 0.045rem;
+    white-space: nowrap;
+    text-decoration: none;
+    color: $OFF_BLACK;
+    &:hover {
+      color: $GREY_600;
+    }
+  }
+}
+
 #topbar-placeholder {
   height: $headerH;
   &.hide {
     position: absolute;
   }
 }
+
 #topbar {
-  position: sticky;
-  top: 0;
+  height: calc($headerH);
+  width: -webkit-fill-available;
   background-color: $OFF_WHITE_200;
   border-bottom: 1px solid $OFF_BLACK;
-  width: -webkit-fill-available;
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-wrap: nowrap;
   z-index: 100;
-
-  &.hide {
-    display: none;
-  }
-
-  div {
-    height: $headerH - (1.5rem * 2);
-  }
 
   &,
   h1,
@@ -45,18 +90,9 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
     }
   }
 
-  .topbar__name {
-    border-right: 1px solid $OFF_BLACK;
-    padding: 1.5rem 2.25rem;
-    h1,
-    a {
-      margin: 0;
-      font-family: "Degular Display";
-      font-size: 1.5rem;
-      font-weight: 500;
-      line-height: 100%; /* 1.5rem */
-      letter-spacing: 0.045rem;
-      white-space: nowrap;
+  .nameplate {
+    @include for-tablet-portrait-up {
+      display: none;
     }
   }
 
@@ -95,7 +131,7 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
 
   // custom breakpoint to prevent rent calculator link overflow
   @media (max-width: 825px) {
-    .topbar__name {
+    .nameplate {
       border-right: none;
       padding: 1.5rem;
     }
@@ -123,7 +159,7 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
     position: unset;
     background-color: unset;
 
-    .topbar__name,
+    .nameplate,
     .topbar__collab {
       padding: 0.5rem 1rem;
     }
@@ -138,6 +174,28 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
     a {
       color: black;
       @include body_large_desktop;
+    }
+  }
+}
+
+@include for-phone-only {
+  #topbar {
+    position: sticky;
+    top: 0;
+
+    &.hide {
+      display: none;
+    }
+  }
+  #topbar-placeholder {
+    height: $headerH;
+    &.hide {
+      position: absolute;
+    }
+  }
+  #sidebar {
+    .nameplate {
+      display: none;
     }
   }
 }

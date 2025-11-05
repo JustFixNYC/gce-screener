@@ -20,13 +20,14 @@ import { RentStabilization } from "./Components/Pages/RentStabilization/RentStab
 import { PortfolioSize } from "./Components/Pages/PortfolioSize/PortfolioSize";
 import { Footer } from "./Components/Footer/Footer";
 import { TenantRights } from "./Components/Pages/TenantRights/TenantRights";
-import { TopBar } from "./Components/TopBar/TopBar";
 import { NetworkError } from "./api/error-reporting";
 import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import { decodeFromURI } from "./helpers";
 import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
 import { LetterLanding } from "./Components/Pages/LetterLanding/LetterLanding";
+import { LetterNextStepsStandalone } from "./Components/LetterBuilder/LetterNextSteps/LetterNextSteps";
+import { Nav, TopBar } from "./Components/Navigation/Navigation";
 import {
   LetterConfirmationTest,
   LetterLayout,
@@ -34,21 +35,21 @@ import {
   LetterTestSender,
 } from "./Components/Pages/LetterSender/LetterSender";
 import "./App.scss";
-import { LetterNextStepsStandalone } from "./Components/LetterBuilder/LetterNextSteps/LetterNextSteps";
 
 const Layout = () => {
   return (
     <I18n>
       <div id="container">
-        <TopBar />
-
-        <main id="main">
-          <div id="content">
-            <Outlet />
-          </div>
-        </main>
-
-        <Footer />
+        <div id="grid">
+          <Nav />
+          <TopBar />
+          <main id="main">
+            <div id="content">
+              <Outlet />
+            </div>
+          </main>
+          <Footer />
+        </div>
         <ScrollRestoration />
       </div>
     </I18n>

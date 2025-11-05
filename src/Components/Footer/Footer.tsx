@@ -5,7 +5,7 @@ import { LocaleToggle } from "../LocaleToggle/LocaleToggle";
 import "./Footer.scss";
 
 export const Footer: React.FC = () => (
-  <footer className="footer">
+  <footer id="footer">
     <div className="footer__content">
       <div>
         <div className="footer__locale-toggle">
