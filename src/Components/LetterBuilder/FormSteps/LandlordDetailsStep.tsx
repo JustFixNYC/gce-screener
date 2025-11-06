@@ -1,16 +1,22 @@
-import { useState, useEffect, useRef } from "react";
-import { Controller } from "react-hook-form";
-import { Button, FormGroup, TextInput } from "@justfixnyc/component-library";
-import { useGetLandlordData } from "../../../api/hooks";
-import { LandlordContact, LandlordData } from "../../../types/APIDataTypes";
-import { FormFields, FormHookProps } from "../../../types/LetterFormTypes";
-import Modal from "../../Modal/Modal";
-import { InfoBox } from "../../InfoBox/InfoBox";
+import { useState, useEffect, useRef, useContext } from "react";
 import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
-import "./LandlordDetailsStep.scss";
+import { Controller } from "react-hook-form";
+import {
+  Button,
+  Checkbox,
+  FormGroup,
+  TextInput,
+} from "@justfixnyc/component-library";
+
+import { useGetLandlordData } from "../../../api/hooks";
+import { LandlordContact, LandlordData } from "../../../types/APIDataTypes";
+import { FormContext, FormFields } from "../../../types/LetterFormTypes";
+import Modal from "../../Modal/Modal";
+import { InfoBox } from "../../InfoBox/InfoBox";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
+import "./LandlordDetailsStep.scss";
 
 const getOwnerContacts = (
   data?: LandlordData
@@ -57,25 +63,22 @@ const wowContactToLandlordDetails = (
   };
 };
 
-export const LandlordDetailsStep: React.FC<
-  FormHookProps & {
-    verifyAddressDeliverable?: (
-      data: Omit<FormFields["landlord_details"], "name" | "email">
-    ) => Promise<boolean | undefined>;
-  }
-> = (props) => {
+export const LandlordDetailsStep: React.FC<{
+  verifyAddressDeliverable?: (
+    data: Omit<FormFields["landlord_details"], "name" | "email">
+  ) => Promise<boolean | undefined>;
+}> = ({ verifyAddressDeliverable }) => {
   const {
-    register,
-    control,
-    formState: { errors },
-    getValues,
-    setValue,
-    trigger,
-    verifyAddressDeliverable,
-  } = props;
+    formMethods: {
+      control,
+      formState: { errors },
+      getValues,
+      setValue,
+      trigger,
+    },
+  } = useContext(FormContext);
 
-  const addressErrors = errors.landlord_details;
-
+  const { _ } = useLingui();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const hasPrefilledRef = useRef(false);
   const hasInitializedRef = useRef(false);
@@ -177,41 +180,26 @@ export const LandlordDetailsStep: React.FC<
           )}
         </FormGroup>
       )}
-      {showManual && (
-        <LandlordFormGroup
-          register={register}
-          errors={errors}
-          addressErrors={addressErrors}
-          getValues={getValues}
-          setValue={setValue}
-          idPrefix="form"
-        />
-      )}
+      {showManual && <LandlordFormGroup idPrefix="form" />}
+      <BackNextButtons />
 
       <Modal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
-        header="Edit your landlord's information"
+        header={_(msg`Edit your landlord's information`)}
       >
-        <LandlordFormGroup
-          register={register}
-          errors={errors}
-          addressErrors={addressErrors}
-          getValues={getValues}
-          setValue={setValue}
-          idPrefix="modal-form"
-        />
+        <LandlordFormGroup idPrefix="modal-form" />
         <div className="landlord-details-step__modal-buttons">
           <Button
             type="button"
             variant="secondary"
-            labelText="Cancel"
+            labelText={_(msg`Cancel`)}
             onClick={() => setIsEditModalOpen(false)}
           />
           <Button
             type="button"
             variant="primary"
-            labelText="Save"
+            labelText={_(msg`Save`)}
             onClick={async () => {
               // Validate with form schema
               const isValid = await trigger("landlord_details", {
@@ -242,24 +230,25 @@ export const LandlordDetailsStep: React.FC<
   );
 };
 
-const LandlordFormGroup: React.FC<{
-  register: any;
-  errors: any;
-  addressErrors: any;
-  getValues: any;
-  setValue: any;
-  idPrefix?: string;
-}> = ({
-  register,
-  errors,
-  addressErrors,
-  getValues,
-  setValue,
+const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
   idPrefix = "form",
 }) => {
+  const {
+    formMethods: {
+      register,
+      getValues,
+      setValue,
+      control,
+      formState: { errors },
+    },
+  } = useContext(FormContext);
+
+  const addressErrors = errors.landlord_details;
+
   const { _ } = useLingui();
   const [showModal, setShowModal] = useState(false);
   const currentValues = getValues("landlord_details");
+
   return (
     <div>
       <FormGroup
@@ -271,7 +260,7 @@ const LandlordFormGroup: React.FC<{
         <TextInput
           {...register("landlord_details.name")}
           id={`${idPrefix}-landlord-name`}
-          labelText="Landlord or property manager name"
+          labelText={_(msg`Landlord or property manager name`)}
           invalid={!!errors.landlord_details?.name}
           invalidText={errors.landlord_details?.name?.message}
           invalidRole="status"
@@ -289,7 +278,7 @@ const LandlordFormGroup: React.FC<{
         <TextInput
           {...register("landlord_details.primary_line")}
           id={`${idPrefix}-landlord-primary-line`}
-          labelText="Primary line"
+          labelText={_(msg`Street address`)}
           invalid={!!addressErrors?.primary_line}
           invalidText={addressErrors?.primary_line?.message}
           invalidRole="status"
@@ -304,27 +293,53 @@ const LandlordFormGroup: React.FC<{
             )
           }
         />
-        <TextInput
-          {...register("landlord_details.secondary_line")}
-          id={`${idPrefix}-landlord-secondary-line`}
-          labelText="Secondary line (optional)"
-          invalid={!!addressErrors?.secondary_line}
-          invalidText={addressErrors?.secondary_line?.message}
-          invalidRole="status"
-          type="text"
-          defaultValue={currentValues?.secondary_line || ""}
-          style={{ textTransform: "uppercase" }}
-          onBlur={(e) =>
-            setValue(
-              "landlord_details.secondary_line",
-              e.target.value.toUpperCase(),
-              { shouldValidate: true, shouldDirty: true }
-            )
-          }
-        />
+        <FormGroup
+          legendText={_(msg`Unit Number`)}
+          className="unit-number-input-group"
+        >
+          <TextInput
+            {...register("landlord_details.secondary_line")}
+            id={`${idPrefix}-landlord-secondary-line`}
+            labelText=""
+            aria-label={_(msg`Unit Number`)}
+            helperText={_(
+              msg`If your landlord’s address does not have a unit number, please select “This address does not have a unit/suite/apartment” below`
+            )}
+            invalid={!!addressErrors?.secondary_line}
+            invalidText={addressErrors?.secondary_line?.message}
+            invalidRole="status"
+            type="text"
+            defaultValue={currentValues?.secondary_line || ""}
+            style={{ textTransform: "uppercase" }}
+            onBlur={(e) =>
+              setValue(
+                "landlord_details.secondary_line",
+                e.target.value.toUpperCase(),
+                { shouldValidate: true, shouldDirty: true }
+              )
+            }
+          />
+          <Controller
+            name="landlord_details.no_unit"
+            control={control}
+            render={({ field }) => (
+              <Checkbox
+                {...field}
+                value="true"
+                checked={field.value === true}
+                onChange={() => field.onChange(!field.value)}
+                labelText={_(
+                  msg`This address does not have a unit/suite/apartment`
+                )}
+                id="no_unit"
+              />
+            )}
+          />
+        </FormGroup>
         <TextInput
           {...register("landlord_details.city")}
           id={`${idPrefix}-landlord-city`}
+          className="landlord-city-input"
           labelText="City/Borough"
           invalid={!!addressErrors?.city}
           invalidText={addressErrors?.city?.message}
@@ -402,8 +417,8 @@ const LandlordFormGroup: React.FC<{
           {...register("landlord_details.email")}
           id="form-email"
           labelText={_(msg`Email`) + " " + _(msg`(Optional)`)}
-          invalid={!!errors?.email}
-          invalidText={errors?.email?.message}
+          invalid={!!errors.landlord_details?.email}
+          invalidText={errors.landlord_details?.email?.message}
           invalidRole="status"
           type="email"
         />
@@ -420,7 +435,6 @@ const LandlordFormGroup: React.FC<{
           </button>
         </div>
       </FormGroup>
-      <BackNextButtons />
 
       <Modal
         isOpen={showModal}
