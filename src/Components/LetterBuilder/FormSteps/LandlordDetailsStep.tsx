@@ -7,7 +7,10 @@ import { FormFields, FormHookProps } from "../../../types/LetterFormTypes";
 import Modal from "../../Modal/Modal";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { Trans } from "@lingui/react/macro";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import "./LandlordDetailsStep.scss";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 
 const getOwnerContacts = (
   data?: LandlordData
@@ -254,140 +257,194 @@ const LandlordFormGroup: React.FC<{
   setValue,
   idPrefix = "form",
 }) => {
+  const { _ } = useLingui();
+  const [showModal, setShowModal] = useState(false);
   const currentValues = getValues("landlord_details");
   return (
-    <FormGroup
-      legendText="Please provide your landlord's mailing address"
-      invalid={!!errors?.landlord_details}
-      invalidText={errors?.landlord_details?.message}
-      key={`${idPrefix}-manual-input`}
-    >
-      <TextInput
-        {...register("landlord_details.name")}
-        id={`${idPrefix}-landlord-name`}
-        labelText="Landlord or property manager name"
-        invalid={!!errors.landlord_details?.name}
-        invalidText={errors.landlord_details?.name?.message}
-        invalidRole="status"
-        type="text"
-        autoFocus
-        defaultValue={currentValues?.name || ""}
-        style={{ textTransform: "uppercase" }}
-        onBlur={(e) =>
-          setValue("landlord_details.name", e.target.value.toUpperCase(), {
-            shouldValidate: true,
-            shouldDirty: true,
-          })
-        }
-      />
-      {/* todo: add autocomplete for primary line */}
-      <TextInput
-        {...register("landlord_details.primary_line")}
-        id={`${idPrefix}-landlord-primary-line`}
-        labelText="Primary line"
-        invalid={!!addressErrors?.primary_line}
-        invalidText={addressErrors?.primary_line?.message}
-        invalidRole="status"
-        type="text"
-        defaultValue={currentValues?.primary_line || ""}
-        style={{ textTransform: "uppercase" }}
-        onBlur={(e) =>
-          setValue(
-            "landlord_details.primary_line",
-            e.target.value.toUpperCase(),
-            { shouldValidate: true, shouldDirty: true }
-          )
-        }
-      />
-      <TextInput
-        {...register("landlord_details.secondary_line")}
-        id={`${idPrefix}-landlord-secondary-line`}
-        labelText="Secondary line (optional)"
-        invalid={!!addressErrors?.secondary_line}
-        invalidText={addressErrors?.secondary_line?.message}
-        invalidRole="status"
-        type="text"
-        defaultValue={currentValues?.secondary_line || ""}
-        style={{ textTransform: "uppercase" }}
-        onBlur={(e) =>
-          setValue(
-            "landlord_details.secondary_line",
-            e.target.value.toUpperCase(),
-            { shouldValidate: true, shouldDirty: true }
-          )
-        }
-      />
-      <TextInput
-        {...register("landlord_details.city")}
-        id={`${idPrefix}-landlord-city`}
-        labelText="City/Borough"
-        invalid={!!addressErrors?.city}
-        invalidText={addressErrors?.city?.message}
-        invalidRole="status"
-        type="text"
-        defaultValue={currentValues?.city || ""}
-        style={{ textTransform: "uppercase" }}
-        onBlur={(e) =>
-          setValue("landlord_details.city", e.target.value.toUpperCase(), {
-            shouldValidate: true,
-            shouldDirty: true,
-          })
-        }
-      />
-      {/* TODO: use dropdown for state to ensure correct format */}
-      <TextInput
-        {...register("landlord_details.state")}
-        id={`${idPrefix}-landlord-state`}
-        labelText="State"
-        invalid={!!addressErrors?.state}
-        invalidText={addressErrors?.state?.message}
-        invalidRole="status"
-        type="text"
-        defaultValue={currentValues?.state || ""}
-        style={{ textTransform: "uppercase" }}
-        onBlur={(e) =>
-          setValue("landlord_details.state", e.target.value.toUpperCase(), {
-            shouldValidate: true,
-            shouldDirty: true,
-          })
-        }
-      />
-      {getValues("landlord_details.state") === "PR" && (
+    <div>
+      <FormGroup
+        legendText={_(msg`Your landlord's information`)}
+        invalid={!!errors?.landlord_details}
+        invalidText={errors?.landlord_details?.message}
+        key={`${idPrefix}-manual-input`}
+      >
         <TextInput
-          {...register("landlord_details.urbanization")}
-          id={`${idPrefix}-landlord-urbanization`}
-          labelText="Urbanization (Puerto Rico only)"
-          invalid={!!addressErrors?.urbanization}
-          invalidText={addressErrors?.urbanization?.message}
+          {...register("landlord_details.name")}
+          id={`${idPrefix}-landlord-name`}
+          labelText="Landlord or property manager name"
+          invalid={!!errors.landlord_details?.name}
+          invalidText={errors.landlord_details?.name?.message}
           invalidRole="status"
           type="text"
-          defaultValue={currentValues?.urbanization || ""}
+          autoFocus
+          defaultValue={currentValues?.name || ""}
+          style={{ textTransform: "uppercase" }}
+          onBlur={(e) =>
+            setValue("landlord_details.name", e.target.value.toUpperCase(), {
+              shouldValidate: true,
+              shouldDirty: true,
+            })
+          }
+        />
+        <TextInput
+          {...register("landlord_details.primary_line")}
+          id={`${idPrefix}-landlord-primary-line`}
+          labelText="Primary line"
+          invalid={!!addressErrors?.primary_line}
+          invalidText={addressErrors?.primary_line?.message}
+          invalidRole="status"
+          type="text"
+          defaultValue={currentValues?.primary_line || ""}
           style={{ textTransform: "uppercase" }}
           onBlur={(e) =>
             setValue(
-              "landlord_details.urbanization",
+              "landlord_details.primary_line",
               e.target.value.toUpperCase(),
               { shouldValidate: true, shouldDirty: true }
             )
           }
         />
-      )}
-      <TextInput
-        {...register("landlord_details.zip_code")}
-        id={`${idPrefix}-landlord-zip-code`}
-        labelText="ZIP Code"
-        invalid={!!addressErrors?.zip_code}
-        invalidText={addressErrors?.zip_code?.message}
-        invalidRole="status"
-        type="text"
-        defaultValue={currentValues?.zip_code || ""}
-        onBlur={(e) =>
-          setValue("landlord_details.zip_code", e.target.value, {
-            shouldValidate: true,
-            shouldDirty: true,
-          })
-        }
-      />
-    </FormGroup>
+        <TextInput
+          {...register("landlord_details.secondary_line")}
+          id={`${idPrefix}-landlord-secondary-line`}
+          labelText="Secondary line (optional)"
+          invalid={!!addressErrors?.secondary_line}
+          invalidText={addressErrors?.secondary_line?.message}
+          invalidRole="status"
+          type="text"
+          defaultValue={currentValues?.secondary_line || ""}
+          style={{ textTransform: "uppercase" }}
+          onBlur={(e) =>
+            setValue(
+              "landlord_details.secondary_line",
+              e.target.value.toUpperCase(),
+              { shouldValidate: true, shouldDirty: true }
+            )
+          }
+        />
+        <TextInput
+          {...register("landlord_details.city")}
+          id={`${idPrefix}-landlord-city`}
+          labelText="City/Borough"
+          invalid={!!addressErrors?.city}
+          invalidText={addressErrors?.city?.message}
+          invalidRole="status"
+          type="text"
+          defaultValue={currentValues?.city || ""}
+          style={{ textTransform: "uppercase" }}
+          onBlur={(e) =>
+            setValue("landlord_details.city", e.target.value.toUpperCase(), {
+              shouldValidate: true,
+              shouldDirty: true,
+            })
+          }
+        />
+        {/* TODO: use dropdown for state to ensure correct format */}
+        <TextInput
+          {...register("landlord_details.state")}
+          id={`${idPrefix}-landlord-state`}
+          labelText="State"
+          invalid={!!addressErrors?.state}
+          invalidText={addressErrors?.state?.message}
+          invalidRole="status"
+          type="text"
+          defaultValue={currentValues?.state || ""}
+          style={{ textTransform: "uppercase" }}
+          onBlur={(e) =>
+            setValue("landlord_details.state", e.target.value.toUpperCase(), {
+              shouldValidate: true,
+              shouldDirty: true,
+            })
+          }
+        />
+        {getValues("landlord_details.state") === "PR" && (
+          <TextInput
+            {...register("landlord_details.urbanization")}
+            id={`${idPrefix}-landlord-urbanization`}
+            labelText="Urbanization (Puerto Rico only)"
+            invalid={!!addressErrors?.urbanization}
+            invalidText={addressErrors?.urbanization?.message}
+            invalidRole="status"
+            type="text"
+            defaultValue={currentValues?.urbanization || ""}
+            style={{ textTransform: "uppercase" }}
+            onBlur={(e) =>
+              setValue(
+                "landlord_details.urbanization",
+                e.target.value.toUpperCase(),
+                { shouldValidate: true, shouldDirty: true }
+              )
+            }
+          />
+        )}
+        <TextInput
+          {...register("landlord_details.zip_code")}
+          id={`${idPrefix}-landlord-zip-code`}
+          labelText="ZIP Code"
+          invalid={!!addressErrors?.zip_code}
+          invalidText={addressErrors?.zip_code?.message}
+          invalidRole="status"
+          type="text"
+          defaultValue={currentValues?.zip_code || ""}
+          onBlur={(e) =>
+            setValue("landlord_details.zip_code", e.target.value, {
+              shouldValidate: true,
+              shouldDirty: true,
+            })
+          }
+        />
+      </FormGroup>
+      <FormGroup
+        legendText={_(msg`Your landlord's contact information`)}
+        className="form-group__section-header"
+      >
+        <TextInput
+          {...register("landlord_details.email")}
+          id="form-email"
+          labelText={_(msg`Email`) + " " + _(msg`(Optional)`)}
+          invalid={!!errors?.email}
+          invalidText={errors?.email?.message}
+          invalidRole="status"
+          type="email"
+        />
+        <div className="form-group__footer">
+          <span className="form-group__footer-text">
+            <Trans>Why are we asking for this information?</Trans>
+          </span>
+          <button
+            type="button"
+            className="text-link-button jfcl-link"
+            onClick={() => setShowModal(true)}
+          >
+            <Trans>Learn more</Trans>
+          </button>
+        </div>
+      </FormGroup>
+      <BackNextButtons />
+
+      <Modal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        hasCloseBtn={true}
+        header={_(msg`Why we ask for your landlord's email`)}
+      >
+        <Trans>
+          <p>
+            We ask for your landlord's email address so that we can send them a
+            PDF copy of your letter. This helps ensure that the landlord sees
+            your letter.
+            <br />
+            <br />
+            We highly recommend providing your landlord's email, especially if
+            you normally correspond with your landlord via email.
+          </p>
+        </Trans>
+        <Button
+          variant="secondary"
+          labelText={_(msg`Close`)}
+          onClick={() => setShowModal(false)}
+        />
+      </Modal>
+    </div>
   );
 };
