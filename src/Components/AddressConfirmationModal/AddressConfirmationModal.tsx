@@ -1,6 +1,9 @@
 import React from "react";
 import { Button } from "@justfixnyc/component-library";
 import { Trans } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
+import { msg } from "@lingui/core/macro";
+
 import Modal from "../Modal/Modal";
 import { LOBVerificationResponse } from "../../types/APIDataTypes";
 import "./AddressConfirmationModal.scss";
@@ -32,6 +35,8 @@ export const AddressConfirmationModal: React.FC<
   lobAddress,
   type,
 }) => {
+  const { _ } = useLingui();
+
   const formatAddress = () => {
     return [
       inputAddress.primary_line,
@@ -102,14 +107,14 @@ export const AddressConfirmationModal: React.FC<
         <Button
           type="button"
           variant="secondary"
-          labelText="Back"
+          labelText={_(msg`Back`)}
           onClick={onBack}
         />
         {type == "better_address" && (
           <Button
             type="button"
             variant="primary"
-            labelText="Continue"
+            labelText={_(msg`Continue`)}
             onClick={onConfirm}
           />
         )}
