@@ -51,7 +51,7 @@
   }
 
   // ensure radio and label align nicely
-  label {
+  .jfcl-radio-button label {
     display: flex;
     gap: 0.75rem;
     align-items: flex-start;
@@ -106,6 +106,10 @@
         padding: 0;
         @include body_large_desktop;
         font-weight: 600;
+      }
+
+      .landlord-email {
+        margin-bottom: 0.75rem;
       }
     }
 
@@ -165,12 +169,16 @@
     }
 
     // Text input header labels
-    .jfcl-text-input {
+    .jfcl-text-input,
+    .jfcl-checkbox {
       label {
         @include body_standard_desktop;
         margin-bottom: 0.25rem;
         display: block;
       }
+    }
+    .jfcl-checkbox label {
+      display: flex;
     }
   }
 }
