@@ -117,6 +117,7 @@ const letterExtrasSchema = (i18n: I18n) =>
     extra_emails: looseOptional(
       z.array(z.object({ email: looseOptional(z.email()) }))
     ),
+    cc_user: z.boolean(),
   });
 
 const plannedIncreaseLetterSchema = (i18n: I18n) =>
@@ -188,6 +189,7 @@ export const defaultFormValues: FormFields = {
   mail_choice: "WE_WILL_MAIL",
   reason: "PLANNED_INCREASE",
   unreasonable_increase: false,
+  cc_user: false
 };
 
 export const sampleFormValues: FormFields = {
@@ -218,6 +220,7 @@ export const sampleFormValues: FormFields = {
   extra_emails: [{ email: "extra@email.com" }],
   reason: "PLANNED_INCREASE",
   unreasonable_increase: false,
+  cc_user: true
 };
 
 // This shouldn't be necessary, but for some reason it's unable to infer the

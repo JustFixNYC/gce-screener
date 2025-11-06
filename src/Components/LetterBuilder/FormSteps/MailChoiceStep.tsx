@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { useFieldArray } from "react-hook-form";
+import { Controller, useFieldArray } from "react-hook-form";
 import {
   Button,
+  Checkbox,
   FormGroup,
   Icon,
   RadioButton,
@@ -125,11 +126,26 @@ export const MailChoiceStep: React.FC = () => {
           <TextInput
             {...register("landlord_details.email")}
             id={`form-landlord-email`}
+            className="landlord-email"
             labelText={_(msg`Your landlord's email`) + " " + _(msg`(optional)`)}
             invalid={!!errors?.landlord_details?.email}
             invalidText={errors?.landlord_details?.email?.message}
             invalidRole="status"
             type="email"
+          />
+          <Controller
+            name="cc_user"
+            control={control}
+            render={({ field }) => (
+              <Checkbox
+                {...field}
+                value="true"
+                checked={field.value === true}
+                onChange={() => field.onChange(!field.value)}
+                labelText={_(msg`CC me on the email that you send to my landlord `)}
+                id="cc_user"
+              />
+            )}
           />
         </FormGroup>
         {!!fields.length && (

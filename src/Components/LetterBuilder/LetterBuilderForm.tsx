@@ -87,6 +87,7 @@ export const LetterBuilderForm: React.FC = () => {
     resolver: zodResolver(formSchema(i18n)) as Resolver<FormFields>,
     mode: "onSubmit",
     defaultValues: {
+      cc_user: false,
       user_details: { no_unit: false },
       landlord_details: { no_unit: false },
     },
