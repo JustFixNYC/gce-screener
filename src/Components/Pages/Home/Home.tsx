@@ -13,7 +13,7 @@ import { useSendGceData } from "../../../api/hooks";
 import { GCEPostData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
 import { ProgressStep } from "../../../helpers";
-import { JFCLLinkExternal, JFCLLinkInternal } from "../../JFCLLink";
+import { JFCLLink, JFCLLinkExternal, JFCLLinkInternal } from "../../JFCLLink";
 import { cleanAddressFields } from "../../../api/helpers";
 import { gtmPush } from "../../../google-tag-manager";
 import "./Home.scss";
@@ -29,7 +29,7 @@ export type Address = {
 };
 
 export const Home: React.FC = () => {
-  const { _ } = useLingui();
+  const { i18n, _ } = useLingui();
   const navigate = useNavigate();
   const [sessionUser, setUser] = useSessionStorage<GCEUser>("user");
   const [, setAddress, removeAddress] = useSessionStorage<Address>("address");
@@ -115,28 +115,23 @@ export const Home: React.FC = () => {
               There are also limits to how much your landlord can raise your
               rent.{" "}
             </Trans>
-            <JFCLLinkInternal
-              to="/rent_calculator"
+            <JFCLLink
+              to={`${i18n.locale}/rent_calculator`}
               onClick={() =>
                 gtmPush("gce_rent_calculator", { from: "home-page" })
               }
             >
               <Trans>Calculate your max rent increase.</Trans>
-            </JFCLLinkInternal>
+            </JFCLLink>
           </p>
           <p>
             <Trans>
               To be covered by the law, your apartment must meet several
               requirements.{" "}
             </Trans>
-            <a
-              href="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="jfcl-link"
-            >
+            <JFCLLinkExternal to="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page">
               <Trans>Learn more about the law.</Trans>
-            </a>{" "}
+            </JFCLLinkExternal>{" "}
             <Trans>
               If you live in New York City, you can use this site to learn which
               requirements you meet and how to assert your rights.
