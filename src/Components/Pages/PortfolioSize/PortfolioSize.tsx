@@ -131,9 +131,11 @@ export const PortfolioSize: React.FC = () => {
             </ContentBoxItem>
             <ContentBoxItem
               title={
-                <Trans>
-                  <strong>Step 1:</strong> Find out who owns your building
-                </Trans>
+                <span>
+                  <Trans>
+                    <strong>Step 1:</strong> Find out who owns your building
+                  </Trans>
+                </span>
               }
             >
               <p>
@@ -179,10 +181,12 @@ export const PortfolioSize: React.FC = () => {
 
             <ContentBoxItem
               title={
-                <Trans>
-                  <strong>Step 2:</strong> Find other properties associated with
-                  the owner of your building
-                </Trans>
+                <span>
+                  <Trans>
+                    <strong>Step 2:</strong> Find other properties associated
+                    with the owner of your building
+                  </Trans>
+                </span>
               }
             >
               {bldgData && (

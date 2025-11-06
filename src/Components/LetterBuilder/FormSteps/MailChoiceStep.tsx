@@ -142,7 +142,9 @@ export const MailChoiceStep: React.FC = () => {
                 value="true"
                 checked={field.value === true}
                 onChange={() => field.onChange(!field.value)}
-                labelText={_(msg`CC me on the email that you send to my landlord `)}
+                labelText={_(
+                  msg`CC me on the email that you send to my landlord `
+                )}
                 id="cc_user"
               />
             )}

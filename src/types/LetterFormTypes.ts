@@ -189,7 +189,7 @@ export const defaultFormValues: FormFields = {
   mail_choice: "WE_WILL_MAIL",
   reason: "PLANNED_INCREASE",
   unreasonable_increase: false,
-  cc_user: false
+  cc_user: false,
 };
 
 export const sampleFormValues: FormFields = {
@@ -220,7 +220,7 @@ export const sampleFormValues: FormFields = {
   extra_emails: [{ email: "extra@email.com" }],
   reason: "PLANNED_INCREASE",
   unreasonable_increase: false,
-  cc_user: true
+  cc_user: true,
 };
 
 // This shouldn't be necessary, but for some reason it's unable to infer the
