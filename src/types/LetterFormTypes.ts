@@ -155,7 +155,6 @@ export const formSchema = (i18n: I18n) => {
     path: ["user_details.email"],
 
     when(payload) {
-      console.log(payload);
       // only need to do this on one part of the discriminated union
       return z
         .object({

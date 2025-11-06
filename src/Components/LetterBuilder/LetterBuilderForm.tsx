@@ -64,6 +64,7 @@ const steps: Step[] = [
       "mail_choice",
       "user_details.email",
       "landlord_details.email",
+      "cc_user",
       "extra_emails",
     ],
   },
@@ -218,6 +219,13 @@ export const LetterBuilderForm: React.FC = () => {
     fields?.forEach((field) => {
       clearErrors(field);
     });
+
+    // avoids error on user email if CC box was checked then go back a step and
+    // remove user email from contact info
+    if (fields?.includes("cc_user")) {
+      console.log("cc");
+      reset({ cc_user: false });
+    }
 
     navigate(getPrevPath(), { preventScrollReset: true });
   };
