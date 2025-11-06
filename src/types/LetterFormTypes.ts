@@ -113,7 +113,13 @@ const letterExtrasSchema = (i18n: I18n) =>
     ),
     // Flat arrays don't work with react-hook-form field array
     extra_emails: looseOptional(
-      z.array(z.object({ email: looseOptional(z.email()) }))
+      z.array(
+        z.object({
+          email: looseOptional(
+            z.email(i18n._(msg`Please enter a valid email`))
+          ),
+        })
+      )
     ),
     cc_user: z.boolean(),
   });
