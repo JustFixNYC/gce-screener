@@ -23,6 +23,7 @@ export const MailChoiceStep: React.FC = () => {
     formMethods: {
       register,
       control,
+      watch,
       formState: { errors },
     },
   } = useContext(FormContext);
@@ -140,7 +141,10 @@ export const MailChoiceStep: React.FC = () => {
               <Checkbox
                 {...field}
                 value="true"
-                checked={field.value === true}
+                disabled={!watch("landlord_details.email")}
+                checked={
+                  field.value === true && !!watch("landlord_details.email")
+                }
                 onChange={() => field.onChange(!field.value)}
                 labelText={_(
                   msg`CC me on the email that you send to my landlord `
