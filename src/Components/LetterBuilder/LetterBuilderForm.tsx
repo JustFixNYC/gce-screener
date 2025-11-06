@@ -56,8 +56,14 @@ const steps: Step[] = [
     fields: ["user_details"],
   },
   {
-    // TODO: Reorder steps. Putting landlord at the end until that step is finished
     id: "Step 4",
+    name: "Landlord details",
+    routeName: "landlord-details",
+    fields: ["landlord_details"],
+  },
+  { id: "Step 5", name: "Preview", routeName: "preview" },
+  {
+    id: "Step 6",
     name: "Mail Choice",
     routeName: "mail-choice",
     fields: [
@@ -67,13 +73,6 @@ const steps: Step[] = [
       "cc_user",
       "extra_emails",
     ],
-  },
-  { id: "Step 5", name: "Preview", routeName: "preview" },
-  {
-    id: "Step 6",
-    name: "Landlord details",
-    routeName: "landlord-details",
-    fields: ["landlord_details"],
   },
   { id: "Step 7", name: "Confirmation", routeName: "confirmation" },
 ];
@@ -93,8 +92,7 @@ export const LetterBuilderForm: React.FC = () => {
       landlord_details: { no_unit: false },
     },
   });
-  const { reset, trigger, handleSubmit, getValues, clearErrors } =
-    formMethods;
+  const { reset, trigger, handleSubmit, getValues, clearErrors } = formMethods;
 
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -248,9 +246,13 @@ export const LetterBuilderForm: React.FC = () => {
               )}
             </>
           )}
-          {currentStep === 3 && <MailChoiceStep />}
+          {currentStep === 3 && (
+            <LandlordDetailsStep
+              verifyAddressDeliverable={handleAddressVerification}
+            />
+          )}
           {currentStep === 4 && <PreviewStep />}
-          {currentStep === 5 && <LandlordDetailsStep {...formMethods} verifyAddressDeliverable={handleAddressVerification} />}
+          {currentStep === 5 && <MailChoiceStep />}
           {currentStep === 6 && (
             <ConfirmationStep confirmationResponse={letterResp} />
           )}
