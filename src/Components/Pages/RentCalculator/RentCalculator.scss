@@ -1,5 +1,5 @@
-@import "../../../mixins.scss";
-@import "../../../colors.scss";
+@use "../../../mixins" as *;
+@use "../../../colors" as *;
 
 #rent-calculator-page {
   .headline-section {

@@ -1,4 +1,4 @@
-@import "../../../mixins.scss";
+@use "../../../mixins" as *;
 
 #rent-stabilization-page {
   .headline-section {

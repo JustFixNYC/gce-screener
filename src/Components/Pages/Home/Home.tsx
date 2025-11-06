@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useRollbar } from "@rollbar/react";
-import { Button } from "@justfixnyc/component-library";
+import { Button, Icon } from "@justfixnyc/component-library";
 import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
@@ -32,8 +32,7 @@ export const Home: React.FC = () => {
   const { _ } = useLingui();
   const navigate = useNavigate();
   const [sessionUser, setUser] = useSessionStorage<GCEUser>("user");
-  const [address, setAddress, removeAddress] =
-    useSessionStorage<Address>("address");
+  const [, setAddress, removeAddress] = useSessionStorage<Address>("address");
   const [, , removeFormFields] = useSessionStorage<FormFields>("fields");
   const [lastStepReached, setLastStepReached] =
     useSessionStorage<ProgressStep>("lastStepReached");
@@ -87,10 +86,17 @@ export const Home: React.FC = () => {
       >
         <form className="geo-search-form" onSubmit={handleAddressSearch}>
           <GeoSearchInput
-            initialAddress={address}
+            //initialAddress={address}
             onChange={setGeoAddress}
             invalid={inputInvalid}
+            invalidText={_(msg`You must enter an address`)}
             setInvalid={setInputInvalid}
+            placeholder={
+              <>
+                <Icon icon="locationDot" />
+                <Trans>Enter your address</Trans>
+              </>
+            }
           />
           <Button type="submit" labelText={_(msg`Get started`)} />
         </form>

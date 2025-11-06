@@ -1,5 +1,5 @@
-@import "../../colors.scss";
-@import "../../mixins.scss";
+@use "../../colors" as *;
+@use "../../mixins" as *;
 
 #progress-bar {
   display: flex;
@@ -40,23 +40,11 @@
       text-decoration: none;
     }
 
-    .progress-bar__step__number {
-      display: flex;
-      justify-content: center;
-      border: 1px solid $OFF_BLACK;
-      border-radius: 1.9375rem;
-      width: 1.25rem;
-      height: 1.25rem;
+    .pill {
       margin-right: 0.38rem;
-      font-family: "Degular Text";
       font-size: 0.875rem;
       font-weight: 600;
       letter-spacing: -0.00963rem;
-    }
-
-    .progress-bar__step__number.visited {
-      background-color: $OFF_BLACK;
-      color: $OFF_WHITE_100;
     }
   }
 

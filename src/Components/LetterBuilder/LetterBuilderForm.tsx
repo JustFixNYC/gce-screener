@@ -1,17 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FieldPath, Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@justfixnyc/component-library";
 import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
-import { msg } from "@lingui/core/macro";
 
-import { handleFormNoDefault } from "../../form-utils";
+import { flattenExtraEmails, handleFormNoDefault } from "../../form-utils";
 import { ProgressBar } from "./ProgressBar/ProgressBar";
-import { FormFields, formSchema } from "../../types/LetterFormTypes";
+import {
+  formSchema,
+  FormFields,
+  FormContext,
+} from "../../types/LetterFormTypes";
 import { LandlordDetailsStep } from "./FormSteps/LandlordDetailsStep";
 import { UserDetailsStep } from "./FormSteps/UserDetailsStep";
-import { UserAddressStep } from "./FormSteps/UserAddressStep";
 import { MailChoiceStep } from "./FormSteps/MailChoiceStep";
 import { PreviewStep } from "./FormSteps/PreviewStep";
 import { buildLetterHtml } from "./Letter/letter-utils";
@@ -21,80 +22,93 @@ import {
 } from "../../types/APIDataTypes";
 import { useSendGceLetterData } from "../../api/hooks";
 import { ConfirmationStep } from "./FormSteps/ConfirmationStep";
-import { EmailChoiceStep } from "./FormSteps/EmailChoiceStep";
 import { useAddressModalHelpers } from "./AddressModalHelpers";
 import { ReasonStep } from "./FormSteps/ReasonStep";
 import { PlannedIncreaseStep } from "./FormSteps/PlannedIncreaseStep";
 import { AllowedIncreaseStep } from "./FormSteps/AllowedIncreaseStep";
 import { NonRenewalStep } from "./FormSteps/NonRenewalStep";
-import { GoodCauseGivenStep } from "./FormSteps/GoodCauseGivenStep";
+import "./LetterBuilderForm.scss";
 
 interface Step {
   id: string;
   name: string;
+  routeName: string;
   fields?: FieldPath<FormFields>[];
 }
 
-// TODO: refactor to include step component and/or submission function?
 const steps: Step[] = [
   {
     id: "Step 1",
     name: "Reason for letter",
+    routeName: "reason",
     fields: ["reason"],
   },
   {
     id: "Step 2",
     name: "Reason for letter",
+    routeName: "reason-details",
     fields: ["unreasonable_increase", "good_cause_given"],
   },
   {
     id: "Step 3",
     name: "Contact information",
-    fields: [
-      "user_details.email",
-      "user_details.phone_number",
-      "user_details.first_name",
-      "user_details.last_name",
-    ],
+    routeName: "contact-info",
+    fields: ["user_details"],
   },
   {
+    // TODO: Reorder steps. Putting landlord at the end until that step is finished
     id: "Step 4",
-    name: "Your address",
+    name: "Mail Choice",
+    routeName: "mail-choice",
     fields: [
-      "user_details.primary_line",
-      "user_details.secondary_line",
-      "user_details.city",
-      "user_details.state",
-      "user_details.zip_code",
-      "user_details.bbl",
+      "mail_choice",
+      "user_details.email",
+      "landlord_details.email",
+      "extra_emails",
     ],
   },
+  { id: "Step 5", name: "Preview", routeName: "preview" },
   {
-    id: "Step 5",
+    id: "Step 6",
     name: "Landlord details",
+    routeName: "landlord-details",
     fields: ["landlord_details"],
   },
-  { id: "Step 6", name: "Mail Choice" },
-  {
-    id: "Step 7",
-    name: "Email Choice",
-    fields: ["email_to_landlord", "landlord_details.email"],
-  },
-  { id: "Step 8", name: "Preview" },
-  { id: "Step 9", name: "Confirmation" },
+  { id: "Step 7", name: "Confirmation", routeName: "confirmation" },
 ];
 
 export const LetterBuilderForm: React.FC = () => {
-  const { _ } = useLingui();
-  const formHookReturn = useForm<FormFields>({
+  const { i18n } = useLingui();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const formMethods = useForm<FormFields>({
     // Issue with the inferred type being "unknown" when preprocess() is used to
     // handle values that should be changed to undefined
-    resolver: zodResolver(formSchema) as Resolver<FormFields>,
+    resolver: zodResolver(formSchema(i18n)) as Resolver<FormFields>,
     mode: "onSubmit",
+    defaultValues: {
+      user_details: { no_unit: false },
+      landlord_details: { no_unit: false },
+    },
   });
-  const { reset, trigger, handleSubmit, getValues, setValue } = formHookReturn;
+  const { reset, trigger, handleSubmit, getValues, clearErrors } =
+    formMethods;
 
   const [currentStep, setCurrentStep] = useState(0);
+
+  const getStepIndexFromPathname = (pathname: string): number => {
+    const parts = pathname.split("/").filter(Boolean);
+    const letterIndex = parts.indexOf("letter");
+    const routeSegment = letterIndex >= 0 ? parts[letterIndex + 1] : undefined;
+    const stepIndex = steps.findIndex((s) => s.routeName === routeSegment);
+    return stepIndex >= 0 ? stepIndex : 0;
+  };
+
+  // keeps LetterBuilderForm state in sync with URL
+  useEffect(() => {
+    setCurrentStep(getStepIndexFromPathname(location.pathname));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
 
   const processForm: SubmitHandler<FormFields> = (data: FormFields) => {
     console.log({ data });
@@ -113,7 +127,7 @@ export const LetterBuilderForm: React.FC = () => {
 
   const { handleAddressVerification, addressConfirmationModal } =
     useAddressModalHelpers({
-      formMethods: formHookReturn,
+      formMethods: formMethods,
       onAddressConfirmed: advanceToNextStep,
     });
 
@@ -123,9 +137,19 @@ export const LetterBuilderForm: React.FC = () => {
 
   const onLetterSubmit = async () => {
     const letterData = getValues();
-    const letterHtml = await buildLetterHtml(letterData, "en", true);
+    const letterHtml = await buildLetterHtml(letterData, "en");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { no_unit: _userNoUnit, ...userDetails } = letterData.user_details;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { no_unit: _landlordNoUnit, ...landlordDetails } =
+      letterData.landlord_details;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { user_details, landlord_details, ...letterFields } = letterData;
     const letterPostData: GCELetterPostData = {
-      ...letterData,
+      ...letterFields,
+      user_details: userDetails,
+      landlord_details: landlordDetails,
+      extra_emails: flattenExtraEmails(letterData.extra_emails),
       html_content: letterHtml,
     };
     const resp = await sendLetter(letterPostData);
@@ -133,15 +157,17 @@ export const LetterBuilderForm: React.FC = () => {
     return resp;
   };
 
-  // console.log({ landlordDetails: watch("landlord_details") });
+  // for flows with early completion (e.g. rent increase less than maximum %)
+  const shouldShowFullProgress =
+    currentStep === 2 &&
+    getValues("reason") === "PLANNED_INCREASE" &&
+    getValues("unreasonable_increase") === false;
 
   const next = async () => {
     const fields = steps[currentStep].fields;
 
-    // console.log(FormSchema.safeParse(getValues()));
     if (fields) {
       const output = await trigger(fields, { shouldFocus: true });
-      console.log({ output });
       if (!output) return;
     }
 
@@ -149,109 +175,77 @@ export const LetterBuilderForm: React.FC = () => {
       const isDeliverable = await handleAddressVerification(
         getValues("landlord_details")
       );
-      if (!isDeliverable) {
-        return;
-      }
+      if (!isDeliverable) return;
     }
 
     if (steps[currentStep].name === "Preview") {
       const resp = await onLetterSubmit();
-      if (!resp) {
-        return;
-      }
+      if (!resp) return;
     }
 
-    if (currentStep < steps.length - 1) {
-      if (currentStep === steps.length - 2) {
-        await handleSubmit(processForm)();
-      }
-      setCurrentStep((step) => step + 1);
+    if (currentStep >= steps.length - 1) return;
+    if (currentStep === steps.length - 2) {
+      await handleSubmit(processForm)();
     }
+    const nextStep = steps[currentStep + 1];
+    const nextPath = `/${i18n.locale}/letter/${nextStep.routeName}`;
+    navigate(nextPath, { preventScrollReset: true });
   };
 
-  const prev = () => {
-    const fields = steps[currentStep].fields;
-
-    if (currentStep > 0) {
-      // clear value on back
-      if (fields) {
-        fields.forEach((field) => {
-          setValue(field, undefined);
-        });
-      }
-      setCurrentStep((step) => step - 1);
+  const getPrevPath = (): string => {
+    if (currentStep === 0) {
+      return `/${i18n.locale}/letter`;
     }
+    const prevStep = steps[currentStep - 1];
+    return `/${i18n.locale}/letter/${prevStep.routeName}`;
+  };
+
+  const back = () => {
+    const fields = steps[currentStep].fields;
+    fields?.forEach((field) => {
+      clearErrors(field);
+    });
+
+    navigate(getPrevPath(), { preventScrollReset: true });
   };
 
   return (
+    // TODO: We should restructure this so steps without inputs aren't within
+    // <form> (ie. AllowedIncreaseStep, PreviewStep, ConfirmationStep)
     <form onSubmit={handleFormNoDefault(next)} className="letter-form">
-      <h3>
-        <Trans>Good Cause Letter Builder</Trans>
-      </h3>
-      <p>
-        <Trans>
-          Send a letter to your landlord via certified mail asserting your Good
-          Cause
-        </Trans>
-      </p>
-      <ProgressBar steps={steps} currentStep={currentStep} />
+      <ProgressBar
+        steps={steps}
+        currentStep={currentStep}
+        progressOverride={shouldShowFullProgress ? 100 : undefined}
+      />
       <div className="letter-form__content">
-        {currentStep === 0 && <ReasonStep {...formHookReturn} />}
-
-        {getValues("reason") === "PLANNED_INCREASE" && (
-          <>
-            {currentStep === 1 && <PlannedIncreaseStep {...formHookReturn} />}
-            {currentStep === 2 && (
-              <>
-                {getValues("unreasonable_increase") === false ? (
-                  <AllowedIncreaseStep {...formHookReturn} />
-                ) : (
-                  <UserDetailsStep {...formHookReturn} />
-                )}
-              </>
-            )}
-          </>
-        )}
-
-        {getValues("reason") === "NON_RENEWAL" && (
-          <>
-            {currentStep === 1 && <NonRenewalStep {...formHookReturn} />}
-            {currentStep === 2 && (
-              <>
-                {getValues("good_cause_given") === true ? (
-                  <GoodCauseGivenStep {...formHookReturn} />
-                ) : (
-                  <UserDetailsStep {...formHookReturn} />
-                )}
-              </>
-            )}
-          </>
-        )}
-
-        {currentStep === 3 && <UserAddressStep {...formHookReturn} />}
-        {currentStep === 4 && (
-          <LandlordDetailsStep
-            {...formHookReturn}
-            verifyAddressDeliverable={handleAddressVerification}
-          />
-        )}
-        {currentStep === 5 && <MailChoiceStep {...formHookReturn} />}
-        {currentStep === 6 && <EmailChoiceStep {...formHookReturn} />}
-        {currentStep === 7 && <PreviewStep {...formHookReturn} />}
-        {currentStep === 8 && (
-          <ConfirmationStep confirmationResponse={letterResp} />
-        )}
-      </div>
-      <div className="letter-form__buttons">
-        {currentStep > 0 && (
-          <Button variant="tertiary" labelText={_(msg`Back`)} onClick={prev} />
-        )}
-        <Button
-          labelText={
-            currentStep < steps.length - 1 ? _(msg`Next`) : _(msg`Submit`)
-          }
-          type="submit"
-        />
+        <FormContext.Provider value={{ formMethods, back, next }}>
+          {currentStep === 0 && <ReasonStep />}
+          {currentStep === 1 && (
+            <>
+              {getValues("reason") === "PLANNED_INCREASE" && (
+                <PlannedIncreaseStep />
+              )}
+              {getValues("reason") === "NON_RENEWAL" && <NonRenewalStep />}
+            </>
+          )}
+          {currentStep === 2 && (
+            <>
+              {getValues("reason") === "PLANNED_INCREASE" &&
+              getValues("unreasonable_increase") === false ? (
+                <AllowedIncreaseStep />
+              ) : (
+                <UserDetailsStep />
+              )}
+            </>
+          )}
+          {currentStep === 3 && <MailChoiceStep />}
+          {currentStep === 4 && <PreviewStep />}
+          {currentStep === 5 && <LandlordDetailsStep {...formMethods} verifyAddressDeliverable={handleAddressVerification} />}
+          {currentStep === 6 && (
+            <ConfirmationStep confirmationResponse={letterResp} />
+          )}
+        </FormContext.Provider>
       </div>
 
       {addressConfirmationModal}

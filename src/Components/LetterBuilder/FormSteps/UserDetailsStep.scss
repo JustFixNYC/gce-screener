@@ -1,0 +1,14 @@
+@use "../../../mixins" as *;
+@use "../../../variables" as *;
+
+#user-details-step {
+  .modal__content {
+    p {
+      margin-top: unset;
+    }
+    button {
+      width: auto;
+      margin-top: 1rem;
+    }
+  }
+}

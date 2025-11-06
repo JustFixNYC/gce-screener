@@ -1,39 +1,198 @@
-import { useLingui } from "@lingui/react";
-import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 
-import { FormHookProps } from "../../../types/LetterFormTypes";
 import { ContentBox, ContentBoxItem } from "../../ContentBox/ContentBox";
 import { GoodCauseProtections } from "../../KYRContent/KYRContent";
+import { Pill } from "../../Pill/Pill";
+import { JFCLLinkExternal } from "../../JFCLLink";
+import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
+import "./AllowedIncreaseStep.scss";
 
-export const AllowedIncreaseStep: React.FC<FormHookProps> = () => {
-  const { _ } = useLingui();
+export const AllowedIncreaseStep: React.FC = () => (
+  <div className="allowed-increase-step">
+    <section className="allowed-increase-warning">
+      <h3>
+        <Trans>
+          Your landlord’s proposed rent increase appears to be within the Good
+          Cause limit.
+        </Trans>
+      </h3>
+      <p>
+        <Trans>
+          You still have rights, and you may be able to negotiate a smaller
+          increase or request more information about how your rent is
+          determined.
+        </Trans>
+      </p>
+    </section>
+    <RentNegotiationTips />
+    <GoodCauseProtections />
+    <BackNextButtons hideButon2 />
+  </div>
+);
 
-  return (
-    <>
-      <ContentBox
-        subtitle={_(
-          msg`You have reported that your rent increase is less than the allowable amount.`
-        )}
-        className="allowed-increase"
-      >
-        <ContentBoxItem accordion={false}>
-          {/* TODO: This is not quite to designs, need to check with corey */}
-          <Trans>
-            Since your rent increase is below the allowable rent increase limit
-            under Good Cause, we cannot assert your Good Cause rights in regard
-            to your increase. However, here are some tips to help you negotiate
-            a lower increase.
-          </Trans>
-        </ContentBoxItem>
-        <ContentBoxItem title={_(msg`Tip 1`)}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. At deleniti,
-          minus ea laudantium, suscipit saepe explicabo velit quis beatae esse
-          iusto neque fuga rerum optio corporis labore maiores consequuntur
-          necessitatibus?
-        </ContentBoxItem>
-      </ContentBox>
-      <GoodCauseProtections />
-    </>
-  );
-};
+const PhaseInIncrease: React.FC = () => (
+  <ContentBoxItem
+    title={
+      <>
+        <Pill color="black" circle>
+          1
+        </Pill>
+        <Trans>Ask if your landlord can phase-in the increase</Trans>
+      </>
+    }
+  >
+    <p>
+      <Trans>
+        Even if the full increase is allowed under Good Cause, you can ask to
+        spread it out over several months.
+      </Trans>
+    </p>
+    <p>
+      <Trans>
+        Example: If your rent is going up 8%, you could propose a 4% increase
+        now and another 4% later in the year.
+      </Trans>
+    </p>
+    <p>
+      <Trans>
+        This approach can make the increase more manageable while showing your
+        landlord you’re willing to meet halfway.
+      </Trans>
+    </p>
+  </ContentBoxItem>
+);
+const HighlightTrackRecord: React.FC = () => (
+  <ContentBoxItem
+    title={
+      <>
+        <Pill color="black" circle>
+          2
+        </Pill>
+        <Trans>Highlight your track record as a reliable tenant</Trans>
+      </>
+    }
+  >
+    <p>
+      <Trans>
+        Remind your landlord that you’ve paid rent on time, taken care of the
+        unit, and been a responsible tenant.
+      </Trans>
+    </p>
+    <p>
+      <Trans>
+        Landlords often value stability, especially in a competitive market. A
+        short, polite message pointing out your reliability can strengthen your
+        case for a smaller increase.
+      </Trans>
+    </p>
+  </ContentBoxItem>
+);
+const AskIncreaseReason: React.FC = () => (
+  <ContentBoxItem
+    title={
+      <>
+        <Pill color="black" circle>
+          3
+        </Pill>
+        <Trans>Ask what’s driving the increase</Trans>
+      </>
+    }
+  >
+    <p>
+      <Trans>
+        Politely ask your landlord to explain the reason for the increase. For
+        example, higher property taxes or maintenance costs.
+      </Trans>
+    </p>
+    <p>
+      <Trans>
+        Understanding the cause can help you decide whether the increase seems
+        fair and whether you have room to negotiate.
+      </Trans>
+    </p>
+    <p>
+      <Trans>
+        If costs haven’t clearly gone up, that may strengthen your argument for
+        a smaller raise.
+      </Trans>
+    </p>
+  </ContentBoxItem>
+);
+const OfferLongerLease: React.FC = () => (
+  <ContentBoxItem
+    title={
+      <>
+        <Pill color="black" circle>
+          4
+        </Pill>
+        <Trans>Offer a longer lease in exchange for a smaller increase</Trans>
+      </>
+    }
+  >
+    <p>
+      <Trans>
+        If you plan to stay long-term, you could offer to renew for two years
+        instead of one in exchange for a smaller rent increase.
+      </Trans>
+    </p>
+    <p>
+      <Trans>
+        Many landlords prefer stable, predictable tenants. This saves them time
+        and reduces turnover. Framing it as a win-win can make this offer
+        appealing.
+      </Trans>
+    </p>
+  </ContentBoxItem>
+);
+const GetOrganizationSupport: React.FC = () => (
+  <ContentBoxItem
+    title={
+      <>
+        <Pill color="black" circle>
+          5
+        </Pill>
+        <Trans>Get support from a tenant organization</Trans>
+      </>
+    }
+  >
+    <p>
+      <Trans>
+        Tenant support groups can help you draft messages, practice negotiation
+        conversations, or understand your rights if your landlord refuses to
+        negotiate.
+      </Trans>
+    </p>
+    <section>
+      <h5>
+        <Trans>Organizations that can help</Trans>
+      </h5>
+      <ul>
+        <li>
+          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/">
+            <Trans>Met Council on Housing</Trans>
+          </JFCLLinkExternal>
+        </li>
+        <li>
+          <JFCLLinkExternal to="https://housingcourtanswers.org/answers/for-tenants/">
+            <Trans>Housing Court Answers</Trans>
+          </JFCLLinkExternal>
+        </li>
+        <li>
+          <JFCLLinkExternal to="https://www.nyc.gov/site/mayorspeu/programs/tenant-support-unit.page">
+            <Trans>Tenant Support Unit (311)</Trans>
+          </JFCLLinkExternal>
+        </li>
+      </ul>
+    </section>
+  </ContentBoxItem>
+);
+
+const RentNegotiationTips: React.FC = () => (
+  <ContentBox subtitle={<Trans>Tips for negotiating a smaller increase</Trans>}>
+    <PhaseInIncrease />
+    <HighlightTrackRecord />
+    <AskIncreaseReason />
+    <OfferLongerLease />
+    <GetOrganizationSupport />
+  </ContentBox>
+);

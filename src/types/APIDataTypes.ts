@@ -115,7 +115,13 @@ export type GCEPostData = {
   result_url?: string;
 };
 
-export type GCELetterPostData = FormFields & {
+export type GCELetterPostData = Omit<
+  FormFields,
+  "user_details" | "landlord_details" | "extra_emails"
+> & {
+  user_details: Omit<FormFields["user_details"], "no_unit">;
+  landlord_details: Omit<FormFields["landlord_details"], "no_unit">;
+  extra_emails?: string[];
   html_content: string;
 };
 
@@ -134,9 +140,13 @@ export type GCELetterConfirmation = {
   data: {
     user_email?: string;
     landlord_email?: string;
+    extra_emails?: string[];
     user_phone_number: string;
+    mail_choice: FormFields["mail_choice"];
     letter_pdf: string;
     tracking_number?: string;
+    reason: FormFields["reason"];
+    good_cause_given?: boolean;
   };
 };
 
