@@ -177,6 +177,8 @@ export const formSchema = (i18n: I18n) => {
   });
 };
 
+export type LobAddressFields = z.infer<ReturnType<typeof lobAddressSchema>>;
+
 export type FormFields = z.infer<ReturnType<typeof formSchema>>;
 
 export type FormHookProps = UseFormReturn<FormFields>;

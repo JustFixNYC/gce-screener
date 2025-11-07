@@ -6,6 +6,7 @@ import { msg } from "@lingui/core/macro";
 
 import Modal from "../Modal/Modal";
 import { LOBVerificationResponse } from "../../types/APIDataTypes";
+import { LobAddressFields } from "../../types/LetterFormTypes";
 import "./AddressConfirmationModal.scss";
 
 interface AddressConfirmationModalProps {
@@ -13,13 +14,7 @@ interface AddressConfirmationModalProps {
   onClose: () => void;
   onConfirm: () => void;
   onBack: () => void;
-  inputAddress: {
-    primary_line: string;
-    secondary_line?: string;
-    city: string;
-    state: string;
-    zip_code: string;
-  };
+  inputAddress: LobAddressFields;
   lobAddress: LOBVerificationResponse;
   type: "undeliverable" | "better_address";
 }
@@ -39,6 +34,7 @@ export const AddressConfirmationModal: React.FC<
 
   const formatAddress = () => {
     return [
+      inputAddress.urbanization,
       inputAddress.primary_line,
       inputAddress.secondary_line,
       `${inputAddress.city}, ${inputAddress.state} ${inputAddress.zip_code}`,
@@ -47,6 +43,7 @@ export const AddressConfirmationModal: React.FC<
 
   const formatLOBAddress = () => {
     return [
+      lobAddress.urbanization,
       lobAddress.primary_line,
       lobAddress.secondary_line,
       `${lobAddress.components.city}, ${lobAddress.components.state} ${lobAddress.components.zip_code}`,
