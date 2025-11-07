@@ -9,6 +9,13 @@ import { LOBVerificationResponse } from "../../types/APIDataTypes";
 import { LobAddressFields } from "../../types/LetterFormTypes";
 import "./AddressConfirmationModal.scss";
 
+export type AddressModalType =
+  | "undeliverable"
+  | "better_address"
+  | "missing_unit"
+  | "incorrect_unit"
+  | "unnecessary_unit";
+
 interface AddressConfirmationModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -16,7 +23,7 @@ interface AddressConfirmationModalProps {
   onBack: () => void;
   inputAddress: LobAddressFields;
   lobAddress: LOBVerificationResponse;
-  type: "undeliverable" | "better_address";
+  type: AddressModalType;
 }
 
 export const AddressConfirmationModal: React.FC<

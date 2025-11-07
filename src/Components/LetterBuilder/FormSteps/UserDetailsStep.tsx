@@ -123,7 +123,7 @@ export const UserDetailsStep: React.FC = () => {
             if (isError) {
               setError("user_details.primary_line", {
                 type: "custom",
-                message: "Error with address selection",
+                message: _(msg`Error with address selection`),
               });
             }
           }}

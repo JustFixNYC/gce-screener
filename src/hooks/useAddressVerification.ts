@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { Tenants2ApiFetcherVerifyAddress } from "../api/helpers";
-import { FormFields } from "../types/LetterFormTypes";
+import { FormFields, LobAddressFields } from "../types/LetterFormTypes";
 import { LOBVerificationResponse } from "../types/APIDataTypes";
 
 interface AddressVerificationState {
@@ -12,7 +12,7 @@ interface AddressVerificationState {
     | "confirmed"
     | "rejected";
   data?: {
-    inputAddress: Omit<FormFields["landlord_details"], "name" | "email">;
+    inputAddress: LobAddressFields;
     lobAddress: LOBVerificationResponse;
   };
 }
@@ -20,7 +20,7 @@ interface AddressVerificationState {
 interface VerificationResult {
   needsConfirmation: boolean;
   data?: {
-    inputAddress: Omit<FormFields["landlord_details"], "name" | "email">;
+    inputAddress: LobAddressFields;
     lobAddress: LOBVerificationResponse;
   };
   isDeliverable?: boolean;
@@ -41,7 +41,7 @@ export const useAddressVerification = (
   } = formMethods;
 
   const verifyAndConfirm = async (
-    addressData: Omit<FormFields["landlord_details"], "name" | "email">
+    addressData: LobAddressFields
   ): Promise<VerificationResult> => {
     setVerificationState({ status: "verifying" });
 

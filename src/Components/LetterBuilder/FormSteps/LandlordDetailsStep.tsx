@@ -12,7 +12,11 @@ import {
 
 import { useGetLandlordData } from "../../../api/hooks";
 import { LandlordContact, LandlordData } from "../../../types/APIDataTypes";
-import { FormContext, FormFields } from "../../../types/LetterFormTypes";
+import {
+  FormContext,
+  FormFields,
+  LobAddressFields,
+} from "../../../types/LetterFormTypes";
 import Modal from "../../Modal/Modal";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
@@ -65,7 +69,7 @@ const wowContactToLandlordDetails = (
 
 export const LandlordDetailsStep: React.FC<{
   verifyAddressDeliverable?: (
-    data: Omit<FormFields["landlord_details"], "name" | "email">
+    data: LobAddressFields
   ) => Promise<boolean | undefined>;
 }> = ({ verifyAddressDeliverable }) => {
   const {
@@ -268,9 +272,9 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           type="text"
           autoFocus
           defaultValue={currentValues?.name || ""}
-          style={{ textTransform: "uppercase" }}
+          // style={{ textTransform: "uppercase" }}
           onBlur={(e) =>
-            setValue("landlord_details.name", e.target.value.toUpperCase(), {
+            setValue("landlord_details.name", e.target.value, {
               shouldValidate: !!errors.landlord_details?.name,
               shouldDirty: true,
             })

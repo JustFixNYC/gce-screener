@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { UseFormReturn } from "react-hook-form";
-import { FormFields } from "../../types/LetterFormTypes";
+import { useLingui } from "@lingui/react";
+import { msg } from "@lingui/core/macro";
+
+import { FormFields, LobAddressFields } from "../../types/LetterFormTypes";
 import { useAddressVerification } from "../../hooks/useAddressVerification";
-import { AddressConfirmationModal } from "../AddressConfirmationModal/AddressConfirmationModal";
+import {
+  AddressConfirmationModal,
+  AddressModalType,
+} from "../AddressConfirmationModal/AddressConfirmationModal";
 
 interface AddressModalHelpersProps {
   formMethods: UseFormReturn<FormFields>;
@@ -15,9 +21,8 @@ export const useAddressModalHelpers = ({
 }: AddressModalHelpersProps) => {
   const { setError } = formMethods;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalType, setModalType] = useState<
-    "undeliverable" | "better_address" | null
-  >(null);
+  const [modalType, setModalType] = useState<AddressModalType | null>(null);
+  const { _ } = useLingui();
 
   const {
     verifyAndConfirm,
@@ -27,42 +32,42 @@ export const useAddressModalHelpers = ({
   } = useAddressVerification(formMethods);
 
   const handleAddressVerification = async (
-    data: Omit<FormFields["landlord_details"], "name" | "email">
+    data: LobAddressFields
   ): Promise<boolean> => {
     const result = await verifyAndConfirm(data);
 
-    if (result.needsConfirmation && result.data) {
-      // Set the modal type based on the verification result
-      if (!result.isDeliverable) {
-        setError("landlord_details", {
-          type: "lob_verification",
-          message: "Landlord address as entered is not deliverable by USPS",
-        });
-        setModalType("undeliverable");
-      } else {
-        const inputAddress =
-          data.primary_line +
-          data.secondary_line +
-          data.city +
-          data.state +
-          data.zip_code;
-        const lobAddress =
-          result.data.lobAddress.primary_line +
-          result.data.lobAddress.components.city +
-          result.data.lobAddress.components.state +
-          result.data.lobAddress.components.zip_code;
-        const hasBetterAddress = inputAddress !== lobAddress;
-
-        if (hasBetterAddress) {
-          setModalType("better_address");
-        }
-      }
-
-      setIsModalOpen(true);
-      return false; // Don't proceed to next step
+    if (!(result.needsConfirmation && result.data)) {
+      return result.isDeliverable || false;
     }
 
-    return result.isDeliverable || false;
+    // Set the modal type based on the verification result
+    if (!result.isDeliverable) {
+      setError("landlord_details", {
+        type: "lob_verification",
+        message: _(msg`Landlord address as entered is not deliverable by USPS`),
+      });
+      setModalType("undeliverable");
+    } else {
+      const inputAddress =
+        data.primary_line +
+        data.secondary_line +
+        data.city +
+        data.state +
+        data.zip_code;
+      const lobAddress =
+        result.data.lobAddress.primary_line +
+        result.data.lobAddress.components.city +
+        result.data.lobAddress.components.state +
+        result.data.lobAddress.components.zip_code;
+      const hasBetterAddress = inputAddress !== lobAddress;
+
+      if (hasBetterAddress) {
+        setModalType("better_address");
+      }
+    }
+
+    setIsModalOpen(true);
+    return false; // Don't proceed to next step
   };
 
   // Address confirmation modal handlers
