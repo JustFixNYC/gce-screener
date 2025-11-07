@@ -409,25 +409,23 @@ export const RefuseSmallerIncrease: React.FC<NextStepItemProps> = (props) => (
     <strong>
       <Trans>What to do</Trans>
     </strong>
-    <p>
-      <ul>
-        <li>
-          <Trans>Document their refusal or lack of response.</Trans>
-        </li>
-        <li>
-          <Trans>
-            Keep paying rent under your current lease. You don’t need to accept
-            the higher amount.
-          </Trans>
-        </li>
-        <li>
-          <Trans>
-            Contact a tenant support organization for guidance or help drafting
-            a follow-up letter.
-          </Trans>
-        </li>
-      </ul>
-    </p>
+    <ul>
+      <li>
+        <Trans>Document their refusal or lack of response.</Trans>
+      </li>
+      <li>
+        <Trans>
+          Keep paying rent under your current lease. You don’t need to accept
+          the higher amount.
+        </Trans>
+      </li>
+      <li>
+        <Trans>
+          Contact a tenant support organization for guidance or help drafting a
+          follow-up letter.
+        </Trans>
+      </li>
+    </ul>
   </ContentBoxItem>
 );
 
@@ -502,29 +500,27 @@ export const NoSmallerIncreaseBeforeLeaseEnd: React.FC<NextStepItemProps> = (
     <strong>
       <Trans>What to do</Trans>
     </strong>
-    <p>
-      <ul>
-        <li>
-          <Trans>If possible, keep paying rent under your current lease.</Trans>
-        </li>
-        <li>
-          <Trans>Avoid signing a new lease with an illegal increase.</Trans>
-        </li>
-        <li>
-          <Trans>
-            You can continue to stay in your apartment and abide by the terms of
-            your existing or most recent lease. This includes continuing to pay
-            the rent amount on your most recent lease.
-          </Trans>
-        </li>
-        <li>
-          <Trans>
-            Reach out to a tenant support or legal aid organization for advice
-            before signing anything new.
-          </Trans>
-        </li>
-      </ul>
-    </p>
+    <ul>
+      <li>
+        <Trans>If possible, keep paying rent under your current lease.</Trans>
+      </li>
+      <li>
+        <Trans>Avoid signing a new lease with an illegal increase.</Trans>
+      </li>
+      <li>
+        <Trans>
+          You can continue to stay in your apartment and abide by the terms of
+          your existing or most recent lease. This includes continuing to pay
+          the rent amount on your most recent lease.
+        </Trans>
+      </li>
+      <li>
+        <Trans>
+          Reach out to a tenant support or legal aid organization for advice
+          before signing anything new.
+        </Trans>
+      </li>
+    </ul>
   </ContentBoxItem>
 );
 

@@ -16,7 +16,10 @@ import {
 } from "../../../types/LetterFormTypes";
 import Modal from "../../Modal/Modal";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
+import { StepRouteName } from "../LetterSteps";
+import { LetterStepForm } from "../LetterBuilderForm";
 import "./FormSteps.scss";
+import "./NonRenewalStep.scss";
 
 export const NonRenewalStep: React.FC = () => {
   const {
@@ -34,6 +37,8 @@ export const NonRenewalStep: React.FC = () => {
   // fixes issue with type inference with this typeguard
   if (!isNonRenewalErrors(errors, watch("reason"))) return null;
 
+  const nextStep: StepRouteName = "contact_info";
+
   const button2Props: Partial<ButtonProps> = watch("good_cause_given")
     ? {
         type: "button",
@@ -42,70 +47,72 @@ export const NonRenewalStep: React.FC = () => {
     : {};
 
   return (
-    <>
-      <FormGroup
-        legendText={_(
-          msg`Has your landlord provided any of the following reasons for ending your tenancy?`
-        )}
-        invalid={!!errors?.good_cause_given}
-        invalidText={errors?.good_cause_given?.message}
-        invalidRole="status"
-      >
-        <ul>
-          <li>
-            <Trans>Non payment of rent</Trans>
-          </li>
-          <li>
-            <Trans>Lease violations</Trans>
-          </li>
-          <li>
-            <Trans>Nuisance activity</Trans>
-          </li>
-          <li>
-            <Trans>Illegal Activity</Trans>
-          </li>
-          <li>
-            <Trans>Landlord personal use/removal from market</Trans>
-          </li>
-          <li>
-            <Trans>Demolition</Trans>
-          </li>
-          <li>
-            <Trans>
-              Failure to sign lease renewal or provide access to apartment
-            </Trans>
-          </li>
-        </ul>
-        <Controller
-          name="good_cause_given"
-          control={control}
-          render={({ field }) => (
-            <SelectButton
-              {...field}
-              value="true"
-              checked={field.value === true}
-              onChange={() => field.onChange(true)}
-              labelText={_(msg`Yes`)}
-              id="reason-verified__yes"
-            />
+    <div className="non-renewal-step">
+      <LetterStepForm nextStep={nextStep}>
+        <FormGroup
+          legendText={_(
+            msg`Has your landlord provided any of the following reasons for ending your tenancy?`
           )}
-        />
-        <Controller
-          name="good_cause_given"
-          control={control}
-          render={({ field }) => (
-            <SelectButton
-              {...field}
-              value="false"
-              checked={field.value === false}
-              onChange={() => field.onChange(false)}
-              labelText={_(msg`No`)}
-              id="reason-verified__no"
-            />
-          )}
-        />
-        <BackNextButtons button2Props={button2Props} />
-      </FormGroup>
+          invalid={!!errors?.good_cause_given}
+          invalidText={errors?.good_cause_given?.message}
+          invalidRole="status"
+        >
+          <ul>
+            <li>
+              <Trans>Non payment of rent</Trans>
+            </li>
+            <li>
+              <Trans>Lease violations</Trans>
+            </li>
+            <li>
+              <Trans>Nuisance activity</Trans>
+            </li>
+            <li>
+              <Trans>Illegal Activity</Trans>
+            </li>
+            <li>
+              <Trans>Landlord personal use/removal from market</Trans>
+            </li>
+            <li>
+              <Trans>Demolition</Trans>
+            </li>
+            <li>
+              <Trans>
+                Failure to sign lease renewal or provide access to apartment
+              </Trans>
+            </li>
+          </ul>
+          <Controller
+            name="good_cause_given"
+            control={control}
+            render={({ field }) => (
+              <SelectButton
+                {...field}
+                value="true"
+                checked={field.value === true}
+                onChange={() => field.onChange(true)}
+                labelText={_(msg`Yes`)}
+                id="reason-verified__yes"
+              />
+            )}
+          />
+          <Controller
+            name="good_cause_given"
+            control={control}
+            render={({ field }) => (
+              <SelectButton
+                {...field}
+                value="false"
+                checked={field.value === false}
+                onChange={() => field.onChange(false)}
+                labelText={_(msg`No`)}
+                id="reason-verified__no"
+              />
+            )}
+          />
+        </FormGroup>
+        <BackNextButtons button2Props={button2Props} backStepName="reason" />
+      </LetterStepForm>
 
       <Modal
         isOpen={showModal}
@@ -128,16 +135,19 @@ export const NonRenewalStep: React.FC = () => {
               Cause right to a lease renewal.
             </Trans>
           </p>
-          <div>
+          <div className="buttons">
             <Button
               variant="secondary"
               labelText={_(msg`Back`)}
               onClick={() => setShowModal(false)}
             />
-            <Button labelText={_(msg`Continue`)} onClick={next} />
+            <Button
+              labelText={_(msg`Continue`)}
+              onClick={() => next(nextStep)}
+            />
           </div>
         </section>
       </Modal>
-    </>
+    </div>
   );
 };

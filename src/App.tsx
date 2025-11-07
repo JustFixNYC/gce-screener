@@ -33,6 +33,7 @@ import {
   LetterSender,
   LetterTestSender,
 } from "./Components/Pages/LetterSender/LetterSender";
+import { stepRouteNames } from "./Components/LetterBuilder/LetterSteps";
 import "./App.scss";
 
 const Layout = () => {
@@ -210,14 +211,13 @@ const router = createBrowserRouter(
         />
         <Route path="letter" element={<LetterLayout />}>
           <Route index element={<LetterLanding />} />
-          <Route path="reason" element={<LetterSender />} />
-          <Route path="reason-details" element={<LetterSender />} />
-          <Route path="contact-info" element={<LetterSender />} />
-          <Route path="address" element={<LetterSender />} />
-          <Route path="mail-choice" element={<LetterSender />} />
-          <Route path="landlord-details" element={<LetterSender />} />
-          <Route path="preview" element={<LetterSender />} />
-          <Route path="confirmation" element={<LetterSender />} />
+          {stepRouteNames.map((stepRouteName, index) => (
+            <Route
+              path={stepRouteName}
+              element={<LetterSender />}
+              key={index}
+            />
+          ))}
           <Route path="next-steps" element={<LetterNextStepsStandalone />} />
           <Route path="submission-test" element={<LetterTestSender />} />
         </Route>

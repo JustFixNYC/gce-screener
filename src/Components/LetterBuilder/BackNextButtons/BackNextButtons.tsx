@@ -1,38 +1,43 @@
-import { Button, ButtonProps } from "@justfixnyc/component-library";
+import { useContext } from "react";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
-import { useContext } from "react";
+import { Button, ButtonProps } from "@justfixnyc/component-library";
+
 import { FormContext } from "../../../types/LetterFormTypes";
+import { StepRouteName } from "../LetterSteps";
 import "./BackNextButtons.scss";
 
 interface BackNextButtonProps {
+  // TODO: make backStepName not required if hideButon1
+  backStepName: StepRouteName;
   button1Props?: Partial<ButtonProps>;
   button2Props?: Partial<ButtonProps>;
-  hideButon1?: boolean;
-  hideButon2?: boolean;
+  hideButton1?: boolean;
+  hideButton2?: boolean;
 }
 
 export const BackNextButtons: React.FC<BackNextButtonProps> = ({
+  backStepName,
   button1Props,
   button2Props,
-  hideButon1 = false,
-  hideButon2 = false,
+  hideButton1 = false,
+  hideButton2 = false,
 }) => {
   const { back } = useContext(FormContext);
   const { _ } = useLingui();
   return (
     <div className="letter-form__buttons">
-      {!hideButon1 && (
+      {!hideButton1 && (
         <Button
           labelText={_(msg`Back`)}
           labelIcon="chevronLeft"
           variant="tertiary"
-          onClick={back}
+          onClick={() => back(backStepName)}
           className="back-link jfcl-link"
           {...button1Props}
         />
       )}
-      {!hideButon2 && (
+      {!hideButton2 && (
         <Button labelText={_(msg`Next`)} type="submit" {...button2Props} />
       )}
     </div>
