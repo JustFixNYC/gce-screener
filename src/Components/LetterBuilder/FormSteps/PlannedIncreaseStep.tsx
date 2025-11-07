@@ -17,12 +17,11 @@ import {
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { StepRouteName } from "../LetterSteps";
-import { handleFormNoDefault } from "../../../form-utils";
+import { LetterStepForm } from "../LetterBuilderForm";
 import "./FormSteps.scss";
 
 export const PlannedIncreaseStep: React.FC = () => {
   const {
-    next,
     formMethods: {
       control,
       watch,
@@ -42,11 +41,9 @@ export const PlannedIncreaseStep: React.FC = () => {
       ? "allowed_increase"
       : undefined;
 
-  const onSubmit = handleFormNoDefault(() => next(nextStep));
-
   return (
     <div className="reason-details-step">
-      <form onSubmit={onSubmit} className="letter-form">
+      <LetterStepForm nextStep={nextStep}>
         <FormGroup
           legendText={_(
             msg`Is your landlord increasing your monthly rent beyond ${
@@ -88,7 +85,7 @@ export const PlannedIncreaseStep: React.FC = () => {
           />
         </FormGroup>
         <BackNextButtons backStepName="reason" />
-      </form>
+      </LetterStepForm>
     </div>
   );
 };

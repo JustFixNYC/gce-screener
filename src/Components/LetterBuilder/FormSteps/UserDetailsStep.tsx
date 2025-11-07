@@ -12,7 +12,6 @@ import {
 
 import {
   formatPhoneNumber,
-  handleFormNoDefault,
   parseFormattedPhoneNumber,
 } from "../../../form-utils";
 import { InfoBox } from "../../InfoBox/InfoBox";
@@ -21,9 +20,10 @@ import { FormContext, FormFields } from "../../../types/LetterFormTypes";
 import { Address } from "../../Pages/Home/Home";
 import Modal from "../../Modal/Modal";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
+import { StepRouteName } from "../LetterSteps";
+import { LetterStepForm } from "../LetterBuilderForm";
 import "./FormSteps.scss";
 import "./UserDetailsStep.scss";
-import { StepRouteName } from "../LetterSteps";
 
 const geosearchToLOBAddressWithBBL = (
   addr: Address
@@ -42,7 +42,6 @@ const geosearchToLOBAddressWithBBL = (
 
 export const UserDetailsStep: React.FC = () => {
   const {
-    next,
     formMethods: {
       register,
       setValue,
@@ -63,8 +62,6 @@ export const UserDetailsStep: React.FC = () => {
   const prevStep: StepRouteName =
     watch("reason") === "PLANNED_INCREASE" ? "rent_increase" : "non_renewal";
 
-  const onSubmit = handleFormNoDefault(() => next("landlord_details"));
-
   // used to prefill address input when user has clicked back from the next step
   const initialAddress: Address | undefined =
     userDetails?.primary_line && userDetails?.city && userDetails?.bbl
@@ -84,7 +81,7 @@ export const UserDetailsStep: React.FC = () => {
 
   return (
     <div id="user-details-step">
-      <form onSubmit={onSubmit} className="letter-form">
+      <LetterStepForm nextStep={"landlord_details"}>
         <FormGroup
           legendText={_(msg`Your mailing address`)}
           helperElement={
@@ -218,7 +215,7 @@ export const UserDetailsStep: React.FC = () => {
           </div>
         </FormGroup>
         <BackNextButtons backStepName={prevStep} />
-      </form>
+      </LetterStepForm>
 
       <Modal
         isOpen={showModal}

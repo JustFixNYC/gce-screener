@@ -9,14 +9,13 @@ import Modal from "../../Modal/Modal";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { FormContext } from "../../../types/LetterFormTypes";
+import { StepRouteName } from "../LetterSteps";
+import { LetterStepForm } from "../LetterBuilderForm";
 import "./ReasonStep.scss";
 import "./FormSteps.scss";
-import { handleFormNoDefault } from "../../../form-utils";
-import { StepRouteName } from "../LetterSteps";
 
 export const ReasonStep: React.FC = () => {
   const {
-    next,
     formMethods: {
       watch,
       register,
@@ -34,11 +33,9 @@ export const ReasonStep: React.FC = () => {
       ? "non_renewal"
       : undefined;
 
-  const onSubmit = handleFormNoDefault(() => next(nextStep));
-
   return (
     <div id="reason-step">
-      <form onSubmit={onSubmit} className="letter-form">
+      <LetterStepForm nextStep={nextStep}>
         <FormGroup
           legendText={_(msg`Select the reason for your letter`)}
           invalid={!!errors?.reason}
@@ -64,7 +61,7 @@ export const ReasonStep: React.FC = () => {
           </div>
         </FormGroup>
         <BackNextButtons hideButton1 backStepName="reason" />
-      </form>
+      </LetterStepForm>
 
       <Modal
         isOpen={showModal}

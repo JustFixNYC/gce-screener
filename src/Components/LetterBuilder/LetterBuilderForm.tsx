@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLingui } from "@lingui/react";
 
-import { flattenExtraEmails } from "../../form-utils";
+import { flattenExtraEmails, handleFormNoDefault } from "../../form-utils";
 import {
   formSchema,
   FormFields,
@@ -49,6 +49,7 @@ export const LetterBuilderForm: React.FC = () => {
   } = formMethods;
 
   const currentStep = getStepFromPathname(location.pathname);
+  console.log(currentStep);
 
   const [confirmationResponse, setConfirmationResponse] =
     useState<GCELetterConfirmation>();
@@ -153,4 +154,17 @@ const getStepFromPathname = (pathname: string): LetterStep => {
   const letterIndex = parts.indexOf("letter");
   const routeSegment = letterIndex >= 0 ? parts[letterIndex + 1] : undefined;
   return letterSteps[routeSegment as StepRouteName];
+};
+
+export const LetterStepForm: React.FC<{
+  nextStep?: StepRouteName;
+  children: React.ReactNode;
+}> = ({ nextStep, children }) => {
+  const { next } = useContext(FormContext);
+  const onSubmit = handleFormNoDefault(() => next(nextStep));
+  return (
+    <form onSubmit={onSubmit} className="letter-form">
+      {children}
+    </form>
+  );
 };

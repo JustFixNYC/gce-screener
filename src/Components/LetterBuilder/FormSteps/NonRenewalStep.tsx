@@ -16,8 +16,8 @@ import {
 } from "../../../types/LetterFormTypes";
 import Modal from "../../Modal/Modal";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
-import { handleFormNoDefault } from "../../../form-utils";
 import { StepRouteName } from "../LetterSteps";
+import { LetterStepForm } from "../LetterBuilderForm";
 import "./FormSteps.scss";
 import "./NonRenewalStep.scss";
 
@@ -39,8 +39,6 @@ export const NonRenewalStep: React.FC = () => {
 
   const nextStep: StepRouteName = "contact_info";
 
-  const onSubmit = handleFormNoDefault(() => next(nextStep));
-
   const button2Props: Partial<ButtonProps> = watch("good_cause_given")
     ? {
         type: "button",
@@ -49,8 +47,8 @@ export const NonRenewalStep: React.FC = () => {
     : {};
 
   return (
-    <form onSubmit={onSubmit} className="letter-form">
-      <div className="non-renewal-step">
+    <div className="non-renewal-step">
+      <LetterStepForm nextStep={nextStep}>
         <FormGroup
           legendText={_(
             msg`Has your landlord provided any of the following reasons for ending your tenancy?`
@@ -112,44 +110,44 @@ export const NonRenewalStep: React.FC = () => {
               />
             )}
           />
-          <BackNextButtons button2Props={button2Props} backStepName="reason" />
         </FormGroup>
+        <BackNextButtons button2Props={button2Props} backStepName="reason" />
+      </LetterStepForm>
 
-        <Modal
-          isOpen={showModal}
-          onClose={() => setShowModal(false)}
-          hasCloseBtn={true}
-          header={_(msg`Something to know`)}
-        >
-          <section>
-            <p>
-              <Trans>
-                You’ve shared that your landlord has provided a reason for
-                ending your tenancy. If the reason that your landlord provided
-                is legitimate,{" "}
-                <strong>you may not be guaranteed a lease renewal.</strong>
-              </Trans>
-            </p>
-            <p>
-              <Trans>
-                We still recommend continuing to send a letter asserting your
-                Good Cause right to a lease renewal.
-              </Trans>
-            </p>
-            <div className="buttons">
-              <Button
-                variant="secondary"
-                labelText={_(msg`Back`)}
-                onClick={() => setShowModal(false)}
-              />
-              <Button
-                labelText={_(msg`Continue`)}
-                onClick={() => next(nextStep)}
-              />
-            </div>
-          </section>
-        </Modal>
-      </div>
-    </form>
+      <Modal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        hasCloseBtn={true}
+        header={_(msg`Something to know`)}
+      >
+        <section>
+          <p>
+            <Trans>
+              You’ve shared that your landlord has provided a reason for ending
+              your tenancy. If the reason that your landlord provided is
+              legitimate,{" "}
+              <strong>you may not be guaranteed a lease renewal.</strong>
+            </Trans>
+          </p>
+          <p>
+            <Trans>
+              We still recommend continuing to send a letter asserting your Good
+              Cause right to a lease renewal.
+            </Trans>
+          </p>
+          <div className="buttons">
+            <Button
+              variant="secondary"
+              labelText={_(msg`Back`)}
+              onClick={() => setShowModal(false)}
+            />
+            <Button
+              labelText={_(msg`Continue`)}
+              onClick={() => next(nextStep)}
+            />
+          </div>
+        </section>
+      </Modal>
+    </div>
   );
 };

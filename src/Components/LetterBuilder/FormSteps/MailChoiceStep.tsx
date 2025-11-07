@@ -16,12 +16,11 @@ import { InfoBox } from "../../InfoBox/InfoBox";
 import { Pill } from "../../Pill/Pill";
 import { FormContext } from "../../../types/LetterFormTypes";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
-import { handleFormNoDefault } from "../../../form-utils";
+import { LetterStepForm } from "../LetterBuilderForm";
 import "./MailChoiceStep.scss";
 
 export const MailChoiceStep: React.FC = () => {
   const {
-    next,
     formMethods: {
       register,
       control,
@@ -37,10 +36,8 @@ export const MailChoiceStep: React.FC = () => {
 
   const { _ } = useLingui();
 
-  const onSubmit = handleFormNoDefault(() => next("confirmation"));
-
   return (
-    <form onSubmit={onSubmit} className="letter-form">
+    <LetterStepForm nextStep={"confirmation"}>
       <div id="mail-choice-step">
         <div className="mail-choice-step__header">
           <h3>
@@ -209,6 +206,6 @@ export const MailChoiceStep: React.FC = () => {
           button2Props={{ labelText: _(msg`Mail my letter`) }}
         />
       </div>
-    </form>
+    </LetterStepForm>
   );
 };
