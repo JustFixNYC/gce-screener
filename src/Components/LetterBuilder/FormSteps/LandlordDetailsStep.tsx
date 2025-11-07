@@ -272,9 +272,9 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           type="text"
           autoFocus
           defaultValue={currentValues?.name || ""}
-          // style={{ textTransform: "uppercase" }}
+          style={{ textTransform: "uppercase" }}
           onBlur={(e) =>
-            setValue("landlord_details.name", e.target.value, {
+            setValue("landlord_details.name", e.target.value.toUpperCase(), {
               shouldValidate: !!errors.landlord_details?.name,
               shouldDirty: true,
             })
