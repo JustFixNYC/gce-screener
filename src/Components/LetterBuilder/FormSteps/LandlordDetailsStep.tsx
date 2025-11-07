@@ -193,7 +193,8 @@ export const LandlordDetailsStep: React.FC<{
         onClose={() => setIsEditModalOpen(false)}
         header={_(msg`Edit your landlord's information`)}
       >
-        <LandlordFormGroup idPrefix="modal-form" />
+        {/* Necessary since modal is in dom even when not shown, so can't have multiple inputs registered for same field */}
+        {isEditModalOpen && <LandlordFormGroup idPrefix="modal-form" />}
         <div className="landlord-details-step__modal-buttons">
           <Button
             type="button"
@@ -275,12 +276,6 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           autoFocus
           defaultValue={currentValues?.name || ""}
           style={{ textTransform: "uppercase" }}
-          onBlur={(e) =>
-            setValue("landlord_details.name", e.target.value.toUpperCase(), {
-              shouldValidate: !!errors.landlord_details?.name,
-              shouldDirty: true,
-            })
-          }
         />
         <TextInput
           {...register("landlord_details.primary_line")}
@@ -292,21 +287,6 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           type="text"
           defaultValue={currentValues?.primary_line || ""}
           style={{ textTransform: "uppercase" }}
-          onBlur={(e) =>
-            // TODO: we may want to try to use onChange instead of onBlur, since
-            // the value is never set if use "enter" key to submit, also differs
-            // from other inputs which clear errors onChange. We might also want
-            // to experiment with watch() instead of watch() in case that
-            // helps with the reason this is needed in the first place
-            setValue(
-              "landlord_details.primary_line",
-              e.target.value.toUpperCase(),
-              {
-                shouldValidate: !!addressErrors?.primary_line,
-                shouldDirty: true,
-              }
-            )
-          }
         />
         <FormGroup
           legendText={_(msg`Unit Number`)}
@@ -327,16 +307,6 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
             type="text"
             defaultValue={currentValues?.secondary_line || ""}
             style={{ textTransform: "uppercase" }}
-            onBlur={(e) =>
-              setValue(
-                "landlord_details.secondary_line",
-                e.target.value.toUpperCase(),
-                {
-                  shouldValidate: !!addressErrors?.secondary_line,
-                  shouldDirty: true,
-                }
-              )
-            }
           />
           <Controller
             name="landlord_details.no_unit"
@@ -371,12 +341,6 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           type="text"
           defaultValue={currentValues?.city || ""}
           style={{ textTransform: "uppercase" }}
-          onBlur={(e) =>
-            setValue("landlord_details.city", e.target.value.toUpperCase(), {
-              shouldValidate: !!addressErrors?.city,
-              shouldDirty: true,
-            })
-          }
         />
         {/* TODO: use dropdown for state to ensure correct format */}
         <TextInput
@@ -389,14 +353,8 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           type="text"
           defaultValue={currentValues?.state || ""}
           style={{ textTransform: "uppercase" }}
-          onBlur={(e) =>
-            setValue("landlord_details.state", e.target.value.toUpperCase(), {
-              shouldValidate: !!addressErrors?.state,
-              shouldDirty: true,
-            })
-          }
         />
-        {getValues("landlord_details.state") === "PR" && (
+        {watch("landlord_details.state") === "PR" && (
           <TextInput
             {...register("landlord_details.urbanization")}
             id={`${idPrefix}-landlord-urbanization`}
@@ -407,16 +365,6 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
             type="text"
             defaultValue={currentValues?.urbanization || ""}
             style={{ textTransform: "uppercase" }}
-            onBlur={(e) =>
-              setValue(
-                "landlord_details.urbanization",
-                e.target.value.toUpperCase(),
-                {
-                  shouldValidate: !!addressErrors?.urbanization,
-                  shouldDirty: true,
-                }
-              )
-            }
           />
         )}
         <TextInput
@@ -428,12 +376,6 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           invalidRole="status"
           type="text"
           defaultValue={currentValues?.zip_code || ""}
-          onBlur={(e) =>
-            setValue("landlord_details.zip_code", e.target.value, {
-              shouldValidate: !!addressErrors?.zip_code,
-              shouldDirty: true,
-            })
-          }
         />
       </FormGroup>
       <FormGroup
