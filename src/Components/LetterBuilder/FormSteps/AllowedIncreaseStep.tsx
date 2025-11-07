@@ -26,7 +26,7 @@ export const AllowedIncreaseStep: React.FC = () => (
     </section>
     <RentNegotiationTips />
     <GoodCauseProtections />
-    <BackNextButtons hideButon2 />
+    <BackNextButtons hideButton2 backStepName="rent_increase" />
   </div>
 );
 

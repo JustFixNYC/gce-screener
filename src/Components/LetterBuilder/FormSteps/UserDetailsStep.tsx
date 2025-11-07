@@ -12,6 +12,7 @@ import {
 
 import {
   formatPhoneNumber,
+  handleFormNoDefault,
   parseFormattedPhoneNumber,
 } from "../../../form-utils";
 import { InfoBox } from "../../InfoBox/InfoBox";
@@ -22,6 +23,7 @@ import Modal from "../../Modal/Modal";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import "./FormSteps.scss";
 import "./UserDetailsStep.scss";
+import { StepRouteName } from "../LetterSteps";
 
 const geosearchToLOBAddressWithBBL = (
   addr: Address
@@ -40,6 +42,7 @@ const geosearchToLOBAddressWithBBL = (
 
 export const UserDetailsStep: React.FC = () => {
   const {
+    next,
     formMethods: {
       register,
       setValue,
@@ -56,6 +59,11 @@ export const UserDetailsStep: React.FC = () => {
   const { _ } = useLingui();
 
   const [showModal, setShowModal] = useState(false);
+
+  const prevStep: StepRouteName =
+    watch("reason") === "PLANNED_INCREASE" ? "rent_increase" : "non_renewal";
+
+  const onSubmit = handleFormNoDefault(() => next("landlord_details"));
 
   // used to prefill address input when user has clicked back from the next step
   const initialAddress: Address | undefined =
@@ -76,138 +84,141 @@ export const UserDetailsStep: React.FC = () => {
 
   return (
     <div id="user-details-step">
-      <FormGroup
-        legendText={_(msg`Your mailing address`)}
-        helperElement={
-          <InfoBox>
-            <Trans>
-              Please use the address that is associated with your lease. This is
-              the address that we will use as the return address in your letter.
-            </Trans>
-          </InfoBox>
-        }
-      >
-        <div className="text-input__two-column">
-          <TextInput
-            {...register("user_details.first_name")}
-            id="form-first_name"
-            labelText={_(msg`First name`)}
-            invalid={!!userErrors?.first_name}
-            invalidText={userErrors?.first_name?.message}
-            invalidRole="status"
-            type="text"
-          />
-          <TextInput
-            {...register("user_details.last_name")}
-            id="form-last_name"
-            labelText={_(msg`Last name`)}
-            invalid={!!userErrors?.last_name}
-            invalidText={userErrors?.last_name?.message}
-            invalidRole="status"
-            type="text"
-          />
-        </div>
-        <GeoSearchInput
-          initialAddress={initialAddress}
-          onChange={(addr) => {
-            geosearchToLOBAddressWithBBL(addr).forEach(
-              ({ fieldPath, value }) => {
-                setValue(fieldPath, value);
-              }
-            );
-          }}
-          labelText={_(msg`Street address`)}
-          invalidText={userErrors?.primary_line?.message}
-          invalid={!!userErrors}
-          setInvalid={(isError) => {
-            if (isError) {
-              setError("user_details.primary_line", {
-                type: "custom",
-                message: _(msg`Error with address selection`),
-              });
-            }
-          }}
-        />
+      <form onSubmit={onSubmit} className="letter-form">
         <FormGroup
-          legendText={_(msg`Unit Number`)}
-          className="unit-number-input-group"
+          legendText={_(msg`Your mailing address`)}
+          helperElement={
+            <InfoBox>
+              <Trans>
+                Please use the address that is associated with your lease. This
+                is the address that we will use as the return address in your
+                letter.
+              </Trans>
+            </InfoBox>
+          }
         >
-          <TextInput
-            {...register("user_details.secondary_line")}
-            id="form-secondary_line"
-            labelText=""
-            helperText={_(
-              msg`If your address does not have a unit number, please select “I do not have a unit number” below`
-            )}
-            aria-label={_(msg`Unit number`)}
-            invalid={!!userErrors?.secondary_line}
-            invalidText={userErrors?.secondary_line?.message}
-            invalidRole="status"
-            type="text"
+          <div className="text-input__two-column">
+            <TextInput
+              {...register("user_details.first_name")}
+              id="form-first_name"
+              labelText={_(msg`First name`)}
+              invalid={!!userErrors?.first_name}
+              invalidText={userErrors?.first_name?.message}
+              invalidRole="status"
+              type="text"
+            />
+            <TextInput
+              {...register("user_details.last_name")}
+              id="form-last_name"
+              labelText={_(msg`Last name`)}
+              invalid={!!userErrors?.last_name}
+              invalidText={userErrors?.last_name?.message}
+              invalidRole="status"
+              type="text"
+            />
+          </div>
+          <GeoSearchInput
+            initialAddress={initialAddress}
+            onChange={(addr) => {
+              geosearchToLOBAddressWithBBL(addr).forEach(
+                ({ fieldPath, value }) => {
+                  setValue(fieldPath, value);
+                }
+              );
+            }}
+            labelText={_(msg`Street address`)}
+            invalidText={userErrors?.primary_line?.message}
+            invalid={!!userErrors}
+            setInvalid={(isError) => {
+              if (isError) {
+                setError("user_details.primary_line", {
+                  type: "custom",
+                  message: _(msg`Error with address selection`),
+                });
+              }
+            }}
           />
+          <FormGroup
+            legendText={_(msg`Unit Number`)}
+            className="unit-number-input-group"
+          >
+            <TextInput
+              {...register("user_details.secondary_line")}
+              id="form-secondary_line"
+              labelText=""
+              helperText={_(
+                msg`If your address does not have a unit number, please select “I do not have a unit number” below`
+              )}
+              aria-label={_(msg`Unit number`)}
+              invalid={!!userErrors?.secondary_line}
+              invalidText={userErrors?.secondary_line?.message}
+              invalidRole="status"
+              type="text"
+            />
 
+            <Controller
+              name="user_details.no_unit"
+              control={control}
+              render={({ field }) => (
+                <Checkbox
+                  {...field}
+                  value="true"
+                  checked={field.value === true}
+                  onChange={() => field.onChange(!field.value)}
+                  labelText={_(msg`I do not have a unit number`)}
+                  id="no_unit"
+                />
+              )}
+            />
+          </FormGroup>
+        </FormGroup>
+        <FormGroup
+          legendText={_(msg`Your contact information`)}
+          className="form-group__section-header"
+        >
           <Controller
-            name="user_details.no_unit"
+            name="user_details.phone_number"
             control={control}
             render={({ field }) => (
-              <Checkbox
+              <TextInput
                 {...field}
-                value="true"
-                checked={field.value === true}
-                onChange={() => field.onChange(!field.value)}
-                labelText={_(msg`I do not have a unit number`)}
-                id="no_unit"
+                value={formatPhoneNumber(field.value)}
+                onChange={(e) =>
+                  field.onChange(parseFormattedPhoneNumber(e.target.value))
+                }
+                id="form-phone_number"
+                labelText={_(msg`Your phone number`)}
+                invalid={!!userErrors?.phone_number}
+                invalidText={userErrors?.phone_number?.message}
+                invalidRole="status"
+                type="tel"
               />
             )}
           />
+          <TextInput
+            {...register("user_details.email")}
+            id="form-email"
+            labelText={_(msg`Your email`) + " " + _(msg`(Optional)`)}
+            invalid={!!userErrors?.email}
+            invalidText={userErrors?.email?.message}
+            invalidRole="status"
+            type="email"
+          />
+          <div className="form-group__footer">
+            <span className="form-group__footer-text">
+              <Trans>Why are we asking for this information?</Trans>
+            </span>
+            <button
+              type="button"
+              className="text-link-button jfcl-link"
+              onClick={() => setShowModal(true)}
+            >
+              <Trans>Learn more</Trans>
+            </button>
+          </div>
         </FormGroup>
-      </FormGroup>
-      <FormGroup
-        legendText={_(msg`Your contact information`)}
-        className="form-group__section-header"
-      >
-        <Controller
-          name="user_details.phone_number"
-          control={control}
-          render={({ field }) => (
-            <TextInput
-              {...field}
-              value={formatPhoneNumber(field.value)}
-              onChange={(e) =>
-                field.onChange(parseFormattedPhoneNumber(e.target.value))
-              }
-              id="form-phone_number"
-              labelText={_(msg`Your phone number`)}
-              invalid={!!userErrors?.phone_number}
-              invalidText={userErrors?.phone_number?.message}
-              invalidRole="status"
-              type="tel"
-            />
-          )}
-        />
-        <TextInput
-          {...register("user_details.email")}
-          id="form-email"
-          labelText={_(msg`Your email`) + " " + _(msg`(Optional)`)}
-          invalid={!!userErrors?.email}
-          invalidText={userErrors?.email?.message}
-          invalidRole="status"
-          type="email"
-        />
-        <div className="form-group__footer">
-          <span className="form-group__footer-text">
-            <Trans>Why are we asking for this information?</Trans>
-          </span>
-          <button
-            type="button"
-            className="text-link-button jfcl-link"
-            onClick={() => setShowModal(true)}
-          >
-            <Trans>Learn more</Trans>
-          </button>
-        </div>
-      </FormGroup>
-      <BackNextButtons />
+        <BackNextButtons backStepName={prevStep} />
+      </form>
 
       <Modal
         isOpen={showModal}

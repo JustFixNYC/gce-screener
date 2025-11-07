@@ -16,10 +16,13 @@ import {
 } from "../../Pages/RentCalculator/RentIncreaseValues";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
+import { StepRouteName } from "../LetterSteps";
+import { handleFormNoDefault } from "../../../form-utils";
 import "./FormSteps.scss";
 
 export const PlannedIncreaseStep: React.FC = () => {
   const {
+    next,
     formMethods: {
       control,
       watch,
@@ -32,47 +35,60 @@ export const PlannedIncreaseStep: React.FC = () => {
   // fixes issue with type inference with this typeguard
   if (!isPlannedIncreaseErrors(errors, watch("reason"))) return null;
 
+  const nextStep: StepRouteName | undefined =
+    watch("unreasonable_increase") === true
+      ? "contact_info"
+      : watch("unreasonable_increase") === false
+      ? "allowed_increase"
+      : undefined;
+
+  const onSubmit = handleFormNoDefault(() => next(nextStep));
+
   return (
     <div className="reason-details-step">
-      <FormGroup
-        legendText={_(
-          msg`Is your landlord increasing your monthly rent beyond ${CPI + 5}%?`
-        )}
-        invalid={!!errors?.unreasonable_increase}
-        invalidText={errors?.unreasonable_increase?.message}
-        invalidRole="status"
-        helperElement={<IncreaseHelperText />}
-      >
-        <Controller
-          name="unreasonable_increase"
-          control={control}
-          render={({ field }) => (
-            <SelectButton
-              {...field}
-              value="true"
-              checked={field.value === true}
-              onChange={() => field.onChange(true)}
-              labelText={_(msg`Yes`)}
-              id="reason-verified__yes"
-            />
+      <form onSubmit={onSubmit} className="letter-form">
+        <FormGroup
+          legendText={_(
+            msg`Is your landlord increasing your monthly rent beyond ${
+              CPI + 5
+            }%?`
           )}
-        />
-        <Controller
-          name="unreasonable_increase"
-          control={control}
-          render={({ field }) => (
-            <SelectButton
-              {...field}
-              value="false"
-              checked={field.value === false}
-              onChange={() => field.onChange(false)}
-              labelText={_(msg`No`)}
-              id="reason-verified__no"
-            />
-          )}
-        />
-      </FormGroup>
-      <BackNextButtons />
+          invalid={!!errors?.unreasonable_increase}
+          invalidText={errors?.unreasonable_increase?.message}
+          invalidRole="status"
+          helperElement={<IncreaseHelperText />}
+        >
+          <Controller
+            name="unreasonable_increase"
+            control={control}
+            render={({ field }) => (
+              <SelectButton
+                {...field}
+                value="true"
+                checked={field.value === true}
+                onChange={() => field.onChange(true)}
+                labelText={_(msg`Yes`)}
+                id="reason-verified__yes"
+              />
+            )}
+          />
+          <Controller
+            name="unreasonable_increase"
+            control={control}
+            render={({ field }) => (
+              <SelectButton
+                {...field}
+                value="false"
+                checked={field.value === false}
+                onChange={() => field.onChange(false)}
+                labelText={_(msg`No`)}
+                id="reason-verified__no"
+              />
+            )}
+          />
+        </FormGroup>
+        <BackNextButtons backStepName="reason" />
+      </form>
     </div>
   );
 };

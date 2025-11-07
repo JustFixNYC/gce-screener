@@ -21,6 +21,7 @@ import Modal from "../../Modal/Modal";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import "./LandlordDetailsStep.scss";
+import { handleFormNoDefault } from "../../../form-utils";
 
 const getOwnerContacts = (
   data?: LandlordData
@@ -73,6 +74,7 @@ export const LandlordDetailsStep: React.FC<{
   ) => Promise<boolean | undefined>;
 }> = ({ verifyAddressDeliverable }) => {
   const {
+    next,
     formMethods: {
       control,
       formState: { errors },
@@ -81,6 +83,8 @@ export const LandlordDetailsStep: React.FC<{
       trigger,
     },
   } = useContext(FormContext);
+
+  const onSubmit = handleFormNoDefault(() => next("preview"));
 
   const { _ } = useLingui();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -136,7 +140,7 @@ export const LandlordDetailsStep: React.FC<{
   const showLookup = !isLoading && !error && owners;
   const showManual = !isLoading && !landlordData;
   return (
-    <>
+    <form onSubmit={onSubmit} className="letter-form">
       {isLoading && <>Loading...</>}
       {error && <>Failed to lookup landlord information</>}
       {showLookup && (
@@ -185,7 +189,7 @@ export const LandlordDetailsStep: React.FC<{
         </FormGroup>
       )}
       {showManual && <LandlordFormGroup idPrefix="form" />}
-      <BackNextButtons />
+      <BackNextButtons backStepName="contact_info" />
 
       <Modal
         isOpen={isEditModalOpen}
@@ -231,7 +235,7 @@ export const LandlordDetailsStep: React.FC<{
           />
         </div>
       </Modal>
-    </>
+    </form>
   );
 };
 

@@ -11,6 +11,7 @@ import "./PreviewStep.scss";
 
 export const PreviewStep: React.FC = () => {
   const {
+    next,
     formMethods: { getValues },
   } = useContext(FormContext);
 
@@ -125,7 +126,10 @@ export const PreviewStep: React.FC = () => {
       </div>
       {/* TODO: consider taking this step out of the <form> since there are no inputs, 
         and then we'd need to change button2 to be type="button" and onClick={next} */}
-      <BackNextButtons />
+      <BackNextButtons
+        backStepName="landlord_details"
+        button2Props={{ type: "button", onClick: () => next("mail_choice") }}
+      />
     </div>
   );
 };

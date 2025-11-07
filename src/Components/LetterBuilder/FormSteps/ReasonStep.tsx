@@ -11,10 +11,14 @@ import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { FormContext } from "../../../types/LetterFormTypes";
 import "./ReasonStep.scss";
 import "./FormSteps.scss";
+import { handleFormNoDefault } from "../../../form-utils";
+import { StepRouteName } from "../LetterSteps";
 
 export const ReasonStep: React.FC = () => {
   const {
+    next,
     formMethods: {
+      watch,
       register,
       formState: { errors },
     },
@@ -23,31 +27,44 @@ export const ReasonStep: React.FC = () => {
   const { _ } = useLingui();
   const [showModal, setShowModal] = useState(false);
 
+  const nextStep: StepRouteName | undefined =
+    watch("reason") === "PLANNED_INCREASE"
+      ? "rent_increase"
+      : watch("reason") === "NON_RENEWAL"
+      ? "non_renewal"
+      : undefined;
+
+  const onSubmit = handleFormNoDefault(() => next(nextStep));
+
   return (
     <div id="reason-step">
-      <FormGroup
-        legendText={_(msg`Select the reason for your letter`)}
-        invalid={!!errors?.reason}
-        invalidText={errors?.reason?.message}
-        invalidRole="status"
-        helperElement={<ReasonHelperText onClick={() => setShowModal(true)} />}
-      >
-        <div className="reason-step__buttons">
-          <SelectButton
-            {...register("reason")}
-            labelText={_(msg`Your landlord is planning to raise your rent`)}
-            value="PLANNED_INCREASE"
-            id="reason__planned-increase"
-          />
-          <SelectButton
-            {...register("reason")}
-            labelText={_(msg`Your landlord is not offering you a new lease`)}
-            value="NON_RENEWAL"
-            id="reason__non-renewal"
-          />
-        </div>
-      </FormGroup>
-      <BackNextButtons hideButon1 />
+      <form onSubmit={onSubmit} className="letter-form">
+        <FormGroup
+          legendText={_(msg`Select the reason for your letter`)}
+          invalid={!!errors?.reason}
+          invalidText={errors?.reason?.message}
+          invalidRole="status"
+          helperElement={
+            <ReasonHelperText onClick={() => setShowModal(true)} />
+          }
+        >
+          <div className="reason-step__buttons">
+            <SelectButton
+              {...register("reason")}
+              labelText={_(msg`Your landlord is planning to raise your rent`)}
+              value="PLANNED_INCREASE"
+              id="reason__planned-increase"
+            />
+            <SelectButton
+              {...register("reason")}
+              labelText={_(msg`Your landlord is not offering you a new lease`)}
+              value="NON_RENEWAL"
+              id="reason__non-renewal"
+            />
+          </div>
+        </FormGroup>
+        <BackNextButtons hideButton1 backStepName="reason" />
+      </form>
 
       <Modal
         isOpen={showModal}
