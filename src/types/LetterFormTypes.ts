@@ -187,6 +187,7 @@ export const FormContext = createContext<{
   formMethods: FormHookProps;
   back: () => void;
   next: () => void;
+  confirmationResponse?: GCELetterConfirmation;
 }>(null!);
 
 export const defaultFormValues: FormFields = {
