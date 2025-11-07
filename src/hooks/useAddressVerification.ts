@@ -57,12 +57,14 @@ export const useAddressVerification = (
         !verification.valid_address;
 
       const inputAddress =
+        addressData.urbanization +
         addressData.primary_line +
         addressData.secondary_line +
         addressData.city +
         addressData.state +
         addressData.zip_code;
       const lobAddress =
+        verification.urbanization +
         verification.primary_line +
         verification.components.city +
         verification.components.state +
