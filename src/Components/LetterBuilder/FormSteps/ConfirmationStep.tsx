@@ -101,7 +101,7 @@ export const ConfirmationStep: React.FC = () => {
         </section>
       </div>
 
-      {allEmailsSent && (
+      {!!allEmailsSent.length && (
         <div className="emails-sent-callout-box">
           <div>
             <Icon icon="paperPlaneLight" className="emails-sent-icon" />
