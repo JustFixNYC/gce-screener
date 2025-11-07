@@ -6,18 +6,13 @@ import { msg } from "@lingui/core/macro";
 import { Button } from "@justfixnyc/component-library";
 
 import { LetterBuilderForm } from "../../LetterBuilder/LetterBuilderForm";
-import {
-  FormFields,
-  sampleConfirmationValues,
-  sampleFormValues,
-} from "../../../types/LetterFormTypes";
+import { FormFields, sampleFormValues } from "../../../types/LetterFormTypes";
 import { buildLetterHtml } from "../../LetterBuilder/Letter/letter-utils";
 import { GCELetterPostData } from "../../../types/APIDataTypes";
 import { useSendGceLetterData } from "../../../api/hooks";
 import { languageNames, SupportedLocale } from "../../../i18n-base";
-import "./LetterSender.scss";
-import { ConfirmationStep } from "../../LetterBuilder/FormSteps/ConfirmationStep";
 import { flattenExtraEmails } from "../../../form-utils";
+import "./LetterSender.scss";
 
 export const LetterLayout: React.FC = () => {
   return (
@@ -32,16 +27,6 @@ export const LetterSender: React.FC = () => {
     <div className="content-section">
       <div className="content-section__content">
         <LetterBuilderForm />
-      </div>
-    </div>
-  );
-};
-
-export const LetterConfirmationTest: React.FC = () => {
-  return (
-    <div className="content-section">
-      <div className="content-section__content">
-        <ConfirmationStep confirmationResponse={sampleConfirmationValues} />
       </div>
     </div>
   );

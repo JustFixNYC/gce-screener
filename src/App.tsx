@@ -27,14 +27,13 @@ import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import { decodeFromURI } from "./helpers";
 import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
 import { LetterLanding } from "./Components/Pages/LetterLanding/LetterLanding";
+import { LetterNextStepsStandalone } from "./Components/LetterBuilder/LetterNextSteps/LetterNextSteps";
 import {
-  LetterConfirmationTest,
   LetterLayout,
   LetterSender,
   LetterTestSender,
 } from "./Components/Pages/LetterSender/LetterSender";
 import "./App.scss";
-import { LetterNextStepsStandalone } from "./Components/LetterBuilder/LetterNextSteps/LetterNextSteps";
 
 const Layout = () => {
   return (
@@ -220,10 +219,6 @@ const router = createBrowserRouter(
           <Route path="preview" element={<LetterSender />} />
           <Route path="confirmation" element={<LetterSender />} />
           <Route path="next-steps" element={<LetterNextStepsStandalone />} />
-          <Route
-            path="confirmation-test"
-            element={<LetterConfirmationTest />}
-          />
           <Route path="submission-test" element={<LetterTestSender />} />
         </Route>
         <Route path="tenant_rights" element={<TenantRights />} />

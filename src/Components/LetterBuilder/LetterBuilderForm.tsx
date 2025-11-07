@@ -105,6 +105,8 @@ export const LetterBuilderForm: React.FC = () => {
   } = formMethods;
 
   const [currentStep, setCurrentStep] = useState(0);
+  const [confirmationResponse, setConfirmationResponse] =
+    useState<GCELetterConfirmation>();
 
   const getStepIndexFromPathname = (pathname: string): number => {
     const parts = pathname.split("/").filter(Boolean);
@@ -136,8 +138,6 @@ export const LetterBuilderForm: React.FC = () => {
 
   const { trigger: sendLetter } = useSendGceLetterData();
 
-  const [letterResp, setLetterResp] = useState<GCELetterConfirmation>();
-
   const onLetterSubmit: SubmitHandler<FormFields> = async (
     letterData: FormFields
   ) => {
@@ -157,7 +157,7 @@ export const LetterBuilderForm: React.FC = () => {
       html_content: letterHtml,
     };
     const resp = await sendLetter(letterPostData);
-    setLetterResp(resp);
+    setConfirmationResponse(resp);
     return resp;
   };
 
@@ -226,7 +226,9 @@ export const LetterBuilderForm: React.FC = () => {
         progressOverride={shouldShowFullProgress ? 100 : undefined}
       />
       <div className="letter-form__content">
-        <FormContext.Provider value={{ formMethods, back, next }}>
+        <FormContext.Provider
+          value={{ formMethods, back, next, confirmationResponse }}
+        >
           {currentStep === 0 && <ReasonStep />}
           {currentStep === 1 && (
             <>
@@ -253,9 +255,7 @@ export const LetterBuilderForm: React.FC = () => {
           )}
           {currentStep === 4 && <PreviewStep />}
           {currentStep === 5 && <MailChoiceStep />}
-          {currentStep === 6 && (
-            <ConfirmationStep confirmationResponse={letterResp} />
-          )}
+          {currentStep === 6 && <ConfirmationStep />}
         </FormContext.Provider>
       </div>
 

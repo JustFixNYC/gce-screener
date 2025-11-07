@@ -1,7 +1,7 @@
+import { useContext } from "react";
 import { Trans } from "@lingui/react/macro";
 import { Icon } from "@justfixnyc/component-library";
 
-import { GCELetterConfirmation } from "../../../types/APIDataTypes";
 import { base64ToBlob } from "../Letter/letter-utils";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import {
@@ -11,13 +11,14 @@ import {
   LetterWhoCanHelp,
 } from "../LetterNextSteps/LetterNextSteps";
 import "./ConfirmationStep.scss";
+import { FormContext } from "../../../types/LetterFormTypes";
 
 const USPS_TRACKING_URL_PREFIX =
   "https://tools.usps.com/go/TrackConfirmAction?tLabels=";
 
-export const ConfirmationStep: React.FC<{
-  confirmationResponse?: GCELetterConfirmation;
-}> = ({ confirmationResponse }) => {
+export const ConfirmationStep: React.FC = () => {
+  const { confirmationResponse } = useContext(FormContext);
+
   if (!confirmationResponse) return <Trans>Loading...</Trans>;
 
   const { data } = confirmationResponse;
