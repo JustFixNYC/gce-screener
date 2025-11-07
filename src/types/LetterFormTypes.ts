@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { FieldErrors, UseFormReturn } from "react-hook-form";
+import { DeepPartial, FieldErrors, UseFormReturn } from "react-hook-form";
 import { I18n } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import z from "zod";
@@ -191,34 +191,14 @@ export const FormContext = createContext<{
   confirmationResponse?: GCELetterConfirmation;
 }>(null!);
 
-export const defaultFormValues: FormFields = {
+export const defaultFormValues: DeepPartial<FormFields> = {
   user_details: {
-    first_name: "",
-    last_name: "",
-    phone_number: "",
-    email: "",
     primary_line: "",
-    secondary_line: "",
-    city: "",
-    state: "",
-    zip_code: "",
-    bbl: "",
     no_unit: false,
   },
   landlord_details: {
-    name: "",
-    email: "",
-    primary_line: "",
-    secondary_line: "",
-    city: "",
-    state: "",
-    zip_code: "",
-    urbanization: undefined,
     no_unit: false,
   },
-  mail_choice: "WE_WILL_MAIL",
-  reason: "PLANNED_INCREASE",
-  unreasonable_increase: false,
   cc_user: false,
 };
 
