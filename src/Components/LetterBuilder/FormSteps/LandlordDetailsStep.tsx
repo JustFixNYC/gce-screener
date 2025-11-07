@@ -245,6 +245,7 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
       getValues,
       setValue,
       control,
+      watch,
       formState: { errors },
     },
   } = useContext(FormContext);
@@ -321,6 +322,7 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
             )}
             invalid={!!addressErrors?.secondary_line}
             invalidText={addressErrors?.secondary_line?.message}
+            disabled={watch("landlord_details.no_unit")}
             invalidRole="status"
             type="text"
             defaultValue={currentValues?.secondary_line || ""}
@@ -344,7 +346,12 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
                 {...field}
                 value="true"
                 checked={field.value === true}
-                onChange={() => field.onChange(!field.value)}
+                onChange={() => {
+                  if (!field.value) {
+                    setValue("landlord_details.secondary_line", undefined);
+                  }
+                  field.onChange(!field.value);
+                }}
                 labelText={_(
                   msg`This address does not have a unit/suite/apartment`
                 )}

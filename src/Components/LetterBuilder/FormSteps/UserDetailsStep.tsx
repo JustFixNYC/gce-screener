@@ -124,8 +124,8 @@ export const UserDetailsStep: React.FC = () => {
               );
             }}
             labelText={_(msg`Street address`)}
+            invalid={!!userErrors?.primary_line}
             invalidText={userErrors?.primary_line?.message}
-            invalid={!!userErrors}
             setInvalid={(isError) => {
               if (isError) {
                 setError("user_details.primary_line", {
@@ -149,6 +149,7 @@ export const UserDetailsStep: React.FC = () => {
               aria-label={_(msg`Unit number`)}
               invalid={!!userErrors?.secondary_line}
               invalidText={userErrors?.secondary_line?.message}
+              disabled={watch("user_details.no_unit")}
               invalidRole="status"
               type="text"
             />
@@ -161,7 +162,12 @@ export const UserDetailsStep: React.FC = () => {
                   {...field}
                   value="true"
                   checked={field.value === true}
-                  onChange={() => field.onChange(!field.value)}
+                  onChange={() => {
+                    if (!field.value) {
+                      setValue("user_details.secondary_line", undefined);
+                    }
+                    field.onChange(!field.value);
+                  }}
                   labelText={_(msg`I do not have a unit number`)}
                   id="no_unit"
                 />
