@@ -32,8 +32,8 @@ msgid "(123) 456-7890"
 msgstr "(123) 456-7890"
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:122
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:134
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:164
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:133
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:163
 msgid "(optional)"
 msgstr "(optional)"
 
@@ -243,11 +243,11 @@ msgid "About this site"
 msgstr "About this site"
 
 #. placeholder {0}: index + 1
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:175
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:174
 msgid "Additional email {0}"
 msgstr "Additional email {0}"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:164
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:163
 msgid "Additional recipients"
 msgstr "Additional recipients"
 
@@ -400,7 +400,7 @@ msgstr "Call Met Council on Housing Hotline"
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:154
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:153
 msgid "CC me on the email that you send to my landlord "
 msgstr "CC me on the email that you send to my landlord "
 
@@ -1443,7 +1443,7 @@ msgstr "Look out for a text from JustFix"
 #~ msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat alias magni nam beatae aliquam architecto laudantium mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda! Commodi architecto dolor eius perferendis!"
 #~ msgstr "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat alias magni nam beatae aliquam architecto laudantium mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda! Commodi architecto dolor eius perferendis!"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:206
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:205
 msgid "Mail my letter"
 msgstr "Mail my letter"
 
@@ -3094,7 +3094,7 @@ msgstr "Your landlord will need to provide a good reason for ending a tenancy. E
 msgid "Your landlord's contact information"
 msgstr "Your landlord's contact information"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:134
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:133
 msgid "Your landlord's email"
 msgstr "Your landlord's email"
 

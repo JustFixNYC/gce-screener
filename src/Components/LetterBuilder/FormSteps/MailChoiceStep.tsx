@@ -56,7 +56,7 @@ export const MailChoiceStep: React.FC = () => {
           invalidText={errors?.mail_choice?.message}
         >
           <RadioButton
-            {...register("mail_choice", { required: true })}
+            {...register("mail_choice")}
             aria-label={_(msg`We will mail the letter for you`)}
             value="WE_WILL_MAIL"
             id="we-will-mail"
@@ -122,7 +122,6 @@ export const MailChoiceStep: React.FC = () => {
               labelText={_(msg`Your email`) + " " + _(msg`(optional)`)}
               invalid={!!errors?.user_details?.email}
               invalidText={errors?.user_details?.email?.message}
-              // TODO: confirm existing value from user details is pre populated if available
               invalidRole="status"
               type="email"
             />

@@ -39,6 +39,7 @@ export const LetterBuilderForm: React.FC = () => {
     trigger,
     handleSubmit,
     getValues,
+    setValue,
     clearErrors,
     formState: { errors },
   } = formMethods;
@@ -108,7 +109,7 @@ export const LetterBuilderForm: React.FC = () => {
     // avoids error on user email if CC box was checked then go back a step and
     // remove user email from contact info
     if (fields?.includes("cc_user")) {
-      reset({ cc_user: false });
+      setValue("cc_user", false);
     }
 
     navigateToStep(prevStepName);
