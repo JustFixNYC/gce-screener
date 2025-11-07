@@ -9,7 +9,6 @@ import {
   formSchema,
   FormFields,
   FormContext,
-  sampleFormValues,
 } from "../../types/LetterFormTypes";
 import { buildLetterHtml } from "./Letter/letter-utils";
 import {
@@ -33,8 +32,7 @@ export const LetterBuilderForm: React.FC = () => {
     mode: "onSubmit",
     defaultValues: {
       cc_user: false,
-      user_details: sampleFormValues.user_details,
-      // user_details: { no_unit: false },
+      user_details: { no_unit: false },
       landlord_details: { no_unit: false },
     },
   });
@@ -49,7 +47,6 @@ export const LetterBuilderForm: React.FC = () => {
   } = formMethods;
 
   const currentStep = getStepFromPathname(location.pathname);
-  console.log(currentStep);
 
   const [confirmationResponse, setConfirmationResponse] =
     useState<GCELetterConfirmation>();
@@ -66,20 +63,7 @@ export const LetterBuilderForm: React.FC = () => {
     letterData: FormFields
   ) => {
     const letterHtml = await buildLetterHtml(letterData, "en");
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { no_unit: _userNoUnit, ...userDetails } = letterData.user_details;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { no_unit: _landlordNoUnit, ...landlordDetails } =
-      letterData.landlord_details;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { user_details, landlord_details, ...letterFields } = letterData;
-    const letterPostData: GCELetterPostData = {
-      ...letterFields,
-      user_details: userDetails,
-      landlord_details: landlordDetails,
-      extra_emails: flattenExtraEmails(letterData.extra_emails),
-      html_content: letterHtml,
-    };
+    const letterPostData = getLetterPostData(letterData, letterHtml);
     const resp = await sendLetter(letterPostData);
     setConfirmationResponse(resp);
     return resp;
@@ -154,6 +138,26 @@ const getStepFromPathname = (pathname: string): LetterStep => {
   const letterIndex = parts.indexOf("letter");
   const routeSegment = letterIndex >= 0 ? parts[letterIndex + 1] : undefined;
   return letterSteps[routeSegment as StepRouteName];
+};
+
+const getLetterPostData = (
+  letterData: FormFields,
+  letterHtml: string
+): GCELetterPostData => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { no_unit: _userNoUnit, ...userDetails } = letterData.user_details;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { no_unit: _landlordNoUnit, ...landlordDetails } =
+    letterData.landlord_details;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { user_details, landlord_details, ...letterFields } = letterData;
+  return {
+    ...letterFields,
+    user_details: userDetails,
+    landlord_details: landlordDetails,
+    extra_emails: flattenExtraEmails(letterData.extra_emails),
+    html_content: letterHtml,
+  };
 };
 
 export const LetterStepForm: React.FC<{
