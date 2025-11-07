@@ -113,8 +113,8 @@ export const ConfirmationStep: React.FC<{
               </Trans>
             </h4>
             <ul>
-              {allEmailsSent.map((email) => (
-                <li>
+              {allEmailsSent.map((email, index) => (
+                <li key={index}>
                   <Trans>{email}</Trans>
                 </li>
               ))}

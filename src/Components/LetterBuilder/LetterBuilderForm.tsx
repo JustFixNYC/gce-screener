@@ -5,12 +5,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useLingui } from "@lingui/react";
 
 import { flattenExtraEmails, handleFormNoDefault } from "../../form-utils";
-import { Tenants2ApiFetcherVerifyAddress } from "../../api/helpers";
 import { ProgressBar } from "./ProgressBar/ProgressBar";
 import {
   formSchema,
   FormFields,
   FormContext,
+  sampleFormValues,
 } from "../../types/LetterFormTypes";
 import { LandlordDetailsStep } from "./FormSteps/LandlordDetailsStep";
 import { UserDetailsStep } from "./FormSteps/UserDetailsStep";
@@ -23,6 +23,7 @@ import {
 } from "../../types/APIDataTypes";
 import { useSendGceLetterData } from "../../api/hooks";
 import { ConfirmationStep } from "./FormSteps/ConfirmationStep";
+import { useAddressModalHelpers } from "./AddressModalHelpers";
 import { ReasonStep } from "./FormSteps/ReasonStep";
 import { PlannedIncreaseStep } from "./FormSteps/PlannedIncreaseStep";
 import { AllowedIncreaseStep } from "./FormSteps/AllowedIncreaseStep";
@@ -56,8 +57,14 @@ const steps: Step[] = [
     fields: ["user_details"],
   },
   {
-    // TODO: Reorder steps. Putting landlord at the end until that step is finished
     id: "Step 4",
+    name: "Landlord details",
+    routeName: "landlord-details",
+    fields: ["landlord_details"],
+  },
+  { id: "Step 5", name: "Preview", routeName: "preview" },
+  {
+    id: "Step 6",
     name: "Mail Choice",
     routeName: "mail-choice",
     fields: [
@@ -67,13 +74,6 @@ const steps: Step[] = [
       "cc_user",
       "extra_emails",
     ],
-  },
-  { id: "Step 5", name: "Preview", routeName: "preview" },
-  {
-    id: "Step 6",
-    name: "Landlord details",
-    routeName: "landlord-details",
-    fields: ["landlord_details"],
   },
   { id: "Step 7", name: "Confirmation", routeName: "confirmation" },
 ];
@@ -89,12 +89,20 @@ export const LetterBuilderForm: React.FC = () => {
     mode: "onSubmit",
     defaultValues: {
       cc_user: false,
-      user_details: { no_unit: false },
+      user_details: sampleFormValues.user_details,
+      // user_details: { no_unit: false },
       landlord_details: { no_unit: false },
     },
   });
-  const { reset, trigger, handleSubmit, setError, getValues, clearErrors } =
-    formMethods;
+
+  const {
+    reset,
+    trigger,
+    handleSubmit,
+    getValues,
+    clearErrors,
+    formState: { errors },
+  } = formMethods;
 
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -112,43 +120,27 @@ export const LetterBuilderForm: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
-  const processForm: SubmitHandler<FormFields> = (data: FormFields) => {
-    console.log({ data });
-    reset();
+  // Same as next() without validation. Useful when validation was already done or needs to be overridden (e.g. modals)
+  const advanceToNextStep = () => {
+    if (currentStep >= steps.length) return;
+    const nextStep = steps[currentStep + 1];
+    const nextPath = `/${i18n.locale}/letter/${nextStep.routeName}`;
+    navigate(nextPath);
   };
 
-  // TODO: refactor to include this within the step if possible
-  const verifyAddressDeliverable = async (
-    data: Omit<FormFields["landlord_details"], "name" | "email">
-  ): Promise<boolean | undefined> => {
-    try {
-      const verification = await Tenants2ApiFetcherVerifyAddress(
-        "/gceletter/verify_address",
-        { arg: data }
-      );
-      const isUndeliverable =
-        verification.deliverability !== "deliverable" &&
-        !verification.valid_address;
-      if (isUndeliverable) {
-        setError("landlord_details", {
-          type: "lob_verification",
-          message: "Landlord address as entered is not deliverable by USPS",
-        });
-        return false;
-      }
-    } catch (error) {
-      // Handle network or other errors
-      console.error("Unable to check address deliverability: ", error);
-      return;
-    }
-    return true;
-  };
+  const { handleAddressVerification, addressConfirmationModal } =
+    useAddressModalHelpers({
+      formMethods: formMethods,
+      onAddressConfirmed: advanceToNextStep,
+    });
 
   const { trigger: sendLetter } = useSendGceLetterData();
 
   const [letterResp, setLetterResp] = useState<GCELetterConfirmation>();
-  const onLetterSubmit = async () => {
-    const letterData = getValues();
+
+  const onLetterSubmit: SubmitHandler<FormFields> = async (
+    letterData: FormFields
+  ) => {
     const letterHtml = await buildLetterHtml(letterData, "en");
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { no_unit: _userNoUnit, ...userDetails } = letterData.user_details;
@@ -179,31 +171,26 @@ export const LetterBuilderForm: React.FC = () => {
     const fields = steps[currentStep].fields;
 
     if (fields) {
-      const output = await trigger(fields, { shouldFocus: true });
-      if (!output) return;
+      const isValid = await trigger(fields, { shouldFocus: true });
+      if (!isValid) {
+        console.warn(errors);
+        return;
+      }
     }
 
     if (steps[currentStep].name === "Landlord details") {
-      // TODO: need to change how steps work when the landlord details step can
-      // have two sub-steps (lookup address then manual enter)
-      const isDeliverable = await verifyAddressDeliverable(
+      const isDeliverable = await handleAddressVerification(
         getValues("landlord_details")
       );
       if (!isDeliverable) return;
     }
 
-    if (steps[currentStep].name === "Preview") {
-      const resp = await onLetterSubmit();
-      if (!resp) return;
+    if (steps[currentStep + 1].routeName === "confirmation") {
+      handleSubmit(onLetterSubmit)();
+      reset();
     }
 
-    if (currentStep >= steps.length - 1) return;
-    if (currentStep === steps.length - 2) {
-      await handleSubmit(processForm)();
-    }
-    const nextStep = steps[currentStep + 1];
-    const nextPath = `/${i18n.locale}/letter/${nextStep.routeName}`;
-    navigate(nextPath, { preventScrollReset: true });
+    advanceToNextStep();
   };
 
   const getPrevPath = (): string => {
@@ -223,11 +210,10 @@ export const LetterBuilderForm: React.FC = () => {
     // avoids error on user email if CC box was checked then go back a step and
     // remove user email from contact info
     if (fields?.includes("cc_user")) {
-      console.log("cc");
       reset({ cc_user: false });
     }
 
-    navigate(getPrevPath(), { preventScrollReset: true });
+    navigate(getPrevPath());
   };
 
   return (
@@ -260,14 +246,20 @@ export const LetterBuilderForm: React.FC = () => {
               )}
             </>
           )}
-          {currentStep === 3 && <MailChoiceStep />}
+          {currentStep === 3 && (
+            <LandlordDetailsStep
+              verifyAddressDeliverable={handleAddressVerification}
+            />
+          )}
           {currentStep === 4 && <PreviewStep />}
-          {currentStep === 5 && <LandlordDetailsStep {...formMethods} />}
+          {currentStep === 5 && <MailChoiceStep />}
           {currentStep === 6 && (
             <ConfirmationStep confirmationResponse={letterResp} />
           )}
         </FormContext.Provider>
       </div>
+
+      {addressConfirmationModal}
     </form>
   );
 };
