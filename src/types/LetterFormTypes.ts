@@ -10,11 +10,16 @@ import { GCELetterConfirmation } from "./APIDataTypes";
 
 const lobAddressSchema = (i18n: I18n) =>
   z.object({
-    primary_line: z.string(i18n._(msg`Address is required for the letter`)),
-    city: z.string(),
-    state: z.string(),
+    primary_line: z
+      .string()
+      .min(1, i18n._(msg`Address is required for the letter`)),
+    city: z
+      .string()
+      .min(1, i18n._(msg`City/Borough is required for the letter`)),
+    state: z.string().min(1, i18n._(msg`State is required for the letter`)),
     zip_code: z
       .string()
+      .min(1, i18n._(msg`ZIP Code is required for the letter`))
       .regex(
         /^\d{5}((-)?\d{4})?$/,
         i18n._(
@@ -215,8 +220,8 @@ export const defaultFormValues: FormFields = {
 
 export const sampleFormValues: FormFields = {
   user_details: {
-    first_name: "Maxwell",
-    last_name: "Austensen",
+    first_name: "Jane",
+    last_name: "Doe",
     phone_number: "2125551212",
     email: "tenant@email.com",
     primary_line: "deliverable",
@@ -228,7 +233,7 @@ export const sampleFormValues: FormFields = {
     no_unit: false,
   },
   landlord_details: {
-    name: "Maxwell Austensen",
+    name: "Joe Landlord",
     email: "landlord@email.com",
     primary_line: "deliverable",
     secondary_line: "Apt 1",

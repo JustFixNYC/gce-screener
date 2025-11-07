@@ -34,7 +34,11 @@ export const useAddressVerification = (
       status: "idle",
     });
 
-  const { setValue, trigger } = formMethods;
+  const {
+    setValue,
+    trigger,
+    formState: { errors },
+  } = formMethods;
 
   const verifyAndConfirm = async (
     addressData: Omit<FormFields["landlord_details"], "name" | "email">
@@ -87,67 +91,73 @@ export const useAddressVerification = (
   };
 
   const confirmAddress = async (useLobAddress: boolean): Promise<boolean> => {
-    if (verificationState.data) {
-      const { inputAddress, lobAddress } = verificationState.data;
-      let finalAddress;
-      if (useLobAddress) {
-        finalAddress = {
-          primary_line: lobAddress.primary_line,
-          secondary_line: lobAddress.secondary_line,
-          city: lobAddress.components.city,
-          state: lobAddress.components.state,
-          urbanization: lobAddress.urbanization,
-          zip_code: lobAddress.components.zip_code,
-        };
-      } else {
-        finalAddress = {
-          primary_line: inputAddress.primary_line,
-          secondary_line: inputAddress.secondary_line,
-          city: inputAddress.city,
-          state: inputAddress.state,
-          urbanization: inputAddress.urbanization,
-          zip_code: inputAddress.zip_code,
-        };
-      }
+    if (!verificationState.data) return false;
 
-      setValue("landlord_details.primary_line", finalAddress.primary_line, {
-        shouldValidate: true,
-        shouldDirty: true,
-      });
-      setValue(
-        "landlord_details.secondary_line",
-        finalAddress.secondary_line || "",
-        {
-          shouldValidate: true,
-          shouldDirty: true,
-        }
-      );
-      setValue("landlord_details.city", finalAddress.city, {
-        shouldValidate: true,
-        shouldDirty: true,
-      });
-      setValue("landlord_details.state", finalAddress.state, {
-        shouldValidate: true,
-        shouldDirty: true,
-      });
-      setValue("landlord_details.zip_code", finalAddress.zip_code, {
-        shouldValidate: true,
-        shouldDirty: true,
-      });
-
-      if (finalAddress.urbanization) {
-        setValue("landlord_details.urbanization", finalAddress.urbanization, {
-          shouldValidate: true,
-          shouldDirty: true,
-        });
-      }
-
-      const isValid = await trigger(["landlord_details"]);
-
-      setVerificationState({ status: "confirmed" });
-      return isValid;
+    const { inputAddress, lobAddress } = verificationState.data;
+    let finalAddress;
+    if (useLobAddress) {
+      finalAddress = {
+        primary_line: lobAddress.primary_line,
+        secondary_line: lobAddress.secondary_line,
+        city: lobAddress.components.city,
+        state: lobAddress.components.state,
+        urbanization: lobAddress.urbanization,
+        zip_code: lobAddress.components.zip_code,
+      };
+    } else {
+      finalAddress = {
+        primary_line: inputAddress.primary_line,
+        secondary_line: inputAddress.secondary_line,
+        city: inputAddress.city,
+        state: inputAddress.state,
+        urbanization: inputAddress.urbanization,
+        zip_code: inputAddress.zip_code,
+      };
     }
-    return false;
+
+    setValue("landlord_details.primary_line", finalAddress.primary_line, {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+    setValue(
+      "landlord_details.secondary_line",
+      finalAddress.secondary_line || "",
+      {
+        shouldValidate: true,
+        shouldDirty: true,
+      }
+    );
+    if (!finalAddress.secondary_line) {
+      setValue("landlord_details.no_unit", true, {
+        shouldValidate: true,
+        shouldDirty: true,
+      });
+    }
+    setValue("landlord_details.city", finalAddress.city, {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+    setValue("landlord_details.state", finalAddress.state, {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+    setValue("landlord_details.zip_code", finalAddress.zip_code, {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+
+    if (finalAddress.urbanization) {
+      setValue("landlord_details.urbanization", finalAddress.urbanization, {
+        shouldValidate: true,
+        shouldDirty: true,
+      });
+    }
+
+    const isValid = await trigger(["landlord_details"]);
+    if (!isValid) console.warn(errors.landlord_details);
+
+    setVerificationState({ status: "confirmed" });
+    return isValid;
   };
 
   const resetVerification = () => {

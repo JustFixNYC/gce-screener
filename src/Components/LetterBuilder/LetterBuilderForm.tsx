@@ -10,6 +10,7 @@ import {
   formSchema,
   FormFields,
   FormContext,
+  sampleFormValues,
 } from "../../types/LetterFormTypes";
 import { LandlordDetailsStep } from "./FormSteps/LandlordDetailsStep";
 import { UserDetailsStep } from "./FormSteps/UserDetailsStep";
@@ -88,11 +89,20 @@ export const LetterBuilderForm: React.FC = () => {
     mode: "onSubmit",
     defaultValues: {
       cc_user: false,
-      user_details: { no_unit: false },
+      user_details: sampleFormValues.user_details,
+      // user_details: { no_unit: false },
       landlord_details: { no_unit: false },
     },
   });
-  const { reset, trigger, handleSubmit, getValues, clearErrors } = formMethods;
+
+  const {
+    reset,
+    trigger,
+    handleSubmit,
+    getValues,
+    clearErrors,
+    formState: { errors },
+  } = formMethods;
 
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -110,19 +120,12 @@ export const LetterBuilderForm: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
-  const processForm: SubmitHandler<FormFields> = (data: FormFields) => {
-    console.log({ data });
-    reset();
-  };
-
   // Same as next() without validation. Useful when validation was already done or needs to be overridden (e.g. modals)
   const advanceToNextStep = () => {
-    if (currentStep < steps.length - 1) {
-      if (currentStep === steps.length - 2) {
-        handleSubmit(processForm)();
-      }
-      setCurrentStep((step) => step + 1);
-    }
+    if (currentStep >= steps.length) return;
+    const nextStep = steps[currentStep + 1];
+    const nextPath = `/${i18n.locale}/letter/${nextStep.routeName}`;
+    navigate(nextPath);
   };
 
   const { handleAddressVerification, addressConfirmationModal } =
@@ -135,8 +138,9 @@ export const LetterBuilderForm: React.FC = () => {
 
   const [letterResp, setLetterResp] = useState<GCELetterConfirmation>();
 
-  const onLetterSubmit = async () => {
-    const letterData = getValues();
+  const onLetterSubmit: SubmitHandler<FormFields> = async (
+    letterData: FormFields
+  ) => {
     const letterHtml = await buildLetterHtml(letterData, "en");
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { no_unit: _userNoUnit, ...userDetails } = letterData.user_details;
@@ -167,8 +171,11 @@ export const LetterBuilderForm: React.FC = () => {
     const fields = steps[currentStep].fields;
 
     if (fields) {
-      const output = await trigger(fields, { shouldFocus: true });
-      if (!output) return;
+      const isValid = await trigger(fields, { shouldFocus: true });
+      if (!isValid) {
+        console.warn(errors);
+        return;
+      }
     }
 
     if (steps[currentStep].name === "Landlord details") {
@@ -178,18 +185,12 @@ export const LetterBuilderForm: React.FC = () => {
       if (!isDeliverable) return;
     }
 
-    if (steps[currentStep].name === "Preview") {
-      const resp = await onLetterSubmit();
-      if (!resp) return;
+    if (steps[currentStep + 1].routeName === "confirmation") {
+      handleSubmit(onLetterSubmit)();
+      reset();
     }
 
-    if (currentStep >= steps.length - 1) return;
-    if (currentStep === steps.length - 2) {
-      await handleSubmit(processForm)();
-    }
-    const nextStep = steps[currentStep + 1];
-    const nextPath = `/${i18n.locale}/letter/${nextStep.routeName}`;
-    navigate(nextPath, { preventScrollReset: true });
+    advanceToNextStep();
   };
 
   const getPrevPath = (): string => {
@@ -209,11 +210,10 @@ export const LetterBuilderForm: React.FC = () => {
     // avoids error on user email if CC box was checked then go back a step and
     // remove user email from contact info
     if (fields?.includes("cc_user")) {
-      console.log("cc");
       reset({ cc_user: false });
     }
 
-    navigate(getPrevPath(), { preventScrollReset: true });
+    navigate(getPrevPath());
   };
 
   return (

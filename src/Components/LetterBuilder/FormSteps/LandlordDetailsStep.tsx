@@ -37,9 +37,9 @@ const getOwnerContacts = (
 const formatLandlordDetailsAddress = (
   ld: FormFields["landlord_details"]
 ): string => {
-  return `${ld.primary_line}${ld.secondary_line ? ld.secondary_line : ""}, ${
-    ld.city
-  }, ${ld.state} ${ld.zip_code}`;
+  return `${ld.primary_line}${
+    ld.secondary_line ? " " + ld.secondary_line : ""
+  }, ${ld.city}, ${ld.state} ${ld.zip_code}`;
 };
 
 const formatWowContactAddress = (addr: LandlordContact["address"]): string => {
@@ -107,7 +107,7 @@ export const LandlordDetailsStep: React.FC<{
       });
       hasPrefilledRef.current = true;
     }
-  }, [isEditModalOpen, owners, setValue, getValues]);
+  }, [isEditModalOpen, owners, setValue]);
 
   // Reset prefill flag when modal closes
   useEffect(() => {
@@ -137,7 +137,7 @@ export const LandlordDetailsStep: React.FC<{
       {error && <>Failed to lookup landlord information</>}
       {showLookup && (
         <FormGroup
-          legendText="Please review your landlord's information"
+          legendText={_(msg`Please review your landlord's information`)}
           key="landlord-details__hpd-lookup"
         >
           {errors?.landlord_details && (
@@ -167,7 +167,7 @@ export const LandlordDetailsStep: React.FC<{
                 control={control}
                 render={() => (
                   <Button
-                    labelText="Edit"
+                    labelText={_(msg`Edit`)}
                     type="button"
                     variant="tertiary"
                     onClick={() => {
@@ -206,6 +206,7 @@ export const LandlordDetailsStep: React.FC<{
                 shouldFocus: true,
               });
               if (!isValid) {
+                console.warn(errors);
                 return;
               }
 
@@ -270,7 +271,7 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           style={{ textTransform: "uppercase" }}
           onBlur={(e) =>
             setValue("landlord_details.name", e.target.value.toUpperCase(), {
-              shouldValidate: true,
+              shouldValidate: !!errors.landlord_details?.name,
               shouldDirty: true,
             })
           }
@@ -286,10 +287,18 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           defaultValue={currentValues?.primary_line || ""}
           style={{ textTransform: "uppercase" }}
           onBlur={(e) =>
+            // TODO: we may want to try to use onChange instead of onBlur, since
+            // the value is never set if use "enter" key to submit, also differs
+            // from other inputs which clear errors onChange. We might also want
+            // to experiment with watch() instead of watch() in case that
+            // helps with the reason this is needed in the first place
             setValue(
               "landlord_details.primary_line",
               e.target.value.toUpperCase(),
-              { shouldValidate: true, shouldDirty: true }
+              {
+                shouldValidate: !!addressErrors?.primary_line,
+                shouldDirty: true,
+              }
             )
           }
         />
@@ -315,7 +324,10 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
               setValue(
                 "landlord_details.secondary_line",
                 e.target.value.toUpperCase(),
-                { shouldValidate: true, shouldDirty: true }
+                {
+                  shouldValidate: !!addressErrors?.secondary_line,
+                  shouldDirty: true,
+                }
               )
             }
           />
@@ -340,7 +352,7 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           {...register("landlord_details.city")}
           id={`${idPrefix}-landlord-city`}
           className="landlord-city-input"
-          labelText="City/Borough"
+          labelText={_(msg`City/Borough`)}
           invalid={!!addressErrors?.city}
           invalidText={addressErrors?.city?.message}
           invalidRole="status"
@@ -349,7 +361,7 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           style={{ textTransform: "uppercase" }}
           onBlur={(e) =>
             setValue("landlord_details.city", e.target.value.toUpperCase(), {
-              shouldValidate: true,
+              shouldValidate: !!addressErrors?.city,
               shouldDirty: true,
             })
           }
@@ -358,7 +370,7 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
         <TextInput
           {...register("landlord_details.state")}
           id={`${idPrefix}-landlord-state`}
-          labelText="State"
+          labelText={_(msg`State`)}
           invalid={!!addressErrors?.state}
           invalidText={addressErrors?.state?.message}
           invalidRole="status"
@@ -367,7 +379,7 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           style={{ textTransform: "uppercase" }}
           onBlur={(e) =>
             setValue("landlord_details.state", e.target.value.toUpperCase(), {
-              shouldValidate: true,
+              shouldValidate: !!addressErrors?.state,
               shouldDirty: true,
             })
           }
@@ -387,7 +399,10 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
               setValue(
                 "landlord_details.urbanization",
                 e.target.value.toUpperCase(),
-                { shouldValidate: true, shouldDirty: true }
+                {
+                  shouldValidate: !!addressErrors?.urbanization,
+                  shouldDirty: true,
+                }
               )
             }
           />
@@ -403,7 +418,7 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           defaultValue={currentValues?.zip_code || ""}
           onBlur={(e) =>
             setValue("landlord_details.zip_code", e.target.value, {
-              shouldValidate: true,
+              shouldValidate: !!addressErrors?.zip_code,
               shouldDirty: true,
             })
           }
@@ -442,17 +457,19 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
         hasCloseBtn={true}
         header={_(msg`Why we ask for your landlord's email`)}
       >
-        <Trans>
-          <p>
+        <p>
+          <Trans>
             We ask for your landlord's email address so that we can send them a
             PDF copy of your letter. This helps ensure that the landlord sees
             your letter.
-            <br />
-            <br />
+          </Trans>
+          <br />
+          <br />
+          <Trans>
             We highly recommend providing your landlord's email, especially if
             you normally correspond with your landlord via email.
-          </p>
-        </Trans>
+          </Trans>
+        </p>
         <Button
           variant="secondary"
           labelText={_(msg`Close`)}

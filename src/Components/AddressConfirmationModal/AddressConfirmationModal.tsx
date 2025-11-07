@@ -56,11 +56,17 @@ export const AddressConfirmationModal: React.FC<
   const getModalHeader = () => {
     switch (type) {
       case "undeliverable":
-        return "Public records tell us that this is not a deliverable address";
+        return _(
+          msg`Public records tell us that this is not a deliverable address`
+        );
       case "better_address":
-        return "Public records tell us there is a better address available";
+        return _(
+          msg`Public records tell us there is a better address available`
+        );
       default:
-        return "Public records tell us that there may be inaccuracies in this address";
+        return _(
+          msg`Public records tell us that there may be inaccuracies in this address`
+        );
     }
   };
 
