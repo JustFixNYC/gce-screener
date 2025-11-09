@@ -75,7 +75,6 @@ export const LandlordDetailsStep: React.FC<{
 }> = ({ verifyAddressDeliverable }) => {
   const {
     formMethods: {
-      control,
       formState: { errors },
       getValues,
       setValue,
@@ -141,49 +140,55 @@ export const LandlordDetailsStep: React.FC<{
       {isLoading && <>Loading...</>}
       {error && <>Failed to lookup landlord information</>}
       {showLookup && (
-        <FormGroup
-          legendText={_(msg`Please review your landlord's information`)}
-          key="landlord-details__hpd-lookup"
-        >
-          {errors?.landlord_details && (
-            <span className="error">{errors?.landlord_details?.message}</span>
-          )}
-          {owners && owners.length > 0 && (
-            <div>
-              <InfoBox>
-                <Trans>
-                  This is your landlord's information as registered with the NYC
-                  Department of Housing and Preservation (HPD). This may be
-                  different than where you send your rent checks. We will use
-                  this address to ensure your landlord receives the letter.
-                </Trans>
-              </InfoBox>
+        <>
+          <FormGroup
+            legendText={_(msg`Please review your landlord's information`)}
+            key="landlord-details__hpd-lookup"
+          >
+            {errors?.landlord_details && (
+              <span className="error">{errors?.landlord_details?.message}</span>
+            )}
+            {owners && owners.length > 0 && (
+              <div>
+                <InfoBox>
+                  <Trans>
+                    This is your landlord's information as registered with the
+                    NYC Department of Housing and Preservation (HPD). This may
+                    be different than where you send your rent checks. We will
+                    use this address to ensure your landlord receives the
+                    letter.
+                  </Trans>
+                </InfoBox>
 
-              <div className="landlord-details-step__landlord-info">
-                {getValues("landlord_details.name") || owners[0].value}
-                <br />
-                {getValues("landlord_details.primary_line")
-                  ? formatLandlordDetailsAddress(getValues("landlord_details"))
-                  : formatWowContactAddress(owners[0].address)}
+                <div className="landlord-details-step__landlord-info">
+                  {getValues("landlord_details.name") || owners[0].value}
+                  <br />
+                  {getValues("landlord_details.primary_line")
+                    ? formatLandlordDetailsAddress(
+                        getValues("landlord_details")
+                      )
+                    : formatWowContactAddress(owners[0].address)}
+                </div>
+
+                <div>
+                  <Trans>
+                    If you feel strongly that this address is incorrect or
+                    incomplete, you can{" "}
+                    <button
+                      type="button"
+                      className="jfcl-link text-link-button"
+                      onClick={() => setIsEditModalOpen(true)}
+                    >
+                      edit the address
+                    </button>
+                    .
+                  </Trans>
+                </div>
               </div>
-
-              <Controller
-                name="landlord_details"
-                control={control}
-                render={() => (
-                  <Button
-                    labelText={_(msg`Edit`)}
-                    type="button"
-                    variant="tertiary"
-                    onClick={() => {
-                      setIsEditModalOpen(true);
-                    }}
-                  />
-                )}
-              />
-            </div>
-          )}
-        </FormGroup>
+            )}
+          </FormGroup>
+          <LandlordEmailFormGroup idPrefix={"lookup"} />
+        </>
       )}
       {showManual && <LandlordFormGroup idPrefix="form" />}
       <BackNextButtons backStepName="contact_info" />
@@ -254,7 +259,6 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
   const addressErrors = errors.landlord_details;
 
   const { _ } = useLingui();
-  const [showModal, setShowModal] = useState(false);
   const currentValues = getValues("landlord_details");
 
   return (
@@ -378,13 +382,33 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           defaultValue={currentValues?.zip_code || ""}
         />
       </FormGroup>
+      <LandlordEmailFormGroup idPrefix={idPrefix} />
+    </div>
+  );
+};
+
+const LandlordEmailFormGroup: React.FC<{ idPrefix: string }> = ({
+  idPrefix,
+}) => {
+  const {
+    formMethods: {
+      register,
+      formState: { errors },
+    },
+  } = useContext(FormContext);
+
+  const { _ } = useLingui();
+  const [showModal, setShowModal] = useState(false);
+
+  return (
+    <>
       <FormGroup
         legendText={_(msg`Your landlord's contact information`)}
         className="form-group__section-header"
       >
         <TextInput
           {...register("landlord_details.email")}
-          id="form-email"
+          id={`${idPrefix}-form-email`}
           labelText={_(msg`Email`) + " " + _(msg`(Optional)`)}
           invalid={!!errors.landlord_details?.email}
           invalidText={errors.landlord_details?.email?.message}
@@ -430,6 +454,6 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           onClick={() => setShowModal(false)}
         />
       </Modal>
-    </div>
+    </>
   );
 };
