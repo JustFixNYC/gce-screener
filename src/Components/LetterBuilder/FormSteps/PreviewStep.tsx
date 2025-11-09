@@ -1,4 +1,10 @@
-import { useContext, useEffect, useState, useRef, useCallback } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+} from "react";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
@@ -8,6 +14,7 @@ import { languageNames, SupportedLocale } from "../../../i18n-base";
 import { buildLetterHtml } from "../Letter/letter-utils";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import "./PreviewStep.scss";
+import { InfoBox } from "../../InfoBox/InfoBox";
 
 export const PreviewStep: React.FC = () => {
   const {
@@ -80,7 +87,7 @@ export const PreviewStep: React.FC = () => {
 
   return (
     <div id="preview-step">
-      <div className="preview-step__page-header">
+      <section className="preview-step__page-header">
         <h3>
           <Trans>Review your letter</Trans>
         </h3>
@@ -90,7 +97,7 @@ export const PreviewStep: React.FC = () => {
             go back to make changes.
           </Trans>
         </p>
-      </div>
+      </section>
       <div className="preview-step__locale-toggle">
         <Trans>Letter preview language:</Trans>{" "}
         <button
@@ -109,6 +116,10 @@ export const PreviewStep: React.FC = () => {
           {languageNames["es"]}
         </button>
       </div>
+      <TranslationInfoBox
+        siteLocale={i18n.locale as SupportedLocale}
+        previewLocale={previewLocale}
+      />
       <div className="preview-step__letter-container">
         <iframe
           ref={iframeRef}
@@ -124,12 +135,68 @@ export const PreviewStep: React.FC = () => {
           this letter later.
         </Trans>
       </div>
-      {/* TODO: consider taking this step out of the <form> since there are no inputs, 
-        and then we'd need to change button2 to be type="button" and onClick={next} */}
       <BackNextButtons
         backStepName="landlord_details"
         button2Props={{ type: "button", onClick: () => next("mail_choice") }}
       />
     </div>
   );
+};
+
+const TranslationInfoBox: React.FC<{
+  siteLocale: SupportedLocale;
+  previewLocale: SupportedLocale;
+}> = ({ siteLocale, previewLocale }) => {
+  // Text is intentionally not wrapped with lingui here
+
+  if (siteLocale === "en" && previewLocale === "en") return;
+
+  if (siteLocale === "en" && previewLocale === "es") {
+    return (
+      <InfoBox color="blue">
+        <p>
+          This is a Spanish translation for your reference. The official letter
+          will be sent in English.
+        </p>
+        <p>
+          <i>
+            Esta es una traducción al español para tu referencia. La carta
+            oficial se enviará en inglés.
+          </i>
+        </p>
+      </InfoBox>
+    );
+  }
+  if (siteLocale === "es" && previewLocale === "es") {
+    return (
+      <InfoBox color="blue">
+        <p>
+          Esta es una traducción al español para tu referencia. La carta oficial
+          se enviará en inglés.
+        </p>
+        <p>
+          <i>
+            This is a Spanish translation for your reference. The official
+            letter will be sent in English.
+          </i>
+        </p>
+      </InfoBox>
+    );
+  }
+  if (siteLocale === "es" && previewLocale === "en") {
+    return (
+      <InfoBox color="blue">
+        <p>
+          Esta es la versión que se enviará a su arrendador. Puede volver al
+          español en cualquier momento para revisar la traducción.
+        </p>
+        <p>
+          <i>
+            This is the version that will be sent to your landlord. You can
+            switch back to Spanish at any time to review the translation.
+          </i>
+        </p>
+      </InfoBox>
+    );
+  }
 };
