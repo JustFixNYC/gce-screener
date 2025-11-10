@@ -5,6 +5,7 @@ import { useLingui } from "@lingui/react";
 import { Controller } from "react-hook-form";
 import {
   Button,
+  ButtonProps,
   Checkbox,
   FormGroup,
   TextInput,
@@ -18,6 +19,7 @@ import { InfoBox } from "../../InfoBox/InfoBox";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { LetterStepForm } from "../LetterBuilderForm";
 import { anyErrors } from "../../../form-utils";
+import { useAddressModalHelpers } from "../AddressModalHelpers";
 import "./LandlordDetailsStep.scss";
 
 const getOwnerContacts = (
@@ -66,18 +68,26 @@ const wowContactToLandlordDetails = (
 };
 
 export const LandlordDetailsStep: React.FC = () => {
+  const { next, formMethods } = useContext(FormContext);
   const {
-    formMethods: {
-      formState: { errors },
-      getValues,
-      setValue,
-    },
-  } = useContext(FormContext);
+    formState: { errors },
+    getValues,
+    setValue,
+    watch,
+  } = formMethods;
 
   const { _ } = useLingui();
   const [showOverwrite, setShowOverwrite] = useState(false);
   const hasPrefilledRef = useRef(false);
   const hasInitializedRef = useRef(false);
+
+  const nextStep = "preview";
+
+  const { handleAddressVerification, addressConfirmationModal } =
+    useAddressModalHelpers({
+      formMethods: formMethods,
+      onAddressConfirmed: () => next(nextStep),
+    });
 
   const {
     data: landlordData,
@@ -127,6 +137,18 @@ export const LandlordDetailsStep: React.FC = () => {
 
   const showLookup = !isLoading && !error && owners && !showOverwrite;
   const showManual = !isLoading && !landlordData;
+
+  const nextButtonProps: Partial<ButtonProps> = {
+    type: "button",
+    onClick: async () => {
+      const isDeliverable = await handleAddressVerification(
+        watch("landlord_details")
+      );
+      console.log({ isDeliverable: isDeliverable });
+      if (!isDeliverable) return;
+      next(nextStep);
+    },
+  };
 
   return (
     <LetterStepForm nextStep="preview">
@@ -186,12 +208,19 @@ export const LandlordDetailsStep: React.FC = () => {
       {(showManual || showOverwrite) && (
         <LandlordFormGroup isOverwrite={showOverwrite} />
       )}
-      {showManual && <BackNextButtons backStepName="contact_info" />}
+      {(showManual || showLookup) && (
+        <BackNextButtons
+          backStepName="contact_info"
+          button2Props={nextButtonProps}
+        />
+      )}
       {showOverwrite && (
         <BackNextButtons
           button1Props={{ onClick: () => setShowOverwrite(false) }}
+          button2Props={nextButtonProps}
         />
       )}
+      {addressConfirmationModal}
     </LetterStepForm>
   );
 };

@@ -13,13 +13,14 @@ import { FormContext } from "../../../types/LetterFormTypes";
 import { languageNames, SupportedLocale } from "../../../i18n-base";
 import { buildLetterHtml } from "../Letter/letter-utils";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
-import "./PreviewStep.scss";
 import { InfoBox } from "../../InfoBox/InfoBox";
+import "./PreviewStep.scss";
 
 export const PreviewStep: React.FC = () => {
   const {
+    back,
     next,
-    formMethods: { getValues },
+    formMethods: { resetField, getValues },
   } = useContext(FormContext);
 
   const { i18n, _ } = useLingui();
@@ -136,7 +137,12 @@ export const PreviewStep: React.FC = () => {
         </Trans>
       </div>
       <BackNextButtons
-        backStepName="landlord_details"
+        button1Props={{
+          onClick: () => {
+            resetField("landlord_details");
+            back("landlord_details");
+          },
+        }}
         button2Props={{ type: "button", onClick: () => next("mail_choice") }}
       />
     </div>
