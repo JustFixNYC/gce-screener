@@ -129,7 +129,7 @@ export const LandlordDetailsStep: React.FC = () => {
   const showManual = !isLoading && !landlordData;
 
   return (
-    <LetterStepForm nextStep={"preview"}>
+    <LetterStepForm nextStep="preview">
       {isLoading && <>Loading...</>}
       {error && <>Failed to lookup landlord information</>}
       {showLookup && (
@@ -247,7 +247,7 @@ const LandlordFormGroup: React.FC<{
       >
         <TextInput
           {...register("landlord_details.name")}
-          id={"landlord-name"}
+          id="landlord-name"
           labelText={_(msg`Landlord or property manager name`)}
           invalid={!!errors.landlord_details?.name}
           invalidText={errors.landlord_details?.name?.message}
@@ -258,7 +258,7 @@ const LandlordFormGroup: React.FC<{
         />
         <TextInput
           {...register("landlord_details.primary_line")}
-          id={"landlord-primary-line"}
+          id="landlord-primary-line"
           labelText={_(msg`Street address`)}
           invalid={!!landlordErrors?.primary_line}
           invalidText={landlordErrors?.primary_line?.message}
@@ -272,7 +272,7 @@ const LandlordFormGroup: React.FC<{
         >
           <TextInput
             {...register("landlord_details.secondary_line")}
-            id={"landlord-secondary-line"}
+            id="landlord-secondary-line"
             labelText=""
             aria-label={_(msg`Unit Number`)}
             helperText={_(
@@ -309,7 +309,7 @@ const LandlordFormGroup: React.FC<{
         </FormGroup>
         <TextInput
           {...register("landlord_details.city")}
-          id={"landlord-city"}
+          id="landlord-city"
           className="landlord-city-input"
           labelText={_(msg`City/Borough`)}
           invalid={!!landlordErrors?.city}
@@ -321,7 +321,7 @@ const LandlordFormGroup: React.FC<{
         {/* TODO: use dropdown for state to ensure correct format */}
         <TextInput
           {...register("landlord_details.state")}
-          id={"landlord-state"}
+          id="landlord-state"
           labelText={_(msg`State`)}
           invalid={!!landlordErrors?.state}
           invalidText={landlordErrors?.state?.message}
@@ -332,7 +332,7 @@ const LandlordFormGroup: React.FC<{
         {watch("landlord_details.state") === "PR" && (
           <TextInput
             {...register("landlord_details.urbanization")}
-            id={"landlord-urbanization"}
+            id="landlord-urbanization"
             labelText="Urbanization (Puerto Rico only)"
             invalid={!!landlordErrors?.urbanization}
             invalidText={landlordErrors?.urbanization?.message}
@@ -343,7 +343,7 @@ const LandlordFormGroup: React.FC<{
         )}
         <TextInput
           {...register("landlord_details.zip_code")}
-          id={"landlord-zip-code"}
+          id="landlord-zip-code"
           labelText="ZIP Code"
           invalid={!!landlordErrors?.zip_code}
           invalidText={landlordErrors?.zip_code?.message}
