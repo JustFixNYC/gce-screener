@@ -20,7 +20,7 @@ export const PreviewStep: React.FC = () => {
   const {
     back,
     next,
-    formMethods: { resetField, getValues },
+    formMethods: { resetField, getValues, setValue },
   } = useContext(FormContext);
 
   const { i18n, _ } = useLingui();
@@ -139,7 +139,10 @@ export const PreviewStep: React.FC = () => {
       <BackNextButtons
         button1Props={{
           onClick: () => {
+            // Clear landlord name and address for fresh start landlord step, except email
+            const email = getValues("landlord_details.email");
             resetField("landlord_details");
+            setValue("landlord_details.email", email);
             back("landlord_details");
           },
         }}

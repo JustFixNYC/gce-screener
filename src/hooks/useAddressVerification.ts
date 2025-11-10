@@ -45,7 +45,7 @@ export const useAddressVerification = (
   const {
     setValue,
     trigger,
-    watch,
+    getValues,
     formState: { errors },
   } = formMethods;
 
@@ -59,8 +59,6 @@ export const useAddressVerification = (
         "/gceletter/verify_address",
         { arg: addressData }
       );
-
-      console.log(verification);
 
       const deliverability: Deliverability =
         verification.deliverability === "undeliverable" &&
@@ -112,7 +110,7 @@ export const useAddressVerification = (
 
     setValue(
       "landlord_details",
-      { ...watch("landlord_details"), ...finalAddress },
+      { ...getValues("landlord_details"), ...finalAddress },
       {
         shouldValidate: true,
         shouldDirty: true,

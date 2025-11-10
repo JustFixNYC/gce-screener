@@ -31,7 +31,6 @@ export const useAddressModalHelpers = ({
     data: LobAddressFields
   ): Promise<boolean> => {
     const result = await verifyAndConfirm(data);
-    console.log(result);
 
     if (!(result.needsConfirmation && result.data)) {
       return result.deliverability !== "undeliverable" || false;

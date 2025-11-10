@@ -74,6 +74,7 @@ export const LandlordDetailsStep: React.FC = () => {
     getValues,
     setValue,
     watch,
+    trigger,
   } = formMethods;
 
   const { _ } = useLingui();
@@ -141,10 +142,14 @@ export const LandlordDetailsStep: React.FC = () => {
   const nextButtonProps: Partial<ButtonProps> = {
     type: "button",
     onClick: async () => {
+      const isValid = await trigger("landlord_details", { shouldFocus: true });
+      if (!isValid) {
+        console.warn(errors);
+        return;
+      }
       const isDeliverable = await handleAddressVerification(
         watch("landlord_details")
       );
-      console.log({ isDeliverable: isDeliverable });
       if (!isDeliverable) return;
       next(nextStep);
     },
