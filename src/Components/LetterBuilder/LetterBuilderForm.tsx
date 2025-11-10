@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 
 import { flattenExtraEmails, handleFormNoDefault } from "../../form-utils";
 import {
@@ -20,6 +21,7 @@ import { useSendGceLetterData } from "../../api/hooks";
 import { useAddressModalHelpers } from "./AddressModalHelpers";
 import { LetterStep, letterSteps, StepRouteName } from "./LetterSteps";
 import { ProgressBar } from "./ProgressBar/ProgressBar";
+import { InfoBox } from "../InfoBox/InfoBox";
 import "./LetterBuilderForm.scss";
 
 export const LetterBuilderForm: React.FC = () => {
@@ -118,7 +120,7 @@ export const LetterBuilderForm: React.FC = () => {
   return (
     <>
       <ProgressBar percentage={currentStep.progress} />
-      <div className="letter-form__content">
+      <div className="letter-builder">
         <FormContext.Provider
           value={{ formMethods, back, next, confirmationResponse }}
         >
@@ -162,10 +164,23 @@ export const LetterStepForm: React.FC<{
   nextStep?: StepRouteName;
   children: React.ReactNode;
 }> = ({ nextStep, children }) => {
-  const { next } = useContext(FormContext);
+  const {
+    next,
+    formMethods: {
+      formState: { errors },
+    },
+  } = useContext(FormContext);
+  const anyErrors = Object.keys(errors).length > 0;
   const onSubmit = handleFormNoDefault(() => next(nextStep));
   return (
     <form onSubmit={onSubmit} className="letter-form">
+      {anyErrors && (
+        <InfoBox color="orange" className="letter-form__global-error">
+          <Trans>
+            Please review the page and fix the errors below before continuing
+          </Trans>
+        </InfoBox>
+      )}
       {children}
     </form>
   );

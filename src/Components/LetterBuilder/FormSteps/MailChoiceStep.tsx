@@ -18,6 +18,7 @@ import { FormContext } from "../../../types/LetterFormTypes";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { LetterStepForm } from "../LetterBuilderForm";
 import "./MailChoiceStep.scss";
+import { anyErrors } from "../../../form-utils";
 
 export const MailChoiceStep: React.FC = () => {
   const {
@@ -35,6 +36,11 @@ export const MailChoiceStep: React.FC = () => {
   });
 
   const { _ } = useLingui();
+
+  const anyEmailErrors =
+    anyErrors(["cc_user", "extra_emails"], errors) ||
+    anyErrors(["email"], errors.user_details) ||
+    anyErrors(["email"], errors.landlord_details);
 
   return (
     <LetterStepForm nextStep={"confirmation"}>
@@ -99,64 +105,61 @@ export const MailChoiceStep: React.FC = () => {
             }
           />
         </FormGroup>
-        <div className="mail-choice__email">
-          <FormGroup
-            legendText={_(
-              msg`Email a copy to yourself and your landlord or property manager`
+        <FormGroup
+          legendText={_(
+            msg`Email a copy to yourself and your landlord or property manager`
+          )}
+          helperElement={
+            <InfoBox>
+              <Trans>
+                We highly recommend emailing a copy of the letter to yourself
+                and your landlord, especially if your normally correspond to
+                your landlord via email. You can also send a copy to other
+                people you trust.
+              </Trans>
+            </InfoBox>
+          }
+          className="email-form-group"
+          invalid={anyEmailErrors}
+        >
+          <TextInput
+            {...register("user_details.email")}
+            id={`form-user-email`}
+            labelText={_(msg`Your email`) + " " + _(msg`(optional)`)}
+            invalid={!!errors?.user_details?.email}
+            invalidText={errors?.user_details?.email?.message}
+            invalidRole="status"
+            type="email"
+          />
+          <TextInput
+            {...register("landlord_details.email")}
+            id={`form-landlord-email`}
+            className="landlord-email"
+            labelText={_(msg`Your landlord's email`) + " " + _(msg`(optional)`)}
+            invalid={!!errors?.landlord_details?.email}
+            invalidText={errors?.landlord_details?.email?.message}
+            invalidRole="status"
+            type="email"
+          />
+          <Controller
+            name="cc_user"
+            control={control}
+            render={({ field }) => (
+              <Checkbox
+                {...field}
+                value="true"
+                disabled={!watch("landlord_details.email")}
+                checked={
+                  field.value === true && !!watch("landlord_details.email")
+                }
+                onChange={() => field.onChange(!field.value)}
+                labelText={_(
+                  msg`CC me on the email that you send to my landlord `
+                )}
+                id="cc_user"
+              />
             )}
-            helperElement={
-              <InfoBox>
-                <Trans>
-                  We highly recommend emailing a copy of the letter to yourself
-                  and your landlord, especially if your normally correspond to
-                  your landlord via email. You can also send a copy to other
-                  people you trust.
-                </Trans>
-              </InfoBox>
-            }
-            className="email-form-group"
-          >
-            <TextInput
-              {...register("user_details.email")}
-              id={`form-user-email`}
-              labelText={_(msg`Your email`) + " " + _(msg`(optional)`)}
-              invalid={!!errors?.user_details?.email}
-              invalidText={errors?.user_details?.email?.message}
-              invalidRole="status"
-              type="email"
-            />
-            <TextInput
-              {...register("landlord_details.email")}
-              id={`form-landlord-email`}
-              className="landlord-email"
-              labelText={
-                _(msg`Your landlord's email`) + " " + _(msg`(optional)`)
-              }
-              invalid={!!errors?.landlord_details?.email}
-              invalidText={errors?.landlord_details?.email?.message}
-              invalidRole="status"
-              type="email"
-            />
-            <Controller
-              name="cc_user"
-              control={control}
-              render={({ field }) => (
-                <Checkbox
-                  {...field}
-                  value="true"
-                  disabled={!watch("landlord_details.email")}
-                  checked={
-                    field.value === true && !!watch("landlord_details.email")
-                  }
-                  onChange={() => field.onChange(!field.value)}
-                  labelText={_(
-                    msg`CC me on the email that you send to my landlord `
-                  )}
-                  id="cc_user"
-                />
-              )}
-            />
-          </FormGroup>
+          />
           {!!fields.length && (
             <FormGroup
               legendText={
@@ -199,7 +202,7 @@ export const MailChoiceStep: React.FC = () => {
           >
             <Icon icon="plus" /> Add recipients
           </button>
-        </div>
+        </FormGroup>
         <BackNextButtons
           backStepName="preview"
           button2Props={{ labelText: _(msg`Mail my letter`) }}

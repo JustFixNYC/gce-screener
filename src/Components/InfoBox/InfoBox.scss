@@ -20,11 +20,14 @@
   }
   &.orange {
     background-color: $ORANGE_ALPHA;
-    border-color: $ORANGE;
+    border: 2px solid $ORANGE;
+    .info-box__icon-container svg {
+      color: $ORANGE;
+    }
   }
   .info-box__content-container {
     flex: 1;
-    @include small_text_desktop;
+    @include body_standard_mobile;
     .bold {
       font-weight: 600;
     }

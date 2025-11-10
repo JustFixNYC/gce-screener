@@ -1,6 +1,18 @@
 import z from "zod";
 import { FormFields } from "./types/LetterFormTypes";
 
+// For a react-hook-form object (of subset) check if there are any errors for a
+// list of fields. Note this only looks at a single level, so you will need to
+// call this multiple times for a set oif fields at different levels of nesting
+export const anyErrors = (
+  fields: string[],
+  errors?: { [key: string]: unknown }
+) => {
+  if (!errors || Object.keys(errors).length === 0) return false;
+  console.log(errors, fields);
+  return Object.keys(errors).some((errorField) => fields.includes(errorField));
+};
+
 // Helps handle the default empty string value that inputs take on
 // https://timjames.dev/blog/building-forms-with-zod-and-react-hook-form-2geg
 export const looseOptional = <T extends z.ZodTypeAny>(schema: T) =>

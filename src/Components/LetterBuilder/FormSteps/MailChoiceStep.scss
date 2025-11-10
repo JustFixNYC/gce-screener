@@ -40,8 +40,8 @@
 
     // highlight when selected (requires :has support)
     &:has(input[type="radio"]:checked) {
-      background-color: $OFF_WHITE_100;
-      box-shadow: inset 0 0 0 1px $GREY_NEW;
+      background-color: $BLUE_100;
+      border: 2px solid $OFF_BLACK;
     }
 
     // stack options with space
@@ -81,36 +81,19 @@
     }
   }
 
-  // NOTE: this copies styles from .jfcl-form-group in FormSteps.scss because in the email section,
-  // two FormGroup components are nested in a div that has the styling of a jfcl-form-group
-  .mail-choice__email {
-    border-radius: 4px;
-    max-width: $contentBoxWidth;
-    background-color: $WHITE;
-    scroll-margin-top: 3.75rem; // 60px
-    // below vars require !important to override index.scss style
-    padding: 2rem !important;
-    margin: 0 0 1.5rem 0 !important; // 24px
-    border: 1px solid $GREY_NEW !important;
+  .jfcl-form-group.email-form-group {
+    legend {
+      position: relative;
+      float: left;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0;
+      @include body_large_desktop;
+      font-weight: 600;
+    }
 
-    .jfcl-form-group.email-form-group {
-      padding: unset !important;
-      margin: unset !important;
-      border: 0px !important;
-
-      legend {
-        position: relative;
-        float: left;
-        width: 100%;
-        margin-bottom: 1rem;
-        padding: 0;
-        @include body_large_desktop;
-        font-weight: 600;
-      }
-
-      .landlord-email {
-        margin-bottom: 0.75rem;
-      }
+    .landlord-email {
+      margin-bottom: 0.75rem;
     }
 
     .additional-email-form-group {
@@ -140,7 +123,7 @@
         .jfcl-button {
           margin-top: 0;
           flex-shrink: 0;
-          align-self: flex-start;
+          align-self: flex-end;
         }
 
         @include for-phone-only {
@@ -150,35 +133,31 @@
           .jfcl-text-input {
             width: 100%;
           }
-
-          .jfcl-button {
-            align-self: flex-end;
-          }
         }
       }
-    }
 
-    // form level error message
-    .jfcl-input-header__invalid_text {
-      font-size: 1rem;
-      font-weight: 400;
-    }
-
-    .jfcl-select-button {
-      min-width: 90px;
-    }
-
-    // Text input header labels
-    .jfcl-text-input,
-    .jfcl-checkbox {
-      label {
-        @include body_standard_desktop;
-        margin-bottom: 0.25rem;
-        display: block;
+      // form level error message
+      .jfcl-input-header__invalid_text {
+        font-size: 1rem;
+        font-weight: 400;
       }
-    }
-    .jfcl-checkbox label {
-      display: flex;
+
+      .jfcl-select-button {
+        min-width: 90px;
+      }
+
+      // Text input header labels
+      .jfcl-text-input,
+      .jfcl-checkbox {
+        label {
+          @include body_standard_desktop;
+          margin-bottom: 0.25rem;
+          display: block;
+        }
+      }
+      .jfcl-checkbox label {
+        display: flex;
+      }
     }
   }
 }

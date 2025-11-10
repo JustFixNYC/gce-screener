@@ -3,6 +3,9 @@
 @use "../../../colors" as *;
 
 .letter-form {
+  &__global-error {
+    margin-bottom: 1.5rem;
+  }
   .jfcl-form-group {
     border-radius: 4px;
     max-width: $contentBoxWidth;
@@ -12,6 +15,10 @@
     padding: 2rem !important;
     margin: 0 0 1.5rem 0 !important; // 24px
     border: 1px solid $GREY_NEW !important;
+
+    &.jfcl-form-group-is-invalid {
+      border: 2px solid $ORANGE !important;
+    }
 
     legend {
       position: relative;
@@ -32,9 +39,6 @@
 
     .info-box {
       margin-bottom: 1.5rem;
-      &__content-container {
-        @include body_standard_mobile;
-      }
     }
 
     ul {
