@@ -42,7 +42,7 @@ msgstr "(123) 456-7890"
 msgid "(optional)"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:389
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:380
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:213
 msgid "(Optional)"
 msgstr ""
@@ -425,7 +425,7 @@ msgstr "Revisa la renovación más reciente de tu contrato de arrendamiento."
 msgid "City data indicates that there aren’t any residential units at this address."
 msgstr "Los datos municipales indican que no hay ninguna vivienda en esta dirección."
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:319
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:314
 msgid "City/Borough"
 msgstr ""
 
@@ -449,7 +449,7 @@ msgstr "clasificado como centro religioso"
 msgid "classified as an educational building"
 msgstr "clasificado como edificio educativo"
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:430
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:421
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:266
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:276
 msgid "Close"
@@ -591,7 +591,7 @@ msgstr ""
 msgid "Eligible"
 msgstr "Elegible"
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:389
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:380
 msgid "Email"
 msgstr ""
 
@@ -1110,7 +1110,7 @@ msgstr ""
 msgid "If your landlord takes you to court, you can raise a “Good Cause” defense. Your landlord would then have to demonstrate to the judge that they raised the rent because of increased costs (taxes, maintenance costs, etc.) or be forced to lower the increase."
 msgstr "Si su arrendador lo lleva a juicio, usted puede presentar una defensa por «causa justificada». En ese caso, su arrendador tendría que demostrar ante el juez que aumentó el alquiler debido al incremento de los costos (impuestos, gastos de mantenimiento, etc.) o se vería obligado a reducir el aumento."
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:283
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:279
 msgid "If your landlord’s address does not have a unit number, please select “This address does not have a unit/suite/apartment” below"
 msgstr ""
 
@@ -1237,7 +1237,7 @@ msgstr ""
 msgid "Landlord name is required for the letter"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:253
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:251
 msgid "Landlord or property manager name"
 msgstr ""
 
@@ -1306,7 +1306,7 @@ msgstr "Descubra cómo pueden ayudar las asociaciones de inquilinos."
 msgid "Learn if you’re covered <0/>by Good Cause <1/>Eviction law in NYC"
 msgstr "Averigüe si está cubierto <0/>por una causa justificada <1/>Ley de desahucios en la ciudad de Nueva York"
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:404
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:395
 #: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:151
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:228
 #: src/Components/Pages/Form/Survey.tsx:600
@@ -2155,7 +2155,7 @@ msgstr "Algo salió mal. Inténtalo de nuevo más tarde."
 msgid "Source of income discrimination is the illegal practice by landlords, owners, and real estate brokers of refusing to rent to current or prospective tenants seeking to pay for housing with housing assistance vouchers, subsidies, or other forms of public assistance."
 msgstr "La discriminación por fuente de ingresos es la práctica ilegal por parte de los propietarios, arrendadores y agentes inmobiliarios de negarse a alquilar a inquilinos actuales o potenciales que desean pagar su vivienda con vales de asistencia para la vivienda, subsidios u otras formas de asistencia pública."
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:331
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:325
 msgid "State"
 msgstr ""
 
@@ -2163,7 +2163,7 @@ msgstr ""
 msgid "State is required for the letter"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:265
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:262
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:134
 msgid "Street address"
 msgstr ""
@@ -2342,7 +2342,7 @@ msgstr "Hay {steps, plural, one {es # cosa} other {son # cosas}} que debes verif
 msgid "There was an error loading your results, please try again in a few minutes."
 msgstr "Se produjo un error al cargar los resultados. Inténtalo de nuevo en unos minutos."
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:308
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:303
 msgid "This address does not have a unit/suite/apartment"
 msgstr ""
 
@@ -2462,8 +2462,8 @@ msgstr "Desafortunadamente, puede resultar difícil averiguar quién es realment
 msgid "Unit number"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:274
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:281
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:270
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:277
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:147
 msgid "Unit Number"
 msgstr ""
@@ -2553,7 +2553,7 @@ msgstr "Visita JustFix"
 msgid "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner's name and signature."
 msgstr "No podemos enlazar directamente con documentos específicos de propiedades en Staten Island. Consulte todos los documentos de esta propiedad y vea el video anterior para saber cómo identificar los documentos que más probablemente contengan el nombre y la firma del propietario."
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:416
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:407
 msgid "We ask for your landlord's email address so that we can send them a PDF copy of your letter. This helps ensure that the landlord sees your letter."
 msgstr ""
 
@@ -2573,7 +2573,7 @@ msgstr ""
 #~ msgid "We highly recommend emailing a copy of the letter to yourself and your landlord. You can also send a copy to other people you trust."
 #~ msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:423
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:414
 msgid "We highly recommend providing your landlord's email, especially if you normally correspond with your landlord via email."
 msgstr ""
 
@@ -2721,7 +2721,7 @@ msgstr ""
 msgid "Who can help?"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:397
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:388
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:221
 msgid "Why are we asking for this information?"
 msgstr ""
@@ -2730,7 +2730,7 @@ msgstr ""
 msgid "Why send a letter to your landlord?"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:413
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:404
 msgid "Why we ask for your landlord's email"
 msgstr ""
 
@@ -2807,7 +2807,7 @@ msgstr ""
 msgid "You can withhold the rent increase above the ‘reasonable’ threshold. Pay your old rent plus {0}%. To be safe, set aside the extra rent in a separate escrow account until your negotiations with your landlord have totally resolved."
 msgstr "Puede retener el aumento del alquiler por encima del umbral «razonable». Pague su antiguo alquiler más {0}%. Para mayor seguridad, guarde el alquiler adicional en una cuenta de depósito en garantía separada hasta que las negociaciones con el propietario se hayan resuelto por completo."
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:241
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:239
 msgid "You have chosen to overwrite the landlord information recommended by JustFix. Please provide your own details below, or use the recommended landlord information."
 msgstr ""
 
@@ -3138,7 +3138,7 @@ msgstr ""
 msgid "Your landlord will need to provide a good reason for ending a tenancy. Even if your lease expires, your landlord cannot evict you, as long as you abide by the terms of your expired lease."
 msgstr "El propietario deberá proporcionar una razón válida para rescindir el contrato de alquiler. Aunque el contrato haya vencido, el propietario no puede desalojarlo, siempre y cuando usted cumpla con los términos del contrato vencido."
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:382
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:373
 msgid "Your landlord's contact information"
 msgstr ""
 
@@ -3146,7 +3146,7 @@ msgstr ""
 msgid "Your landlord's email"
 msgstr ""
 
-#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:235
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:233
 msgid "Your landlord's information"
 msgstr ""
 

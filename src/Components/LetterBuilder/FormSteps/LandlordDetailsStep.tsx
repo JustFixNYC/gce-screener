@@ -202,7 +202,6 @@ const LandlordFormGroup: React.FC<{
   const {
     formMethods: {
       register,
-      getValues,
       setValue,
       control,
       watch,
@@ -213,7 +212,6 @@ const LandlordFormGroup: React.FC<{
   const landlordErrors = errors.landlord_details;
 
   const { _ } = useLingui();
-  const currentValues = getValues("landlord_details");
 
   const anyLandlordInfoErrors = anyErrors(
     [
@@ -230,7 +228,7 @@ const LandlordFormGroup: React.FC<{
   );
 
   return (
-    <div>
+    <>
       <FormGroup
         legendText={_(msg`Your landlord's information`)}
         invalid={anyLandlordInfoErrors}
@@ -256,7 +254,6 @@ const LandlordFormGroup: React.FC<{
           invalidRole="status"
           type="text"
           autoFocus
-          defaultValue={currentValues?.name || ""}
           style={{ textTransform: "uppercase" }}
         />
         <TextInput
@@ -267,7 +264,6 @@ const LandlordFormGroup: React.FC<{
           invalidText={landlordErrors?.primary_line?.message}
           invalidRole="status"
           type="text"
-          defaultValue={currentValues?.primary_line || ""}
           style={{ textTransform: "uppercase" }}
         />
         <FormGroup
@@ -287,7 +283,6 @@ const LandlordFormGroup: React.FC<{
             disabled={watch("landlord_details.no_unit")}
             invalidRole="status"
             type="text"
-            defaultValue={currentValues?.secondary_line || ""}
             style={{ textTransform: "uppercase" }}
           />
           <Controller
@@ -321,7 +316,6 @@ const LandlordFormGroup: React.FC<{
           invalidText={landlordErrors?.city?.message}
           invalidRole="status"
           type="text"
-          defaultValue={currentValues?.city || ""}
           style={{ textTransform: "uppercase" }}
         />
         {/* TODO: use dropdown for state to ensure correct format */}
@@ -333,7 +327,6 @@ const LandlordFormGroup: React.FC<{
           invalidText={landlordErrors?.state?.message}
           invalidRole="status"
           type="text"
-          defaultValue={currentValues?.state || ""}
           style={{ textTransform: "uppercase" }}
         />
         {watch("landlord_details.state") === "PR" && (
@@ -345,7 +338,6 @@ const LandlordFormGroup: React.FC<{
             invalidText={landlordErrors?.urbanization?.message}
             invalidRole="status"
             type="text"
-            defaultValue={currentValues?.urbanization || ""}
             style={{ textTransform: "uppercase" }}
           />
         )}
@@ -357,11 +349,10 @@ const LandlordFormGroup: React.FC<{
           invalidText={landlordErrors?.zip_code?.message}
           invalidRole="status"
           type="text"
-          defaultValue={currentValues?.zip_code || ""}
         />
       </FormGroup>
       <LandlordEmailFormGroup />
-    </div>
+    </>
   );
 };
 
