@@ -45,6 +45,7 @@ export const useAddressVerification = (
   const {
     setValue,
     trigger,
+    watch,
     formState: { errors },
   } = formMethods;
 
@@ -106,40 +107,17 @@ export const useAddressVerification = (
       state: lobAddress.components.state,
       urbanization: lobAddress.urbanization,
       zip_code: lobAddress.components.zip_code,
+      no_unit: !lobAddress.secondary_line,
     };
 
-    setValue("landlord_details.primary_line", finalAddress.primary_line, {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
     setValue(
-      "landlord_details.secondary_line",
-      finalAddress.secondary_line || "",
+      "landlord_details",
+      { ...watch("landlord_details"), ...finalAddress },
       {
         shouldValidate: true,
         shouldDirty: true,
       }
     );
-    setValue("landlord_details.no_unit", !finalAddress.secondary_line, {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
-    setValue("landlord_details.city", finalAddress.city, {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
-    setValue("landlord_details.state", finalAddress.state, {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
-    setValue("landlord_details.zip_code", finalAddress.zip_code, {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
-    setValue("landlord_details.urbanization", finalAddress.urbanization, {
-      shouldValidate: true,
-      shouldDirty: true,
-    });
 
     const isValid = await trigger(["landlord_details"]);
     if (!isValid) console.warn(errors.landlord_details);
