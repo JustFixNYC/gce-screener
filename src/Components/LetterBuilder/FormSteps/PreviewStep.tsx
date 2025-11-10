@@ -87,7 +87,7 @@ export const PreviewStep: React.FC = () => {
   }, [letter, resizeIframe]);
 
   return (
-    <div id="preview-step">
+    <div className="preview-step">
       <section className="preview-step__page-header">
         <h3>
           <Trans>Review your letter</Trans>

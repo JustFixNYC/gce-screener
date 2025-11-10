@@ -4,6 +4,7 @@ import { Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
+import classNames from "classnames";
 
 import { flattenExtraEmails, handleFormNoDefault } from "../../form-utils";
 import {
@@ -143,10 +144,19 @@ const getLetterPostData = (
   };
 };
 
-export const LetterStepForm: React.FC<{
+type LetterStepFormProps = {
   nextStep?: StepRouteName;
-  children: React.ReactNode;
-}> = ({ nextStep, children }) => {
+  onSubmit?: () => void;
+  children?: React.ReactNode;
+  className?: string;
+};
+
+export const LetterStepForm: React.FC<LetterStepFormProps> = ({
+  nextStep,
+  onSubmit,
+  children,
+  className,
+}) => {
   const {
     next,
     formMethods: {
@@ -154,9 +164,12 @@ export const LetterStepForm: React.FC<{
     },
   } = useContext(FormContext);
   const anyErrors = Object.keys(errors).length > 0;
-  const onSubmit = handleFormNoDefault(() => next(nextStep));
+  const handleSubmit = handleFormNoDefault(onSubmit || (() => next(nextStep)));
   return (
-    <form onSubmit={onSubmit} className="letter-form">
+    <form
+      onSubmit={handleSubmit}
+      className={classNames("letter-form", className)}
+    >
       {anyErrors && (
         <InfoBox color="orange" className="letter-form__global-error">
           <Trans>

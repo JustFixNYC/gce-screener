@@ -1,6 +1,6 @@
 @use "../../../mixins" as *;
 
-#reason-step {
+.reason-step {
   .reason-step__buttons {
     display: flex;
     flex-direction: column;
