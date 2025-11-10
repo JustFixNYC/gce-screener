@@ -21,12 +21,7 @@ const lobAddressSchema = (i18n: I18n) =>
     zip_code: z
       .string()
       .min(1, i18n._(msg`ZIP Code is required for the letter`))
-      .regex(
-        /^\d{5}((-)?\d{4})?$/,
-        i18n._(
-          msg`ZIP Code must be either 5-digit number or 5-digits with hyphen and 4 additional digits.`
-        )
-      ),
+      .regex(/^\d{5}((-)?\d{4})?$/, i18n._(msg`Please enter a valid ZIP Code`)),
     urbanization: z.string().optional(),
     secondary_line: z.string().optional(),
     no_unit: z.boolean(),
@@ -48,7 +43,9 @@ const userDetailsSchema = (i18n: I18n) => {
             : i18n._(msg`Please enter a complete US phone number`),
       })
       .length(10, i18n._(msg`Please enter a complete US phone number`)),
-    email: looseOptional(z.email(i18n._(msg`Please enter a valid email`))),
+    email: looseOptional(
+      z.email(i18n._(msg`Please enter a valid email address`))
+    ),
     ...lobAddressSchema(i18n)
       .omit({ urbanization: true })
       .extend({ bbl: z.string().regex(/^\d{10}$/) }).shape,
@@ -65,7 +62,7 @@ const userDetailsSchema = (i18n: I18n) => {
     },
     {
       message: i18n._(
-        msg`Please provide a unit number or check the box to confirm that there is no unit number`
+        msg`Please enter a unit number or check the box to confirm that there is no unit number`
       ),
       path: ["secondary_line"],
 
@@ -82,8 +79,12 @@ const userDetailsSchema = (i18n: I18n) => {
 
 const landlordDetailsSchema = (i18n: I18n) => {
   const schema = z.object({
-    name: z.string().min(1, i18n._(msg`Landlord name is required`)),
-    email: looseOptional(z.email(i18n._(msg`Please enter a valid email`))),
+    name: z
+      .string()
+      .min(1, i18n._(msg`Landlord name is required for the letter`)),
+    email: looseOptional(
+      z.email(i18n._(msg`Please enter a valid email address`))
+    ),
     ...lobAddressSchema(i18n).shape,
   });
 
@@ -96,7 +97,7 @@ const landlordDetailsSchema = (i18n: I18n) => {
     },
     {
       message: i18n._(
-        msg`Please provide a unit number or check the box to confirm that there is no unit number`
+        msg`Please enter a unit number or check the box to confirm that there is no unit number`
       ),
       path: ["secondary_line"],
 
@@ -115,14 +116,14 @@ const letterExtrasSchema = (i18n: I18n) =>
   z.object({
     mail_choice: z.literal(
       ["WE_WILL_MAIL", "USER_WILL_MAIL"],
-      i18n._(msg`Please select an option for mailing the letter`)
+      i18n._(msg`You must select a method to mail your letter`)
     ),
     // Flat arrays don't work with react-hook-form field array
     extra_emails: looseOptional(
       z.array(
         z.object({
           email: looseOptional(
-            z.email(i18n._(msg`Please enter a valid email`))
+            z.email(i18n._(msg`Please enter a valid email address`))
           ),
         })
       )
@@ -149,7 +150,7 @@ const nonRenewalLetterSchema = (i18n: I18n) =>
     reason: z.literal("NON_RENEWAL"),
     good_cause_given: z.boolean(
       i18n._(
-        msg`Please select whether your landlord provided one of the listed reasons for not renewing your lease.`
+        msg`Please select whether your landlord provided one of the listed reasons for not renewing your lease`
       )
     ),
   });
@@ -162,7 +163,7 @@ export const formSchema = (i18n: I18n) => {
   );
   return schema.refine((data) => !data.cc_user || !!data.user_details.email, {
     message: i18n._(
-      msg`Please enter your email address or uncheck the option to CC you on the email to your landlord`
+      msg`please enter your email address or uncheck the option to CC you on the email to your landlord`
     ),
     path: ["user_details.email"],
 

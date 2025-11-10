@@ -11,6 +11,7 @@ import {
 } from "@justfixnyc/component-library";
 
 import {
+  anyErrors,
   formatPhoneNumber,
   parseFormattedPhoneNumber,
 } from "../../../form-utils";
@@ -62,6 +63,12 @@ export const UserDetailsStep: React.FC = () => {
   const prevStep: StepRouteName =
     watch("reason") === "PLANNED_INCREASE" ? "rent_increase" : "non_renewal";
 
+  const anyAddressErrors = anyErrors(
+    ["first_name", "last_name", "secondary_line", "no_unit"],
+    userErrors
+  );
+  const anyContactErrors = anyErrors(["phone_number", "email"], userErrors);
+
   // used to prefill address input when user has clicked back from the next step
   const initialAddress: Address | undefined =
     userDetails?.primary_line && userDetails?.city && userDetails?.bbl
@@ -93,6 +100,7 @@ export const UserDetailsStep: React.FC = () => {
               </Trans>
             </InfoBox>
           }
+          invalid={anyAddressErrors}
         >
           <div className="text-input__two-column">
             <TextInput
@@ -178,6 +186,7 @@ export const UserDetailsStep: React.FC = () => {
         <FormGroup
           legendText={_(msg`Your contact information`)}
           className="form-group__section-header"
+          invalid={anyContactErrors}
         >
           <Controller
             name="user_details.phone_number"

@@ -21,6 +21,7 @@ import Modal from "../../Modal/Modal";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { LetterStepForm } from "../LetterBuilderForm";
+import { anyErrors } from "../../../form-utils";
 import "./LandlordDetailsStep.scss";
 
 const getOwnerContacts = (
@@ -256,16 +257,30 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
     },
   } = useContext(FormContext);
 
-  const addressErrors = errors.landlord_details;
+  const landlordErrors = errors.landlord_details;
 
   const { _ } = useLingui();
   const currentValues = getValues("landlord_details");
+
+  const anyLandlordInfoErrors = anyErrors(
+    [
+      "name",
+      "primary_line",
+      "no_unit",
+      "secondary_line",
+      "city",
+      "state",
+      "urbanization",
+      "zip_code",
+    ],
+    landlordErrors
+  );
 
   return (
     <div>
       <FormGroup
         legendText={_(msg`Your landlord's information`)}
-        invalid={!!errors?.landlord_details}
+        invalid={anyLandlordInfoErrors}
         invalidText={errors?.landlord_details?.message}
         key={`${idPrefix}-manual-input`}
       >
@@ -285,8 +300,8 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           {...register("landlord_details.primary_line")}
           id={`${idPrefix}-landlord-primary-line`}
           labelText={_(msg`Street address`)}
-          invalid={!!addressErrors?.primary_line}
-          invalidText={addressErrors?.primary_line?.message}
+          invalid={!!landlordErrors?.primary_line}
+          invalidText={landlordErrors?.primary_line?.message}
           invalidRole="status"
           type="text"
           defaultValue={currentValues?.primary_line || ""}
@@ -304,8 +319,8 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
             helperText={_(
               msg`If your landlord’s address does not have a unit number, please select “This address does not have a unit/suite/apartment” below`
             )}
-            invalid={!!addressErrors?.secondary_line}
-            invalidText={addressErrors?.secondary_line?.message}
+            invalid={!!landlordErrors?.secondary_line}
+            invalidText={landlordErrors?.secondary_line?.message}
             disabled={watch("landlord_details.no_unit")}
             invalidRole="status"
             type="text"
@@ -339,8 +354,8 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           id={`${idPrefix}-landlord-city`}
           className="landlord-city-input"
           labelText={_(msg`City/Borough`)}
-          invalid={!!addressErrors?.city}
-          invalidText={addressErrors?.city?.message}
+          invalid={!!landlordErrors?.city}
+          invalidText={landlordErrors?.city?.message}
           invalidRole="status"
           type="text"
           defaultValue={currentValues?.city || ""}
@@ -351,8 +366,8 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           {...register("landlord_details.state")}
           id={`${idPrefix}-landlord-state`}
           labelText={_(msg`State`)}
-          invalid={!!addressErrors?.state}
-          invalidText={addressErrors?.state?.message}
+          invalid={!!landlordErrors?.state}
+          invalidText={landlordErrors?.state?.message}
           invalidRole="status"
           type="text"
           defaultValue={currentValues?.state || ""}
@@ -363,8 +378,8 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
             {...register("landlord_details.urbanization")}
             id={`${idPrefix}-landlord-urbanization`}
             labelText="Urbanization (Puerto Rico only)"
-            invalid={!!addressErrors?.urbanization}
-            invalidText={addressErrors?.urbanization?.message}
+            invalid={!!landlordErrors?.urbanization}
+            invalidText={landlordErrors?.urbanization?.message}
             invalidRole="status"
             type="text"
             defaultValue={currentValues?.urbanization || ""}
@@ -375,8 +390,8 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
           {...register("landlord_details.zip_code")}
           id={`${idPrefix}-landlord-zip-code`}
           labelText="ZIP Code"
-          invalid={!!addressErrors?.zip_code}
-          invalidText={addressErrors?.zip_code?.message}
+          invalid={!!landlordErrors?.zip_code}
+          invalidText={landlordErrors?.zip_code?.message}
           invalidRole="status"
           type="text"
           defaultValue={currentValues?.zip_code || ""}
@@ -405,6 +420,7 @@ const LandlordEmailFormGroup: React.FC<{ idPrefix: string }> = ({
       <FormGroup
         legendText={_(msg`Your landlord's contact information`)}
         className="form-group__section-header"
+        invalid={!!errors.landlord_details?.email}
       >
         <TextInput
           {...register("landlord_details.email")}
