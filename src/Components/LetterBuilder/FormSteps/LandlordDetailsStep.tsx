@@ -21,8 +21,8 @@ import Modal from "../../Modal/Modal";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { LetterStepForm } from "../LetterBuilderForm";
-import "./LandlordDetailsStep.scss";
 import { anyErrors } from "../../../form-utils";
+import "./LandlordDetailsStep.scss";
 
 const getOwnerContacts = (
   data?: LandlordData

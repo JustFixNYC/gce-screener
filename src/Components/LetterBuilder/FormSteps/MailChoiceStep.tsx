@@ -17,8 +17,8 @@ import { Pill } from "../../Pill/Pill";
 import { FormContext } from "../../../types/LetterFormTypes";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { LetterStepForm } from "../LetterBuilderForm";
-import "./MailChoiceStep.scss";
 import { anyErrors } from "../../../form-utils";
+import "./MailChoiceStep.scss";
 
 export const MailChoiceStep: React.FC = () => {
   const {
