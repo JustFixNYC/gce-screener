@@ -9,7 +9,6 @@ export const anyErrors = (
   errors?: { [key: string]: unknown }
 ) => {
   if (!errors || Object.keys(errors).length === 0) return false;
-  console.log(errors, fields);
   return Object.keys(errors).some((errorField) => fields.includes(errorField));
 };
 

@@ -18,7 +18,6 @@ import {
   GCELetterPostData,
 } from "../../types/APIDataTypes";
 import { useSendGceLetterData } from "../../api/hooks";
-import { useAddressModalHelpers } from "./AddressModalHelpers";
 import { LetterStep, letterSteps, StepRouteName } from "./LetterSteps";
 import { ProgressBar } from "./ProgressBar/ProgressBar";
 import { InfoBox } from "../InfoBox/InfoBox";
@@ -40,7 +39,6 @@ export const LetterBuilderForm: React.FC = () => {
     reset,
     trigger,
     handleSubmit,
-    getValues,
     setValue,
     clearErrors,
     formState: { errors },
@@ -50,12 +48,6 @@ export const LetterBuilderForm: React.FC = () => {
 
   const [confirmationResponse, setConfirmationResponse] =
     useState<GCELetterConfirmation>();
-
-  const { handleAddressVerification, addressConfirmationModal } =
-    useAddressModalHelpers({
-      formMethods: formMethods,
-      onAddressConfirmed: () => navigateToStep("preview"),
-    });
 
   const { trigger: sendLetter } = useSendGceLetterData();
 
@@ -82,13 +74,6 @@ export const LetterBuilderForm: React.FC = () => {
         console.warn(errors);
         return;
       }
-    }
-
-    if (currentStep.name === "landlord_details") {
-      const isDeliverable = await handleAddressVerification(
-        getValues("landlord_details")
-      );
-      if (!isDeliverable) return;
     }
 
     if (!nextStepName) return;
@@ -127,8 +112,6 @@ export const LetterBuilderForm: React.FC = () => {
           {currentStep.component}
         </FormContext.Provider>
       </div>
-
-      {addressConfirmationModal}
     </>
   );
 };

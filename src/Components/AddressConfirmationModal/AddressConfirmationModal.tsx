@@ -1,52 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "@justfixnyc/component-library";
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 
 import Modal from "../Modal/Modal";
+import { InfoBox } from "../InfoBox/InfoBox";
+import { Deliverability } from "../../hooks/useAddressVerification";
 import { LOBVerificationResponse } from "../../types/APIDataTypes";
-import { LobAddressFields } from "../../types/LetterFormTypes";
+import { FormContext } from "../../types/LetterFormTypes";
 import "./AddressConfirmationModal.scss";
-
-export type AddressModalType =
-  | "undeliverable"
-  | "better_address"
-  | "missing_unit"
-  | "incorrect_unit"
-  | "unnecessary_unit";
 
 interface AddressConfirmationModalProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
   onBack: () => void;
-  inputAddress: LobAddressFields;
   lobAddress: LOBVerificationResponse;
-  type: AddressModalType;
+  type: Deliverability;
 }
 
 export const AddressConfirmationModal: React.FC<
   AddressConfirmationModalProps
-> = ({
-  isOpen,
-  onClose,
-  onConfirm,
-  onBack,
-  inputAddress,
-  lobAddress,
-  type,
-}) => {
-  const { _ } = useLingui();
+> = ({ isOpen, onClose, onConfirm, onBack, lobAddress, type }) => {
+  const {
+    formMethods: { watch },
+  } = useContext(FormContext);
 
-  const formatAddress = () => {
-    return [
-      inputAddress.urbanization,
-      inputAddress.primary_line,
-      inputAddress.secondary_line,
-      `${inputAddress.city}, ${inputAddress.state} ${inputAddress.zip_code}`,
-    ].filter(Boolean);
-  };
+  const { _ } = useLingui();
 
   const formatLOBAddress = () => {
     return [
@@ -57,77 +38,78 @@ export const AddressConfirmationModal: React.FC<
     ].filter(Boolean);
   };
 
-  const getModalHeader = () => {
+  const getInfoBoxText = () => {
     switch (type) {
       case "undeliverable":
-        return _(
-          msg`Public records tell us that this is not a deliverable address`
+        return (
+          <Trans>
+            USPS has flagged this address as undeliverable. Your letter may not
+            be delivered if you proceed with this address. If you know of an
+            alternate address for your landlord, we encourage you to use it.{" "}
+          </Trans>
         );
-      case "better_address":
-        return _(
-          msg`Public records tell us there is a better address available`
+      case "missing_unit":
+        return (
+          <Trans>
+            USPS has flagged that this address may be missing a unit number.
+            Your letter may still be delivered if you proceed with this address,
+            but if you see any errors, please review and edit.
+          </Trans>
         );
-      default:
-        return _(
-          msg`Public records tell us that there may be inaccuracies in this address`
+      case "incorrect_unit":
+        return (
+          <Trans>
+            USPS has flagged that the unit in this address may not exist in the
+            building. Your letter may still be delivered if you proceed with
+            this address, but if you see any errors, please review and edit the
+            address.
+          </Trans>
+        );
+      case "unnecessary_unit":
+        return (
+          <Trans>
+            USPS has flagged that this address does not require a unit number.
+            Your letter may still be delivered if you proceed with this address,
+            but if you see any errors, please review and edit the address.
+          </Trans>
         );
     }
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} header={getModalHeader()}>
-      <p>
-        <Trans>
-          Your letter still may reach the intended destination, but if you see
-          any errors, please review and adjust the address.
-        </Trans>
-      </p>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      header={_(
+        msg`Public records tell us that there may be inaccuracies in this address`
+      )}
+      className="address-confirmation-modal"
+    >
+      <InfoBox color={type === "undeliverable" ? "orange" : "blue"}>
+        {getInfoBoxText()}
+      </InfoBox>
 
-      <div className="address-confirmation-modal__address-box">
-        <div className="address-confirmation-modal__address-label">
-          <Trans>Your entered address:</Trans>
+      <address>
+        <div key={-1}>
+          <strong>{watch("landlord_details.name")}</strong>
         </div>
-        {formatAddress().map((line, index) => (
+        {formatLOBAddress().map((line, index) => (
           <div key={index}>{line}</div>
         ))}
-      </div>
-      {type == "better_address" && (
-        <div className="address-confirmation-modal__address-box">
-          <div className="address-confirmation-modal__address-label">
-            <Trans>USPS verified address:</Trans>
-          </div>
-          {formatLOBAddress().map((line, index) => (
-            <div key={index}>{line}</div>
-          ))}
-        </div>
-      )}
-
-      <div className="address-confirmation-modal__instructions">
-        {type == "better_address" && (
-          <p>
-            <Trans>Select "Continue" to proceed with this address.</Trans>
-          </p>
-        )}
-        <p>
-          <Trans>Select "Back" to edit the address.</Trans>
-        </p>
-      </div>
+      </address>
 
       <div className="modal__buttons">
         <Button
           type="button"
-          variant="secondary"
-          labelText={_(msg`Back`)}
+          labelText={_(msg`Edit address`)}
           onClick={onBack}
         />
-        {type == "better_address" && (
-          <Button
-            type="button"
-            variant="primary"
-            labelText={_(msg`Continue`)}
-            onClick={onConfirm}
-          />
-        )}
+        <Button
+          type="button"
+          variant="secondary"
+          labelText={_(msg`Use this address`)}
+          onClick={onConfirm}
+        />
       </div>
     </Modal>
   );

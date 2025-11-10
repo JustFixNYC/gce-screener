@@ -13,13 +13,14 @@ import { FormContext } from "../../../types/LetterFormTypes";
 import { languageNames, SupportedLocale } from "../../../i18n-base";
 import { buildLetterHtml } from "../Letter/letter-utils";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
-import "./PreviewStep.scss";
 import { InfoBox } from "../../InfoBox/InfoBox";
+import "./PreviewStep.scss";
 
 export const PreviewStep: React.FC = () => {
   const {
+    back,
     next,
-    formMethods: { getValues },
+    formMethods: { resetField, getValues, setValue },
   } = useContext(FormContext);
 
   const { i18n, _ } = useLingui();
@@ -136,7 +137,15 @@ export const PreviewStep: React.FC = () => {
         </Trans>
       </div>
       <BackNextButtons
-        backStepName="landlord_details"
+        button1Props={{
+          onClick: () => {
+            // Clear landlord name and address for fresh start landlord step, except email
+            const email = getValues("landlord_details.email");
+            resetField("landlord_details");
+            setValue("landlord_details.email", email);
+            back("landlord_details");
+          },
+        }}
         button2Props={{ type: "button", onClick: () => next("mail_choice") }}
       />
     </div>
