@@ -43,7 +43,7 @@ export const MailChoiceStep: React.FC = () => {
     anyErrors(["email"], errors.landlord_details);
 
   return (
-    <LetterStepForm nextStep={"confirmation"}>
+    <LetterStepForm nextStep="confirmation">
       <div id="mail-choice-step">
         <div className="mail-choice-step__header">
           <h3>

@@ -12,11 +12,7 @@ import {
 
 import { useGetLandlordData } from "../../../api/hooks";
 import { LandlordContact, LandlordData } from "../../../types/APIDataTypes";
-import {
-  FormContext,
-  FormFields,
-  LobAddressFields,
-} from "../../../types/LetterFormTypes";
+import { FormContext, FormFields } from "../../../types/LetterFormTypes";
 import Modal from "../../Modal/Modal";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
@@ -69,22 +65,17 @@ const wowContactToLandlordDetails = (
   };
 };
 
-export const LandlordDetailsStep: React.FC<{
-  verifyAddressDeliverable?: (
-    data: LobAddressFields
-  ) => Promise<boolean | undefined>;
-}> = ({ verifyAddressDeliverable }) => {
+export const LandlordDetailsStep: React.FC = () => {
   const {
     formMethods: {
       formState: { errors },
       getValues,
       setValue,
-      trigger,
     },
   } = useContext(FormContext);
 
   const { _ } = useLingui();
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [showOverwrite, setShowOverwrite] = useState(false);
   const hasPrefilledRef = useRef(false);
   const hasInitializedRef = useRef(false);
 
@@ -99,7 +90,7 @@ export const LandlordDetailsStep: React.FC<{
   // Prefill form when modal opens
   useEffect(() => {
     if (
-      isEditModalOpen &&
+      showOverwrite &&
       owners &&
       owners.length > 0 &&
       !hasPrefilledRef.current
@@ -112,14 +103,14 @@ export const LandlordDetailsStep: React.FC<{
       });
       hasPrefilledRef.current = true;
     }
-  }, [isEditModalOpen, owners, setValue]);
+  }, [showOverwrite, owners, setValue]);
 
   // Reset prefill flag when modal closes
   useEffect(() => {
-    if (!isEditModalOpen) {
+    if (!showOverwrite) {
       hasPrefilledRef.current = false;
     }
-  }, [isEditModalOpen]);
+  }, [showOverwrite]);
 
   // Initialize form with landlord details when component mounts
   useEffect(() => {
@@ -134,10 +125,11 @@ export const LandlordDetailsStep: React.FC<{
     }
   }, [owners, setValue]);
 
-  const showLookup = !isLoading && !error && owners;
+  const showLookup = !isLoading && !error && owners && !showOverwrite;
   const showManual = !isLoading && !landlordData;
+
   return (
-    <LetterStepForm nextStep={"preview"}>
+    <LetterStepForm nextStep="preview">
       {isLoading && <>Loading...</>}
       {error && <>Failed to lookup landlord information</>}
       {showLookup && (
@@ -178,7 +170,7 @@ export const LandlordDetailsStep: React.FC<{
                     <button
                       type="button"
                       className="jfcl-link text-link-button"
-                      onClick={() => setIsEditModalOpen(true)}
+                      onClick={() => setShowOverwrite(true)}
                     >
                       edit the address
                     </button>
@@ -188,68 +180,28 @@ export const LandlordDetailsStep: React.FC<{
               </div>
             )}
           </FormGroup>
-          <LandlordEmailFormGroup idPrefix={"lookup"} />
+          <LandlordEmailFormGroup />
         </>
       )}
-      {showManual && <LandlordFormGroup idPrefix="form" />}
-      <BackNextButtons backStepName="contact_info" />
-
-      <Modal
-        isOpen={isEditModalOpen}
-        onClose={() => setIsEditModalOpen(false)}
-        header={_(msg`Edit your landlord's information`)}
-      >
-        {/* Necessary since modal is in dom even when not shown, so can't have multiple inputs registered for same field */}
-        {isEditModalOpen && <LandlordFormGroup idPrefix="modal-form" />}
-        <div className="landlord-details-step__modal-buttons">
-          <Button
-            type="button"
-            variant="secondary"
-            labelText={_(msg`Cancel`)}
-            onClick={() => setIsEditModalOpen(false)}
-          />
-          <Button
-            type="button"
-            variant="primary"
-            labelText={_(msg`Save`)}
-            onClick={async () => {
-              // Validate with form schema
-              const isValid = await trigger("landlord_details", {
-                shouldFocus: true,
-              });
-              if (!isValid) {
-                console.warn(errors);
-                return;
-              }
-
-              // Then verify address deliverability
-              const currentValues = getValues("landlord_details");
-
-              if (verifyAddressDeliverable) {
-                const isDeliverable = await verifyAddressDeliverable(
-                  currentValues
-                );
-                if (!isDeliverable) {
-                  return; // Don't close modal if address is not deliverable
-                }
-              }
-
-              setIsEditModalOpen(false);
-            }}
-          />
-        </div>
-      </Modal>
+      {(showManual || showOverwrite) && (
+        <LandlordFormGroup isOverwrite={showOverwrite} />
+      )}
+      {showManual && <BackNextButtons backStepName="contact_info" />}
+      {showOverwrite && (
+        <BackNextButtons
+          button1Props={{ onClick: () => setShowOverwrite(false) }}
+        />
+      )}
     </LetterStepForm>
   );
 };
 
-const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
-  idPrefix = "form",
-}) => {
+const LandlordFormGroup: React.FC<{
+  isOverwrite?: boolean;
+}> = ({ isOverwrite = false }) => {
   const {
     formMethods: {
       register,
-      getValues,
       setValue,
       control,
       watch,
@@ -260,7 +212,6 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
   const landlordErrors = errors.landlord_details;
 
   const { _ } = useLingui();
-  const currentValues = getValues("landlord_details");
 
   const anyLandlordInfoErrors = anyErrors(
     [
@@ -277,34 +228,42 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
   );
 
   return (
-    <div>
+    <>
       <FormGroup
         legendText={_(msg`Your landlord's information`)}
         invalid={anyLandlordInfoErrors}
         invalidText={errors?.landlord_details?.message}
-        key={`${idPrefix}-manual-input`}
+        helperElement={
+          isOverwrite && (
+            <InfoBox color="blue">
+              <Trans>
+                You have chosen to overwrite the landlord information
+                recommended by JustFix. Please provide your own details below,
+                or use the recommended landlord information.
+              </Trans>
+            </InfoBox>
+          )
+        }
       >
         <TextInput
           {...register("landlord_details.name")}
-          id={`${idPrefix}-landlord-name`}
+          id="landlord-name"
           labelText={_(msg`Landlord or property manager name`)}
           invalid={!!errors.landlord_details?.name}
           invalidText={errors.landlord_details?.name?.message}
           invalidRole="status"
           type="text"
           autoFocus
-          defaultValue={currentValues?.name || ""}
           style={{ textTransform: "uppercase" }}
         />
         <TextInput
           {...register("landlord_details.primary_line")}
-          id={`${idPrefix}-landlord-primary-line`}
+          id="landlord-primary-line"
           labelText={_(msg`Street address`)}
           invalid={!!landlordErrors?.primary_line}
           invalidText={landlordErrors?.primary_line?.message}
           invalidRole="status"
           type="text"
-          defaultValue={currentValues?.primary_line || ""}
           style={{ textTransform: "uppercase" }}
         />
         <FormGroup
@@ -313,7 +272,7 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
         >
           <TextInput
             {...register("landlord_details.secondary_line")}
-            id={`${idPrefix}-landlord-secondary-line`}
+            id="landlord-secondary-line"
             labelText=""
             aria-label={_(msg`Unit Number`)}
             helperText={_(
@@ -324,7 +283,6 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
             disabled={watch("landlord_details.no_unit")}
             invalidRole="status"
             type="text"
-            defaultValue={currentValues?.secondary_line || ""}
             style={{ textTransform: "uppercase" }}
           />
           <Controller
@@ -351,60 +309,54 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
         </FormGroup>
         <TextInput
           {...register("landlord_details.city")}
-          id={`${idPrefix}-landlord-city`}
+          id="landlord-city"
           className="landlord-city-input"
           labelText={_(msg`City/Borough`)}
           invalid={!!landlordErrors?.city}
           invalidText={landlordErrors?.city?.message}
           invalidRole="status"
           type="text"
-          defaultValue={currentValues?.city || ""}
           style={{ textTransform: "uppercase" }}
         />
         {/* TODO: use dropdown for state to ensure correct format */}
         <TextInput
           {...register("landlord_details.state")}
-          id={`${idPrefix}-landlord-state`}
+          id="landlord-state"
           labelText={_(msg`State`)}
           invalid={!!landlordErrors?.state}
           invalidText={landlordErrors?.state?.message}
           invalidRole="status"
           type="text"
-          defaultValue={currentValues?.state || ""}
           style={{ textTransform: "uppercase" }}
         />
         {watch("landlord_details.state") === "PR" && (
           <TextInput
             {...register("landlord_details.urbanization")}
-            id={`${idPrefix}-landlord-urbanization`}
+            id="landlord-urbanization"
             labelText="Urbanization (Puerto Rico only)"
             invalid={!!landlordErrors?.urbanization}
             invalidText={landlordErrors?.urbanization?.message}
             invalidRole="status"
             type="text"
-            defaultValue={currentValues?.urbanization || ""}
             style={{ textTransform: "uppercase" }}
           />
         )}
         <TextInput
           {...register("landlord_details.zip_code")}
-          id={`${idPrefix}-landlord-zip-code`}
+          id="landlord-zip-code"
           labelText="ZIP Code"
           invalid={!!landlordErrors?.zip_code}
           invalidText={landlordErrors?.zip_code?.message}
           invalidRole="status"
           type="text"
-          defaultValue={currentValues?.zip_code || ""}
         />
       </FormGroup>
-      <LandlordEmailFormGroup idPrefix={idPrefix} />
-    </div>
+      <LandlordEmailFormGroup />
+    </>
   );
 };
 
-const LandlordEmailFormGroup: React.FC<{ idPrefix: string }> = ({
-  idPrefix,
-}) => {
+const LandlordEmailFormGroup: React.FC = () => {
   const {
     formMethods: {
       register,
@@ -424,7 +376,7 @@ const LandlordEmailFormGroup: React.FC<{ idPrefix: string }> = ({
       >
         <TextInput
           {...register("landlord_details.email")}
-          id={`${idPrefix}-form-email`}
+          id={`landlord-email`}
           labelText={_(msg`Email`) + " " + _(msg`(Optional)`)}
           invalid={!!errors.landlord_details?.email}
           invalidText={errors.landlord_details?.email?.message}

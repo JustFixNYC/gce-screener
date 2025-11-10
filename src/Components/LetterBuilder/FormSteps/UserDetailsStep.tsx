@@ -88,7 +88,7 @@ export const UserDetailsStep: React.FC = () => {
 
   return (
     <div id="user-details-step">
-      <LetterStepForm nextStep={"landlord_details"}>
+      <LetterStepForm nextStep="landlord_details">
         <FormGroup
           legendText={_(msg`Your mailing address`)}
           helperElement={
