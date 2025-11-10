@@ -11,7 +11,6 @@ import {
   FormFields,
   FormContext,
   defaultFormValues,
-  sampleFormValues,
 } from "../../types/LetterFormTypes";
 import { buildLetterHtml } from "./Letter/letter-utils";
 import {
@@ -33,13 +32,7 @@ export const LetterBuilderForm: React.FC = () => {
     // handle values that should be changed to undefined
     resolver: zodResolver(formSchema(i18n)) as Resolver<FormFields>,
     mode: "onSubmit",
-    // defaultValues: defaultFormValues,
-    defaultValues: {
-      ...defaultFormValues,
-      user_details: sampleFormValues.user_details,
-      reason: sampleFormValues.reason,
-      unreasonable_increase: true,
-    },
+    defaultValues: defaultFormValues,
   });
 
   const {
