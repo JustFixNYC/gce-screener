@@ -180,11 +180,11 @@ export const LandlordDetailsStep: React.FC = () => {
               </div>
             )}
           </FormGroup>
-          <LandlordEmailFormGroup idPrefix={"lookup"} />
+          <LandlordEmailFormGroup />
         </>
       )}
       {(showManual || showOverwrite) && (
-        <LandlordFormGroup idPrefix="form" isOverwrite={showOverwrite} />
+        <LandlordFormGroup isOverwrite={showOverwrite} />
       )}
       {showManual && <BackNextButtons backStepName="contact_info" />}
       {showOverwrite && (
@@ -197,9 +197,8 @@ export const LandlordDetailsStep: React.FC = () => {
 };
 
 const LandlordFormGroup: React.FC<{
-  idPrefix?: string;
   isOverwrite?: boolean;
-}> = ({ idPrefix = "form", isOverwrite = false }) => {
+}> = ({ isOverwrite = false }) => {
   const {
     formMethods: {
       register,
@@ -236,7 +235,6 @@ const LandlordFormGroup: React.FC<{
         legendText={_(msg`Your landlord's information`)}
         invalid={anyLandlordInfoErrors}
         invalidText={errors?.landlord_details?.message}
-        key={`${idPrefix}-manual-input`}
         helperElement={
           isOverwrite && (
             <InfoBox color="blue">
@@ -251,7 +249,7 @@ const LandlordFormGroup: React.FC<{
       >
         <TextInput
           {...register("landlord_details.name")}
-          id={`${idPrefix}-landlord-name`}
+          id={"landlord-name"}
           labelText={_(msg`Landlord or property manager name`)}
           invalid={!!errors.landlord_details?.name}
           invalidText={errors.landlord_details?.name?.message}
@@ -263,7 +261,7 @@ const LandlordFormGroup: React.FC<{
         />
         <TextInput
           {...register("landlord_details.primary_line")}
-          id={`${idPrefix}-landlord-primary-line`}
+          id={"landlord-primary-line"}
           labelText={_(msg`Street address`)}
           invalid={!!landlordErrors?.primary_line}
           invalidText={landlordErrors?.primary_line?.message}
@@ -278,7 +276,7 @@ const LandlordFormGroup: React.FC<{
         >
           <TextInput
             {...register("landlord_details.secondary_line")}
-            id={`${idPrefix}-landlord-secondary-line`}
+            id={"landlord-secondary-line"}
             labelText=""
             aria-label={_(msg`Unit Number`)}
             helperText={_(
@@ -316,7 +314,7 @@ const LandlordFormGroup: React.FC<{
         </FormGroup>
         <TextInput
           {...register("landlord_details.city")}
-          id={`${idPrefix}-landlord-city`}
+          id={"landlord-city"}
           className="landlord-city-input"
           labelText={_(msg`City/Borough`)}
           invalid={!!landlordErrors?.city}
@@ -329,7 +327,7 @@ const LandlordFormGroup: React.FC<{
         {/* TODO: use dropdown for state to ensure correct format */}
         <TextInput
           {...register("landlord_details.state")}
-          id={`${idPrefix}-landlord-state`}
+          id={"landlord-state"}
           labelText={_(msg`State`)}
           invalid={!!landlordErrors?.state}
           invalidText={landlordErrors?.state?.message}
@@ -341,7 +339,7 @@ const LandlordFormGroup: React.FC<{
         {watch("landlord_details.state") === "PR" && (
           <TextInput
             {...register("landlord_details.urbanization")}
-            id={`${idPrefix}-landlord-urbanization`}
+            id={"landlord-urbanization"}
             labelText="Urbanization (Puerto Rico only)"
             invalid={!!landlordErrors?.urbanization}
             invalidText={landlordErrors?.urbanization?.message}
@@ -353,7 +351,7 @@ const LandlordFormGroup: React.FC<{
         )}
         <TextInput
           {...register("landlord_details.zip_code")}
-          id={`${idPrefix}-landlord-zip-code`}
+          id={"landlord-zip-code"}
           labelText="ZIP Code"
           invalid={!!landlordErrors?.zip_code}
           invalidText={landlordErrors?.zip_code?.message}
@@ -362,14 +360,12 @@ const LandlordFormGroup: React.FC<{
           defaultValue={currentValues?.zip_code || ""}
         />
       </FormGroup>
-      <LandlordEmailFormGroup idPrefix={idPrefix} />
+      <LandlordEmailFormGroup />
     </div>
   );
 };
 
-const LandlordEmailFormGroup: React.FC<{ idPrefix: string }> = ({
-  idPrefix,
-}) => {
+const LandlordEmailFormGroup: React.FC = () => {
   const {
     formMethods: {
       register,
@@ -389,7 +385,7 @@ const LandlordEmailFormGroup: React.FC<{ idPrefix: string }> = ({
       >
         <TextInput
           {...register("landlord_details.email")}
-          id={`${idPrefix}-form-email`}
+          id={`landlord-email`}
           labelText={_(msg`Email`) + " " + _(msg`(Optional)`)}
           invalid={!!errors.landlord_details?.email}
           invalidText={errors.landlord_details?.email?.message}
