@@ -12,11 +12,7 @@ import {
 
 import { useGetLandlordData } from "../../../api/hooks";
 import { LandlordContact, LandlordData } from "../../../types/APIDataTypes";
-import {
-  FormContext,
-  FormFields,
-  LobAddressFields,
-} from "../../../types/LetterFormTypes";
+import { FormContext, FormFields } from "../../../types/LetterFormTypes";
 import Modal from "../../Modal/Modal";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
@@ -69,22 +65,17 @@ const wowContactToLandlordDetails = (
   };
 };
 
-export const LandlordDetailsStep: React.FC<{
-  verifyAddressDeliverable?: (
-    data: LobAddressFields
-  ) => Promise<boolean | undefined>;
-}> = ({ verifyAddressDeliverable }) => {
+export const LandlordDetailsStep: React.FC = () => {
   const {
     formMethods: {
       formState: { errors },
       getValues,
       setValue,
-      trigger,
     },
   } = useContext(FormContext);
 
   const { _ } = useLingui();
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [showOverwrite, setShowOverwrite] = useState(false);
   const hasPrefilledRef = useRef(false);
   const hasInitializedRef = useRef(false);
 
@@ -99,7 +90,7 @@ export const LandlordDetailsStep: React.FC<{
   // Prefill form when modal opens
   useEffect(() => {
     if (
-      isEditModalOpen &&
+      showOverwrite &&
       owners &&
       owners.length > 0 &&
       !hasPrefilledRef.current
@@ -112,14 +103,14 @@ export const LandlordDetailsStep: React.FC<{
       });
       hasPrefilledRef.current = true;
     }
-  }, [isEditModalOpen, owners, setValue]);
+  }, [showOverwrite, owners, setValue]);
 
   // Reset prefill flag when modal closes
   useEffect(() => {
-    if (!isEditModalOpen) {
+    if (!showOverwrite) {
       hasPrefilledRef.current = false;
     }
-  }, [isEditModalOpen]);
+  }, [showOverwrite]);
 
   // Initialize form with landlord details when component mounts
   useEffect(() => {
@@ -134,8 +125,9 @@ export const LandlordDetailsStep: React.FC<{
     }
   }, [owners, setValue]);
 
-  const showLookup = !isLoading && !error && owners;
+  const showLookup = !isLoading && !error && owners && !showOverwrite;
   const showManual = !isLoading && !landlordData;
+
   return (
     <LetterStepForm nextStep={"preview"}>
       {isLoading && <>Loading...</>}
@@ -178,7 +170,7 @@ export const LandlordDetailsStep: React.FC<{
                     <button
                       type="button"
                       className="jfcl-link text-link-button"
-                      onClick={() => setIsEditModalOpen(true)}
+                      onClick={() => setShowOverwrite(true)}
                     >
                       edit the address
                     </button>
@@ -191,61 +183,23 @@ export const LandlordDetailsStep: React.FC<{
           <LandlordEmailFormGroup idPrefix={"lookup"} />
         </>
       )}
-      {showManual && <LandlordFormGroup idPrefix="form" />}
-      <BackNextButtons backStepName="contact_info" />
-
-      <Modal
-        isOpen={isEditModalOpen}
-        onClose={() => setIsEditModalOpen(false)}
-        header={_(msg`Edit your landlord's information`)}
-      >
-        {/* Necessary since modal is in dom even when not shown, so can't have multiple inputs registered for same field */}
-        {isEditModalOpen && <LandlordFormGroup idPrefix="modal-form" />}
-        <div className="landlord-details-step__modal-buttons">
-          <Button
-            type="button"
-            variant="secondary"
-            labelText={_(msg`Cancel`)}
-            onClick={() => setIsEditModalOpen(false)}
-          />
-          <Button
-            type="button"
-            variant="primary"
-            labelText={_(msg`Save`)}
-            onClick={async () => {
-              // Validate with form schema
-              const isValid = await trigger("landlord_details", {
-                shouldFocus: true,
-              });
-              if (!isValid) {
-                console.warn(errors);
-                return;
-              }
-
-              // Then verify address deliverability
-              const currentValues = getValues("landlord_details");
-
-              if (verifyAddressDeliverable) {
-                const isDeliverable = await verifyAddressDeliverable(
-                  currentValues
-                );
-                if (!isDeliverable) {
-                  return; // Don't close modal if address is not deliverable
-                }
-              }
-
-              setIsEditModalOpen(false);
-            }}
-          />
-        </div>
-      </Modal>
+      {(showManual || showOverwrite) && (
+        <LandlordFormGroup idPrefix="form" isOverwrite={showOverwrite} />
+      )}
+      {showManual && <BackNextButtons backStepName="contact_info" />}
+      {showOverwrite && (
+        <BackNextButtons
+          button1Props={{ onClick: () => setShowOverwrite(false) }}
+        />
+      )}
     </LetterStepForm>
   );
 };
 
-const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
-  idPrefix = "form",
-}) => {
+const LandlordFormGroup: React.FC<{
+  idPrefix?: string;
+  isOverwrite?: boolean;
+}> = ({ idPrefix = "form", isOverwrite = false }) => {
   const {
     formMethods: {
       register,
@@ -283,6 +237,17 @@ const LandlordFormGroup: React.FC<{ idPrefix?: string }> = ({
         invalid={anyLandlordInfoErrors}
         invalidText={errors?.landlord_details?.message}
         key={`${idPrefix}-manual-input`}
+        helperElement={
+          isOverwrite && (
+            <InfoBox color="blue">
+              <Trans>
+                You have chosen to overwrite the landlord information
+                recommended by JustFix. Please provide your own details below,
+                or use the recommended landlord information.
+              </Trans>
+            </InfoBox>
+          )
+        }
       >
         <TextInput
           {...register("landlord_details.name")}

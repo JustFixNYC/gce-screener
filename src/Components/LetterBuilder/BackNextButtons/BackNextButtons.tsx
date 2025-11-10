@@ -7,14 +7,23 @@ import { FormContext } from "../../../types/LetterFormTypes";
 import { StepRouteName } from "../LetterSteps";
 import "./BackNextButtons.scss";
 
-interface BackNextButtonProps {
-  // TODO: make backStepName not required if hideButon1
+type BackNextWithBackStep = {
   backStepName: StepRouteName;
   button1Props?: Partial<ButtonProps>;
   button2Props?: Partial<ButtonProps>;
   hideButton1?: boolean;
   hideButton2?: boolean;
-}
+};
+
+type BackNextWithBackOverride = {
+  backStepName?: StepRouteName;
+  button1Props: Partial<ButtonProps> & { onClick: () => void };
+  button2Props?: Partial<ButtonProps>;
+  hideButton1?: boolean;
+  hideButton2?: boolean;
+};
+
+type BackNextButtonProps = BackNextWithBackStep | BackNextWithBackOverride;
 
 export const BackNextButtons: React.FC<BackNextButtonProps> = ({
   backStepName,
@@ -32,7 +41,7 @@ export const BackNextButtons: React.FC<BackNextButtonProps> = ({
           labelText={_(msg`Back`)}
           labelIcon="chevronLeft"
           variant="tertiary"
-          onClick={() => back(backStepName)}
+          onClick={backStepName ? () => back(backStepName) : undefined}
           className="back-link jfcl-link"
           {...button1Props}
         />
