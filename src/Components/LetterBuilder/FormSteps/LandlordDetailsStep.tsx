@@ -62,7 +62,8 @@ const wowContactToLandlordDetails = (
     city: address.city,
     state: address.state,
     zip_code: address.zip,
-    no_unit: address.apartment == "",
+    no_unit: !address.apartment,
+    urbanization: undefined,
   };
 };
 
@@ -97,7 +98,7 @@ export const LandlordDetailsStep: React.FC = () => {
 
   const owners = getOwnerContacts(landlordData);
 
-  // Prefill form when modal opens
+  // Prefill form when overwrite form shows
   useEffect(() => {
     if (
       showOverwrite &&
@@ -108,7 +109,6 @@ export const LandlordDetailsStep: React.FC = () => {
       const details = wowContactToLandlordDetails(owners[0]);
 
       setValue("landlord_details", details, {
-        shouldValidate: true,
         shouldDirty: true,
       });
       hasPrefilledRef.current = true;
@@ -128,7 +128,6 @@ export const LandlordDetailsStep: React.FC = () => {
       const details = wowContactToLandlordDetails(owners[0]);
 
       setValue("landlord_details", details, {
-        shouldValidate: true,
         shouldDirty: true,
       });
       hasInitializedRef.current = true;
@@ -142,6 +141,7 @@ export const LandlordDetailsStep: React.FC = () => {
     const isValid = await trigger("landlord_details", { shouldFocus: true });
     if (!isValid) {
       console.warn(errors);
+      setShowOverwrite(true);
       return;
     }
     const isDeliverable = await handleAddressVerification(
