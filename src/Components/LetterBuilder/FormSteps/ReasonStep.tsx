@@ -9,7 +9,6 @@ import Modal from "../../Modal/Modal";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { FormContext } from "../../../types/LetterFormTypes";
-import { StepRouteName } from "../LetterSteps";
 import { LetterStepForm } from "../LetterBuilderForm";
 import "./ReasonStep.scss";
 import "./FormSteps.scss";
@@ -26,7 +25,7 @@ export const ReasonStep: React.FC = () => {
   const { _ } = useLingui();
   const [showModal, setShowModal] = useState(false);
 
-  const nextStep: StepRouteName | undefined =
+  const nextStep =
     watch("reason") === "PLANNED_INCREASE"
       ? "rent_increase"
       : watch("reason") === "NON_RENEWAL"
@@ -34,34 +33,30 @@ export const ReasonStep: React.FC = () => {
       : undefined;
 
   return (
-    <div id="reason-step">
-      <LetterStepForm nextStep={nextStep}>
-        <FormGroup
-          legendText={_(msg`Select the reason for your letter`)}
-          invalid={!!errors?.reason}
-          invalidText={errors?.reason?.message}
-          invalidRole="status"
-          helperElement={
-            <ReasonHelperText onClick={() => setShowModal(true)} />
-          }
-        >
-          <div className="reason-step__buttons">
-            <SelectButton
-              {...register("reason")}
-              labelText={_(msg`Your landlord is planning to raise your rent`)}
-              value="PLANNED_INCREASE"
-              id="reason__planned-increase"
-            />
-            <SelectButton
-              {...register("reason")}
-              labelText={_(msg`Your landlord is not offering you a new lease`)}
-              value="NON_RENEWAL"
-              id="reason__non-renewal"
-            />
-          </div>
-        </FormGroup>
-        <BackNextButtons hideButton1 backStepName="reason" />
-      </LetterStepForm>
+    <LetterStepForm nextStep={nextStep} className="reason-step">
+      <FormGroup
+        legendText={_(msg`Select the reason for your letter`)}
+        invalid={!!errors?.reason}
+        invalidText={errors?.reason?.message}
+        invalidRole="status"
+        helperElement={<ReasonHelperText onClick={() => setShowModal(true)} />}
+      >
+        <div className="reason-step__buttons">
+          <SelectButton
+            {...register("reason")}
+            labelText={_(msg`Your landlord is planning to raise your rent`)}
+            value="PLANNED_INCREASE"
+            id="reason__planned-increase"
+          />
+          <SelectButton
+            {...register("reason")}
+            labelText={_(msg`Your landlord is not offering you a new lease`)}
+            value="NON_RENEWAL"
+            id="reason__non-renewal"
+          />
+        </div>
+      </FormGroup>
+      <BackNextButtons hideButton1 backStepName="reason" />
 
       <Modal
         isOpen={showModal}
@@ -134,7 +129,7 @@ export const ReasonStep: React.FC = () => {
           </ul>
         </div>
       </Modal>
-    </div>
+    </LetterStepForm>
   );
 };
 

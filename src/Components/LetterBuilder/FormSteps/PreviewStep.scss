@@ -2,7 +2,7 @@
 @use "../../../variables" as *;
 @use "../../../colors" as *;
 
-#preview-step {
+.preview-step {
   .preview-step__page-header {
     h3 {
       @include h3_desktop;

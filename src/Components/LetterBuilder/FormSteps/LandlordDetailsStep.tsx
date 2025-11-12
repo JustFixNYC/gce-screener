@@ -5,7 +5,6 @@ import { useLingui } from "@lingui/react";
 import { Controller } from "react-hook-form";
 import {
   Button,
-  ButtonProps,
   Checkbox,
   FormGroup,
   TextInput,
@@ -139,24 +138,21 @@ export const LandlordDetailsStep: React.FC = () => {
   const showLookup = !isLoading && !error && owners && !showOverwrite;
   const showManual = !isLoading && !landlordData;
 
-  const nextButtonProps: Partial<ButtonProps> = {
-    type: "button",
-    onClick: async () => {
-      const isValid = await trigger("landlord_details", { shouldFocus: true });
-      if (!isValid) {
-        console.warn(errors);
-        return;
-      }
-      const isDeliverable = await handleAddressVerification(
-        watch("landlord_details")
-      );
-      if (!isDeliverable) return;
-      next(nextStep);
-    },
+  const onSubmit = async () => {
+    const isValid = await trigger("landlord_details", { shouldFocus: true });
+    if (!isValid) {
+      console.warn(errors);
+      return;
+    }
+    const isDeliverable = await handleAddressVerification(
+      watch("landlord_details")
+    );
+    if (!isDeliverable) return;
+    next(nextStep);
   };
 
   return (
-    <LetterStepForm nextStep="preview">
+    <LetterStepForm onSubmit={onSubmit} className="landlord-details-step">
       {isLoading && <>Loading...</>}
       {error && <>Failed to lookup landlord information</>}
       {showLookup && (
@@ -214,15 +210,11 @@ export const LandlordDetailsStep: React.FC = () => {
         <LandlordFormGroup isOverwrite={showOverwrite} />
       )}
       {(showManual || showLookup) && (
-        <BackNextButtons
-          backStepName="contact_info"
-          button2Props={nextButtonProps}
-        />
+        <BackNextButtons backStepName="contact_info" />
       )}
       {showOverwrite && (
         <BackNextButtons
           button1Props={{ onClick: () => setShowOverwrite(false) }}
-          button2Props={nextButtonProps}
         />
       )}
       {addressConfirmationModal}
