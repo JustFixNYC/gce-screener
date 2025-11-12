@@ -56,12 +56,13 @@ const wowContactToLandlordDetails = (
 ): FormFields["landlord_details"] => {
   const { address } = contact;
   return {
-    name: contact.value,
+    // on load, there is an error from unexpected "null" without || ""
+    name: contact.value || "",
     primary_line: `${address.housenumber} ${address.streetname}`,
-    secondary_line: address.apartment || "", // on load, there is an error without || ""
-    city: address.city,
-    state: address.state,
-    zip_code: address.zip,
+    secondary_line: address.apartment || "",
+    city: address.city || "",
+    state: address.state || "",
+    zip_code: address.zip || "",
     no_unit: !address.apartment,
     urbanization: undefined,
   };
@@ -135,7 +136,7 @@ export const LandlordDetailsStep: React.FC = () => {
   }, [owners, setValue]);
 
   const showLookup = !isLoading && !error && owners && !showOverwrite;
-  const showManual = !isLoading && !landlordData;
+  const showManual = (!isLoading && !landlordData) || !!errors.landlord_details;
 
   const onSubmit = async () => {
     const isValid = await trigger("landlord_details", { shouldFocus: true });
