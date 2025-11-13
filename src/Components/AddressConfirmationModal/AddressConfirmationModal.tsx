@@ -6,9 +6,9 @@ import { msg } from "@lingui/core/macro";
 
 import Modal from "../Modal/Modal";
 import { InfoBox } from "../InfoBox/InfoBox";
-import { Deliverability } from "../../hooks/useAddressVerification";
 import { FormContext } from "../../types/LetterFormTypes";
 import { FormattedLandlordAddress } from "../LetterBuilder/FormSteps/LandlordDetailsStep";
+import { Deliverability } from "../LetterBuilder/landlordAddressHelpers";
 import "./AddressConfirmationModal.scss";
 
 interface AddressConfirmationModalProps {
