@@ -203,37 +203,6 @@ export const defaultFormValues: DeepPartial<FormFields> = {
   cc_user: false,
 };
 
-export const sampleFormValues: FormFields = {
-  user_details: {
-    first_name: "Jane",
-    last_name: "Doe",
-    phone_number: "2125551212",
-    email: "tenant@email.com",
-    primary_line: "deliverable",
-    secondary_line: "Apt 1",
-    city: "BROOKLYN",
-    state: "NY",
-    zip_code: "11111",
-    bbl: "3000010001",
-    no_unit: false,
-  },
-  landlord_details: {
-    name: "Joe Landlord",
-    email: "landlord@email.com",
-    primary_line: "deliverable",
-    secondary_line: "Apt 1",
-    city: "BROOKLYN",
-    state: "NY",
-    zip_code: "11111",
-    no_unit: false,
-  },
-  mail_choice: "WE_WILL_MAIL",
-  extra_emails: [{ email: "extra@email.com" }],
-  reason: "PLANNED_INCREASE",
-  unreasonable_increase: false,
-  cc_user: true,
-};
-
 // This shouldn't be necessary, but for some reason it's unable to infer the
 // types based on value for discriminating variable "reason" as expected, so
 // setting up these specific types nad predicate functions
@@ -258,6 +227,42 @@ export function isNonRenewalErrors(
   return reason === "NON_RENEWAL";
 }
 
+// Only for development, pass select fields to UseForm's defaultValues to skip steps
+export const sampleFormValues: FormFields = {
+  user_details: {
+    first_name: "Jane",
+    last_name: "Doe",
+    phone_number: "2125551212",
+    email: "tenant@email.com",
+    primary_line: "deliverable",
+    secondary_line: "Apt 1",
+    city: "BROOKLYN",
+    state: "NY",
+    zip_code: "11111",
+    bbl: "1001420025", // hpd landlord complete
+    // bbl: "3004400040", // hpd landlord missing zip
+    // bbl: "4014870027", // no city or state
+    // bbl: "3059800077", // no hpd landlord
+    no_unit: false,
+  },
+  landlord_details: {
+    name: "Joe Landlord",
+    email: "landlord@email.com",
+    primary_line: "deliverable",
+    secondary_line: "Apt 1",
+    city: "BROOKLYN",
+    state: "NY",
+    zip_code: "11111",
+    no_unit: false,
+  },
+  mail_choice: "WE_WILL_MAIL",
+  extra_emails: [{ email: "extra@email.com" }],
+  reason: "PLANNED_INCREASE",
+  unreasonable_increase: false,
+  cc_user: true,
+};
+
+// Only for development
 export const sampleConfirmationValues: GCELetterConfirmation = {
   errors: {
     landlord_email: {

@@ -9,7 +9,6 @@ import {
   Tenants2ApiFetcherVerifyAddress,
   WowApiFetcher,
 } from "../../api/helpers";
-import "./LandlordDetailsStep.scss";
 
 export type Deliverability =
   | "deliverable"
