@@ -12,6 +12,9 @@
     justify-content: flex-end;
     margin-top: 1rem;
   }
+  .hpd-invalid-modal .modal__content {
+    @include body_large_desktop;
+  }
   .landlord-address {
     @include body_large_desktop;
     margin-bottom: 1rem;

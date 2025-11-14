@@ -201,17 +201,20 @@ export const LandlordDetailsStep: React.FC = () => {
         header={_(
           msg`There is an issue with your landlord's information on record with the city`
         )}
+        className="hpd-invalid-modal"
       >
         <Trans>
           Please make any necessary corrections to your landlord's information
         </Trans>
-        <Button
-          labelText={_(msg`Edit address`)}
-          onClick={() => {
-            setShowHpdInvalidModal(false);
-            setShowManual(true);
-          }}
-        />
+        <div className="modal__buttons">
+          <Button
+            labelText={_(msg`Edit address`)}
+            onClick={() => {
+              setShowHpdInvalidModal(false);
+              setShowManual(true);
+            }}
+          />
+        </div>
       </Modal>
       <AddressConfirmationModal
         isOpen={showConfirmModal}
