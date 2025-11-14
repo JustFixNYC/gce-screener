@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-11-14 23:21\n"
+"PO-Revision-Date: 2025-11-14 23:38\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -31,8 +31,8 @@ msgstr ""
 #~ msgid "\"How to find out if your apartment is rent stabilized"
 #~ msgstr "\"How to find out if your apartment is rent stabilized"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:164
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:243
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:197
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:276
 msgid "(123) 456-7890"
 msgstr "(123) 456-7890"
 
@@ -316,7 +316,7 @@ msgstr "clasificado como centro religioso"
 msgid "classified as an educational building"
 msgstr "clasificado como edificio educativo"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:274
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:307
 msgid "Close"
 msgstr "Cerrar"
 
@@ -324,7 +324,11 @@ msgstr "Cerrar"
 msgid "Close modal"
 msgstr "Cerrar modal"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:106
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:17
+msgid "Coming soon"
+msgstr ""
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:108
 msgid "Communicating your request to your landlord in writing provides documented evidence of your complaint."
 msgstr "Comunicar su solicitud al propietario por escrito le proporciona una prueba documentada de su queja."
 
@@ -348,7 +352,7 @@ msgstr "Copiado"
 msgid "Copy goodcausenyc.org"
 msgstr "Copiar goodcausenyc.org"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:103
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:105
 msgid "Creates a paper trail"
 msgstr "Crea un registro en papel"
 
@@ -364,7 +368,7 @@ msgstr "Notificación de demanda"
 msgid "Demolition"
 msgstr "Demolición"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:69
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:71
 msgid "Designed with tenants and experts"
 msgstr "Diseñado con inquilinos y expertos"
 
@@ -386,8 +390,8 @@ msgstr "Elegible"
 msgid "Email coverage"
 msgstr "Cobertura de correo electrónico"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:166
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:245
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:199
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:278
 msgid "Enter a valid phone number"
 msgstr "Ingrese un número de teléfono válido"
 
@@ -403,7 +407,7 @@ msgstr "Ingrese el alquiler mensual total de todo su departamento"
 msgid "Enter your address"
 msgstr "Ingrese su dirección"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:117
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:119
 msgid "Establishes a professional channel to negotiate solutions to your rent increase or non-renewal."
 msgstr "Establece un canal profesional para negociar soluciones al aumento de tu renta o a la no renovación del contrato."
 
@@ -490,7 +494,7 @@ msgstr "Para cualquiera de las direcciones que se enumeran a continuación, solo
 msgid "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
 msgstr "Para los contratos de alquiler estabilizado que se renueven entre el 1 de octubre de 2024 y el 30 de septiembre de 2025, el alquiler legal podrá incrementarse en los siguientes porcentajes: para una renovación de un año, el incremento será del 2,75 %, y para una renovación de dos años, el incremento será del 5,25 %."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:92
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:94
 msgid "Formally asserts your rights"
 msgstr "Reivindica formalmente tus derechos"
 
@@ -498,11 +502,11 @@ msgstr "Reivindica formalmente tus derechos"
 msgid "Full image of this example lease can be viewed on <0>hcr.ny.gov</0>"
 msgstr "La imagen completa de este ejemplo de contrato de arrendamiento se puede ver en <0>hcr.ny.gov.</0>"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:33
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:35
 msgid "Get a text when the letter sender is live."
 msgstr "Recibe un mensaje de texto cuando el remitente de la carta esté en vivo."
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:47
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:51
 msgid "Get a text with a unique URL to your results page."
 msgstr "Reciba un mensaje de texto con una URL única para acceder a su página de resultados."
 
@@ -592,7 +596,7 @@ msgstr "Formulario de organización de inquilinos de Housing Justice for All"
 msgid "Housing Preservation and Development Good Cause Eviction overview"
 msgstr "Resumen de la Ley de Desalojo por Causa Justa del Departamento de Preservación y Desarrollo de la Vivienda"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:41
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:43
 msgid "How it works"
 msgstr "Cómo funciona"
 
@@ -665,7 +669,7 @@ msgstr "Si solicitó su departamento a través de NYC Housing Connect, es muy pr
 msgid "If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
 msgstr "Si se encuentra amparado por la Ley de Desalojo por Justa Causa, solo se le pueden aplicar aumentos de alquiler limitados. Utilice esta calculadora para determinar el aumento de alquiler permitido para su departamento en virtud de la Ley de Justa Causa."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:44
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:46
 msgid "If you are covered by Good Cause, you have a legal right to limited rent increases and the right to stay in your home."
 msgstr "Si usted está cubierto por Justa Causa, tiene derecho legal a aumentos limitados del alquiler y a permanecer en su vivienda."
 
@@ -722,7 +726,7 @@ msgstr "Si utiliza un vale que cubre parte o la totalidad de su alquiler, y pued
 #~ msgid "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>\"None of the above\"</0>"
 #~ msgstr "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>\"None of the above\"</0>"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:21
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:23
 msgid "If you’re covered by Good Cause and your landlord is planning to raise your rent or not offer you a new lease, you can send a letter to your landlord asserting your Good Cause rights."
 msgstr "Si estás cubierto por Justa Causa y tu arrendador tiene previsto aumentar el alquiler o no renovarte el contrato, puedes enviarle una carta en la que hagas valer tus derechos por causa justificada."
 
@@ -746,7 +750,7 @@ msgstr "Si su departamento está sujeto a un alquiler estabilizado, no está amp
 msgid "If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings."
 msgstr "Si su edificio tiene menos de 11 departamentos, debe averiguar si su arrendador es propietario de otros edificios residenciales."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:50
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:52
 msgid "If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter asserting your Good Cause rights. We will even send it for you, for free."
 msgstr "Si su arrendador tiene previsto aumentar el alquiler o no le ofrece un nuevo contrato de arrendamiento, redactaremos una carta certificada por USPS® en la que se hagan valer sus derechos por Justa Causa. Incluso se la enviaremos por usted, de forma gratuita."
 
@@ -1090,7 +1094,7 @@ msgstr "Incumplimiento del pago del alquiler"
 #~ msgid "None of the above"
 #~ msgstr "None of the above"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:59
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:61
 msgid "Not sure if you’re covered?"
 msgstr "¿No estás seguro de si estás cubierto?"
 
@@ -1143,13 +1147,13 @@ msgstr "Proyecto de Justicia en Vivienda Pública de NYLAG"
 msgid "Once you find the name of your building’s owner, remember it because you’ll need it in Step 2."
 msgstr "Una vez que encuentres el nombre del propietario de tu edificio, recuérdalo porque lo necesitarás en el paso 2."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:114
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:116
 msgid "Opens negotiation"
 msgstr "Abre la negociación"
 
 #: src/hooks/useCriteriaResults.tsx:170
 msgid "other buildings."
-msgstr ""
+msgstr "otros edificios."
 
 #: src/Components/Pages/Form/Survey.tsx:254
 #~ msgid "Other subsidized housing"
@@ -1167,16 +1171,16 @@ msgstr "Hoja informativa sobre el Pacto"
 msgid "PACT Rights and Responsibilities Fact Sheet"
 msgstr "Hoja informativa sobre los derechos y responsabilidades del PACT"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:242
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:275
 msgid "Phone number"
 msgstr "Número de teléfono"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:163
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:196
 msgid "Phone number (optional)"
 msgstr "Número de teléfono (opcional)"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:183
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:255
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:216
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:288
 msgid "Phone number submitted"
 msgstr "Número de teléfono enviado"
 
@@ -1397,7 +1401,7 @@ msgstr "Los resultados se basan en datos públicos sobre su edificio y en las re
 msgid "Sample image of blank rent stabilized lease"
 msgstr "Imagen de ejemplo de contrato de alquiler estabilizado en blanco"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:46
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:50
 msgid "Save your result to your phone"
 msgstr "Guarde el resultado en su teléfono"
 
@@ -1425,7 +1429,7 @@ msgstr "Vea sus resultados"
 msgid "Send a free, legally vetted letter to notify your landlord of repair issues"
 msgstr "Envíe una carta gratuita y revisada legalmente para notificar a su arrendador los problemas de reparación"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:19
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:21
 msgid "Send a letter to your landlord"
 msgstr "Envía una carta a tu arrendador"
 
@@ -1436,13 +1440,9 @@ msgstr "Envía una carta a tu arrendador"
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:79
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:182
 msgid "Send the rent increase calculator to your phone"
-msgstr ""
+msgstr "Envíe la calculadora de aumento de renta a tu teléfono"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:95
-msgid "Sending a letter clearly communicates to your landlord that you know your legal protections."
-msgstr ""
-
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:95
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:97
 msgid "Sending a letter clearly communicates to your landlord that you know your legal protections."
 msgstr "El envío de una carta comunica claramente a su arrendador que conoce sus protecciones legales."
 
@@ -1462,8 +1462,8 @@ msgstr "Mostrando {visibleCount} de {totalCount} edificios que su arrendador pod
 msgid "Since your apartment is covered by Good Cause Eviction, there is a good chance other apartments in your building are covered as well. Organizing with your neighbors can help you assert your rights as a group."
 msgstr "Dado que su departamento está amparado por la Ley de Desalojo por Justa Causa, es muy probable que otros departamentos de su edificio también lo estén. Organizarse con sus vecinos puede ayudarle a hacer valer sus derechos como grupo."
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:189
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:261
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:222
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:294
 msgid "Something went wrong. Try again later."
 msgstr "Algo salió mal. Inténtalo de nuevo más tarde."
 
@@ -1483,9 +1483,9 @@ msgstr "estudio"
 msgid "Studio"
 msgstr "Estudio"
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:174
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:201
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:281
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:207
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:234
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:314
 msgid "Submit"
 msgstr "Enviar"
 
@@ -1502,7 +1502,7 @@ msgstr "Vivienda social"
 msgid "Survey"
 msgstr "Encuesta"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:62
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:64
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:177
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:195
 #: src/Components/Pages/TenantRights/TenantRights.tsx:37
@@ -1574,7 +1574,7 @@ msgstr "El edificio no debe formar parte de NYCHA, PACT/RAD u otras viviendas su
 msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of {0}, the rate of inflation for New York City is {CPI}%, meaning that the current local Reasonable Rent Increase is {1}%."
 msgstr "La Ley por Justa Causa establece un aumento razonable del alquiler, que se fija cada año según la tasa de inflación más un 5 %, con un máximo del 10 % en total. Según {0}, la tasa de inflación de la ciudad de Nueva York es del {CPI} %, lo que significa que el aumento razonable del alquiler local actual es del {1} %."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:72
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:74
 msgid "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants themselves."
 msgstr "La Carta de Justa Causa se desarrolló con la colaboración de abogados especializados en vivienda, organizadores de inquilinos, líderes comunitarios y los propios inquilinos."
 
@@ -1766,8 +1766,8 @@ msgstr "Necesitamos confirmar si su arrendador es propietario de más de 10 depa
 msgid "We were unable to find relevant documents containing owner names and/or signatures for this building."
 msgstr "No hemos podido encontrar documentos relevantes que contengan los nombres y/o firmas de los propietarios de este edificio."
 
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:192
-#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:266
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:225
+#: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:299
 msgid "We will never call you or share your phone number. We may text you later in the year to see how things are going. Opt-out at any time."
 msgstr "Nunca lo llamaremos ni compartiremos su número de teléfono. Es posible que le enviemos un mensaje de texto más adelante en el año para ver cómo van las cosas. Puede darse de baja en cualquier momento."
 
@@ -1775,7 +1775,7 @@ msgstr "Nunca lo llamaremos ni compartiremos su número de teléfono. Es posible
 #~ msgid "We will never call you or share your phone number. You can opt-out at any time."
 #~ msgstr "We will never call you or share your phone number. You can opt-out at any time."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:35
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:37
 msgid "We will send you a text with a link to the letter sender when it is ready."
 msgstr "Le enviaremos un mensaje de texto con un enlace al remitente de la carta cuando esté lista."
 
@@ -1808,7 +1808,7 @@ msgstr "Cuando los inquilinos se unen, tenemos poder. Los inquilinos de todo nue
 msgid "Whether or not you are covered by Good Cause, you still have important tenant rights"
 msgstr "Independientemente de si está amparado por Justa Causa, sigue teniendo importantes derechos como inquilino"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:87
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:89
 msgid "Why send a letter to your landlord?"
 msgstr "¿Por qué enviar una carta a tu arrendador?"
 
