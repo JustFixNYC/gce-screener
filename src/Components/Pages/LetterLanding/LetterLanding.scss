@@ -198,6 +198,9 @@
           letter-spacing: -0.00963rem;
           background-color: $OFF_BLACK;
           color: $OFF_WHITE_100;
+          @include for-phone-only {
+            top: 0;
+          }
         }
 
         p {
