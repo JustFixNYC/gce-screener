@@ -1,51 +1,41 @@
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
-import { Button } from "@justfixnyc/component-library";
-import { useNavigate } from "react-router-dom";
-
 import { Header } from "../../Header/Header";
 import { JFCLLink } from "../../JFCLLink";
 import "./LetterLanding.scss";
+import { PhoneNumberCallout } from "../../PhoneNumberCallout/PhoneNumberCallout";
 
 export const LetterLanding: React.FC = () => {
   const { _, i18n } = useLingui();
-  const navigate = useNavigate();
 
   return (
     <div id="letter-sender-landing-page">
-      <Header
-        title={_(msg`Send a letter to your landlord`)}
-        subtitle={
-          <Trans>
-            If you’re covered by Good Cause and your landlord is planning to
-            raise your rent or not offer you a new lease, you can send a letter
-            to your landlord asserting your Good Cause rights.
-          </Trans>
-        }
-        showProgressBar={false}
-      >
-        <div className="hero-cta">
-          <Trans>
-            <strong>Start here:</strong> are you covered by Good Cause?
-          </Trans>
-          <div className="hero-cta__buttons">
-            <Button
-              labelIcon="mailboxOpenLetter"
-              labelText={_(msg`I’m covered, start my free letter`)}
-              onClick={() => navigate("reason")}
-            />
-            <Button
-              labelText={_(msg`Find out if I’m covered`)}
-              onClick={() => navigate(`/${i18n.locale}`)}
-              variant="secondary"
-            />
-          </div>
+      <div className="headline-section">
+        <div className="coming-soon-pill-container">
+          <span className="coming-soon-pill">Coming soon</span>
         </div>
-      </Header>
-
+        <Header
+          title={_(msg`Send a letter to your landlord`)}
+          subtitle={
+            <Trans>
+              If you’re covered by Good Cause and your landlord is planning to
+              raise your rent or not offer you a new lease, you can send a
+              letter to your landlord asserting your Good Cause rights.
+            </Trans>
+          }
+          showProgressBar={false}
+        ></Header>
+      </div>
       <div className="content-section">
         <div className="content-section__content">
+          <PhoneNumberCallout
+            headerText={_(msg`Get a text when the letter sender is live.`)}
+            bodyText={_(
+              msg`We will send you a text with a link to the letter sender when it is ready.`
+            )}
+            gtmId="rent-calculator-page"
+          />
           <section className="about-section">
             <h3>
               <Trans>How it works</Trans>

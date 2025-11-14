@@ -9,6 +9,41 @@
     @include for-phone-only {
       padding: 1rem 1rem 2rem;
     }
+    // it's funky to have nested same classname but wanted to take advantage of
+    // existing styles for headline-section from Header.
+    // will also be removed later anyway
+    .headline-section {
+      padding: unset;
+      @include for-phone-only {
+        padding: unset;
+      }
+    }
+
+    .coming-soon-pill-container {
+      width: 100%;
+      max-width: calc(886px - 4rem);
+      padding-bottom: 0.5rem;
+    }
+    .coming-soon-pill {
+      display: inline-block;
+      padding: 0.5rem 0.75rem 0.625rem;
+      border-radius: 2.75rem;
+      box-decoration-break: clone;
+      white-space: nowrap;
+      background-color: $YELLOW;
+      color: $OFF_BLACK;
+      @include h2_desktop;
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 100%;
+      letter-spacing: 0.96px;
+      // @include for-tablet-portrait-down {
+      //   white-space: unset;
+      //   line-height: 1.5em;
+      //   padding: 0.5rem 1rem 0.625rem;
+      //   margin-bottom: 1rem;
+      // }
+    }
     .headline-section__subtitle {
       width: 85%;
     }

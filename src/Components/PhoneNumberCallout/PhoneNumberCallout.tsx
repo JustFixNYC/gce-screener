@@ -54,9 +54,8 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
   const VALID_PHONE_NUMBER_LENGTH = 10;
 
   const [, setUser] = useSessionStorage<GCEUser>("user");
-  const { user } = useLoaderData() as {
-    user?: GCEUser;
-  };
+  const loaderData = useLoaderData() as { user?: GCEUser } | undefined;
+  const user = loaderData?.user;
   const { trigger } = useSendGceData();
   const rollbar = useRollbar();
 
