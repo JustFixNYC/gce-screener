@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,13 +19,21 @@ import {
   GCELetterPostData,
 } from "../../types/APIDataTypes";
 import { useSendGceLetterData } from "../../api/hooks";
-import { LetterStep, letterSteps, StepRouteName } from "./LetterSteps";
+import {
+  LetterStep,
+  letterSteps,
+  stepRouteNames,
+  StepRouteName,
+} from "./LetterSteps";
 import { ProgressBar } from "./ProgressBar/ProgressBar";
 import { InfoBox } from "../InfoBox/InfoBox";
+import { useSessionStorage } from "../../hooks/useSessionStorage";
 import "./LetterBuilderForm.scss";
+import { useRollbar } from "@rollbar/react";
 
 export const LetterBuilderForm: React.FC = () => {
   const { i18n } = useLingui();
+  const rollbar = useRollbar();
   const navigate = useNavigate();
   const location = useLocation();
   const formMethods = useForm<FormFields>({
@@ -42,6 +50,7 @@ export const LetterBuilderForm: React.FC = () => {
     handleSubmit,
     setValue,
     clearErrors,
+    getValues,
     formState: { errors },
   } = formMethods;
 
@@ -50,7 +59,54 @@ export const LetterBuilderForm: React.FC = () => {
   const [confirmationResponse, setConfirmationResponse] =
     useState<GCELetterConfirmation>();
 
+  const [lastStepReached, setLastStepReached] =
+    useSessionStorage<StepRouteName>("lastStepReached", stepRouteNames[0]);
+
   const { trigger: sendLetter } = useSendGceLetterData();
+
+  // load saved form values from sessionStorage on mount
+  useEffect(() => {
+    const loadFromSessionStorage = () => {
+      const allFields = Object.values(letterSteps)
+        .flatMap((step) => step.fields || [])
+        .filter((field, index, self) => self.indexOf(field) === index); // unique fields
+
+      allFields.forEach((field) => {
+        const savedValue = window.sessionStorage.getItem(field);
+        if (savedValue) {
+          try {
+            const parsedValue = JSON.parse(savedValue);
+            setValue(field, parsedValue);
+          } catch {
+            rollbar.error(`Failed to parse ${field} from sessionStorage`);
+          }
+        }
+      });
+    };
+
+    loadFromSessionStorage();
+  }, []);
+
+  // handles redirects
+  useEffect(() => {
+    console.log("currentStep", currentStep);
+    if (!currentStep || !lastStepReached) return;
+
+    const currentStepIndex = stepRouteNames.indexOf(currentStep.name);
+    const lastStepIndex = stepRouteNames.indexOf(lastStepReached);
+
+    // case: undefined step names in URL will set the indices to -1.
+    // reset to first step. progress of other inputs will be saved in sessionStorage anyway
+    if (currentStepIndex === -1 || lastStepIndex === -1) {
+      setLastStepReached(stepRouteNames[0]);
+      return;
+    }
+
+    // case: user is trying to skip ahead, redirect to the lastStepReached
+    if (currentStepIndex > lastStepIndex) {
+      navigateToStep(lastStepReached);
+    }
+  }, [location.pathname, lastStepReached, currentStep]);
 
   const onLetterSubmit: SubmitHandler<FormFields> = async (
     letterData: FormFields
@@ -59,11 +115,40 @@ export const LetterBuilderForm: React.FC = () => {
     const letterPostData = getLetterPostData(letterData, letterHtml);
     const resp = await sendLetter(letterPostData);
     setConfirmationResponse(resp);
+    clearFormFromSessionStorage();
+    // todo: when lastStepReached = confirmation, don't let the user go back to any other steps.
+    // clear lastStepReached afterward
+
     return resp;
+  };
+
+  const clearFormFromSessionStorage = () => {
+    const allFields = Object.values(letterSteps)
+      .flatMap((step) => step.fields || [])
+      .filter((field, index, self) => self.indexOf(field) === index);
+
+    allFields.forEach((field) => {
+      window.sessionStorage.removeItem(field);
+    });
   };
 
   const navigateToStep = (stepName: StepRouteName) => {
     navigate(`/${i18n.locale}/letter/${stepName}`);
+  };
+
+  const saveFieldsToSessionStorage = (fields: string[]) => {
+    const formValues = getValues();
+
+    fields.forEach((field) => {
+      const fieldValue = formValues[field as keyof FormFields];
+      if (fieldValue !== undefined) {
+        try {
+          window.sessionStorage.setItem(field, JSON.stringify(fieldValue));
+        } catch {
+          rollbar.error(`Failed to save ${field} to sessionStorage`);
+        }
+      }
+    });
   };
 
   const next = async (nextStepName?: StepRouteName) => {
@@ -75,9 +160,19 @@ export const LetterBuilderForm: React.FC = () => {
         console.warn(errors);
         return;
       }
+      saveFieldsToSessionStorage(fields);
     }
 
     if (!nextStepName) return;
+
+    const nextStepIndex = stepRouteNames.indexOf(nextStepName);
+    const currentLastIndex = stepRouteNames.indexOf(
+      lastStepReached || stepRouteNames[0]
+    );
+
+    if (nextStepIndex > currentLastIndex) {
+      setLastStepReached(nextStepName);
+    }
 
     if (nextStepName === "confirmation") {
       handleSubmit(onLetterSubmit)();
