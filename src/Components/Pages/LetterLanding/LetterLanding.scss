@@ -107,6 +107,28 @@
           @include body_standard_mobile;
         }
       }
+      .success-message {
+        @include small_text_desktop;
+        svg {
+          height: 1.25rem;
+          width: 1.25rem;
+          color: $GREEN;
+          margin-right: 0.25rem;
+          vertical-align: bottom;
+        }
+      }
+
+      .error-message {
+        @include small_text_desktop;
+        color: $RED;
+        font-weight: 500;
+
+        svg {
+          color: $ORANGE;
+          margin-right: 0.25rem;
+          vertical-align: bottom;
+        }
+      }
     }
 
     .about-section {
