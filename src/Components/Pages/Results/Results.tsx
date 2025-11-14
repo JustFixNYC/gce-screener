@@ -315,8 +315,7 @@ const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
     case "INELIGIBLE":
       return (
         <Icon
-          icon="circleExclamation"
-          type="regular"
+          icon="circleExclamationRegular"
           className="criteria-icon orange"
           title={_(msg`Ineligible`)}
         />
@@ -324,8 +323,7 @@ const EligibilityIcon: React.FC<Pick<CriterionDetails, "determination">> = ({
     case "UNKNOWN":
       return (
         <Icon
-          icon="circleExclamation"
-          type="regular"
+          icon="circleExclamationRegular"
           className="criteria-icon yellow"
           title={_(msg`Unknown`)}
         />
@@ -424,11 +422,7 @@ const EligibilityNextSteps: React.FC<{
     Boolean
   ).length;
   const unsureIcon = (
-    <Icon
-      icon="circleExclamation"
-      type="regular"
-      className="criteria-icon yellow"
-    />
+    <Icon icon="circleExclamationRegular" className="criteria-icon yellow" />
   );
   return (
     <>
@@ -495,7 +489,7 @@ const EligibilityNextSteps: React.FC<{
         <ContentBoxFooter
           message={_(msg`Have you learned something new?`)}
           linkText={_(msg`Adjust survey answers`)}
-          linkTo={`${i18n.locale}/survey`}
+          linkTo={`/${i18n.locale}/survey`}
           linkOnClick={() =>
             gtmPush("gce_return_survey", { from: "results-page_next-steps" })
           }

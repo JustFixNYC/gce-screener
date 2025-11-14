@@ -9,7 +9,7 @@ import { useLingui } from "@lingui/react";
 
 type HeaderProps = {
   title: string | React.ReactNode;
-  subtitle?: string;
+  subtitle?: string | React.ReactNode;
   address?: Address;
   isGuide?: boolean;
   showProgressBar?: boolean;

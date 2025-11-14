@@ -85,11 +85,10 @@ const Modal = ({
           ref={closeButtonRef}
           variant="tertiary"
           labelIcon="xmark"
-          labelText=""
-          iconOnly={true}
+          iconOnly
           className="modal__close"
           onClick={handleCloseModal}
-          aria-label={_(msg`Close modal`)}
+          labelText={_(msg`Close modal`)}
         />
       )}
       <div className="modal__content">

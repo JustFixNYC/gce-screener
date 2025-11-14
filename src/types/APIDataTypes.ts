@@ -93,3 +93,11 @@ export type GCEPostData = {
   phone_number?: number;
   result_url?: string;
 };
+
+export type ComingSoonSignupPostData = {
+  phone_number?: string;
+};
+
+export type ComingSoonSignupResponse = {
+  success: boolean;
+};

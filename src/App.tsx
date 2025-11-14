@@ -5,11 +5,10 @@ import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
+  ScrollRestoration,
 } from "react-router-dom";
-
 import { SWRConfig } from "swr";
 import { useRollbar } from "@rollbar/react";
-import { ScrollRestoration } from "react-router-dom";
 
 import { I18n } from "./i18n";
 import { Home } from "./Components/Pages/Home/Home";
@@ -27,6 +26,7 @@ import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import { decodeFromURI } from "./helpers";
 import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
+import { LetterLanding } from "./Components/Pages/LetterLanding/LetterLanding";
 import "./App.scss";
 
 const Layout = () => {
@@ -202,6 +202,9 @@ const router = createBrowserRouter(
           element={<RentCalculator />}
           loader={LoadURLSessionOptional}
         />
+        <Route path="letter" element={<LetterLanding />}>
+          <Route index element={<LetterLanding />} />
+        </Route>
         <Route path="tenant_rights" element={<TenantRights />} />
         <Route path="privacy_policy" element={<PrivacyPolicy />} />
         <Route path="terms_of_use" element={<TermsOfUse />} />

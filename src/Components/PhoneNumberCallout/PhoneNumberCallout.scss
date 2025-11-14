@@ -1,5 +1,5 @@
-@import "../../colors.scss";
-@import "../../mixins.scss";
+@use "../../colors" as *;
+@use "../../mixins" as *;
 
 .phone-number-callout-box {
   display: flex;

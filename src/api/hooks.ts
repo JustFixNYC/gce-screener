@@ -1,7 +1,17 @@
 import useSWR from "swr";
 import useSWRMutation, { TriggerWithArgs } from "swr/mutation";
-import { BuildingData, GCEPostData, GCEUser } from "../types/APIDataTypes";
-import { Tenants2ApiFetcher, WowApiFetcher } from "./helpers";
+import {
+  BuildingData,
+  ComingSoonSignupPostData,
+  ComingSoonSignupResponse,
+  GCEPostData,
+  GCEUser,
+} from "../types/APIDataTypes";
+import {
+  Tenants2ApiFetcher,
+  Tenants2ComingSoonApiFetcher,
+  WowApiFetcher,
+} from "./helpers";
 
 type BuildingDataSWRResponse = {
   data: BuildingData | undefined;
@@ -41,6 +51,38 @@ export function useSendGceData(): Tenants2SWRResponse {
     Tenants2ApiFetcher,
     {
       populateCache: (result: GCEUser) => result,
+      revalidate: false,
+    }
+  );
+
+  return {
+    data, // data for the given key returned from fetcher
+    error, // error thrown by fetcher (or undefined)
+    trigger, // (arg, options) a function to trigger a remote mutation
+    reset, // a function to reset the state (data, error, isMutating)
+    isMutating, // if there's an ongoing remote mutation
+  };
+}
+
+type Tenants2ComingSoonSWRResponse = {
+  data: ComingSoonSignupResponse | undefined;
+  error: Error | undefined;
+  isMutating: boolean;
+  reset: () => void;
+  trigger: TriggerWithArgs<
+    ComingSoonSignupResponse,
+    unknown,
+    "/gceletter/coming-soon-subscribe",
+    ComingSoonSignupPostData
+  >;
+};
+
+export function useSendComingSoonSignup(): Tenants2ComingSoonSWRResponse {
+  const { data, error, trigger, reset, isMutating } = useSWRMutation(
+    "/gceletter/coming-soon-subscribe",
+    Tenants2ComingSoonApiFetcher,
+    {
+      populateCache: (result: ComingSoonSignupResponse) => result,
       revalidate: false,
     }
   );

@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@awesome.me/kit-dd32553919@^1.0.13":
-  version "1.0.13"
-  resolved "https://npm.fontawesome.com/@awesome.me/kit-dd32553919/-/kit-dd32553919-1.0.13.tgz#445f27a58122d8f4e88419b95f6901c66721dd15"
-  integrity sha512-/QD3cvTFqiIFr6YFpwyHURh0yZ41GOfefUAohI4idiLMuEpan5wwzDvX1ROkXCNQkMW1bX//lBC9f9kkT04VVA==
+"@awesome.me/kit-6863e5a21e@^1.0.3":
+  version "1.0.3"
+  resolved "https://npm.fontawesome.com/@awesome.me/kit-6863e5a21e/-/kit-6863e5a21e-1.0.3.tgz#97725e4b139d8e4938bd8f6ab0b64ced94b9c114"
+  integrity sha512-4IzQQb/XK/rhA7TCefXn2XpuQyFjYLKcf9Gn+1MHmF6nLYQz5KOVdYwFup1wDYv/tkigUp6t8vgFQ0P5TxF2sQ==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^6.5.2"
+    "@fortawesome/fontawesome-common-types" "^7.1.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.27.1":
   version "7.27.1"
@@ -607,24 +607,29 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.10.tgz#a2a1e3812d14525f725d011a73eceb41fef5bc1c"
   integrity sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==
 
-"@fortawesome/fontawesome-common-types@6.7.2", "@fortawesome/fontawesome-common-types@^6.5.2":
-  version "6.7.2"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.7.2.tgz#7123d74b0c1e726794aed1184795dbce12186470"
-  integrity sha512-Zs+YeHUC5fkt7Mg1l6XTniei3k4bwG/yo3iFUtZWd/pMx9g3fdvkSK9E0FOC+++phXOka78uJcYb8JaFkW52Xg==
+"@fortawesome/fontawesome-common-types@7.1.0", "@fortawesome/fontawesome-common-types@^7.1.0":
+  version "7.1.0"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-7.1.0.tgz#a4e0b7e40073d5fdef41182da1bc216a05875659"
+  integrity sha512-l/BQM7fYntsCI//du+6sEnHOP6a74UixFyOYUyz2DLMXKx+6DEhfR3F2NYGE45XH1JJuIamacb4IZs9S0ZOWLA==
 
-"@fortawesome/fontawesome-svg-core@^6.5.2":
-  version "6.7.2"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-6.7.2.tgz#0ac6013724d5cc327c1eb81335b91300a4fce2f2"
-  integrity sha512-yxtOBWDrdi5DD5o1pmVdq3WMCvnobT0LU6R8RyyVXPvFRd2o79/0NCuQoCjNTeZz9EzA9xS3JxNWfv54RIHFEA==
+"@fortawesome/fontawesome-svg-core@^7.1.0":
+  version "7.1.0"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-7.1.0.tgz#b0a45363a4e95ec985130393c0b1b95717ef0760"
+  integrity sha512-fNxRUk1KhjSbnbuBxlWSnBLKLBNun52ZBTcs22H/xEEzM6Ap81ZFTQ4bZBxVQGQgVY0xugKGoRcCbaKjLQ3XZA==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "6.7.2"
+    "@fortawesome/fontawesome-common-types" "7.1.0"
 
-"@fortawesome/react-fontawesome@0.2.2":
-  version "0.2.2"
-  resolved "https://npm.fontawesome.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.2.2.tgz#68b058f9132b46c8599875f6a636dad231af78d4"
-  integrity sha512-EnkrprPNqI6SXJl//m29hpaNzOp1bruISWaOiRtkMi/xSvHJlzc2j2JAYS7egxt/EbjSNV/k6Xy0AQI6vB2+1g==
+"@fortawesome/react-fontawesome@^3.1.0":
+  version "3.1.0"
+  resolved "https://npm.fontawesome.com/@fortawesome/react-fontawesome/-/react-fontawesome-3.1.0.tgz#bb22f49622574a80ee74213ad8c68107f3f47e64"
+  integrity sha512-5OUQH9aDH/xHJwnpD4J7oEdGvFGJgYnGe0UebaPIdMW9UxYC/f5jv2VjVEgnikdJN0HL8yQxp9Nq+7gqGZpIIA==
+
+"@hookform/resolvers@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-5.2.1.tgz#3332b4662fe301a969ac1b795d663cf728329166"
+  integrity sha512-u0+6X58gkjMcxur1wRWokA7XsiiBJ6aK17aPZxhkoYiK5J+HcTx0Vhu9ovXe6H+dVpO6cjrn2FkJTryXEMlryQ==
   dependencies:
-    prop-types "^15.8.1"
+    "@standard-schema/utils" "^0.3.0"
 
 "@humanfs/core@^0.19.1":
   version "0.19.1"
@@ -726,15 +731,15 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@justfixnyc/component-library@0.54.7":
-  version "0.54.7"
-  resolved "https://registry.yarnpkg.com/@justfixnyc/component-library/-/component-library-0.54.7.tgz#1edf2ffc164f8ff00887c3609a6fd0c02907ebe5"
-  integrity sha512-HMQ+cuMTjXMV9fKDouB8v4CC3AfnIbgAluaCHwsxIZ98YxgnuLNDJ3+28gY9HLveHc7INzz7dbQgOqjcVgJ6ww==
+"@justfixnyc/component-library@0.56.0":
+  version "0.56.0"
+  resolved "https://registry.yarnpkg.com/@justfixnyc/component-library/-/component-library-0.56.0.tgz#22c9e9522ac3774ccf051c74481f5c4a0400ee13"
+  integrity sha512-ERxZWXTHOsIzwoOXH5qc6EtQcEzCwCIqDVcd8WLt0Zq9O0TPfWBTre0I7bYLsCywFLA1NEXkwmPyw2Mm8RT2/A==
   dependencies:
-    "@awesome.me/kit-dd32553919" "^1.0.13"
+    "@awesome.me/kit-6863e5a21e" "^1.0.3"
     "@babel/runtime" "^7.12.5"
-    "@fortawesome/fontawesome-svg-core" "^6.5.2"
-    "@fortawesome/react-fontawesome" "0.2.2"
+    "@fortawesome/fontawesome-svg-core" "^7.1.0"
+    "@fortawesome/react-fontawesome" "^3.1.0"
     react-select "^5.7.2"
 
 "@justfixnyc/geosearch-requester@^1.0.3-alpha.0":

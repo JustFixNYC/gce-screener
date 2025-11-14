@@ -6,9 +6,13 @@ import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 
-import { CoverageResult, GCEUser } from "../../types/APIDataTypes";
+import {
+  ComingSoonSignupResponse,
+  CoverageResult,
+  GCEUser,
+} from "../../types/APIDataTypes";
 import { gtmPush } from "../../google-tag-manager";
-import { useSendGceData } from "../../api/hooks";
+import { useSendComingSoonSignup, useSendGceData } from "../../api/hooks";
 import { useSessionStorage } from "../../hooks/useSessionStorage";
 import Modal from "../Modal/Modal";
 
@@ -54,10 +58,10 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
   const VALID_PHONE_NUMBER_LENGTH = 10;
 
   const [, setUser] = useSessionStorage<GCEUser>("user");
-  const { user } = useLoaderData() as {
-    user?: GCEUser;
-  };
+  const loaderData = useLoaderData() as { user?: GCEUser } | undefined;
+  const user = loaderData?.user;
   const { trigger } = useSendGceData();
+  const { trigger: triggerComingSoon } = useSendComingSoonSignup();
   const rollbar = useRollbar();
 
   const formatPhoneNumber = (value: string): string => {
@@ -97,31 +101,59 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
       setShowFieldError(true);
       return;
     }
-    try {
+
+    if (
+      window.location.pathname.includes("/results") ||
+      window.location.pathname.includes("/rent_calculator")
+    ) {
       const sendData = async () => {
-        const resultUrlParam = window.location.pathname.includes("/results")
-          ? {
-              result_url: window.location.href,
-            }
-          : {};
-        const postData = {
-          id: user?.id,
-          phone_number: parseInt(cleaned),
-          ...resultUrlParam,
-        };
-        const userResp = (await trigger(postData)) as GCEUser;
-        if (!user?.id) setUser(userResp);
+        try {
+          const resultUrlParam = window.location.pathname.includes("/results")
+            ? {
+                result_url: window.location.href,
+              }
+            : {};
+          const postData = {
+            id: user?.id,
+            phone_number: parseInt(cleaned),
+            ...resultUrlParam,
+          };
+          const userResp = (await trigger(postData)) as GCEUser;
+          if (!user?.id) setUser(userResp);
+          setShowFieldError(false);
+          setShowSuccess(true);
+          gtmPush("gce_phone_submit", {
+            gce_result: coverageResult,
+            from: gtmId,
+          });
+        } catch {
+          setShowError(true);
+          rollbar.critical("Cannot connect to tenant platform");
+        }
       };
       sendData();
-      setShowFieldError(false);
-      setShowSuccess(true);
-      gtmPush("gce_phone_submit", {
-        gce_result: coverageResult,
-        from: gtmId,
-      });
-    } catch {
-      setShowError(true);
-      rollbar.critical("Cannot connect to tenant platform");
+    } else {
+      const sendComingSoonData = async () => {
+        try {
+          const postData = {
+            phone_number: cleaned,
+          };
+          const resp = (await triggerComingSoon(
+            postData
+          )) as ComingSoonSignupResponse;
+          setShowFieldError(false);
+          setShowSuccess(resp.success);
+          if (!resp.success) {
+            setShowError(true);
+          }
+        } catch {
+          setShowError(true);
+          rollbar.critical(
+            "Cannot connect to tenant platform for coming soon signup"
+          );
+        }
+      };
+      sendComingSoonData();
     }
   };
 
