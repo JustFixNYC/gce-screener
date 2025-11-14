@@ -28,10 +28,10 @@
   }
   &__edit-address {
     width: 75%;
-    @include body_standard_desktop;
-  }
-  .text-link-button {
-    @include body_standard_desktop;
+    &,
+    .text-link-button {
+      @include body_standard_desktop;
+    }
   }
   .landlord-city-input {
     margin-top: 1.5rem;

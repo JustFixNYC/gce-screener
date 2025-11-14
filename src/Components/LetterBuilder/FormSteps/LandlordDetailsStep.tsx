@@ -142,7 +142,9 @@ export const LandlordDetailsStep: React.FC = () => {
 
   return (
     <LetterStepForm onSubmit={onSubmit} className="landlord-details-step">
-      {isLoading && <>Checking city data for your landlord's information...</>}
+      {isLoading && (
+        <Trans>Checking city data for your landlord's information...</Trans>
+      )}
       {hpdLandlord && !showManual && (
         <>
           <FormGroup
@@ -158,7 +160,7 @@ export const LandlordDetailsStep: React.FC = () => {
               </Trans>
             </InfoBox>
 
-            <FormattedLandlordAddress ld={hpdLandlord} />
+            <FormattedLandlordAddress landlordDetails={hpdLandlord} />
 
             <div className="landlord-details-step__edit-address">
               <Trans>
@@ -469,8 +471,8 @@ const LandlordEmailFormGroup: React.FC = () => {
 };
 
 export const FormattedLandlordAddress: React.FC<{
-  ld: FormFields["landlord_details"];
-}> = ({ ld }) => {
+  landlordDetails: FormFields["landlord_details"];
+}> = ({ landlordDetails: ld }) => {
   console.log(ld);
   return (
     <div className="landlord-address">
