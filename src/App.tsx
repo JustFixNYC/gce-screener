@@ -27,10 +27,6 @@ import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import { decodeFromURI } from "./helpers";
 import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
 import { LetterLanding } from "./Components/Pages/LetterLanding/LetterLanding";
-import {
-  LetterLayout,
-  LetterSender,
-} from "./Components/Pages/LetterSender/LetterSender";
 import "./App.scss";
 
 const Layout = () => {
@@ -206,16 +202,8 @@ const router = createBrowserRouter(
           element={<RentCalculator />}
           loader={LoadURLSessionOptional}
         />
-        <Route path="letter" element={<LetterLayout />}>
+        <Route path="letter" element={<LetterLanding />}>
           <Route index element={<LetterLanding />} />
-          <Route path="reason" element={<LetterSender />} />
-          <Route path="reason-details" element={<LetterSender />} />
-          <Route path="contact-info" element={<LetterSender />} />
-          <Route path="address" element={<LetterSender />} />
-          <Route path="mail-choice" element={<LetterSender />} />
-          <Route path="landlord-details" element={<LetterSender />} />
-          <Route path="preview" element={<LetterSender />} />
-          <Route path="confirmation" element={<LetterSender />} />
         </Route>
         <Route path="tenant_rights" element={<TenantRights />} />
         <Route path="privacy_policy" element={<PrivacyPolicy />} />
