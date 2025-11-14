@@ -39,7 +39,7 @@ export const AddressConfirmationModal: React.FC<
         {getInfoBoxText(type)}
       </InfoBox>
 
-      <FormattedLandlordAddress landlordDetails={watch("landlord_details")} />
+      <FormattedLandlordAddress ld={watch("landlord_details")} />
 
       <div className="modal__buttons">
         <Button

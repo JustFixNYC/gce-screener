@@ -25,10 +25,10 @@ import { StateSelect } from "../../StateSelect/StateSelect";
 import { stateOptions } from "../../StateSelect/stateOptions";
 import {
   Deliverability,
-  formatLandlordDetailsAddress,
   getVerifiedHpdLandlord,
   verifyAddress,
 } from "../landlordAddressHelpers";
+import { toTitleCase } from "../../../helpers";
 import "./LandlordDetailsStep.scss";
 
 export const LandlordDetailsStep: React.FC = () => {
@@ -46,7 +46,7 @@ export const LandlordDetailsStep: React.FC = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [hpdLandlord, setHpdLandlord] =
-    useState<Omit<FormFields["landlord_details"], "email">>();
+    useState<FormFields["landlord_details"]>();
   const [showManual, setShowManual] = useState<boolean>();
   const [showOverwrite, setShowOverwrite] = useState(false);
   const [showHpdInvalidModal, setShowHpdInvalidModal] = useState(false);
@@ -158,11 +158,9 @@ export const LandlordDetailsStep: React.FC = () => {
               </Trans>
             </InfoBox>
 
-            <div className="landlord-details-step__landlord-info">
-              <FormattedLandlordAddress landlordDetails={hpdLandlord} />
-            </div>
+            <FormattedLandlordAddress ld={hpdLandlord} />
 
-            <div>
+            <div className="landlord-details-step__edit-address">
               <Trans>
                 If you feel strongly that this address is incorrect or
                 incomplete, you can{" "}
@@ -184,7 +182,10 @@ export const LandlordDetailsStep: React.FC = () => {
         </>
       )}
       {!isLoading && showManual && (
-        <LandlordFormGroup isOverwrite={showOverwrite} />
+        <LandlordFormGroup
+          isOverwrite={showOverwrite}
+          onBackToHpdLookup={onBackToHpdLookup}
+        />
       )}
       {!isLoading && (
         <BackNextButtons
@@ -465,11 +466,19 @@ const LandlordEmailFormGroup: React.FC = () => {
 };
 
 export const FormattedLandlordAddress: React.FC<{
-  landlordDetails: FormFields["landlord_details"];
-}> = ({ landlordDetails }) => (
-  <>
-    {landlordDetails.name}
-    <br />
-    {formatLandlordDetailsAddress(landlordDetails)}
-  </>
-);
+  ld: FormFields["landlord_details"];
+}> = ({ ld }) => {
+  console.log(ld);
+  return (
+    <div className="landlord-address">
+      <span className="landlord-address__name">{toTitleCase(ld.name)}</span>
+      <span className="landlord-address__line-1">
+        {ld.primary_line}
+        {ld.secondary_line ? " " + ld.secondary_line : ""}
+      </span>
+      <span className="landlord-address__line-2">
+        {ld.city}, {ld.state} {ld.zip_code}
+      </span>
+    </div>
+  );
+};

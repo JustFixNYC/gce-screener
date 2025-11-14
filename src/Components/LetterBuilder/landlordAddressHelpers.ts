@@ -9,6 +9,7 @@ import {
   Tenants2ApiFetcherVerifyAddress,
   WowApiFetcher,
 } from "../../api/helpers";
+import { toTitleCase } from "../../helpers";
 
 export type Deliverability =
   | "deliverable"
@@ -65,24 +66,16 @@ const getOwnerContact = (data?: LandlordData): LandlordContact | undefined => {
   );
 };
 
-export const formatLandlordDetailsAddress = (
-  ld: FormFields["landlord_details"]
-): string => {
-  return `${ld.primary_line}${
-    ld.secondary_line ? " " + ld.secondary_line : ""
-  }, ${ld.city}, ${ld.state} ${ld.zip_code}`;
-};
-
 const wowContactToLandlordDetails = (
   contact: LandlordContact
 ): FormFields["landlord_details"] => {
   const { address } = contact;
   return {
     // on load, there is an error from unexpected "null" without || ""
-    name: contact.value || "",
-    primary_line: `${address.housenumber} ${address.streetname}`,
-    secondary_line: address.apartment || "",
-    city: address.city || "",
+    name: toTitleCase(contact.value) || "",
+    primary_line: `${address.housenumber} ${toTitleCase(address.streetname)}`,
+    secondary_line: toTitleCase(address.apartment) || "",
+    city: toTitleCase(address.city) || "",
     state: address.state || "",
     zip_code: address.zip || "",
     no_unit: !address.apartment,
