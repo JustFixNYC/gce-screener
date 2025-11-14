@@ -37,12 +37,9 @@
       font-weight: 500;
       line-height: 100%;
       letter-spacing: 0.96px;
-      // @include for-tablet-portrait-down {
-      //   white-space: unset;
-      //   line-height: 1.5em;
-      //   padding: 0.5rem 1rem 0.625rem;
-      //   margin-bottom: 1rem;
-      // }
+      @include for-tablet-portrait-down {
+        font-size: 1.125rem;
+      }
     }
     .headline-section__subtitle {
       width: 85%;
@@ -71,10 +68,10 @@
   }
 
   .content-section {
-    padding-top: 1rem;
+    padding-top: 3rem;
     padding-bottom: 4rem;
     @include for-phone-only {
-      padding-top: 0;
+      padding-top: 2rem;
       padding-bottom: 2rem;
     }
     &:last-of-type {
@@ -98,6 +95,17 @@
       }
       @include for-phone-only {
         @include body_standard_mobile;
+      }
+    }
+
+    .phone-number-callout-box {
+      margin-bottom: 0.75rem;
+      p {
+        @include body_standard_desktop;
+        margin: 0;
+        @include for-phone-only {
+          @include body_standard_mobile;
+        }
       }
     }
 
