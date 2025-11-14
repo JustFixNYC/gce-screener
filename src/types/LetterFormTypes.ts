@@ -17,7 +17,10 @@ const lobAddressSchema = (i18n: I18n) =>
     city: z
       .string()
       .min(1, i18n._(msg`City/Borough is required for the letter`)),
-    state: z.string().min(1, i18n._(msg`State is required for the letter`)),
+    state: z
+      .string()
+      .min(1, i18n._(msg`State is required for the letter`))
+      .length(2, i18n._(msg`State must be two-letter abbreviation`)),
     zip_code: z
       .string()
       .min(1, i18n._(msg`ZIP Code is required for the letter`))

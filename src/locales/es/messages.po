@@ -719,7 +719,7 @@ msgstr "Averigüe si su arrendador es propietario de otros edificios."
 msgid "First name"
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:34
+#: src/types/LetterFormTypes.ts:37
 msgid "First name is required for the letter"
 msgstr ""
 
@@ -1240,7 +1240,7 @@ msgstr ""
 #~ msgid "Landlord name is required"
 #~ msgstr ""
 
-#: src/types/LetterFormTypes.ts:84
+#: src/types/LetterFormTypes.ts:87
 msgid "Landlord name is required for the letter"
 msgstr ""
 
@@ -1281,7 +1281,7 @@ msgstr "Última modificación: 24 de enero de 2025"
 msgid "Last name"
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:37
+#: src/types/LetterFormTypes.ts:40
 msgid "Last name is required for the letter"
 msgstr ""
 
@@ -1691,7 +1691,7 @@ msgstr "Número de teléfono"
 msgid "Phone number (optional)"
 msgstr "Número de teléfono (opcional)"
 
-#: src/types/LetterFormTypes.ts:42
+#: src/types/LetterFormTypes.ts:45
 msgid "Phone number is required for follow up"
 msgstr ""
 
@@ -1716,13 +1716,13 @@ msgstr ""
 msgid "Please confirm your address"
 msgstr "Por favor, confirme su dirección."
 
-#: src/types/LetterFormTypes.ts:43
-#: src/types/LetterFormTypes.ts:45
+#: src/types/LetterFormTypes.ts:46
+#: src/types/LetterFormTypes.ts:48
 msgid "Please enter a complete US phone number"
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:65
-#: src/types/LetterFormTypes.ts:101
+#: src/types/LetterFormTypes.ts:68
+#: src/types/LetterFormTypes.ts:104
 msgid "Please enter a unit number or check the box to confirm that there is no unit number"
 msgstr ""
 
@@ -1732,17 +1732,17 @@ msgstr ""
 #~ msgid "Please enter a valid email"
 #~ msgstr ""
 
-#: src/types/LetterFormTypes.ts:47
-#: src/types/LetterFormTypes.ts:86
-#: src/types/LetterFormTypes.ts:148
+#: src/types/LetterFormTypes.ts:50
+#: src/types/LetterFormTypes.ts:89
+#: src/types/LetterFormTypes.ts:151
 msgid "Please enter a valid email address"
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:24
+#: src/types/LetterFormTypes.ts:27
 msgid "Please enter a valid ZIP Code"
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:188
+#: src/types/LetterFormTypes.ts:191
 msgid "please enter your email address or uncheck the option to CC you on the email to your landlord"
 msgstr ""
 
@@ -1779,7 +1779,7 @@ msgstr ""
 #~ msgid "Please review your letter to ensure all the details are correct."
 #~ msgstr ""
 
-#: src/types/LetterFormTypes.ts:184
+#: src/types/LetterFormTypes.ts:187
 msgid "Please select a reason for your letter."
 msgstr ""
 
@@ -1788,11 +1788,11 @@ msgstr ""
 #~ msgstr ""
 
 #. placeholder {0}: CPI + 5
-#: src/types/LetterFormTypes.ts:163
+#: src/types/LetterFormTypes.ts:166
 msgid "Please select whether the increase is beyond {0}%"
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:175
+#: src/types/LetterFormTypes.ts:178
 msgid "Please select whether your landlord provided one of the listed reasons for not renewing your lease"
 msgstr ""
 
@@ -2170,8 +2170,12 @@ msgstr "La discriminación por fuente de ingresos es la práctica ilegal por par
 msgid "State"
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:20
+#: src/types/LetterFormTypes.ts:22
 msgid "State is required for the letter"
+msgstr ""
+
+#: src/types/LetterFormTypes.ts:23
+msgid "State must be two-letter abbreviation"
 msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:299
@@ -2495,7 +2499,7 @@ msgstr "Desbloquea Nueva York"
 msgid "Update your coverage result"
 msgstr "Actualice el resultado de su cobertura"
 
-#: src/types/LetterFormTypes.ts:122
+#: src/types/LetterFormTypes.ts:125
 msgid "Urbanization is required for address in Puerto Rico"
 msgstr ""
 
@@ -2862,7 +2866,7 @@ msgstr ""
 msgid "You must enter an address"
 msgstr "Debe ingresar una dirección."
 
-#: src/types/LetterFormTypes.ts:141
+#: src/types/LetterFormTypes.ts:144
 msgid "You must select a method to mail your letter"
 msgstr ""
 
@@ -3291,7 +3295,7 @@ msgstr ""
 msgid "YouTube video for how to find other apartments your landlord owns"
 msgstr "Video de YouTube sobre cómo encontrar otros departamentos que sean propiedad de tu arrendador."
 
-#: src/types/LetterFormTypes.ts:23
+#: src/types/LetterFormTypes.ts:26
 msgid "ZIP Code is required for the letter"
 msgstr ""
 
