@@ -13,7 +13,9 @@ export const LetterLanding: React.FC = () => {
     <div id="letter-sender-landing-page">
       <div className="headline-section">
         <div className="coming-soon-pill-container">
-          <span className="coming-soon-pill">Coming soon</span>
+          <span className="coming-soon-pill">
+            <Trans>Coming soon</Trans>
+          </span>
         </div>
         <Header
           title={_(msg`Send a letter to your landlord`)}
