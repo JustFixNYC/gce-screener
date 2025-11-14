@@ -88,28 +88,50 @@ const landlordDetailsSchema = (i18n: I18n) => {
     ...lobAddressSchema(i18n).shape,
   });
 
-  return schema.refine(
-    (data) => {
-      return (
-        (!data.secondary_line && data.no_unit) ||
-        (!!data.secondary_line && !data.no_unit)
-      );
-    },
-    {
-      message: i18n._(
-        msg`Please enter a unit number or check the box to confirm that there is no unit number`
-      ),
-      path: ["secondary_line"],
-
-      // necessary for this refine error to run even when there are validation
-      // errors in other fields in the object.
-      when(payload) {
-        return schema
-          .pick({ secondary_line: true, no_unit: true })
-          .safeParse(payload.value).success;
+  return schema
+    .refine(
+      (data) => {
+        return (
+          (!data.secondary_line && data.no_unit) ||
+          (!!data.secondary_line && !data.no_unit)
+        );
       },
-    }
-  );
+      {
+        message: i18n._(
+          msg`Please enter a unit number or check the box to confirm that there is no unit number`
+        ),
+        path: ["secondary_line"],
+
+        // necessary for this refine error to run even when there are validation
+        // errors in other fields in the object.
+        when(payload) {
+          return schema
+            .pick({ secondary_line: true, no_unit: true })
+            .safeParse(payload.value).success;
+        },
+      }
+    )
+    .refine(
+      (data) => {
+        return (
+          (data.state === "PR" && data.urbanization) || data.state !== "PR"
+        );
+      },
+      {
+        message: i18n._(
+          msg`Urbanization is required for address in Puerto Rico`
+        ),
+        path: ["urbanization"],
+
+        // necessary for this refine error to run even when there are validation
+        // errors in other fields in the object.
+        when(payload) {
+          return schema
+            .pick({ state: true, urbanization: true })
+            .safeParse(payload.value).success;
+        },
+      }
+    );
 };
 
 const letterExtrasSchema = (i18n: I18n) =>
@@ -239,7 +261,8 @@ export const sampleFormValues: FormFields = {
     city: "BROOKLYN",
     state: "NY",
     zip_code: "11111",
-    bbl: "1001420025", // hpd landlord complete
+    bbl: "2022810070", // hpd PR address
+    // bbl: "1001420025", // hpd landlord complete
     // bbl: "3004400040", // hpd landlord missing zip
     // bbl: "4014870027", // no city or state
     // bbl: "3059800077", // no hpd landlord
