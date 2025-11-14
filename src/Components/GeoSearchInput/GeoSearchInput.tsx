@@ -54,7 +54,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
 
   useEffect(() => {
     if (initialAddress?.address) {
-      const addressValue = toTitleCase(initialAddress.address)!;
+      const addressValue = toTitleCase(initialAddress.address);
       setSelectedValue({ value: addressValue, label: addressValue });
       requester.changeSearchRequest(addressValue);
     }
