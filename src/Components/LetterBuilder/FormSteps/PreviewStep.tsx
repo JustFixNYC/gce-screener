@@ -18,9 +18,8 @@ import "./PreviewStep.scss";
 
 export const PreviewStep: React.FC = () => {
   const {
-    back,
     next,
-    formMethods: { resetField, getValues, setValue },
+    formMethods: { getValues },
   } = useContext(FormContext);
 
   const { i18n, _ } = useLingui();
@@ -137,15 +136,7 @@ export const PreviewStep: React.FC = () => {
         </Trans>
       </div>
       <BackNextButtons
-        button1Props={{
-          onClick: () => {
-            // Clear landlord name and address for fresh start landlord step, except email
-            const email = getValues("landlord_details.email");
-            resetField("landlord_details");
-            setValue("landlord_details.email", email);
-            back("landlord_details");
-          },
-        }}
+        backStepName="landlord_details"
         button2Props={{ type: "button", onClick: () => next("mail_choice") }}
       />
     </div>

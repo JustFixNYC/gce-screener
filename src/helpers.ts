@@ -11,7 +11,10 @@ export enum ProgressStep {
   Result = 2,
 }
 
-export function toTitleCase(x: string) {
+export function toTitleCase(x: string): string;
+export function toTitleCase(x: undefined): undefined;
+export function toTitleCase(x?: string) {
+  if (x === undefined) return;
   return x.replace(
     /\w\S*/g,
     (text: string) =>

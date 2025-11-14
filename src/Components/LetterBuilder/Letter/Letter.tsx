@@ -69,6 +69,12 @@ const LetterHeader: React.FC<LetterData> = ({ letterData }) => {
       <address>
         <strong>{ld.name}</strong>
         <br />
+        {ld.urbanization && (
+          <>
+            {ld.urbanization}
+            <br />
+          </>
+        )}
         {ld.primary_line}
         <br />
         {ld.secondary_line && (
