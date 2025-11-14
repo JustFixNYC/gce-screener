@@ -21,6 +21,8 @@ import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { LetterStepForm } from "../LetterBuilderForm";
 import { anyErrors } from "../../../form-utils";
 import { AddressConfirmationModal } from "../../AddressConfirmationModal/AddressConfirmationModal";
+import { StateSelect } from "../../StateSelect/StateSelect";
+import { stateOptions } from "../../StateSelect/stateOptions";
 import {
   Deliverability,
   formatLandlordDetailsAddress,
@@ -28,16 +30,6 @@ import {
   verifyAddress,
 } from "../landlordAddressHelpers";
 import "./LandlordDetailsStep.scss";
-
-export const FormattedLandlordAddress: React.FC<{
-  landlordDetails: FormFields["landlord_details"];
-}> = ({ landlordDetails }) => (
-  <>
-    {landlordDetails.name}
-    <br />
-    {formatLandlordDetailsAddress(landlordDetails)}
-  </>
-);
 
 export const LandlordDetailsStep: React.FC = () => {
   const nextStep = "preview";
@@ -51,6 +43,7 @@ export const LandlordDetailsStep: React.FC = () => {
   } = formMethods;
 
   const { _ } = useLingui();
+
   const [isLoading, setIsLoading] = useState(true);
   const [hpdLandlord, setHpdLandlord] =
     useState<Omit<FormFields["landlord_details"], "email">>();
@@ -144,7 +137,7 @@ export const LandlordDetailsStep: React.FC = () => {
   const onBackToHpdLookup = () => {
     setShowManual(false);
     setShowOverwrite(false);
-    updateLandlordDetails();
+    updateLandlordDetails(hpdLandlord);
   };
 
   return (
@@ -289,13 +282,12 @@ const LandlordFormGroup: React.FC<{
         <TextInput
           {...register("landlord_details.name")}
           id="landlord-name"
-          labelText={_(msg`Landlord or property manager name`)}
+          labelText={_(msg`Landlord name`)}
           invalid={!!errors.landlord_details?.name}
           invalidText={errors.landlord_details?.name?.message}
           invalidRole="status"
           type="text"
           autoFocus
-          style={{ textTransform: "uppercase" }}
         />
         <TextInput
           {...register("landlord_details.primary_line")}
@@ -305,7 +297,6 @@ const LandlordFormGroup: React.FC<{
           invalidText={landlordErrors?.primary_line?.message}
           invalidRole="status"
           type="text"
-          style={{ textTransform: "uppercase" }}
         />
         <FormGroup
           legendText={_(msg`Unit Number`)}
@@ -324,7 +315,6 @@ const LandlordFormGroup: React.FC<{
             disabled={watch("landlord_details.no_unit")}
             invalidRole="status"
             type="text"
-            style={{ textTransform: "uppercase" }}
           />
           <Controller
             name="landlord_details.no_unit"
@@ -357,18 +347,26 @@ const LandlordFormGroup: React.FC<{
           invalidText={landlordErrors?.city?.message}
           invalidRole="status"
           type="text"
-          style={{ textTransform: "uppercase" }}
         />
-        {/* TODO: use dropdown for state to ensure correct format */}
-        <TextInput
-          {...register("landlord_details.state")}
-          id="landlord-state"
-          labelText={_(msg`State`)}
-          invalid={!!landlordErrors?.state}
-          invalidText={landlordErrors?.state?.message}
-          invalidRole="status"
-          type="text"
-          style={{ textTransform: "uppercase" }}
+
+        <Controller
+          name="landlord_details.state"
+          control={control}
+          render={({ field }) => (
+            <div id="landlord-state">
+              <StateSelect
+                labelText={_(msg`State`)}
+                invalid={!!landlordErrors?.state}
+                invalidText={landlordErrors?.state?.message}
+                invalidRole="status"
+                value={stateOptions.find(({ value }) => value === field.value)}
+                // @ts-expect-error We need to update the JFCL onChange props to match react-select
+                onChange={({ value }) => {
+                  field.onChange(value);
+                }}
+              />
+            </div>
+          )}
         />
         {watch("landlord_details.state") === "PR" && (
           <TextInput
@@ -379,7 +377,6 @@ const LandlordFormGroup: React.FC<{
             invalidText={landlordErrors?.urbanization?.message}
             invalidRole="status"
             type="text"
-            style={{ textTransform: "uppercase" }}
           />
         )}
         <TextInput
@@ -466,3 +463,13 @@ const LandlordEmailFormGroup: React.FC = () => {
     </>
   );
 };
+
+export const FormattedLandlordAddress: React.FC<{
+  landlordDetails: FormFields["landlord_details"];
+}> = ({ landlordDetails }) => (
+  <>
+    {landlordDetails.name}
+    <br />
+    {formatLandlordDetailsAddress(landlordDetails)}
+  </>
+);

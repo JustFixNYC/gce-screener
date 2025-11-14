@@ -1,10 +1,9 @@
+@use "../../../colors.scss" as *;
+@use "../../../mixins.scss" as *;
+
 .landlord-details-step {
   &__landlord-info {
     margin-bottom: 8px;
-  }
-
-  input[type="text"] {
-    text-transform: uppercase;
   }
 
   &__modal-buttons {
@@ -13,8 +12,19 @@
     justify-content: flex-end;
     margin-top: 1rem;
   }
-}
-
-.landlord-city-input {
-  margin-top: 1.5rem;
+  .landlord-city-input {
+    margin-top: 1.5rem;
+  }
+  #landlord-state {
+    margin-bottom: 2rem;
+    .jfcl-input-header__label {
+      @include body_standard_desktop;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    .jfcl-dropdown__control {
+      padding: 5px;
+      border: 1px solid $OFF_BLACK;
+    }
+  }
 }
