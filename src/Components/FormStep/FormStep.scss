@@ -1,6 +1,6 @@
-@import "../../colors.scss";
-@import "../../mixins.scss";
-@import "../../variables.scss";
+@use "../../colors" as *;
+@use "../../mixins" as *;
+@use "../../variables" as *;
 
 .form-step {
   border-radius: 4px;
