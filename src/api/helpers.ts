@@ -2,6 +2,7 @@ import { FormFields } from "../Components/Pages/Form/Survey";
 import { Address } from "../Components/Pages/Home/Home";
 import { CriteriaDetails } from "../hooks/useCriteriaResults";
 import {
+  ComingSoonSignupPostData,
   CriteriaResults,
   FormAnswers,
   GCEPostData,
@@ -17,6 +18,25 @@ export const WowApiFetcher = async (url: string) => {
       accept: "application/json",
       Authorization: `Bearer ${token}`,
     },
+  });
+
+  return checkApiResponse(res);
+};
+
+export const Tenants2ComingSoonApiFetcher = async (
+  url: string,
+  { arg }: { arg: ComingSoonSignupPostData }
+) => {
+  const urlBase = import.meta.env.VITE_TENANTS2_API_BASE_URL;
+  const token = import.meta.env.VITE_TENANTS2_API_TOKEN;
+
+  const res = await fetch(`${urlBase}${url}`, {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(arg),
   });
 
   return checkApiResponse(res);
