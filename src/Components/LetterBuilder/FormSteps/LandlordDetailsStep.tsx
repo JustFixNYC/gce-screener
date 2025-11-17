@@ -191,7 +191,7 @@ export const LandlordDetailsStep: React.FC = () => {
       )}
       {!isLoading && (
         <BackNextButtons
-          {...(hpdLandlord
+          {...(hpdLandlord && showManual
             ? { button1Props: { onClick: onBackToHpdLookup } }
             : { backStepName: "contact_info" })}
         />
