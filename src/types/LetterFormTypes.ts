@@ -311,7 +311,7 @@ export const sampleConfirmationValues: GCELetterConfirmation = {
     extra_emails: flattenExtraEmails(sampleFormValues.extra_emails),
     user_phone_number: sampleFormValues.user_details.phone_number,
     mail_choice: sampleFormValues.mail_choice,
-    letter_pdf: "xxx",
+    letter_url: "gceletter/123456789/good-cause-letter.pdf",
     tracking_number: "1111111",
     reason: sampleFormValues.reason,
   },
