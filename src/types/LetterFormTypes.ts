@@ -189,7 +189,7 @@ export const formSchema = (i18n: I18n) => {
   );
   return schema.refine((data) => !data.cc_user || !!data.user_details.email, {
     message: i18n._(
-      msg`please enter your email address or uncheck the option to CC you on the email to your landlord`
+      msg`Please enter your email address or uncheck the option to CC you on the email to your landlord`
     ),
     path: ["user_details.email"],
 

@@ -113,7 +113,7 @@ export const ConfirmationStep: React.FC<{
   const pdfBlob = base64ToBlob(data.letter_pdf, "application/pdf");
   const fileURL = URL.createObjectURL(pdfBlob);
 
-  const allEmailsSent = [data.landlord_email, data.user_email]
+  const allEmailsSent = [data.user_email, data.landlord_email]
     .concat(data.extra_emails)
     .filter((email): email is string => !!email);
 

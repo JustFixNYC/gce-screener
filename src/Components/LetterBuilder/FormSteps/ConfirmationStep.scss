@@ -46,23 +46,14 @@
       height: 1.95394rem;
     }
     .notice__content-container {
-      max-width: 65%;
-
-      .notice__header,
-      li {
-        @include body_standard_desktop;
-      }
       .notice__header {
+        @include body_large_desktop;
         font-weight: 600;
         margin: 0 0 1rem;
       }
       ul {
         margin: 0;
         padding-inline-start: 24px;
-        list-style-type: square;
-        li::marker {
-          font-size: 1rem;
-        }
       }
     }
   }
