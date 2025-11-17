@@ -31,7 +31,6 @@ import { LetterNextStepsStandalone } from "./Components/LetterBuilder/LetterNext
 import {
   LetterLayout,
   LetterSender,
-  LetterTestSender,
 } from "./Components/Pages/LetterSender/LetterSender";
 import { stepRouteNames } from "./Components/LetterBuilder/LetterSteps";
 import "./App.scss";
@@ -218,8 +217,7 @@ const router = createBrowserRouter(
               key={index}
             />
           ))}
-          <Route path="next-steps" element={<LetterNextStepsStandalone />} />
-          <Route path="submission-test" element={<LetterTestSender />} />
+          <Route path="next_steps" element={<LetterNextStepsStandalone />} />
         </Route>
         <Route path="tenant_rights" element={<TenantRights />} />
         <Route path="privacy_policy" element={<PrivacyPolicy />} />
