@@ -8,6 +8,7 @@ import { CPI } from "../Components/Pages/RentCalculator/RentIncreaseValues";
 import { flattenExtraEmails, looseOptional } from "../form-utils";
 import { GCELetterConfirmation } from "./APIDataTypes";
 import { StepRouteName } from "../Components/LetterBuilder/LetterSteps";
+import { GCELetterSubmissionError } from "../Components/LetterBuilder/FormSteps/ConfirmationStep";
 
 const lobAddressSchema = (i18n: I18n) =>
   z.object({
@@ -189,7 +190,7 @@ export const FormContext = createContext<{
   formMethods: FormHookProps;
   back: (prevStepName: StepRouteName) => void;
   next: (nextStepName?: StepRouteName) => void;
-  confirmationResponse?: GCELetterConfirmation;
+  confirmationResponse?: GCELetterConfirmation | GCELetterSubmissionError;
 }>(null!);
 
 export const defaultFormValues: DeepPartial<FormFields> = {
