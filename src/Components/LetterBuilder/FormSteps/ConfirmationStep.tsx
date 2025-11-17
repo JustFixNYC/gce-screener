@@ -3,7 +3,6 @@ import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { Icon } from "@justfixnyc/component-library";
 
-import { base64ToBlob } from "../Letter/letter-utils";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import {
   LetterNextSteps,
@@ -110,8 +109,10 @@ export const ConfirmationStep: React.FC<{
   }
 
   const { data } = confirmationResponse;
-  const pdfBlob = base64ToBlob(data.letter_pdf, "application/pdf");
-  const fileURL = URL.createObjectURL(pdfBlob);
+
+  const letterPdfUrl = `${import.meta.env.VITE_TENANTS2_API_BASE_URL}/${
+    data.letter_url
+  }`;
 
   const allEmailsSent = [data.user_email, data.landlord_email]
     .concat(data.extra_emails)
@@ -155,7 +156,7 @@ export const ConfirmationStep: React.FC<{
         <div className="success-letter-buttons">
           {/* TODO: we should probably just give in an make a JFCL link styled as button and button as link */}
           <a
-            href={fileURL}
+            href={letterPdfUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="jfcl-button jfcl-variant-primary jfcl-size-small"
