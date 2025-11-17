@@ -18,7 +18,12 @@ const lobAddressSchema = (i18n: I18n) =>
       .string()
       .min(1, i18n._(msg`City/Borough is required for the letter`)),
     state: z
-      .string()
+      .string({
+        error: (iss) =>
+          iss.input === undefined || iss.input === ""
+            ? i18n._(msg`State is required for the letter`)
+            : i18n._(msg`State must be two-letter abbreviation`),
+      })
       .min(1, i18n._(msg`State is required for the letter`))
       .length(2, i18n._(msg`State must be two-letter abbreviation`)),
     zip_code: z
@@ -264,11 +269,13 @@ export const sampleFormValues: FormFields = {
     city: "BROOKLYN",
     state: "NY",
     zip_code: "11111",
-    bbl: "2022810070", // hpd PR address
+    // bbl: "2022810070", // hpd PR address
     // bbl: "1001420025", // hpd landlord complete
     // bbl: "3004400040", // hpd landlord missing zip
-    // bbl: "4014870027", // no city or state
+    // bbl: "4014870027", // no city, state or zip
     // bbl: "3059800077", // no hpd landlord
+    // bbl: "2023740086", // allContacts is null
+    bbl: "2029630003", // no city or state
     no_unit: false,
   },
   landlord_details: {

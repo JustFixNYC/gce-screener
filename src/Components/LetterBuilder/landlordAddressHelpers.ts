@@ -27,11 +27,15 @@ export const getVerifiedHpdLandlord = async (
   const url = `/address/wowza?borough=${borough}&block=${block}&lot=${lot}`;
   const wowData = await WowApiFetcher(url);
   const owner = getOwnerContact(wowData?.addrs?.[0]);
-  if (!owner?.address?.housenumber || !owner.address.streetname) {
+  if (!owner || !hasUsefulPartialAddress(owner)) {
     return;
   }
 
   const wowLandlordDetails = wowContactToLandlordDetails(owner);
+
+  if (!hasRequiredVerifyFields(wowLandlordDetails)) {
+    return wowLandlordDetails;
+  }
 
   try {
     const verification = await Tenants2ApiFetcherVerifyAddress(
@@ -52,9 +56,9 @@ export const getVerifiedHpdLandlord = async (
 };
 
 const getOwnerContact = (data?: LandlordData): LandlordContact | undefined => {
-  // TODO: review LOC methodology more closely
   // https://github.com/JustFixNYC/tenants2/blob/master/loc/landlord_lookup.py
   if (data === undefined) return;
+  if (data.allcontacts === null) return;
 
   return (
     data.allcontacts
@@ -125,3 +129,20 @@ export const verifyAddress = async (
 
   return { verifiedAddress, deliverability };
 };
+
+function hasRequiredVerifyFields(
+  fields: FormFields["landlord_details"]
+): boolean {
+  return (
+    !!fields.primary_line &&
+    (!!fields.zip_code || (!!fields.city && !!fields.state))
+  );
+}
+
+function hasUsefulPartialAddress(
+  wowContact: LandlordContact | undefined
+): boolean {
+  return (
+    !!wowContact?.address?.housenumber || !!wowContact?.address?.streetname
+  );
+}

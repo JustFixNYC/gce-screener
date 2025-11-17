@@ -53,7 +53,8 @@ export const LandlordDetailsStep: React.FC = () => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [lobDeliverability, setLobDeliverability] = useState<Deliverability>();
 
-  // Update current form state for landlord_details
+  // Update current form state for landlord_details. If landlordDetails is
+  // undefined, reset all landlord fields except email
   const updateLandlordDetails = useCallback(
     (
       landlordDetails?: LobAddressFields &
@@ -61,13 +62,11 @@ export const LandlordDetailsStep: React.FC = () => {
       override?: Partial<FormFields["landlord_details"]>
     ) => {
       clearErrors("landlord_details");
-      if (landlordDetails) {
-        setValue("landlord_details", {
-          ...getValues("landlord_details"),
-          ...landlordDetails,
-          ...override,
-        });
-      }
+      setValue("landlord_details", {
+        ...getValues("landlord_details"),
+        ...(landlordDetails || DEFAULT_LANDLORD_RESET),
+        ...override,
+      });
     },
     [clearErrors, getValues, setValue]
   );
@@ -80,12 +79,8 @@ export const LandlordDetailsStep: React.FC = () => {
       );
 
       setHpdLandlord(hpdLandlordFields);
-      if (hpdLandlordFields) {
-        updateLandlordDetails(hpdLandlordFields);
-        setShowManual(false);
-      } else {
-        setShowManual(true);
-      }
+      updateLandlordDetails(hpdLandlordFields);
+      setShowManual(!hpdLandlordFields);
       setIsLoading(false);
     };
     fetchAndSetHpdLandlord();
@@ -486,4 +481,14 @@ export const FormattedLandlordAddress: React.FC<{
       </span>
     </div>
   );
+};
+
+const DEFAULT_LANDLORD_RESET: Omit<FormFields["landlord_details"], "email"> = {
+  primary_line: "",
+  city: "",
+  state: "",
+  zip_code: "",
+  no_unit: false,
+  name: "",
+  urbanization: "",
 };
