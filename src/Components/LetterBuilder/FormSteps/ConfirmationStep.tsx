@@ -29,8 +29,12 @@ function letterResponseIsError(
 
 export const ConfirmationStep: React.FC<{
   confirmationResponse?: GCELetterConfirmation | GCELetterSubmissionError;
-}> = ({ confirmationResponse }) => {
-  // const { confirmationResponse } = useContext(FormContext);
+}> = ({ confirmationResponse: confirmationResponseProp }) => {
+  // Allow passing props instead of context so we can use sample values for testing
+  const { confirmationResponse } = useContext(FormContext) || {
+    confirmationResponse: confirmationResponseProp,
+  };
+
   const { i18n } = useLingui();
 
   if (!confirmationResponse) {
