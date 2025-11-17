@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
@@ -10,221 +10,227 @@ import {
   TextInput,
 } from "@justfixnyc/component-library";
 
-import { useGetLandlordData } from "../../../api/hooks";
-import { LandlordContact, LandlordData } from "../../../types/APIDataTypes";
-import { FormContext, FormFields } from "../../../types/LetterFormTypes";
+import {
+  FormContext,
+  FormFields,
+  LobAddressFields,
+} from "../../../types/LetterFormTypes";
 import Modal from "../../Modal/Modal";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { LetterStepForm } from "../LetterBuilderForm";
 import { anyErrors } from "../../../form-utils";
-import { useAddressModalHelpers } from "../AddressModalHelpers";
+import { AddressConfirmationModal } from "../../AddressConfirmationModal/AddressConfirmationModal";
+import { StateSelect } from "../../StateSelect/StateSelect";
+import { stateOptions } from "../../StateSelect/stateOptions";
+import {
+  Deliverability,
+  getVerifiedHpdLandlord,
+  verifyAddress,
+} from "../landlordAddressHelpers";
+import { toTitleCase } from "../../../helpers";
 import "./LandlordDetailsStep.scss";
 
-const getOwnerContacts = (
-  data?: LandlordData
-): LandlordContact[] | undefined => {
-  // TODO: review LOC methodology more closely
-  // https://github.com/JustFixNYC/tenants2/blob/master/loc/landlord_lookup.py
-  if (data === undefined) return;
-
-  const owners = data.allcontacts
-    .filter((contact) =>
-      ["HeadOfficer", "IndividualOwner", "JointOwner"].includes(contact.title)
-    )
-    // Sort by title in above order, just happens to be alpha order by default
-    .sort((a, b) => a.title.localeCompare(b.title));
-  return owners;
-};
-
-const formatLandlordDetailsAddress = (
-  ld: FormFields["landlord_details"]
-): string => {
-  return `${ld.primary_line}${
-    ld.secondary_line ? " " + ld.secondary_line : ""
-  }, ${ld.city}, ${ld.state} ${ld.zip_code}`;
-};
-
-const formatWowContactAddress = (addr: LandlordContact["address"]): string => {
-  return `${addr.housenumber} ${addr.streetname}${
-    addr.apartment ? " " + addr.apartment : ""
-  }, ${addr.city}, ${addr.state} ${addr.zip}`;
-};
-
-const wowContactToLandlordDetails = (
-  contact: LandlordContact
-): FormFields["landlord_details"] => {
-  const { address } = contact;
-  return {
-    name: contact.value,
-    primary_line: `${address.housenumber} ${address.streetname}`,
-    secondary_line: address.apartment || "", // on load, there is an error without || ""
-    city: address.city,
-    state: address.state,
-    zip_code: address.zip,
-    no_unit: address.apartment == "",
-  };
-};
-
 export const LandlordDetailsStep: React.FC = () => {
+  const nextStep = "preview";
   const { next, formMethods } = useContext(FormContext);
   const {
     formState: { errors },
     getValues,
     setValue,
-    watch,
     trigger,
+    clearErrors,
   } = formMethods;
 
   const { _ } = useLingui();
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [hpdLandlord, setHpdLandlord] =
+    useState<FormFields["landlord_details"]>();
+  const [showManual, setShowManual] = useState<boolean>();
   const [showOverwrite, setShowOverwrite] = useState(false);
-  const hasPrefilledRef = useRef(false);
-  const hasInitializedRef = useRef(false);
+  const [showHpdInvalidModal, setShowHpdInvalidModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [lobDeliverability, setLobDeliverability] = useState<Deliverability>();
 
-  const nextStep = "preview";
+  // Update current form state for landlord_details
+  const updateLandlordDetails = useCallback(
+    (
+      landlordDetails?: LobAddressFields &
+        Partial<FormFields["landlord_details"]>,
+      override?: Partial<FormFields["landlord_details"]>
+    ) => {
+      clearErrors("landlord_details");
+      if (landlordDetails) {
+        setValue("landlord_details", {
+          ...getValues("landlord_details"),
+          ...landlordDetails,
+          ...override,
+        });
+      }
+    },
+    [clearErrors, getValues, setValue]
+  );
 
-  const { handleAddressVerification, addressConfirmationModal } =
-    useAddressModalHelpers({
-      formMethods: formMethods,
-      onAddressConfirmed: () => next(nextStep),
-    });
-
-  const {
-    data: landlordData,
-    isLoading,
-    error,
-  } = useGetLandlordData(getValues("user_details.bbl"));
-
-  const owners = getOwnerContacts(landlordData);
-
-  // Prefill form when modal opens
+  // Check for HPD reg landlord and set values if available
   useEffect(() => {
-    if (
-      showOverwrite &&
-      owners &&
-      owners.length > 0 &&
-      !hasPrefilledRef.current
-    ) {
-      const details = wowContactToLandlordDetails(owners[0]);
+    const fetchAndSetHpdLandlord = async () => {
+      const hpdLandlordFields = await getVerifiedHpdLandlord(
+        getValues("user_details.bbl")
+      );
 
-      setValue("landlord_details", details, {
-        shouldValidate: true,
-        shouldDirty: true,
-      });
-      hasPrefilledRef.current = true;
-    }
-  }, [showOverwrite, owners, setValue]);
-
-  // Reset prefill flag when modal closes
-  useEffect(() => {
-    if (!showOverwrite) {
-      hasPrefilledRef.current = false;
-    }
-  }, [showOverwrite]);
-
-  // Initialize form with landlord details when component mounts
-  useEffect(() => {
-    if (owners && owners.length > 0 && !hasInitializedRef.current) {
-      const details = wowContactToLandlordDetails(owners[0]);
-
-      setValue("landlord_details", details, {
-        shouldValidate: true,
-        shouldDirty: true,
-      });
-      hasInitializedRef.current = true;
-    }
-  }, [owners, setValue]);
-
-  const showLookup = !isLoading && !error && owners && !showOverwrite;
-  const showManual = !isLoading && !landlordData;
+      setHpdLandlord(hpdLandlordFields);
+      if (hpdLandlordFields) {
+        updateLandlordDetails(hpdLandlordFields);
+        setShowManual(false);
+      } else {
+        setShowManual(true);
+      }
+      setIsLoading(false);
+    };
+    fetchAndSetHpdLandlord();
+  }, [getValues, updateLandlordDetails, setValue]);
 
   const onSubmit = async () => {
     const isValid = await trigger("landlord_details", { shouldFocus: true });
     if (!isValid) {
       console.warn(errors);
+      const anyAddressErrors = anyErrors(
+        [
+          "primary_line",
+          "city",
+          "state",
+          "zip_code",
+          "no_unit",
+          "name",
+          "urbanization",
+          "secondary_line",
+        ],
+        errors.landlord_details
+      );
+      if (!showManual && anyAddressErrors) {
+        setShowHpdInvalidModal(true);
+      }
       return;
     }
-    const isDeliverable = await handleAddressVerification(
-      watch("landlord_details")
+
+    // No need to run verify again if just confirming prior verification result
+    if (showConfirmModal) {
+      next(nextStep);
+      return;
+    }
+
+    const { deliverability, verifiedAddress } = await verifyAddress(
+      getValues("landlord_details")
     );
-    if (!isDeliverable) return;
+
+    updateLandlordDetails(verifiedAddress);
+    setLobDeliverability(deliverability);
+    if (deliverability !== "deliverable") {
+      setShowConfirmModal(true);
+      return;
+    }
+
     next(nextStep);
+  };
+
+  const onBackToHpdLookup = () => {
+    setShowManual(false);
+    setShowOverwrite(false);
+    updateLandlordDetails(hpdLandlord);
   };
 
   return (
     <LetterStepForm onSubmit={onSubmit} className="landlord-details-step">
-      {isLoading && <>Loading...</>}
-      {error && <>Failed to lookup landlord information</>}
-      {showLookup && (
+      {isLoading && (
+        <Trans>Checking city data for your landlord's information...</Trans>
+      )}
+      {hpdLandlord && !showManual && (
         <>
           <FormGroup
             legendText={_(msg`Please review your landlord's information`)}
             key="landlord-details__hpd-lookup"
           >
-            {errors?.landlord_details && (
-              <span className="error">{errors?.landlord_details?.message}</span>
-            )}
-            {owners && owners.length > 0 && (
-              <div>
-                <InfoBox>
-                  <Trans>
-                    This is your landlord's information as registered with the
-                    NYC Department of Housing and Preservation (HPD). This may
-                    be different than where you send your rent checks. We will
-                    use this address to ensure your landlord receives the
-                    letter.
-                  </Trans>
-                </InfoBox>
+            <InfoBox>
+              <Trans>
+                This is your landlord's information as registered with the NYC
+                Department of Housing and Preservation (HPD). This may be
+                different than where you send your rent checks. We will use this
+                address to ensure your landlord receives the letter.
+              </Trans>
+            </InfoBox>
 
-                <div className="landlord-details-step__landlord-info">
-                  {getValues("landlord_details.name") || owners[0].value}
-                  <br />
-                  {getValues("landlord_details.primary_line")
-                    ? formatLandlordDetailsAddress(
-                        getValues("landlord_details")
-                      )
-                    : formatWowContactAddress(owners[0].address)}
-                </div>
+            <FormattedLandlordAddress landlordDetails={hpdLandlord} />
 
-                <div>
-                  <Trans>
-                    If you feel strongly that this address is incorrect or
-                    incomplete, you can{" "}
-                    <button
-                      type="button"
-                      className="jfcl-link text-link-button"
-                      onClick={() => setShowOverwrite(true)}
-                    >
-                      edit the address
-                    </button>
-                    .
-                  </Trans>
-                </div>
-              </div>
-            )}
+            <div className="landlord-details-step__edit-address">
+              <Trans>
+                If you feel strongly that this address is incorrect or
+                incomplete, you can{" "}
+                <button
+                  type="button"
+                  className="jfcl-link text-link-button"
+                  onClick={() => {
+                    setShowManual(true);
+                    setShowOverwrite(true);
+                  }}
+                >
+                  edit the address
+                </button>
+                .
+              </Trans>
+            </div>
           </FormGroup>
           <LandlordEmailFormGroup />
         </>
       )}
-      {(showManual || showOverwrite) && (
-        <LandlordFormGroup isOverwrite={showOverwrite} />
-      )}
-      {(showManual || showLookup) && (
-        <BackNextButtons backStepName="contact_info" />
-      )}
-      {showOverwrite && (
-        <BackNextButtons
-          button1Props={{ onClick: () => setShowOverwrite(false) }}
+      {!isLoading && showManual && (
+        <LandlordFormGroup
+          isOverwrite={showOverwrite}
+          onBackToHpdLookup={onBackToHpdLookup}
         />
       )}
-      {addressConfirmationModal}
+      {!isLoading && (
+        <BackNextButtons
+          {...(hpdLandlord
+            ? { button1Props: { onClick: onBackToHpdLookup } }
+            : { backStepName: "contact_info" })}
+        />
+      )}
+      <Modal
+        isOpen={showHpdInvalidModal}
+        onClose={() => setShowHpdInvalidModal(false)}
+        hasCloseBtn={true}
+        header={_(
+          msg`There is an issue with your landlord's information on record with the city`
+        )}
+        className="hpd-invalid-modal"
+      >
+        <Trans>
+          Please make any necessary corrections to your landlord's information
+        </Trans>
+        <div className="modal__buttons">
+          <Button
+            labelText={_(msg`Edit address`)}
+            onClick={() => {
+              setShowHpdInvalidModal(false);
+              setShowManual(true);
+            }}
+          />
+        </div>
+      </Modal>
+      <AddressConfirmationModal
+        isOpen={showConfirmModal}
+        onClose={() => setShowConfirmModal(false)}
+        type={lobDeliverability}
+      />
     </LetterStepForm>
   );
 };
 
 const LandlordFormGroup: React.FC<{
   isOverwrite?: boolean;
-}> = ({ isOverwrite = false }) => {
+  onBackToHpdLookup?: () => void;
+}> = ({ isOverwrite = false, onBackToHpdLookup = () => {} }) => {
   const {
     formMethods: {
       register,
@@ -265,7 +271,15 @@ const LandlordFormGroup: React.FC<{
               <Trans>
                 You have chosen to overwrite the landlord information
                 recommended by JustFix. Please provide your own details below,
-                or use the recommended landlord information.
+                or use the{" "}
+                <button
+                  type="button"
+                  className="text-link-button"
+                  onClick={onBackToHpdLookup}
+                >
+                  recommended landlord information
+                </button>
+                .
               </Trans>
             </InfoBox>
           )
@@ -274,13 +288,12 @@ const LandlordFormGroup: React.FC<{
         <TextInput
           {...register("landlord_details.name")}
           id="landlord-name"
-          labelText={_(msg`Landlord or property manager name`)}
+          labelText={_(msg`Landlord name`)}
           invalid={!!errors.landlord_details?.name}
           invalidText={errors.landlord_details?.name?.message}
           invalidRole="status"
           type="text"
           autoFocus
-          style={{ textTransform: "uppercase" }}
         />
         <TextInput
           {...register("landlord_details.primary_line")}
@@ -290,7 +303,6 @@ const LandlordFormGroup: React.FC<{
           invalidText={landlordErrors?.primary_line?.message}
           invalidRole="status"
           type="text"
-          style={{ textTransform: "uppercase" }}
         />
         <FormGroup
           legendText={_(msg`Unit Number`)}
@@ -309,7 +321,6 @@ const LandlordFormGroup: React.FC<{
             disabled={watch("landlord_details.no_unit")}
             invalidRole="status"
             type="text"
-            style={{ textTransform: "uppercase" }}
           />
           <Controller
             name="landlord_details.no_unit"
@@ -342,18 +353,26 @@ const LandlordFormGroup: React.FC<{
           invalidText={landlordErrors?.city?.message}
           invalidRole="status"
           type="text"
-          style={{ textTransform: "uppercase" }}
         />
-        {/* TODO: use dropdown for state to ensure correct format */}
-        <TextInput
-          {...register("landlord_details.state")}
-          id="landlord-state"
-          labelText={_(msg`State`)}
-          invalid={!!landlordErrors?.state}
-          invalidText={landlordErrors?.state?.message}
-          invalidRole="status"
-          type="text"
-          style={{ textTransform: "uppercase" }}
+
+        <Controller
+          name="landlord_details.state"
+          control={control}
+          render={({ field }) => (
+            <div id="landlord-state">
+              <StateSelect
+                labelText={_(msg`State`)}
+                invalid={!!landlordErrors?.state}
+                invalidText={landlordErrors?.state?.message}
+                invalidRole="status"
+                value={stateOptions.find(({ value }) => value === field.value)}
+                // @ts-expect-error We need to update the JFCL onChange props to match react-select
+                onChange={({ value }) => {
+                  field.onChange(value);
+                }}
+              />
+            </div>
+          )}
         />
         {watch("landlord_details.state") === "PR" && (
           <TextInput
@@ -364,7 +383,6 @@ const LandlordFormGroup: React.FC<{
             invalidText={landlordErrors?.urbanization?.message}
             invalidRole="status"
             type="text"
-            style={{ textTransform: "uppercase" }}
           />
         )}
         <TextInput
@@ -449,5 +467,23 @@ const LandlordEmailFormGroup: React.FC = () => {
         />
       </Modal>
     </>
+  );
+};
+
+export const FormattedLandlordAddress: React.FC<{
+  landlordDetails: FormFields["landlord_details"];
+}> = ({ landlordDetails: ld }) => {
+  console.log(ld);
+  return (
+    <div className="landlord-address">
+      <span className="landlord-address__name">{toTitleCase(ld.name)}</span>
+      <span className="landlord-address__line-1">
+        {ld.primary_line}
+        {ld.secondary_line ? " " + ld.secondary_line : ""}
+      </span>
+      <span className="landlord-address__line-2">
+        {ld.city}, {ld.state} {ld.zip_code}
+      </span>
+    </div>
   );
 };

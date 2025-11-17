@@ -17,7 +17,10 @@ const lobAddressSchema = (i18n: I18n) =>
     city: z
       .string()
       .min(1, i18n._(msg`City/Borough is required for the letter`)),
-    state: z.string().min(1, i18n._(msg`State is required for the letter`)),
+    state: z
+      .string()
+      .min(1, i18n._(msg`State is required for the letter`))
+      .length(2, i18n._(msg`State must be two-letter abbreviation`)),
     zip_code: z
       .string()
       .min(1, i18n._(msg`ZIP Code is required for the letter`))
@@ -88,28 +91,50 @@ const landlordDetailsSchema = (i18n: I18n) => {
     ...lobAddressSchema(i18n).shape,
   });
 
-  return schema.refine(
-    (data) => {
-      return (
-        (!data.secondary_line && data.no_unit) ||
-        (!!data.secondary_line && !data.no_unit)
-      );
-    },
-    {
-      message: i18n._(
-        msg`Please enter a unit number or check the box to confirm that there is no unit number`
-      ),
-      path: ["secondary_line"],
-
-      // necessary for this refine error to run even when there are validation
-      // errors in other fields in the object.
-      when(payload) {
-        return schema
-          .pick({ secondary_line: true, no_unit: true })
-          .safeParse(payload.value).success;
+  return schema
+    .refine(
+      (data) => {
+        return (
+          (!data.secondary_line && data.no_unit) ||
+          (!!data.secondary_line && !data.no_unit)
+        );
       },
-    }
-  );
+      {
+        message: i18n._(
+          msg`Please enter a unit number or check the box to confirm that there is no unit number`
+        ),
+        path: ["secondary_line"],
+
+        // necessary for this refine error to run even when there are validation
+        // errors in other fields in the object.
+        when(payload) {
+          return schema
+            .pick({ secondary_line: true, no_unit: true })
+            .safeParse(payload.value).success;
+        },
+      }
+    )
+    .refine(
+      (data) => {
+        return (
+          (data.state === "PR" && data.urbanization) || data.state !== "PR"
+        );
+      },
+      {
+        message: i18n._(
+          msg`Urbanization is required for address in Puerto Rico`
+        ),
+        path: ["urbanization"],
+
+        // necessary for this refine error to run even when there are validation
+        // errors in other fields in the object.
+        when(payload) {
+          return schema
+            .pick({ state: true, urbanization: true })
+            .safeParse(payload.value).success;
+        },
+      }
+    );
 };
 
 const letterExtrasSchema = (i18n: I18n) =>
@@ -203,37 +228,6 @@ export const defaultFormValues: DeepPartial<FormFields> = {
   cc_user: false,
 };
 
-export const sampleFormValues: FormFields = {
-  user_details: {
-    first_name: "Jane",
-    last_name: "Doe",
-    phone_number: "2125551212",
-    email: "tenant@email.com",
-    primary_line: "deliverable",
-    secondary_line: "Apt 1",
-    city: "BROOKLYN",
-    state: "NY",
-    zip_code: "11111",
-    bbl: "3000010001",
-    no_unit: false,
-  },
-  landlord_details: {
-    name: "Joe Landlord",
-    email: "landlord@email.com",
-    primary_line: "deliverable",
-    secondary_line: "Apt 1",
-    city: "BROOKLYN",
-    state: "NY",
-    zip_code: "11111",
-    no_unit: false,
-  },
-  mail_choice: "WE_WILL_MAIL",
-  extra_emails: [{ email: "extra@email.com" }],
-  reason: "PLANNED_INCREASE",
-  unreasonable_increase: false,
-  cc_user: true,
-};
-
 // This shouldn't be necessary, but for some reason it's unable to infer the
 // types based on value for discriminating variable "reason" as expected, so
 // setting up these specific types nad predicate functions
@@ -258,6 +252,43 @@ export function isNonRenewalErrors(
   return reason === "NON_RENEWAL";
 }
 
+// Only for development, pass select fields to UseForm's defaultValues to skip steps
+export const sampleFormValues: FormFields = {
+  user_details: {
+    first_name: "Jane",
+    last_name: "Doe",
+    phone_number: "2125551212",
+    email: "tenant@email.com",
+    primary_line: "deliverable",
+    secondary_line: "Apt 1",
+    city: "BROOKLYN",
+    state: "NY",
+    zip_code: "11111",
+    bbl: "2022810070", // hpd PR address
+    // bbl: "1001420025", // hpd landlord complete
+    // bbl: "3004400040", // hpd landlord missing zip
+    // bbl: "4014870027", // no city or state
+    // bbl: "3059800077", // no hpd landlord
+    no_unit: false,
+  },
+  landlord_details: {
+    name: "Joe Landlord",
+    email: "landlord@email.com",
+    primary_line: "deliverable",
+    secondary_line: "Apt 1",
+    city: "BROOKLYN",
+    state: "NY",
+    zip_code: "11111",
+    no_unit: false,
+  },
+  mail_choice: "WE_WILL_MAIL",
+  extra_emails: [{ email: "extra@email.com" }],
+  reason: "PLANNED_INCREASE",
+  unreasonable_increase: false,
+  cc_user: true,
+};
+
+// Only for development
 export const sampleConfirmationValues: GCELetterConfirmation = {
   errors: {
     landlord_email: {
