@@ -22,9 +22,6 @@
     @include for-phone-only {
       padding: 0.5rem 0.75rem;
     }
-    .jfcl-dropdown__input {
-      width: unset !important;
-    }
   }
   .jfcl-dropdown__placeholder {
     @include body_large_desktop;
