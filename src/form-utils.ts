@@ -59,14 +59,10 @@ export const formatPhoneNumber = (value: string | undefined): string => {
 };
 
 // Takes formatted phone number "(123) 456-7890", always a string based on above
-// formatting output, but returns undefined instead of empty strings so that zod
-// validation for optional field works, otherwise it can raise validation errors
-export const parseFormattedPhoneNumber = (
-  value: string
-): string | undefined => {
-  const parsed = value.replace(/\D/g, "").slice(0, 10);
-  return parsed === "" ? undefined : parsed;
-};
+// formatting output, and returns a string (or empty string, must handle
+// validation within zod for empty string vs undefined if needed)
+export const parseFormattedPhoneNumber = (value: string): string =>
+  value.replace(/\D/g, "").slice(0, 10);
 
 // The default form submission (eg. via "enter" on input) can mess with our
 // controlled process so this wraps the function provided to <form> onSubmit
