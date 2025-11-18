@@ -8,6 +8,7 @@ import { CPI } from "../Components/Pages/RentCalculator/RentIncreaseValues";
 import { flattenExtraEmails, looseOptional } from "../form-utils";
 import { GCELetterConfirmation } from "./APIDataTypes";
 import { StepRouteName } from "../Components/LetterBuilder/LetterSteps";
+import { GCELetterSubmissionError } from "../Components/LetterBuilder/FormSteps/ConfirmationStep";
 
 const lobAddressSchema = (i18n: I18n) =>
   z.object({
@@ -193,7 +194,7 @@ export const formSchema = (i18n: I18n) => {
   );
   return schema.refine((data) => !data.cc_user || !!data.user_details.email, {
     message: i18n._(
-      msg`please enter your email address or uncheck the option to CC you on the email to your landlord`
+      msg`Please enter your email address or uncheck the option to CC you on the email to your landlord`
     ),
     path: ["user_details.email"],
 
@@ -219,7 +220,7 @@ export const FormContext = createContext<{
   formMethods: FormHookProps;
   back: (prevStepName: StepRouteName) => void;
   next: (nextStepName?: StepRouteName) => void;
-  confirmationResponse?: GCELetterConfirmation;
+  confirmationResponse?: GCELetterConfirmation | GCELetterSubmissionError;
 }>(null!);
 
 export const defaultFormValues: DeepPartial<FormFields> = {
@@ -317,7 +318,7 @@ export const sampleConfirmationValues: GCELetterConfirmation = {
     extra_emails: flattenExtraEmails(sampleFormValues.extra_emails),
     user_phone_number: sampleFormValues.user_details.phone_number,
     mail_choice: sampleFormValues.mail_choice,
-    letter_pdf: "xxx",
+    letter_url: "gceletter/123456789/good-cause-letter.pdf",
     tracking_number: "1111111",
     reason: sampleFormValues.reason,
   },

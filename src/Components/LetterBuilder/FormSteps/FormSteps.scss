@@ -14,7 +14,7 @@
     // below vars require !important to override index.scss style
     padding: 2rem !important;
     margin: 0 0 1.5rem 0 !important; // 24px
-    border: 1px solid $GREY_NEW !important;
+    border: 1px solid $GREY_200 !important;
 
     &.jfcl-form-group-is-invalid {
       border: 2px solid $ORANGE !important;
@@ -73,7 +73,7 @@
     .form-group__footer {
       display: flex;
       justify-content: space-between;
-      border-top: 1px solid $GREY_NEW;
+      border-top: 1px solid $GREY_200;
       // offset parent padding for divider to span full width
       margin-left: -2rem;
       margin-right: -2rem;

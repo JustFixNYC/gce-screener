@@ -2,74 +2,58 @@
 @use "../../../mixins.scss" as *;
 
 .confirmation-step {
-  .success-container {
-    display: flex;
-    padding: 2rem;
-    border-radius: 0.25rem;
-    border: 1px solid $GREEN;
-    background-color: $GREEN_100;
-    gap: 1.81rem;
-    margin-bottom: 1.5rem;
-
-    .success-icon {
+  .success-notice,
+  .loading-notice,
+  .error-notice {
+    .notice__icon-container svg {
       width: 3.375rem;
       height: 2.625rem;
     }
+  }
 
-    h3 {
-      @include h3_desktop;
-      margin: 0 0 1.5rem 0;
-    }
-    p {
-      @include body_large_desktop;
-      margin: 0 0 1.5rem 0;
-    }
+  .loading-notice p {
+    margin: 0;
+  }
 
-    @include for-phone-only {
-      h3 {
-        @include h3_mobile;
-      }
-      p {
-        @include body_standard_mobile;
-      }
+  .success-letter-buttons,
+  .error-letter-buttons {
+    display: flex;
+    gap: 1.5rem;
+    a.jfcl-button {
+      text-decoration: none;
     }
-    .success-letter-buttons {
-      display: flex;
-      gap: 1.5rem;
-      a.jfcl-button {
-        text-decoration: none;
+  }
+
+  .success-notice {
+    .notice__body {
+      a:not(.jfcl-button) {
+        @include body_large_desktop;
+      }
+      .success-letter-buttons {
+        display: flex;
+        gap: 1.5rem;
+        a.jfcl-button {
+          text-decoration: none;
+        }
       }
     }
   }
 
-  .emails-sent-callout-box {
-    display: flex;
+  .emails-sent-notice {
     padding: 1.5rem 2rem;
-    background-color: $OFF_WHITE_200;
-    border-radius: 0.25rem;
-    gap: 2.88rem;
-
-    .emails-sent-icon {
+    .notice__icon-container svg {
       width: 1.95419rem;
       height: 1.95394rem;
     }
-    section {
-      max-width: 65%;
-      h4,
-      li {
-        @include body_standard_desktop;
-      }
-      h4 {
+    .notice__content-container {
+      .notice__header {
+        @include body_large_desktop;
         font-weight: 600;
         margin: 0 0 1rem;
       }
       ul {
         margin: 0;
         padding-inline-start: 24px;
-        list-style-type: square;
-        li::marker {
-          font-size: 1rem;
-        }
       }
     }
   }

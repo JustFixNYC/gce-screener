@@ -29,6 +29,7 @@ import {
   verifyAddress,
 } from "../landlordAddressHelpers";
 import { toTitleCase } from "../../../helpers";
+import { Notice } from "../../Notice/Notice";
 import "./LandlordDetailsStep.scss";
 
 export const LandlordDetailsStep: React.FC = () => {
@@ -138,7 +139,21 @@ export const LandlordDetailsStep: React.FC = () => {
   return (
     <LetterStepForm onSubmit={onSubmit} className="landlord-details-step">
       {isLoading && (
-        <Trans>Checking city data for your landlord's information...</Trans>
+        <Notice
+          className="loading-notice"
+          color="off-white"
+          header={
+            <Trans>
+              Checking city records for your landlord's information...
+            </Trans>
+          }
+        >
+          <p>
+            <Trans>
+              This can take up to a few seconds. Please don’t refresh the page.
+            </Trans>
+          </p>
+        </Notice>
       )}
       {hpdLandlord && !showManual && (
         <>

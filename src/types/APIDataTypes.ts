@@ -143,7 +143,7 @@ export type GCELetterConfirmation = {
     extra_emails?: string[];
     user_phone_number: string;
     mail_choice: FormFields["mail_choice"];
-    letter_pdf: string;
+    letter_url: string;
     tracking_number?: string;
     reason: FormFields["reason"];
     good_cause_given?: boolean;
