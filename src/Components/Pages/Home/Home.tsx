@@ -104,43 +104,62 @@ export const Home: React.FC = () => {
 
       <div className="content-section home__about-law">
         <div className="content-section__content">
-          <h3>
-            <Trans>About the law</Trans>
-          </h3>
-          <p>
-            <Trans>
-              Good Cause Eviction protections went into effect on April 20th,
-              2024. If you are covered by the law, you have strong legal
-              protections against eviction as long as you follow your lease.
-              There are also limits to how much your landlord can raise your
-              rent.{" "}
-            </Trans>
-            <JFCLLink
-              to={`${i18n.locale}/rent_calculator`}
-              onClick={() =>
-                gtmPush("gce_rent_calculator", { from: "home-page" })
-              }
-            >
-              <Trans>Calculate your max rent increase.</Trans>
-            </JFCLLink>
-          </p>
-          <p>
-            <Trans>
-              To be covered by the law, your apartment must meet several
-              requirements.{" "}
-            </Trans>
-            <JFCLLinkExternal to="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page">
-              <Trans>Learn more about the law.</Trans>
-            </JFCLLinkExternal>{" "}
-            <Trans>
-              If you live in New York City, you can use this site to learn which
-              requirements you meet and how to assert your rights.
-            </Trans>
-          </p>
-          <div className="callout-box">
-            <span className="callout-box__header">
+          <section className="about-law">
+            <h3>
+              <Trans>About the law</Trans>
+            </h3>
+            <p>
+              <Trans>
+                Good Cause Eviction protections went into effect on April 20th,
+                2024. If you are covered by the law, you have strong legal
+                protections against eviction as long as you follow your lease.
+                There are also limits to how much your landlord can raise your
+                rent.{" "}
+              </Trans>
+              <JFCLLink
+                to={`${i18n.locale}/rent_calculator`}
+                onClick={() =>
+                  gtmPush("gce_rent_calculator", { from: "home-page" })
+                }
+              >
+                <Trans>Calculate your max rent increase.</Trans>
+              </JFCLLink>
+            </p>
+            <p>
+              <Trans>
+                To be covered by the law, your apartment must meet several
+                requirements.{" "}
+              </Trans>
+              <JFCLLinkExternal to="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page">
+                <Trans>Learn more about the law.</Trans>
+              </JFCLLinkExternal>{" "}
+              <Trans>
+                If you live in New York City, you can use this site to learn
+                which requirements you meet and how to assert your rights.
+              </Trans>
+            </p>
+          </section>
+          <section className="callout-box">
+            <h4 className="callout-box__header">
+              <Trans>If you’re covered by Good Cause</Trans>
+            </h4>
+            <p>
+              <Trans>
+                You have a legal right to limited rent increases and the right
+                to stay in your home. If your landlord is either planning to
+                raise your rent, or not offering you a new lease, we will draft
+                a USPS Certified Mail® letter asserting your Good Cause rights.
+                We will even send it for you, for free.
+              </Trans>
+            </p>
+            <JFCLLinkInternal to={`/${i18n.locale}/letter`}>
+              <Trans>Learn more about the Letter Sender</Trans>
+            </JFCLLinkInternal>
+          </section>
+          <section className="callout-box">
+            <h4 className="callout-box__header">
               <Trans>If you’re not covered by Good Cause Eviction</Trans>
-            </span>
+            </h4>
             <p>
               <Trans>
                 If you live in NYC and are not covered by Good Cause Eviction,
@@ -149,14 +168,14 @@ export const Home: React.FC = () => {
                 stronger than those provided by Good Cause.
               </Trans>
             </p>
-            <JFCLLinkInternal to="/tenant_rights">
+            <JFCLLinkInternal to={`/${i18n.locale}/tenant_rights`}>
               <Trans>Learn more about tenant protections in NYC</Trans>
             </JFCLLinkInternal>
-          </div>
-          <div className="callout-box">
-            <span className="callout-box__header">
+          </section>
+          <section className="callout-box">
+            <h4 className="callout-box__header">
               <Trans>If you live outside of NYC</Trans>
-            </span>
+            </h4>
             <p>
               <Trans>
                 Tenants and tenant advocates are working to extend Good Cause
@@ -166,35 +185,37 @@ export const Home: React.FC = () => {
             <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause/">
               <Trans>Learn where Good Cause protections have been won</Trans>
             </JFCLLinkExternal>
-          </div>
+          </section>
         </div>
       </div>
       <div className="content-section home__about-project">
         <div className="content-section__content">
-          <h3>
-            <Trans>About this site</Trans>
-          </h3>
-          <p>
-            <Trans>
-              Good Cause law can be complex to understand and to use to protect
-              yourself. This site exists to make it easier for you and your
-              neighbors to understand your tenant protections and to assert your
-              rights.
-            </Trans>
-          </p>
-          <p>
-            <Trans>
-              This site is a collaboration between the Housing Justice for All
-              Coalition and JustFix. We thank all individuals who contributed to
-              this site and to all the tenants and advocates who fight for Good
-              Cause protections.
-            </Trans>
-          </p>
+          <section className="about-project">
+            <h3>
+              <Trans>About this site</Trans>
+            </h3>
+            <p>
+              <Trans>
+                Good Cause law can be complex to understand and to use to
+                protect yourself. This site exists to make it easier for you and
+                your neighbors to understand your tenant protections and to
+                assert your rights.
+              </Trans>
+            </p>
+            <p>
+              <Trans>
+                This site is a collaboration between the Housing Justice for All
+                Coalition and JustFix. We thank all individuals who contributed
+                to this site and to all the tenants and advocates who fight for
+                Good Cause protections.
+              </Trans>
+            </p>
+          </section>
           <div className="about-project__orgs-container">
-            <div className="callout-box">
-              <span className="callout-box__header">
+            <section className="callout-box">
+              <h4 className="callout-box__header">
                 <Trans>Housing Justice for All</Trans>
-              </span>
+              </h4>
               <p>
                 <Trans>
                   A statewide coalition of tenants and homeless New Yorkers
@@ -204,11 +225,11 @@ export const Home: React.FC = () => {
               <JFCLLinkExternal to="https://housingjusticeforall.org/">
                 <Trans>Visit Housing Justice for All</Trans>
               </JFCLLinkExternal>
-            </div>
-            <div className="callout-box">
-              <span className="callout-box__header">
+            </section>
+            <section className="callout-box">
+              <h4 className="callout-box__header">
                 <Trans>JustFix</Trans>
-              </span>
+              </h4>
               <p>
                 <Trans>
                   A nonprofit organization that builds online tools to help New
@@ -218,7 +239,7 @@ export const Home: React.FC = () => {
               <JFCLLinkExternal to="https://www.justfix.org/">
                 <Trans>Visit JustFix</Trans>
               </JFCLLinkExternal>
-            </div>
+            </section>
           </div>
         </div>
       </div>
