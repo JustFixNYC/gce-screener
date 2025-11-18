@@ -80,10 +80,14 @@ export const letterSteps: LetterSteps = {
   mail_choice: {
     name: "mail_choice",
     component: <MailChoiceStep />,
+    // include all for final submission just in case
     fields: [
+      "reason",
+      "unreasonable_increase",
+      "good_cause_given",
       "mail_choice",
-      "user_details.email",
-      "landlord_details.email",
+      "user_details",
+      "landlord_details",
       "cc_user",
       "extra_emails",
     ],
