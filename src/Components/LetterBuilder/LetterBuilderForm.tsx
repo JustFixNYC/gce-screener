@@ -56,8 +56,9 @@ export const LetterBuilderForm: React.FC = () => {
 
   const currentStep = getStepFromPathname(location.pathname);
 
-  const [confirmationResponse, setConfirmationResponse] =
-    useState<GCELetterConfirmation>();
+  const [confirmationResponse, setConfirmationResponse] = useState<
+    GCELetterConfirmation | { error: boolean }
+  >();
 
   const [lastStepReached, setLastStepReached] =
     useSessionStorage<StepRouteName>("lastStepReached", stepRouteNames[0]);
@@ -111,15 +112,18 @@ export const LetterBuilderForm: React.FC = () => {
   const onLetterSubmit: SubmitHandler<FormFields> = async (
     letterData: FormFields
   ) => {
-    const letterHtml = await buildLetterHtml(letterData, "en");
-    const letterPostData = getLetterPostData(letterData, letterHtml);
-    const resp = await sendLetter(letterPostData);
-    setConfirmationResponse(resp);
+    try {
+      const letterHtml = await buildLetterHtml(letterData, "en");
+      const letterPostData = getLetterPostData(letterData, letterHtml);
+      const resp = await sendLetter(letterPostData);
+      setConfirmationResponse(resp);
+    } catch (e) {
+      setConfirmationResponse({ error: true });
+      rollbar.error(`Failed to send letter: ${e}`);
+    }
     clearFormFromSessionStorage();
     // todo: when lastStepReached = confirmation, don't let the user go back to any other steps.
     // clear lastStepReached afterward
-
-    return resp;
   };
 
   const clearFormFromSessionStorage = () => {

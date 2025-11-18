@@ -33,6 +33,7 @@ export const getVerifiedHpdLandlord = async (
 
   const wowLandlordDetails = wowContactToLandlordDetails(owner);
 
+  // TODO: if we are missing required fields (eg. zip) we can skip verification attempt
   try {
     const verification = await Tenants2ApiFetcherVerifyAddress(
       "/gceletter/verify_address",

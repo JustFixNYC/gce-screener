@@ -57,7 +57,7 @@
   }
 
   .acris-links {
-    border: 1px solid $GREY_NEW;
+    border: 1px solid $GREY_200;
 
     &,
     .accordion__summary {
@@ -118,7 +118,7 @@
     .acris-links__footer {
       background-color: $OFF_WHITE_100;
       border-radius: 0 0 4px 4px;
-      border-top: 1px solid $GREY_NEW;
+      border-top: 1px solid $GREY_200;
       padding: 1.5rem;
     }
   }

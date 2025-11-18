@@ -78,7 +78,7 @@ $mapImgHeight: 285px;
         }
       }
       .img-wrapper {
-        background-color: $GREY_NEW;
+        background-color: $GREY_200;
         @include for-phone-only() {
           border: 2px solid #c5ccd1;
           border-radius: 4px;
