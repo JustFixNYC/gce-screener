@@ -871,7 +871,7 @@ export const UnknownProtections: React.FC<KYRContentBoxProps> = ({
   coverageResult,
   className,
 }) => {
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
 
   const defaultSubtitle = _(
     msg`Whether or not you are covered by Good Cause, you still have important tenant rights`
@@ -894,7 +894,7 @@ export const UnknownProtections: React.FC<KYRContentBoxProps> = ({
             type of housing you live in.
           </Trans>
         </p>
-        <JFCLLinkInternal to="/tenant_rights">
+        <JFCLLinkInternal to={`/${i18n.locale}/tenant_rights`}>
           <Trans>Learn more about your rights</Trans>
         </JFCLLinkInternal>
       </ContentBoxItem>

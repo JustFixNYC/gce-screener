@@ -44,7 +44,7 @@ export const PortfolioSize: React.FC = () => {
     fields: FormFields;
   };
   const [, setSearchParams] = useSearchParams();
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
 
   useAccordionsOpenForPrint();
   useSearchParamsURL(setSearchParams, address, fields, user);
@@ -279,7 +279,7 @@ export const PortfolioSize: React.FC = () => {
             <ContentBoxFooter
               message={_(msg`Have you learned something new?`)}
               linkText={_(msg`Adjust survey answers`)}
-              linkTo="/survey"
+              linkTo={`/${i18n.locale}/survey`}
               linkOnClick={() =>
                 gtmPush("gce_return_survey", { from: "portfolio-guide-page" })
               }
