@@ -126,7 +126,7 @@ export const LetterLanding: React.FC = () => {
               </li>
               <li>
                 <strong>
-                  <Trans>Create a paper trasil</Trans>
+                  <Trans>Create a paper trail</Trans>
                 </strong>
                 <p>
                   <Trans>
