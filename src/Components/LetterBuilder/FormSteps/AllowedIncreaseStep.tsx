@@ -1,4 +1,6 @@
 import { Trans } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
+import { Link } from "react-router-dom";
 
 import { ContentBox, ContentBoxItem } from "../../ContentBox/ContentBox";
 import { GoodCauseProtections } from "../../KYRContent/KYRContent";
@@ -6,40 +8,45 @@ import { Pill } from "../../Pill/Pill";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { Notice } from "../../Notice/Notice";
-import "./AllowedIncreaseStep.scss";
-import { Link } from "react-router-dom";
 import { urlMyGov } from "../../../helpers";
+import "./AllowedIncreaseStep.scss";
 
-export const AllowedIncreaseStep: React.FC = () => (
-  <div className="allowed-increase-step">
-    <Notice
-      className="allowed-increase-notice"
-      color="yellow"
-      header={
-        <Trans>
-          You told us that the landlord's proposed rent increase is within the
-          Good Cause legal limit.
-        </Trans>
-      }
-    >
-      <p>
-        <Trans>
-          You still have rights, and you may be able to negotiate a smaller
-          increase or request more information about how your rent is
-          determined. Or, you can go back and{" "}
-        </Trans>
-        <Link to="/letter/rent_increase" className="jfcl-link">
-          <Trans>modify your response.</Trans>
-        </Link>
-      </p>
-    </Notice>
-    <RentNegotiationTips />
-    <GoodCauseProtections
-      subtitle={<Trans>Protections under Good Cause</Trans>}
-    />
-    <BackNextButtons hideButton2 backStepName="rent_increase" />
-  </div>
-);
+export const AllowedIncreaseStep: React.FC = () => {
+  const { i18n } = useLingui();
+  return (
+    <div className="allowed-increase-step">
+      <Notice
+        className="allowed-increase-notice"
+        color="yellow"
+        header={
+          <Trans>
+            You told us that the landlord's proposed rent increase is within the
+            Good Cause legal limit.
+          </Trans>
+        }
+      >
+        <p>
+          <Trans>
+            You still have rights, and you may be able to negotiate a smaller
+            increase or request more information about how your rent is
+            determined. Or, you can go back and{" "}
+          </Trans>
+          <Link
+            to={`/${i18n.locale}/letter/rent_increase`}
+            className="jfcl-link"
+          >
+            <Trans>modify your response.</Trans>
+          </Link>
+        </p>
+      </Notice>
+      <RentNegotiationTips />
+      <GoodCauseProtections
+        subtitle={<Trans>Protections under Good Cause</Trans>}
+      />
+      <BackNextButtons hideButton2 backStepName="rent_increase" />
+    </div>
+  );
+};
 
 const PhaseInIncrease: React.FC = () => (
   <ContentBoxItem

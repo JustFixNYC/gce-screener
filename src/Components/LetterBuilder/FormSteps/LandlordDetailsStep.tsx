@@ -404,7 +404,7 @@ const LandlordFormGroup: React.FC<{
         <TextInput
           {...register("landlord_details.zip_code")}
           id="landlord-zip-code"
-          labelText="Zip code"
+          labelText={_(msg`Zip code`)}
           invalid={!!landlordErrors?.zip_code}
           invalidText={landlordErrors?.zip_code?.message}
           invalidRole="status"
