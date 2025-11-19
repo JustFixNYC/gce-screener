@@ -68,8 +68,8 @@ export const ReasonStep: React.FC = () => {
           <section>
             <Trans>
               Select{" "}
-              <strong>“Your landlord is planning to raise your rent”</strong>
-              if any of the following apply:
+              <strong>“Your landlord is planning to raise your rent”</strong> if
+              any of the following apply:
             </Trans>
             <ul>
               <li>
@@ -97,8 +97,8 @@ export const ReasonStep: React.FC = () => {
         <div className="callout-box">
           <Trans>
             Select{" "}
-            <strong>“Your landlord is not offering you a new lease”</strong>
-            if any of the following apply:
+            <strong>“Your landlord is not offering you a new lease”</strong> if
+            any of the following apply:
           </Trans>
           <ul>
             <li>

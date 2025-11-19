@@ -65,7 +65,7 @@ export const LetterLanding: React.FC = () => {
             <p>
               <Trans>
                 If your landlord is either planning to raise your rent, or not
-                offering you a new lease, we will draft a USPS Certified Mail®
+                offer you a new lease, we will draft a USPS Certified Mail
                 letter defending your Good Cause rights. We will even send it
                 for you, for free.
               </Trans>
@@ -82,13 +82,12 @@ export const LetterLanding: React.FC = () => {
           <section>
             <div className="callout-box">
               <h4>
-                <Trans>Designed with tenants and experts</Trans>
+                <Trans>This free service has been legally vetted</Trans>
               </h4>
               <p>
                 <Trans>
                   The Good Cause Letter Sender was developed with housing
-                  attorneys, tenant organizers, community leaders, and tenants
-                  themselves.
+                  attorneys, tenant organizers, community leaders, and tenants.
                 </Trans>
               </p>
             </div>
@@ -105,7 +104,7 @@ export const LetterLanding: React.FC = () => {
             <ol>
               <li>
                 <strong>
-                  <Trans>Formally asserts your rights</Trans>
+                  <Trans>Formally assert your rights</Trans>
                 </strong>
                 <p>
                   <Trans>
@@ -116,7 +115,7 @@ export const LetterLanding: React.FC = () => {
               </li>
               <li>
                 <strong>
-                  <Trans>Opens negotiation</Trans>
+                  <Trans>Open negotiation</Trans>
                 </strong>
                 <p>
                   <Trans>
@@ -127,7 +126,7 @@ export const LetterLanding: React.FC = () => {
               </li>
               <li>
                 <strong>
-                  <Trans>Creates a paper trail</Trans>
+                  <Trans>Create a paper trasil</Trans>
                 </strong>
                 <p>
                   <Trans>
