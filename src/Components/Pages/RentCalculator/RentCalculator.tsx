@@ -16,6 +16,7 @@ import { formatMoney } from "../../../helpers";
 import { gtmPush } from "../../../google-tag-manager";
 import { PhoneNumberCallout } from "../../PhoneNumberCallout/PhoneNumberCallout";
 import { CPI, CPI_EFFECTIVE_DATE } from "./RentIncreaseValues";
+import { Notice } from "../../Notice/Notice";
 import "./RentCalculator.scss";
 
 export const RentCalculator: React.FC = () => {
@@ -85,9 +86,9 @@ export const RentCalculator: React.FC = () => {
               <p className="rent-increase-header">
                 <Trans>Allowable rent increase amount:</Trans>
               </p>
-              <p className="rent-increase-result">
-                {rentInput && showRentInput ? (
-                  <>
+              {rentInput && showRentInput ? (
+                <>
+                  <p className="rent-increase-result">
                     <span className="rent-increase-formula">
                       {`${formatMoney(Number(rentInput))} + ${increase_pct}% =`}{" "}
                     </span>
@@ -96,13 +97,14 @@ export const RentCalculator: React.FC = () => {
                         Number(rentInput) * (1 + increase_pct / 100)
                       )} `}
                     </span>
-                  </>
-                ) : (
-                  <>
-                    <Trans>Your current monthly rent</Trans> + {increase_pct}%
-                  </>
-                )}
-              </p>
+                  </p>
+                  <LetterSenderCallout />
+                </>
+              ) : (
+                <p className="rent-increase-result">
+                  <Trans>Your current monthly rent</Trans> + {increase_pct}%
+                </p>
+              )}
             </div>
           </div>
           <div className="rent-increase-explanation">
@@ -173,5 +175,30 @@ export const RentCalculator: React.FC = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const LetterSenderCallout = () => {
+  const { i18n } = useLingui();
+  return (
+    <Notice icon="circleInfo" className="letter-callout" color="off-white-100">
+      <p>
+        <strong>If you’re covered by Good Cause</strong> and your landlord is
+        planning to raise your rent beyond this amount, you can send a
+        legally-vetted letter to your landlord to ask for a lower rent increase.
+      </p>
+      <ul>
+        <li>
+          <JFCLLinkInternal to={`/${i18n.locale}/letter`}>
+            Check out the Letter Sender
+          </JFCLLinkInternal>
+        </li>
+        <li>
+          <JFCLLinkInternal to={`/${i18n.locale}`}>
+            Find out if I’m covered
+          </JFCLLinkInternal>
+        </li>
+      </ul>
+    </Notice>
   );
 };

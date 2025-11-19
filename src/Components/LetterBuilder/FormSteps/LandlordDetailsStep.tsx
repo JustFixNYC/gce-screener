@@ -141,7 +141,7 @@ export const LandlordDetailsStep: React.FC = () => {
       {isLoading && (
         <Notice
           className="loading-notice"
-          color="off-white"
+          color="off-white-200"
           header={
             <Trans>
               Checking city records for your landlord's information...

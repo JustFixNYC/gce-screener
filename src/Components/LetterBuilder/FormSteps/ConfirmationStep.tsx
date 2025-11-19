@@ -41,7 +41,7 @@ export const ConfirmationStep: React.FC<{
       <div className="confirmation-step">
         <Notice
           className="loading-notice"
-          color="off-white"
+          color="off-white-200"
           icon="envelopeRegular" // TODO: envelopeLight
           header={<Trans>We’re finishing up your letter…</Trans>}
         >
@@ -189,7 +189,7 @@ export const ConfirmationStep: React.FC<{
       {!!allEmailsSent?.length && (
         <Notice
           className="emails-sent-notice"
-          color="off-white"
+          color="off-white-200"
           icon="paperPlaneLight"
           header={
             <Trans>
