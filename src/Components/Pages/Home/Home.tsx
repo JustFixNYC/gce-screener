@@ -91,6 +91,7 @@ export const Home: React.FC = () => {
             invalid={inputInvalid}
             invalidText={_(msg`You must enter an address`)}
             setInvalid={setInputInvalid}
+            hideInvalidOnFocus
             placeholder={
               <>
                 <Icon icon="locationDot" />

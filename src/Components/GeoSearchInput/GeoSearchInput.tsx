@@ -18,6 +18,7 @@ type GeoSearchInputProps = {
   invalid: boolean;
   invalidText?: string;
   setInvalid: React.Dispatch<React.SetStateAction<boolean>>;
+  hideInvalidOnFocus?: boolean;
   placeholder?: React.ReactNode;
 };
 
@@ -28,6 +29,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
   invalid,
   invalidText,
   setInvalid,
+  hideInvalidOnFocus = false,
   placeholder,
 }) => {
   const { _ } = useLingui();
@@ -79,7 +81,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
         value={selectedValue}
         aria-label={_(msg`Enter your address`)}
         placeholder={!isFocused && !!placeholder ? placeholder : ""}
-        invalid={!isFocused && invalid}
+        invalid={hideInvalidOnFocus ? !isFocused && invalid : invalid}
         invalidText={invalidText}
         invalidRole="alert"
         onFocus={() => {
