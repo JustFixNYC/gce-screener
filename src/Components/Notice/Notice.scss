@@ -16,6 +16,10 @@
     border: 1px solid $YELLOW;
     background-color: $YELLOW_100;
   }
+  &__white {
+    border: 1px solid $GREY_200;
+    background-color: $WHITE;
+  }
   &__off-white-100 {
     border: 1px solid $GREY_200;
     background-color: $OFF_WHITE_100;
