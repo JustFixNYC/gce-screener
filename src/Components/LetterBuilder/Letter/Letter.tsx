@@ -13,13 +13,6 @@ import letterStyles from "./letter-styles.css?raw";
 
 type LetterData = { letterData: FormFields };
 
-const formatPhoneNumber = (phone: string): string => {
-  if (phone.length === 10) {
-    return `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6)}`;
-  }
-  return phone;
-};
-
 export const Letter: React.FC<LetterData> = ({ letterData }) => {
   return (
     <I18nProvider i18n={i18nLetter}>
@@ -67,7 +60,7 @@ const LetterHeader: React.FC<LetterData> = ({ letterData }) => {
         )}
         {toTitleCase(ud.city)}, {ud.state} {ud.zip_code}
         <br />
-        {formatPhoneNumber(ud.phone_number)}
+        {ud.email}
       </address>
       <time dateTime={new Date().toISOString().slice(0, 10)}>
         {currentDateLong(i18n.locale)}
