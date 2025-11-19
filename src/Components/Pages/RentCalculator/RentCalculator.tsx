@@ -183,19 +183,22 @@ const LetterSenderCallout = () => {
   return (
     <Notice icon="circleInfo" className="letter-callout" color="off-white-100">
       <p>
-        <strong>If you’re covered by Good Cause</strong> and your landlord is
-        planning to raise your rent beyond this amount, you can send a
-        legally-vetted letter to your landlord to ask for a lower rent increase.
+        <Trans>
+          <strong>If you’re covered by Good Cause</strong> and your landlord is
+          planning to raise your rent beyond this amount, you can send a
+          legally-vetted letter to your landlord to ask for a lower rent
+          increase.
+        </Trans>
       </p>
       <ul>
         <li>
           <JFCLLinkInternal to={`/${i18n.locale}/letter`}>
-            Check out the Letter Sender
+            <Trans>Check out the Letter Sender</Trans>
           </JFCLLinkInternal>
         </li>
         <li>
           <JFCLLinkInternal to={`/${i18n.locale}`}>
-            Find out if I’m covered
+            <Trans>Find out if I’m covered</Trans>
           </JFCLLinkInternal>
         </li>
       </ul>
