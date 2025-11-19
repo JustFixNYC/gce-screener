@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@awesome.me/kit-6863e5a21e@^1.0.3":
-  version "1.0.3"
-  resolved "https://npm.fontawesome.com/@awesome.me/kit-6863e5a21e/-/kit-6863e5a21e-1.0.3.tgz"
-  integrity sha512-4IzQQb/XK/rhA7TCefXn2XpuQyFjYLKcf9Gn+1MHmF6nLYQz5KOVdYwFup1wDYv/tkigUp6t8vgFQ0P5TxF2sQ==
+"@awesome.me/kit-6863e5a21e@^1.0.4":
+  version "1.0.4"
+  resolved "https://npm.fontawesome.com/@awesome.me/kit-6863e5a21e/-/kit-6863e5a21e-1.0.4.tgz#8faa2254b9aa457130fc95ce201effc88b06475d"
+  integrity sha512-sWuROjEj4KtBO7hUOP0iC11na200ArFquCCRJQmvf0c2EkI34RShVTYzE/5Dy/nxCUqOp/5HbSBiGYwkWeAkEA==
   dependencies:
     "@fortawesome/fontawesome-common-types" "^7.1.0"
 
@@ -731,12 +731,12 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@justfixnyc/component-library@0.56.1":
-  version "0.56.1"
-  resolved "https://registry.npmjs.org/@justfixnyc/component-library/-/component-library-0.56.1.tgz"
-  integrity sha512-B4M/uwREojocwadw6RJJRG6hoITykotm+OZuhkPfDnjeeF1O3BQRU5GBPvYxaZ5Xlq2eNoLwXSEn+kLvWzTMjA==
+"@justfixnyc/component-library@0.56.2":
+  version "0.56.2"
+  resolved "https://registry.yarnpkg.com/@justfixnyc/component-library/-/component-library-0.56.2.tgz#53852fd694f80613cca2a8833e8b1ca20c4ee5ab"
+  integrity sha512-6nCr765Hf2mAMUGW17EmFeIiwlV86CuniAVwMjDZSJkvx15feKzCqJWMX8fF/DrFBn0XZCuLb91KIYDwSD2WFA==
   dependencies:
-    "@awesome.me/kit-6863e5a21e" "^1.0.3"
+    "@awesome.me/kit-6863e5a21e" "^1.0.4"
     "@babel/runtime" "^7.12.5"
     "@fortawesome/fontawesome-svg-core" "^7.1.0"
     "@fortawesome/react-fontawesome" "^3.1.0"

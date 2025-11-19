@@ -42,7 +42,7 @@ export const ConfirmationStep: React.FC<{
         <Notice
           className="loading-notice"
           color="off-white"
-          icon="envelopeRegular" // TODO: envelopeLight
+          icon="envelopeLight"
           header={<Trans>We’re finishing up your letter…</Trans>}
         >
           <p>
@@ -63,7 +63,7 @@ export const ConfirmationStep: React.FC<{
         <Notice
           className="error-notice"
           color="yellow"
-          icon="circleExclamationRegular" // TODO: custom icon "envelopeCircleExclamationLight"
+          icon="envelopeCircleExclamationLight"
           header={<Trans>We couldn’t finish your letter</Trans>}
         >
           <p>

@@ -6,7 +6,7 @@
   .mail-choice-step__header {
     h3 {
       @include h3_desktop;
-      margin-bottom: 0.5rem;
+      margin: 1rem 0 0.5rem;
     }
     p {
       @include body_large_desktop;
