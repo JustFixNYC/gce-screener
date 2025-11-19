@@ -116,8 +116,12 @@ msgid "<0>Tip:</0> We recommend doing the following research on a desktop comput
 msgstr "<0>Tip:</0> We recommend doing the following research on a desktop computer. If you have not already, please watch the video, above, for step-by-step instructions on how to complete Steps 1 and 2."
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:253
-msgid "<0>We'll email you a PDF copy of your letter. We'll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to.</0>"
-msgstr "<0>We'll email you a PDF copy of your letter. We'll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to.</0>"
+#~ msgid "<0>We'll email you a PDF copy of your letter. We'll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to.</0>"
+#~ msgstr "<0>We'll email you a PDF copy of your letter. We'll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to.</0>"
+
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:253
+#~ msgid "<0>We’ll email you a PDF copy of your letter. We'll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to.</0>"
+#~ msgstr "<0>We’ll email you a PDF copy of your letter. We'll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to.</0>"
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:252
 #~ msgid "<0>We’ll include your email in the letter for your landlord to contact you, and send you a PDF copy. We never share your email with anyone.</0>"
@@ -128,8 +132,8 @@ msgstr "<0>We'll email you a PDF copy of your letter. We'll also include your em
 #~ msgstr "<0>We’ll text you to check in after your letter is mailed. We will never call you or share your phone number.</0>"
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:241
-msgid "<0>We’ll text you with your USPS tracking number. We will also check in after your letter is mailed. We will never call you or share your phone number.</0>"
-msgstr "<0>We’ll text you with your USPS tracking number. We will also check in after your letter is mailed. We will never call you or share your phone number.</0>"
+#~ msgid "<0>We’ll text you with your USPS tracking number. We will also check in after your letter is mailed. We will never call you or share your phone number.</0>"
+#~ msgstr "<0>We’ll text you with your USPS tracking number. We will also check in after your letter is mailed. We will never call you or share your phone number.</0>"
 
 #: src/Components/Pages/Results/Results.tsx:557
 msgid "<0>You are</0> <1>likely covered</1> by Good Cause Eviction"
@@ -163,7 +167,7 @@ msgstr "1"
 msgid "1. How many bedrooms are in your apartment?"
 msgstr "1. How many bedrooms are in your apartment?"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:143
+#: src/Components/LetterBuilder/Letter/Letter.tsx:136
 msgid "10%, or"
 msgstr "10%, or"
 
@@ -203,7 +207,7 @@ msgstr "5. Does your landlord live in the building?"
 #~ msgid "5% plus the annual change in the Consumer Price Index (CPI) for the region ({0}% in NYC in 2024)"
 #~ msgstr "5% plus the annual change in the Consumer Price Index (CPI) for the region ({0}% in NYC in 2024)"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:146
+#: src/Components/LetterBuilder/Letter/Letter.tsx:139
 msgid "5% plus the annual percent change in the regional Consumer Price Index (CPI)."
 msgstr "5% plus the annual percent change in the regional Consumer Price Index (CPI)."
 
@@ -231,11 +235,11 @@ msgstr "A few questions about your apartment"
 msgid "A link to download a PDF copy of your letter for your records."
 msgstr "A link to download a PDF copy of your letter for your records."
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:190
+#: src/Components/LetterBuilder/Letter/Letter.tsx:183
 msgid "A new lease or renewal"
 msgstr "A new lease or renewal"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:196
+#: src/Components/LetterBuilder/Letter/Letter.tsx:189
 msgid "A non-renewal or eviction notice"
 msgstr "A non-renewal or eviction notice"
 
@@ -251,7 +255,7 @@ msgstr "A PDF copy of your letter has been sent to the following email address(e
 #~ msgid "A PDF copy of your letter has been sent to the following email addresses:"
 #~ msgstr "A PDF copy of your letter has been sent to the following email addresses:"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:193
+#: src/Components/LetterBuilder/Letter/Letter.tsx:186
 msgid "A rent increase above the thresholds, or"
 msgstr "A rent increase above the thresholds, or"
 
@@ -290,7 +294,7 @@ msgstr "Address is required for the letter"
 msgid "Adjust survey answers"
 msgstr "Adjust survey answers"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1078
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1080
 msgid "After you send your letter"
 msgstr "After you send your letter"
 
@@ -327,20 +331,20 @@ msgstr "Allowable rent increase amount:"
 #~ msgid "An error occurred when sending you a text message for follow up."
 #~ msgstr "An error occurred when sending you a text message for follow up."
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:51
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:58
 msgid "Ask if your landlord can phase-in the increase"
 msgstr "Ask if your landlord can phase-in the increase"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:108
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:115
 msgid "Ask what’s driving the increase"
 msgstr "Ask what’s driving the increase"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:315
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:317
 msgid "Ask your landlord for a written explanation of why they believe you’re not covered."
 msgstr "Ask your landlord for a written explanation of why they believe you’re not covered."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:609
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:812
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:611
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:814
 msgid "Ask your landlord to put their reason in writing if they haven’t already."
 msgstr "Ask your landlord to put their reason in writing if they haven’t already."
 
@@ -380,7 +384,7 @@ msgid "Based on data from the website {wowLink}, we have gathered a list of prop
 msgstr "Based on data from the website {wowLink}, we have gathered a list of properties that the owner of your building may be associated with. For each property, we have included links to important real estate transaction documents."
 
 #. placeholder {0}: CPI + 5
-#: src/Components/LetterBuilder/Letter/Letter.tsx:221
+#: src/Components/LetterBuilder/Letter/Letter.tsx:216
 msgid "Based on the rent amount stated in your recent lease offer, the increase appears to exceed the lawful limit under Good Cause Eviction Law. The difference between my current rent and the proposed rent appears to exceed {0}%."
 msgstr "Based on the rent amount stated in your recent lease offer, the increase appears to exceed the lawful limit under Good Cause Eviction Law. The difference between my current rent and the proposed rent appears to exceed {0}%."
 
@@ -396,7 +400,7 @@ msgstr "Because your building has fewer than 6 units it is very unlikely that yo
 msgid "Because your building was built after 1974 and is not part of 421a or J51 tax incentive programs, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years."
 msgstr "Because your building was built after 1974 and is not part of 421a or J51 tax incentive programs, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available, no rent stabilized apartments were registered in your building in recent years."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:403
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:405
 msgid "Begin to gather all documentation to defend your case. This could include letters, lease, proof of coverage, rent receipts, etc."
 msgstr "Begin to gather all documentation to defend your case. This could include letters, lease, proof of coverage, rent receipts, etc."
 
@@ -503,15 +507,15 @@ msgstr "Close modal"
 msgid "Communicating your request to your landlord in writing provides documented evidence of your complaint."
 msgstr "Communicating your request to your landlord in writing provides documented evidence of your complaint."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:953
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:955
 msgid "Community resources"
 msgstr "Community resources"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:824
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:826
 msgid "Compare your landlord’s stated reason with the list of Good Cause reasons to see if it qualifies under the law."
 msgstr "Compare your landlord’s stated reason with the list of Good Cause reasons to see if it qualifies under the law."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:326
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:328
 msgid "Compare your results with "
 msgstr "Compare your results with "
 
@@ -519,11 +523,11 @@ msgstr "Compare your results with "
 #~ msgid "Compare your results with HPD’s Good Cause guidelines."
 #~ msgstr "Compare your results with HPD’s Good Cause guidelines."
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:214
+#: src/Components/LetterBuilder/Letter/Letter.tsx:209
 msgid "Concerning the proposed rent increase:"
 msgstr "Concerning the proposed rent increase:"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:216
+#: src/Components/LetterBuilder/Letter/Letter.tsx:211
 msgid "Concerning your intent to end my tenancy"
 msgstr "Concerning your intent to end my tenancy"
 
@@ -539,19 +543,19 @@ msgstr "Confirm"
 #~ msgid "Contact <0>Housing Court Answers</0> or a legal aid provider immediately."
 #~ msgstr "Contact <0>Housing Court Answers</0> or a legal aid provider immediately."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:412
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:414
 msgid "Contact <0>Housing Court Answers</0> or one of the organizations in the “legal advice and assistance” section below as soon as you can."
 msgstr "Contact <0>Housing Court Answers</0> or one of the organizations in the “legal advice and assistance” section below as soon as you can."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:717
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:719
 msgid "Contact a legal aid provider immediately for advice."
 msgstr "Contact a legal aid provider immediately for advice."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:901
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:903
 msgid "Contact a legal aid provider or tenant support organization right away for help reviewing whether the landlord’s claimed reason qualifies as a valid “good cause.”"
 msgstr "Contact a legal aid provider or tenant support organization right away for help reviewing whether the landlord’s claimed reason qualifies as a valid “good cause.”"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:472
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:474
 msgid "Contact a tenant support organization for guidance or help drafting a follow-up letter."
 msgstr "Contact a tenant support organization for guidance or help drafting a follow-up letter."
 
@@ -563,7 +567,7 @@ msgstr "Contact support"
 msgid "Continue"
 msgstr "Continue"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:714
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:716
 msgid "Continue paying rent under your most recent lease."
 msgstr "Continue paying rent under your most recent lease."
 
@@ -579,16 +583,24 @@ msgstr "Copied"
 msgid "Copy goodcausenyc.org"
 msgstr "Copy goodcausenyc.org"
 
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:305
+msgid "Coverage depends on your building type, subsidy status, and other factors."
+msgstr "Coverage depends on your building type, subsidy status, and other factors."
+
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:129
-msgid "Create a paper trasil"
-msgstr "Create a paper trasil"
+msgid "Create a paper trail"
+msgstr "Create a paper trail"
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:129
+#~ msgid "Create a paper trasil"
+#~ msgstr "Create a paper trasil"
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:130
 #~ msgid "Creates a paper trail"
 #~ msgstr "Creates a paper trail"
 
 #. placeholder {0}: ld.name
-#: src/Components/LetterBuilder/Letter/Letter.tsx:104
+#: src/Components/LetterBuilder/Letter/Letter.tsx:97
 msgid "Dear {0},"
 msgstr "Dear {0},"
 
@@ -609,7 +621,7 @@ msgstr "Demolition"
 msgid "Disclaimer"
 msgstr "Disclaimer"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:895
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:897
 msgid "Do not move out immediately. You have the right to remain in your home unless a court orders otherwise."
 msgstr "Do not move out immediately. You have the right to remain in your home unless a court orders otherwise."
 
@@ -617,11 +629,11 @@ msgstr "Do not move out immediately. You have the right to remain in your home u
 msgid "Document all communications with your landlord. This could include texts, emails, letters, or notes from conversations."
 msgstr "Document all communications with your landlord. This could include texts, emails, letters, or notes from conversations."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:463
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:465
 msgid "Document their refusal or lack of response."
 msgstr "Document their refusal or lack of response."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:400
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:402
 msgid "Don’t ignore the court papers."
 msgstr "Don’t ignore the court papers."
 
@@ -703,7 +715,7 @@ msgstr "Error with address selection"
 msgid "Establishes a professional channel to negotiate solutions to your rent increase or non-renewal."
 msgstr "Establishes a professional channel to negotiate solutions to your rent increase or non-renewal."
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:56
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:63
 msgid "Even if the full increase is allowed under Good Cause, you can ask to spread it out over several months."
 msgstr "Even if the full increase is allowed under Good Cause, you can ask to spread it out over several months."
 
@@ -711,7 +723,7 @@ msgstr "Even if the full increase is allowed under Good Cause, you can ask to sp
 msgid "Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights"
 msgstr "Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:865
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:867
 msgid "Even when your landlord provides proof, you still have the right to review and, if needed, challenge whether their reason qualifies as lawful under the Good Cause law."
 msgstr "Even when your landlord provides proof, you still have the right to review and, if needed, challenge whether their reason qualifies as lawful under the Good Cause law."
 
@@ -723,7 +735,7 @@ msgstr "Everyone has the right to live in a safe and habitable environment. This
 msgid "Eviction Free NYC"
 msgstr "Eviction Free NYC"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:62
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:69
 msgid "Example: If your rent is going up 8%, you could propose a 4% increase now and another 4% later in the year."
 msgstr "Example: If your rent is going up 8%, you could propose a 4% increase now and another 4% later in the year."
 
@@ -796,7 +808,7 @@ msgstr "First name"
 msgid "First name is required for the letter"
 msgstr "First name is required for the letter"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:358
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:360
 msgid "Follow up with your landlord in writing and keep records of all attempts to contact them."
 msgstr "Follow up with your landlord in writing and keep records of all attempts to contact them."
 
@@ -823,7 +835,7 @@ msgstr "For leases offered after {0}, landlords cannot increase rent more than {
 
 #. placeholder {0}: CPI + 5
 #. placeholder {1}: _(CPI_EFFECTIVE_DATE)
-#: src/Components/LetterBuilder/Letter/Letter.tsx:153
+#: src/Components/LetterBuilder/Letter/Letter.tsx:146
 msgid "For New York City, the CPI change is {0}% as of {1}, meaning increases above this level require justification under the statute."
 msgstr "For New York City, the CPI change is {0}% as of {1}, meaning increases above this level require justification under the statute."
 
@@ -851,7 +863,7 @@ msgstr "Get a text with a unique URL to your results page."
 msgid "Get started"
 msgstr "Get started"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:165
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:172
 msgid "Get support from a tenant organization"
 msgstr "Get support from a tenant organization"
 
@@ -922,24 +934,24 @@ msgstr "Have you learned something new?"
 msgid "Help build tenant power in NYC"
 msgstr "Help build tenant power in NYC"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:967
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1000
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1033
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:969
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1002
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1035
 msgid "Helpful organizations"
 msgstr "Helpful organizations"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:82
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:89
 msgid "Highlight your track record as a reliable tenant"
 msgstr "Highlight your track record as a reliable tenant"
 
 #: src/Components/KYRContent/KYRContent.tsx:78
 #: src/Components/KYRContent/KYRContent.tsx:257
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:188
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:977
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:195
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:979
 msgid "Housing Court Answers"
 msgstr "Housing Court Answers"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1038
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1040
 msgid "Housing Court Answers (HCA)"
 msgstr "Housing Court Answers (HCA)"
 
@@ -947,7 +959,7 @@ msgstr "Housing Court Answers (HCA)"
 msgid "Housing Court Answers repairs resources"
 msgstr "Housing Court Answers repairs resources"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1010
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1012
 #: src/Components/Pages/Home/Home.tsx:197
 msgid "Housing Justice for All"
 msgstr "Housing Justice for All"
@@ -972,9 +984,9 @@ msgstr "How do you want to send your letter?"
 msgid "How it works"
 msgstr "How it works"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:430
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:649
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:920
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:432
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:651
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:922
 msgid "How might your landlord respond?"
 msgstr "How might your landlord respond?"
 
@@ -1003,7 +1015,7 @@ msgstr "How we determined your coverage"
 #. placeholder {2}: toTitleCase(ud.city)
 #. placeholder {3}: ud.zip_code
 #. placeholder {4}: " "
-#: src/Components/LetterBuilder/Letter/Letter.tsx:108
+#: src/Components/LetterBuilder/Letter/Letter.tsx:101
 msgid "I am writing to inform you that my tenancy at {0}{1}, {2}, {3} {4}is covered under New York State Real Property Law (RPL) Article 6-A, also known as the Good Cause Eviction Law, which took effect in New York City on April 20, 2024. As a tenant covered by this law, I want to outline my protections and our mutual responsibilities."
 msgstr "I am writing to inform you that my tenancy at {0}{1}, {2}, {3} {4}is covered under New York State Real Property Law (RPL) Article 6-A, also known as the Good Cause Eviction Law, which took effect in New York City on April 20, 2024. As a tenant covered by this law, I want to outline my protections and our mutual responsibilities."
 
@@ -1023,7 +1035,7 @@ msgstr "I am writing to inform you that my tenancy at {0}{1}, {2}, {3} {4}is cov
 msgid "I do not have a unit number"
 msgstr "I do not have a unit number"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:241
+#: src/Components/LetterBuilder/Letter/Letter.tsx:236
 msgid "I respectfully request the following:"
 msgstr "I respectfully request the following:"
 
@@ -1031,7 +1043,7 @@ msgstr "I respectfully request the following:"
 #~ msgid "I value our landlord–tenant relationship and wish to continue it on clear and lawful terms. Please let me know if you’d like to discuss or clarify any of these requirements. I hope we can work cooperatively to uphold both legal obligations and good-faith communication."
 #~ msgstr "I value our landlord–tenant relationship and wish to continue it on clear and lawful terms. Please let me know if you’d like to discuss or clarify any of these requirements. I hope we can work cooperatively to uphold both legal obligations and good-faith communication."
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:274
+#: src/Components/LetterBuilder/Letter/Letter.tsx:269
 msgid "I value our landlord–tenant relationship and wish to continue it on clear and lawful terms. Please let me know if you’d like to discuss or clarify any of these requirements. I hope we can work cooperatively to uphold both legal obligations and good-faith communication. "
 msgstr "I value our landlord–tenant relationship and wish to continue it on clear and lawful terms. Please let me know if you’d like to discuss or clarify any of these requirements. I hope we can work cooperatively to uphold both legal obligations and good-faith communication. "
 
@@ -1044,11 +1056,11 @@ msgstr "I’m covered, start my free letter"
 msgid "I'm not sure"
 msgstr "I'm not sure"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:125
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:132
 msgid "If costs haven’t clearly gone up, that may strengthen your argument for a smaller raise."
 msgstr "If costs haven’t clearly gone up, that may strengthen your argument for a smaller raise."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:514
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:516
 msgid "If it’s still too high, write back citing Good Cause protections and request a compliant rent amount."
 msgstr "If it’s still too high, write back citing Good Cause protections and request a compliant rent amount."
 
@@ -1141,11 +1153,11 @@ msgstr "If you live in NYC and are not covered by Good Cause Eviction, you still
 msgid "If you live outside of NYC"
 msgstr "If you live outside of NYC"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:959
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:961
 msgid "If you need help understanding your rights, contacting your landlord, or getting connected to local tenant groups or city services."
 msgstr "If you need help understanding your rights, contacting your landlord, or getting connected to local tenant groups or city services."
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:144
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:151
 msgid "If you plan to stay long-term, you could offer to renew for two years instead of one in exchange for a smaller rent increase."
 msgstr "If you plan to stay long-term, you could offer to renew for two years instead of one in exchange for a smaller rent increase."
 
@@ -1161,7 +1173,7 @@ msgstr "If you use a voucher that covers some or all of your rent, and you can u
 #~ msgid "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>\"None of the above\"</0>"
 #~ msgstr "If you use a voucher that covers some or all of your rent, and you can use that voucher in another apartment if you move, select the option: <0>\"None of the above\"</0>"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:558
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:560
 msgid "If you're comfortable, you can avoid signing a lease with an increase above the Good Cause limit."
 msgstr "If you're comfortable, you can avoid signing a lease with an increase above the Good Cause limit."
 
@@ -1185,12 +1197,12 @@ msgstr "If you’re dealing with something that feels unfair, like a large rent 
 msgid "If you’re not covered by Good Cause Eviction"
 msgstr "If you’re not covered by Good Cause Eviction"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:992
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1025
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:994
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1027
 msgid "If you’re organizing with neighbors, challenging a landlord’s actions, or want to connect with tenant campaigns for stronger protections."
 msgstr "If you’re organizing with neighbors, challenging a landlord’s actions, or want to connect with tenant campaigns for stronger protections."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:830
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:832
 msgid "If you’re unsure whether the reason is valid, reach out to a tenant support organization or legal aid provider listed in Who Can Help?."
 msgstr "If you’re unsure whether the reason is valid, reach out to a tenant support organization or legal aid provider listed in Who Can Help?."
 
@@ -1214,7 +1226,7 @@ msgstr "If your apartment is rent stabilized, you are not covered by Good Cause 
 msgid "If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings."
 msgstr "If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:346
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:348
 msgid "If your landlord ignores your letter, you still have your Good Cause protections."
 msgstr "If your landlord ignores your letter, you still have your Good Cause protections."
 
@@ -1234,7 +1246,7 @@ msgstr "If your landlord is either planning to raise your rent, or not offer you
 #~ msgid "If your landlord provides a reason, that doesn’t automatically mean the non-renewal is lawful — it must still meet the standards defined in the law."
 #~ msgstr "If your landlord provides a reason, that doesn’t automatically mean the non-renewal is lawful — it must still meet the standards defined in the law."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:794
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:796
 msgid "If your landlord provides a reason, that doesn’t automatically mean the non-renewal is lawful. Your landlord’s reason must still meet the standards defined in the law"
 msgstr "If your landlord provides a reason, that doesn’t automatically mean the non-renewal is lawful. Your landlord’s reason must still meet the standards defined in the law"
 
@@ -1246,7 +1258,7 @@ msgstr "If your landlord provides a reason, that doesn’t automatically mean th
 msgid "If your landlord refuses to renew your lease, tells you that you have to leave for no reason, or tries to evict you for no reason, stay in your home!"
 msgstr "If your landlord refuses to renew your lease, tells you that you have to leave for no reason, or tries to evict you for no reason, stay in your home!"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:387
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:389
 msgid "If your landlord starts a housing court case, don’t ignore it. Your landlord has to follow the law if they want to evict you and you have rights."
 msgstr "If your landlord starts a housing court case, don’t ignore it. Your landlord has to follow the law if they want to evict you and you have rights."
 
@@ -1369,11 +1381,11 @@ msgstr "Keep paying rent and wait for your landlord’s response"
 #~ msgid "Keep paying rent under your current lease."
 #~ msgstr "Keep paying rent under your current lease."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:466
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:468
 msgid "Keep paying rent under your current lease. You don’t need to accept the higher amount."
 msgstr "Keep paying rent under your current lease. You don’t need to accept the higher amount."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:520
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:522
 msgid "Keep paying rent until you sign a new lease."
 msgstr "Keep paying rent until you sign a new lease."
 
@@ -1421,7 +1433,7 @@ msgstr "Landlord portfolio size"
 msgid "Landlords can increase the rent more than the reasonable rent increase but they must explain why and must point to increases in their costs or substantial repairs they did to the apartment or building."
 msgstr "Landlords can increase the rent more than the reasonable rent increase but they must explain why and must point to increases in their costs or substantial repairs they did to the apartment or building."
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:93
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:100
 msgid "Landlords often value stability, especially in a competitive market. A short, polite message pointing out your reliability can strengthen your case for a smaller increase."
 msgstr "Landlords often value stability, especially in a competitive market. A short, polite message pointing out your reliability can strengthen your case for a smaller increase."
 
@@ -1492,9 +1504,9 @@ msgstr "Learn more about Good Cause Eviction Law protections"
 msgid "Learn more about Good Cause reasons for eviction"
 msgstr "Learn more about Good Cause reasons for eviction"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:698
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:802
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:873
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:700
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:804
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:875
 msgid "Learn more about Good Cause reasons for non renewal"
 msgstr "Learn more about Good Cause reasons for non renewal"
 
@@ -1563,7 +1575,7 @@ msgstr "Learn where Good Cause protections have been won"
 msgid "Lease violations"
 msgstr "Lease violations"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1019
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1021
 msgid "Legal advice and assistance"
 msgstr "Legal advice and assistance"
 
@@ -1571,11 +1583,11 @@ msgstr "Legal advice and assistance"
 #~ msgid "Legal Advice and Assistance"
 #~ msgstr "Legal Advice and Assistance"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1043
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1045
 msgid "Legal Aid Society - Housing Unit"
 msgstr "Legal Aid Society - Housing Unit"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:133
+#: src/Components/LetterBuilder/Letter/Letter.tsx:126
 msgid "Legal Limits on Rent Increases"
 msgstr "Legal Limits on Rent Increases"
 
@@ -1583,7 +1595,7 @@ msgstr "Legal Limits on Rent Increases"
 msgid "Legal representation can make a significant difference in ensuring a fair and just resolution to housing disputes, protecting residents from wrongful eviction or other adverse outcomes. If you do not have a lawyer and are facing a termination of tenancy at the Office of Impartial Hearings, you can ask for your case to be adjourned in order for you to seek counsel."
 msgstr "Legal representation can make a significant difference in ensuring a fair and just resolution to housing disputes, protecting residents from wrongful eviction or other adverse outcomes. If you do not have a lawyer and are facing a termination of tenancy at the Office of Impartial Hearings, you can ask for your case to be adjourned in order for you to seek counsel."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1048
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1050
 msgid "Legal Services NYC"
 msgstr "Legal Services NYC"
 
@@ -1654,7 +1666,7 @@ msgstr "Make sure the information below is accurate. If it is not, you can go ba
 msgid "manufactured housing"
 msgstr "manufactured housing"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:150
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:157
 msgid "Many landlords prefer stable, predictable tenants. This saves them time and reduces turnover. Framing it as a win-win can make this offer appealing."
 msgstr "Many landlords prefer stable, predictable tenants. This saves them time and reduces turnover. Framing it as a win-win can make this offer appealing."
 
@@ -1664,8 +1676,8 @@ msgstr "Map showing location of the entered address."
 
 #: src/Components/KYRContent/KYRContent.tsx:254
 #: src/Components/KYRContent/KYRContent.tsx:587
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:183
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1005
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:190
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1007
 msgid "Met Council on Housing"
 msgstr "Met Council on Housing"
 
@@ -1701,11 +1713,11 @@ msgstr "Met Council on Housing’s Rent Stabilization overview"
 msgid "missing class information"
 msgstr "missing class information"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1058
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1060
 msgid "Mobilization for Justice (MFJ)"
 msgstr "Mobilization for Justice (MFJ)"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:32
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:38
 msgid "modify your response."
 msgstr "modify your response."
 
@@ -1725,7 +1737,7 @@ msgstr "Need help choosing which letter is best for you?"
 msgid "Need support while you wait?"
 msgstr "Need support while you wait?"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1053
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1055
 msgid "New York Legal Assistance Group (NYLAG)"
 msgstr "New York Legal Assistance Group (NYLAG)"
 
@@ -1808,15 +1820,15 @@ msgstr "NY Homes and Community Renewal eviction information"
 msgid "NYC Tenant Protection Cabinet’s Good Cause Eviction Guide"
 msgstr "NYC Tenant Protection Cabinet’s Good Cause Eviction Guide"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:328
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:330
 msgid "NYC’s Tenant Protection Cabinet’s Good Cause Guide."
 msgstr "NYC’s Tenant Protection Cabinet’s Good Cause Guide."
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:193
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:200
 msgid "NYC's Tenant Support Unit (311)"
 msgstr "NYC's Tenant Support Unit (311)"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:972
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:974
 msgid "NYC's Tenant Support Unit (TSU)"
 msgstr "NYC's Tenant Support Unit (TSU)"
 
@@ -1841,7 +1853,7 @@ msgstr "NYCHA policies"
 msgid "NYLAG's Public Housing Justice Project"
 msgstr "NYLAG's Public Housing Justice Project"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:139
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:146
 msgid "Offer a longer lease in exchange for a smaller increase"
 msgstr "Offer a longer lease in exchange for a smaller increase"
 
@@ -1857,7 +1869,7 @@ msgstr "Open negotiation"
 #~ msgid "Opens negotiation"
 #~ msgstr "Opens negotiation"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:178
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:185
 msgid "Organizations that can help"
 msgstr "Organizations that can help"
 
@@ -1903,7 +1915,7 @@ msgstr "Phone number submitted"
 msgid "Please complete the unanswered questions before continuing."
 msgstr "Please complete the unanswered questions before continuing."
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:245
+#: src/Components/LetterBuilder/Letter/Letter.tsx:240
 msgid "Please confirm in writing that this unit is covered under Good Cause Eviction Law, as required by RPL § 213."
 msgstr "Please confirm in writing that this unit is covered under Good Cause Eviction Law, as required by RPL § 213."
 
@@ -1915,7 +1927,7 @@ msgstr "Please confirm in writing that this unit is covered under Good Cause Evi
 #~ msgid "Please confirm whether you intend to renew my lease, and if not, provide the specific good cause reason in writing as required by law. If you do not provide such reason, I will assume I retain the right to continue my tenancy under existing terms."
 #~ msgstr "Please confirm whether you intend to renew my lease, and if not, provide the specific good cause reason in writing as required by law. If you do not provide such reason, I will assume I retain the right to continue my tenancy under existing terms."
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:258
+#: src/Components/LetterBuilder/Letter/Letter.tsx:253
 msgid "Please confirm whether you intend to renew my lease, If you do not intend to renew, please provide the specific “good cause” ground, as required under RPL § 215 and RPL § 216(4). If you do not provide such reason, I will assume I retain the right to continue my tenancy under existing terms."
 msgstr "Please confirm whether you intend to renew my lease, If you do not intend to renew, please provide the specific “good cause” ground, as required under RPL § 215 and RPL § 216(4). If you do not provide such reason, I will assume I retain the right to continue my tenancy under existing terms."
 
@@ -2008,7 +2020,7 @@ msgstr "Please select whether your landlord provided one of the listed reasons f
 #~ msgstr "Please select whether your landlord provided one of the listed reasons for not renewing your lease."
 
 #. placeholder {0}: CPI + 5
-#: src/Components/LetterBuilder/Letter/Letter.tsx:252
+#: src/Components/LetterBuilder/Letter/Letter.tsx:247
 msgid "Please send me a new lease with a rent increase of less than {0}%, consistent with the limits established under RPL § 216(1)(a)."
 msgstr "Please send me a new lease with a rent increase of less than {0}%, consistent with the limits established under RPL § 216(1)(a)."
 
@@ -2040,7 +2052,7 @@ msgstr "Please specify whether your landlord owns more than 10 apartments across
 msgid "Please use the address that is associated with your lease. This is the address that we will use as the return address in your letter."
 msgstr "Please use the address that is associated with your lease. This is the address that we will use as the return address in your letter."
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:113
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:120
 msgid "Politely ask your landlord to explain the reason for the increase. For example, higher property taxes or maintenance costs."
 msgstr "Politely ask your landlord to explain the reason for the increase. For example, higher property taxes or maintenance costs."
 
@@ -2077,7 +2089,7 @@ msgstr "Protections if you’re covered by Good Cause"
 msgid "Protections that all NYC tenants have"
 msgstr "Protections that all NYC tenants have"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:38
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:44
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:159
 msgid "Protections under Good Cause"
 msgstr "Protections under Good Cause"
@@ -2143,15 +2155,15 @@ msgstr "Publicly available data sources indicate that your building receives the
 msgid "publicly available data sources indicate that your landlord may be associated with {0}"
 msgstr "publicly available data sources indicate that your landlord may be associated with {0}"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:564
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:566
 msgid "Reach out to a tenant support or legal aid organization for advice before signing anything new."
 msgstr "Reach out to a tenant support or legal aid organization for advice before signing anything new."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:367
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:369
 msgid "Reach out to a tenant support organization for help navigating next steps."
 msgstr "Reach out to a tenant support organization for help navigating next steps."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:624
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:626
 msgid "Reach out to a tenant support organization or legal aid provider listed in Who Can Help? for help reviewing whether the landlord’s reason meets the “good cause” standard."
 msgstr "Reach out to a tenant support organization or legal aid provider listed in Who Can Help? for help reviewing whether the landlord’s reason meets the “good cause” standard."
 
@@ -2167,13 +2179,17 @@ msgstr "receives a HUD Project-Based subsidy"
 msgid "receives the Low-Income Housing Tax Credit (LIHTC)"
 msgstr "receives the Low-Income Housing Tax Credit (LIHTC)"
 
+#: src/Components/LetterBuilder/Letter/Letter.tsx:313
+msgid "Regards"
+msgstr "Regards"
+
 #. placeholder {0}: bldgData.unitsres || 0
 #. placeholder {1}: 11 - bldgData.unitsres
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:234
 msgid "Remember, your building has {0, plural, one {# apartment} other {# apartments}}, so<0> you only need to confirm that your landlord owns {1, plural, one {# apartment} other {# apartments}} across other buildings.</0>"
 msgstr "Remember, your building has {0, plural, one {# apartment} other {# apartments}}, so<0> you only need to confirm that your landlord owns {1, plural, one {# apartment} other {# apartments}} across other buildings.</0>"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:87
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:94
 msgid "Remind your landlord that you’ve paid rent on time, taken care of the unit, and been a responsible tenant."
 msgstr "Remind your landlord that you’ve paid rent on time, taken care of the unit, and been a responsible tenant."
 
@@ -2181,7 +2197,7 @@ msgstr "Remind your landlord that you’ve paid rent on time, taken care of the 
 msgid "Removal of apartment from market"
 msgstr "Removal of apartment from market"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:741
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:743
 msgid "Renewal leases must also follow Good Cause rules. A rent increase above the legal limit is presumed unreasonable."
 msgstr "Renewal leases must also follow Good Cause rules. A rent increase above the legal limit is presumed unreasonable."
 
@@ -2209,7 +2225,7 @@ msgstr "Rent stabilized apartments are not covered by Good Cause Eviction becaus
 msgid "Report source of income discrimination"
 msgstr "Report source of income discrimination"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:883
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:885
 msgid "Request copies of any documents your landlord references. These can include affidavits, notices, or plans to occupy the unit."
 msgstr "Request copies of any documents your landlord references. These can include affidavits, notices, or plans to occupy the unit."
 
@@ -2221,7 +2237,7 @@ msgstr "Request your rent history"
 msgid "Request your rent history to help find out if your apartment is rent stabilized and if you’re being overcharged."
 msgstr "Request your rent history to help find out if your apartment is rent stabilized and if you’re being overcharged."
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:180
+#: src/Components/LetterBuilder/Letter/Letter.tsx:173
 msgid "Required Notices from the Landlord"
 msgstr "Required Notices from the Landlord"
 
@@ -2229,11 +2245,11 @@ msgstr "Required Notices from the Landlord"
 msgid "Residential Tenants Guide"
 msgstr "Residential Tenants Guide"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:762
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:764
 msgid "Respond in writing: note that you’re covered by Good Cause and request a rent below the legal limit."
 msgstr "Respond in writing: note that you’re covered by Good Cause and request a rent below the legal limit."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:409
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:411
 msgid "Respond to the court notice promptly."
 msgstr "Respond to the court notice promptly."
 
@@ -2245,7 +2261,7 @@ msgstr "Result"
 msgid "Results are based on publicly available data about your building and the answers you provided. This does not constitute legal advice."
 msgstr "Results are based on publicly available data about your building and the answers you provided. This does not constitute legal advice."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:753
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:755
 msgid "Review the lease terms carefully."
 msgstr "Review the lease terms carefully."
 
@@ -2261,7 +2277,7 @@ msgstr "Review your letter"
 #~ msgid "Right to lease renewals"
 #~ msgstr "Right to lease renewals"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:165
+#: src/Components/LetterBuilder/Letter/Letter.tsx:158
 msgid "Right to Lease Renewals"
 msgstr "Right to Lease Renewals"
 
@@ -2273,19 +2289,19 @@ msgstr "Sample image of blank rent stabilized lease"
 #~ msgid "Save"
 #~ msgstr "Save"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:615
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:617
 msgid "Save all communications and documentation they provide."
 msgstr "Save all communications and documentation they provide."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:889
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:891
 msgid "Save all communications and keep your most recent lease and rent payment records."
 msgstr "Save all communications and keep your most recent lease and rent payment records."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:818
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:820
 msgid "Save that communication along with your lease and your letter asserting your rights."
 msgstr "Save that communication along with your lease and your letter asserting your rights."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:708
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:710
 msgid "Save your lease, your letter asserting rights, and all communications."
 msgstr "Save your lease, your letter asserting rights, and all communications."
 
@@ -2487,7 +2503,7 @@ msgstr "Tell them it’s unreasonable"
 msgid "Tell your landlord you have a right to stay unless your landlord has a “Good Cause” to evict you. If your landlord then tries to formally evict you in court, you can raise a Good Cause defense and require your landlord to demonstrate they have a “Good Cause” to evict you."
 msgstr "Tell your landlord you have a right to stay unless your landlord has a “Good Cause” to evict you. If your landlord then tries to formally evict you in court, you can raise a Good Cause defense and require your landlord to demonstrate they have a “Good Cause” to evict you."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:986
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:988
 msgid "Tenant advocacy groups"
 msgstr "Tenant advocacy groups"
 
@@ -2499,7 +2515,7 @@ msgstr "Tenant Organizing Toolkit from Housing Justice for All"
 msgid "Tenant rights under rent stabilization"
 msgstr "Tenant rights under rent stabilization"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:170
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:177
 msgid "Tenant support groups can help you draft messages, practice negotiation conversations, or understand your rights if your landlord refuses to negotiate."
 msgstr "Tenant support groups can help you draft messages, practice negotiation conversations, or understand your rights if your landlord refuses to negotiate."
 
@@ -2527,7 +2543,7 @@ msgstr "Terms of use"
 msgid "Terms of Use"
 msgstr "Terms of Use"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:282
+#: src/Components/LetterBuilder/Letter/Letter.tsx:277
 msgid "Thank you for your attention to this matter. I look forward to hearing from you."
 msgstr "Thank you for your attention to this matter. I look forward to hearing from you."
 
@@ -2627,7 +2643,7 @@ msgstr "There was an error loading your results, please try again in a few minut
 msgid "This address does not have a unit/suite/apartment"
 msgstr "This address does not have a unit/suite/apartment"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:68
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:75
 msgid "This approach can make the increase more manageable while showing your landlord you’re willing to meet halfway."
 msgstr "This approach can make the increase more manageable while showing your landlord you’re willing to meet halfway."
 
@@ -2675,6 +2691,10 @@ msgstr "This is your landlord’s information as registered with the NYC Departm
 #~ msgid "This is your landlord's information as registered with the NYC Department of Housing and Preservation (HPD). This may be different than where you send your rent checks. We will use this address to ensure your landlord receives the letter."
 #~ msgstr "This is your landlord's information as registered with the NYC Department of Housing and Preservation (HPD). This may be different than where you send your rent checks. We will use this address to ensure your landlord receives the letter."
 
+#: src/Components/LetterBuilder/Letter/Letter.tsx:193
+msgid "This notice must state whether the unit is covered by Article 6-A and explain the tenant's rights."
+msgstr "This notice must state whether the unit is covered by Article 6-A and explain the tenant's rights."
+
 #: src/Components/Pages/Home/Home.tsx:187
 msgid "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for Good Cause protections."
 msgstr "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for Good Cause protections."
@@ -2687,7 +2707,7 @@ msgstr "This site is a collaboration between the Housing Justice for All Coaliti
 msgid "Tip: The signature page is often located toward the end of the document"
 msgstr "Tip: The signature page is often located toward the end of the document"
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:207
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:214
 msgid "Tips for negotiating a smaller increase"
 msgstr "Tips for negotiating a smaller increase"
 
@@ -2703,7 +2723,7 @@ msgstr "To find other buildings your landlord might own, you can:"
 msgid "To help guide your answer"
 msgstr "To help guide your answer"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:288
+#: src/Components/LetterBuilder/Letter/Letter.tsx:283
 msgid "To learn more about tenant and landlord responsibilities under Good Cause Eviction law, visit: <0>https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page</0>"
 msgstr "To learn more about tenant and landlord responsibilities under Good Cause Eviction law, visit: <0>https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page</0>"
 
@@ -2719,6 +2739,10 @@ msgstr "To learn what protections you have through your building’s subsidy pro
 msgid "To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments"
 msgstr "To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments"
 
+#: src/Components/LetterBuilder/Letter/Letter.tsx:296
+msgid "To read the full law, visit:"
+msgstr "To read the full law, visit:"
+
 #: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:178
 msgid "Track your letter"
 msgstr "Track your letter"
@@ -2731,19 +2755,19 @@ msgstr "Track your letter"
 msgid "Type of building"
 msgstr "Type of building"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:168
+#: src/Components/LetterBuilder/Letter/Letter.tsx:161
 msgid "Under Good Cause Eviction Law, a landlord may not lawfully evict a tenant or refuse a new lease unless there is a statutorily defined \"good cause.\""
 msgstr "Under Good Cause Eviction Law, a landlord may not lawfully evict a tenant or refuse a new lease unless there is a statutorily defined \"good cause.\""
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:136
+#: src/Components/LetterBuilder/Letter/Letter.tsx:129
 msgid "Under Good Cause Eviction Law, rent increases are presumptively unreasonable if they exceed the lower of:"
 msgstr "Under Good Cause Eviction Law, rent increases are presumptively unreasonable if they exceed the lower of:"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:183
+#: src/Components/LetterBuilder/Letter/Letter.tsx:176
 msgid "Under Good Cause Eviction Law, you must provide a Good Cause Eviction notice when issuing:"
 msgstr "Under Good Cause Eviction Law, you must provide a Good Cause Eviction notice when issuing:"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:691
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:693
 msgid "Under Good Cause, a landlord cannot refuse to renew your lease without a legally valid reason. "
 msgstr "Under Good Cause, a landlord cannot refuse to renew your lease without a legally valid reason. "
 
@@ -2772,19 +2796,19 @@ msgstr "Under Good Cause, a landlord cannot refuse to renew your lease without a
 msgid "Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:"
 msgstr "Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:228
+#: src/Components/LetterBuilder/Letter/Letter.tsx:223
 msgid "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid “good cause” reason for non-renewal."
 msgstr "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid “good cause” reason for non-renewal."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:594
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:596
 msgid "Under the Good Cause law, landlords can only raise rent above the local rent standard (annual inflation + 5%, or a maximum of 10%) if they can prove there’s a legitimate “good cause” reason for doing so. The reason must be specific, factual, and reasonable, not just a general claim of higher expenses."
 msgstr "Under the Good Cause law, landlords can only raise rent above the local rent standard (annual inflation + 5%, or a maximum of 10%) if they can prove there’s a legitimate “good cause” reason for doing so. The reason must be specific, factual, and reasonable, not just a general claim of higher expenses."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:784
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:786
 msgid "Under the Good Cause law, your landlord can only refuse to renew your lease if they have a legally valid reason, known as a “good cause.” These reasons are limited and must meet specific criteria. For example, if the landlord or their immediate family intends to move in, if you’ve violated a substantial lease term, or if you’ve consistently failed to pay rent."
 msgstr "Under the Good Cause law, your landlord can only refuse to renew your lease if they have a legally valid reason, known as a “good cause.” These reasons are limited and must meet specific criteria. For example, if the landlord or their immediate family intends to move in, if you’ve violated a substantial lease term, or if you’ve consistently failed to pay rent."
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:119
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:126
 msgid "Understanding the cause can help you decide whether the increase seems fair and whether you have room to negotiate."
 msgstr "Understanding the cause can help you decide whether the increase seems fair and whether you have room to negotiate."
 
@@ -2830,19 +2854,19 @@ msgstr "Use Good Cause to fight your rent hike"
 msgid "Use Good Cause to stay in your home"
 msgstr "Use Good Cause to stay in your home"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:508
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:510
 msgid "Use the <0/> to check if the new amount is legal."
 msgstr "Use the <0/> to check if the new amount is legal."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:321
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:323
 msgid "Use the <0/> to check your coverage."
 msgstr "Use the <0/> to check your coverage."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:756
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:758
 msgid "Use the <0/> to confirm if the increase is allowed."
 msgstr "Use the <0/> to confirm if the increase is allowed."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:618
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:620
 msgid "Use the <0/> to confirm whether the proposed increase still exceeds the legal limit."
 msgstr "Use the <0/> to confirm whether the proposed increase still exceeds the legal limit."
 
@@ -3025,9 +3049,17 @@ msgstr "We will text you with a link to download a PDF copy of your letter for y
 msgid "We will text you with:"
 msgstr "We will text you with:"
 
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:254
+msgid "We’ll email you a PDF copy of your letter. We'll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to."
+msgstr "We’ll email you a PDF copy of your letter. We'll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to."
+
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:152
 msgid "We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights."
 msgstr "We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights."
+
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:242
+msgid "We’ll text you with your USPS tracking number. We will also check in after your letter is mailed. We will never call you or share your phone number."
+msgstr "We’ll text you with your USPS tracking number. We will also check in after your letter is mailed. We will never call you or share your phone number."
 
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:68
 msgid "We’ll use publicly available information about your building to help learn if you’re covered."
@@ -3050,29 +3082,29 @@ msgid "What happens next?"
 msgstr "What happens next?"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:274
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:311
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:354
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:396
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:459
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:504
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:547
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:605
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:704
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:749
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:808
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:879
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:313
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:356
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:398
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:461
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:506
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:549
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:607
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:706
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:751
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:810
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:881
 msgid "What to do"
 msgstr "What to do"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1090
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1092
 msgid "What to do after sending your letter"
 msgstr "What to do after sending your letter"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:651
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:653
 msgid "What to do if your landlord raises your rent"
 msgstr "What to do if your landlord raises your rent"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:922
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:924
 msgid "What to do if your landlord won’t renew your lease"
 msgstr "What to do if your landlord won’t renew your lease"
 
@@ -3082,22 +3114,22 @@ msgstr "What to do if your landlord won’t renew your lease"
 #~ msgid "What to expect from your landlord’s response"
 #~ msgstr "What to expect from your landlord’s response"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1080
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1082
 msgid "What to expect, what to do next, and how to respond to your landlord."
 msgstr "What to expect, what to do next, and how to respond to your landlord."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:265
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:302
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:343
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:384
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:450
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:495
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:540
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:584
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:688
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:738
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:781
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:854
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:345
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:386
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:452
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:497
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:542
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:586
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:690
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:740
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:783
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:856
 msgid "What to know"
 msgstr "What to know"
 
@@ -3105,13 +3137,13 @@ msgstr "What to know"
 msgid "When tenants come together, we have power. Tenants across our state are forming tenant unions to fight back. If you’re interested in organizing a tenant union with your neighbors, fill out this form to get support from a tenant group near you."
 msgstr "When tenants come together, we have power. Tenants across our state are forming tenant unions to fight back. If you’re interested in organizing a tenant union with your neighbors, fill out this form to get support from a tenant group near you."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:956
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:989
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1022
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:958
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:991
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1024
 msgid "When to use"
 msgstr "When to use"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1095
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1097
 msgid "Where to find support"
 msgstr "Where to find support"
 
@@ -3123,7 +3155,7 @@ msgstr "Whether or not you are covered by Good Cause, you still have important t
 msgid "While you wait for your landlord to reply, you have the right to stay in your home under the terms of your most recent lease. This means:"
 msgstr "While you wait for your landlord to reply, you have the right to stay in your home under the terms of your most recent lease. This means:"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1067
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1069
 msgid "Who can help?"
 msgstr "Who can help?"
 
@@ -3184,15 +3216,15 @@ msgstr "You are not covered by Good Cause because you have existing eviction pro
 msgid "you are not sure if your apartment is"
 msgstr "you are not sure if your apartment is"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:551
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:553
 msgid "You can continue to stay in your apartment and abide by the terms of your existing or most recent lease. This includes continuing to pay the rent amount on your most recent lease."
 msgstr "You can continue to stay in your apartment and abide by the terms of your existing or most recent lease. This includes continuing to pay the rent amount on your most recent lease."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:631
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:633
 msgid "You can continue to stay in your home and pay rent at your current amount while this is being resolved."
 msgstr "You can continue to stay in your home and pay rent at your current amount while this is being resolved."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:364
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:366
 msgid "You can keep paying rent under your current lease."
 msgstr "You can keep paying rent under your current lease."
 
@@ -3347,7 +3379,7 @@ msgstr "You reported that your rent is {0}."
 #~ msgid "You still have rights, and you may be able to negotiate a smaller increase or request more information about how your rent is determined."
 #~ msgstr "You still have rights, and you may be able to negotiate a smaller increase or request more information about how your rent is determined."
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:26
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:29
 msgid "You still have rights, and you may be able to negotiate a smaller increase or request more information about how your rent is determined. Or, you can go back and "
 msgstr "You still have rights, and you may be able to negotiate a smaller increase or request more information about how your rent is determined. Or, you can go back and "
 
@@ -3355,7 +3387,7 @@ msgstr "You still have rights, and you may be able to negotiate a smaller increa
 msgid "You told us that that you live subsidized housing. If your building is subsidized then you are not covered by Good Cause Eviction law because you should already have important tenant protections associated with your building’s subsidy."
 msgstr "You told us that that you live subsidized housing. If your building is subsidized then you are not covered by Good Cause Eviction law because you should already have important tenant protections associated with your building’s subsidy."
 
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:19
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:22
 msgid "You told us that the landlord's proposed rent increase is within the Good Cause legal limit."
 msgstr "You told us that the landlord's proposed rent increase is within the Good Cause legal limit."
 
@@ -3479,11 +3511,11 @@ msgstr "Your eviction protections"
 msgid "Your landlord can’t evict you based on your race, religion, gender, national origin, familial status, or disability. New York State law promises protection from discrimination, banning bias based on age, sexual orientation, and military status."
 msgstr "Your landlord can’t evict you based on your race, religion, gender, national origin, familial status, or disability. New York State law promises protection from discrimination, banning bias based on age, sexual orientation, and military status."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:532
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:534
 msgid "Your landlord doesn’t offer you a smaller rent increase before your current lease ends"
 msgstr "Your landlord doesn’t offer you a smaller rent increase before your current lease ends"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:338
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:340
 msgid "Your landlord doesn’t respond"
 msgstr "Your landlord doesn’t respond"
 
@@ -3523,11 +3555,11 @@ msgstr "Your landlord is planning to raise your rent"
 msgid "your landlord may own"
 msgstr "your landlord may own"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:587
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:589
 msgid "Your landlord may reply with an explanation or justification for increasing your rent. For example, citing increased maintenance costs, property taxes, or improvements to the building."
 msgstr "Your landlord may reply with an explanation or justification for increasing your rent. For example, citing increased maintenance costs, property taxes, or improvements to the building."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:857
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:859
 msgid "Your landlord may share documentation or other evidence to support their claimed “good cause” reason for not renewing your lease. For example, proof that they or an immediate family member intend to move in, or that you’ve repeatedly violated the lease."
 msgstr "Your landlord may share documentation or other evidence to support their claimed “good cause” reason for not renewing your lease. For example, proof that they or an immediate family member intend to move in, or that you’ve repeatedly violated the lease."
 
@@ -3539,31 +3571,31 @@ msgstr "Your landlord must give you written notice to raise your rent more than 
 msgid "Your landlord offers a new lease that complies with Good Cause"
 msgstr "Your landlord offers a new lease that complies with Good Cause"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:486
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:488
 msgid "Your landlord offers a smaller rent increase, but it’s still above the legal limit"
 msgstr "Your landlord offers a smaller rent increase, but it’s still above the legal limit"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:729
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:731
 msgid "Your landlord offers you a new lease with a rent increase above the allowable amount"
 msgstr "Your landlord offers you a new lease with a rent increase above the allowable amount"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:775
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:777
 msgid "Your landlord provides a reason for not renewing your lease"
 msgstr "Your landlord provides a reason for not renewing your lease"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:578
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:580
 msgid "Your landlord provides a reason for your rent increase"
 msgstr "Your landlord provides a reason for your rent increase"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:845
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:847
 msgid "Your landlord provides proof of a “good cause” reason for not renewing your lease"
 msgstr "Your landlord provides proof of a “good cause” reason for not renewing your lease"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:445
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:447
 msgid "Your landlord refuses to offer a smaller rent increase"
 msgstr "Your landlord refuses to offer a smaller rent increase"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:683
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:685
 msgid "Your landlord refuses to renew your lease"
 msgstr "Your landlord refuses to renew your lease"
 
@@ -3571,7 +3603,7 @@ msgstr "Your landlord refuses to renew your lease"
 msgid "Your landlord says you’re not covered by Good Cause"
 msgstr "Your landlord says you’re not covered by Good Cause"
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:379
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:381
 msgid "Your landlord sends court papers"
 msgstr "Your landlord sends court papers"
 
@@ -3634,7 +3666,7 @@ msgstr "Your letter is ready"
 #~ msgstr "Your letter still may reach the intended destination, but if you see any errors, please review and adjust the address."
 
 #: src/Components/KYRContent/KYRContent.tsx:856
-#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:198
+#: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:205
 msgid "Your local City Council representative"
 msgstr "Your local City Council representative"
 
@@ -3698,6 +3730,10 @@ msgstr "Your USPS tracking number, so you can confirm your letter was delivered.
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:304
 msgid "YouTube video for how to find other apartments your landlord owns"
 msgstr "YouTube video for how to find other apartments your landlord owns"
+
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:407
+msgid "Zip code"
+msgstr "Zip code"
 
 #: src/types/LetterFormTypes.ts:32
 msgid "ZIP Code is required for the letter"

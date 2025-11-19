@@ -238,25 +238,25 @@ export const UserDetailsStep: React.FC = () => {
           <Trans>
             <strong>Phone number</strong>
           </Trans>
-          <Trans>
-            <p>
+          <p>
+            <Trans>
               We’ll text you with your USPS tracking number. We will also check
               in after your letter is mailed. We will never call you or share
               your phone number.
-            </p>
-          </Trans>
+            </Trans>
+          </p>
         </section>
         <section>
           <Trans>
             <strong>Email</strong>
           </Trans>
-          <Trans>
-            <p>
+          <p>
+            <Trans>
               We’ll email you a PDF copy of your letter. We'll also include your
               email in the letter to your landlord so they can contact you. We
               will only share your email if you tell us to.
-            </p>
-          </Trans>
+            </Trans>
+          </p>
         </section>
         <Button
           variant="secondary"
