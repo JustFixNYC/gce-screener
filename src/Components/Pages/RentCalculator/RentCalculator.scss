@@ -137,6 +137,28 @@
       color: $WHITE;
     }
   }
+  .letter-callout {
+    padding: 1rem;
+    margin: 1.5rem 0 0;
+    gap: 0.5rem;
+    notice__icon-container svg {
+      padding: 0.25rem 0;
+    }
+    .notice__body {
+      @include body_standard_desktop;
+      p,
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style-type: none;
+        li {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
 
   .phone-number-callout-box {
     display: flex;

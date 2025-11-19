@@ -16,40 +16,6 @@ $videoEmbedW: 623px;
   @include for-phone-only() {
     margin: unset;
   }
-
-  #gce-protections_rent {
-    .callout-box {
-      flex-direction: column;
-    }
-    p {
-      width: 75%;
-    }
-
-    strong {
-      display: inline-block;
-      margin-bottom: 0.5rem;
-    }
-
-    .rent-increase {
-      display: block;
-      margin: 1rem 0 0;
-      .amount {
-        @include body_large_desktop;
-        font-weight: 600;
-      }
-      .formula {
-        @include body_standard_desktop;
-        @include for-phone-only {
-          @include body_standard_mobile;
-        }
-      }
-      @include for-tablet-portrait-up {
-        br {
-          display: none;
-        }
-      }
-    }
-  }
 }
 
 .content-box__header {
@@ -117,7 +83,7 @@ $videoEmbedW: 623px;
       background-color: #efe9dc;
       border-radius: 4px;
       margin-bottom: 1.5rem;
-      max-width: $contentPWidth;
+      // max-width: $contentPWidth;
     }
 
     .note-box {

@@ -42,20 +42,24 @@
       padding: 2rem 1.5rem;
     }
     @include for-tablet-portrait-up {
-      .content-section__content > p {
+      .content-section__content > section p {
         width: 85%;
+        &:not(:last-of-type) {
+          margin-bottom: 1rem;
+        }
       }
-    }
-    p:not(:last-of-type) {
-      margin-bottom: 1rem;
     }
     &.home__about-law {
       border-bottom: 1px solid $OFF_BLACK;
-      .callout-box {
-        margin-top: 3rem;
-        &:last-of-type {
-          margin-top: 1.5rem;
+      section {
+        margin-bottom: 1.5rem;
+        @include for-tablet-portrait-up {
+          &:not(.callout-box) {
+            margin-bottom: 3rem;
+          }
         }
+      }
+      .callout-box {
         @include for-tablet-portrait-up {
           p {
             width: 75%;
@@ -96,7 +100,7 @@
       .callout-box__header {
         @include body_large_desktop;
         font-weight: 500;
-        margin-bottom: 0.5rem;
+        margin: 0 0 0.5rem;
         @include for-phone-only {
           @include body_standard_mobile;
           font-weight: 600;
