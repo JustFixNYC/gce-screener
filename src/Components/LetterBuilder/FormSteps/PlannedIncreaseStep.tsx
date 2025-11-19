@@ -46,7 +46,7 @@ export const PlannedIncreaseStep: React.FC = () => {
       <LetterStepForm nextStep={nextStep}>
         <FormGroup
           legendText={_(
-            msg`Is your landlord increasing your monthly rent beyond ${
+            msg`Is your landlord increasing your monthly rent more than ${
               CPI + 5
             }%?`
           )}
@@ -95,14 +95,13 @@ const IncreaseHelperText: React.FC = () => {
   return (
     <InfoBox>
       <Trans>
-        For leases offered on or after {_(CPI_EFFECTIVE_DATE)}, landlords cannot
+        For leases offered after {_(CPI_EFFECTIVE_DATE)}, landlords cannot
         increase rent more than {CPI + 5}% without legitimate justification. You
         can use our{" "}
         <JFCLLinkExternal to={`/${i18n.locale}/rent_calculator`}>
           rent increase calculator
         </JFCLLinkExternal>{" "}
-        to learn more and determine if your landlord’s proposed rent exceeds the
-        allowable rent increase amount.
+        to determine if your landlord’s proposed rent exceeds {CPI + 5}% .
       </Trans>
     </InfoBox>
   );

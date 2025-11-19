@@ -7,6 +7,8 @@ import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { Notice } from "../../Notice/Notice";
 import "./AllowedIncreaseStep.scss";
+import { Link } from "react-router-dom";
+import { urlMyGov } from "../../../helpers";
 
 export const AllowedIncreaseStep: React.FC = () => (
   <div className="allowed-increase-step">
@@ -15,8 +17,8 @@ export const AllowedIncreaseStep: React.FC = () => (
       color="yellow"
       header={
         <Trans>
-          Your landlord’s proposed rent increase appears to be within the Good
-          Cause limit.
+          You told us that the landlord's proposed rent increase is within the
+          Good Cause legal limit.
         </Trans>
       }
     >
@@ -24,12 +26,17 @@ export const AllowedIncreaseStep: React.FC = () => (
         <Trans>
           You still have rights, and you may be able to negotiate a smaller
           increase or request more information about how your rent is
-          determined.
+          determined. Or, you can go back and{" "}
         </Trans>
+        <Link to="/letter/rent_increase" className="jfcl-link">
+          <Trans>modify your response.</Trans>
+        </Link>
       </p>
     </Notice>
     <RentNegotiationTips />
-    <GoodCauseProtections />
+    <GoodCauseProtections
+      subtitle={<Trans>Protections under Good Cause</Trans>}
+    />
     <BackNextButtons hideButton2 backStepName="rent_increase" />
   </div>
 );
@@ -183,7 +190,12 @@ const GetOrganizationSupport: React.FC = () => (
         </li>
         <li>
           <JFCLLinkExternal to="https://www.nyc.gov/site/mayorspeu/programs/tenant-support-unit.page">
-            <Trans>Tenant Support Unit (311)</Trans>
+            <Trans>NYC's Tenant Support Unit (311)</Trans>
+          </JFCLLinkExternal>
+        </li>
+        <li>
+          <JFCLLinkExternal to={urlMyGov()}>
+            <Trans>Your local City Council representative</Trans>
           </JFCLLinkExternal>
         </li>
       </ul>

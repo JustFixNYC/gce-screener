@@ -136,6 +136,7 @@ $videoEmbedW: 623px;
     li,
     p,
     a,
+    h5,
     button {
       @include body_standard_desktop;
       @include for-phone-only {
@@ -146,6 +147,10 @@ $videoEmbedW: 623px;
         font-weight: inherit;
         text-underline-offset: 0.125rem;
       }
+    }
+
+    h5 {
+      margin: 1rem 0 0 0;
     }
 
     p {

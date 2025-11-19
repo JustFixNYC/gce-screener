@@ -102,7 +102,7 @@ const LetterIntro: React.FC<LetterData> = ({ letterData }) => {
             I am writing to inform you that my tenancy at this address is
             covered under New York State’s Good Cause Eviction Law, which took
             effect in New York City on April 20, 2024. As a tenant covered by
-            this law, I want to outline both my protections and our mutual
+            this law, I want to outline my protections and our mutual
             responsibilities.
           </Trans>
         </p>
@@ -130,7 +130,7 @@ const LetterRightsList = () => {
             <li>
               <Trans>
                 5% plus the annual change in the Consumer Price Index (CPI) for
-                the region ({CPI + 5}% in NYC in 2024)
+                the region ({CPI + 5}% in NYC as of 2024)
               </Trans>
             </li>
           </ul>
@@ -141,8 +141,8 @@ const LetterRightsList = () => {
           <p>
             <Trans>
               Under the Good Cause Eviction law, a landlord may not lawfully
-              evict a tenant or refuse lease renewal unless there is a
-              statutorily defined “good cause.”
+              evict a tenant or refuse a new lease unless there is a statutorily
+              defined “good cause.”
             </Trans>
           </p>
         </li>

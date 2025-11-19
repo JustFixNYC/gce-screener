@@ -158,15 +158,14 @@ export const LandlordDetailsStep: React.FC = () => {
       {hpdLandlord && !showManual && (
         <>
           <FormGroup
-            legendText={_(msg`Please review your landlord's information`)}
+            legendText={_(msg`Your landlord's information`)}
             key="landlord-details__hpd-lookup"
           >
             <InfoBox>
               <Trans>
-                This is your landlord's information as registered with the NYC
+                This is your landlord’s information as registered with the NYC
                 Department of Housing and Preservation (HPD). This may be
-                different than where you send your rent checks. We will use this
-                address to ensure your landlord receives the letter.
+                different than where you send your rent checks.
               </Trans>
             </InfoBox>
 
@@ -276,20 +275,27 @@ const LandlordFormGroup: React.FC<{
         invalid={anyLandlordInfoErrors}
         invalidText={errors?.landlord_details?.message}
         helperElement={
-          isOverwrite && (
+          isOverwrite ? (
             <InfoBox color="blue">
               <Trans>
-                You have chosen to overwrite the landlord information
-                recommended by JustFix. Please provide your own details below,
-                or use the{" "}
+                You have chosen to overwrite the landlord information on record
+                with the city. Please provide your own details below, or{" "}
                 <button
                   type="button"
                   className="text-link-button"
                   onClick={onBackToHpdLookup}
                 >
-                  recommended landlord information
+                  use the recommended landlord information
                 </button>
                 .
+              </Trans>
+            </InfoBox>
+          ) : (
+            <InfoBox color="white">
+              <Trans>
+                This is where we will send your letter. We recommend using the
+                best address you can find whether it is on your lease, where you
+                send your rent to, or other.
               </Trans>
             </InfoBox>
           )
@@ -358,7 +364,7 @@ const LandlordFormGroup: React.FC<{
           {...register("landlord_details.city")}
           id="landlord-city"
           className="landlord-city-input"
-          labelText={_(msg`City/Borough`)}
+          labelText={_(msg`City`)}
           invalid={!!landlordErrors?.city}
           invalidText={landlordErrors?.city?.message}
           invalidRole="status"
@@ -398,7 +404,7 @@ const LandlordFormGroup: React.FC<{
         <TextInput
           {...register("landlord_details.zip_code")}
           id="landlord-zip-code"
-          labelText="ZIP Code"
+          labelText="Zip code"
           invalid={!!landlordErrors?.zip_code}
           invalidText={landlordErrors?.zip_code?.message}
           invalidRole="status"
@@ -431,7 +437,7 @@ const LandlordEmailFormGroup: React.FC = () => {
         <TextInput
           {...register("landlord_details.email")}
           id={`landlord-email`}
-          labelText={_(msg`Email`) + " " + _(msg`(Optional)`)}
+          labelText={_(msg`Email`) + " " + _(msg`(optional)`)}
           invalid={!!errors.landlord_details?.email}
           invalidText={errors.landlord_details?.email?.message}
           invalidRole="status"

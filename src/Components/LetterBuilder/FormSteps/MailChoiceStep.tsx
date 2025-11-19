@@ -42,6 +42,8 @@ export const MailChoiceStep: React.FC = () => {
     anyErrors(["email"], errors.user_details) ||
     anyErrors(["email"], errors.landlord_details);
 
+  const mailChoice = watch("mail_choice");
+
   return (
     <LetterStepForm nextStep="confirmation" className="mail-choice-step">
       <div className="mail-choice-step__header">
@@ -76,9 +78,9 @@ export const MailChoiceStep: React.FC = () => {
               </div>
               <p>
                 <Trans>
-                  We will send your letter for you via USPS Certified Mail in
-                  1-2 business days, at no cost to you. We will also provide a
-                  PDF for you to download for your records.
+                  We will send your letter for you via USPS Certified Mail at no
+                  cost to you. We will also provide a PDF for you to download
+                  for your records.
                 </Trans>
               </p>
             </div>
@@ -86,7 +88,7 @@ export const MailChoiceStep: React.FC = () => {
         />
         <RadioButton
           {...register("mail_choice")}
-          aria-label={_(msg`Mail the letter yourself`)}
+          aria-label={_(msg`Mail or deliver the letter yourself`)}
           value="USER_WILL_MAIL"
           id="user-will-mail"
           labelElement={
@@ -96,8 +98,8 @@ export const MailChoiceStep: React.FC = () => {
               </strong>
               <p>
                 <Trans>
-                  We will provide a PDF for you to download, print, and mail to
-                  your landlord or property manager.
+                  We will provide a PDF for you to download, print, and mail or
+                  deliver to your landlord or property manager.
                 </Trans>
               </p>
             </div>
@@ -202,7 +204,12 @@ export const MailChoiceStep: React.FC = () => {
       </FormGroup>
       <BackNextButtons
         backStepName="preview"
-        button2Props={{ labelText: _(msg`Mail my letter`) }}
+        button2Props={{
+          labelText:
+            mailChoice === "USER_WILL_MAIL"
+              ? _(msg`Download my letter`)
+              : _(msg`Mail my letter`),
+        }}
       />
     </LetterStepForm>
   );

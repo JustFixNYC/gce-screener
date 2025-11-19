@@ -15,12 +15,18 @@ export const LetterLanding: React.FC = () => {
   return (
     <div id="letter-sender-landing-page">
       <Header
-        title={_(msg`Send a letter to your landlord`)}
+        title={
+          <Trans>
+            Send a letter to your <br />
+            landlord defending <br />
+            your Good Cause rights
+          </Trans>
+        }
         subtitle={
           <Trans>
             If you’re covered by Good Cause and your landlord is planning to
             raise your rent or not offer you a new lease, you can send a letter
-            to your landlord asserting your Good Cause rights.
+            defending your Good Cause rights.
           </Trans>
         }
         showProgressBar={false}
@@ -60,7 +66,7 @@ export const LetterLanding: React.FC = () => {
               <Trans>
                 If your landlord is either planning to raise your rent, or not
                 offering you a new lease, we will draft a USPS Certified Mail®
-                letter asserting your Good Cause rights. We will even send it
+                letter defending your Good Cause rights. We will even send it
                 for you, for free.
               </Trans>
             </p>
@@ -110,23 +116,23 @@ export const LetterLanding: React.FC = () => {
               </li>
               <li>
                 <strong>
-                  <Trans>Creates a paper trail</Trans>
-                </strong>
-                <p>
-                  <Trans>
-                    Communicating your request to your landlord in writing
-                    provides documented evidence of your complaint.
-                  </Trans>
-                </p>
-              </li>
-              <li>
-                <strong>
                   <Trans>Opens negotiation</Trans>
                 </strong>
                 <p>
                   <Trans>
                     Establishes a professional channel to negotiate solutions to
                     your rent increase or non-renewal.
+                  </Trans>
+                </p>
+              </li>
+              <li>
+                <strong>
+                  <Trans>Creates a paper trail</Trans>
+                </strong>
+                <p>
+                  <Trans>
+                    Communicating your request to your landlord in writing
+                    provides documented evidence of your complaint.
                   </Trans>
                 </p>
               </li>

@@ -47,8 +47,7 @@ export const ConfirmationStep: React.FC<{
         >
           <p>
             <Trans>
-              This can take up to a few seconds. Please don’t refresh or close
-              the page.
+              This can take a few seconds. Please don’t close the page.
             </Trans>
           </p>
         </Notice>
@@ -75,8 +74,8 @@ export const ConfirmationStep: React.FC<{
           </p>
           <p>
             <Trans>
-              You can try again or contact our support team at
-              support@justfix.org if the issue continues.{" "}
+              You can try again or contact our support team at{" "}
+              <strong>support@justfix.org</strong> if the issue continues.{" "}
             </Trans>
           </p>
           <div className="error-letter-buttons">
@@ -86,7 +85,7 @@ export const ConfirmationStep: React.FC<{
               className="jfcl-button jfcl-variant-primary jfcl-size-small"
             >
               <span className="jfcl-button__label">
-                <Trans>Try again</Trans>
+                <Trans>Start over</Trans>
               </span>
             </a>
             <a
@@ -128,7 +127,7 @@ export const ConfirmationStep: React.FC<{
           data.mail_choice === "WE_WILL_MAIL" ? (
             <Trans>Your letter is on its way</Trans>
           ) : (
-            <Trans>Your letter is ready for download</Trans>
+            <Trans>Your letter is ready</Trans>
           )
         }
       >
@@ -148,7 +147,7 @@ export const ConfirmationStep: React.FC<{
           <p>
             <Trans>
               Your letter has been created and is now ready for you to download
-              and mail yourself.
+              and mail or deliver yourself.
             </Trans>
           </p>
         )}
@@ -208,7 +207,7 @@ export const ConfirmationStep: React.FC<{
         </Notice>
       )}
 
-      <LetterNextSteps className="next-steps" />
+      <LetterNextSteps className="next-steps" mailChoice={data.mail_choice} />
 
       {data.reason === "NON_RENEWAL" ? (
         <LetterResponsesNonRenewal includeUniversal />
