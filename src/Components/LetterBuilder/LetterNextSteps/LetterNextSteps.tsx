@@ -653,14 +653,26 @@ export const LetterResponsesRentIncrease: React.FC<
     }
     {...props}
   >
-    {includeUniversal && <NewCompliantLease />}
-    <SmallerButUnreasonableIncrease />
-    <NoSmallerIncreaseBeforeLeaseEnd />
-    <RefuseSmallerIncrease />
-    <ProvidesReasonForRentIncrease />
-    {includeUniversal && <ClaimsNotCoveredByGCE />}
-    {includeUniversal && <NoResponse />}
-    {includeUniversal && <SendsCourtPaper />}
+    {includeUniversal ? (
+      <>
+        {" "}
+        <NewCompliantLease />
+        <SmallerButUnreasonableIncrease />
+        <NoSmallerIncreaseBeforeLeaseEnd />
+        <RefuseSmallerIncrease />
+        <ProvidesReasonForRentIncrease />
+        <ClaimsNotCoveredByGCE />
+        <NoResponse />
+        <SendsCourtPaper />{" "}
+      </>
+    ) : (
+      <>
+        <RefuseSmallerIncrease />
+        <SmallerButUnreasonableIncrease />
+        <NoSmallerIncreaseBeforeLeaseEnd />
+        <ProvidesReasonForRentIncrease />{" "}
+      </>
+    )}
   </ContentBox>
 );
 
@@ -681,9 +693,11 @@ export const RefusesNewLease: React.FC<NextStepItemProps> = (props) => (
           a legally valid reason.{" "}
         </Trans>
       </p>
-      <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
-        <Trans>Learn more about Good Cause reasons for non renewal</Trans>
-      </JFCLLinkExternal>
+      <p>
+        <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
+          <Trans>Learn more about Good Cause reasons for non renewal</Trans>
+        </JFCLLinkExternal>
+      </p>
     </section>
     <section>
       <h5>
@@ -855,9 +869,9 @@ export const ProofForNonRenewalReason: React.FC<NextStepItemProps> = (
         </Trans>
       </p>
       <p>
-        <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction/">
-          <Trans>See the list of valid Good Cause reasons</Trans>
-        </JFCLLinkExternal>
+        <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
+          <Trans>Learn more about Good Cause reasons for non renewal</Trans>
+        </JFCLLinkExternal>{" "}
       </p>
     </section>
     <section>
@@ -910,14 +924,26 @@ export const LetterResponsesNonRenewal: React.FC<
     }
     {...props}
   >
-    {includeUniversal && <NewCompliantLease />}
-    <NewLeaseUnreasonableIncrease />
-    <RefusesNewLease />
-    <ReasonForNonRenewal />
-    <ProofForNonRenewalReason />
-    {includeUniversal && <ClaimsNotCoveredByGCE />}
-    {includeUniversal && <NoResponse />}
-    {includeUniversal && <SendsCourtPaper />}
+    {includeUniversal ? (
+      <>
+        {" "}
+        <NewCompliantLease />
+        <NewLeaseUnreasonableIncrease />
+        <RefusesNewLease />
+        <ReasonForNonRenewal />
+        <ProofForNonRenewalReason />
+        <ClaimsNotCoveredByGCE />
+        <NoResponse />
+        <SendsCourtPaper />{" "}
+      </>
+    ) : (
+      <>
+        <RefusesNewLease />
+        <NewLeaseUnreasonableIncrease />
+        <ReasonForNonRenewal />
+        <ProofForNonRenewalReason />{" "}
+      </>
+    )}
   </ContentBox>
 );
 

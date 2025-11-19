@@ -54,54 +54,43 @@ const LetterHeader: React.FC<LetterData> = ({ letterData }) => {
   const { i18n } = useLingui();
   return (
     <header>
-      <time
-        dateTime={new Date().toISOString().slice(0, 10)}
-        style={{ display: "block", textAlign: "right" }}
-      >
+      <address>
+        {ud.first_name} {ud.last_name}
+        <br />
+        {ud.primary_line}
+        <br />
+        {ud.secondary_line && (
+          <>
+            {ud.secondary_line}
+            <br />
+          </>
+        )}
+        {toTitleCase(ud.city)}, {ud.state} {ud.zip_code}
+        <br />
+        {formatPhoneNumber(ud.phone_number)}
+      </address>
+      <time dateTime={new Date().toISOString().slice(0, 10)}>
         {currentDateLong(i18n.locale)}
       </time>
 
       <address>
-        <strong>To:</strong>
+        {ld.name}
         <br />
-        <div style={{ marginLeft: "2em" }}>
-          {ld.name}
-          <br />
-          {ld.urbanization && (
-            <>
-              {ld.urbanization}
-              <br />
-            </>
-          )}
-          {ld.primary_line}
-          <br />
-          {ld.secondary_line && (
-            <>
-              {ld.secondary_line}
-              <br />
-            </>
-          )}
-          {toTitleCase(ld.city)}, {ld.state} {ld.zip_code}
-        </div>
-      </address>
-      <address>
-        <strong>From:</strong>
+        {ld.urbanization && (
+          <>
+            {ld.urbanization}
+            <br />
+          </>
+        )}
+        {ld.primary_line}
         <br />
-        <div style={{ marginLeft: "2em" }}>
-          {ud.first_name} {ud.last_name}
-          <br />
-          {ud.primary_line}
-          <br />
-          {ud.secondary_line && (
-            <>
-              {ud.secondary_line}
-              <br />
-            </>
-          )}
-          {toTitleCase(ud.city)}, {ud.state} {ud.zip_code}
-          <br />
-          {formatPhoneNumber(ud.phone_number)}
-        </div>
+        {ld.secondary_line && (
+          <>
+            {ld.secondary_line}
+            <br />
+          </>
+        )}
+        {toTitleCase(ld.city)}, {ld.state} {ld.zip_code}
       </address>
     </header>
   );
