@@ -302,8 +302,8 @@ export const ClaimsNotCoveredByGCE: React.FC<NextStepItemProps> = (props) => (
         <Trans>What to know</Trans>
       </h5>
       <p>
-        Coverage depends on your building type, subsidy status, and other
-        factors.
+        <Trans>Coverage depends on your building type, subsidy status, and other
+factors.</Trans>
       </p>
     </section>
     <section>
