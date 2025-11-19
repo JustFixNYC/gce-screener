@@ -489,7 +489,6 @@ const LandlordEmailFormGroup: React.FC = () => {
 export const FormattedLandlordAddress: React.FC<{
   landlordDetails: FormFields["landlord_details"];
 }> = ({ landlordDetails: ld }) => {
-  console.log(ld);
   return (
     <div className="landlord-address">
       <span className="landlord-address__name">{toTitleCase(ld.name)}</span>
