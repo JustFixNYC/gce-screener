@@ -71,11 +71,9 @@ export const ReasonStep: React.FC = () => {
         <div className="callout-box">
           <section>
             <Trans>
-              You should select{" "}
-              <strong>
-                “Your landlord has recently proposed a rent increase”
-              </strong>
-              if any of the following apply:
+              Select{" "}
+              <strong>“Your landlord is planning to raise your rent”</strong> if
+              any of the following apply:
             </Trans>
             <ul>
               <li>
@@ -102,18 +100,15 @@ export const ReasonStep: React.FC = () => {
         </div>
         <div className="callout-box">
           <Trans>
-            You should select{" "}
-            <strong>
-              “Your landlord has communicated that they do not intend to offer
-              you a new lease”
-            </strong>
-            if any of the following apply:
+            Select{" "}
+            <strong>“Your landlord is not offering you a new lease”</strong> if
+            any of the following apply:
           </Trans>
           <ul>
             <li>
               <Trans>
-                Your landlord has told you that you will not be offered a lease
-                renewal
+                Your landlord has told you that they will not offer you a new
+                lease.
               </Trans>
             </li>
             <li>
