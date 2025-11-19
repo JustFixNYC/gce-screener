@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
+import { useNavigate } from "react-router-dom";
 import { FormGroup, SelectButton } from "@justfixnyc/component-library";
 
 import { InfoBox } from "../../InfoBox/InfoBox";
@@ -22,7 +23,8 @@ export const ReasonStep: React.FC = () => {
     },
   } = useContext(FormContext);
 
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
 
   const nextStep =
@@ -56,7 +58,9 @@ export const ReasonStep: React.FC = () => {
           />
         </div>
       </FormGroup>
-      <BackNextButtons hideButton1 backStepName="reason" />
+      <BackNextButtons
+        button1Props={{ onClick: () => navigate(`/${i18n.locale}/letter`) }}
+      />
 
       <Modal
         isOpen={showModal}
