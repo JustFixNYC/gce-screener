@@ -8,7 +8,7 @@ import {
   ContentBoxProps,
 } from "../../ContentBox/ContentBox";
 import { Pill } from "../../Pill/Pill";
-import { JFCLLink, JFCLLinkExternal } from "../../JFCLLink";
+import { JFCLLinkExternal } from "../../JFCLLink";
 import "./LetterNextSteps.scss";
 import { Header } from "../../Header/Header";
 import classNames from "classnames";
