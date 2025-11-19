@@ -298,7 +298,7 @@ const LetterOutro = () => (
       </Trans>
     </p>
     <p>
-      To read the full law, visit:{" "}
+      <Trans>To read the full law, visit:</Trans>{" "}
       <a
         href="https://www.nysenate.gov/legislation/laws/RPP/A6-A"
         target="_blank"
