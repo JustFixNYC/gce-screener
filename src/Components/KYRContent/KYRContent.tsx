@@ -334,18 +334,18 @@ export const GoodCauseProtections: React.FC<
               color="off-white-100"
             >
               <p>
-                {rent ? (
+                {coverageResult == "COVERED" ? (
+                  <Trans>
+                    If your landlord is planning to raise your rent beyond this
+                    amount, you can send a legally-vetted letter to your
+                    landlord to ask for a lower rent increase.
+                  </Trans>
+                ) : (
                   <Trans>
                     <strong>If you’re covered by Good Cause</strong> and your
                     landlord is planning to raise your rent beyond this amount,
                     you can send a legally-vetted letter to your landlord to ask
                     for a lower rent increase.
-                  </Trans>
-                ) : (
-                  <Trans>
-                    If your landlord is planning to raise your rent beyond this
-                    amount, you can send a legally-vetted letter to your
-                    landlord to ask for a lower rent increase.
                   </Trans>
                 )}
               </p>
@@ -423,12 +423,20 @@ export const GoodCauseProtections: React.FC<
             </JFCLLinkExternal>
             <Notice icon="circleInfo" className="letter-callout" color="white">
               <p>
-                <Trans>
-                  <strong>If you’re covered by Good Cause</strong> and your
-                  landlord is not offering you a lease renewal, you can send a
-                  legally-vetted letter to your landlord to assert your right to
-                  a renewal.
-                </Trans>
+                {coverageResult == "COVERED" ? (
+                  <Trans>
+                    <strong>If you’re covered by Good Cause</strong> and your
+                    landlord is not offering you a lease renewal, you can send a
+                    legally-vetted letter to your landlord to assert your right
+                    to a renewal.
+                  </Trans>
+                ) : (
+                  <Trans>
+                    If your landlord is not offering you a lease renewal, you
+                    can send a legally-vetted letter to your landlord to assert
+                    your right to a renewal.
+                  </Trans>
+                )}
               </p>
               <JFCLLinkInternal to={`/${i18n.locale}/letter`}>
                 <Trans>Check out the Letter Sender</Trans>
