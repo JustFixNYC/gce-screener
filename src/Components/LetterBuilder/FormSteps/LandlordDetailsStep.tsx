@@ -150,7 +150,7 @@ export const LandlordDetailsStep: React.FC = () => {
         >
           <p>
             <Trans>
-              This can take up to a few seconds. Please don’t refresh the page.
+              This can take a few seconds. Please don’t refresh the page.
             </Trans>
           </p>
         </Notice>

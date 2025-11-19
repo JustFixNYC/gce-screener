@@ -168,7 +168,7 @@ msgstr "1"
 msgid "1. How many bedrooms are in your apartment?"
 msgstr "1. ¿Cuántas habitaciones tiene tu departamento?"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:128
+#: src/Components/LetterBuilder/Letter/Letter.tsx:154
 msgid "10%, or"
 msgstr ""
 
@@ -200,14 +200,17 @@ msgstr "4+"
 msgid "5. Does your landlord live in the building?"
 msgstr "5. ¿Tu arrendador vive en el edificio?"
 
-#. placeholder {0}: CPI + 5
 #: src/Components/LetterBuilder/Letter/Letter.tsx:131
-msgid "5% plus the annual change in the Consumer Price Index (CPI) for the region ({0}% in NYC as of 2024)"
-msgstr ""
+#~ msgid "5% plus the annual change in the Consumer Price Index (CPI) for the region ({0}% in NYC as of 2024)"
+#~ msgstr ""
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:131
 #~ msgid "5% plus the annual change in the Consumer Price Index (CPI) for the region ({0}% in NYC in 2024)"
 #~ msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:157
+msgid "5% plus the annual percent change in the regional Consumer Price Index (CPI)."
+msgstr ""
 
 #: src/Components/Pages/Form/Survey.tsx:321
 msgid "6. Does your landlord own more than 10 apartments across multiple buildings?"
@@ -233,11 +236,11 @@ msgstr "Algunas preguntas sobre tu departamento"
 msgid "A link to download a PDF copy of your letter for your records."
 msgstr ""
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:160
+#: src/Components/LetterBuilder/Letter/Letter.tsx:201
 msgid "A new lease or renewal"
 msgstr ""
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:166
+#: src/Components/LetterBuilder/Letter/Letter.tsx:207
 msgid "A non-renewal or eviction notice"
 msgstr ""
 
@@ -249,7 +252,7 @@ msgstr "Una organización sin fines de lucro que crea herramientas en línea par
 msgid "A PDF copy of your letter has been sent to the following email addresses:"
 msgstr ""
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:163
+#: src/Components/LetterBuilder/Letter/Letter.tsx:204
 msgid "A rent increase above the thresholds, or"
 msgstr ""
 
@@ -377,6 +380,11 @@ msgstr "Basándonos en los datos del sitio web {wowLink}, recopilamos una lista 
 msgid "Based on data from the website {wowLink}, we have gathered a list of properties that the owner of your building may be associated with. For each property, we have included links to important real estate transaction documents."
 msgstr "Basándonos en los datos del sitio web {wowLink}, hemos recopilado una lista de propiedades que podrían estar relacionadas con el propietario de su edificio. Para cada propiedad, hemos incluido enlaces a documentos importantes relacionados con transacciones inmobiliarias."
 
+#. placeholder {0}: CPI + 5
+#: src/Components/LetterBuilder/Letter/Letter.tsx:232
+msgid "Based on the rent amount stated in your recent lease offer, the increase appears to exceed the lawful limit under Good Cause Eviction Law. The difference between my current rent and the proposed rent appears to exceed {0}%."
+msgstr ""
+
 #: src/Components/Pages/Form/Survey.tsx:541
 msgid "Because your building has fewer than 6 units and was built after 1974, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available data, no rent stabilized apartments were registered in your building in recent years."
 msgstr "Dado que su edificio tiene menos de 6 unidades y fue construido después de 1974, es muy poco probable que su departamento tenga renta estabilizada. Además, según los datos disponibles públicamente, en los últimos años no se ha registrado ningún departamento con renta estabilizada en su edificio."
@@ -402,8 +410,8 @@ msgid "By <0>Housing Justice for All</0> & <1>JustFix</1>"
 msgstr "Por <0>Housing Justice for All</0> y <1>JustFix</1>"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:153
-msgid "By law, you must provide a Good Cause Eviction notice when issuing:"
-msgstr ""
+#~ msgid "By law, you must provide a Good Cause Eviction notice when issuing:"
+#~ msgstr ""
 
 #: src/Components/Pages/Home/Home.tsx:124
 msgid "Calculate your max rent increase."
@@ -492,7 +500,7 @@ msgstr "Cerrar"
 msgid "Close modal"
 msgstr "Cerrar modal"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:133
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:132
 msgid "Communicating your request to your landlord in writing provides documented evidence of your complaint."
 msgstr ""
 
@@ -512,11 +520,11 @@ msgstr ""
 #~ msgid "Compare your results with HPD’s Good Cause guidelines."
 #~ msgstr ""
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:179
+#: src/Components/LetterBuilder/Letter/Letter.tsx:225
 msgid "Concerning the proposed rent increase:"
 msgstr ""
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:181
+#: src/Components/LetterBuilder/Letter/Letter.tsx:227
 msgid "Concerning your intent to end my tenancy"
 msgstr ""
 
@@ -568,12 +576,16 @@ msgstr "Copiado"
 msgid "Copy goodcausenyc.org"
 msgstr "Copiar goodcausenyc.org"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:130
-msgid "Creates a paper trail"
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:129
+msgid "Create a paper trasil"
 msgstr ""
 
-#. placeholder {0}: ud.name
-#: src/Components/LetterBuilder/Letter/Letter.tsx:97
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:130
+#~ msgid "Creates a paper trail"
+#~ msgstr ""
+
+#. placeholder {0}: ld.name
+#: src/Components/LetterBuilder/Letter/Letter.tsx:115
 msgid "Dear {0},"
 msgstr ""
 
@@ -587,8 +599,8 @@ msgid "Demolition"
 msgstr "Demolición"
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:85
-msgid "Designed with tenants and experts"
-msgstr ""
+#~ msgid "Designed with tenants and experts"
+#~ msgstr ""
 
 #: src/Components/Footer/Footer.tsx:20
 msgid "Disclaimer"
@@ -684,7 +696,7 @@ msgstr "Ingrese su dirección"
 msgid "Error with address selection"
 msgstr ""
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:122
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:121
 msgid "Establishes a professional channel to negotiate solutions to your rent increase or non-renewal."
 msgstr ""
 
@@ -806,13 +818,23 @@ msgstr ""
 #~ msgid "For leases offered on or after {0}, landlords cannot increase rent more than {1}% without legitimate justification. You can use our <0>rent increase calculator</0> to learn more and determine if your landlord’s proposed rent exceeds the allowable rent increase amount."
 #~ msgstr ""
 
+#. placeholder {0}: CPI + 5
+#. placeholder {1}: _(CPI_EFFECTIVE_DATE)
+#: src/Components/LetterBuilder/Letter/Letter.tsx:164
+msgid "For New York City, the CPI change is {0}% as of {1}, meaning increases above this level require justification under the statute."
+msgstr ""
+
 #: src/Components/KYRContent/KYRContent.tsx:626
 msgid "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
 msgstr "Para los contratos de alquiler estabilizado que se renueven entre el 1 de octubre de 2024 y el 30 de septiembre de 2025, el alquiler legal podrá incrementarse en los siguientes porcentajes: para una renovación de un año, el incremento será del 2.75 %, y para una renovación de dos años, el incremento será del 5.25 %."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:108
-msgid "Formally asserts your rights"
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:107
+msgid "Formally assert your rights"
 msgstr ""
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:108
+#~ msgid "Formally asserts your rights"
+#~ msgstr ""
 
 #: src/Components/Modal/Modal.tsx:108
 msgid "Full image of this example lease can be viewed on <0>hcr.ny.gov</0>"
@@ -973,29 +995,41 @@ msgstr "Cómo saber si tu departamento tiene renta estabilizada"
 msgid "How we determined your coverage"
 msgstr "Cómo determinamos su cobertura"
 
+#. placeholder {0}: toTitleCase(ud.primary_line)
+#. placeholder {1}: ud.secondary_line ? ` ${toTitleCase(ud.secondary_line)}` : ""
+#. placeholder {2}: toTitleCase(ud.city)
+#. placeholder {3}: ud.zip_code
+#. placeholder {4}: " "
+#: src/Components/LetterBuilder/Letter/Letter.tsx:119
+msgid "I am writing to inform you that my tenancy at {0}{1}, {2}, {3} {4}is covered under New York State Real Property Law (RPL) Article 6-A, also known as the Good Cause Eviction Law, which took effect in New York City on April 20, 2024. As a tenant covered by this law, I want to outline my protections and our mutual responsibilities."
+msgstr ""
+
 #: src/Components/LetterBuilder/Letter/Letter.tsx:101
 #~ msgid "I am writing to inform you that my tenancy at this address is covered under New York State’s Good Cause Eviction Law, which took effect in New York City on April 20, 2024. As a tenant covered by this law, I want to outline both my protections and our mutual responsibilities."
 #~ msgstr ""
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:101
-msgid "I am writing to inform you that my tenancy at this address is covered under New York State’s Good Cause Eviction Law, which took effect in New York City on April 20, 2024. As a tenant covered by this law, I want to outline my protections and our mutual responsibilities."
-msgstr ""
+#~ msgid "I am writing to inform you that my tenancy at this address is covered under New York State’s Good Cause Eviction Law, which took effect in New York City on April 20, 2024. As a tenant covered by this law, I want to outline my protections and our mutual responsibilities."
+#~ msgstr ""
 
-#. placeholder {0}: CPI + 5
 #: src/Components/LetterBuilder/Letter/Letter.tsx:186
-msgid "I believe the rent detailed in the new lease you’ve offered exceeds the lawful limit under the Good Cause Eviction law. The difference between my current rent and the proposed rent appears to exceed {0}%."
-msgstr ""
+#~ msgid "I believe the rent detailed in the new lease you’ve offered exceeds the lawful limit under the Good Cause Eviction law. The difference between my current rent and the proposed rent appears to exceed {0}%."
+#~ msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:176
 msgid "I do not have a unit number"
 msgstr ""
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:206
+#: src/Components/LetterBuilder/Letter/Letter.tsx:252
 msgid "I respectfully request the following:"
 msgstr ""
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:237
-msgid "I value our landlord–tenant relationship and wish to continue it on clear and lawful terms. Please let me know if you’d like to discuss or clarify any of these requirements. I hope we can work cooperatively to uphold both legal obligations and good-faith communication."
+#~ msgid "I value our landlord–tenant relationship and wish to continue it on clear and lawful terms. Please let me know if you’d like to discuss or clarify any of these requirements. I hope we can work cooperatively to uphold both legal obligations and good-faith communication."
+#~ msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:285
+msgid "I value our landlord–tenant relationship and wish to continue it on clear and lawful terms. Please let me know if you’d like to discuss or clarify any of these requirements. I hope we can work cooperatively to uphold both legal obligations and good-faith communication. "
 msgstr ""
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:41
@@ -1181,16 +1215,24 @@ msgstr "Si su edificio tiene menos de 11 departamentos, debe averiguar si su arr
 msgid "If your landlord ignores your letter, you still have your Good Cause protections."
 msgstr ""
 
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:66
+msgid "If your landlord is either planning to raise your rent, or not offer you a new lease, we will draft a USPS Certified Mail letter defending your Good Cause rights. We will even send it for you, for free."
+msgstr ""
+
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:60
 #~ msgid "If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter asserting your Good Cause rights. We will even send it for you, for free."
 #~ msgstr ""
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:66
-msgid "If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter defending your Good Cause rights. We will even send it for you, for free."
-msgstr ""
+#~ msgid "If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter defending your Good Cause rights. We will even send it for you, for free."
+#~ msgstr ""
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:779
-msgid "If your landlord provides a reason, that doesn’t automatically mean the non-renewal is lawful — it must still meet the standards defined in the law."
+#~ msgid "If your landlord provides a reason, that doesn’t automatically mean the non-renewal is lawful — it must still meet the standards defined in the law."
+#~ msgstr ""
+
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:779
+msgid "If your landlord provides a reason, that doesn’t automatically mean the non-renewal is lawful. Your landlord’s reason must still meet the standards defined in the law."
 msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:460
@@ -1516,7 +1558,7 @@ msgstr ""
 msgid "Legal Aid Society - Housing Unit"
 msgstr ""
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:119
+#: src/Components/LetterBuilder/Letter/Letter.tsx:144
 msgid "Legal Limits on Rent Increases"
 msgstr ""
 
@@ -1579,12 +1621,13 @@ msgid "Mail my letter"
 msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:91
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:97
 msgid "Mail or deliver the letter yourself"
 msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:97
-msgid "Mail the letter yourself"
-msgstr ""
+#~ msgid "Mail the letter yourself"
+#~ msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:95
 msgid "Make sure the information below is accurate. If it is not, you can go back to make changes."
@@ -1789,9 +1832,13 @@ msgstr ""
 msgid "Once you find the name of your building’s owner, remember it because you’ll need it in Step 2."
 msgstr "Una vez que encuentres el nombre del propietario de tu edificio, recuérdalo porque lo necesitarás en el paso 2."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:119
-msgid "Opens negotiation"
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:118
+msgid "Open negotiation"
 msgstr ""
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:119
+#~ msgid "Opens negotiation"
+#~ msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:178
 msgid "Organizations that can help"
@@ -1839,12 +1886,20 @@ msgstr "Número de teléfono enviado"
 msgid "Please complete the unanswered questions before continuing."
 msgstr "Por favor, responda las preguntas sin contestar antes de continuar."
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:210
-msgid "Please confirm in writing that this unit is covered under the Good Cause Eviction law."
+#: src/Components/LetterBuilder/Letter/Letter.tsx:256
+msgid "Please confirm in writing that this unit is covered under Good Cause Eviction Law, as required by RPL § 213."
 msgstr ""
 
+#: src/Components/LetterBuilder/Letter/Letter.tsx:210
+#~ msgid "Please confirm in writing that this unit is covered under the Good Cause Eviction law."
+#~ msgstr ""
+
 #: src/Components/LetterBuilder/Letter/Letter.tsx:222
-msgid "Please confirm whether you intend to renew my lease, and if not, provide the specific good cause reason in writing as required by law. If you do not provide such reason, I will assume I retain the right to continue my tenancy under existing terms."
+#~ msgid "Please confirm whether you intend to renew my lease, and if not, provide the specific good cause reason in writing as required by law. If you do not provide such reason, I will assume I retain the right to continue my tenancy under existing terms."
+#~ msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:269
+msgid "Please confirm whether you intend to renew my lease, If you do not intend to renew, please provide the specific “good cause” ground, as required under RPL § 215 and RPL § 216(4). If you do not provide such reason, I will assume I retain the right to continue my tenancy under existing terms."
 msgstr ""
 
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:66
@@ -1936,9 +1991,13 @@ msgstr ""
 #~ msgstr ""
 
 #. placeholder {0}: CPI + 5
-#: src/Components/LetterBuilder/Letter/Letter.tsx:217
-msgid "Please send me a new lease with a rent increase of less than {0}%."
+#: src/Components/LetterBuilder/Letter/Letter.tsx:263
+msgid "Please send me a new lease with a rent increase of less than {0}%, consistent with the limits established under RPL § 216(1)(a)."
 msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:217
+#~ msgid "Please send me a new lease with a rent increase of less than {0}%."
+#~ msgstr ""
 
 #: src/Components/Pages/Form/Survey.tsx:260
 msgid "Please specify if your apartment is part of any subsidized housing programs."
@@ -2118,8 +2177,8 @@ msgid "Rent increase calculator"
 msgstr "Calculadora de aumento de renta"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:121
-msgid "Rent increases are presumptively unreasonable if they exceed the lower of:"
-msgstr ""
+#~ msgid "Rent increases are presumptively unreasonable if they exceed the lower of:"
+#~ msgstr ""
 
 #: src/Components/Pages/Results/Results.tsx:294
 msgid "Rent stabilization"
@@ -2145,7 +2204,7 @@ msgstr "Solicita tu historial de rentas"
 msgid "Request your rent history to help find out if your apartment is rent stabilized and if you’re being overcharged."
 msgstr "Solicite su historial de rentas para averiguar si su departamento tiene renta estabilizada y si le están cobrando de más."
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:151
+#: src/Components/LetterBuilder/Letter/Letter.tsx:191
 msgid "Required Notices from the Landlord"
 msgstr ""
 
@@ -2182,7 +2241,11 @@ msgid "Review your letter"
 msgstr ""
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:140
-msgid "Right to lease renewals"
+#~ msgid "Right to lease renewals"
+#~ msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:176
+msgid "Right to Lease Renewals"
 msgstr ""
 
 #: src/Components/Modal/Modal.tsx:117
@@ -2238,12 +2301,20 @@ msgstr "Vea sus resultados"
 #~ msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:98
-msgid "Select <0>“Your landlord is not offering you a new lease”</0>if any of the following apply:"
+msgid "Select <0>“Your landlord is not offering you a new lease”</0> if any of the following apply:"
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:98
+#~ msgid "Select <0>“Your landlord is not offering you a new lease”</0>if any of the following apply:"
+#~ msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:69
+msgid "Select <0>“Your landlord is planning to raise your rent”</0> if any of the following apply:"
 msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:69
-msgid "Select <0>“Your landlord is planning to raise your rent”</0>if any of the following apply:"
-msgstr ""
+#~ msgid "Select <0>“Your landlord is planning to raise your rent”</0>if any of the following apply:"
+#~ msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:61
 msgid "Select a mailing method"
@@ -2277,7 +2348,7 @@ msgstr ""
 #~ msgid "Send a letter to your landlord via certified mail asserting your Good Cause"
 #~ msgstr ""
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:111
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:110
 msgid "Sending a letter clearly communicates to your landlord that you know your legal protections."
 msgstr ""
 
@@ -2439,7 +2510,7 @@ msgstr "Condiciones de uso"
 msgid "Terms of Use"
 msgstr "Condiciones de uso"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:245
+#: src/Components/LetterBuilder/Letter/Letter.tsx:293
 msgid "Thank you for your attention to this matter. I look forward to hearing from you."
 msgstr ""
 
@@ -2473,7 +2544,11 @@ msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set e
 msgstr "La ley Good Cause establece un aumento razonable del alquiler, que se fija cada año según la tasa de inflación más un 5 %, con un máximo del 10 % en total. Según ${0}, la tasa de inflación de la ciudad de Nueva York es del ${CPI}%, lo que significa que el aumento razonable del alquiler local actual es del ${1}%."
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:88
-msgid "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants themselves."
+#~ msgid "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants themselves."
+#~ msgstr ""
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:88
+msgid "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants."
 msgstr ""
 
 #: src/Components/Footer/Footer.tsx:22
@@ -2543,13 +2618,17 @@ msgstr ""
 msgid "This can take a few seconds. Please don’t close the page."
 msgstr ""
 
+#: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:152
+msgid "This can take a few seconds. Please don’t refresh the page."
+msgstr ""
+
 #: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:49
 #~ msgid "This can take up to a few seconds. Please don’t refresh or close the page."
 #~ msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:152
-msgid "This can take up to a few seconds. Please don’t refresh the page."
-msgstr ""
+#~ msgid "This can take up to a few seconds. Please don’t refresh the page."
+#~ msgstr ""
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:178
 msgid "This documentation can protect you if your landlord challenges your rights or starts a court case."
@@ -2558,6 +2637,10 @@ msgstr ""
 #: src/Components/KYRContent/KYRContent.tsx:738
 msgid "This ensures that housing remains affordable and equitable for all residents, regardless of financial circumstances. Residents who have recently experienced a change in income can request an interim recertification to ensure that their apartment remains affordable."
 msgstr "Esto garantiza que la vivienda siga siendo asequible y equitativa para todos los residentes, independientemente de su situación económica. Los residentes que hayan experimentado recientemente un cambio en sus ingresos pueden solicitar una recertificación provisional para garantizar que su apartamento siga siendo asequible."
+
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:85
+msgid "This free service has been legally vetted"
+msgstr ""
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:109
 msgid "This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started."
@@ -2603,9 +2686,13 @@ msgstr "Para encontrar otros edificios que pueda tener su propietario, puede:"
 msgid "To help guide your answer"
 msgstr "Para ayudarte a responder"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:251
-msgid "To learn more about tenant and landlord responsibilities under Good Cause Eviction law, you can visit <0>https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page</0>"
+#: src/Components/LetterBuilder/Letter/Letter.tsx:299
+msgid "To learn more about tenant and landlord responsibilities under Good Cause Eviction law, visit: <0>https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page</0>"
 msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:251
+#~ msgid "To learn more about tenant and landlord responsibilities under Good Cause Eviction law, you can visit <0>https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page</0>"
+#~ msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:849
 msgid "To learn what protections you have through your building’s subsidy program we recommend that you speak to your landlord and your neighbors. For further assistance you can also try contacting:"
@@ -2627,13 +2714,25 @@ msgstr ""
 msgid "Type of building"
 msgstr "Tipo de edificio"
 
+#: src/Components/LetterBuilder/Letter/Letter.tsx:179
+msgid "Under Good Cause Eviction Law, a landlord may not lawfully evict a tenant or refuse a new lease unless there is a statutorily defined \"good cause.\""
+msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:147
+msgid "Under Good Cause Eviction Law, rent increases are presumptively unreasonable if they exceed the lower of:"
+msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:194
+msgid "Under Good Cause Eviction Law, you must provide a Good Cause Eviction notice when issuing:"
+msgstr ""
+
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:678
 msgid "Under Good Cause, a landlord cannot refuse to renew your lease without a legally valid reason. <0>Learn more about Good Cause reasons for non renewal</0>"
 msgstr ""
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:142
-msgid "Under the Good Cause Eviction law, a landlord may not lawfully evict a tenant or refuse a new lease unless there is a statutorily defined “good cause.”"
-msgstr ""
+#~ msgid "Under the Good Cause Eviction law, a landlord may not lawfully evict a tenant or refuse a new lease unless there is a statutorily defined “good cause.”"
+#~ msgstr ""
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:142
 #~ msgid "Under the Good Cause Eviction law, a landlord may not lawfully evict a tenant or refuse lease renewal unless there is a statutorily defined “good cause.”"
@@ -2652,7 +2751,7 @@ msgstr ""
 msgid "Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:"
 msgstr "Según la ley de desalojo por causa justificada, los propietarios pueden desalojar a los inquilinos por las siguientes «causas justificadas»:"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:193
+#: src/Components/LetterBuilder/Letter/Letter.tsx:239
 msgid "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid “good cause” reason for non-renewal."
 msgstr ""
 
@@ -3012,7 +3111,7 @@ msgstr ""
 msgid "Why are we asking for this information?"
 msgstr ""
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:103
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:102
 msgid "Why send a letter to your landlord?"
 msgstr ""
 

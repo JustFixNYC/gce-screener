@@ -94,7 +94,7 @@ export const MailChoiceStep: React.FC = () => {
           labelElement={
             <div>
               <strong>
-                <Trans>Mail the letter yourself</Trans>
+                <Trans>Mail or deliver the letter yourself</Trans>
               </strong>
               <p>
                 <Trans>
