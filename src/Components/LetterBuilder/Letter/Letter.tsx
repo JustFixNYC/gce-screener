@@ -314,7 +314,7 @@ const LetterFooter: React.FC<LetterData> = ({ letterData }) => {
   const { user_details: ud } = letterData;
   return (
     <footer style={{ display: "block", textAlign: "right" }}>
-      <p>Regards,</p>
+      <p><Trans>Regards</Trans>,</p>
       <p>
         {ud.first_name} {ud.last_name}
       </p>
