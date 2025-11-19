@@ -778,12 +778,12 @@ export const ReasonForNonRenewal: React.FC<NextStepItemProps> = (props) => (
       <p>
         <Trans>
           If your landlord provides a reason, that doesn’t automatically mean
-          the non-renewal is lawful — it must still meet the standards defined
-          in the law.
+          the non-renewal is lawful. Your landlord’s reason must still meet the
+          standards defined in the law.
         </Trans>
       </p>
       <p>
-        <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants">
+        <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
           <Trans>Learn more about valid Good Cause reasons</Trans>
         </JFCLLinkExternal>
       </p>
