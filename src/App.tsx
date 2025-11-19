@@ -29,7 +29,6 @@ import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator
 import { LetterLanding } from "./Components/Pages/LetterLanding/LetterLanding";
 import { LetterNextStepsStandalone } from "./Components/LetterBuilder/LetterNextSteps/LetterNextSteps";
 import {
-  LetterConfirmationTest,
   LetterLayout,
   LetterSender,
 } from "./Components/Pages/LetterSender/LetterSender";
@@ -219,10 +218,6 @@ const router = createBrowserRouter(
             />
           ))}
           <Route path="next_steps" element={<LetterNextStepsStandalone />} />
-          <Route
-            path="confirmation_test"
-            element={<LetterConfirmationTest />}
-          />
         </Route>
         <Route path="tenant_rights" element={<TenantRights />} />
         <Route path="privacy_policy" element={<PrivacyPolicy />} />

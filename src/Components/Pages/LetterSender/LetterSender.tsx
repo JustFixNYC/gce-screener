@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 
 import { LetterBuilderForm } from "../../LetterBuilder/LetterBuilderForm";
-import "./LetterSender.scss";
 import { ConfirmationStep } from "../../LetterBuilder/FormSteps/ConfirmationStep";
 import { sampleConfirmationValues } from "../../../types/LetterFormTypes";
+import "./LetterSender.scss";
 
 export const LetterLayout: React.FC = () => {
   return (
@@ -23,6 +23,7 @@ export const LetterSender: React.FC = () => {
   );
 };
 
+// Removed for now, but easily added as a new temporary route for debugging
 export const LetterConfirmationTest: React.FC = () => {
   return (
     <div className="content-section">
