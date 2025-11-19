@@ -193,7 +193,7 @@ export const ConfirmationStep: React.FC<{
           header={
             <Trans>
               A PDF copy of your letter has been sent to the following email
-              addresses:
+              address(es):
             </Trans>
           }
         >

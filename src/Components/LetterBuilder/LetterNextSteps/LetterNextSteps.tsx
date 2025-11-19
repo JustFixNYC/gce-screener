@@ -414,7 +414,8 @@ export const SendsCourtPaper: React.FC<NextStepItemProps> = (props) => (
             <JFCLLinkExternal to="https://housingcourtanswers.org/answers/for-tenants/">
               <Trans>Housing Court Answers</Trans>
             </JFCLLinkExternal>{" "}
-            or a legal aid provider immediately.
+            or one of the organizations in the “legal advice and assistance”
+            section below as soon as you can.
           </Trans>
         </li>
       </ul>
@@ -678,11 +679,11 @@ export const RefusesNewLease: React.FC<NextStepItemProps> = (props) => (
         <Trans>
           Under Good Cause, a landlord cannot refuse to renew your lease without
           a legally valid reason.{" "}
-          <JFCLLink to="">
-            Learn more about Good Cause reasons for non renewal
-          </JFCLLink>
         </Trans>
       </p>
+      <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
+        <Trans>Learn more about Good Cause reasons for non renewal</Trans>
+      </JFCLLinkExternal>
     </section>
     <section>
       <h5>
@@ -779,12 +780,12 @@ export const ReasonForNonRenewal: React.FC<NextStepItemProps> = (props) => (
         <Trans>
           If your landlord provides a reason, that doesn’t automatically mean
           the non-renewal is lawful. Your landlord’s reason must still meet the
-          standards defined in the law.
+          standards defined in the law
         </Trans>
       </p>
       <p>
         <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
-          <Trans>Learn more about valid Good Cause reasons</Trans>
+          <Trans>Learn more about Good Cause reasons for non renewal</Trans>
         </JFCLLinkExternal>
       </p>
     </section>
@@ -941,12 +942,7 @@ export const CommunityResources: React.FC<NextStepItemProps> = (props) => (
       </h5>
       <ul>
         <li>
-          <JFCLLinkExternal to="https://housingcourtanswers.org/answers/for-tenants/">
-            <Trans>NYC 311 Tenant Helpline</Trans>
-          </JFCLLinkExternal>
-        </li>
-        <li>
-          <JFCLLinkExternal to="">
+          <JFCLLinkExternal to="https://www.nyc.gov/site/mayorspeu/programs/contact-the-tenant-support-unit.page">
             <Trans>NYC's Tenant Support Unit (TSU)</Trans>
           </JFCLLinkExternal>
         </li>
@@ -994,7 +990,7 @@ export const TenantAdvocacyGroups: React.FC<NextStepItemProps> = (props) => (
 );
 
 export const LegalAdviceAssistance: React.FC<NextStepItemProps> = (props) => (
-  <ContentBoxItem title={<Trans>Legal Advice and Assistance</Trans>} {...props}>
+  <ContentBoxItem title={<Trans>Legal advice and assistance</Trans>} {...props}>
     <section>
       <h5>
         <Trans>When to use</Trans>
