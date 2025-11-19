@@ -2,8 +2,6 @@
 @use "../../../mixins" as *;
 
 .progress-bar {
-  margin-bottom: 2rem;
-
   &__title {
     @include body_standard_desktop;
     margin: 0 0 0.75rem 0;
