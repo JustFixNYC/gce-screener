@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -62,6 +62,8 @@ export const LetterBuilderForm: React.FC = () => {
 
   const [lastStepReached, setLastStepReached] =
     useSessionStorage<StepRouteName>("lastStepReached", stepRouteNames[0]);
+
+  const errorScrollRef = useRef<HTMLDivElement | null>(null);
 
   const { trigger: sendLetter } = useSendGceLetterData();
 
@@ -162,6 +164,7 @@ export const LetterBuilderForm: React.FC = () => {
       const isValid = await trigger(fields, { shouldFocus: true });
       if (!isValid) {
         console.warn(errors);
+        errorScrollRef?.current?.scrollIntoView();
         return;
       }
       saveFieldsToSessionStorage(fields);
@@ -205,7 +208,7 @@ export const LetterBuilderForm: React.FC = () => {
   return (
     <>
       <ProgressBar percentage={currentStep.progress} />
-      <div className="letter-builder">
+      <div className="letter-builder" ref={errorScrollRef}>
         <FormContext.Provider
           value={{ formMethods, back, next, confirmationResponse }}
         >
