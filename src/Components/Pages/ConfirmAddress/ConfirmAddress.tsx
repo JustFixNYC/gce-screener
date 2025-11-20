@@ -18,6 +18,7 @@ import { InfoBox } from "../../InfoBox/InfoBox";
 import "./ConfirmAddress.scss";
 
 export const ConfirmAddress: React.FC = () => {
+  const { i18n } = useLingui();
   const navigate = useNavigate();
   const { _ } = useLingui();
   const { address, user } = useLoaderData() as {
@@ -57,7 +58,7 @@ export const ConfirmAddress: React.FC = () => {
     } catch {
       rollbar.error("Cannot connect to tenant platform");
     }
-    navigate("/survey");
+    navigate(`/${i18n.locale}/survey`);
   };
 
   return (
@@ -81,7 +82,7 @@ export const ConfirmAddress: React.FC = () => {
                   this address.
                 </Trans>
               </span>
-              <Link to="/" className="jfcl-link">
+              <Link to={`/${i18n.locale}`} className="jfcl-link">
                 <Trans>Search new address</Trans>
               </Link>
             </InfoBox>
@@ -109,7 +110,7 @@ export const ConfirmAddress: React.FC = () => {
           </ContentBox>
 
           <div className="confirmation__buttons">
-            <BackLink to="/" className="confirmation__back">
+            <BackLink to={`/${i18n.locale}`} className="confirmation__back">
               <Trans>Back</Trans>
             </BackLink>
             <Button

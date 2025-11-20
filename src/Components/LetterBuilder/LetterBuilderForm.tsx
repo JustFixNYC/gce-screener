@@ -92,7 +92,6 @@ export const LetterBuilderForm: React.FC = () => {
 
   // handles redirects
   useEffect(() => {
-    console.log("currentStep", currentStep);
     if (!currentStep || !lastStepReached) return;
 
     const currentStepIndex = stepRouteNames.indexOf(currentStep.name);

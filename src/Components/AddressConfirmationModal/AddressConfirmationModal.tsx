@@ -30,9 +30,7 @@ export const AddressConfirmationModal: React.FC<
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      header={_(
-        msg`Public records tell us that there may be inaccuracies in this address`
-      )}
+      header={_(msg`There may be inaccuracies in this address`)}
       className="address-confirmation-modal"
     >
       <InfoBox color={type === "undeliverable" ? "orange" : "blue"}>
@@ -71,8 +69,8 @@ const getInfoBoxText = (modalType?: Deliverability) => {
       return (
         <Trans>
           USPS has flagged that this address may be missing a unit number. Your
-          letter may still be delivered if you proceed with this address, but if
-          you see any errors, please review and edit.
+          letter may still be delivered if you proceed with this address, but
+          please review and edit if you see any errors.
         </Trans>
       );
     case "incorrect_unit":
@@ -80,8 +78,7 @@ const getInfoBoxText = (modalType?: Deliverability) => {
         <Trans>
           USPS has flagged that the unit in this address may not exist in the
           building. Your letter may still be delivered if you proceed with this
-          address, but if you see any errors, please review and edit the
-          address.
+          address, but please review and edit if you see any errors.
         </Trans>
       );
     case "unnecessary_unit":
@@ -89,7 +86,7 @@ const getInfoBoxText = (modalType?: Deliverability) => {
         <Trans>
           USPS has flagged that this address does not require a unit number.
           Your letter may still be delivered if you proceed with this address,
-          but if you see any errors, please review and edit the address.
+          but please review and edit if you see any errors.
         </Trans>
       );
     default:

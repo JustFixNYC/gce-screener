@@ -8,8 +8,10 @@ import { useScrollDirection } from "../../hooks/useScrollDirection";
 import useInViewPort from "../../hooks/useInViewport";
 import { JFCLLinkInternal } from "../JFCLLink";
 import "./TopBar.scss";
+import { useLingui } from "@lingui/react";
 
 export const TopBar: React.FC = () => {
+  const { i18n } = useLingui();
   const isScrollingUp = useScrollDirection() === "up";
   const placeholderRef = useRef<HTMLDivElement | null>(null);
   const placeholderInViewport = useInViewPort(placeholderRef);
@@ -20,7 +22,7 @@ export const TopBar: React.FC = () => {
       <header id="topbar" className={classNames(hideTopbar && "hide")}>
         <div className="topbar__name">
           <h1>
-            <Link to="/">
+            <Link to={`/${i18n.locale}`}>
               <Trans>Good Cause NYC</Trans>
             </Link>
           </h1>
@@ -47,7 +49,7 @@ export const TopBar: React.FC = () => {
         </div>
         <div className="topbar__rent-calculator">
           <JFCLLinkInternal
-            to="/rent_calculator"
+            to={`/${i18n.locale}/rent_calculator`}
             onClick={() => gtmPush("gce_rent_calculator", { from: "navbar" })}
           >
             <Trans>Rent increase calculator</Trans>

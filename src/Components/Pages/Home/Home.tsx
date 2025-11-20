@@ -13,7 +13,7 @@ import { useSendGceData } from "../../../api/hooks";
 import { GCEPostData, GCEUser } from "../../../types/APIDataTypes";
 import { Header } from "../../Header/Header";
 import { ProgressStep } from "../../../helpers";
-import { JFCLLink, JFCLLinkExternal, JFCLLinkInternal } from "../../JFCLLink";
+import { JFCLLinkExternal, JFCLLinkInternal } from "../../JFCLLink";
 import { cleanAddressFields } from "../../../api/helpers";
 import { gtmPush } from "../../../google-tag-manager";
 import "./Home.scss";
@@ -69,7 +69,7 @@ export const Home: React.FC = () => {
 
     removeFormFields();
     setLastStepReached(ProgressStep.Address);
-    navigate("confirm_address");
+    navigate(`/${i18n.locale}/confirm_address`);
   };
 
   return (
@@ -116,14 +116,14 @@ export const Home: React.FC = () => {
               There are also limits to how much your landlord can raise your
               rent.{" "}
             </Trans>
-            <JFCLLink
-              to={`${i18n.locale}/rent_calculator`}
+            <JFCLLinkInternal
+              to={`/${i18n.locale}/rent_calculator`}
               onClick={() =>
                 gtmPush("gce_rent_calculator", { from: "home-page" })
               }
             >
               <Trans>Calculate your max rent increase.</Trans>
-            </JFCLLink>
+            </JFCLLinkInternal>
           </p>
           <p>
             <Trans>
@@ -150,7 +150,7 @@ export const Home: React.FC = () => {
                 stronger than those provided by Good Cause.
               </Trans>
             </p>
-            <JFCLLinkInternal to="/tenant_rights">
+            <JFCLLinkInternal to={`/${i18n.locale}/tenant_rights`}>
               <Trans>Learn more about tenant protections in NYC</Trans>
             </JFCLLinkInternal>
           </div>

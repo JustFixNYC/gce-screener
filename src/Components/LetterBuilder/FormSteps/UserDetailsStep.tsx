@@ -99,24 +99,26 @@ export const UserDetailsStep: React.FC = () => {
         }
         invalid={anyAddressErrors}
       >
-        <TextInput
-          {...register("user_details.first_name")}
-          id="form-first_name"
-          labelText={_(msg`First name`)}
-          invalid={!!userErrors?.first_name}
-          invalidText={userErrors?.first_name?.message}
-          invalidRole="status"
-          type="text"
-        />
-        <TextInput
-          {...register("user_details.last_name")}
-          id="form-last_name"
-          labelText={_(msg`Last name`)}
-          invalid={!!userErrors?.last_name}
-          invalidText={userErrors?.last_name?.message}
-          invalidRole="status"
-          type="text"
-        />
+        <div className="text-input__two-column">
+          <TextInput
+            {...register("user_details.first_name")}
+            id="form-first_name"
+            labelText={_(msg`First name`)}
+            invalid={!!userErrors?.first_name}
+            invalidText={userErrors?.first_name?.message}
+            invalidRole="status"
+            type="text"
+          />
+          <TextInput
+            {...register("user_details.last_name")}
+            id="form-last_name"
+            labelText={_(msg`Last name`)}
+            invalid={!!userErrors?.last_name}
+            invalidText={userErrors?.last_name?.message}
+            invalidRole="status"
+            type="text"
+          />
+        </div>
         <GeoSearchInput
           initialAddress={initialAddress}
           onChange={(addr) => {
@@ -194,7 +196,7 @@ export const UserDetailsStep: React.FC = () => {
                 field.onChange(parseFormattedPhoneNumber(e.target.value))
               }
               id="form-phone_number"
-              labelText={_(msg`Your phone number`)}
+              labelText={_(msg`Phone number`)}
               invalid={!!userErrors?.phone_number}
               invalidText={userErrors?.phone_number?.message}
               invalidRole="status"
@@ -205,7 +207,7 @@ export const UserDetailsStep: React.FC = () => {
         <TextInput
           {...register("user_details.email")}
           id="form-email"
-          labelText={_(msg`Your email`) + " " + _(msg`(Optional)`)}
+          labelText={_(msg`Email`) + " " + _(msg`(optional)`)}
           invalid={!!userErrors?.email}
           invalidText={userErrors?.email?.message}
           invalidRole="status"
@@ -236,24 +238,25 @@ export const UserDetailsStep: React.FC = () => {
           <Trans>
             <strong>Phone number</strong>
           </Trans>
-          <Trans>
-            <p>
-              We’ll text you to check in after your letter is mailed. We will
-              never call you or share your phone number.
-            </p>
-          </Trans>
+          <p>
+            <Trans>
+              We’ll text you with your USPS tracking number. We will also check
+              in after your letter is mailed. We will never call you or share
+              your phone number.
+            </Trans>
+          </p>
         </section>
         <section>
           <Trans>
             <strong>Email</strong>
           </Trans>
-          <Trans>
-            <p>
-              We’ll include your email in the letter for your landlord to
-              contact you, and send you a PDF copy. We never share your email
-              with anyone.
-            </p>
-          </Trans>
+          <p>
+            <Trans>
+              We’ll email you a PDF copy of your letter. We'll also include your
+              email in the letter to your landlord so they can contact you. We
+              will only share your email if you tell us to.
+            </Trans>
+          </p>
         </section>
         <Button
           variant="secondary"

@@ -20,4 +20,11 @@
   .letter-form__buttons {
     margin-bottom: -1rem;
   }
+  
+  .jfcl-link {
+    @include body_large_desktop;
+    @include for-phone-only {
+      @include body_standard_mobile;
+    }
+  }
 }
