@@ -5,7 +5,7 @@ import { Button } from "@justfixnyc/component-library";
 import { useNavigate } from "react-router-dom";
 
 import { Header } from "../../Header/Header";
-import { JFCLLink } from "../../JFCLLink";
+import { JFCLLink, JFCLLinkExternal } from "../../JFCLLink";
 import "./LetterLanding.scss";
 
 export const LetterLanding: React.FC = () => {
@@ -79,18 +79,31 @@ export const LetterLanding: React.FC = () => {
               </JFCLLink>
             </p>
           </section>
-          <section>
-            <div className="callout-box">
-              <h4>
-                <Trans>This free service has been legally vetted</Trans>
-              </h4>
-              <p>
-                <Trans>
-                  The Good Cause Letter Sender was developed with housing
-                  attorneys, tenant organizers, community leaders, and tenants.
-                </Trans>
-              </p>
-            </div>
+          <section className="callout-box">
+            <h4>
+              <Trans>This free service has been legally vetted</Trans>
+            </h4>
+            <p>
+              <Trans>
+                The Good Cause Letter Sender was developed with housing
+                attorneys, tenant organizers, community leaders, and tenants.
+              </Trans>
+            </p>
+          </section>
+          <section className="callout-box outside-nyc">
+            <h4>
+              <Trans>If you live outside of NYC</Trans>
+            </h4>
+            <p>
+              <Trans>
+                Tenants and tenant advocates are working to extend Good Cause
+                protections throughout New York State. This product is not yet
+                available for residents outside of New York City.
+              </Trans>
+            </p>
+            <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause/">
+              Learn where Good Cause Protections have already been won
+            </JFCLLinkExternal>
           </section>
         </div>
       </div>

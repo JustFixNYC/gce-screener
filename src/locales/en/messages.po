@@ -511,7 +511,7 @@ msgstr "Close"
 msgid "Close modal"
 msgstr "Close modal"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:132
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:145
 msgid "Communicating your request to your landlord in writing provides documented evidence of your complaint."
 msgstr "Communicating your request to your landlord in writing provides documented evidence of your complaint."
 
@@ -595,7 +595,7 @@ msgstr "Copy goodcausenyc.org"
 msgid "Coverage depends on your building type, subsidy status, and other factors."
 msgstr "Coverage depends on your building type, subsidy status, and other factors."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:129
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:142
 msgid "Create a paper trail"
 msgstr "Create a paper trail"
 
@@ -719,7 +719,7 @@ msgstr "Enter your address"
 msgid "Error with address selection"
 msgstr "Error with address selection"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:121
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:134
 msgid "Establishes a professional channel to negotiate solutions to your rent increase or non-renewal."
 msgstr "Establishes a professional channel to negotiate solutions to your rent increase or non-renewal."
 
@@ -855,7 +855,7 @@ msgstr "For New York City, the CPI change is {0}% as of {1}, meaning increases a
 msgid "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
 msgstr "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:107
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:120
 msgid "Formally assert your rights"
 msgstr "Formally assert your rights"
 
@@ -1162,6 +1162,7 @@ msgid "If you live in NYC and are not covered by Good Cause Eviction, you still 
 msgstr "If you live in NYC and are not covered by Good Cause Eviction, you still have important tenant protections. Depending on the type of housing you live in, your protections may be even stronger than those provided by Good Cause."
 
 #: src/Components/Pages/Home/Home.tsx:159
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:95
 msgid "If you live outside of NYC"
 msgstr "If you live outside of NYC"
 
@@ -1877,7 +1878,7 @@ msgstr "Offer a longer lease in exchange for a smaller increase"
 msgid "Once you find the name of your building’s owner, remember it because you’ll need it in Step 2."
 msgstr "Once you find the name of your building’s owner, remember it because you’ll need it in Step 2."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:118
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:131
 msgid "Open negotiation"
 msgstr "Open negotiation"
 
@@ -2406,7 +2407,7 @@ msgstr "Send a letter to your <0/>landlord defending <1/>your Good Cause rights"
 msgid "Send the rent increase calculator to your phone"
 msgstr "Send the rent increase calculator to your phone"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:110
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:123
 msgid "Sending a letter clearly communicates to your landlord that you know your legal protections."
 msgstr "Sending a letter clearly communicates to your landlord that you know your legal protections."
 
@@ -2556,6 +2557,10 @@ msgstr "Tenant support groups can help you draft messages, practice negotiation 
 msgid "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State."
 msgstr "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State."
 
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:98
+msgid "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State. This product is not yet available for residents outside of New York City."
+msgstr "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State. This product is not yet available for residents outside of New York City."
+
 #: src/Components/KYRContent/KYRContent.tsx:100
 msgid "Tenants have the right to live in a safe, sanitary, and well-maintained apartment, including public areas of the building. This right is implied in every residential lease, and any lease provision that waives it is void. If your landlord is not providing these conditions in your apartment or building, there are actions you can take to exercise your rights."
 msgstr "Tenants have the right to live in a safe, sanitary, and well-maintained apartment, including public areas of the building. This right is implied in every residential lease, and any lease provision that waives it is void. If your landlord is not providing these conditions in your apartment or building, there are actions you can take to exercise your rights."
@@ -2609,7 +2614,7 @@ msgstr "The Good Cause law establishes a Reasonable Rent Increase, which is set 
 #~ msgid "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants themselves."
 #~ msgstr "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants themselves."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:88
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:87
 msgid "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants."
 msgstr "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants."
 
@@ -2700,7 +2705,7 @@ msgstr "This documentation can protect you if your landlord challenges your righ
 msgid "This ensures that housing remains affordable and equitable for all residents, regardless of financial circumstances. Residents who have recently experienced a change in income can request an interim recertification to ensure that their apartment remains affordable."
 msgstr "This ensures that housing remains affordable and equitable for all residents, regardless of financial circumstances. Residents who have recently experienced a change in income can request an interim recertification to ensure that their apartment remains affordable."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:85
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:84
 msgid "This free service has been legally vetted"
 msgstr "This free service has been legally vetted"
 
@@ -3198,7 +3203,7 @@ msgstr "Who can help?"
 msgid "Why are we asking for this information?"
 msgstr "Why are we asking for this information?"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:102
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:115
 msgid "Why send a letter to your landlord?"
 msgstr "Why send a letter to your landlord?"
 
