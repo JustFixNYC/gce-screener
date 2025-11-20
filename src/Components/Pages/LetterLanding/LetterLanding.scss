@@ -90,6 +90,18 @@
       padding: 2rem;
       margin-top: 3rem;
 
+      &.outside-nyc {
+        margin-bottom: 2.25rem;
+        p,
+        a {
+          @include body_standard_desktop;
+        }
+        p {
+          width: 85%;
+          margin-bottom: 1.5rem;
+        }
+      }
+
       h4 {
         @include body_large_desktop;
         font-weight: 600;
