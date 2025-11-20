@@ -1,0 +1,51 @@
+@use "../../../colors.scss" as *;
+@use "../../../mixins.scss" as *;
+
+.landlord-details-step {
+  &__landlord-info {
+    margin-bottom: 8px;
+  }
+
+  &__modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+  .hpd-invalid-modal .modal__content {
+    @include body_large_desktop;
+  }
+  .landlord-address {
+    @include body_large_desktop;
+    margin-bottom: 1rem;
+    span {
+      display: block;
+    }
+    &__name {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+  }
+  &__edit-address {
+    width: 75%;
+    &,
+    .text-link-button {
+      @include body_standard_desktop;
+    }
+  }
+  .landlord-city-input {
+    margin-top: 1.5rem;
+  }
+  #landlord-state {
+    margin-bottom: 2rem;
+    .jfcl-input-header__label {
+      @include body_standard_desktop;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    .jfcl-dropdown__control {
+      padding: 5px;
+      border: 1px solid $OFF_BLACK;
+    }
+  }
+}

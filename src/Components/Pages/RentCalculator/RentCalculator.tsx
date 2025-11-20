@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, TextInput } from "@justfixnyc/component-library";
 import { msg } from "@lingui/core/macro";
+import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 
 import { ContentBoxFooter } from "../../ContentBox/ContentBox";
@@ -13,18 +14,12 @@ import {
 } from "../../KYRContent/KYRContent";
 import { formatMoney, getCookie, setCookie } from "../../../helpers";
 import { gtmPush } from "../../../google-tag-manager";
+import { CPI, CPI_EFFECTIVE_DATE } from "./RentIncreaseValues";
 import {
   PhoneNumberCallout,
   PhoneNumberModal,
 } from "../../PhoneNumberCallout/PhoneNumberCallout";
 import "./RentCalculator.scss";
-import { Trans } from "@lingui/react/macro";
-
-// This needs to be updated each year when DHCR publishes the new number
-export const CPI = 3.79;
-// This date isn't actually official, just what HPD has on their site.
-// The law never included when the changes come into effect
-const CPI_EFFECTIVE_DATE = msg`February 19, 2025`;
 
 export const RentCalculator: React.FC = () => {
   const { _, i18n } = useLingui();

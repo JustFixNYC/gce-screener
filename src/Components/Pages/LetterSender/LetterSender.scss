@@ -1,0 +1,19 @@
+#letter-sender-page {
+  height: 100%;
+  .content-section {
+    height: 100%;
+    padding-bottom: 2.25rem;
+  }
+
+  .modal {
+    &__buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+  }
+
+  .accordion__content {
+    width: 80%;
+  }
+}

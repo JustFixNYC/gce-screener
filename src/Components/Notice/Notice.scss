@@ -1,0 +1,37 @@
+@use "../../colors.scss" as *;
+@use "../../mixins.scss" as *;
+
+.notice {
+  display: flex;
+  padding: 2rem;
+  border-radius: 0.25rem;
+  gap: 1.81rem;
+  margin-bottom: 1.5rem;
+
+  &__green {
+    border: 1px solid $GREEN;
+    background-color: $GREEN_100;
+  }
+  &__yellow {
+    border: 1px solid $YELLOW;
+    background-color: $YELLOW_100;
+  }
+  &__off-white {
+    border: 1px solid $GREY_200;
+    background-color: $OFF_WHITE_200;
+  }
+
+  &__header {
+    @include h3_desktop;
+    margin: 0 0 1.5rem 0;
+    @include for-phone-only {
+      @include h3_mobile;
+    }
+  }
+  &__body {
+    @include body_large_desktop;
+    @include for-phone-only {
+      @include body_standard_mobile;
+    }
+  }
+}

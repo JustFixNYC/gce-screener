@@ -1,0 +1,17 @@
+@use "../../colors" as *;
+@use "../../mixins" as *;
+@use "../../variables" as *;
+
+.letter-builder {
+  padding-top: 2rem;
+  .modal {
+    .modal__header {
+      margin-bottom: 1rem;
+    }
+    .callout-box {
+      ul {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

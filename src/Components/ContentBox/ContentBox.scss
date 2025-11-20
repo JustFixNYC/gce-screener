@@ -7,10 +7,10 @@ $videoEmbedW: 623px;
 
 .content-box {
   border-radius: 4px;
-  border: 1px solid $GREY_NEW;
+  border: 1px solid $GREY_200;
   width: 100%;
   max-width: $contentBoxWidth;
-  margin: 36px 0;
+  margin: 24px 0;
   background-color: $WHITE;
 
   @include for-phone-only() {
@@ -75,7 +75,7 @@ $videoEmbedW: 623px;
 .content-box__footer {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid $GREY_NEW;
+  border-top: 1px solid $GREY_200;
   padding: 1.5rem 2rem;
   @include for-phone-only {
     padding: 1.5rem;
@@ -86,6 +86,7 @@ $videoEmbedW: 623px;
     margin-bottom: 0.25rem; // 4px
   }
   .content-box__section__header {
+    display: flex;
     @include body_large_desktop;
     font-weight: 500;
     @include for-phone-only {
@@ -126,7 +127,7 @@ $videoEmbedW: 623px;
       align-items: flex-start;
       gap: 0.5rem;
       align-self: stretch;
-      border: 1px solid $GREY_NEW;
+      border: 1px solid $GREY_200;
       border-radius: 4px;
       margin: 1.5rem 0;
       @include small_text_desktop;
@@ -135,6 +136,7 @@ $videoEmbedW: 623px;
     li,
     p,
     a,
+    h5,
     button {
       @include body_standard_desktop;
       @include for-phone-only {
@@ -145,6 +147,10 @@ $videoEmbedW: 623px;
         font-weight: inherit;
         text-underline-offset: 0.125rem;
       }
+    }
+
+    h5 {
+      margin: 1rem 0 0 0;
     }
 
     p {

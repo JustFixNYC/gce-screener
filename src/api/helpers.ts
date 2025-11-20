@@ -2,10 +2,11 @@ import { FormFields } from "../Components/Pages/Form/Survey";
 import { Address } from "../Components/Pages/Home/Home";
 import { CriteriaDetails } from "../hooks/useCriteriaResults";
 import {
-  ComingSoonSignupPostData,
   CriteriaResults,
   FormAnswers,
+  GCELetterPostData,
   GCEPostData,
+  LOBVerificationResponse,
 } from "../types/APIDataTypes";
 import { HTTPError, NetworkError } from "./error-reporting";
 
@@ -23,9 +24,9 @@ export const WowApiFetcher = async (url: string) => {
   return checkApiResponse(res);
 };
 
-export const Tenants2ComingSoonApiFetcher = async (
+export const Tenants2ApiFetcher = async (
   url: string,
-  { arg }: { arg: ComingSoonSignupPostData }
+  { arg }: { arg: GCEPostData }
 ) => {
   const urlBase = import.meta.env.VITE_TENANTS2_API_BASE_URL;
   const token = import.meta.env.VITE_TENANTS2_API_TOKEN;
@@ -42,10 +43,29 @@ export const Tenants2ComingSoonApiFetcher = async (
   return checkApiResponse(res);
 };
 
-export const Tenants2ApiFetcher = async (
+export const Tenants2ApiFetcherLetter = async (
   url: string,
-  { arg }: { arg: GCEPostData }
+  { arg }: { arg: GCELetterPostData }
 ) => {
+  const urlBase = import.meta.env.VITE_TENANTS2_API_BASE_URL;
+  const token = import.meta.env.VITE_TENANTS2_API_TOKEN;
+
+  const res = await fetch(`${urlBase}${url}`, {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(arg),
+  });
+
+  return checkApiResponse(res);
+};
+
+export const Tenants2ApiFetcherVerifyAddress = async (
+  url: string,
+  { arg }: { arg: unknown }
+): Promise<LOBVerificationResponse> => {
   const urlBase = import.meta.env.VITE_TENANTS2_API_BASE_URL;
   const token = import.meta.env.VITE_TENANTS2_API_TOKEN;
 
@@ -135,5 +155,15 @@ export const getCriteriaResults = (
     subsidy: criteriaDetails?.subsidy?.determination,
     portfolio_size: criteriaDetails?.portfolioSize?.determination,
     landlord: criteriaDetails?.landlord?.determination,
+  };
+};
+
+export const separateBbl = (
+  bbl: string
+): { borough: string; block: string; lot: string } => {
+  return {
+    borough: bbl.slice(0, 1),
+    block: bbl.slice(1, 6),
+    lot: bbl.slice(6, 10),
   };
 };

@@ -1,43 +1,57 @@
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
+import { Button } from "@justfixnyc/component-library";
+import { useNavigate } from "react-router-dom";
+
 import { Header } from "../../Header/Header";
 import { JFCLLink } from "../../JFCLLink";
 import "./LetterLanding.scss";
-import { PhoneNumberCallout } from "../../PhoneNumberCallout/PhoneNumberCallout";
 
 export const LetterLanding: React.FC = () => {
   const { _, i18n } = useLingui();
+  const navigate = useNavigate();
 
   return (
     <div id="letter-sender-landing-page">
-      <div className="headline-section">
-        <div className="coming-soon-pill-container">
-          <span className="coming-soon-pill">
-            <Trans>Coming soon</Trans>
-          </span>
+      <Header
+        title={
+          <Trans>
+            Send a letter to your <br />
+            landlord defending <br />
+            your Good Cause rights
+          </Trans>
+        }
+        subtitle={
+          <Trans>
+            If you’re covered by Good Cause and your landlord is planning to
+            raise your rent or not offer you a new lease, you can send a letter
+            defending your Good Cause rights.
+          </Trans>
+        }
+        showProgressBar={false}
+      >
+        <div className="hero-cta">
+          <Trans>
+            <strong>Start here:</strong> are you covered by Good Cause?
+          </Trans>
+          <div className="hero-cta__buttons">
+            <Button
+              labelIcon="mailboxOpenLetter"
+              labelText={_(msg`I’m covered, start my free letter`)}
+              onClick={() => navigate("reason")}
+            />
+            <Button
+              labelText={_(msg`Find out if I’m covered`)}
+              onClick={() => navigate(`/${i18n.locale}`)}
+              variant="secondary"
+            />
+          </div>
         </div>
-        <Header
-          title={_(msg`Send a letter to your landlord`)}
-          subtitle={
-            <Trans>
-              If you’re covered by Good Cause and your landlord is planning to
-              raise your rent or not offer you a new lease, you can send a
-              letter to your landlord asserting your Good Cause rights.
-            </Trans>
-          }
-          showProgressBar={false}
-        ></Header>
-      </div>
+      </Header>
+
       <div className="content-section">
         <div className="content-section__content">
-          <PhoneNumberCallout
-            headerText={_(msg`Get a text when the letter sender is live.`)}
-            bodyText={_(
-              msg`We will send you a text with a link to the letter sender when it is ready.`
-            )}
-            gtmId="rent-calculator-page"
-          />
           <section className="about-section">
             <h3>
               <Trans>How it works</Trans>
@@ -51,8 +65,8 @@ export const LetterLanding: React.FC = () => {
             <p>
               <Trans>
                 If your landlord is either planning to raise your rent, or not
-                offering you a new lease, we will draft a USPS Certified Mail®
-                letter asserting your Good Cause rights. We will even send it
+                offer you a new lease, we will draft a USPS Certified Mail
+                letter defending your Good Cause rights. We will even send it
                 for you, for free.
               </Trans>
             </p>
@@ -68,13 +82,12 @@ export const LetterLanding: React.FC = () => {
           <section>
             <div className="callout-box">
               <h4>
-                <Trans>Designed with tenants and experts</Trans>
+                <Trans>This free service has been legally vetted</Trans>
               </h4>
               <p>
                 <Trans>
                   The Good Cause Letter Sender was developed with housing
-                  attorneys, tenant organizers, community leaders, and tenants
-                  themselves.
+                  attorneys, tenant organizers, community leaders, and tenants.
                 </Trans>
               </p>
             </div>
@@ -91,7 +104,7 @@ export const LetterLanding: React.FC = () => {
             <ol>
               <li>
                 <strong>
-                  <Trans>Formally asserts your rights</Trans>
+                  <Trans>Formally assert your rights</Trans>
                 </strong>
                 <p>
                   <Trans>
@@ -102,23 +115,23 @@ export const LetterLanding: React.FC = () => {
               </li>
               <li>
                 <strong>
-                  <Trans>Creates a paper trail</Trans>
-                </strong>
-                <p>
-                  <Trans>
-                    Communicating your request to your landlord in writing
-                    provides documented evidence of your complaint.
-                  </Trans>
-                </p>
-              </li>
-              <li>
-                <strong>
-                  <Trans>Opens negotiation</Trans>
+                  <Trans>Open negotiation</Trans>
                 </strong>
                 <p>
                   <Trans>
                     Establishes a professional channel to negotiate solutions to
                     your rent increase or non-renewal.
+                  </Trans>
+                </p>
+              </li>
+              <li>
+                <strong>
+                  <Trans>Create a paper trail</Trans>
+                </strong>
+                <p>
+                  <Trans>
+                    Communicating your request to your landlord in writing
+                    provides documented evidence of your complaint.
                   </Trans>
                 </p>
               </li>

@@ -1,0 +1,60 @@
+@page {
+  size: letter;
+  margin-top: 1in;
+  margin-bottom: 1in;
+
+  @top-right {
+    content: string(title);
+    white-space: pre;
+    font-weight: bold;
+    padding-top: 1in;
+    padding-bottom: 0.2in;
+  }
+
+  @bottom-center {
+    content: "Page " counter(page) " of " counter(pages);
+    font-size: 9pt;
+  }
+}
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+address {
+  font-style: normal;
+  margin: 1rem 0;
+}
+section,
+.outro p {
+  margin: 2rem 0;
+}
+h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+}
+ol {
+  padding-inline-start: 1em;
+}
+ol li {
+  margin-top: 1rem;
+}
+ol li p {
+  margin: 0.5rem 0;
+}
+ul li {
+  margin-top: 0.5rem;
+}
+.salutation {
+  font-weight: 600;
+}
+footer {
+  margin-top: 2rem;
+}

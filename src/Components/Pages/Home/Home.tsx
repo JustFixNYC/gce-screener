@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useRollbar } from "@rollbar/react";
-import { Button } from "@justfixnyc/component-library";
+import { Button, Icon } from "@justfixnyc/component-library";
 import { Trans } from "@lingui/react/macro";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
@@ -29,11 +29,10 @@ export type Address = {
 };
 
 export const Home: React.FC = () => {
-  const { _, i18n } = useLingui();
+  const { i18n, _ } = useLingui();
   const navigate = useNavigate();
   const [sessionUser, setUser] = useSessionStorage<GCEUser>("user");
-  const [address, setAddress, removeAddress] =
-    useSessionStorage<Address>("address");
+  const [, setAddress, removeAddress] = useSessionStorage<Address>("address");
   const [, , removeFormFields] = useSessionStorage<FormFields>("fields");
   const [lastStepReached, setLastStepReached] =
     useSessionStorage<ProgressStep>("lastStepReached");
@@ -87,10 +86,18 @@ export const Home: React.FC = () => {
       >
         <form className="geo-search-form" onSubmit={handleAddressSearch}>
           <GeoSearchInput
-            initialAddress={address}
+            //initialAddress={address}
             onChange={setGeoAddress}
             invalid={inputInvalid}
+            invalidText={_(msg`You must enter an address`)}
             setInvalid={setInputInvalid}
+            hideInvalidOnFocus
+            placeholder={
+              <>
+                <Icon icon="locationDot" />
+                <Trans>Enter your address</Trans>
+              </>
+            }
           />
           <Button type="submit" labelText={_(msg`Get started`)} />
         </form>
@@ -123,14 +130,9 @@ export const Home: React.FC = () => {
               To be covered by the law, your apartment must meet several
               requirements.{" "}
             </Trans>
-            <a
-              href="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="jfcl-link"
-            >
+            <JFCLLinkExternal to="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page">
               <Trans>Learn more about the law.</Trans>
-            </a>{" "}
+            </JFCLLinkExternal>{" "}
             <Trans>
               If you live in New York City, you can use this site to learn which
               requirements you meet and how to assert your rights.

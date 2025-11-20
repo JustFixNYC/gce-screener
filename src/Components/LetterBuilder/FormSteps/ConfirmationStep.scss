@@ -1,0 +1,60 @@
+@use "../../../colors.scss" as *;
+@use "../../../mixins.scss" as *;
+
+.confirmation-step {
+  .success-notice,
+  .loading-notice,
+  .error-notice {
+    .notice__icon-container svg {
+      width: 3.375rem;
+      height: 2.625rem;
+    }
+  }
+
+  .loading-notice p {
+    margin: 0;
+  }
+
+  .success-letter-buttons,
+  .error-letter-buttons {
+    display: flex;
+    gap: 1.5rem;
+    a.jfcl-button {
+      text-decoration: none;
+    }
+  }
+
+  .success-notice {
+    .notice__body {
+      a:not(.jfcl-button) {
+        @include body_large_desktop;
+      }
+      .success-letter-buttons {
+        display: flex;
+        gap: 1.5rem;
+        a.jfcl-button {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .emails-sent-notice {
+    padding: 1.5rem 2rem;
+    .notice__icon-container svg {
+      width: 1.95419rem;
+      height: 1.95394rem;
+    }
+    .notice__content-container {
+      .notice__header {
+        @include body_large_desktop;
+        font-weight: 600;
+        margin: 0 0 1rem;
+      }
+      ul {
+        margin: 0;
+        padding-inline-start: 24px;
+      }
+    }
+  }
+}

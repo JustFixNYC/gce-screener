@@ -2,14 +2,16 @@ import useSWR from "swr";
 import useSWRMutation, { TriggerWithArgs } from "swr/mutation";
 import {
   BuildingData,
-  ComingSoonSignupPostData,
-  ComingSoonSignupResponse,
+  GCELetterConfirmation,
+  GCELetterPostData,
   GCEPostData,
   GCEUser,
+  LandlordData,
 } from "../types/APIDataTypes";
 import {
+  separateBbl,
   Tenants2ApiFetcher,
-  Tenants2ComingSoonApiFetcher,
+  Tenants2ApiFetcherLetter,
   WowApiFetcher,
 } from "./helpers";
 
@@ -64,25 +66,25 @@ export function useSendGceData(): Tenants2SWRResponse {
   };
 }
 
-type Tenants2ComingSoonSWRResponse = {
-  data: ComingSoonSignupResponse | undefined;
+type Tenants2LetterSWRResponse = {
+  data: GCELetterConfirmation | undefined;
   error: Error | undefined;
   isMutating: boolean;
   reset: () => void;
   trigger: TriggerWithArgs<
-    ComingSoonSignupResponse,
+    GCELetterConfirmation,
     unknown,
-    "/gceletter/coming-soon-subscribe",
-    ComingSoonSignupPostData
+    "/gceletter/send-letter",
+    GCELetterPostData
   >;
 };
 
-export function useSendComingSoonSignup(): Tenants2ComingSoonSWRResponse {
+export function useSendGceLetterData(): Tenants2LetterSWRResponse {
   const { data, error, trigger, reset, isMutating } = useSWRMutation(
-    "/gceletter/coming-soon-subscribe",
-    Tenants2ComingSoonApiFetcher,
+    "/gceletter/send-letter",
+    Tenants2ApiFetcherLetter,
     {
-      populateCache: (result: ComingSoonSignupResponse) => result,
+      populateCache: (result: GCELetterConfirmation) => result,
       revalidate: false,
     }
   );
@@ -93,5 +95,35 @@ export function useSendComingSoonSignup(): Tenants2ComingSoonSWRResponse {
     trigger, // (arg, options) a function to trigger a remote mutation
     reset, // a function to reset the state (data, error, isMutating)
     isMutating, // if there's an ongoing remote mutation
+  };
+}
+
+export type LandlordDataSWRResponse = {
+  data: LandlordData | undefined;
+  isLoading: boolean;
+  error: Error | undefined;
+};
+
+export function useGetLandlordData(
+  bbl: string | undefined
+): LandlordDataSWRResponse {
+  let url: string | null;
+  if (!bbl || bbl.length !== 10) {
+    url = null;
+  } else {
+    const { borough, block, lot } = separateBbl(bbl);
+    url = `/address/wowza?borough=${borough}&block=${block}&lot=${lot}`;
+  }
+  const { data, error, isLoading } = useSWR(url, WowApiFetcher, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  });
+  return {
+    data: data?.addrs?.find(
+      (addr: { bbl: string | undefined }) => addr.bbl === bbl
+    ),
+    isLoading,
+    error: error,
   };
 }

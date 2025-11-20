@@ -27,6 +27,12 @@ import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
 import { decodeFromURI } from "./helpers";
 import { RentCalculator } from "./Components/Pages/RentCalculator/RentCalculator";
 import { LetterLanding } from "./Components/Pages/LetterLanding/LetterLanding";
+import { LetterNextStepsStandalone } from "./Components/LetterBuilder/LetterNextSteps/LetterNextSteps";
+import {
+  LetterLayout,
+  LetterSender,
+} from "./Components/Pages/LetterSender/LetterSender";
+import { stepRouteNames } from "./Components/LetterBuilder/LetterSteps";
 import "./App.scss";
 
 const Layout = () => {
@@ -202,8 +208,16 @@ const router = createBrowserRouter(
           element={<RentCalculator />}
           loader={LoadURLSessionOptional}
         />
-        <Route path="letter" element={<LetterLanding />}>
+        <Route path="letter" element={<LetterLayout />}>
           <Route index element={<LetterLanding />} />
+          {stepRouteNames.map((stepRouteName, index) => (
+            <Route
+              path={stepRouteName}
+              element={<LetterSender />}
+              key={index}
+            />
+          ))}
+          <Route path="next_steps" element={<LetterNextStepsStandalone />} />
         </Route>
         <Route path="tenant_rights" element={<TenantRights />} />
         <Route path="privacy_policy" element={<PrivacyPolicy />} />

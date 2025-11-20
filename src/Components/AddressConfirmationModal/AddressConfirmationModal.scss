@@ -1,0 +1,9 @@
+@use "../../mixins.scss" as *;
+
+.address-confirmation-modal {
+  address {
+    font-style: normal;
+    margin-top: 1rem;
+    @include body_large_desktop;
+  }
+}

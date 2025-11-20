@@ -14,7 +14,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
     "@contentful/rich-text-react-renderer": "16.1.0",
-    "@justfixnyc/component-library": "0.56.0",
+    "@justfixnyc/component-library": "0.56.2",
     "@justfixnyc/geosearch-requester": "^1.0.3-alpha.0",
     "@lingui/react": "^5.3.3",
     "@rollbar/react": "^0.12.0-beta",
@@ -22,10 +22,12 @@
     "lz-string": "^1.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.62.0",
     "react-router-dom": "^6.26.2",
     "rollbar": "^2.26.4",
     "swagger-ui-react": "^5.17.14",
-    "swr": "^2.2.5"
+    "swr": "^2.2.5",
+    "zod": "^4.0.14"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

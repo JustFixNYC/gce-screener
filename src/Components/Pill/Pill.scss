@@ -13,12 +13,29 @@
   letter-spacing: 1.12px;
   box-sizing: border-box;
 
-  &.pill-green {
+  &.pill__circle {
+    display: flex;
+    justify-content: center;
+    border: 1px solid $OFF_BLACK;
+    border-radius: 1.9375rem;
+    width: 1.5em;
+    height: 1.5em;
+    padding: 0 0 0.1em 0;
+    font-family: "Degular Text";
+    font-weight: 600;
+  }
+
+  &.pill__green {
     background-color: $GREEN;
   }
 
-  &.pill-black {
+  &.pill__black {
     background-color: $OFF_BLACK;
     color: $OFF_WHITE_100;
+  }
+
+  &.pill__none {
+    background-color: unset;
+    color: $OFF_BLACK;
   }
 }

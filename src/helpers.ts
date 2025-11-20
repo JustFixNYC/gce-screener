@@ -2,6 +2,7 @@ import { GeoSearchProperties } from "@justfixnyc/geosearch-requester";
 import { msg } from "@lingui/core/macro";
 import LZString from "lz-string";
 import { RelatedProperty } from "./types/APIDataTypes";
+import { isSupportedLocale } from "./i18n-base";
 
 export enum ProgressStep {
   Home = -1,
@@ -10,7 +11,12 @@ export enum ProgressStep {
   Result = 2,
 }
 
-export function toTitleCase(x: string) {
+export function toTitleCase(x: string): string;
+export function toTitleCase(x: undefined): undefined;
+export function toTitleCase(x: null): null;
+export function toTitleCase(x?: string | null) {
+  if (x === undefined) return;
+  if (x === null) return null;
   return x.replace(
     /\w\S*/g,
     (text: string) =>
@@ -179,6 +185,17 @@ export const formatMoney = (n: number, decimalDigits?: number) =>
     currency: "USD",
     maximumFractionDigits: decimalDigits,
   }).format(n);
+
+export const currentDateLong = (locale: string): string => {
+  const dateLocale = isSupportedLocale(locale) ? `${locale}-US` : "en-US";
+  const currentDate = new Date();
+  return currentDate.toLocaleDateString(dateLocale, {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
 
 // URL param encoding/compression, copied from signature-dashboard
 

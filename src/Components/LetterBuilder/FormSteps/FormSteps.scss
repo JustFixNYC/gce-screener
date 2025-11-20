@@ -1,0 +1,138 @@
+@use "../../../mixins" as *;
+@use "../../../variables" as *;
+@use "../../../colors" as *;
+
+.letter-form {
+  &__global-error {
+    margin-bottom: 1.5rem;
+  }
+  .jfcl-form-group {
+    border-radius: 4px;
+    max-width: $contentBoxWidth;
+    background-color: $WHITE;
+    scroll-margin-top: 3.75rem; // 60px
+    // below vars require !important to override index.scss style
+    padding: 2rem !important;
+    margin: 0 0 1.5rem 0 !important; // 24px
+    border: 1px solid $GREY_200 !important;
+
+    &.jfcl-form-group-is-invalid {
+      border: 2px solid $ORANGE !important;
+    }
+
+    legend {
+      position: relative;
+      float: left;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0;
+      @include body_large_desktop;
+      font-weight: 600;
+    }
+
+    // form level error message
+    .jfcl-input-header__invalid_text {
+      font-size: 1rem;
+      font-weight: 400;
+      display: block;
+    }
+
+    .info-box {
+      margin-bottom: 1.5rem;
+    }
+
+    ul {
+      @include body_standard_desktop;
+      margin: unset;
+      padding-inline-start: 1.25rem; // 20px;
+    }
+    li:last-child {
+      padding-bottom: 1.5rem; // 24px
+    }
+
+    .jfcl-select-button {
+      min-width: 90px;
+    }
+
+    // Text input header labels
+    .jfcl-text-input {
+      label {
+        @include body_standard_desktop;
+        margin-bottom: 0.25rem;
+        display: block;
+      }
+    }
+
+    // Section header labels without info box below
+    .form-group__section-header {
+      label {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .form-group__footer {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid $GREY_200;
+      // offset parent padding for divider to span full width
+      margin-left: -2rem;
+      margin-right: -2rem;
+      padding: 2rem 2rem 0;
+      @include body_standard_desktop;
+
+      &-text {
+        font-weight: 600;
+      }
+      button {
+        font-weight: 500;
+      }
+    }
+
+    .text-input__two-column {
+      display: flex;
+      gap: 1.5rem;
+      .jfcl-text-input {
+        flex: 1;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .geo-search {
+      label {
+        @include body_standard_desktop;
+      }
+      .jfcl-dropdown {
+        margin: 0.25rem 0 1.5rem 0;
+      }
+
+      .jfcl-dropdown--is-invalid {
+        .jfcl-dropdown__control {
+          border: 1.5px solid $ORANGE;
+        }
+      }
+
+      .jfcl-dropdown__value-container {
+        padding: 0.45rem; // total width ~44px to match other text inputs
+      }
+    }
+
+    .unit-number-input-group {
+      // override global form group style (again) for nested form group
+      padding: unset !important;
+      margin: unset !important;
+      border: unset !important;
+
+      .jfcl-input-header__label,
+      .jfcl-checkbox__label {
+        @include body_standard_desktop;
+        margin-bottom: 0.25rem;
+      }
+      .jfcl-text-input {
+        margin-bottom: 0.75rem;
+      }
+      .jfcl-checkbox {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

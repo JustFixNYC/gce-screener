@@ -1,0 +1,14 @@
+@use "../../../colors.scss" as *;
+@use "../../../mixins.scss" as *;
+
+.allowed-increase-step {
+  .allowed-increase-notice p {
+    margin: 0;
+  }
+  .jfcl-link {
+    @include body_large_desktop;
+    @include for-phone-only {
+      @include body_standard_mobile;
+    }
+  }
+}

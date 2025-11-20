@@ -1,0 +1,163 @@
+@use "../../../mixins" as *;
+@use "../../../variables" as *;
+@use "../../../colors" as *;
+
+.mail-choice-step {
+  .mail-choice-step__header {
+    h3 {
+      @include h3_desktop;
+      margin: 1rem 0 0.5rem;
+    }
+    p {
+      @include body_large_desktop;
+      margin: 0 0 2.1875rem 0; // 35px
+    }
+    @include for-phone-only {
+      h3 {
+        @include h3_mobile;
+      }
+      p {
+        @include body_standard_mobile;
+      }
+    }
+  }
+
+  .jfcl-radio-button {
+    display: flex;
+    border: 1px solid $GREY_200;
+    border-radius: 6px;
+    background-color: $WHITE;
+
+    &__checkmark {
+      min-width: 1.25rem; // 20px
+      min-height: 1.25rem; // 20px
+      padding: 0;
+    }
+
+    &__checkmark-checked {
+      padding: 0.375rem; // 6px
+    }
+
+    // highlight when selected (requires :has support)
+    &:has(input[type="radio"]:checked) {
+      background-color: $BLUE_100;
+      border: 2px solid $OFF_BLACK;
+    }
+
+    // stack options with space
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  // ensure radio and label align nicely
+  .jfcl-radio-button label {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 1rem 1.25rem; // 16px 20px
+  }
+
+  strong {
+    @include body_standard_desktop;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    @include body_standard_desktop;
+    margin: unset;
+    width: 85%;
+  }
+
+  .mail-choice__pills {
+    display: inline-flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    .pill {
+      border: none;
+      padding: 0.375rem 0.625rem; //6px 10px
+    }
+  }
+
+  .jfcl-form-group.email-form-group {
+    legend {
+      position: relative;
+      float: left;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0;
+      @include body_large_desktop;
+      font-weight: 600;
+    }
+
+    .landlord-email {
+      margin-bottom: 0.75rem;
+    }
+
+    .additional-email-form-group {
+      padding: unset !important;
+      margin: unset !important;
+      border: 0px !important;
+      display: flex;
+      flex-direction: column;
+
+      legend {
+        @include body_standard_desktop;
+        margin-bottom: 0.25rem;
+        display: block;
+      }
+
+      .additional-email-input {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        .jfcl-text-input {
+          flex: 1;
+          margin-bottom: 0;
+        }
+
+        .jfcl-button {
+          margin-top: 0;
+          flex-shrink: 0;
+          align-self: flex-end;
+        }
+
+        @include for-phone-only {
+          flex-direction: column;
+          gap: 0.75rem;
+
+          .jfcl-text-input {
+            width: 100%;
+          }
+        }
+      }
+
+      // form level error message
+      .jfcl-input-header__invalid_text {
+        font-size: 1rem;
+        font-weight: 400;
+      }
+
+      .jfcl-select-button {
+        min-width: 90px;
+      }
+
+      // Text input header labels
+      .jfcl-text-input,
+      .jfcl-checkbox {
+        label {
+          @include body_standard_desktop;
+          margin-bottom: 0.25rem;
+          display: block;
+        }
+      }
+      .jfcl-checkbox label {
+        display: flex;
+      }
+    }
+  }
+}

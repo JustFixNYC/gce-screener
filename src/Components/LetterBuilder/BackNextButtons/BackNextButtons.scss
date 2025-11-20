@@ -1,0 +1,18 @@
+@use "../../../mixins" as *;
+
+.letter-form__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+
+  .jfcl-button.back-link {
+    @include body_standard_desktop;
+    margin-right: 1.5rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    &:hover:not(:disabled) {
+      background-color: unset;
+    }
+  }
+}

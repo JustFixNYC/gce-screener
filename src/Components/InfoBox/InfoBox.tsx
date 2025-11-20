@@ -7,16 +7,18 @@ type InfoBoxProps = {
   children: ReactNode;
   color?: "white" | "blue" | "orange";
   role?: string;
+  className?: string;
 };
 
 export const InfoBox: React.FC<InfoBoxProps> = ({
   children,
   color = "white",
   role,
+  className,
 }) => (
-  <div className={classNames("info-box", color)}>
+  <div className={classNames("info-box", color, className)}>
     <div className="info-box__icon-container">
-      <Icon icon="circleInfo" />
+      <Icon icon={color === "orange" ? "circleExclamation" : "circleInfo"} />
     </div>
     <div className="info-box__content-container" role={role}>
       {children}
