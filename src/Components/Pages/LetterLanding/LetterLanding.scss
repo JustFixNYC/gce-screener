@@ -75,10 +75,6 @@
     .jfcl-link {
       @include body_large_desktop;
       font-weight: 500;
-      svg {
-        display: none; // hide internal link arrow icon
-      }
-
       @include for-phone-only {
         @include body_standard_mobile;
       }
