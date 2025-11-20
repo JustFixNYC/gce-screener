@@ -123,7 +123,9 @@ export const ReasonStep: React.FC = () => {
             <li>
               <Trans>
                 You’ve received a{" "}
-                <JFCLLinkExternal to="">notice of termination</JFCLLinkExternal>
+                <JFCLLinkExternal to="https://www.nycourts.gov/legacyPDFS/FORMS/landlordtenant/WrittenDemandTerminate-fillable.pdf">
+                  notice of termination
+                </JFCLLinkExternal>
               </Trans>
             </li>
           </ul>

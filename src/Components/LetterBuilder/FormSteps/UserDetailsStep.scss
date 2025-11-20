@@ -1,7 +1,7 @@
 @use "../../../mixins" as *;
 @use "../../../variables" as *;
 
-#user-details-step {
+.user-details-step {
   .modal__content {
     p {
       margin-top: unset;

@@ -1,6 +1,13 @@
 @use "../../../colors.scss" as *;
 @use "../../../mixins.scss" as *;
 
+// interstitial loading page
+.loading-notice {
+  p {
+    margin: 0;
+  }
+}
+
 .confirmation-step {
   .success-notice,
   .loading-notice,
@@ -11,8 +18,10 @@
     }
   }
 
-  .loading-notice p {
-    margin: 0;
+  .loading-notice {
+    p {
+      margin: 0;
+    }
   }
 
   .success-letter-buttons,
@@ -56,5 +65,9 @@
         padding-inline-start: 24px;
       }
     }
+  }
+
+  .content-box {
+    margin-bottom: 1rem;
   }
 }

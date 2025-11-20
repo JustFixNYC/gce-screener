@@ -2,18 +2,16 @@
 @use "../../../mixins.scss" as *;
 
 .landlord-details-step {
-  &__landlord-info {
-    margin-bottom: 8px;
-  }
-
-  &__modal-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-end;
-    margin-top: 1rem;
-  }
   .hpd-invalid-modal .modal__content {
     @include body_large_desktop;
+  }
+  .modal__content {
+    .info-box {
+      margin-bottom: 1rem;
+    }
+    .landlord-address {
+      margin-bottom: 0;
+    }
   }
   .landlord-address {
     @include body_large_desktop;

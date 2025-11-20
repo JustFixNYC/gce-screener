@@ -12,7 +12,7 @@
     background-color: $WHITE;
     scroll-margin-top: 3.75rem; // 60px
     // below vars require !important to override index.scss style
-    padding: 2rem !important;
+    padding: 2rem 1.5rem !important;
     margin: 0 0 1.5rem 0 !important; // 24px
     border: 1px solid $GREY_200 !important;
 
@@ -75,8 +75,8 @@
       justify-content: space-between;
       border-top: 1px solid $GREY_200;
       // offset parent padding for divider to span full width
-      margin-left: -2rem;
-      margin-right: -2rem;
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
       padding: 2rem 2rem 0;
       @include body_standard_desktop;
 
@@ -85,15 +85,7 @@
       }
       button {
         font-weight: 500;
-      }
-    }
-
-    .text-input__two-column {
-      display: flex;
-      gap: 1.5rem;
-      .jfcl-text-input {
-        flex: 1;
-        margin-bottom: 1.5rem;
+        min-width: fit-content;
       }
     }
 
@@ -130,7 +122,9 @@
       .jfcl-text-input {
         margin-bottom: 0.75rem;
       }
-      .jfcl-checkbox {
+      .jfcl-checkbox__checkmark {
+        min-width: 1.5em;
+        min-height: 1.5em;
         margin-bottom: 0;
       }
     }

@@ -5,6 +5,9 @@
   .content-box__section__header .pill__circle {
     margin-right: 1rem;
     font-size: 1.125rem;
+    min-width: 1.5em;
+    min-height: 1.5em;
+    align-self: center;
   }
   .next-step.while-you-wait {
     background-color: $OFF_WHITE_100;

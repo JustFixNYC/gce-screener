@@ -284,12 +284,11 @@ const LandlordFormGroup: React.FC<{
                 or use the{" "}
                 <button
                   type="button"
-                  className="text-link-button"
+                  className="text-link-button jfcl-link"
                   onClick={onBackToHpdLookup}
                 >
-                  recommended landlord information
+                  recommended landlord information.
                 </button>
-                .
               </Trans>
             </InfoBox>
           )

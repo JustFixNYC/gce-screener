@@ -397,18 +397,18 @@ export const RefuseSmallerIncrease: React.FC<NextStepItemProps> = (props) => (
     }
     {...props}
   >
-    <strong>
+    <h5>
       <Trans>What to know</Trans>
-    </strong>
+    </h5>
     <p>
       Your landlord might reject your request and keep the higher rent increase.
       Even if they refuse, your Good Cause rights still apply. Increases above
       the local rent standard (annual inflation + 5%, or a maximum of 10%) are
       presumed unreasonable unless your landlord can prove a valid reason.
     </p>
-    <strong>
+    <h5>
       <Trans>What to do</Trans>
-    </strong>
+    </h5>
     <ul>
       <li>
         <Trans>Document their refusal or lack of response.</Trans>
@@ -490,16 +490,16 @@ export const NoSmallerIncreaseBeforeLeaseEnd: React.FC<NextStepItemProps> = (
     }
     {...props}
   >
-    <strong>
+    <h5>
       <Trans>What to know</Trans>
-    </strong>
+    </h5>
     <p>
       If your lease expires before a new one is offered, your Good Cause rights
       still apply. You have the right to stay in your home.
     </p>
-    <strong>
+    <h5>
       <Trans>What to do</Trans>
-    </strong>
+    </h5>
     <ul>
       <li>
         <Trans>If possible, keep paying rent under your current lease.</Trans>

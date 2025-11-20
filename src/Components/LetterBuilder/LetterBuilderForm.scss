@@ -7,9 +7,41 @@
     .modal__header {
       margin-bottom: 1rem;
     }
+
+    .modal__content {
+      button {
+        flex-grow: 1;
+        width: auto;
+      }
+    }
+    .modal__buttons {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      @include for-phone-only {
+        flex-direction: column;
+      }
+
+      .jfcl-button {
+        flex-grow: 1;
+        width: auto;
+      }
+    }
     .callout-box {
       ul {
         margin-bottom: 0;
+      }
+    }
+  }
+  .accordion__content {
+    h5 {
+      @include body_standard_desktop;
+      font-weight: 600;
+      margin: 1rem 0 1rem 0;
+
+      @include for-phone-only {
+        @include body_standard_mobile;
+        font-weight: 600;
       }
     }
   }
