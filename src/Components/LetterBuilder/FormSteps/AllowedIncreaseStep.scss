@@ -2,9 +2,25 @@
 @use "../../../mixins.scss" as *;
 
 .allowed-increase-step {
-  .allowed-increase-notice p {
-    margin: 0;
+  .allowed-increase-notice {
+    p {
+      margin: 0;
+    }
   }
+
+  .content-box {
+    margin-bottom: 1rem;
+  }
+
+  .pill__circle {
+    min-width: 1.5em;
+    min-height: 1.5em;
+  }
+
+  .letter-form__buttons {
+    margin-bottom: -1rem;
+  }
+
   .jfcl-link {
     @include body_large_desktop;
     @include for-phone-only {

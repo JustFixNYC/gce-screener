@@ -107,7 +107,7 @@ export const PreviewStep: React.FC = () => {
         >
           {languageNames["en"]}
         </button>
-        {" / "}
+        <span>{" / "}</span>
         <button
           className="jfcl-link"
           onClick={() => setPreviewLocale("es")}
