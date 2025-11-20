@@ -6,7 +6,7 @@ import "./Notice.scss";
 
 interface NoticeProps {
   icon?: IconNames;
-  color?: "yellow" | "green" | "off-white";
+  color?: "yellow" | "green" | "white" | "off-white-100" | "off-white-200";
   header?: React.ReactNode;
   children?: React.ReactNode;
   className?: string;

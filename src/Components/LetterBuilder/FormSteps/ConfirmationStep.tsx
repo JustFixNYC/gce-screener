@@ -41,7 +41,7 @@ export const ConfirmationStep: React.FC<{
       <div className="confirmation-step">
         <Notice
           className="loading-notice"
-          color="off-white"
+          color="off-white-200"
           icon="envelopeLight"
           header={<Trans>We’re finishing up your letter…</Trans>}
         >
@@ -132,17 +132,32 @@ export const ConfirmationStep: React.FC<{
         }
       >
         {data.mail_choice === "WE_WILL_MAIL" ? (
-          <p>
-            <Trans>
-              Your letter is now on its way to your landlord. Your USPS
-              Certified Mail® tracking number is{" "}
-              <JFCLLinkExternal
-                to={USPS_TRACKING_URL_PREFIX + data.tracking_number}
-              >
-                {data.tracking_number}
-              </JFCLLinkExternal>
-            </Trans>
-          </p>
+          <>
+            <p>
+              <Trans>
+                Your letter is now on its way to your landlord. Your USPS
+                Certified Mail® tracking number is{" "}
+                <JFCLLinkExternal
+                  to={USPS_TRACKING_URL_PREFIX + data.tracking_number}
+                >
+                  {data.tracking_number}
+                </JFCLLinkExternal>
+              </Trans>
+            </p>
+            <Notice
+              className="usps-delay"
+              icon="circleInfo"
+              color="off-white-100"
+            >
+              <strong>
+                <Trans>Note:</Trans>
+              </strong>{" "}
+              <Trans>
+                USPS may show “Tracking not available” at first. This is normal.
+                Tracking will appear once USPS scans your letter.
+              </Trans>
+            </Notice>
+          </>
         ) : (
           <p>
             <Trans>
@@ -188,7 +203,7 @@ export const ConfirmationStep: React.FC<{
       {!!allEmailsSent?.length && (
         <Notice
           className="emails-sent-notice"
-          color="off-white"
+          color="off-white-200"
           icon="paperPlaneLight"
           header={
             <Trans>

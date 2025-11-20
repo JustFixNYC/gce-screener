@@ -67,7 +67,7 @@ msgstr "{bedrooms} habitación"
 msgid "{docType}"
 msgstr "{docType}"
 
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:203
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:218
 msgid "{email}"
 msgstr "{email}"
 
@@ -252,7 +252,7 @@ msgstr "Una notificación de no renovación o desalojo."
 msgid "A nonprofit organization that builds online tools to help New Yorkers achieve affordable, healthy, eviction-free housing."
 msgstr "Una organización sin fines de lucro que crea herramientas en línea para ayudar a los neoyorquinos a conseguir viviendas asequibles, saludables y sin riesgo de desalojo."
 
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:194
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:209
 msgid "A PDF copy of your letter has been sent to the following email address(es):"
 msgstr "Se ha enviado una copia en PDF de su carta a las siguientes direcciones de correo electrónico:"
 
@@ -659,7 +659,7 @@ msgstr "Verifique el alquiler utilizando el <0/>."
 msgid "Download coverage"
 msgstr "Descargar cobertura"
 
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:167
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:182
 msgid "Download letter (PDF)"
 msgstr "Descargar carta (PDF)"
 
@@ -1813,6 +1813,10 @@ msgstr "¿No estás seguro de si estás cubierto?"
 msgid "Note"
 msgstr "Nota"
 
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:153
+msgid "Note:"
+msgstr ""
+
 #: src/Components/Pages/Form/Survey.tsx:435
 msgid "Note: if your building is part of 421a or J51, your apartment should be rent stabilized"
 msgstr "Nota: Si su edificio forma parte de los programas 421a o J51, el alquiler de su departamento debería estar estabilizado"
@@ -2782,7 +2786,7 @@ msgstr "Para cumplir con el requisito de \"tamaño de la cartera del propietario
 msgid "To read the full law, visit:"
 msgstr "Para leer la ley completa, visite:"
 
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:178
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:193
 msgid "Track your letter"
 msgstr "Sigue tu carta"
 
@@ -2948,6 +2952,10 @@ msgstr "USPS ha señalado que es posible que a esta dirección le falte el núme
 #: src/Components/AddressConfirmationModal/AddressConfirmationModal.tsx:62
 msgid "USPS has flagged this address as undeliverable. Your letter may not be delivered if you proceed with this address. If you know of an alternate address for your landlord, we encourage you to use it. "
 msgstr "USPS ha marcado esta dirección como imposible de entregar. Es posible que su carta no se entregue si continúa con esta dirección. Si conoce otra dirección de su arrendador, le recomendamos que la utilice. "
+
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:155
+msgid "USPS may show “Tracking not available” at first. This is normal. Tracking will appear once USPS scans your letter."
+msgstr ""
 
 #: src/Components/AddressConfirmationModal/AddressConfirmationModal.tsx:97
 #~ msgid "USPS verified address:"
@@ -3680,7 +3688,7 @@ msgstr "Información sobre tu arrendador"
 #~ msgid "Your landlord’s proposed rent increase appears to be within the Good Cause limit."
 #~ msgstr "Your landlord’s proposed rent increase appears to be within the Good Cause limit."
 
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:148
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:163
 msgid "Your letter has been created and is now ready for you to download and mail or deliver yourself."
 msgstr "Tu carta se ha creado y ya está lista para que la descargues y la envíes por correo o la entregues tú mismo."
 
@@ -3697,7 +3705,7 @@ msgstr "Tu carta se ha creado y ya está lista para que la descargues y la enví
 #~ msgstr "Your letter has been mailed to your landlord."
 
 #. placeholder {0}: data.tracking_number
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:136
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:137
 msgid "Your letter is now on its way to your landlord. Your USPS Certified Mail® tracking number is <0>{0}</0>"
 msgstr "Tu carta ya está en camino hacia tu arrendador. Tu número de seguimiento de USPS Certified Mail® es <0>{0}</0>"
 
