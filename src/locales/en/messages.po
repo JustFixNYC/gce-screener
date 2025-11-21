@@ -62,7 +62,7 @@ msgstr "{bedrooms} bedroom"
 msgid "{docType}"
 msgstr "{docType}"
 
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:218
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:203
 msgid "{email}"
 msgstr "{email}"
 
@@ -247,7 +247,7 @@ msgstr "A non-renewal or eviction notice"
 msgid "A nonprofit organization that builds online tools to help New Yorkers achieve affordable, healthy, eviction-free housing."
 msgstr "A nonprofit organization that builds online tools to help New Yorkers achieve affordable, healthy, eviction-free housing."
 
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:209
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:194
 msgid "A PDF copy of your letter has been sent to the following email address(es):"
 msgstr "A PDF copy of your letter has been sent to the following email address(es):"
 
@@ -654,7 +654,7 @@ msgstr "Double-check the rent using the <0/>."
 msgid "Download coverage"
 msgstr "Download coverage"
 
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:182
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:167
 msgid "Download letter (PDF)"
 msgstr "Download letter (PDF)"
 
@@ -1808,10 +1808,6 @@ msgstr "Not sure if you’re covered?"
 msgid "Note"
 msgstr "Note"
 
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:153
-msgid "Note:"
-msgstr "Note:"
-
 #: src/Components/Pages/Form/Survey.tsx:435
 msgid "Note: if your building is part of 421a or J51, your apartment should be rent stabilized"
 msgstr "Note: if your building is part of 421a or J51, your apartment should be rent stabilized"
@@ -2781,7 +2777,7 @@ msgstr "To meet Good Cause Eviction’s “Landlord Portfolio Size” requiremen
 msgid "To read the full law, visit:"
 msgstr "To read the full law, visit:"
 
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:193
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:178
 msgid "Track your letter"
 msgstr "Track your letter"
 
@@ -2947,10 +2943,6 @@ msgstr "USPS has flagged that this address may be missing a unit number. Your le
 #: src/Components/AddressConfirmationModal/AddressConfirmationModal.tsx:62
 msgid "USPS has flagged this address as undeliverable. Your letter may not be delivered if you proceed with this address. If you know of an alternate address for your landlord, we encourage you to use it. "
 msgstr "USPS has flagged this address as undeliverable. Your letter may not be delivered if you proceed with this address. If you know of an alternate address for your landlord, we encourage you to use it. "
-
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:155
-msgid "USPS may show “Tracking not available” at first. This is normal. Tracking will appear once USPS scans your letter."
-msgstr "USPS may show “Tracking not available” at first. This is normal. Tracking will appear once USPS scans your letter."
 
 #: src/Components/AddressConfirmationModal/AddressConfirmationModal.tsx:97
 #~ msgid "USPS verified address:"
@@ -3683,7 +3675,7 @@ msgstr "Your landlord's information"
 #~ msgid "Your landlord’s proposed rent increase appears to be within the Good Cause limit."
 #~ msgstr "Your landlord’s proposed rent increase appears to be within the Good Cause limit."
 
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:163
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:148
 msgid "Your letter has been created and is now ready for you to download and mail or deliver yourself."
 msgstr "Your letter has been created and is now ready for you to download and mail or deliver yourself."
 
@@ -3700,7 +3692,7 @@ msgstr "Your letter has been created and is now ready for you to download and ma
 #~ msgstr "Your letter has been mailed to your landlord."
 
 #. placeholder {0}: data.tracking_number
-#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:137
+#: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:136
 msgid "Your letter is now on its way to your landlord. Your USPS Certified Mail® tracking number is <0>{0}</0>"
 msgstr "Your letter is now on its way to your landlord. Your USPS Certified Mail® tracking number is <0>{0}</0>"
 
