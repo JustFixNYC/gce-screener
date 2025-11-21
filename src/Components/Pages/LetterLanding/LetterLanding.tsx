@@ -102,7 +102,9 @@ export const LetterLanding: React.FC = () => {
               </Trans>
             </p>
             <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause/">
-              Learn where Good Cause Protections have already been won
+              <Trans>
+                Learn where Good Cause Protections have already been won
+              </Trans>
             </JFCLLinkExternal>
           </section>
         </div>
