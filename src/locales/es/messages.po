@@ -516,7 +516,7 @@ msgstr "Cerrar"
 msgid "Close modal"
 msgstr "Cerrar modal"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:145
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:147
 msgid "Communicating your request to your landlord in writing provides documented evidence of your complaint."
 msgstr "Comunicar su solicitud al propietario por escrito le proporciona una prueba documentada de su queja."
 
@@ -600,7 +600,7 @@ msgstr "Copiar goodcausenyc.org"
 msgid "Coverage depends on your building type, subsidy status, and other factors."
 msgstr "La cobertura depende del tipo de edificio, el estado de los subsidios y otros factores."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:142
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:144
 msgid "Create a paper trail"
 msgstr "Crear un registro documental"
 
@@ -724,7 +724,7 @@ msgstr "Ingrese su dirección"
 msgid "Error with address selection"
 msgstr "Error al seleccionar la dirección"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:134
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:136
 msgid "Establishes a professional channel to negotiate solutions to your rent increase or non-renewal."
 msgstr "Establece un canal profesional para negociar soluciones al aumento de tu renta o a la no renovación del contrato."
 
@@ -860,7 +860,7 @@ msgstr "Para la ciudad de Nueva York, la variación del IPC es del {0}% a fecha 
 msgid "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
 msgstr "Para los contratos de alquiler estabilizado que se renueven entre el 1 de octubre de 2024 y el 30 de septiembre de 2025, el alquiler legal podrá incrementarse en los siguientes porcentajes: para una renovación de un año, el incremento será del 2,75 %, y para una renovación de dos años, el incremento será del 5,25 %."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:120
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:122
 msgid "Formally assert your rights"
 msgstr "Haga valer formalmente sus derechos."
 
@@ -1584,6 +1584,10 @@ msgstr "Obtenga más información sobre la ley."
 msgid "Learn more about your rights"
 msgstr "Más información sobre sus derechos"
 
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:105
+msgid "Learn where Good Cause Protections have already been won"
+msgstr ""
+
 #: src/Components/Pages/Home/Home.tsx:168
 msgid "Learn where Good Cause protections have been won"
 msgstr "Descubra dónde se han conseguido protecciones por justa causa"
@@ -1887,7 +1891,7 @@ msgstr "Ofrecer un contrato de arrendamiento más largo a cambio de un aumento m
 msgid "Once you find the name of your building’s owner, remember it because you’ll need it in Step 2."
 msgstr "Una vez que encuentres el nombre del propietario de tu edificio, recuérdalo porque lo necesitarás en el paso 2."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:131
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:133
 msgid "Open negotiation"
 msgstr "Negociación abierta"
 
@@ -2416,7 +2420,7 @@ msgstr "Envíe una carta a su arrendador <0/>defendiendo <1/>sus derechos por ca
 msgid "Send the rent increase calculator to your phone"
 msgstr "Envíe la calculadora de aumento de renta a tu teléfono"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:123
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:125
 msgid "Sending a letter clearly communicates to your landlord that you know your legal protections."
 msgstr "El envío de una carta comunica claramente a su arrendador que conoce sus protecciones legales."
 
@@ -3216,7 +3220,7 @@ msgstr "¿Quién puede ayudar?"
 msgid "Why are we asking for this information?"
 msgstr "¿Por qué solicitamos esta información?"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:115
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:117
 msgid "Why send a letter to your landlord?"
 msgstr "¿Por qué enviar una carta a tu arrendador?"
 
@@ -3802,4 +3806,3 @@ msgstr "Se requiere el código postal para la carta."
 #: src/types/LetterFormTypes.ts:27
 #~ msgid "ZIP Code must be either 5-digit number or 5-digits with hyphen and 4 additional digits."
 #~ msgstr "ZIP Code must be either 5-digit number or 5-digits with hyphen and 4 additional digits."
-
