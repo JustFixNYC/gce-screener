@@ -8,6 +8,7 @@ export const useHideHeader = (
   threshold: number = 10
 ): boolean => {
   const [hideHeader, setHideHeader] = useState<boolean>(false);
+  const pageBottomProximity = 100;
 
   useEffect(() => {
     let lastScrollY = window.scrollY || window.pageYOffset;
@@ -33,15 +34,14 @@ export const useHideHeader = (
       }
 
       const headerHeight = headerRef?.current?.offsetHeight;
-      const scrolledPastBottom =
+      const closeToPageBottom =
         scrollY + window.innerHeight >
-        document.documentElement.scrollHeight - 100;
+        document.documentElement.scrollHeight - pageBottomProximity;
 
       if (headerHeight && scrollY < headerHeight) {
         // prevents seeing "behind" the header
         setHideHeader(false);
-      } else if (scrolledPastBottom) {
-        console.log("bottom");
+      } else if (closeToPageBottom) {
         // do nothing to prevent jitter at bottom of the page
       } else {
         setHideHeader(scrollY > lastScrollY);
