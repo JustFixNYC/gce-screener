@@ -7,7 +7,10 @@ import z from "zod";
 import { CPI } from "../Components/Pages/RentCalculator/RentIncreaseValues";
 import { flattenExtraEmails, looseOptional } from "../form-utils";
 import { GCELetterConfirmation } from "./APIDataTypes";
-import { StepRouteName } from "../Components/LetterBuilder/LetterSteps";
+import {
+  LetterStep,
+  StepRouteName,
+} from "../Components/LetterBuilder/LetterSteps";
 import { GCELetterSubmissionError } from "../Components/LetterBuilder/FormSteps/ConfirmationStep";
 
 const lobAddressSchema = (i18n: I18n) =>
@@ -218,6 +221,7 @@ export type FormHookProps = UseFormReturn<FormFields>;
 
 export const FormContext = createContext<{
   formMethods: FormHookProps;
+  currentStep: LetterStep;
   back: (prevStepName: StepRouteName) => void;
   next: (nextStepName?: StepRouteName) => void;
   confirmationResponse?: GCELetterConfirmation | GCELetterSubmissionError;

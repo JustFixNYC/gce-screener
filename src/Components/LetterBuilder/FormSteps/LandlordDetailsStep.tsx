@@ -30,18 +30,22 @@ import {
 } from "../landlordAddressHelpers";
 import { toTitleCase } from "../../../helpers";
 import { Notice } from "../../Notice/Notice";
+import { ProgressBar } from "../ProgressBar/ProgressBar";
 import "./LandlordDetailsStep.scss";
 
 export const LandlordDetailsStep: React.FC = () => {
   const nextStep = "preview";
-  const { next, formMethods } = useContext(FormContext);
   const {
-    formState: { errors },
-    getValues,
-    setValue,
-    trigger,
-    clearErrors,
-  } = formMethods;
+    currentStep,
+    next,
+    formMethods: {
+      formState: { errors },
+      getValues,
+      setValue,
+      trigger,
+      clearErrors,
+    },
+  } = useContext(FormContext);
 
   const { _ } = useLingui();
 
@@ -137,102 +141,105 @@ export const LandlordDetailsStep: React.FC = () => {
   };
 
   return (
-    <LetterStepForm onSubmit={onSubmit} className="landlord-details-step">
-      {isLoading && (
-        <Notice
-          className="loading-notice"
-          color="off-white-200"
-          header={
-            <Trans>
-              Checking city records for your landlord's information...
-            </Trans>
-          }
-        >
-          <p>
-            <Trans>
-              This can take a few seconds. Please don’t refresh the page.
-            </Trans>
-          </p>
-        </Notice>
-      )}
-      {hpdLandlord && !showManual && (
-        <>
-          <FormGroup
-            legendText={_(msg`Your landlord's information`)}
-            key="landlord-details__hpd-lookup"
+    <>
+      <ProgressBar {...currentStep} />
+      <LetterStepForm onSubmit={onSubmit} className="landlord-details-step">
+        {isLoading && (
+          <Notice
+            className="loading-notice"
+            color="off-white-200"
+            header={
+              <Trans>
+                Checking city records for your landlord’s information...
+              </Trans>
+            }
           >
-            <InfoBox>
+            <p>
               <Trans>
-                This is your landlord’s information as registered with the NYC
-                Department of Housing and Preservation (HPD). This may be
-                different than where you send your rent checks.
+                This can take a few seconds. Please don’t refresh the page.
               </Trans>
-            </InfoBox>
-
-            <FormattedLandlordAddress landlordDetails={hpdLandlord} />
-
-            <div className="landlord-details-step__edit-address">
-              <Trans>
-                If you feel strongly that this address is incorrect or
-                incomplete, you can{" "}
-                <button
-                  type="button"
-                  className="jfcl-link text-link-button"
-                  onClick={() => {
-                    setShowManual(true);
-                    setShowOverwrite(true);
-                  }}
-                >
-                  edit the address
-                </button>
-                .
-              </Trans>
-            </div>
-          </FormGroup>
-          <LandlordEmailFormGroup />
-        </>
-      )}
-      {!isLoading && showManual && (
-        <LandlordFormGroup
-          isOverwrite={showOverwrite}
-          onBackToHpdLookup={onBackToHpdLookup}
-        />
-      )}
-      {!isLoading && (
-        <BackNextButtons
-          {...(hpdLandlord && showManual
-            ? { button1Props: { onClick: onBackToHpdLookup } }
-            : { backStepName: "contact_info" })}
-        />
-      )}
-      <Modal
-        isOpen={showHpdInvalidModal}
-        onClose={() => setShowHpdInvalidModal(false)}
-        hasCloseBtn={true}
-        header={_(
-          msg`There is an issue with your landlord's information on record with the city`
+            </p>
+          </Notice>
         )}
-        className="hpd-invalid-modal"
-      >
-        <Trans>
-          Please make any necessary corrections to your landlord's information
-        </Trans>
-        <div className="modal__buttons">
-          <Button
-            labelText={_(msg`Edit address`)}
-            onClick={() => {
-              setShowHpdInvalidModal(false);
-              setShowManual(true);
-            }}
+        {hpdLandlord && !showManual && (
+          <>
+            <FormGroup
+              legendText={_(msg`Your landlord’s information`)}
+              key="landlord-details__hpd-lookup"
+            >
+              <InfoBox>
+                <Trans>
+                  This is your landlord’s information as registered with the NYC
+                  Department of Housing and Preservation (HPD). This may be
+                  different than where you send your rent checks.
+                </Trans>
+              </InfoBox>
+
+              <FormattedLandlordAddress landlordDetails={hpdLandlord} />
+
+              <div className="landlord-details-step__edit-address">
+                <Trans>
+                  If you feel strongly that this address is incorrect or
+                  incomplete, you can{" "}
+                  <button
+                    type="button"
+                    className="jfcl-link text-link-button"
+                    onClick={() => {
+                      setShowManual(true);
+                      setShowOverwrite(true);
+                    }}
+                  >
+                    edit the address
+                  </button>
+                  .
+                </Trans>
+              </div>
+            </FormGroup>
+            <LandlordEmailFormGroup />
+          </>
+        )}
+        {!isLoading && showManual && (
+          <LandlordFormGroup
+            isOverwrite={showOverwrite}
+            onBackToHpdLookup={onBackToHpdLookup}
           />
-        </div>
-      </Modal>
-      <AddressConfirmationModal
-        isOpen={showConfirmModal}
-        onClose={() => setShowConfirmModal(false)}
-        type={lobDeliverability}
-      />
-    </LetterStepForm>
+        )}
+        {!isLoading && (
+          <BackNextButtons
+            {...(hpdLandlord && showManual
+              ? { button1Props: { onClick: onBackToHpdLookup } }
+              : { backStepName: "contact_info" })}
+          />
+        )}
+        <Modal
+          isOpen={showHpdInvalidModal}
+          onClose={() => setShowHpdInvalidModal(false)}
+          hasCloseBtn={true}
+          header={_(
+            msg`There is an issue with your landlord’s information on record with the city`
+          )}
+          className="hpd-invalid-modal"
+        >
+          <Trans>
+            Please make any necessary corrections to your landlord’s information
+          </Trans>
+          <div className="modal__buttons">
+            <Button
+              labelText={_(msg`Edit address`)}
+              onClick={() => {
+                setShowHpdInvalidModal(false);
+                setShowManual(true);
+              }}
+            />
+          </div>
+        </Modal>
+        <AddressConfirmationModal
+          isOpen={showConfirmModal}
+          onClose={() => setShowConfirmModal(false)}
+          type={lobDeliverability}
+        />
+      </LetterStepForm>
+    </>
   );
 };
 
@@ -271,7 +278,7 @@ const LandlordFormGroup: React.FC<{
   return (
     <>
       <FormGroup
-        legendText={_(msg`Your landlord's information`)}
+        legendText={_(msg`Your landlord’s information`)}
         invalid={anyLandlordInfoErrors}
         invalidText={errors?.landlord_details?.message}
         helperElement={
@@ -430,7 +437,7 @@ const LandlordEmailFormGroup: React.FC = () => {
   return (
     <>
       <FormGroup
-        legendText={_(msg`Your landlord's contact information`)}
+        legendText={_(msg`Your landlord’s contact information`)}
         className="form-group__section-header"
         invalid={!!errors.landlord_details?.email}
       >
@@ -461,18 +468,18 @@ const LandlordEmailFormGroup: React.FC = () => {
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         hasCloseBtn={true}
-        header={_(msg`Why we ask for your landlord's email`)}
+        header={_(msg`Why we ask for your landlord’s email`)}
       >
         <p>
           <Trans>
-            We ask for your landlord's email address so that we can send them a
+            We ask for your landlord’s email address so that we can send them a
             PDF copy of your letter. This helps ensure that the landlord sees
             your letter.
           </Trans>
           <br />
           <br />
           <Trans>
-            We highly recommend providing your landlord's email, especially if
+            We highly recommend providing your landlord’s email, especially if
             you normally correspond with your landlord via email.
           </Trans>
         </p>

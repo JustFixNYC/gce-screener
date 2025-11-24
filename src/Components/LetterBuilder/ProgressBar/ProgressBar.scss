@@ -2,9 +2,21 @@
 @use "../../../mixins" as *;
 
 .progress-bar {
+  margin-bottom: 2rem;
+
   &__title {
-    @include body_standard_desktop;
+    display: block;
     margin: 0 0 0.75rem 0;
+    span,
+    h2,
+    h3 {
+      @include body_standard_desktop;
+      display: inline;
+    }
+    h2,
+    span {
+      font-weight: 600;
+    }
   }
 
   &__container {

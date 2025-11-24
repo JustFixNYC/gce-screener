@@ -4,6 +4,7 @@ import { Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
+import { useRollbar } from "@rollbar/react";
 import classNames from "classnames";
 
 import { flattenExtraEmails, handleFormNoDefault } from "../../form-utils";
@@ -25,11 +26,9 @@ import {
   stepRouteNames,
   StepRouteName,
 } from "./LetterSteps";
-import { ProgressBar } from "./ProgressBar/ProgressBar";
 import { InfoBox } from "../InfoBox/InfoBox";
 import { useSessionStorage } from "../../hooks/useSessionStorage";
 import "./LetterBuilderForm.scss";
-import { useRollbar } from "@rollbar/react";
 
 export const LetterBuilderForm: React.FC = () => {
   const { i18n } = useLingui();
@@ -94,7 +93,7 @@ export const LetterBuilderForm: React.FC = () => {
   useEffect(() => {
     if (!currentStep || !lastStepReached) return;
 
-    const currentStepIndex = stepRouteNames.indexOf(currentStep.name);
+    const currentStepIndex = stepRouteNames.indexOf(currentStep.route);
     const lastStepIndex = stepRouteNames.indexOf(lastStepReached);
 
     // case: undefined step names in URL will set the indices to -1.
@@ -206,10 +205,9 @@ export const LetterBuilderForm: React.FC = () => {
 
   return (
     <>
-      <ProgressBar percentage={currentStep.progress} />
       <div className="letter-builder" ref={errorScrollRef}>
         <FormContext.Provider
-          value={{ formMethods, back, next, confirmationResponse }}
+          value={{ formMethods, currentStep, back, next, confirmationResponse }}
         >
           {currentStep.component}
         </FormContext.Provider>

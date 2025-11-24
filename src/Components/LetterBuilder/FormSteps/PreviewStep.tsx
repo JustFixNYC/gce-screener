@@ -14,10 +14,12 @@ import { languageNames, SupportedLocale } from "../../../i18n-base";
 import { buildLetterHtml } from "../Letter/letter-utils";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { InfoBox } from "../../InfoBox/InfoBox";
+import { ProgressBar } from "../ProgressBar/ProgressBar";
 import "./PreviewStep.scss";
 
 export const PreviewStep: React.FC = () => {
   const {
+    currentStep,
     next,
     formMethods: { getValues },
   } = useContext(FormContext);
@@ -86,60 +88,63 @@ export const PreviewStep: React.FC = () => {
   }, [letter, resizeIframe]);
 
   return (
-    <div className="preview-step">
-      <section className="preview-step__page-header">
-        <h3>
-          <Trans>Review your letter</Trans>
-        </h3>
-        <p>
+    <>
+      <ProgressBar {...currentStep} />
+      <div className="preview-step">
+        <section className="preview-step__page-header">
+          <h3>
+            <Trans>Review your letter</Trans>
+          </h3>
+          <p>
+            <Trans>
+              Make sure the information below is accurate. If it is not, you can
+              go back to make changes.
+            </Trans>
+          </p>
+        </section>
+        <div className="preview-step__locale-toggle">
+          <Trans>Letter preview language:</Trans>{" "}
+          <button
+            className="jfcl-link"
+            onClick={() => setPreviewLocale("en")}
+            disabled={previewLocale === "en"}
+          >
+            {languageNames["en"]}
+          </button>
+          <span>{" / "}</span>
+          <button
+            className="jfcl-link"
+            onClick={() => setPreviewLocale("es")}
+            disabled={previewLocale === "es"}
+          >
+            {languageNames["es"]}
+          </button>
+        </div>
+        <TranslationInfoBox
+          siteLocale={i18n.locale as SupportedLocale}
+          previewLocale={previewLocale}
+        />
+        <div className="preview-step__letter-container">
+          <iframe
+            ref={iframeRef}
+            title={_(msg`Good Cause Letter Preview`)}
+            srcDoc={letter}
+            className="preview-step__iframe"
+            onLoad={resizeIframe}
+          />
+        </div>
+        <div className="preview-step__note">
           <Trans>
-            Make sure the information below is accurate. If it is not, you can
-            go back to make changes.
+            <strong>Note:</strong> You will be able to download a PDF version of
+            this letter later, after you select your mailing preference.
           </Trans>
-        </p>
-      </section>
-      <div className="preview-step__locale-toggle">
-        <Trans>Letter preview language:</Trans>{" "}
-        <button
-          className="jfcl-link"
-          onClick={() => setPreviewLocale("en")}
-          disabled={previewLocale === "en"}
-        >
-          {languageNames["en"]}
-        </button>
-        <span>{" / "}</span>
-        <button
-          className="jfcl-link"
-          onClick={() => setPreviewLocale("es")}
-          disabled={previewLocale === "es"}
-        >
-          {languageNames["es"]}
-        </button>
-      </div>
-      <TranslationInfoBox
-        siteLocale={i18n.locale as SupportedLocale}
-        previewLocale={previewLocale}
-      />
-      <div className="preview-step__letter-container">
-        <iframe
-          ref={iframeRef}
-          title={_(msg`Good Cause Letter Preview`)}
-          srcDoc={letter}
-          className="preview-step__iframe"
-          onLoad={resizeIframe}
+        </div>
+        <BackNextButtons
+          backStepName="landlord_details"
+          button2Props={{ type: "button", onClick: () => next("mail_choice") }}
         />
       </div>
-      <div className="preview-step__note">
-        <Trans>
-          <strong>Note:</strong> You will be able to download a PDF version of
-          this letter later, after you select your mailing preference.
-        </Trans>
-      </div>
-      <BackNextButtons
-        backStepName="landlord_details"
-        button2Props={{ type: "button", onClick: () => next("mail_choice") }}
-      />
-    </div>
+    </>
   );
 };
 
