@@ -16,6 +16,16 @@ export const useHideHeader = (
     const updateScrollDir = () => {
       const scrollY = window.scrollY || window.pageYOffset;
 
+      console.log({
+        scrollY,
+        // headerScrollTop: headerRef.current?.scrollTop,
+        // bodyOffsetHeight: window.document.body.offsetHeight,
+        innerHeight: window.innerHeight,
+        combinedScroll: scrollY + window.innerHeight,
+        scrollHeight: document.documentElement.scrollHeight,
+        // pageYOffset: window.pageYOffset
+      });
+
       // Prevents possible jitter from tiny scroll changes
       if (Math.abs(scrollY - lastScrollY) < threshold) {
         ticking = false;
@@ -23,10 +33,15 @@ export const useHideHeader = (
       }
 
       const headerHeight = headerRef?.current?.offsetHeight;
+      const scrolledPastBottom =
+        scrollY + window.innerHeight > document.documentElement.scrollHeight;
 
       if (headerHeight && scrollY < headerHeight) {
         // prevents seeing "behind" the header
         setHideHeader(false);
+      } else if (scrolledPastBottom) {
+        ticking = true;
+        return;
       } else {
         setHideHeader(scrollY > lastScrollY);
       }
