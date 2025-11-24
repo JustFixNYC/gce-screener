@@ -4,12 +4,6 @@
 
 $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
 
-#topbar-placeholder {
-  height: $headerH;
-  &.hide {
-    position: absolute;
-  }
-}
 #topbar {
   position: fixed;
   top: 0;
@@ -21,9 +15,10 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
   align-items: center;
   text-wrap: nowrap;
   z-index: 100;
+  transition: top 0.2s ease-in-out;
 
   &.hide {
-    display: none;
+    top: -$headerH;
   }
 
   div {
