@@ -17,8 +17,8 @@ export const LetterLanding: React.FC = () => {
       <Header
         title={
           <Trans>
-            Send a letter to your <br />
-            landlord defending <br />
+            Send a letter to your <br aria-hidden />
+            landlord defending <br aria-hidden />
             your Good Cause rights
           </Trans>
         }
