@@ -40,8 +40,7 @@ export const useHideHeader = (
         // prevents seeing "behind" the header
         setHideHeader(false);
       } else if (scrolledPastBottom) {
-        ticking = true;
-        return;
+        // do nothing to prevent jitter at bottom of the page
       } else {
         setHideHeader(scrollY > lastScrollY);
       }
