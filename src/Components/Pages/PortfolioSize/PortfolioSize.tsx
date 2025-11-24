@@ -217,7 +217,7 @@ export const PortfolioSize: React.FC = () => {
                       Please review these documents to learn if the owner of
                       your building also owns any of the properties below. If
                       you find the name or signature of your building’s owner on
-                      any of the documents below, that's a good sign they own
+                      any of the documents below, that’s a good sign they own
                       the property.
                     </Trans>
                   </p>
@@ -468,7 +468,7 @@ export const AcrisAccordions: React.FC<BuildingData> = (props) => {
                       properties in Staten Island. Please view all documents for
                       this property, and refer to the video above to learn how
                       to identify the documents most likely to contain the
-                      owner's name and signature.
+                      owner’s name and signature.
                     </Trans>
                   ) : (
                     <Trans>

@@ -1403,12 +1403,12 @@ msgid "Keep paying rent until you sign a new lease."
 msgstr "Keep paying rent until you sign a new lease."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:97
-msgid "Keep this for your documentation. It's an important part of asserting your rights."
-msgstr "Keep this for your documentation. It's an important part of asserting your rights."
+#~ msgid "Keep this for your documentation. It's an important part of asserting your rights."
+#~ msgstr "Keep this for your documentation. It's an important part of asserting your rights."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:60
-#~ msgid "Keep this for your documentation. It’s an important part of asserting your rights."
-#~ msgstr "Keep this for your documentation. It’s an important part of asserting your rights."
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:97
+msgid "Keep this for your documentation. It’s an important part of asserting your rights."
+msgstr "Keep this for your documentation. It’s an important part of asserting your rights."
 
 #: src/Components/LetterBuilder/AddressModalHelpers.tsx:47
 #~ msgid "Landlord address as entered is not deliverable by USPS"
@@ -1854,8 +1854,12 @@ msgid "NYC's Tenant Support Unit (311)"
 msgstr "NYC's Tenant Support Unit (311)"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:974
-msgid "NYC's Tenant Support Unit (TSU)"
-msgstr "NYC's Tenant Support Unit (TSU)"
+#~ msgid "NYC's Tenant Support Unit (TSU)"
+#~ msgstr "NYC's Tenant Support Unit (TSU)"
+
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:974
+msgid "NYC’s Tenant Support Unit (TSU)"
+msgstr "NYC’s Tenant Support Unit (TSU)"
 
 #: src/hooks/useCriteriaResults.tsx:629
 msgid "NYCHA and PACT/RAD apartments are not covered by Good Cause because they already have stronger tenant protections than Good Cause provides."
@@ -1875,8 +1879,12 @@ msgid "NYCHA policies"
 msgstr "NYCHA policies"
 
 #: src/Components/KYRContent/KYRContent.tsx:803
-msgid "NYLAG's Public Housing Justice Project"
-msgstr "NYLAG's Public Housing Justice Project"
+#~ msgid "NYLAG's Public Housing Justice Project"
+#~ msgstr "NYLAG's Public Housing Justice Project"
+
+#: src/Components/KYRContent/KYRContent.tsx:803
+msgid "NYLAG’s Public Housing Justice Project"
+msgstr "NYLAG’s Public Housing Justice Project"
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:146
 msgid "Offer a longer lease in exchange for a smaller increase"
@@ -2016,8 +2024,12 @@ msgid "Please review the page and fix the errors below before continuing"
 msgstr "Please review the page and fix the errors below before continuing"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:216
-msgid "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that's a good sign they own the property."
-msgstr "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that's a good sign they own the property."
+#~ msgid "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that's a good sign they own the property."
+#~ msgstr "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that's a good sign they own the property."
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:216
+msgid "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that’s a good sign they own the property."
+msgstr "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that’s a good sign they own the property."
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:166
 #~ msgid "Please review your landlord's information"
@@ -2734,8 +2746,12 @@ msgstr "This is your landlord’s information as registered with the NYC Departm
 #~ msgstr "This is your landlord's information as registered with the NYC Department of Housing and Preservation (HPD). This may be different than where you send your rent checks. We will use this address to ensure your landlord receives the letter."
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:193
-msgid "This notice must state whether the unit is covered by Article 6-A and explain the tenant's rights."
-msgstr "This notice must state whether the unit is covered by Article 6-A and explain the tenant's rights."
+#~ msgid "This notice must state whether the unit is covered by Article 6-A and explain the tenant's rights."
+#~ msgstr "This notice must state whether the unit is covered by Article 6-A and explain the tenant's rights."
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:193
+msgid "This notice must state whether the unit is covered by Article 6-A and explain the tenant’s rights."
+msgstr "This notice must state whether the unit is covered by Article 6-A and explain the tenant’s rights."
 
 #: src/Components/Pages/Home/Home.tsx:187
 msgid "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for Good Cause protections."
@@ -3002,8 +3018,12 @@ msgid "Visit JustFix"
 msgstr "Visit JustFix"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:466
-msgid "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner's name and signature."
-msgstr "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner's name and signature."
+#~ msgid "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner's name and signature."
+#~ msgstr "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner's name and signature."
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:466
+msgid "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner’s name and signature."
+msgstr "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner’s name and signature."
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:467
 msgid "We ask for your landlord's email address so that we can send them a PDF copy of your letter. This helps ensure that the landlord sees your letter."
@@ -3084,12 +3104,20 @@ msgstr "We will send your letter for you via USPS Certified Mail at no cost to y
 #~ msgstr "We will send your letter for you via USPS Certified Mail in 1-2 business days, at no cost to you. We will also provide a PDF for you to download for your records."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:60
-msgid "We will text you with a link to download a PDF copy of your letter for your records. In addition, we will text you the USPS tracking number for the letter if you chose to have JustFix mail the letter for you. Keep this for your documentation. It's an important part of asserting your rights."
-msgstr "We will text you with a link to download a PDF copy of your letter for your records. In addition, we will text you the USPS tracking number for the letter if you chose to have JustFix mail the letter for you. Keep this for your documentation. It's an important part of asserting your rights."
+#~ msgid "We will text you with a link to download a PDF copy of your letter for your records. In addition, we will text you the USPS tracking number for the letter if you chose to have JustFix mail the letter for you. Keep this for your documentation. It's an important part of asserting your rights."
+#~ msgstr "We will text you with a link to download a PDF copy of your letter for your records. In addition, we will text you the USPS tracking number for the letter if you chose to have JustFix mail the letter for you. Keep this for your documentation. It's an important part of asserting your rights."
+
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:60
+msgid "We will text you with a link to download a PDF copy of your letter for your records. In addition, we will text you the USPS tracking number for the letter if you chose to have JustFix mail the letter for you. Keep this for your documentation. It’s an important part of asserting your rights."
+msgstr "We will text you with a link to download a PDF copy of your letter for your records. In addition, we will text you the USPS tracking number for the letter if you chose to have JustFix mail the letter for you. Keep this for your documentation. It’s an important part of asserting your rights."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:71
-msgid "We will text you with a link to download a PDF copy of your letter for your records. Keep this for your documentation. It's an important part of asserting your rights."
-msgstr "We will text you with a link to download a PDF copy of your letter for your records. Keep this for your documentation. It's an important part of asserting your rights."
+#~ msgid "We will text you with a link to download a PDF copy of your letter for your records. Keep this for your documentation. It's an important part of asserting your rights."
+#~ msgstr "We will text you with a link to download a PDF copy of your letter for your records. Keep this for your documentation. It's an important part of asserting your rights."
+
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:71
+msgid "We will text you with a link to download a PDF copy of your letter for your records. Keep this for your documentation. It’s an important part of asserting your rights."
+msgstr "We will text you with a link to download a PDF copy of your letter for your records. Keep this for your documentation. It’s an important part of asserting your rights."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:81
 msgid "We will text you with:"

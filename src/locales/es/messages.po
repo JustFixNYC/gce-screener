@@ -1408,12 +1408,12 @@ msgid "Keep paying rent until you sign a new lease."
 msgstr "Sigue pagando el alquiler hasta que firmes un nuevo contrato."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:97
-msgid "Keep this for your documentation. It's an important part of asserting your rights."
-msgstr "Guarde esto para su documentación. Es una parte importante para hacer valer sus derechos."
+#~ msgid "Keep this for your documentation. It's an important part of asserting your rights."
+#~ msgstr "Guarde esto para su documentación. Es una parte importante para hacer valer sus derechos."
 
-#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:60
-#~ msgid "Keep this for your documentation. It’s an important part of asserting your rights."
-#~ msgstr "Keep this for your documentation. It’s an important part of asserting your rights."
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:97
+msgid "Keep this for your documentation. It’s an important part of asserting your rights."
+msgstr "Keep this for your documentation. It’s an important part of asserting your rights."
 
 #: src/Components/LetterBuilder/AddressModalHelpers.tsx:47
 #~ msgid "Landlord address as entered is not deliverable by USPS"
@@ -1859,8 +1859,12 @@ msgid "NYC's Tenant Support Unit (311)"
 msgstr "Unidad de Apoyo al Inquilino de la Ciudad de Nueva York (311)"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:974
-msgid "NYC's Tenant Support Unit (TSU)"
-msgstr "Unidad de Apoyo a los Inquilinos (TSU) de la ciudad de Nueva York"
+#~ msgid "NYC's Tenant Support Unit (TSU)"
+#~ msgstr "Unidad de Apoyo a los Inquilinos (TSU) de la ciudad de Nueva York"
+
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:974
+msgid "NYC’s Tenant Support Unit (TSU)"
+msgstr ""
 
 #: src/hooks/useCriteriaResults.tsx:629
 msgid "NYCHA and PACT/RAD apartments are not covered by Good Cause because they already have stronger tenant protections than Good Cause provides."
@@ -1880,8 +1884,12 @@ msgid "NYCHA policies"
 msgstr "Políticas de la NYCHA"
 
 #: src/Components/KYRContent/KYRContent.tsx:803
-msgid "NYLAG's Public Housing Justice Project"
-msgstr "Proyecto de Justicia en Vivienda Pública de NYLAG"
+#~ msgid "NYLAG's Public Housing Justice Project"
+#~ msgstr "Proyecto de Justicia en Vivienda Pública de NYLAG"
+
+#: src/Components/KYRContent/KYRContent.tsx:803
+msgid "NYLAG’s Public Housing Justice Project"
+msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:146
 msgid "Offer a longer lease in exchange for a smaller increase"
@@ -2021,8 +2029,12 @@ msgid "Please review the page and fix the errors below before continuing"
 msgstr "Revisa la página y corrige los errores que se indican a continuación antes de continuar."
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:216
-msgid "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that's a good sign they own the property."
-msgstr "Revise estos documentos para saber si el propietario de su edificio también es dueño de alguna de las propiedades que se indican a continuación. Si encuentra el nombre o la firma del propietario de su edificio en alguno de los documentos siguientes, es una buena señal de que es el dueño de la propiedad."
+#~ msgid "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that's a good sign they own the property."
+#~ msgstr "Revise estos documentos para saber si el propietario de su edificio también es dueño de alguna de las propiedades que se indican a continuación. Si encuentra el nombre o la firma del propietario de su edificio en alguno de los documentos siguientes, es una buena señal de que es el dueño de la propiedad."
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:216
+msgid "Please review these documents to learn if the owner of your building also owns any of the properties below. If you find the name or signature of your building’s owner on any of the documents below, that’s a good sign they own the property."
+msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:166
 #~ msgid "Please review your landlord's information"
@@ -2739,8 +2751,12 @@ msgstr "Esta es la información de su arrendador tal y como figura registrada en
 #~ msgstr "This is your landlord's information as registered with the NYC Department of Housing and Preservation (HPD). This may be different than where you send your rent checks. We will use this address to ensure your landlord receives the letter."
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:193
-msgid "This notice must state whether the unit is covered by Article 6-A and explain the tenant's rights."
-msgstr "Este aviso debe indicar si la unidad está cubierta por el artículo 6-A y explicar los derechos del inquilino."
+#~ msgid "This notice must state whether the unit is covered by Article 6-A and explain the tenant's rights."
+#~ msgstr "Este aviso debe indicar si la unidad está cubierta por el artículo 6-A y explicar los derechos del inquilino."
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:193
+msgid "This notice must state whether the unit is covered by Article 6-A and explain the tenant’s rights."
+msgstr ""
 
 #: src/Components/Pages/Home/Home.tsx:187
 msgid "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for Good Cause protections."
@@ -3007,8 +3023,12 @@ msgid "Visit JustFix"
 msgstr "Visite JustFix"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:466
-msgid "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner's name and signature."
-msgstr "No podemos enlazar directamente con documentos específicos de propiedades en Staten Island. Consulte todos los documentos de esta propiedad y vea el video anterior para saber cómo identificar los documentos que más probablemente contengan el nombre y la firma del propietario."
+#~ msgid "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner's name and signature."
+#~ msgstr "No podemos enlazar directamente con documentos específicos de propiedades en Staten Island. Consulte todos los documentos de esta propiedad y vea el video anterior para saber cómo identificar los documentos que más probablemente contengan el nombre y la firma del propietario."
+
+#: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:466
+msgid "We are unable to directly link to specific documents for properties in Staten Island. Please view all documents for this property, and refer to the video above to learn how to identify the documents most likely to contain the owner’s name and signature."
+msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:467
 msgid "We ask for your landlord's email address so that we can send them a PDF copy of your letter. This helps ensure that the landlord sees your letter."
@@ -3089,12 +3109,20 @@ msgstr "Enviaremos su carta por correo certificado de USPS sin costo alguno para
 #~ msgstr "We will send your letter for you via USPS Certified Mail in 1-2 business days, at no cost to you. We will also provide a PDF for you to download for your records."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:60
-msgid "We will text you with a link to download a PDF copy of your letter for your records. In addition, we will text you the USPS tracking number for the letter if you chose to have JustFix mail the letter for you. Keep this for your documentation. It's an important part of asserting your rights."
-msgstr "Le enviaremos un mensaje de texto con un enlace para descargar una copia en PDF de su carta para sus registros. Además, le enviaremos por mensaje de texto el número de seguimiento de USPS de la carta si ha elegido que JustFix la envíe por correo por usted. Consérvelo para su documentación. Es una parte importante para hacer valer sus derechos."
+#~ msgid "We will text you with a link to download a PDF copy of your letter for your records. In addition, we will text you the USPS tracking number for the letter if you chose to have JustFix mail the letter for you. Keep this for your documentation. It's an important part of asserting your rights."
+#~ msgstr "Le enviaremos un mensaje de texto con un enlace para descargar una copia en PDF de su carta para sus registros. Además, le enviaremos por mensaje de texto el número de seguimiento de USPS de la carta si ha elegido que JustFix la envíe por correo por usted. Consérvelo para su documentación. Es una parte importante para hacer valer sus derechos."
+
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:60
+msgid "We will text you with a link to download a PDF copy of your letter for your records. In addition, we will text you the USPS tracking number for the letter if you chose to have JustFix mail the letter for you. Keep this for your documentation. It’s an important part of asserting your rights."
+msgstr ""
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:71
-msgid "We will text you with a link to download a PDF copy of your letter for your records. Keep this for your documentation. It's an important part of asserting your rights."
-msgstr "Le enviaremos un mensaje de texto con un enlace para descargar una copia en PDF de su carta para sus registros. Guárdelo para su documentación. Es una parte importante para hacer valer sus derechos."
+#~ msgid "We will text you with a link to download a PDF copy of your letter for your records. Keep this for your documentation. It's an important part of asserting your rights."
+#~ msgstr "Le enviaremos un mensaje de texto con un enlace para descargar una copia en PDF de su carta para sus registros. Guárdelo para su documentación. Es una parte importante para hacer valer sus derechos."
+
+#: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:71
+msgid "We will text you with a link to download a PDF copy of your letter for your records. Keep this for your documentation. It’s an important part of asserting your rights."
+msgstr ""
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:81
 msgid "We will text you with:"

@@ -61,7 +61,7 @@ export const TextFollowup: React.FC<
           We will text you with a link to download a PDF copy of your letter for
           your records. In addition, we will text you the USPS tracking number
           for the letter if you chose to have JustFix mail the letter for you.
-          Keep this for your documentation. It's an important part of asserting
+          Keep this for your documentation. It’s an important part of asserting
           your rights.
         </Trans>
       </p>
@@ -70,7 +70,7 @@ export const TextFollowup: React.FC<
       <p>
         <Trans>
           We will text you with a link to download a PDF copy of your letter for
-          your records. Keep this for your documentation. It's an important part
+          your records. Keep this for your documentation. It’s an important part
           of asserting your rights.
         </Trans>
       </p>
@@ -95,7 +95,7 @@ export const TextFollowup: React.FC<
         </ul>
         <p>
           <Trans>
-            Keep this for your documentation. It's an important part of
+            Keep this for your documentation. It’s an important part of
             asserting your rights.
           </Trans>
         </p>
@@ -971,7 +971,7 @@ export const CommunityResources: React.FC<NextStepItemProps> = (props) => (
       <ul>
         <li>
           <JFCLLinkExternal to="https://www.nyc.gov/site/mayorspeu/programs/contact-the-tenant-support-unit.page">
-            <Trans>NYC's Tenant Support Unit (TSU)</Trans>
+            <Trans>NYC’s Tenant Support Unit (TSU)</Trans>
           </JFCLLinkExternal>
         </li>
         <li>
