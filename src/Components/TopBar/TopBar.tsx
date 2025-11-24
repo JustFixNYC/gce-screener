@@ -2,13 +2,13 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { Trans } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
 
 import { gtmPush } from "../../google-tag-manager";
 import { useScrollDirection } from "../../hooks/useScrollDirection";
 import useInViewPort from "../../hooks/useInViewport";
 import { JFCLLinkInternal } from "../JFCLLink";
 import "./TopBar.scss";
-import { useLingui } from "@lingui/react";
 
 export const TopBar: React.FC = () => {
   const { i18n } = useLingui();
