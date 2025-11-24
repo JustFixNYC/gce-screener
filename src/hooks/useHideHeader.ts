@@ -7,7 +7,7 @@ export const useHideHeader = (
   headerRef: React.RefObject<HTMLElement>,
   threshold: number = 10
 ): boolean => {
-  const [hideHeader, setHideHeader] = useState<boolean>(true);
+  const [hideHeader, setHideHeader] = useState<boolean>(false);
 
   useEffect(() => {
     let lastScrollY = window.scrollY || window.pageYOffset;
