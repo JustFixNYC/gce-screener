@@ -1,7 +1,6 @@
 @use "colors" as *;
 @use "variables" as *;
 @use "mixins" as *;
-@use "./Components/TopBar/TopBar.scss" as *;
 
 @media print {
   html {
@@ -14,10 +13,6 @@
   size: auto;
   // TODO: should remove margin for PDF if possible
   margin: 24px;
-}
-
-body {
-  margin-top: $headerH;
 }
 
 #container {
