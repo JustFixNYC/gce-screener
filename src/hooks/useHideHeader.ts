@@ -34,12 +34,14 @@ export const useHideHeader = (
 
       const headerHeight = headerRef?.current?.offsetHeight;
       const scrolledPastBottom =
-        scrollY + window.innerHeight > document.documentElement.scrollHeight;
+        scrollY + window.innerHeight >
+        document.documentElement.scrollHeight - 100;
 
       if (headerHeight && scrollY < headerHeight) {
         // prevents seeing "behind" the header
         setHideHeader(false);
       } else if (scrolledPastBottom) {
+        console.log("bottom");
         // do nothing to prevent jitter at bottom of the page
       } else {
         setHideHeader(scrollY > lastScrollY);
