@@ -4,7 +4,7 @@ import { MessageDescriptor } from "@lingui/core";
 
 import "./ProgressBar.scss";
 
-interface ProgressBarProps {
+export interface ProgressBarProps {
   /** Name of the step for header to, must be <Trans> only */
   stepName: MessageDescriptor;
   /** Number between 0-100 for progress measure */
@@ -18,16 +18,21 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 
   return (
     <div className="progress-bar">
-      <div className="progress-bar__title">
+      <div id="progress-bar-title" className="progress-bar__title">
         <h2>
           <Trans>Build your letter</Trans>
         </h2>
-        <span>: </span>
+        <span aria-hidden>: </span>
         <h3>{_(stepName)}</h3>
       </div>
-      <div className="progress-bar__container">
-        <div className="progress-bar__fill" style={{ width: `${progress}%` }} />
-      </div>
+      <progress
+        id="letter-progress-bar"
+        max="100"
+        value={progress}
+        aria-labelledby="progress-bar-title"
+      >
+        {progress}%
+      </progress>
     </div>
   );
 };
