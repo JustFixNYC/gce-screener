@@ -1,5 +1,6 @@
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
+import classNames from "classnames";
 
 import {
   ContentBox,
@@ -9,9 +10,8 @@ import {
 } from "../../ContentBox/ContentBox";
 import { Pill } from "../../Pill/Pill";
 import { JFCLLinkExternal } from "../../JFCLLink";
-import "./LetterNextSteps.scss";
 import { Header } from "../../Header/Header";
-import classNames from "classnames";
+import "./LetterNextSteps.scss";
 
 type NextStepItemProps = Partial<Omit<ContentBoxItemProps, "children">>;
 type NextStepCollectionProps = Partial<Omit<ContentBoxProps, "children">> & {
@@ -56,15 +56,28 @@ export const TextFollowup: React.FC<
     {...props}
   >
     {!mailChoice && (
-      <p>
-        <Trans>
-          We will text you with a link to download a PDF copy of your letter for
-          your records. In addition, we will text you the USPS tracking number
-          for the letter if you chose to have JustFix mail the letter for you.
-          Keep this for your documentation. It’s an important part of asserting
-          your rights.
-        </Trans>
-      </p>
+      <>
+        <p>
+          <Trans>
+            We will text you with a link to download a PDF copy of your letter
+            for your records.
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            If you chose to have JustFix mail the letter for you, we will text
+            you the USPS tracking number for the letter. USPS may show “Tracking
+            not available” at first. This is normal. Tracking will appear once
+            USPS scans your letter. This can take between 1-5 days.
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            Keep this for your documentation. It's an important part of
+            asserting your rights.
+          </Trans>
+        </p>
+      </>
     )}
     {mailChoice === "USER_WILL_MAIL" && (
       <p>
@@ -83,13 +96,15 @@ export const TextFollowup: React.FC<
         <ul>
           <li>
             <Trans>
-              Your USPS tracking number, so you can confirm your letter was
-              delivered.
+              A link to download a PDF copy of your letter for your records.
             </Trans>
           </li>
           <li>
             <Trans>
-              A link to download a PDF copy of your letter for your records.
+              Your USPS tracking number, so you can confirm your letter was
+              delivered. USPS may show “Tracking not available” at first. This
+              is normal. Tracking will appear once USPS scans your letter. This
+              can take between 1-5 days.
             </Trans>
           </li>
         </ul>
