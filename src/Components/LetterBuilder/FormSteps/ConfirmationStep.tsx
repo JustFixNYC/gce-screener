@@ -15,6 +15,7 @@ import { Notice } from "../../Notice/Notice";
 import { GCELetterConfirmation } from "../../../types/APIDataTypes";
 import { FormContext } from "../../../types/LetterFormTypes";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
+import { letterSteps } from "../LetterSteps";
 import "./ConfirmationStep.scss";
 
 const USPS_TRACKING_URL_PREFIX =
@@ -32,7 +33,7 @@ export const ConfirmationStep: React.FC<{
   confirmationResponse?: GCELetterConfirmation | GCELetterSubmissionError;
 }> = ({ confirmationResponse: confirmationResponseProp }) => {
   // Allow passing props instead of context so we can use sample values for testing
-  const { currentStep, confirmationResponse } = useContext(FormContext) || {
+  const { confirmationResponse } = useContext(FormContext) || {
     confirmationResponse: confirmationResponseProp,
   };
 
@@ -127,7 +128,7 @@ export const ConfirmationStep: React.FC<{
 
   return (
     <>
-      <ProgressBar {...currentStep} />
+      <ProgressBar {...letterSteps["confirmation"]} />
       <div className="confirmation-step">
         <Notice
           className="success-notice"

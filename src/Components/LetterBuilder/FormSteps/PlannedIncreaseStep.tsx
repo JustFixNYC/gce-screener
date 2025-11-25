@@ -18,12 +18,10 @@ import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { StepRouteName } from "../LetterSteps";
 import { LetterStepForm } from "../LetterBuilderForm";
-import { ProgressBar } from "../ProgressBar/ProgressBar";
 import "./FormSteps.scss";
 
 export const PlannedIncreaseStep: React.FC = () => {
   const {
-    currentStep,
     formMethods: {
       control,
       watch,
@@ -44,54 +42,51 @@ export const PlannedIncreaseStep: React.FC = () => {
       : undefined;
 
   return (
-    <>
-      <ProgressBar {...currentStep} />
-      <div className="reason-details-step">
-        <LetterStepForm nextStep={nextStep}>
-          <FormGroup
-            legendText={_(
-              msg`Is your landlord increasing your monthly rent more than ${
-                CPI + 5
-              }%?`
+    <div className="reason-details-step">
+      <LetterStepForm nextStep={nextStep}>
+        <FormGroup
+          legendText={_(
+            msg`Is your landlord increasing your monthly rent more than ${
+              CPI + 5
+            }%?`
+          )}
+          invalid={!!errors?.unreasonable_increase}
+          invalidText={errors?.unreasonable_increase?.message}
+          invalidRole="status"
+          helperElement={<IncreaseHelperText />}
+        >
+          <Controller
+            name="unreasonable_increase"
+            control={control}
+            render={({ field }) => (
+              <SelectButton
+                {...field}
+                value="true"
+                checked={field.value === true}
+                onChange={() => field.onChange(true)}
+                labelText={_(msg`Yes`)}
+                id="reason-verified__yes"
+              />
             )}
-            invalid={!!errors?.unreasonable_increase}
-            invalidText={errors?.unreasonable_increase?.message}
-            invalidRole="status"
-            helperElement={<IncreaseHelperText />}
-          >
-            <Controller
-              name="unreasonable_increase"
-              control={control}
-              render={({ field }) => (
-                <SelectButton
-                  {...field}
-                  value="true"
-                  checked={field.value === true}
-                  onChange={() => field.onChange(true)}
-                  labelText={_(msg`Yes`)}
-                  id="reason-verified__yes"
-                />
-              )}
-            />
-            <Controller
-              name="unreasonable_increase"
-              control={control}
-              render={({ field }) => (
-                <SelectButton
-                  {...field}
-                  value="false"
-                  checked={field.value === false}
-                  onChange={() => field.onChange(false)}
-                  labelText={_(msg`No`)}
-                  id="reason-verified__no"
-                />
-              )}
-            />
-          </FormGroup>
-          <BackNextButtons backStepName="reason" />
-        </LetterStepForm>
-      </div>
-    </>
+          />
+          <Controller
+            name="unreasonable_increase"
+            control={control}
+            render={({ field }) => (
+              <SelectButton
+                {...field}
+                value="false"
+                checked={field.value === false}
+                onChange={() => field.onChange(false)}
+                labelText={_(msg`No`)}
+                id="reason-verified__no"
+              />
+            )}
+          />
+        </FormGroup>
+        <BackNextButtons backStepName="reason" />
+      </LetterStepForm>
+    </div>
   );
 };
 

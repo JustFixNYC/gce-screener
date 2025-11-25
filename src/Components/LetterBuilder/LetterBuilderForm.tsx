@@ -28,6 +28,7 @@ import {
 } from "./LetterSteps";
 import { InfoBox } from "../InfoBox/InfoBox";
 import { useSessionStorage } from "../../hooks/useSessionStorage";
+import { ProgressBar } from "./ProgressBar/ProgressBar";
 import "./LetterBuilderForm.scss";
 
 export const LetterBuilderForm: React.FC = () => {
@@ -204,15 +205,21 @@ export const LetterBuilderForm: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="letter-builder" ref={errorScrollRef}>
-        <FormContext.Provider
-          value={{ formMethods, currentStep, back, next, confirmationResponse }}
-        >
-          {currentStep.component}
-        </FormContext.Provider>
-      </div>
-    </>
+    <div className="letter-builder" ref={errorScrollRef}>
+      <FormContext.Provider
+        value={{
+          formMethods,
+          back,
+          next,
+          confirmationResponse,
+        }}
+      >
+        {currentStep.route !== "confirmation" && (
+          <ProgressBar {...currentStep} />
+        )}
+        {currentStep.component}
+      </FormContext.Provider>
+    </div>
   );
 };
 

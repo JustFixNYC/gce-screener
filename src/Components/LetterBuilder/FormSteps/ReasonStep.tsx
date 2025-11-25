@@ -11,13 +11,11 @@ import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { FormContext } from "../../../types/LetterFormTypes";
 import { LetterStepForm } from "../LetterBuilderForm";
-import { ProgressBar } from "../ProgressBar/ProgressBar";
 import "./ReasonStep.scss";
 import "./FormSteps.scss";
 
 export const ReasonStep: React.FC = () => {
   const {
-    currentStep,
     formMethods: {
       watch,
       register,
@@ -37,108 +35,100 @@ export const ReasonStep: React.FC = () => {
       : undefined;
 
   return (
-    <>
-      <ProgressBar {...currentStep} />
+    <LetterStepForm nextStep={nextStep} className="reason-step">
+      <FormGroup
+        legendText={_(msg`Select the reason for your letter`)}
+        invalid={!!errors?.reason}
+        invalidText={errors?.reason?.message}
+        invalidRole="status"
+        helperElement={<ReasonHelperText onClick={() => setShowModal(true)} />}
+      >
+        <div className="reason-step__buttons">
+          <SelectButton
+            {...register("reason")}
+            labelText={_(msg`Your landlord is planning to raise your rent`)}
+            value="PLANNED_INCREASE"
+            id="reason__planned-increase"
+          />
+          <SelectButton
+            {...register("reason")}
+            labelText={_(msg`Your landlord is not offering you a new lease`)}
+            value="NON_RENEWAL"
+            id="reason__non-renewal"
+          />
+        </div>
+      </FormGroup>
+      <BackNextButtons
+        button1Props={{ onClick: () => navigate(`/${i18n.locale}/letter`) }}
+      />
 
-      <LetterStepForm nextStep={nextStep} className="reason-step">
-        <FormGroup
-          legendText={_(msg`Select the reason for your letter`)}
-          invalid={!!errors?.reason}
-          invalidText={errors?.reason?.message}
-          invalidRole="status"
-          helperElement={
-            <ReasonHelperText onClick={() => setShowModal(true)} />
-          }
-        >
-          <div className="reason-step__buttons">
-            <SelectButton
-              {...register("reason")}
-              labelText={_(msg`Your landlord is planning to raise your rent`)}
-              value="PLANNED_INCREASE"
-              id="reason__planned-increase"
-            />
-            <SelectButton
-              {...register("reason")}
-              labelText={_(msg`Your landlord is not offering you a new lease`)}
-              value="NON_RENEWAL"
-              id="reason__non-renewal"
-            />
-          </div>
-        </FormGroup>
-        <BackNextButtons
-          button1Props={{ onClick: () => navigate(`/${i18n.locale}/letter`) }}
-        />
-
-        <Modal
-          isOpen={showModal}
-          onClose={() => setShowModal(false)}
-          hasCloseBtn={true}
-          header={_(msg`How to choose the reason for your letter`)}
-        >
-          <div className="callout-box">
-            <section>
-              <Trans>
-                Select{" "}
-                <strong>“Your landlord is planning to raise your rent”</strong>{" "}
-                if any of the following apply:
-              </Trans>
-              <ul>
-                <li>
-                  <Trans>
-                    Your landlord has told you your rent will be increasing.
-                  </Trans>
-                </li>
-                <li>
-                  <Trans>
-                    Your landlord has recently given you a new lease with a rent
-                    increase.
-                  </Trans>
-                </li>
-                <li>
-                  <Trans>
-                    You’ve received a{" "}
-                    <JFCLLinkExternal to="https://www.nycourts.gov/legacypdfs/courts/10jd/suffolk/dist/pdf/LandlordRentIncreaseofAtLeast5PercentResidental.pdf">
-                      226c notice detailing an upcoming rent increase
-                    </JFCLLinkExternal>
-                  </Trans>
-                </li>
-              </ul>
-            </section>
-          </div>
-          <div className="callout-box">
+      <Modal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        hasCloseBtn={true}
+        header={_(msg`How to choose the reason for your letter`)}
+      >
+        <div className="callout-box">
+          <section>
             <Trans>
               Select{" "}
-              <strong>“Your landlord is not offering you a new lease”</strong>{" "}
-              if any of the following apply:
+              <strong>“Your landlord is planning to raise your rent”</strong> if
+              any of the following apply:
             </Trans>
             <ul>
               <li>
                 <Trans>
-                  Your landlord has told you that they will not offer you a new
-                  lease.
+                  Your landlord has told you your rent will be increasing.
+                </Trans>
+              </li>
+              <li>
+                <Trans>
+                  Your landlord has recently given you a new lease with a rent
+                  increase.
                 </Trans>
               </li>
               <li>
                 <Trans>
                   You’ve received a{" "}
-                  <JFCLLinkExternal to="https://www.nycourts.gov/legacypdfs/courts/10jd/suffolk/dist/pdf/LandlordsNoticeNotToRenewTenancyResidential.pdf">
-                    226c notice stating that your lease will not be renewed
-                  </JFCLLinkExternal>
-                </Trans>
-              </li>
-              <li>
-                <Trans>
-                  You’ve received a{" "}
-                  <JFCLLinkExternal to="">
-                    notice of termination
+                  <JFCLLinkExternal to="https://www.nycourts.gov/legacypdfs/courts/10jd/suffolk/dist/pdf/LandlordRentIncreaseofAtLeast5PercentResidental.pdf">
+                    226c notice detailing an upcoming rent increase
                   </JFCLLinkExternal>
                 </Trans>
               </li>
             </ul>
-          </div>
-        </Modal>
-      </LetterStepForm>
-    </>
+          </section>
+        </div>
+        <div className="callout-box">
+          <Trans>
+            Select{" "}
+            <strong>“Your landlord is not offering you a new lease”</strong> if
+            any of the following apply:
+          </Trans>
+          <ul>
+            <li>
+              <Trans>
+                Your landlord has told you that they will not offer you a new
+                lease.
+              </Trans>
+            </li>
+            <li>
+              <Trans>
+                You’ve received a{" "}
+                <JFCLLinkExternal to="https://www.nycourts.gov/legacypdfs/courts/10jd/suffolk/dist/pdf/LandlordsNoticeNotToRenewTenancyResidential.pdf">
+                  226c notice stating that your lease will not be renewed
+                </JFCLLinkExternal>
+              </Trans>
+            </li>
+            <li>
+              <Trans>
+                You’ve received a{" "}
+                <JFCLLinkExternal to="">notice of termination</JFCLLinkExternal>
+              </Trans>
+            </li>
+          </ul>
+        </div>
+      </Modal>
+    </LetterStepForm>
   );
 };
 
