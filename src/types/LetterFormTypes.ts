@@ -14,7 +14,12 @@ const lobAddressSchema = (i18n: I18n) =>
   z.object({
     primary_line: z
       .string()
-      .min(1, i18n._(msg`Address is required for the letter`)),
+      .min(1, i18n._(msg`Address is required for the letter`))
+      // don't allow only special characters
+      .regex(
+        /.*[a-zA-Z0-9].*/,
+        i18n._(msg`Address is required for the letter`)
+      ),
     city: z
       .string()
       .min(1, i18n._(msg`City/Borough is required for the letter`)),
