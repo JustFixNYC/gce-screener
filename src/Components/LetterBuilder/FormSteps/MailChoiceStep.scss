@@ -67,6 +67,10 @@
     &:hover {
       background-color: $OFF_WHITE_200;
       border: 2px solid $OFF_BLACK;
+      // make room for thicker border
+      label {
+        padding: calc(1rem - 1px) calc(1.25rem - 1px);
+      }
     }
   }
 
