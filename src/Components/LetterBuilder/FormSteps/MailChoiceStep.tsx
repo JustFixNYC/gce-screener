@@ -46,17 +46,6 @@ export const MailChoiceStep: React.FC = () => {
 
   return (
     <LetterStepForm nextStep="confirmation" className="mail-choice-step">
-      <div className="mail-choice-step__header">
-        <h3>
-          <Trans>How do you want to send your letter?</Trans>
-        </h3>
-        <p>
-          <Trans>
-            Select a mailing method and provide email addresses to receive a
-            copy of your letter.
-          </Trans>
-        </p>
-      </div>
       <FormGroup
         legendText={_(msg`Select a mailing method`)}
         invalid={!!errors?.mail_choice}

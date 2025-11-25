@@ -271,7 +271,7 @@ const LandlordFormGroup: React.FC<{
   return (
     <>
       <FormGroup
-        legendText={_(msg`Your landlord’s information`)}
+        legendText={_(msg`Your landlord’s mailing address`)}
         invalid={anyLandlordInfoErrors}
         invalidText={errors?.landlord_details?.message}
         helperElement={
@@ -404,7 +404,7 @@ const LandlordFormGroup: React.FC<{
         <TextInput
           {...register("landlord_details.zip_code")}
           id="landlord-zip-code"
-          labelText={_(msg`Zip code`)}
+          labelText={_(msg`ZIP code`)}
           invalid={!!landlordErrors?.zip_code}
           invalidText={landlordErrors?.zip_code?.message}
           invalidRole="status"
@@ -430,7 +430,7 @@ const LandlordEmailFormGroup: React.FC = () => {
   return (
     <>
       <FormGroup
-        legendText={_(msg`Your landlord’s contact information`)}
+        legendText={_(msg`Your landlord’s email address`)}
         className="form-group__section-header"
         invalid={!!errors.landlord_details?.email}
       >
