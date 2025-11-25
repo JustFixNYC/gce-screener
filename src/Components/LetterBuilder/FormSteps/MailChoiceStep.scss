@@ -58,6 +58,18 @@
     padding: 1rem 1.25rem; // 16px 20px
   }
 
+  .jfcl-radio-button {
+    &:has(input[type="radio"]:active) {
+      background-color: $BLUE_50;
+      border: 2px solid $OFF_BLACK;
+    }
+
+    &:hover {
+      background-color: $OFF_WHITE_200;
+      border: 2px solid $OFF_BLACK;
+    }
+  }
+
   strong {
     @include body_standard_desktop;
     font-weight: 600;
