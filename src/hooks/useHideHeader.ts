@@ -17,16 +17,6 @@ export const useHideHeader = (
     const updateScrollDir = () => {
       const scrollY = window.scrollY || window.pageYOffset;
 
-      console.log({
-        scrollY,
-        // headerScrollTop: headerRef.current?.scrollTop,
-        // bodyOffsetHeight: window.document.body.offsetHeight,
-        innerHeight: window.innerHeight,
-        combinedScroll: scrollY + window.innerHeight,
-        scrollHeight: document.documentElement.scrollHeight,
-        // pageYOffset: window.pageYOffset
-      });
-
       // Prevents possible jitter from tiny scroll changes
       if (Math.abs(scrollY - lastScrollY) < threshold) {
         ticking = false;
@@ -44,6 +34,7 @@ export const useHideHeader = (
       } else if (closeToPageBottom) {
         // do nothing to prevent jitter at bottom of the page
       } else {
+        // hide on scroll down, show on scroll up
         setHideHeader(scrollY > lastScrollY);
       }
       lastScrollY = scrollY > 0 ? scrollY : 0;
