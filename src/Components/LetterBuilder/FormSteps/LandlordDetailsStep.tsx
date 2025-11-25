@@ -34,14 +34,16 @@ import "./LandlordDetailsStep.scss";
 
 export const LandlordDetailsStep: React.FC = () => {
   const nextStep = "preview";
-  const { next, formMethods } = useContext(FormContext);
   const {
-    formState: { errors },
-    getValues,
-    setValue,
-    trigger,
-    clearErrors,
-  } = formMethods;
+    next,
+    formMethods: {
+      formState: { errors },
+      getValues,
+      setValue,
+      trigger,
+      clearErrors,
+    },
+  } = useContext(FormContext);
 
   const { _ } = useLingui();
 

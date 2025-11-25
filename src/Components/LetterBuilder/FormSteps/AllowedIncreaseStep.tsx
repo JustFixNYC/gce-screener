@@ -20,7 +20,7 @@ export const AllowedIncreaseStep: React.FC = () => {
         color="yellow"
         header={
           <Trans>
-            You told us that the landlord's proposed rent increase is within the
+            You told us that the landlord’s proposed rent increase is within the
             Good Cause legal limit.
           </Trans>
         }
