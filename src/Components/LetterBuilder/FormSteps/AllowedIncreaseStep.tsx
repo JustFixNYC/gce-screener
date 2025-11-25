@@ -197,7 +197,7 @@ const GetOrganizationSupport: React.FC = () => (
         </li>
         <li>
           <JFCLLinkExternal to="https://www.nyc.gov/site/mayorspeu/programs/tenant-support-unit.page">
-            <Trans>NYC's Tenant Support Unit (311)</Trans>
+            <Trans>NYC’s Tenant Support Unit (311)</Trans>
           </JFCLLinkExternal>
         </li>
         <li>

@@ -800,7 +800,7 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
             <Trans>NYCHA policies</Trans>
           </JFCLLinkExternal>
           <JFCLLinkExternal to="https://nylag.org/tenants-rights/public-housing-justice-project/">
-            <Trans>NYLAG's Public Housing Justice Project</Trans>
+            <Trans>NYLAG’s Public Housing Justice Project</Trans>
           </JFCLLinkExternal>
           <JFCLLinkExternal to="https://nylag.org/tenants-rights/public-housing-justice-project/">
             <Trans>PACT Fact Sheet</Trans>
