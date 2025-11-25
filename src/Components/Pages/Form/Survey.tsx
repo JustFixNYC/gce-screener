@@ -230,7 +230,7 @@ export const Survey: React.FC = () => {
                     options: [
                       { label: _(msg`Yes`), value: "YES" },
                       { label: _(msg`No`), value: "NO" },
-                      { label: _(msg`I'm not sure`), value: "UNSURE" },
+                      { label: _(msg`I’m not sure`), value: "UNSURE" },
                     ],
                   }}
                   onChange={handleRadioChange}
@@ -344,7 +344,7 @@ export const Survey: React.FC = () => {
                         options: [
                           { label: _(msg`Yes`), value: "YES" },
                           { label: _(msg`No`), value: "NO" },
-                          { label: _(msg`I'm not sure`), value: "UNSURE" },
+                          { label: _(msg`I’m not sure`), value: "UNSURE" },
                         ],
                       }}
                       onChange={handleRadioChange}

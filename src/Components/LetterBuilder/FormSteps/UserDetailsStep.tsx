@@ -252,7 +252,7 @@ export const UserDetailsStep: React.FC = () => {
           </Trans>
           <p>
             <Trans>
-              We’ll email you a PDF copy of your letter. We'll also include your
+              We’ll email you a PDF copy of your letter. We’ll also include your
               email in the letter to your landlord so they can contact you. We
               will only share your email if you tell us to.
             </Trans>

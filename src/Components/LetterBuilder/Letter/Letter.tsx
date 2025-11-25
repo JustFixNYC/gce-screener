@@ -192,7 +192,7 @@ const LetterRightsList = () => {
             <p>
               <Trans>
                 This notice must state whether the unit is covered by Article
-                6-A and explain the tenant's rights.
+                6-A and explain the tenant’s rights.
               </Trans>
             </p>
           </span>

@@ -144,7 +144,7 @@ export const LandlordDetailsStep: React.FC = () => {
           color="off-white-200"
           header={
             <Trans>
-              Checking city records for your landlord's information...
+              Checking city records for your landlord’s information...
             </Trans>
           }
         >
@@ -158,7 +158,7 @@ export const LandlordDetailsStep: React.FC = () => {
       {hpdLandlord && !showManual && (
         <>
           <FormGroup
-            legendText={_(msg`Your landlord's information`)}
+            legendText={_(msg`Your landlord’s information`)}
             key="landlord-details__hpd-lookup"
           >
             <InfoBox>
@@ -210,12 +210,12 @@ export const LandlordDetailsStep: React.FC = () => {
         onClose={() => setShowHpdInvalidModal(false)}
         hasCloseBtn={true}
         header={_(
-          msg`There is an issue with your landlord's information on record with the city`
+          msg`There is an issue with your landlord’s information on record with the city`
         )}
         className="hpd-invalid-modal"
       >
         <Trans>
-          Please make any necessary corrections to your landlord's information
+          Please make any necessary corrections to your landlord’s information
         </Trans>
         <div className="modal__buttons">
           <Button
@@ -271,7 +271,7 @@ const LandlordFormGroup: React.FC<{
   return (
     <>
       <FormGroup
-        legendText={_(msg`Your landlord's information`)}
+        legendText={_(msg`Your landlord’s mailing address`)}
         invalid={anyLandlordInfoErrors}
         invalidText={errors?.landlord_details?.message}
         helperElement={
@@ -404,7 +404,7 @@ const LandlordFormGroup: React.FC<{
         <TextInput
           {...register("landlord_details.zip_code")}
           id="landlord-zip-code"
-          labelText={_(msg`Zip code`)}
+          labelText={_(msg`ZIP code`)}
           invalid={!!landlordErrors?.zip_code}
           invalidText={landlordErrors?.zip_code?.message}
           invalidRole="status"
@@ -430,7 +430,7 @@ const LandlordEmailFormGroup: React.FC = () => {
   return (
     <>
       <FormGroup
-        legendText={_(msg`Your landlord's contact information`)}
+        legendText={_(msg`Your landlord’s email address`)}
         className="form-group__section-header"
         invalid={!!errors.landlord_details?.email}
       >
@@ -461,18 +461,18 @@ const LandlordEmailFormGroup: React.FC = () => {
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         hasCloseBtn={true}
-        header={_(msg`Why we ask for your landlord's email`)}
+        header={_(msg`Why we ask for your landlord’s email`)}
       >
         <p>
           <Trans>
-            We ask for your landlord's email address so that we can send them a
+            We ask for your landlord’s email address so that we can send them a
             PDF copy of your letter. This helps ensure that the landlord sees
             your letter.
           </Trans>
           <br />
           <br />
           <Trans>
-            We highly recommend providing your landlord's email, especially if
+            We highly recommend providing your landlord’s email, especially if
             you normally correspond with your landlord via email.
           </Trans>
         </p>
