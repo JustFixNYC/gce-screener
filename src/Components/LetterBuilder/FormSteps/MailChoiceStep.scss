@@ -39,6 +39,35 @@
     padding: 1rem 1.25rem; // 16px 20px
   }
 
+  .jfcl-radio-button {
+    &:has(input[type="radio"]:active) {
+      background-color: $BLUE_50;
+      border: 2px solid $OFF_BLACK;
+      // make room for thicker border
+      label {
+        padding: calc(1rem - 1px) calc(1.25rem - 1px);
+      }
+    }
+
+    &:hover {
+      background-color: $OFF_WHITE_200;
+      border: 2px solid $OFF_BLACK;
+      // make room for thicker border
+      label {
+        padding: calc(1rem - 1px) calc(1.25rem - 1px);
+      }
+    }
+
+    &:has(input[type="radio"]:checked):hover {
+      background-color: $BLUE_150;
+      border: 2px solid $OFF_BLACK;
+      // make room for thicker border
+      label {
+        padding: calc(1rem - 1px) calc(1.25rem - 1px);
+      }
+    }
+  }
+
   strong {
     @include body_standard_desktop;
     font-weight: 600;
