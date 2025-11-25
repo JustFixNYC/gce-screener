@@ -29,7 +29,7 @@ const lobAddressSchema = (i18n: I18n) =>
       .length(2, i18n._(msg`State must be two-letter abbreviation`)),
     zip_code: z
       .string()
-      .min(1, i18n._(msg`ZIP Code is required for the letter`))
+      .min(1, i18n._(msg`ZIP code is required for the letter`))
       .regex(/^\d{5}((-)?\d{4})?$/, i18n._(msg`Please enter a valid ZIP Code`)),
     urbanization: z.string().optional(),
     secondary_line: z.string().optional(),

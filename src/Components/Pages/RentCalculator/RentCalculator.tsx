@@ -73,7 +73,7 @@ export const RentCalculator: React.FC = () => {
         modalOnClose={handlePhoneModalClose}
         headerText={_(msg`Send the rent increase calculator to your phone`)}
         bodyText={_(
-          msg`We'll also let you know when NYC changes the maximum rent increase amount each year.`
+          msg`We’ll also let you know when NYC changes the maximum rent increase amount each year.`
         )}
         gtmId="rent-calculator-page-modal"
       />
@@ -176,7 +176,7 @@ export const RentCalculator: React.FC = () => {
           <PhoneNumberCallout
             headerText={_(msg`Send the rent increase calculator to your phone`)}
             bodyText={_(
-              msg`We'll also let you know when NYC changes the maximum rent increase amount each year.`
+              msg`We’ll also let you know when NYC changes the maximum rent increase amount each year.`
             )}
             gtmId="rent-calculator-page"
           />
