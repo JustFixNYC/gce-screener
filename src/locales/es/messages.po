@@ -290,6 +290,7 @@ msgid "Address"
 msgstr "Dirección"
 
 #: src/types/LetterFormTypes.ts:17
+#: src/types/LetterFormTypes.ts:21
 msgid "Address is required for the letter"
 msgstr "Se requiere la dirección para la carta."
 
@@ -490,7 +491,7 @@ msgstr "Los datos municipales indican que no hay ninguna vivienda en esta direcc
 #~ msgid "City/Borough"
 #~ msgstr "City/Borough"
 
-#: src/types/LetterFormTypes.ts:20
+#: src/types/LetterFormTypes.ts:25
 msgid "City/Borough is required for the letter"
 msgstr "Se requiere la ciudad/distrito para la carta."
 
@@ -825,7 +826,7 @@ msgstr "Busque otros edificios de su propietario"
 msgid "First name"
 msgstr "Nombre"
 
-#: src/types/LetterFormTypes.ts:43
+#: src/types/LetterFormTypes.ts:48
 msgid "First name is required for the letter"
 msgstr "Se requiere el nombre para la carta."
 
@@ -1444,7 +1445,7 @@ msgstr "Nombre del propietario"
 #~ msgid "Landlord name is required"
 #~ msgstr "Landlord name is required"
 
-#: src/types/LetterFormTypes.ts:93
+#: src/types/LetterFormTypes.ts:98
 msgid "Landlord name is required for the letter"
 msgstr "Se requiere el nombre del propietario para la carta."
 
@@ -1484,7 +1485,7 @@ msgstr "Última modificación: 24 de enero de 2025"
 msgid "Last name"
 msgstr "Apellido"
 
-#: src/types/LetterFormTypes.ts:46
+#: src/types/LetterFormTypes.ts:51
 msgid "Last name is required for the letter"
 msgstr "Se requiere el apellido para la carta."
 
@@ -1961,7 +1962,7 @@ msgstr "Número de teléfono"
 msgid "Phone number (optional)"
 msgstr "Número de teléfono (opcional)"
 
-#: src/types/LetterFormTypes.ts:51
+#: src/types/LetterFormTypes.ts:56
 msgid "Phone number is required for follow up"
 msgstr "Se requiere un número de teléfono para realizar el seguimiento."
 
@@ -1994,13 +1995,13 @@ msgstr "Por favor, confirme si tiene intención de renovar mi contrato de arrend
 msgid "Please confirm your address"
 msgstr "Confirme su dirección"
 
-#: src/types/LetterFormTypes.ts:52
-#: src/types/LetterFormTypes.ts:54
+#: src/types/LetterFormTypes.ts:57
+#: src/types/LetterFormTypes.ts:59
 msgid "Please enter a complete US phone number"
 msgstr "Por favor, ingrese un número de teléfono completo de EE. UU."
 
-#: src/types/LetterFormTypes.ts:74
-#: src/types/LetterFormTypes.ts:110
+#: src/types/LetterFormTypes.ts:79
+#: src/types/LetterFormTypes.ts:115
 msgid "Please enter a unit number or check the box to confirm that there is no unit number"
 msgstr "Introduzca un número de unidad o marque la casilla para confirmar que no hay número de unidad."
 
@@ -2010,13 +2011,13 @@ msgstr "Introduzca un número de unidad o marque la casilla para confirmar que n
 #~ msgid "Please enter a valid email"
 #~ msgstr "Please enter a valid email"
 
-#: src/types/LetterFormTypes.ts:56
-#: src/types/LetterFormTypes.ts:95
-#: src/types/LetterFormTypes.ts:157
+#: src/types/LetterFormTypes.ts:61
+#: src/types/LetterFormTypes.ts:100
+#: src/types/LetterFormTypes.ts:162
 msgid "Please enter a valid email address"
 msgstr "Por favor, ingrese una dirección de correo electrónico válida."
 
-#: src/types/LetterFormTypes.ts:33
+#: src/types/LetterFormTypes.ts:38
 msgid "Please enter a valid ZIP Code"
 msgstr "Por favor, ingrese un código postal válido."
 
@@ -2024,7 +2025,7 @@ msgstr "Por favor, ingrese un código postal válido."
 #~ msgid "please enter your email address or uncheck the option to CC you on the email to your landlord"
 #~ msgstr "please enter your email address or uncheck the option to CC you on the email to your landlord"
 
-#: src/types/LetterFormTypes.ts:197
+#: src/types/LetterFormTypes.ts:202
 msgid "Please enter your email address or uncheck the option to CC you on the email to your landlord"
 msgstr "Introduzca su dirección de correo electrónico o desmarque la opción para enviarle una copia del correo electrónico a su arrendador."
 
@@ -2069,7 +2070,7 @@ msgstr ""
 #~ msgid "Please review your letter to ensure all the details are correct."
 #~ msgstr "Please review your letter to ensure all the details are correct."
 
-#: src/types/LetterFormTypes.ts:193
+#: src/types/LetterFormTypes.ts:198
 msgid "Please select a reason for your letter."
 msgstr "Seleccione el motivo de su carta."
 
@@ -2078,11 +2079,11 @@ msgstr "Seleccione el motivo de su carta."
 #~ msgstr "Please select an option for mailing the letter"
 
 #. placeholder {0}: CPI + 5
-#: src/types/LetterFormTypes.ts:172
+#: src/types/LetterFormTypes.ts:177
 msgid "Please select whether the increase is beyond {0}%"
 msgstr "Seleccione si el aumento supera el {0}%."
 
-#: src/types/LetterFormTypes.ts:184
+#: src/types/LetterFormTypes.ts:189
 msgid "Please select whether your landlord provided one of the listed reasons for not renewing your lease"
 msgstr "Seleccione si su arrendador le proporcionó alguna de las razones enumeradas para no renovar su contrato de alquiler."
 
@@ -2510,13 +2511,13 @@ msgstr "Empezar de nuevo"
 msgid "State"
 msgstr "Estado"
 
-#: src/types/LetterFormTypes.ts:25
-#: src/types/LetterFormTypes.ts:28
+#: src/types/LetterFormTypes.ts:30
+#: src/types/LetterFormTypes.ts:33
 msgid "State is required for the letter"
 msgstr "Se requiere el estado para la carta."
 
-#: src/types/LetterFormTypes.ts:26
-#: src/types/LetterFormTypes.ts:29
+#: src/types/LetterFormTypes.ts:31
+#: src/types/LetterFormTypes.ts:34
 msgid "State must be two-letter abbreviation"
 msgstr "El estado debe ser una abreviatura de dos letras."
 
@@ -2934,7 +2935,7 @@ msgstr "Desbloquee NYC"
 msgid "Update your coverage result"
 msgstr "Actualice el resultado de su cobertura"
 
-#: src/types/LetterFormTypes.ts:131
+#: src/types/LetterFormTypes.ts:136
 msgid "Urbanization is required for address in Puerto Rico"
 msgstr "Se requiere urbanización para las direcciones en Puerto Rico."
 
@@ -3411,7 +3412,7 @@ msgstr "Ha elegido sobrescribir la información del propietario que figura en lo
 msgid "You must enter an address"
 msgstr "Debe ingresar una dirección"
 
-#: src/types/LetterFormTypes.ts:150
+#: src/types/LetterFormTypes.ts:155
 msgid "You must select a method to mail your letter"
 msgstr "Debes seleccionar un método para enviar tu carta por correo."
 
@@ -3897,7 +3898,7 @@ msgstr "Video de YouTube sobre cómo encontrar otros departamentos que sean prop
 msgid "ZIP code"
 msgstr ""
 
-#: src/types/LetterFormTypes.ts:32
+#: src/types/LetterFormTypes.ts:37
 msgid "ZIP code is required for the letter"
 msgstr ""
 
