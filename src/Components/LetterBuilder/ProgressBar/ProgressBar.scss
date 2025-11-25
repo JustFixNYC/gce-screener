@@ -24,6 +24,7 @@
     height: 16px;
     border: 1px solid $OFF_BLACK;
     border-radius: 16px;
+    background: transparent;
     &::-webkit-progress-bar {
       background: transparent;
     }
@@ -34,6 +35,8 @@
     }
     &::-moz-progress-bar {
       background-color: $OFF_BLACK;
+      border-radius: 16px;
+      transition: width 0.3s ease;
     }
   }
 }
