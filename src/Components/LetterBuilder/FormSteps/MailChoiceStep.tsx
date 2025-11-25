@@ -136,7 +136,7 @@ export const MailChoiceStep: React.FC = () => {
           {...register("landlord_details.email")}
           id={`form-landlord-email`}
           className="landlord-email"
-          labelText={_(msg`Your landlord's email`) + " " + _(msg`(optional)`)}
+          labelText={_(msg`Your landlord’s email`) + " " + _(msg`(optional)`)}
           invalid={!!errors?.landlord_details?.email}
           invalidText={errors?.landlord_details?.email?.message}
           invalidRole="status"

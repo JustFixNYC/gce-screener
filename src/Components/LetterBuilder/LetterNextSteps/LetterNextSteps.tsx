@@ -558,7 +558,7 @@ export const NoSmallerIncreaseBeforeLeaseEnd: React.FC<NextStepItemProps> = (
       </li>
       <li>
         <Trans>
-          If you're comfortable, you can avoid signing a lease with an increase
+          If you’re comfortable, you can avoid signing a lease with an increase
           above the Good Cause limit.
         </Trans>
       </li>
