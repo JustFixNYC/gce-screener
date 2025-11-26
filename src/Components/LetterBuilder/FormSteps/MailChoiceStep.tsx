@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
@@ -26,6 +26,7 @@ export const MailChoiceStep: React.FC = () => {
       register,
       control,
       watch,
+      setValue,
       formState: { errors },
     },
   } = useContext(FormContext);
@@ -43,6 +44,15 @@ export const MailChoiceStep: React.FC = () => {
     anyErrors(["email"], errors.landlord_details);
 
   const mailChoice = watch("mail_choice");
+  const landlordEmail = watch("landlord_details.email");
+
+  // Ensure that CC value is set back to false if no landlord email provided,
+  // even though automatically unchecked and disabled
+  useEffect(() => {
+    if (!landlordEmail) {
+      setValue("cc_user", false);
+    }
+  }, [landlordEmail, setValue]);
 
   return (
     <LetterStepForm nextStep="confirmation" className="mail-choice-step">
