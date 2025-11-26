@@ -59,7 +59,7 @@ const Layout = () => {
   );
 };
 
-function isJsonString(str: string | null) {
+function isJsonString(str: string | null): str is string {
   if (!str) return false;
 
   try {
@@ -190,7 +190,7 @@ const LoadLetterSession = ({ request }: { request: Request }) => {
       allowedRoutes,
       formValues: !isJsonString(formValues)
         ? undefined
-        : (JSON.parse(formValues as string) as FormFields),
+        : (JSON.parse(formValues) as FormFields),
     };
   } else {
     throw redirect("/letter");
