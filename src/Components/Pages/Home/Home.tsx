@@ -77,8 +77,8 @@ export const Home: React.FC = () => {
       <Header
         title={
           <Trans>
-            Learn if you’re covered <br />
-            by Good Cause <br />
+            Learn if you’re covered <br aria-hidden />
+            by Good Cause <br aria-hidden />
             Eviction law in NYC
           </Trans>
         }
