@@ -127,7 +127,7 @@ export const PreviewStep: React.FC = () => {
       <div className="preview-step__note">
         <Trans>
           <strong>Note:</strong> You will be able to download a PDF version of
-          this letter later, after you select your mailing preference.
+          this letter later.
         </Trans>
       </div>
       <BackNextButtons
