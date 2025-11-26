@@ -16,41 +16,49 @@ msgstr ""
 "X-Crowdin-File-ID: 90\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Language-Team: Spanish, Latin America\n"
-"PO-Revision-Date: 2025-11-26 16:16\n"
+"PO-Revision-Date: 2025-11-26 17:38\n"
 
 #: GCE+Letter+-+Working+on+Resolution/08bd6083-372d-4dd5-b4d9-6d9eaabfa4b6/name:0
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: GCE+Letter+-+Working+on+Resolution/ac5d4839-e220-485a-a630-79e0430d1ff8/name:0
 msgid "Other"
-msgstr ""
+msgstr "Otros"
 
 #: GCE+Letter+-+Working+on+Resolution/a1497f6a-1a1f-41d1-8b72-df4f7bf996d8/text:0
 msgid "Sorry, we didn't understand your response.\n\n"
 "Is your landlord working with you on a resolution regarding your @(if(fields.gce_letter_reason = \"NON_RENEWAL\", \"lease renewal\", \"rent increase\"))\n\n"
 "Reply \"YES\" or \"NO\""
-msgstr ""
+msgstr "Lo sentimos, no hemos entendido su respuesta.\n\n"
+"¿Está colaborando su arrendador con usted para encontrar una solución con respecto a su @(if(fields.gce_letter_reason = \"NON_RENEWAL\", \"renovación del contrato de arrendamiento\", \"aumento del alquiler\"))\n\n"
+"Responda «SÍ» o «NO»."
 
 #: GCE+Letter+-+Working+on+Resolution/099acbd1-13a1-40a1-8855-6fbb8f1ea410/text:0
 msgid "Thanks for letting us know. We will check in with you again in 2 weeks to see how things are going.\n\n"
 "In the meantime, remember:\n"
 "📝 Keep all communication with your landlord in writing.\n\n"
 "💻 Learn about next steps you can take at https://goodcausenyc.org/letter/next_steps"
-msgstr ""
+msgstr "Gracias por informarnos. Nos pondremos en contacto contigo de nuevo en dos semanas para ver cómo van las cosas.\n\n"
+"Mientras tanto, recuerda:\n"
+"📝 Mantén toda la comunicación con tu arrendador por escrito.\n\n"
+"💻 Infórmate sobre los siguientes pasos que puedes dar en https://goodcausenyc.org/letter/next_steps"
 
 #: GCE+Letter+-+Working+on+Resolution/dfaea69a-dac4-41f9-ad15-d15afa32a1e3/text:0
 msgid "Thanks for the update.\n\n"
 "Is your landlord working with you on a resolution regarding your @(if(fields.gce_letter_reason = \"NON_RENEWAL\", \"lease renewal\", \"rent increase\"))\n\n"
 "Reply \"YES\" or \"NO\""
-msgstr ""
+msgstr "Gracias por la información.\n\n"
+"¿Está colaborando tu arrendador contigo para encontrar una solución con respecto a tu @(if(fields.gce_letter_reason = \"NON_RENEWAL\", \"renovación del contrato de alquiler\", \"aumento del alquiler\"))\n\n"
+"Responde «SÍ» o «NO»."
 
 #: GCE+Letter+-+Working+on+Resolution/4b71fc2b-a332-4b0a-8a52-0a2d2f20bc71/text:0
 msgid "We are sorry to hear that your landlord is not working with you to reach a resolution. We will check in with you again in 2 weeks to see how things are going.\n\n"
 "If you feel harassed by your landlord, know that harassment is illegal. To learn more about further action you can take, visit: https://goodcausenyc.org/letter/next_steps"
-msgstr ""
+msgstr "Lamentamos que su arrendador no esté colaborando con usted para llegar a una solución. Nos pondremos en contacto con usted de nuevo en dos semanas para ver cómo van las cosas.\n\n"
+"Si se siente acosado por su arrendador, sepa que el acoso es ilegal. Para obtener más información sobre las medidas que puede tomar, visite: https://goodcausenyc.org/letter/next_steps"
 
 #: GCE+Letter+-+Working+on+Resolution/47b64d82-6d6c-4ece-930d-4936f4c1af2f/name:0
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
