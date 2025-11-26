@@ -65,31 +65,17 @@ export const LetterBuilderForm: React.FC = () => {
       firstLetterStep.route,
     ]);
 
+  const [sessionFormValues, setSessionFormValues, clearSessionFormValues] =
+    useSessionStorage<Partial<FormFields>>("formValues", getValues());
+
   const errorScrollRef = useRef<HTMLDivElement | null>(null);
 
   const { trigger: sendLetter } = useSendGceLetterData();
 
   // load saved form values from sessionStorage on mount
   useEffect(() => {
-    const loadFromSessionStorage = () => {
-      const allFields = Object.values(letterSteps)
-        .flatMap((step) => step.fields || [])
-        .filter((field, index, self) => self.indexOf(field) === index); // unique fields
-
-      allFields.forEach((field) => {
-        const savedValue = window.sessionStorage.getItem(field);
-        if (savedValue) {
-          try {
-            const parsedValue = JSON.parse(savedValue);
-            setValue(field, parsedValue);
-          } catch {
-            rollbar.error(`Failed to parse ${field} from sessionStorage`);
-          }
-        }
-      });
-    };
-
-    loadFromSessionStorage();
+    reset(sessionFormValues);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onLetterSubmit: SubmitHandler<FormFields> = async (
@@ -104,37 +90,12 @@ export const LetterBuilderForm: React.FC = () => {
       setConfirmationResponse({ error: true });
       rollbar.error(`Failed to send letter: ${e}`);
     }
-    clearFormFromSessionStorage();
+    clearSessionFormValues();
     clearAllowedRoutes();
-  };
-
-  const clearFormFromSessionStorage = () => {
-    const allFields = Object.values(letterSteps)
-      .flatMap((step) => step.fields || [])
-      .filter((field, index, self) => self.indexOf(field) === index);
-
-    allFields.forEach((field) => {
-      window.sessionStorage.removeItem(field);
-    });
   };
 
   const navigateToStep = (stepName: StepRouteName) => {
     navigate(`/${i18n.locale}/letter/${stepName}`);
-  };
-
-  const saveFieldsToSessionStorage = (fields: string[]) => {
-    const formValues = getValues();
-
-    fields.forEach((field) => {
-      const fieldValue = formValues[field as keyof FormFields];
-      if (fieldValue !== undefined) {
-        try {
-          window.sessionStorage.setItem(field, JSON.stringify(fieldValue));
-        } catch {
-          rollbar.error(`Failed to save ${field} to sessionStorage`);
-        }
-      }
-    });
   };
 
   const next = async (nextStepName?: StepRouteName) => {
@@ -147,7 +108,7 @@ export const LetterBuilderForm: React.FC = () => {
         errorScrollRef?.current?.scrollIntoView();
         return;
       }
-      saveFieldsToSessionStorage(fields);
+      setSessionFormValues(getValues());
     }
 
     if (!nextStepName) return;
