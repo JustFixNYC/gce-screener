@@ -23,8 +23,8 @@ import { useSendGceLetterData } from "../../api/hooks";
 import {
   LetterStep,
   letterSteps,
-  stepRouteNames,
   StepRouteName,
+  firstLetterStep,
 } from "./LetterSteps";
 import { InfoBox } from "../InfoBox/InfoBox";
 import { useSessionStorage } from "../../hooks/useSessionStorage";
@@ -60,8 +60,10 @@ export const LetterBuilderForm: React.FC = () => {
     GCELetterConfirmation | { error: boolean }
   >();
 
-  const [lastStepReached, setLastStepReached] =
-    useSessionStorage<StepRouteName>("lastStepReached", stepRouteNames[0]);
+  const [allowedRoutes, setAllowedRoutes, clearAllowedRoutes] =
+    useSessionStorage<StepRouteName[]>("allowedLetterRoutes", [
+      firstLetterStep.route,
+    ]);
 
   const errorScrollRef = useRef<HTMLDivElement | null>(null);
 
@@ -90,26 +92,6 @@ export const LetterBuilderForm: React.FC = () => {
     loadFromSessionStorage();
   }, []);
 
-  // handles redirects
-  useEffect(() => {
-    if (!currentStep || !lastStepReached) return;
-
-    const currentStepIndex = stepRouteNames.indexOf(currentStep.route);
-    const lastStepIndex = stepRouteNames.indexOf(lastStepReached);
-
-    // case: undefined step names in URL will set the indices to -1.
-    // reset to first step. progress of other inputs will be saved in sessionStorage anyway
-    if (currentStepIndex === -1 || lastStepIndex === -1) {
-      setLastStepReached(stepRouteNames[0]);
-      return;
-    }
-
-    // case: user is trying to skip ahead, redirect to the lastStepReached
-    if (currentStepIndex > lastStepIndex) {
-      navigateToStep(lastStepReached);
-    }
-  }, [location.pathname, lastStepReached, currentStep]);
-
   const onLetterSubmit: SubmitHandler<FormFields> = async (
     letterData: FormFields
   ) => {
@@ -123,8 +105,7 @@ export const LetterBuilderForm: React.FC = () => {
       rollbar.error(`Failed to send letter: ${e}`);
     }
     clearFormFromSessionStorage();
-    // todo: when lastStepReached = confirmation, don't let the user go back to any other steps.
-    // clear lastStepReached afterward
+    clearAllowedRoutes();
   };
 
   const clearFormFromSessionStorage = () => {
@@ -171,14 +152,11 @@ export const LetterBuilderForm: React.FC = () => {
 
     if (!nextStepName) return;
 
-    const nextStepIndex = stepRouteNames.indexOf(nextStepName);
-    const currentLastIndex = stepRouteNames.indexOf(
-      lastStepReached || stepRouteNames[0]
+    setAllowedRoutes(
+      allowedRoutes
+        ? allowedRoutes.concat([nextStepName])
+        : [currentStep.route, nextStepName]
     );
-
-    if (nextStepIndex > currentLastIndex) {
-      setLastStepReached(nextStepName);
-    }
 
     if (nextStepName === "confirmation") {
       handleSubmit(onLetterSubmit)();
