@@ -32,9 +32,9 @@ msgid "(123) 456-7890"
 msgstr "(123) 456-7890"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:442
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:118
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:128
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:156
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:138
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:166
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:210
 msgid "(optional)"
 msgstr "(optional)"
@@ -272,11 +272,11 @@ msgid "About this site"
 msgstr "About this site"
 
 #. placeholder {0}: index + 1
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:167
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:177
 msgid "Additional email {0}"
 msgstr "Additional email {0}"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:156
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:166
 msgid "Additional recipients"
 msgstr "Additional recipients"
 
@@ -449,7 +449,7 @@ msgstr "Call Met Council on Housing Hotline"
 #~ msgid "Cancel"
 #~ msgstr "Cancel"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:147
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:157
 msgid "CC me on the email that you send to my landlord "
 msgstr "CC me on the email that you send to my landlord "
 
@@ -670,7 +670,7 @@ msgstr "Download coverage"
 msgid "Download letter (PDF)"
 msgstr "Download letter (PDF)"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:199
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:209
 msgid "Download my letter"
 msgstr "Download my letter"
 
@@ -696,7 +696,7 @@ msgstr "Eligible"
 msgid "Email"
 msgstr "Email"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:100
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:110
 msgid "Email a copy to yourself and your landlord or property manager"
 msgstr "Email a copy to yourself and your landlord or property manager"
 
@@ -1695,12 +1695,12 @@ msgstr "Look out for a text from JustFix"
 #~ msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat alias magni nam beatae aliquam architecto laudantium mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda! Commodi architecto dolor eius perferendis!"
 #~ msgstr "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat alias magni nam beatae aliquam architecto laudantium mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda! Commodi architecto dolor eius perferendis!"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:200
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:210
 msgid "Mail my letter"
 msgstr "Mail my letter"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:80
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:86
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:90
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:96
 msgid "Mail or deliver the letter yourself"
 msgstr "Mail or deliver the letter yourself"
 
@@ -2447,7 +2447,7 @@ msgstr "Select <0>“Your landlord is planning to raise your rent”</0> if any 
 #~ msgid "Select <0>“Your landlord is planning to raise your rent”</0>if any of the following apply:"
 #~ msgstr "Select <0>“Your landlord is planning to raise your rent”</0>if any of the following apply:"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:50
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:60
 msgid "Select a mailing method"
 msgstr "Select a mailing method"
 
@@ -3106,7 +3106,7 @@ msgstr "We couldn’t finish your letter"
 #~ msgid "We have sent a text message to you at {0} with the USPS tracking number for your letter."
 #~ msgstr "We have sent a text message to you at {0} with the USPS tracking number for your letter."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:104
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:114
 msgid "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if your normally correspond to your landlord via email. You can also send a copy to other people you trust."
 msgstr "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if your normally correspond to your landlord via email. You can also send a copy to other people you trust."
 
@@ -3138,8 +3138,8 @@ msgstr "We need to confirm if your landlord owns more than 10 apartments"
 msgid "We were unable to find relevant documents containing owner names and/or signatures for this building."
 msgstr "We were unable to find relevant documents containing owner names and/or signatures for this building."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:56
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:62
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:66
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:72
 msgid "We will mail the letter for you"
 msgstr "We will mail the letter for you"
 
@@ -3152,7 +3152,7 @@ msgstr "We will never call you or share your phone number. We may text you later
 #~ msgid "We will never call you or share your phone number. You can opt-out at any time."
 #~ msgstr "We will never call you or share your phone number. You can opt-out at any time."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:89
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:99
 msgid "We will provide a PDF for you to download, print, and mail or deliver to your landlord or property manager."
 msgstr "We will provide a PDF for you to download, print, and mail or deliver to your landlord or property manager."
 
@@ -3164,7 +3164,7 @@ msgstr "We will provide a PDF for you to download, print, and mail or deliver to
 #~ msgid "We will send your letter for you via USPS Certified Mail ® at no cost to you. We will also provide a PDF for you to download for your records."
 #~ msgstr "We will send your letter for you via USPS Certified Mail ® at no cost to you. We will also provide a PDF for you to download for your records."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:69
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:79
 msgid "We will send your letter for you via USPS Certified Mail at no cost to you. We will also provide a PDF for you to download for your records."
 msgstr "We will send your letter for you via USPS Certified Mail at no cost to you. We will also provide a PDF for you to download for your records."
 
@@ -3664,7 +3664,7 @@ msgstr "Your current monthly rent + {increase_pct}%"
 #~ msgid "Your current monthly rent + ${increase_pct}%"
 #~ msgstr "Your current monthly rent + ${increase_pct}%"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:118
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:128
 msgid "Your email"
 msgstr "Your email"
 
@@ -3796,7 +3796,7 @@ msgstr "Your landlord will need to provide a good reason for ending a tenancy. E
 #~ msgid "Your landlord's email"
 #~ msgstr "Your landlord's email"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:128
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:138
 msgid "Your landlord’s email"
 msgstr "Your landlord’s email"
 
