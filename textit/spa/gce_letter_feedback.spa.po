@@ -16,11 +16,11 @@ msgstr ""
 "X-Crowdin-File-ID: 84\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Language-Team: Spanish, Latin America\n"
-"PO-Revision-Date: 2025-11-26 16:16\n"
+"PO-Revision-Date: 2025-11-26 17:38\n"
 
 #: GCE+Letter+-+Feedback/85ec109b-8a21-45b8-9bb9-9cd151d96d09/subject:0
 msgid "@(regex_match(parent.flow, \"(loc)|(nycx)|(tenant text)|(gce letter)\")) : Tenant Wants to Provide Feedback"
-msgstr ""
+msgstr "@(regex_match(parent.flow, \"(loc)|(nycx)|(tenant text)|(gce letter)\")) : El inquilino desea proporcionar comentarios"
 
 #: GCE+Letter+-+Feedback/50c8afe9-3d4b-4059-a0bc-189d41485ebb/name:0
 msgid "All Responses"
@@ -31,7 +31,10 @@ msgid "Hello! @contact.name wants to provide feedback on @(regex_match(parent.fl
 "Their phone number is @(format_urn(urns.tel))\n\n"
 "Click here to view the conversation: https://textit.in/contact/read/@contact.uuid\n\n"
 "@(if(text_length(results.all_feedback) > 19, results.all_feedback, null))"
-msgstr ""
+msgstr "¡Hola! @contact.name desea enviar comentarios sobre @(regex_match(parent.flow, \"(loc)|(nycx)\")) \n\n"
+"Su número de teléfono es @(format_urn(urns.tel))\n\n"
+"Haga clic aquí para ver la conversación: https://textit.in/contact/read/@contact.uuid\n\n"
+"@(if(text_length(results.all_feedback) > 19, results.all_feedback, null))"
 
 #: GCE+Letter+-+Feedback/0fc59508-7d87-4274-ab53-4af8e698cf69/name:0
 msgid "No Response"
