@@ -16,31 +16,39 @@ msgstr ""
 "X-Crowdin-File-ID: 80\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Language-Team: Spanish, Latin America\n"
-"PO-Revision-Date: 2025-11-26 16:16\n"
+"PO-Revision-Date: 2025-11-26 17:38\n"
 
 #: GCE+Letter+-+Confirmation/415ff7ed-62e0-4fc7-846c-78d09f878db2/text:0
 msgid "JustFix here! Your letter is on its way to your landlord.\n\n"
 "Here's a link to a PDF version of your letter, for your records.\n\n"
 "https://app.justfix.org/gceletter/@fields.gce_letter_hash/gce-letter.pdf"
-msgstr ""
+msgstr "¡JustFix aquí! Su carta está en camino a su arrendador.\n\n"
+"Aquí tiene un enlace a una versión en PDF de su carta, para sus registros.\n\n"
+"https://app.justfix.org/gceletter/@fields.gce_letter_hash/gce-letter.pdf"
 
 #: GCE+Letter+-+Confirmation/aa6f9a11-25f1-4983-a2c4-4220ca6cd0e6/text:0
 msgid "JustFix here! Your letter is ready to be downloaded for you to mail to your landlord at: \n"
 "@fields.gce_letter_landlord_name\n"
 "@fields.gce_letter_landlord_address\n\n\n"
 "Download your letter here: https://app.justfix.org/gceletter/@fields.gce_letter_hash/gce-letter.pdf"
-msgstr ""
+msgstr "¡JustFix aquí! Tu carta está lista para descargar y enviarla por correo a tu arrendador en: \n"
+"@fields.gce_letter_landlord_name\n"
+"@fields.gce_letter_landlord_address\n\n\n"
+"Descarga tu carta aquí: https://app.justfix.org/gceletter/@fields.gce_letter_hash/gce-letter.pdf"
 
 #: GCE+Letter+-+Confirmation/c4971e0b-3ae2-451b-a032-33ca4b56d520/name:0
 msgid "Other"
-msgstr ""
+msgstr "Otros"
 
 #: GCE+Letter+-+Confirmation/09ff9b90-4d9b-4636-941b-ef4c14be5038/text:0
 msgid "We recommend waiting up to 10 days after the delivery of your letter for a response from your landlord. If you sent a copy to your landlord via email, you may hear from them sooner.\n\n"
 "While you wait:\n"
 "📝 Keep all communication with your landlord in writing.\n\n"
 "💻 Learn about next steps you can take here: https://goodcausenyc.org/letter/next_steps"
-msgstr ""
+msgstr "Recomendamos esperar hasta 10 días después de la entrega de su carta para recibir una respuesta de su arrendador. Si le envió una copia a su arrendador por correo electrónico, es posible que reciba una respuesta antes.\n\n"
+"Mientras espera:\n"
+"📝 Mantenga toda la comunicación con su arrendador por escrito.\n\n"
+"💻 Obtenga información sobre los siguientes pasos que puede seguir aquí: https://goodcausenyc.org/letter/next_steps"
 
 #: GCE+Letter+-+Confirmation/478c70ab-a1e9-4e4c-ad3a-3494a442764b/text:0
 msgid "Your USPS Certified Mail tracking number is @fields.gce_letter_tracking_number.\n\n"
@@ -50,13 +58,19 @@ msgid "Your USPS Certified Mail tracking number is @fields.gce_letter_tracking_n
 "While you wait:\n"
 "📝 Keep all communication with your landlord in writing.\n\n"
 "💻 Learn about next steps you can take at https://goodcausenyc.org/letter/next_steps"
-msgstr ""
+msgstr "Su número de seguimiento del correo certificado de USPS es @fields.gce_letter_tracking_number.\n\n"
+"https://tools.usps.com/go/TrackConfirmAction?tLabels=@fields.gce_letter_tracking_number\n\n"
+"Es posible que USPS muestre inicialmente el mensaje «Seguimiento no disponible». Esto es normal. El seguimiento aparecerá una vez que USPS escanee su carta, lo que puede tardar entre 1 y 5 días.\n\n"
+"Le recomendamos que espere hasta 10 días después de la entrega de su carta para recibir una respuesta de su arrendador. Si le envió una copia a su arrendador por correo electrónico, es posible que reciba una respuesta antes.\n\n"
+"Mientras espera:\n"
+"📝 Mantenga toda la comunicación con su arrendador por escrito.\n\n"
+"💻 Obtenga información sobre los siguientes pasos que puede seguir en https://goodcausenyc.org/letter/next_steps"
 
 #: GCE+Letter+-+Confirmation/e2faed86-a363-451a-a2a9-1220c95c2404/name:0
 msgid "justfix_mail"
-msgstr ""
+msgstr "justfix_mail"
 
 #: GCE+Letter+-+Confirmation/a7fc4663-071e-422e-8653-ddcc96f7b1a8/name:0
 msgid "user_mail"
-msgstr ""
+msgstr "correo electrónico del usuario"
 
