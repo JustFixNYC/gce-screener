@@ -175,6 +175,7 @@ export const UserDetailsStep: React.FC = () => {
                 }}
                 labelText={_(msg`I do not have a unit number`)}
                 id="no_unit"
+                invalid={!!userErrors?.secondary_line}
               />
             )}
           />

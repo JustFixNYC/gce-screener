@@ -358,6 +358,7 @@ const LandlordFormGroup: React.FC<{
                   msg`This address does not have a unit/suite/apartment`
                 )}
                 id="no_unit"
+                invalid={!!landlordErrors?.secondary_line}
               />
             )}
           />
