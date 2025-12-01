@@ -75,7 +75,6 @@ export const RentStabilization: React.FC = () => {
                   is rent stabilized and if you’re being overcharged.
                 </Trans>
               </p>
-              <br />
               <p>
                 <Trans>
                   If your apartment has ever been rent stabilized, you’ll
@@ -84,7 +83,6 @@ export const RentStabilization: React.FC = () => {
                   your apartment is still rent stabilized.
                 </Trans>
               </p>
-              <br />
               <p>
                 <Trans>
                   If your apartment has never been rent stabilized, you should
