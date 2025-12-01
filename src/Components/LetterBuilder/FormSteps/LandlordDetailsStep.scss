@@ -5,14 +5,6 @@
   .hpd-invalid-modal .modal__content {
     @include body_large_desktop;
   }
-  .modal__content {
-    .info-box {
-      margin-bottom: 1rem;
-    }
-    .landlord-address {
-      margin-bottom: 0;
-    }
-  }
   .landlord-address {
     @include body_large_desktop;
     margin-bottom: 1rem;
@@ -44,6 +36,18 @@
     .jfcl-dropdown__control {
       padding: 5px;
       border: 1px solid $OFF_BLACK;
+    }
+  }
+
+  .modal__content {
+    .info-box {
+      margin-bottom: 1rem;
+    }
+    .landlord-address {
+      &,
+      &__name {
+        margin-bottom: 0;
+      }
     }
   }
 }
