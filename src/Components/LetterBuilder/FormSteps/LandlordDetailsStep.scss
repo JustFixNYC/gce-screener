@@ -46,15 +46,7 @@
       }
     }
   }
-  .jfcl-form-group {
-    .jfcl-text-input {
-      margin-bottom: 1.5rem;
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-    &.landlord-email-group .jfcl-text-input {
-      margin-bottom: 2rem;
-    }
+  .jfcl-form-group .jfcl-checkbox:last-of-type {
+    margin-bottom: 1.5rem;
   }
 }

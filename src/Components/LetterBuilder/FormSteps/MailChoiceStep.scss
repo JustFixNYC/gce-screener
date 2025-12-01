@@ -102,10 +102,13 @@
       margin-bottom: 0.75rem;
     }
 
-    .jfcl-checkbox__checkmark {
-      min-width: 1.5em;
-      min-height: 1.5em;
-      margin-bottom: 0;
+    .jfcl-checkbox {
+      margin-bottom: 1.5rem;
+      &__checkmark {
+        min-width: 1.5em;
+        min-height: 1.5em;
+        margin-bottom: 0;
+      }
     }
 
     .additional-email-form-group {

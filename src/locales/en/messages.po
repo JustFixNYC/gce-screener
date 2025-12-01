@@ -35,7 +35,7 @@ msgstr "(123) 456-7890"
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:118
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:128
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:157
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:211
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:209
 msgid "(optional)"
 msgstr "(optional)"
 
@@ -75,7 +75,7 @@ msgstr "{unitsres, plural, one {# apartment} other {# apartments}}"
 msgid "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 msgstr "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:251
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:249
 msgid "<0>Email</0>"
 msgstr "<0>Email</0>"
 
@@ -91,7 +91,7 @@ msgstr "<0>Email</0>"
 msgid "<0>Note:</0> You will be able to download a PDF version of this letter later."
 msgstr "<0>Note:</0> You will be able to download a PDF version of this letter later."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:239
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:237
 msgid "<0>Phone number</0>"
 msgstr "<0>Phone number</0>"
 
@@ -510,7 +510,7 @@ msgid "classified as an educational building"
 msgstr "classified as an educational building"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:483
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:264
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:262
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:275
 msgid "Close"
 msgstr "Close"
@@ -692,7 +692,7 @@ msgid "Eligible"
 msgstr "Eligible"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:442
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:211
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:209
 msgid "Email"
 msgstr "Email"
 
@@ -731,7 +731,7 @@ msgstr "Enter your address"
 msgid "Error"
 msgstr "Error"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:138
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:136
 msgid "Error with address selection"
 msgstr "Error with address selection"
 
@@ -832,7 +832,7 @@ msgstr "Find your landlord’s other buildings"
 msgid "Finishing up"
 msgstr "Finishing up"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:106
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:105
 msgid "First name"
 msgstr "First name"
 
@@ -1063,7 +1063,7 @@ msgstr "I am writing to inform you that my tenancy at {0}{1}, {2}, {3} {4}is cov
 #~ msgid "I believe the rent detailed in the new lease you’ve offered exceeds the lawful limit under the Good Cause Eviction law. The difference between my current rent and the proposed rent appears to exceed {0}%."
 #~ msgstr "I believe the rent detailed in the new lease you’ve offered exceeds the lawful limit under the Good Cause Eviction law. The difference between my current rent and the proposed rent appears to exceed {0}%."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:176
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:174
 msgid "I do not have a unit number"
 msgstr "I do not have a unit number"
 
@@ -1255,7 +1255,7 @@ msgstr "If you’re organizing with neighbors, challenging a landlord’s action
 msgid "If you’re unsure whether the reason is valid, reach out to a tenant support organization or legal aid provider listed in Who Can Help?."
 msgstr "If you’re unsure whether the reason is valid, reach out to a tenant support organization or legal aid provider listed in Who Can Help?."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:152
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:150
 msgid "If your address does not have a unit number, please select “I do not have a unit number” below"
 msgstr "If your address does not have a unit number, please select “I do not have a unit number” below"
 
@@ -1502,7 +1502,7 @@ msgstr "Last modified: August 16, 2024"
 msgid "Last modified: Jan 24, 2025"
 msgstr "Last modified: Jan 24, 2025"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:115
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:114
 msgid "Last name"
 msgstr "Last name"
 
@@ -1540,7 +1540,7 @@ msgstr "Learn if you’re covered <0/>by Good Cause <1/>Eviction law in NYC"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:457
 #: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:145
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:226
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:224
 #: src/Components/Pages/Form/Survey.tsx:603
 msgid "Learn more"
 msgstr "Learn more"
@@ -1982,7 +1982,7 @@ msgstr "PACT Rights and Responsibilities Fact Sheet"
 #~ msgid "Phone"
 #~ msgstr "Phone"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:200
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:198
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:243
 msgid "Phone number"
 msgstr "Phone number"
@@ -2559,7 +2559,7 @@ msgid "State must be two-letter abbreviation"
 msgstr "State must be two-letter abbreviation"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:318
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:131
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:129
 msgid "Street address"
 msgstr "Street address"
 
@@ -2954,13 +2954,13 @@ msgstr "Understanding your rights"
 msgid "Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation."
 msgstr "Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:154
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:152
 msgid "Unit number"
 msgstr "Unit number"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:325
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:332
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:144
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:142
 msgid "Unit Number"
 msgstr "Unit Number"
 
@@ -3225,7 +3225,7 @@ msgstr "We’ll also let you know when NYC changes the maximum rent increase amo
 #~ msgid "We’ll email you a PDF copy of your letter. We'll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to."
 #~ msgstr "We’ll email you a PDF copy of your letter. We'll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:255
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:253
 msgid "We’ll email you a PDF copy of your letter. We’ll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to."
 msgstr "We’ll email you a PDF copy of your letter. We’ll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to."
 
@@ -3233,7 +3233,7 @@ msgstr "We’ll email you a PDF copy of your letter. We’ll also include your e
 #~ msgid "We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights."
 #~ msgstr "We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:243
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:241
 msgid "We’ll text you with your USPS tracking number. We will also check in after your letter is mailed. We will never call you or share your phone number."
 msgstr "We’ll text you with your USPS tracking number. We will also check in after your letter is mailed. We will never call you or share your phone number."
 
@@ -3336,7 +3336,7 @@ msgid "Who can help?"
 msgstr "Who can help?"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:450
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:219
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:217
 msgid "Why are we asking for this information?"
 msgstr "Why are we asking for this information?"
 
@@ -3352,7 +3352,7 @@ msgstr "Why send a letter to your landlord?"
 msgid "Why we ask for your landlord’s email"
 msgstr "Why we ask for your landlord’s email"
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:236
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:234
 msgid "Why we ask for your phone number and email"
 msgstr "Why we ask for your phone number and email"
 
@@ -3667,7 +3667,7 @@ msgstr "Your building has only {pluralApartments}, but"
 msgid "Your building was issued a certificate of occupancy on {latestCoDateFormatted}."
 msgstr "Your building was issued a certificate of occupancy on {latestCoDateFormatted}."
 
-#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:185
+#: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:183
 msgid "Your contact information"
 msgstr "Your contact information"
 

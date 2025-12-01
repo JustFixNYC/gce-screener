@@ -69,8 +69,18 @@
       }
     }
 
+    .jfcl-text-input,
+    .jfcl-checkbox {
+      margin-bottom: 1.5rem;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
     &:has(.form-group__footer) {
       padding-bottom: 0;
+      .jfcl-text-input {
+        margin-bottom: 2rem;
+      }
     }
     .form-group__footer {
       display: flex;
