@@ -49,7 +49,7 @@
       }
     }
 
-    &:hover {
+    &:has(input[type="radio"]:not(:checked)):hover {
       background-color: $OFF_WHITE_200;
       border: 2px solid $OFF_BLACK;
       // make room for thicker border
@@ -61,10 +61,6 @@
     &:has(input[type="radio"]:checked):hover {
       background-color: $BLUE_150;
       border: 2px solid $OFF_BLACK;
-      // make room for thicker border
-      label {
-        padding: calc(1rem - 1px) calc(1.25rem - 1px);
-      }
     }
   }
 
