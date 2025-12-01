@@ -311,7 +311,6 @@ const LandlordFormGroup: React.FC<{
           invalidText={errors.landlord_details?.name?.message}
           invalidRole="status"
           type="text"
-          autoFocus
         />
         <TextInput
           {...register("landlord_details.primary_line")}
@@ -434,7 +433,7 @@ const LandlordEmailFormGroup: React.FC = () => {
     <>
       <FormGroup
         legendText={_(msg`Your landlord’s email address`)}
-        className="form-group__section-header"
+        className="form-group__section-header landlord-email-group"
         invalid={!!errors.landlord_details?.email}
       >
         <TextInput

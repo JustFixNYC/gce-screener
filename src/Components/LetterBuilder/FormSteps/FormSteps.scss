@@ -11,7 +11,7 @@
     max-width: $contentBoxWidth;
     background-color: $WHITE;
     scroll-margin-top: 3.75rem; // 60px
-    padding: 2rem 1.5rem;
+    padding: 2rem;
     margin: 0 0 1.5rem 0;
     border: 1px solid $GREY_200;
 
@@ -78,8 +78,8 @@
       border-top: 1px solid $GREY_200;
       background-color: $OFF-WHITE-100;
       // offset parent padding for divider to span full width
-      margin-left: -1.5rem;
-      margin-right: -1.5rem;
+      margin-left: -2rem;
+      margin-right: -2rem;
       padding: 2rem;
       @include body_standard_desktop;
 

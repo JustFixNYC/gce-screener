@@ -23,11 +23,8 @@
       @include body_standard_desktop;
     }
   }
-  .landlord-city-input {
-    margin-top: 1.5rem;
-  }
   #landlord-state {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     .jfcl-input-header__label {
       @include body_standard_desktop;
       margin-bottom: 0.25rem;
@@ -38,7 +35,6 @@
       border: 1px solid $OFF_BLACK;
     }
   }
-
   .modal__content {
     .info-box {
       margin-bottom: 1rem;
@@ -48,6 +44,17 @@
       &__name {
         margin-bottom: 0;
       }
+    }
+  }
+  .jfcl-form-group {
+    .jfcl-text-input {
+      margin-bottom: 1.5rem;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    &.landlord-email-group .jfcl-text-input {
+      margin-bottom: 2rem;
     }
   }
 }
