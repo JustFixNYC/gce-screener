@@ -19,6 +19,17 @@
     }
   }
 
+  ul.no-bullets {
+    padding: 0;
+    margin-bottom: 0;
+    li {
+      list-style-type: none;
+      &:not(:last-of-type) {
+        margin-bottom: 0.75rem;
+      }
+    }
+  }
+
   .next-step.while-you-wait {
     background-color: $OFF_WHITE_100;
     border-radius: 0 0 4px 4px;

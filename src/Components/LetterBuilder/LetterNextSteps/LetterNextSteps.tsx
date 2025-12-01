@@ -983,7 +983,7 @@ export const CommunityResources: React.FC<NextStepItemProps> = (props) => (
       <h5>
         <Trans>Helpful organizations</Trans>
       </h5>
-      <ul>
+      <ul className="no-bullets">
         <li>
           <JFCLLinkExternal to="https://www.nyc.gov/site/mayorspeu/programs/contact-the-tenant-support-unit.page">
             <Trans>NYC’s Tenant Support Unit (TSU)</Trans>
@@ -1016,7 +1016,7 @@ export const TenantAdvocacyGroups: React.FC<NextStepItemProps> = (props) => (
       <h5>
         <Trans>Helpful organizations</Trans>
       </h5>
-      <ul>
+      <ul className="no-bullets">
         <li>
           <JFCLLinkExternal to="https://www.metcouncilonhousing.org/">
             <Trans>Met Council on Housing</Trans>
@@ -1049,7 +1049,7 @@ export const LegalAdviceAssistance: React.FC<NextStepItemProps> = (props) => (
       <h5>
         <Trans>Helpful organizations</Trans>
       </h5>
-      <ul>
+      <ul className="no-bullets">
         <li>
           <JFCLLinkExternal to="https://housingcourtanswers.org/contact-us/">
             <Trans>Housing Court Answers (HCA)</Trans>
