@@ -87,7 +87,7 @@ export const PreviewStep: React.FC = () => {
 
   return (
     <div className="preview-step">
-      <p>
+      <p className="preview-step__review">
         <Trans>
           Make sure the information below is accurate. If it is not, you can go
           back to make changes.
