@@ -495,11 +495,11 @@ export const FormattedLandlordAddress: React.FC<{
     <div className="landlord-address">
       <span className="landlord-address__name">{toTitleCase(ld.name)}</span>
       <span className="landlord-address__line-1">
-        {ld.primary_line}
-        {ld.secondary_line ? " " + ld.secondary_line : ""}
+        {toTitleCase(ld.primary_line)}
+        {ld.secondary_line ? " " + toTitleCase(ld.secondary_line) : ""}
       </span>
       <span className="landlord-address__line-2">
-        {ld.city}, {ld.state} {ld.zip_code}
+        {toTitleCase(ld.city)}, {ld.state} {ld.zip_code}
       </span>
     </div>
   );
