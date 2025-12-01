@@ -20,10 +20,14 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     <div className="progress-bar">
       <div id="progress-bar-title" className="progress-bar__title">
         <h2>
-          <Trans>Build your letter</Trans>
+          <Trans>
+            <strong>Letter Builder</strong>
+          </Trans>
         </h2>
         <span aria-hidden>: </span>
-        <h3>{_(stepName)}</h3>
+        <h3>
+          <strong>{_(stepName)}</strong>
+        </h3>
       </div>
       <progress
         id="letter-progress-bar"
