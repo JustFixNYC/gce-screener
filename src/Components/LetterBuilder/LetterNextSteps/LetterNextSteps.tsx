@@ -65,10 +65,11 @@ export const TextFollowup: React.FC<
         </p>
         <p>
           <Trans>
-            If you chose to have JustFix mail the letter for you, we will text
-            you the USPS tracking number for the letter. USPS may show “Tracking
-            not available” at first. This is normal. Tracking will appear once
-            USPS scans your letter. This can take between 1-5 days.
+            If you opted to have us mail the letter for you, we will text you
+            your USPS tracking number, so you can confirm your letter was
+            delivered. USPS may show “Tracking not available” at first. This is
+            normal. Tracking will appear once USPS scans your letter. This can
+            take between 1-5 days.
           </Trans>
         </p>
         <p>
