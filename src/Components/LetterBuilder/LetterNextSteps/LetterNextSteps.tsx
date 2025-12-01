@@ -534,7 +534,10 @@ export const SmallerButUnreasonableIncrease: React.FC<NextStepItemProps> = (
           </Trans>
         </li>
         <li>
-          <Trans>Keep paying rent until you sign a new lease.</Trans>
+          <Trans>
+            Keep paying rent under your current lease until a legal amount is
+            agreed to.
+          </Trans>
         </li>
       </ul>
     </section>
@@ -672,7 +675,6 @@ export const LetterResponsesRentIncrease: React.FC<
   >
     {includeUniversal ? (
       <>
-        {" "}
         <NewCompliantLease />
         <SmallerButUnreasonableIncrease />
         <NoSmallerIncreaseBeforeLeaseEnd />
@@ -680,14 +682,14 @@ export const LetterResponsesRentIncrease: React.FC<
         <ProvidesReasonForRentIncrease />
         <ClaimsNotCoveredByGCE />
         <NoResponse />
-        <SendsCourtPaper />{" "}
+        <SendsCourtPaper />
       </>
     ) : (
       <>
         <RefuseSmallerIncrease />
         <SmallerButUnreasonableIncrease />
         <NoSmallerIncreaseBeforeLeaseEnd />
-        <ProvidesReasonForRentIncrease />{" "}
+        <ProvidesReasonForRentIncrease />
       </>
     )}
   </ContentBox>
@@ -707,7 +709,7 @@ export const RefusesNewLease: React.FC<NextStepItemProps> = (props) => (
       <p>
         <Trans>
           Under Good Cause, a landlord cannot refuse to renew your lease without
-          a legally valid reason.{" "}
+          a legally valid reason.
         </Trans>
       </p>
       <p>
@@ -811,7 +813,7 @@ export const ReasonForNonRenewal: React.FC<NextStepItemProps> = (props) => (
         <Trans>
           If your landlord provides a reason, that doesn’t automatically mean
           the non-renewal is lawful. Your landlord’s reason must still meet the
-          standards defined in the law
+          standards defined in the law.
         </Trans>
       </p>
       <p>
@@ -888,7 +890,7 @@ export const ProofForNonRenewalReason: React.FC<NextStepItemProps> = (
       <p>
         <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
           <Trans>Learn more about Good Cause reasons for non renewal</Trans>
-        </JFCLLinkExternal>{" "}
+        </JFCLLinkExternal>
       </p>
     </section>
     <section>
@@ -943,7 +945,6 @@ export const LetterResponsesNonRenewal: React.FC<
   >
     {includeUniversal ? (
       <>
-        {" "}
         <NewCompliantLease />
         <NewLeaseUnreasonableIncrease />
         <RefusesNewLease />
@@ -951,14 +952,14 @@ export const LetterResponsesNonRenewal: React.FC<
         <ProofForNonRenewalReason />
         <ClaimsNotCoveredByGCE />
         <NoResponse />
-        <SendsCourtPaper />{" "}
+        <SendsCourtPaper />
       </>
     ) : (
       <>
         <RefusesNewLease />
         <NewLeaseUnreasonableIncrease />
         <ReasonForNonRenewal />
-        <ProofForNonRenewalReason />{" "}
+        <ProofForNonRenewalReason />
       </>
     )}
   </ContentBox>
@@ -1040,8 +1041,8 @@ export const LegalAdviceAssistance: React.FC<NextStepItemProps> = (props) => (
       </h5>
       <p>
         <Trans>
-          If you’re organizing with neighbors, challenging a landlord’s actions,
-          or want to connect with tenant campaigns for stronger protections.
+          If your landlord files a court case, refuses to renew your lease, or
+          you’re unsure how to respond to legal documents.
         </Trans>
       </p>
     </section>
