@@ -69,6 +69,17 @@
     flex-direction: column;
     width: -webkit-fill-available;
   }
+  // global bulleted list styling
+  ul {
+    margin-left: -1rem;
+
+    li {
+      padding-left: 0.5rem;
+    }
+    li::marker {
+      font-size: 0.75rem;
+    }
+  }
 }
 
 @media screen {

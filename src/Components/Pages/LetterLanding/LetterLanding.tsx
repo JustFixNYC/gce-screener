@@ -71,9 +71,7 @@ export const LetterLanding: React.FC = () => {
               </Trans>
             </p>
             <p>
-              <strong>
-                <Trans>Not sure if you’re covered?</Trans>
-              </strong>{" "}
+              <Trans>Not sure if you’re covered?</Trans>{" "}
               <JFCLLink to={`/${i18n.locale}`}>
                 <Trans>Take the survey</Trans>
               </JFCLLink>
@@ -101,7 +99,7 @@ export const LetterLanding: React.FC = () => {
                 available for residents outside of New York City.
               </Trans>
             </p>
-            <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause/">
+            <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause/#:~:text=Outside%20of%20NYC%20eligibility%20differs%20by%20locality%20because%20municipalities%20that%20opt%20in%20can%20change%20the%20real%20estate%20portfolio%20exemption%20and%20the%20luxury%20rent%20exemption%20thresholds%3A">
               <Trans>
                 Learn where Good Cause Protections have already been won
               </Trans>
