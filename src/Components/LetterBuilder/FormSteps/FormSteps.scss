@@ -138,6 +138,9 @@
         margin-bottom: 0;
         // should update in JFCL
         border-width: 1px;
+        &--is-invalid {
+          border-width: 1.5px;
+        } 
       }
     }
   }
