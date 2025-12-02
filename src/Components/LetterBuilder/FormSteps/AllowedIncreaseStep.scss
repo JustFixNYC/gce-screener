@@ -28,17 +28,21 @@
     }
   }
 
+  ul.no-bullets {
+    padding: 0;
+    margin-bottom: 0;
+    margin-left: -0.5rem;
+    li {
+      list-style-type: none;
+      &:not(:last-of-type) {
+        margin-bottom: 0.75rem;
+      }
+    }
+  }
+
   /* ********************** 
    Below CSS has specific overrides of global accordion styles 
    ********************** */
-
-  .organizations-section {
-    display: flex;
-    flex-direction: column;
-    h5 {
-      margin-bottom: 0 !important;
-    }
-  }
 
   #gce-protections_eviction {
     h5 {
