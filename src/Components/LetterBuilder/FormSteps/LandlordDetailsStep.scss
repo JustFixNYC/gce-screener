@@ -5,6 +5,10 @@
   .hpd-invalid-modal .modal__content {
     @include body_large_desktop;
   }
+  .email-modal p {
+    margin-top: 0;
+    max-width: 90%;
+  }
   .landlord-address {
     @include body_large_desktop;
     margin-bottom: 1rem;

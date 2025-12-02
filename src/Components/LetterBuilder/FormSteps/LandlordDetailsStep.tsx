@@ -464,6 +464,7 @@ const LandlordEmailFormGroup: React.FC = () => {
         onClose={() => setShowModal(false)}
         hasCloseBtn={true}
         header={_(msg`Why we ask for your landlord’s email`)}
+        className="email-modal"
       >
         <p>
           <Trans>
@@ -471,8 +472,8 @@ const LandlordEmailFormGroup: React.FC = () => {
             PDF copy of your letter. This helps ensure that the landlord sees
             your letter.
           </Trans>
-          <br />
-          <br />
+        </p>
+        <p>
           <Trans>
             We highly recommend providing your landlord’s email, especially if
             you normally correspond with your landlord via email.
