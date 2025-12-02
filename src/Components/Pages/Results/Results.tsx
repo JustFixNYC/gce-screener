@@ -545,7 +545,7 @@ const CoverageResultHeadline: React.FC<{
         <Trans>
           <span className="result-headline__top">You are</span>{" "}
           <span className="coverage-pill orange">likely not covered</span>{" "}
-          <br />
+          <br aria-hidden />
           by Good Cause Eviction
         </Trans>
       );
