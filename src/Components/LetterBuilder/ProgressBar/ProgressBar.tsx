@@ -21,7 +21,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       <div id="progress-bar-title" className="progress-bar__title">
         <h2>
           <strong>
-           <Trans> Letter Builder</Trans>
+            <Trans> Letter Builder</Trans>
           </strong>
         </h2>
         <span aria-hidden>: </span>
