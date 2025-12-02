@@ -73,7 +73,7 @@ export const ReasonStep: React.FC = () => {
             <Trans>
               Select{" "}
               <strong>“Your landlord is planning to raise your rent”</strong>{" "}
-              <br /> if any of the following apply:
+              <br aria-hidden /> if any of the following apply:
             </Trans>
             <ul>
               <li>
