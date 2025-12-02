@@ -157,6 +157,7 @@ export const MailChoiceStep: React.FC = () => {
                 msg`CC me on the email that you send to my landlord `
               )}
               id="cc_user"
+              invalid={errors?.user_details?.email?.message?.includes("CC")}
             />
           )}
         />

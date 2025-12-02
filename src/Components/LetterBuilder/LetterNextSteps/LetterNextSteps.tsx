@@ -1,5 +1,6 @@
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
+import classNames from "classnames";
 
 import {
   ContentBox,
@@ -9,9 +10,8 @@ import {
 } from "../../ContentBox/ContentBox";
 import { Pill } from "../../Pill/Pill";
 import { JFCLLinkExternal } from "../../JFCLLink";
-import "./LetterNextSteps.scss";
 import { Header } from "../../Header/Header";
-import classNames from "classnames";
+import "./LetterNextSteps.scss";
 
 type NextStepItemProps = Partial<Omit<ContentBoxItemProps, "children">>;
 type NextStepCollectionProps = Partial<Omit<ContentBoxProps, "children">> & {
@@ -56,15 +56,29 @@ export const TextFollowup: React.FC<
     {...props}
   >
     {!mailChoice && (
-      <p>
-        <Trans>
-          We will text you with a link to download a PDF copy of your letter for
-          your records. In addition, we will text you the USPS tracking number
-          for the letter if you chose to have JustFix mail the letter for you.
-          Keep this for your documentation. It’s an important part of asserting
-          your rights.
-        </Trans>
-      </p>
+      <>
+        <p>
+          <Trans>
+            We will text you with a link to download a PDF copy of your letter
+            for your records.
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            If you opted to have us mail the letter for you, we will text you
+            your USPS tracking number, so you can confirm your letter was
+            delivered. USPS may show “Tracking not available” at first. This is
+            normal. Tracking will appear once USPS scans your letter. This can
+            take between 1-5 days.
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            Keep this for your documentation. It's an important part of
+            asserting your rights.
+          </Trans>
+        </p>
+      </>
     )}
     {mailChoice === "USER_WILL_MAIL" && (
       <p>
@@ -83,13 +97,15 @@ export const TextFollowup: React.FC<
         <ul>
           <li>
             <Trans>
-              Your USPS tracking number, so you can confirm your letter was
-              delivered.
+              A link to download a PDF copy of your letter for your records.
             </Trans>
           </li>
           <li>
             <Trans>
-              A link to download a PDF copy of your letter for your records.
+              Your USPS tracking number, so you can confirm your letter was
+              delivered. USPS may show “Tracking not available” at first. This
+              is normal. Tracking will appear once USPS scans your letter. This
+              can take between 1-5 days.
             </Trans>
           </li>
         </ul>
@@ -519,7 +535,10 @@ export const SmallerButUnreasonableIncrease: React.FC<NextStepItemProps> = (
           </Trans>
         </li>
         <li>
-          <Trans>Keep paying rent until you sign a new lease.</Trans>
+          <Trans>
+            Keep paying rent under your current lease until a legal amount is
+            agreed to.
+          </Trans>
         </li>
       </ul>
     </section>
@@ -657,7 +676,6 @@ export const LetterResponsesRentIncrease: React.FC<
   >
     {includeUniversal ? (
       <>
-        {" "}
         <NewCompliantLease />
         <SmallerButUnreasonableIncrease />
         <NoSmallerIncreaseBeforeLeaseEnd />
@@ -665,14 +683,14 @@ export const LetterResponsesRentIncrease: React.FC<
         <ProvidesReasonForRentIncrease />
         <ClaimsNotCoveredByGCE />
         <NoResponse />
-        <SendsCourtPaper />{" "}
+        <SendsCourtPaper />
       </>
     ) : (
       <>
         <RefuseSmallerIncrease />
         <SmallerButUnreasonableIncrease />
         <NoSmallerIncreaseBeforeLeaseEnd />
-        <ProvidesReasonForRentIncrease />{" "}
+        <ProvidesReasonForRentIncrease />
       </>
     )}
   </ContentBox>
@@ -692,7 +710,7 @@ export const RefusesNewLease: React.FC<NextStepItemProps> = (props) => (
       <p>
         <Trans>
           Under Good Cause, a landlord cannot refuse to renew your lease without
-          a legally valid reason.{" "}
+          a legally valid reason.
         </Trans>
       </p>
       <p>
@@ -796,7 +814,7 @@ export const ReasonForNonRenewal: React.FC<NextStepItemProps> = (props) => (
         <Trans>
           If your landlord provides a reason, that doesn’t automatically mean
           the non-renewal is lawful. Your landlord’s reason must still meet the
-          standards defined in the law
+          standards defined in the law.
         </Trans>
       </p>
       <p>
@@ -873,7 +891,7 @@ export const ProofForNonRenewalReason: React.FC<NextStepItemProps> = (
       <p>
         <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
           <Trans>Learn more about Good Cause reasons for non renewal</Trans>
-        </JFCLLinkExternal>{" "}
+        </JFCLLinkExternal>
       </p>
     </section>
     <section>
@@ -928,7 +946,6 @@ export const LetterResponsesNonRenewal: React.FC<
   >
     {includeUniversal ? (
       <>
-        {" "}
         <NewCompliantLease />
         <NewLeaseUnreasonableIncrease />
         <RefusesNewLease />
@@ -936,14 +953,14 @@ export const LetterResponsesNonRenewal: React.FC<
         <ProofForNonRenewalReason />
         <ClaimsNotCoveredByGCE />
         <NoResponse />
-        <SendsCourtPaper />{" "}
+        <SendsCourtPaper />
       </>
     ) : (
       <>
         <RefusesNewLease />
         <NewLeaseUnreasonableIncrease />
         <ReasonForNonRenewal />
-        <ProofForNonRenewalReason />{" "}
+        <ProofForNonRenewalReason />
       </>
     )}
   </ContentBox>
@@ -968,7 +985,7 @@ export const CommunityResources: React.FC<NextStepItemProps> = (props) => (
       <h5>
         <Trans>Helpful organizations</Trans>
       </h5>
-      <ul>
+      <ul className="no-bullets">
         <li>
           <JFCLLinkExternal to="https://www.nyc.gov/site/mayorspeu/programs/contact-the-tenant-support-unit.page">
             <Trans>NYC’s Tenant Support Unit (TSU)</Trans>
@@ -1001,7 +1018,7 @@ export const TenantAdvocacyGroups: React.FC<NextStepItemProps> = (props) => (
       <h5>
         <Trans>Helpful organizations</Trans>
       </h5>
-      <ul>
+      <ul className="no-bullets">
         <li>
           <JFCLLinkExternal to="https://www.metcouncilonhousing.org/">
             <Trans>Met Council on Housing</Trans>
@@ -1025,8 +1042,8 @@ export const LegalAdviceAssistance: React.FC<NextStepItemProps> = (props) => (
       </h5>
       <p>
         <Trans>
-          If you’re organizing with neighbors, challenging a landlord’s actions,
-          or want to connect with tenant campaigns for stronger protections.
+          If your landlord files a court case, refuses to renew your lease, or
+          you’re unsure how to respond to legal documents.
         </Trans>
       </p>
     </section>
@@ -1034,7 +1051,7 @@ export const LegalAdviceAssistance: React.FC<NextStepItemProps> = (props) => (
       <h5>
         <Trans>Helpful organizations</Trans>
       </h5>
-      <ul>
+      <ul className="no-bullets">
         <li>
           <JFCLLinkExternal to="https://housingcourtanswers.org/contact-us/">
             <Trans>Housing Court Answers (HCA)</Trans>

@@ -108,21 +108,25 @@ export const NonRenewalStep: React.FC = () => {
         hasCloseBtn={true}
         header={_(msg`Something to know`)}
       >
-        <section>
-          <p>
-            <Trans>
-              You’ve shared that your landlord has provided a reason for ending
-              your tenancy. If the reason that your landlord provided is
-              legitimate,{" "}
-              <strong>you may not be guaranteed a new lease by law.</strong>
-            </Trans>
-          </p>
-          <p>
-            <Trans>
-              But we still recommend continuing to send this letter because your
-              landlord may still listen to your demand for a new lease.
-            </Trans>
-          </p>
+        <>
+          <div className="callout-box">
+            <section>
+              <p>
+                <Trans>
+                  You’ve shared that your landlord has provided a reason for
+                  ending your tenancy. If the reason that your landlord provided
+                  is legitimate,{" "}
+                  <strong>you may not be guaranteed a new lease by law.</strong>
+                </Trans>
+              </p>
+              <p>
+                <Trans>
+                  But we still recommend continuing to send this letter because
+                  your landlord may still listen to your demand for a new lease.
+                </Trans>
+              </p>
+            </section>
+          </div>
           <div className="buttons">
             <Button
               variant="secondary"
@@ -131,7 +135,7 @@ export const NonRenewalStep: React.FC = () => {
             />
             <Button labelText={_(msg`Continue`)} type="submit" />
           </div>
-        </section>
+        </>
       </Modal>
     </LetterStepForm>
   );

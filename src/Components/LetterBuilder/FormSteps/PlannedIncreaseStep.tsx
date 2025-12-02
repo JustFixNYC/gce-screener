@@ -101,7 +101,7 @@ const IncreaseHelperText: React.FC = () => {
         <JFCLLinkExternal to={`/${i18n.locale}/rent_calculator`}>
           rent increase calculator
         </JFCLLinkExternal>{" "}
-        to determine if your landlord’s proposed rent exceeds {CPI + 5}% .
+        to determine if your landlord’s proposed rent exceeds {CPI + 5}%.
       </Trans>
     </InfoBox>
   );
