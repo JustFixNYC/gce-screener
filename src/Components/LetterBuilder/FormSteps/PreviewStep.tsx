@@ -87,7 +87,7 @@ export const PreviewStep: React.FC = () => {
 
   return (
     <div className="preview-step">
-      <p>
+      <p className="preview-step__review">
         <Trans>
           Make sure the information below is accurate. If it is not, you can go
           back to make changes.
@@ -127,7 +127,7 @@ export const PreviewStep: React.FC = () => {
       <div className="preview-step__note">
         <Trans>
           <strong>Note:</strong> You will be able to download a PDF version of
-          this letter later, after you select your mailing preference.
+          this letter later.
         </Trans>
       </div>
       <BackNextButtons

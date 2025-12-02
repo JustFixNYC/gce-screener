@@ -311,7 +311,6 @@ const LandlordFormGroup: React.FC<{
           invalidText={errors.landlord_details?.name?.message}
           invalidRole="status"
           type="text"
-          autoFocus
         />
         <TextInput
           {...register("landlord_details.primary_line")}
@@ -358,6 +357,7 @@ const LandlordFormGroup: React.FC<{
                   msg`This address does not have a unit/suite/apartment`
                 )}
                 id="no_unit"
+                invalid={!!landlordErrors?.secondary_line}
               />
             )}
           />
@@ -433,7 +433,7 @@ const LandlordEmailFormGroup: React.FC = () => {
     <>
       <FormGroup
         legendText={_(msg`Your landlord’s email address`)}
-        className="form-group__section-header"
+        className="form-group__section-header landlord-email-group"
         invalid={!!errors.landlord_details?.email}
       >
         <TextInput
@@ -464,6 +464,7 @@ const LandlordEmailFormGroup: React.FC = () => {
         onClose={() => setShowModal(false)}
         hasCloseBtn={true}
         header={_(msg`Why we ask for your landlord’s email`)}
+        className="email-modal"
       >
         <p>
           <Trans>
@@ -471,8 +472,8 @@ const LandlordEmailFormGroup: React.FC = () => {
             PDF copy of your letter. This helps ensure that the landlord sees
             your letter.
           </Trans>
-          <br />
-          <br />
+        </p>
+        <p>
           <Trans>
             We highly recommend providing your landlord’s email, especially if
             you normally correspond with your landlord via email.
@@ -495,11 +496,11 @@ export const FormattedLandlordAddress: React.FC<{
     <div className="landlord-address">
       <span className="landlord-address__name">{toTitleCase(ld.name)}</span>
       <span className="landlord-address__line-1">
-        {ld.primary_line}
-        {ld.secondary_line ? " " + ld.secondary_line : ""}
+        {toTitleCase(ld.primary_line)}
+        {ld.secondary_line ? " " + toTitleCase(ld.secondary_line) : ""}
       </span>
       <span className="landlord-address__line-2">
-        {ld.city}, {ld.state} {ld.zip_code}
+        {toTitleCase(ld.city)}, {ld.state} {ld.zip_code}
       </span>
     </div>
   );
