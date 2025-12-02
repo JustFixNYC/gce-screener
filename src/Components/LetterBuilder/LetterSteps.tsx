@@ -111,3 +111,5 @@ export const letterSteps: LetterSteps = {
     progress: 100,
   },
 };
+
+export const firstLetterStep = letterSteps.reason;
