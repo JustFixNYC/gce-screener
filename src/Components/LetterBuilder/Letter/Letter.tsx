@@ -50,7 +50,7 @@ const LetterHeader: React.FC<LetterData> = ({ letterData }) => {
       <address>
         {ud.first_name} {ud.last_name}
         <br />
-        {ud.primary_line}
+        {toTitleCase(ud.primary_line)}
         <br />
         {ud.secondary_line && (
           <>

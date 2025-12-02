@@ -27,4 +27,26 @@
       @include body_standard_mobile;
     }
   }
+
+  ul.no-bullets {
+    padding: 0;
+    margin-bottom: 0;
+    margin-left: -0.5rem;
+    li {
+      list-style-type: none;
+      &:not(:last-of-type) {
+        margin-bottom: 0.75rem;
+      }
+    }
+  }
+
+  /* ********************** 
+   Below CSS has specific overrides of global accordion styles 
+   ********************** */
+
+  #gce-protections_eviction {
+    h5 {
+      font-weight: unset;
+    }
+  }
 }

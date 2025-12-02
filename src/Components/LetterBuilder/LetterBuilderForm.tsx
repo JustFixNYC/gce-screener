@@ -49,7 +49,6 @@ export const LetterBuilderForm: React.FC = () => {
     trigger,
     handleSubmit,
     setValue,
-    clearErrors,
     getValues,
     formState: { errors },
   } = formMethods;
@@ -130,10 +129,6 @@ export const LetterBuilderForm: React.FC = () => {
   const back = (prevStepName: StepRouteName) => {
     const fields = currentStep.fields;
 
-    fields?.forEach((field) => {
-      clearErrors(field);
-    });
-
     // avoids error on user email if CC box was checked then go back a step and
     // remove user email from contact info
     if (fields?.includes("cc_user")) {
@@ -206,10 +201,17 @@ export const LetterStepForm: React.FC<LetterStepFormProps> = ({
     next,
     formMethods: {
       formState: { errors },
+      clearErrors,
     },
   } = useContext(FormContext);
   const anyErrors = Object.keys(errors).length > 0;
   const handleSubmit = handleFormNoDefault(onSubmit || (() => next(nextStep)));
+
+  // Ensure error doesn't persist even if navigating back via browser history
+  useEffect(() => {
+    clearErrors();
+  }, [clearErrors]);
+
   return (
     <form
       onSubmit={handleSubmit}

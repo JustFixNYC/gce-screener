@@ -5,13 +5,9 @@
   .hpd-invalid-modal .modal__content {
     @include body_large_desktop;
   }
-  .modal__content {
-    .info-box {
-      margin-bottom: 1rem;
-    }
-    .landlord-address {
-      margin-bottom: 0;
-    }
+  .email-modal p {
+    margin-top: 0;
+    max-width: 90%;
   }
   .landlord-address {
     @include body_large_desktop;
@@ -31,11 +27,8 @@
       @include body_standard_desktop;
     }
   }
-  .landlord-city-input {
-    margin-top: 1.5rem;
-  }
   #landlord-state {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     .jfcl-input-header__label {
       @include body_standard_desktop;
       margin-bottom: 0.25rem;
@@ -44,6 +37,25 @@
     .jfcl-dropdown__control {
       padding: 5px;
       border: 1px solid $OFF_BLACK;
+    }
+  }
+  .modal__content {
+    .info-box {
+      margin-bottom: 1rem;
+    }
+    .landlord-address {
+      &,
+      &__name {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .jfcl-form-group {
+    .info-box.blue .info-box__content-container {
+      max-width: 80%;
+    }
+    .jfcl-checkbox:last-of-type {
+      margin-bottom: 1.5rem;
     }
   }
 }
