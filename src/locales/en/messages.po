@@ -285,6 +285,7 @@ msgid "Address"
 msgstr "Address"
 
 #: src/types/LetterFormTypes.ts:17
+#: src/types/LetterFormTypes.ts:21
 msgid "Address is required for the letter"
 msgstr "Address is required for the letter"
 
@@ -489,7 +490,7 @@ msgstr "City data indicates that there aren’t any residential units at this ad
 #~ msgid "City/Borough"
 #~ msgstr "City/Borough"
 
-#: src/types/LetterFormTypes.ts:20
+#: src/types/LetterFormTypes.ts:25
 msgid "City/Borough is required for the letter"
 msgstr "City/Borough is required for the letter"
 
@@ -836,7 +837,7 @@ msgstr "Finishing up"
 msgid "First name"
 msgstr "First name"
 
-#: src/types/LetterFormTypes.ts:43
+#: src/types/LetterFormTypes.ts:48
 msgid "First name is required for the letter"
 msgstr "First name is required for the letter"
 
@@ -1455,7 +1456,7 @@ msgstr "Landlord name"
 #~ msgid "Landlord name is required"
 #~ msgstr "Landlord name is required"
 
-#: src/types/LetterFormTypes.ts:93
+#: src/types/LetterFormTypes.ts:98
 msgid "Landlord name is required for the letter"
 msgstr "Landlord name is required for the letter"
 
@@ -1495,7 +1496,7 @@ msgstr "Last modified: Jan 24, 2025"
 msgid "Last name"
 msgstr "Last name"
 
-#: src/types/LetterFormTypes.ts:46
+#: src/types/LetterFormTypes.ts:51
 msgid "Last name is required for the letter"
 msgstr "Last name is required for the letter"
 
@@ -1980,7 +1981,7 @@ msgstr "Phone number"
 msgid "Phone number (optional)"
 msgstr "Phone number (optional)"
 
-#: src/types/LetterFormTypes.ts:51
+#: src/types/LetterFormTypes.ts:56
 msgid "Phone number is required for follow up"
 msgstr "Phone number is required for follow up"
 
@@ -2013,13 +2014,13 @@ msgstr "Please confirm whether you intend to renew my lease, If you do not inten
 msgid "Please confirm your address"
 msgstr "Please confirm your address"
 
-#: src/types/LetterFormTypes.ts:52
-#: src/types/LetterFormTypes.ts:54
+#: src/types/LetterFormTypes.ts:57
+#: src/types/LetterFormTypes.ts:59
 msgid "Please enter a complete US phone number"
 msgstr "Please enter a complete US phone number"
 
-#: src/types/LetterFormTypes.ts:74
-#: src/types/LetterFormTypes.ts:110
+#: src/types/LetterFormTypes.ts:79
+#: src/types/LetterFormTypes.ts:115
 msgid "Please enter a unit number or check the box to confirm that there is no unit number"
 msgstr "Please enter a unit number or check the box to confirm that there is no unit number"
 
@@ -2029,13 +2030,13 @@ msgstr "Please enter a unit number or check the box to confirm that there is no 
 #~ msgid "Please enter a valid email"
 #~ msgstr "Please enter a valid email"
 
-#: src/types/LetterFormTypes.ts:56
-#: src/types/LetterFormTypes.ts:95
-#: src/types/LetterFormTypes.ts:157
+#: src/types/LetterFormTypes.ts:61
+#: src/types/LetterFormTypes.ts:100
+#: src/types/LetterFormTypes.ts:162
 msgid "Please enter a valid email address"
 msgstr "Please enter a valid email address"
 
-#: src/types/LetterFormTypes.ts:33
+#: src/types/LetterFormTypes.ts:38
 msgid "Please enter a valid ZIP Code"
 msgstr "Please enter a valid ZIP Code"
 
@@ -2043,7 +2044,7 @@ msgstr "Please enter a valid ZIP Code"
 #~ msgid "please enter your email address or uncheck the option to CC you on the email to your landlord"
 #~ msgstr "please enter your email address or uncheck the option to CC you on the email to your landlord"
 
-#: src/types/LetterFormTypes.ts:197
+#: src/types/LetterFormTypes.ts:202
 msgid "Please enter your email address or uncheck the option to CC you on the email to your landlord"
 msgstr "Please enter your email address or uncheck the option to CC you on the email to your landlord"
 
@@ -2088,7 +2089,7 @@ msgstr "Please review these documents to learn if the owner of your building als
 #~ msgid "Please review your letter to ensure all the details are correct."
 #~ msgstr "Please review your letter to ensure all the details are correct."
 
-#: src/types/LetterFormTypes.ts:193
+#: src/types/LetterFormTypes.ts:198
 msgid "Please select a reason for your letter."
 msgstr "Please select a reason for your letter."
 
@@ -2097,11 +2098,11 @@ msgstr "Please select a reason for your letter."
 #~ msgstr "Please select an option for mailing the letter"
 
 #. placeholder {0}: CPI + 5
-#: src/types/LetterFormTypes.ts:172
+#: src/types/LetterFormTypes.ts:177
 msgid "Please select whether the increase is beyond {0}%"
 msgstr "Please select whether the increase is beyond {0}%"
 
-#: src/types/LetterFormTypes.ts:184
+#: src/types/LetterFormTypes.ts:189
 msgid "Please select whether your landlord provided one of the listed reasons for not renewing your lease"
 msgstr "Please select whether your landlord provided one of the listed reasons for not renewing your lease"
 
@@ -2537,13 +2538,13 @@ msgstr "Start over"
 msgid "State"
 msgstr "State"
 
-#: src/types/LetterFormTypes.ts:25
-#: src/types/LetterFormTypes.ts:28
+#: src/types/LetterFormTypes.ts:30
+#: src/types/LetterFormTypes.ts:33
 msgid "State is required for the letter"
 msgstr "State is required for the letter"
 
-#: src/types/LetterFormTypes.ts:26
-#: src/types/LetterFormTypes.ts:29
+#: src/types/LetterFormTypes.ts:31
+#: src/types/LetterFormTypes.ts:34
 msgid "State must be two-letter abbreviation"
 msgstr "State must be two-letter abbreviation"
 
@@ -2961,7 +2962,7 @@ msgstr "Unlock NYC"
 msgid "Update your coverage result"
 msgstr "Update your coverage result"
 
-#: src/types/LetterFormTypes.ts:131
+#: src/types/LetterFormTypes.ts:136
 msgid "Urbanization is required for address in Puerto Rico"
 msgstr "Urbanization is required for address in Puerto Rico"
 
@@ -3438,7 +3439,7 @@ msgstr "You have chosen to overwrite the landlord information on record with the
 msgid "You must enter an address"
 msgstr "You must enter an address"
 
-#: src/types/LetterFormTypes.ts:150
+#: src/types/LetterFormTypes.ts:155
 msgid "You must select a method to mail your letter"
 msgstr "You must select a method to mail your letter"
 
@@ -3937,7 +3938,7 @@ msgstr "YouTube video for how to find other apartments your landlord owns"
 msgid "ZIP code"
 msgstr "ZIP code"
 
-#: src/types/LetterFormTypes.ts:32
+#: src/types/LetterFormTypes.ts:37
 msgid "ZIP code is required for the letter"
 msgstr "ZIP code is required for the letter"
 
