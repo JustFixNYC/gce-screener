@@ -11,10 +11,9 @@
     max-width: $contentBoxWidth;
     background-color: $WHITE;
     scroll-margin-top: 3.75rem; // 60px
-    // below vars require !important to override index.scss style
-    padding: 2rem 1.5rem !important;
-    margin: 0 0 1.5rem 0 !important; // 24px
-    border: 1px solid $GREY_200 !important;
+    padding: 2rem;
+    margin: 0 0 1.5rem 0;
+    border: 1px solid $GREY_200;
 
     &.jfcl-form-group-is-invalid {
       border: 2px solid $ORANGE !important;
@@ -70,19 +69,30 @@
       }
     }
 
+    .jfcl-text-input,
+    .jfcl-checkbox {
+      margin-bottom: 1.5rem;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    &:has(.form-group__footer) {
+      padding-bottom: 0;
+      .jfcl-text-input {
+        margin-bottom: 2rem;
+      }
+    }
     .form-group__footer {
       display: flex;
       justify-content: space-between;
       border-top: 1px solid $GREY_200;
+      background-color: $OFF-WHITE-100;
       // offset parent padding for divider to span full width
-      margin-left: -1.5rem;
-      margin-right: -1.5rem;
-      padding: 2rem 2rem 0;
+      margin-left: -2rem;
+      margin-right: -2rem;
+      padding: 2rem;
       @include body_standard_desktop;
 
-      &-text {
-        font-weight: 600;
-      }
       button {
         font-weight: 500;
         min-width: fit-content;
@@ -126,6 +136,11 @@
         min-width: 1.5em;
         min-height: 1.5em;
         margin-bottom: 0;
+        // should update in JFCL
+        border-width: 1px;
+        &--is-invalid {
+          border-width: 1.5px;
+        }
       }
     }
   }

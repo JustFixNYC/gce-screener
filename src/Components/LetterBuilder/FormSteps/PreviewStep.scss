@@ -3,9 +3,9 @@
 @use "../../../colors" as *;
 
 .preview-step {
-  p {
+  .preview-step__review {
     @include body_large_desktop;
-    margin: 0 0 2.1875rem 0; // 35px
+    margin: 0 0 1.5rem 0;
     @include for-phone-only {
       @include body_standard_mobile;
     }
@@ -13,7 +13,7 @@
 
   .preview-step__locale-toggle {
     gap: 0.25rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     @include body_standard_desktop;
     font-weight: 600;
     span {
@@ -43,10 +43,11 @@
   }
 
   .info-box {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     p {
       @include body_standard_desktop;
       margin: 0;
+      width: 80%;
       &:not(:last-of-type) {
         margin-bottom: 1rem;
       }
@@ -80,9 +81,7 @@
   }
 
   .preview-step__note {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    margin-bottom: 2.25rem; //36px
+    margin: 1.5rem 0 4.25rem;
     @include body_large_desktop;
 
     strong {

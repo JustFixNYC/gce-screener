@@ -99,26 +99,24 @@ export const UserDetailsStep: React.FC = () => {
         }
         invalid={anyAddressErrors}
       >
-        <div className="text-input__two-column">
-          <TextInput
-            {...register("user_details.first_name")}
-            id="form-first_name"
-            labelText={_(msg`First name`)}
-            invalid={!!userErrors?.first_name}
-            invalidText={userErrors?.first_name?.message}
-            invalidRole="status"
-            type="text"
-          />
-          <TextInput
-            {...register("user_details.last_name")}
-            id="form-last_name"
-            labelText={_(msg`Last name`)}
-            invalid={!!userErrors?.last_name}
-            invalidText={userErrors?.last_name?.message}
-            invalidRole="status"
-            type="text"
-          />
-        </div>
+        <TextInput
+          {...register("user_details.first_name")}
+          id="form-first_name"
+          labelText={_(msg`First name`)}
+          invalid={!!userErrors?.first_name}
+          invalidText={userErrors?.first_name?.message}
+          invalidRole="status"
+          type="text"
+        />
+        <TextInput
+          {...register("user_details.last_name")}
+          id="form-last_name"
+          labelText={_(msg`Last name`)}
+          invalid={!!userErrors?.last_name}
+          invalidText={userErrors?.last_name?.message}
+          invalidRole="status"
+          type="text"
+        />
         <GeoSearchInput
           initialAddress={initialAddress}
           onChange={(addr) => {
@@ -175,6 +173,7 @@ export const UserDetailsStep: React.FC = () => {
                 }}
                 labelText={_(msg`I do not have a unit number`)}
                 id="no_unit"
+                invalid={!!userErrors?.secondary_line}
               />
             )}
           />
