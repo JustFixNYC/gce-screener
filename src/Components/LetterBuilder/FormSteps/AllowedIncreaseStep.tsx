@@ -180,11 +180,11 @@ const GetOrganizationSupport: React.FC = () => (
         negotiate.
       </Trans>
     </p>
-    <section>
+    <section className="organizations-section">
       <h5>
         <Trans>Organizations that can help</Trans>
       </h5>
-      <ul>
+      <ul className="no-bullets">
         <li>
           <JFCLLinkExternal to="https://www.metcouncilonhousing.org/">
             <Trans>Met Council on Housing</Trans>
