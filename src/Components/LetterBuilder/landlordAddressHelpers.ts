@@ -91,9 +91,9 @@ const LobVerificationToLandlordAddress = (
   verification: LOBVerificationResponse
 ): LobAddressFields => {
   return {
-    primary_line: verification.primary_line,
-    secondary_line: verification.secondary_line,
-    city: verification.components.city,
+    primary_line: toTitleCase(verification.primary_line),
+    secondary_line: toTitleCase(verification.secondary_line),
+    city: toTitleCase(verification.components.city),
     state: verification.components.state,
     urbanization: verification.urbanization,
     zip_code: verification.components.zip_code,
