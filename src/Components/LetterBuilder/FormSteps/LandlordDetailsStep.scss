@@ -46,7 +46,12 @@
       }
     }
   }
-  .jfcl-form-group .jfcl-checkbox:last-of-type {
-    margin-bottom: 1.5rem;
+  .jfcl-form-group {
+    .info-box.blue .info-box__content-container {
+      max-width: 80%;
+    }
+    .jfcl-checkbox:last-of-type {
+      margin-bottom: 1.5rem;
+    }
   }
 }
