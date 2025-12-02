@@ -183,7 +183,7 @@ export const RentCalculator: React.FC = () => {
 
           <GoodCauseProtections
             rent={showRentInput ? Number(rentInput) : undefined}
-            subtitle={_(msg`Protections under Good Cause`)}
+            title={_(msg`Protections under Good Cause`)}
           >
             <ContentBoxFooter
               message={_(msg`Find out if you’re covered by Good Cause`)}

@@ -60,11 +60,14 @@ $videoEmbedW: 623px;
   }
 
   .content-box__header-title {
-    @include eyebrow_small_desktop;
-  }
-
-  .content-box__header-subtitle {
-    @include h3_desktop;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @include h3_desktop;
+    }
   }
 }
 
@@ -73,10 +76,10 @@ $videoEmbedW: 623px;
   display: flex;
   flex-direction: column;
   border-top: 1px solid $GREY_200;
-  padding: 1.5rem 2rem;
-  @include for-phone-only {
-    padding: 1.5rem;
-  }
+  // padding: 1.5rem 2rem;
+  // @include for-phone-only {
+  //   padding: 1.5rem;
+  // }
 
   .content-box__section__step {
     @include eyebrow_small_desktop;

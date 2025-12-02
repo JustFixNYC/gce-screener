@@ -29,9 +29,9 @@ export const TenantRights: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          <UniversalProtections />
+          <UniversalProtections headingLevel={3} />
 
-          <GoodCauseProtections>
+          <GoodCauseProtections headingLevel={3}>
             <ContentBoxFooter
               message={_(msg`Find out if you’re covered by Good Cause`)}
               linkText={_(msg`Take the survey`)}
@@ -39,7 +39,7 @@ export const TenantRights: React.FC = () => {
             />
           </GoodCauseProtections>
 
-          <RentStabilizedProtections>
+          <RentStabilizedProtections headingLevel={3}>
             <ContentBoxFooter
               message={_(msg`Find out if your apartment is rent stabilized`)}
               linkText={_(msg`View the guide`)}
@@ -47,7 +47,7 @@ export const TenantRights: React.FC = () => {
             />
           </RentStabilizedProtections>
 
-          <NYCHAProtections />
+          <NYCHAProtections headingLevel={3} />
         </div>
       </div>
     </div>

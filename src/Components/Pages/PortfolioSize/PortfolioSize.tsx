@@ -85,10 +85,11 @@ export const PortfolioSize: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           <ContentBox
-            subtitle={_(
+            title={_(
               msg`To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments`
             )}
             className="portfolio-video-box"
+            headingLevel={3}
           >
             <ContentBoxItem accordion={false}>
               <p>
@@ -117,7 +118,8 @@ export const PortfolioSize: React.FC = () => {
           </ContentBox>
           <div className="divider__print" />
           <ContentBox
-            subtitle={_(msg`How to find other apartments your landlord owns`)}
+            title={_(msg`How to find other apartments your landlord owns`)}
+            headingLevel={3}
           >
             <ContentBoxItem className="mobile-video-prompt" accordion={false}>
               <InfoBox color="blue">
@@ -137,6 +139,7 @@ export const PortfolioSize: React.FC = () => {
                   </Trans>
                 </span>
               }
+              headingLevel={4}
             >
               <p>
                 <strong>
@@ -188,6 +191,7 @@ export const PortfolioSize: React.FC = () => {
                   </Trans>
                 </span>
               }
+              headingLevel={4}
             >
               {bldgData && (
                 <>

@@ -260,7 +260,7 @@ export const Results: React.FC = () => {
           {coverageResult === "NOT_COVERED" && (
             <UniversalProtections
               coverageResult={coverageResult}
-              subtitle={_(
+              title={_(
                 msg`Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights`
               )}
             />
@@ -354,6 +354,7 @@ const CriterionRow: React.FC<CriterionDetails> = (props) => {
         title={_(CRITERIA_LABELS[props?.criteria])}
         subtitle={props?.requirement}
         icon={<EligibilityIcon {...props} />}
+        headingLevel={4}
       >
         <div className="callout-box">{props?.userValue}</div>
       </ContentBoxItem>
@@ -368,9 +369,9 @@ const CriteriaTable: React.FC<{
   return (
     <ContentBox className="criteria-table">
       <div className="criteria-table__header">
-        <span className="criteria-table__header__title">
+        <h3 className="criteria-table__header__title">
           <Trans>How we determined your coverage</Trans>
-        </span>
+        </h3>
         <p>
           <Trans>
             Results are based on publicly available data about your building and
@@ -427,12 +428,13 @@ const EligibilityNextSteps: React.FC<{
   return (
     <>
       <ContentBox
-        subtitle={_(
+        title={_(
           msg`There ${plural(steps, {
             one: "is # thing",
             other: "are # things",
           })} you need to verify to confirm your coverage`
         )}
+        headingLevel={3}
       >
         {rentStabilizedUnknown && (
           <ContentBoxItem
@@ -442,6 +444,7 @@ const EligibilityNextSteps: React.FC<{
             icon={unsureIcon}
             className="next-step"
             gtmId="next-step_rs"
+            headingLevel={4}
           >
             <p>
               <Trans>
@@ -469,6 +472,7 @@ const EligibilityNextSteps: React.FC<{
             icon={unsureIcon}
             className="next-step"
             gtmId="next-step_portfolio"
+            headingLevel={4}
           >
             <p>
               <Trans>

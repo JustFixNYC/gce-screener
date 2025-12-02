@@ -13,10 +13,12 @@ import { JFCLLinkExternal } from "../../JFCLLink";
 import { Header } from "../../Header/Header";
 import "./LetterNextSteps.scss";
 
-type NextStepItemProps = Partial<Omit<ContentBoxItemProps, "children">>;
-type NextStepCollectionProps = Partial<Omit<ContentBoxProps, "children">> & {
-  mailChoice?: string;
-};
+type NextStepItemProps = Omit<ContentBoxItemProps, "children"> &
+  Required<Pick<ContentBoxItemProps, "headingLevel">>;
+type NextStepCollectionProps = Omit<ContentBoxProps, "children"> &
+  Required<Pick<ContentBoxProps, "headingLevel">> & {
+    mailChoice?: string;
+  };
 
 // Common Links
 
@@ -254,16 +256,24 @@ export const WhileYouWait: React.FC<NextStepItemProps> = (props) => (
 
 export const LetterNextSteps: React.FC<NextStepCollectionProps> = ({
   mailChoice,
+  headingLevel: boxHeadingLevel,
   ...props
-}) => (
-  <ContentBox subtitle={<Trans>What happens next?</Trans>} {...props}>
-    <TextFollowup mailChoice={mailChoice} />
-    <PayRentAndWait />
-    <CommunicateInWriting />
-    <TalkToNeighbors />
-    <WhileYouWait />
-  </ContentBox>
-);
+}) => {
+  const headingLevel = { headingLevel: boxHeadingLevel + 1 };
+  return (
+    <ContentBox
+      title={<Trans>What happens next?</Trans>}
+      headingLevel={boxHeadingLevel}
+      {...props}
+    >
+      <TextFollowup mailChoice={mailChoice} {...headingLevel} />
+      <PayRentAndWait {...headingLevel} />
+      <CommunicateInWriting {...headingLevel} />
+      <TalkToNeighbors {...headingLevel} />
+      <WhileYouWait {...headingLevel} />
+    </ContentBox>
+  );
+};
 
 // Universal Landlord Responses
 
@@ -441,19 +451,24 @@ export const SendsCourtPaper: React.FC<NextStepItemProps> = (props) => (
   </ContentBoxItem>
 );
 
-export const LetterResponsesUniversal: React.FC<NextStepCollectionProps> = (
-  props
-) => (
-  <ContentBox
-    subtitle={<Trans>How might your landlord respond?</Trans>}
-    {...props}
-  >
-    <NewCompliantLease />
-    <NoResponse />
-    <ClaimsNotCoveredByGCE />
-    <SendsCourtPaper />
-  </ContentBox>
-);
+export const LetterResponsesUniversal: React.FC<NextStepCollectionProps> = ({
+  headingLevel: boxHeadingLevel,
+  ...props
+}) => {
+  const headingLevel = { headingLevel: boxHeadingLevel + 1 };
+  return (
+    <ContentBox
+      title={<Trans>How might your landlord respond?</Trans>}
+      headingLevel={boxHeadingLevel}
+      {...props}
+    >
+      <NewCompliantLease {...headingLevel} />
+      <NoResponse {...headingLevel} />
+      <ClaimsNotCoveredByGCE {...headingLevel} />
+      <SendsCourtPaper {...headingLevel} />
+    </ContentBox>
+  );
+};
 
 // Rent Increase Responses
 
@@ -663,38 +678,42 @@ export const LetterResponsesRentIncrease: React.FC<
   NextStepCollectionProps & {
     includeUniversal?: boolean;
   }
-> = ({ includeUniversal, ...props }) => (
-  <ContentBox
-    subtitle={
-      includeUniversal ? (
-        <Trans>How might your landlord respond?</Trans>
+> = ({ includeUniversal, headingLevel: boxHeadingLevel, ...props }) => {
+  const headingLevel = { headingLevel: boxHeadingLevel + 1 };
+  return (
+    <ContentBox
+      title={
+        includeUniversal ? (
+          <Trans>How might your landlord respond?</Trans>
+        ) : (
+          <Trans>What to do if your landlord raises your rent</Trans>
+        )
+      }
+      headingLevel={boxHeadingLevel}
+      {...props}
+    >
+      {includeUniversal ? (
+        <>
+          <NewCompliantLease {...headingLevel} />
+          <SmallerButUnreasonableIncrease {...headingLevel} />
+          <NoSmallerIncreaseBeforeLeaseEnd {...headingLevel} />
+          <RefuseSmallerIncrease {...headingLevel} />
+          <ProvidesReasonForRentIncrease {...headingLevel} />
+          <ClaimsNotCoveredByGCE {...headingLevel} />
+          <NoResponse {...headingLevel} />
+          <SendsCourtPaper {...headingLevel} />
+        </>
       ) : (
-        <Trans>What to do if your landlord raises your rent</Trans>
-      )
-    }
-    {...props}
-  >
-    {includeUniversal ? (
-      <>
-        <NewCompliantLease />
-        <SmallerButUnreasonableIncrease />
-        <NoSmallerIncreaseBeforeLeaseEnd />
-        <RefuseSmallerIncrease />
-        <ProvidesReasonForRentIncrease />
-        <ClaimsNotCoveredByGCE />
-        <NoResponse />
-        <SendsCourtPaper />
-      </>
-    ) : (
-      <>
-        <RefuseSmallerIncrease />
-        <SmallerButUnreasonableIncrease />
-        <NoSmallerIncreaseBeforeLeaseEnd />
-        <ProvidesReasonForRentIncrease />
-      </>
-    )}
-  </ContentBox>
-);
+        <>
+          <RefuseSmallerIncrease {...headingLevel} />
+          <SmallerButUnreasonableIncrease {...headingLevel} />
+          <NoSmallerIncreaseBeforeLeaseEnd {...headingLevel} />
+          <ProvidesReasonForRentIncrease {...headingLevel} />
+        </>
+      )}
+    </ContentBox>
+  );
+};
 
 // Non-Renewal Responses
 
@@ -933,38 +952,42 @@ export const LetterResponsesNonRenewal: React.FC<
   NextStepCollectionProps & {
     includeUniversal?: boolean;
   }
-> = ({ includeUniversal, ...props }) => (
-  <ContentBox
-    subtitle={
-      includeUniversal ? (
-        <Trans>How might your landlord respond?</Trans>
+> = ({ includeUniversal, headingLevel: boxHeadingLevel, ...props }) => {
+  const headingLevel = { headingLevel: boxHeadingLevel + 1 };
+  return (
+    <ContentBox
+      title={
+        includeUniversal ? (
+          <Trans>How might your landlord respond?</Trans>
+        ) : (
+          <Trans>What to do if your landlord won’t renew your lease</Trans>
+        )
+      }
+      headingLevel={boxHeadingLevel}
+      {...props}
+    >
+      {includeUniversal ? (
+        <>
+          <NewCompliantLease {...headingLevel} />
+          <NewLeaseUnreasonableIncrease {...headingLevel} />
+          <RefusesNewLease {...headingLevel} />
+          <ReasonForNonRenewal {...headingLevel} />
+          <ProofForNonRenewalReason {...headingLevel} />
+          <ClaimsNotCoveredByGCE {...headingLevel} />
+          <NoResponse {...headingLevel} />
+          <SendsCourtPaper {...headingLevel} />
+        </>
       ) : (
-        <Trans>What to do if your landlord won’t renew your lease</Trans>
-      )
-    }
-    {...props}
-  >
-    {includeUniversal ? (
-      <>
-        <NewCompliantLease />
-        <NewLeaseUnreasonableIncrease />
-        <RefusesNewLease />
-        <ReasonForNonRenewal />
-        <ProofForNonRenewalReason />
-        <ClaimsNotCoveredByGCE />
-        <NoResponse />
-        <SendsCourtPaper />
-      </>
-    ) : (
-      <>
-        <RefusesNewLease />
-        <NewLeaseUnreasonableIncrease />
-        <ReasonForNonRenewal />
-        <ProofForNonRenewalReason />
-      </>
-    )}
-  </ContentBox>
-);
+        <>
+          <RefusesNewLease {...headingLevel} />
+          <NewLeaseUnreasonableIncrease {...headingLevel} />
+          <ReasonForNonRenewal {...headingLevel} />
+          <ProofForNonRenewalReason {...headingLevel} />
+        </>
+      )}
+    </ContentBox>
+  );
+};
 
 // Who can help
 
@@ -1082,13 +1105,23 @@ export const LegalAdviceAssistance: React.FC<NextStepItemProps> = (props) => (
   </ContentBoxItem>
 );
 
-export const LetterWhoCanHelp: React.FC<NextStepCollectionProps> = (props) => (
-  <ContentBox subtitle={<Trans>Who can help?</Trans>} {...props}>
-    <CommunityResources />
-    <TenantAdvocacyGroups />
-    <LegalAdviceAssistance />
-  </ContentBox>
-);
+export const LetterWhoCanHelp: React.FC<NextStepCollectionProps> = ({
+  headingLevel: boxHeadingLevel,
+  ...props
+}) => {
+  const headingLevel = { headingLevel: boxHeadingLevel + 1 };
+  return (
+    <ContentBox
+      title={<Trans>Who can help?</Trans>}
+      headingLevel={boxHeadingLevel}
+      {...props}
+    >
+      <CommunityResources {...headingLevel} />
+      <TenantAdvocacyGroups {...headingLevel} />
+      <LegalAdviceAssistance {...headingLevel} />
+    </ContentBox>
+  );
+};
 
 export const LetterNextStepsStandalone: React.FC = () => {
   return (
@@ -1106,12 +1139,16 @@ export const LetterNextStepsStandalone: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           <LetterNextSteps
-            subtitle={<Trans>What to do after sending your letter</Trans>}
+            title={<Trans>What to do after sending your letter</Trans>}
+            headingLevel={3}
           />
-          <LetterResponsesUniversal />
-          <LetterResponsesNonRenewal />
-          <LetterResponsesRentIncrease />
-          <LetterWhoCanHelp subtitle={<Trans>Where to find support</Trans>} />
+          <LetterResponsesUniversal headingLevel={3} />
+          <LetterResponsesNonRenewal headingLevel={3} />
+          <LetterResponsesRentIncrease headingLevel={3} />
+          <LetterWhoCanHelp
+            title={<Trans>Where to find support</Trans>}
+            headingLevel={3}
+          />
         </div>
       </div>
     </>

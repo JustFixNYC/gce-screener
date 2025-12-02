@@ -41,7 +41,7 @@ export const AllowedIncreaseStep: React.FC = () => {
       </Notice>
       <RentNegotiationTips />
       <GoodCauseProtections
-        subtitle={<Trans>Protections under Good Cause</Trans>}
+        title={<Trans>Protections under Good Cause</Trans>}
       />
       <BackNextButtons hideButton2 backStepName="rent_increase" />
     </div>
@@ -211,7 +211,7 @@ const GetOrganizationSupport: React.FC = () => (
 );
 
 const RentNegotiationTips: React.FC = () => (
-  <ContentBox subtitle={<Trans>Tips for negotiating a smaller increase</Trans>}>
+  <ContentBox title={<Trans>Tips for negotiating a smaller increase</Trans>}>
     <PhaseInIncrease />
     <HighlightTrackRecord />
     <AskIncreaseReason />
