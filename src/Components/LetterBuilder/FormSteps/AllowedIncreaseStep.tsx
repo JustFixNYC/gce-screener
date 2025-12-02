@@ -180,32 +180,22 @@ const GetOrganizationSupport: React.FC = () => (
         negotiate.
       </Trans>
     </p>
-    <section>
+    <section className="organizations-section">
       <h5>
         <Trans>Organizations that can help</Trans>
       </h5>
-      <ul>
-        <li>
-          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/">
-            <Trans>Met Council on Housing</Trans>
-          </JFCLLinkExternal>
-        </li>
-        <li>
-          <JFCLLinkExternal to="https://housingcourtanswers.org/answers/for-tenants/">
-            <Trans>Housing Court Answers</Trans>
-          </JFCLLinkExternal>
-        </li>
-        <li>
-          <JFCLLinkExternal to="https://www.nyc.gov/site/mayorspeu/programs/tenant-support-unit.page">
-            <Trans>NYC’s Tenant Support Unit (311)</Trans>
-          </JFCLLinkExternal>
-        </li>
-        <li>
-          <JFCLLinkExternal to={urlMyGov()}>
-            <Trans>Your local City Council representative</Trans>
-          </JFCLLinkExternal>
-        </li>
-      </ul>
+      <JFCLLinkExternal to="https://www.metcouncilonhousing.org/">
+        <Trans>Met Council on Housing</Trans>
+      </JFCLLinkExternal>
+      <JFCLLinkExternal to="https://housingcourtanswers.org/answers/for-tenants/">
+        <Trans>Housing Court Answers</Trans>
+      </JFCLLinkExternal>
+      <JFCLLinkExternal to="https://www.nyc.gov/site/mayorspeu/programs/tenant-support-unit.page">
+        <Trans>NYC’s Tenant Support Unit (311)</Trans>
+      </JFCLLinkExternal>
+      <JFCLLinkExternal to={urlMyGov()}>
+        <Trans>Your local City Council representative</Trans>
+      </JFCLLinkExternal>
     </section>
   </ContentBoxItem>
 );

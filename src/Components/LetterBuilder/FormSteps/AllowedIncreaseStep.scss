@@ -27,4 +27,22 @@
       @include body_standard_mobile;
     }
   }
+
+  /* ********************** 
+   Below CSS has specific overrides of global accordion styles 
+   ********************** */
+
+  .organizations-section {
+    display: flex;
+    flex-direction: column;
+    h5 {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  #gce-protections_eviction {
+    h5 {
+      font-weight: unset;
+    }
+  }
 }
