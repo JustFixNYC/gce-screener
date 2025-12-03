@@ -69,10 +69,6 @@ $videoEmbedW: 623px;
   display: flex;
   flex-direction: column;
   border-top: 1px solid $GREY_200;
-  // padding: 1.5rem 2rem;
-  // @include for-phone-only {
-  //   padding: 1.5rem;
-  // }
 
   &,
   .content-box__section__content,
@@ -203,6 +199,10 @@ $videoEmbedW: 623px;
   }
 
   &.no-title {
+    padding: 1.5rem 2rem;
+    @include for-phone-only {
+      padding: 1.5rem;
+    }
     p {
       @include body_large_desktop;
     }

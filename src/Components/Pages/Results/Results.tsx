@@ -219,6 +219,7 @@ export const Results: React.FC = () => {
               <UnknownProtections
                 className="unknown-protections"
                 coverageResult={coverageResult}
+                headingLevel={3}
               />
             </>
           )}
@@ -227,16 +228,24 @@ export const Results: React.FC = () => {
               lngLat={address.longLat}
               coverageResult={coverageResult}
               className="subsidized-protections"
+              headingLevel={3}
             />
           )}
           {coverageResult === "RENT_STABILIZED" && (
-            <RentStabilizedProtections coverageResult={coverageResult} />
+            <RentStabilizedProtections
+              coverageResult={coverageResult}
+              headingLevel={3}
+            />
           )}
           {coverageResult === "COVERED" && (
             <>
-              <GoodCauseProtections rent={Number(fields.rent)} />
+              <GoodCauseProtections
+                rent={Number(fields.rent)}
+                headingLevel={3}
+              />
               <GoodCauseExercisingRights
                 coverageResult={coverageResult}
+                headingLevel={3}
                 shareButtons={
                   <ShareButtons
                     buttonsInfo={[
@@ -252,10 +261,16 @@ export const Results: React.FC = () => {
             </>
           )}
           {coverageResult === "NYCHA" && (
-            <NYCHAProtections coverageResult={coverageResult} />
+            <NYCHAProtections
+              coverageResult={coverageResult}
+              headingLevel={3}
+            />
           )}
           {coverageResult !== "UNKNOWN" && coverageResult !== "NOT_COVERED" && (
-            <UniversalProtections coverageResult={coverageResult} />
+            <UniversalProtections
+              coverageResult={coverageResult}
+              headingLevel={3}
+            />
           )}
           {coverageResult === "NOT_COVERED" && (
             <UniversalProtections
@@ -263,6 +278,7 @@ export const Results: React.FC = () => {
               title={_(
                 msg`Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights`
               )}
+              headingLevel={3}
             />
           )}
           <PhoneNumberCallout
