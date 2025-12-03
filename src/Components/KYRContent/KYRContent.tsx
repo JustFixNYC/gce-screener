@@ -12,11 +12,12 @@ import { JFCLLinkExternal, JFCLLinkInternal } from "../JFCLLink";
 import { CoverageResult } from "../../types/APIDataTypes";
 import { CPI } from "../Pages/RentCalculator/RentIncreaseValues";
 
-type KYRContentBoxProps = Omit<ContentBoxProps, "children"> & {
-  children?: React.ReactNode;
-  coverageResult?: CoverageResult;
-  className?: string;
-};
+type KYRContentBoxProps = Omit<ContentBoxProps, "children" | "headingLevel"> &
+  Required<Pick<ContentBoxProps, "headingLevel">> & {
+    children?: React.ReactNode;
+    coverageResult?: CoverageResult;
+    className?: string;
+  };
 
 export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
   title,
