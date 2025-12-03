@@ -41,9 +41,9 @@ msgid "(123) 456-7890"
 msgstr "(123) 456-7890"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:442
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:118
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:128
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:157
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:138
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:167
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:209
 msgid "(optional)"
 msgstr "(opcional)"
@@ -281,11 +281,11 @@ msgid "About this site"
 msgstr "Acerca de este sitio"
 
 #. placeholder {0}: index + 1
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:168
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:178
 msgid "Additional email {0}"
 msgstr "Correo electrónico adicional {0}"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:157
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:167
 msgid "Additional recipients"
 msgstr "Destinatarios adicionales"
 
@@ -459,7 +459,7 @@ msgstr "Llame a la línea directa del Consejo Metropolitano sobre Vivienda"
 #~ msgid "Cancel"
 #~ msgstr "Cancel"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:147
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:157
 msgid "CC me on the email that you send to my landlord "
 msgstr "Envíame una copia del correo electrónico que le envíes a mi arrendador. "
 
@@ -680,7 +680,7 @@ msgstr "Descargar cobertura"
 msgid "Download letter (PDF)"
 msgstr "Descargar carta (PDF)"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:200
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:210
 msgid "Download my letter"
 msgstr "Descargar mi carta"
 
@@ -706,7 +706,7 @@ msgstr "Elegible"
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:100
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:110
 msgid "Email a copy to yourself and your landlord or property manager"
 msgstr "Envíe una copia por correo electrónico a usted mismo y a su arrendador o administrador de la propiedad."
 
@@ -1480,7 +1480,7 @@ msgstr "Nombre del propietario"
 #~ msgid "Landlord name is required"
 #~ msgstr "Landlord name is required"
 
-#: src/types/LetterFormTypes.ts:98
+#: src/types/LetterFormTypes.ts:103
 msgid "Landlord name is required for the letter"
 msgstr "Se requiere el nombre del propietario para la carta."
 
@@ -1720,12 +1720,12 @@ msgstr "Esté atento a un mensaje de JustFix."
 #~ msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat alias magni nam beatae aliquam architecto laudantium mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda! Commodi architecto dolor eius perferendis!"
 #~ msgstr "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat alias magni nam beatae aliquam architecto laudantium mollitia expedita tempora rem, deleniti, dolorum, nemo assumenda! Commodi architecto dolor eius perferendis!"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:201
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:211
 msgid "Mail my letter"
 msgstr "Enviar mi carta"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:80
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:86
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:90
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:96
 msgid "Mail or deliver the letter yourself"
 msgstr "Envíe la carta por correo o entréguela usted mismo."
 
@@ -2039,12 +2039,12 @@ msgid "Please confirm your address"
 msgstr "Confirme su dirección"
 
 #: src/types/LetterFormTypes.ts:57
-#: src/types/LetterFormTypes.ts:59
+#: src/types/LetterFormTypes.ts:63
 msgid "Please enter a complete US phone number"
 msgstr "Por favor, ingrese un número de teléfono completo de EE. UU."
 
-#: src/types/LetterFormTypes.ts:79
-#: src/types/LetterFormTypes.ts:115
+#: src/types/LetterFormTypes.ts:84
+#: src/types/LetterFormTypes.ts:120
 msgid "Please enter a unit number or check the box to confirm that there is no unit number"
 msgstr "Introduzca un número de unidad o marque la casilla para confirmar que no hay número de unidad."
 
@@ -2054,9 +2054,9 @@ msgstr "Introduzca un número de unidad o marque la casilla para confirmar que n
 #~ msgid "Please enter a valid email"
 #~ msgstr "Please enter a valid email"
 
-#: src/types/LetterFormTypes.ts:61
-#: src/types/LetterFormTypes.ts:100
-#: src/types/LetterFormTypes.ts:162
+#: src/types/LetterFormTypes.ts:66
+#: src/types/LetterFormTypes.ts:105
+#: src/types/LetterFormTypes.ts:167
 msgid "Please enter a valid email address"
 msgstr "Por favor, ingrese una dirección de correo electrónico válida."
 
@@ -2068,7 +2068,7 @@ msgstr "Por favor, ingrese un código postal válido."
 #~ msgid "please enter your email address or uncheck the option to CC you on the email to your landlord"
 #~ msgstr "please enter your email address or uncheck the option to CC you on the email to your landlord"
 
-#: src/types/LetterFormTypes.ts:202
+#: src/types/LetterFormTypes.ts:207
 msgid "Please enter your email address or uncheck the option to CC you on the email to your landlord"
 msgstr "Introduzca su dirección de correo electrónico o desmarque la opción para enviarle una copia del correo electrónico a su arrendador."
 
@@ -2093,7 +2093,7 @@ msgstr ""
 #~ msgid "Please review the page and fix the errors below before continuing"
 #~ msgstr "Revisa la página y corrige los errores que se indican a continuación antes de continuar."
 
-#: src/Components/LetterBuilder/LetterBuilderForm.tsx:283
+#: src/Components/LetterBuilder/LetterBuilderForm.tsx:222
 msgid "Please review the page and fix the issues below."
 msgstr ""
 
@@ -2113,7 +2113,7 @@ msgstr ""
 #~ msgid "Please review your letter to ensure all the details are correct."
 #~ msgstr "Please review your letter to ensure all the details are correct."
 
-#: src/types/LetterFormTypes.ts:198
+#: src/types/LetterFormTypes.ts:203
 msgid "Please select a reason for your letter."
 msgstr "Seleccione el motivo de su carta."
 
@@ -2122,11 +2122,11 @@ msgstr "Seleccione el motivo de su carta."
 #~ msgstr "Please select an option for mailing the letter"
 
 #. placeholder {0}: CPI + 5
-#: src/types/LetterFormTypes.ts:177
+#: src/types/LetterFormTypes.ts:182
 msgid "Please select whether the increase is beyond {0}%"
 msgstr "Seleccione si el aumento supera el {0}%."
 
-#: src/types/LetterFormTypes.ts:189
+#: src/types/LetterFormTypes.ts:194
 msgid "Please select whether your landlord provided one of the listed reasons for not renewing your lease"
 msgstr "Seleccione si su arrendador le proporcionó alguna de las razones enumeradas para no renovar su contrato de alquiler."
 
@@ -2480,7 +2480,7 @@ msgstr ""
 #~ msgid "Select <0>“Your landlord is planning to raise your rent”</0>if any of the following apply:"
 #~ msgstr "Select <0>“Your landlord is planning to raise your rent”</0>if any of the following apply:"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:50
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:60
 msgid "Select a mailing method"
 msgstr "Seleccione un método de envío"
 
@@ -2998,7 +2998,7 @@ msgstr "Desbloquee NYC"
 msgid "Update your coverage result"
 msgstr "Actualice el resultado de su cobertura"
 
-#: src/types/LetterFormTypes.ts:136
+#: src/types/LetterFormTypes.ts:141
 msgid "Urbanization is required for address in Puerto Rico"
 msgstr "Se requiere urbanización para las direcciones en Puerto Rico."
 
@@ -3143,7 +3143,7 @@ msgstr "No pudimos terminar tu carta."
 #~ msgid "We have sent a text message to you at {0} with the USPS tracking number for your letter."
 #~ msgstr "We have sent a text message to you at {0} with the USPS tracking number for your letter."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:104
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:114
 msgid "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if your normally correspond to your landlord via email. You can also send a copy to other people you trust."
 msgstr "Le recomendamos encarecidamente que envíe una copia de la carta por correo electrónico a usted mismo y a su arrendador, especialmente si normalmente se comunica con él por correo electrónico. También puede enviar una copia a otras personas de su confianza."
 
@@ -3175,8 +3175,8 @@ msgstr "Necesitamos confirmar si su arrendador es propietario de más de 10 depa
 msgid "We were unable to find relevant documents containing owner names and/or signatures for this building."
 msgstr "No hemos podido encontrar documentos relevantes que contengan los nombres y/o firmas de los propietarios de este edificio."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:56
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:62
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:66
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:72
 msgid "We will mail the letter for you"
 msgstr "Enviaremos la carta por usted."
 
@@ -3189,7 +3189,7 @@ msgstr "Nunca lo llamaremos ni compartiremos su número de teléfono. Es posible
 #~ msgid "We will never call you or share your phone number. You can opt-out at any time."
 #~ msgstr "We will never call you or share your phone number. You can opt-out at any time."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:89
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:99
 msgid "We will provide a PDF for you to download, print, and mail or deliver to your landlord or property manager."
 msgstr "Le proporcionaremos un PDF para que lo descargue, imprima y envíe por correo o entregue a su arrendador o administrador de la propiedad."
 
@@ -3201,7 +3201,7 @@ msgstr "Le proporcionaremos un PDF para que lo descargue, imprima y envíe por c
 #~ msgid "We will send your letter for you via USPS Certified Mail ® at no cost to you. We will also provide a PDF for you to download for your records."
 #~ msgstr "We will send your letter for you via USPS Certified Mail ® at no cost to you. We will also provide a PDF for you to download for your records."
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:69
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:79
 msgid "We will send your letter for you via USPS Certified Mail at no cost to you. We will also provide a PDF for you to download for your records."
 msgstr "Enviaremos su carta por correo certificado de USPS sin costo alguno para usted. También le proporcionaremos un PDF para que lo descargue y lo guarde en sus archivos."
 
@@ -3479,7 +3479,7 @@ msgstr "Ha elegido sobrescribir la información del propietario que figura en lo
 msgid "You must enter an address"
 msgstr "Debe ingresar una dirección"
 
-#: src/types/LetterFormTypes.ts:155
+#: src/types/LetterFormTypes.ts:160
 msgid "You must select a method to mail your letter"
 msgstr "Debes seleccionar un método para enviar tu carta por correo."
 
@@ -3705,7 +3705,7 @@ msgstr "Su alquiler mensual actual + {increase_pct} %"
 #~ msgid "Your current monthly rent + ${increase_pct}%"
 #~ msgstr "Your current monthly rent + ${increase_pct}%"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:118
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:128
 msgid "Your email"
 msgstr "Tu correo electrónico"
 
@@ -3837,7 +3837,7 @@ msgstr "El arrendador deberá proporcionar una razón válida para rescindir el 
 #~ msgid "Your landlord's email"
 #~ msgstr "El correo electrónico de tu arrendador"
 
-#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:128
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:138
 msgid "Your landlord’s email"
 msgstr ""
 
