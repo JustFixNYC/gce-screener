@@ -49,6 +49,7 @@ export const ConfirmationStep: React.FC<{
             color="off-white-200"
             icon="envelopeLight"
             header={<Trans>We’re finishing up your letter…</Trans>}
+            headingLevel={4}
           >
             <p>
               <Trans>
@@ -73,6 +74,7 @@ export const ConfirmationStep: React.FC<{
             color="yellow"
             icon="envelopeCircleExclamationLight"
             header={<Trans>We couldn’t finish your letter</Trans>}
+            headingLevel={4}
           >
             <p>
               <Trans>
@@ -141,6 +143,7 @@ export const ConfirmationStep: React.FC<{
               <Trans>Your letter is ready</Trans>
             )
           }
+          headingLevel={4}
         >
           {data.mail_choice === "WE_WILL_MAIL" ? (
             <>
@@ -222,6 +225,7 @@ export const ConfirmationStep: React.FC<{
                 address(es):
               </Trans>
             }
+            headingLevel={5}
           >
             <ul>
               {allEmailsSent.map((email, index) => (
