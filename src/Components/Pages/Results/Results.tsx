@@ -48,7 +48,6 @@ import {
   toTitleCase,
 } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
-import "./Results.scss";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkInternal } from "../../JFCLLink";
@@ -57,6 +56,7 @@ import {
   PhoneNumberCallout,
   PhoneNumberModal,
 } from "../../PhoneNumberCallout/PhoneNumberCallout";
+import "./Results.scss";
 
 export const Results: React.FC = () => {
   const { _ } = useLingui();

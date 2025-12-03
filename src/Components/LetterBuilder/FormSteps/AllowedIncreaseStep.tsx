@@ -9,8 +9,8 @@ import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { Notice } from "../../Notice/Notice";
 import { urlMyGov } from "../../../helpers";
-import "./AllowedIncreaseStep.scss";
 import { Heading } from "../../Heading/Heading";
+import "./AllowedIncreaseStep.scss";
 
 export const AllowedIncreaseStep: React.FC = () => {
   const { i18n } = useLingui();

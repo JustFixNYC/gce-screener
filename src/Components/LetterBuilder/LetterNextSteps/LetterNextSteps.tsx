@@ -11,8 +11,8 @@ import {
 import { Pill } from "../../Pill/Pill";
 import { JFCLLinkExternal } from "../../JFCLLink";
 import { Header } from "../../Header/Header";
-import "./LetterNextSteps.scss";
 import { Heading } from "../../Heading/Heading";
+import "./LetterNextSteps.scss";
 
 type NextStepItemProps = Omit<ContentBoxItemProps, "children"> &
   Required<Pick<ContentBoxItemProps, "headingLevel">>;
