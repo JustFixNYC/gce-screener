@@ -233,15 +233,19 @@ export const ConfirmationStep: React.FC<{
           </Notice>
         )}
 
-        <LetterNextSteps className="next-steps" mailChoice={data.mail_choice} />
+        <LetterNextSteps
+          headingLevel={4}
+          className="next-steps"
+          mailChoice={data.mail_choice}
+        />
 
         {data.reason === "NON_RENEWAL" ? (
-          <LetterResponsesNonRenewal includeUniversal />
+          <LetterResponsesNonRenewal headingLevel={4} includeUniversal />
         ) : data.reason === "PLANNED_INCREASE" ? (
-          <LetterResponsesRentIncrease includeUniversal />
+          <LetterResponsesRentIncrease headingLevel={4} includeUniversal />
         ) : null}
 
-        <LetterWhoCanHelp />
+        <LetterWhoCanHelp headingLevel={4} />
       </div>
     </>
   );
