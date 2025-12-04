@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-12-04 22:37\n"
+"PO-Revision-Date: 2025-12-04 23:39\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -1409,11 +1409,11 @@ msgstr "forma parte de NYCHA o PACT/RAD"
 #. placeholder {0}: CPI + 5
 #: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:49
 msgid "Is your landlord increasing your monthly rent more than {0}%?"
-msgstr "¿Tu arrendador está aumentando tu renta mensual más del {0}%?"
+msgstr "¿Su arrendador está aumentando su renta mensual más del {0} %?"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:223
 msgid "It’s often more effective to approach these problems together, by sharing information, comparing experiences, and contacting your landlord together."
-msgstr "A menudo es más efectivo abordar estos problemas juntos, compartiendo información, comparando experiencias y contactando al propietario juntos."
+msgstr "A menudo es más efectivo abordar estos problemas juntos, compartiendo información, comparando experiencias y contactando al arrendador juntos."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:168
 #~ msgid "It’s often more effective to approach these problems together, by sharing information, comparing experiences, and supporting one another."
@@ -1430,15 +1430,15 @@ msgstr "Carta de queja de JustFix"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:175
 msgid "Keep all communication in writing"
-msgstr "Mantenga toda la comunicación por escrito."
+msgstr "Mantenga toda la comunicación por escrito"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:148
 msgid "Keep documentation of every rent payment (receipts, screenshots, or bank confirmations)."
-msgstr "Guarda toda la documentación de cada pago de renta (recibos, capturas de pantalla o confirmaciones bancarias)."
+msgstr "Guarde toda la documentación de cada pago de renta (recibos, capturas de pantalla o confirmaciones bancarias)."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:130
 msgid "Keep paying rent and wait for your landlord’s response"
-msgstr "Sigue pagando el alquiler y espera la respuesta de tu propietario."
+msgstr "Siga pagando el alquiler y espere la respuesta de su propietario"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:538
 msgid "Keep paying rent under your current lease until a legal amount is agreed to."
@@ -1450,7 +1450,7 @@ msgstr ""
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:484
 msgid "Keep paying rent under your current lease. You don’t need to accept the higher amount."
-msgstr "Sigue pagando el alquiler según tu contrato actual. No tienes por qué aceptar el aumento."
+msgstr "Siga pagando el alquiler según su contrato actual. No tiene por qué aceptar el aumento."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:537
 #~ msgid "Keep paying rent until you sign a new lease."
@@ -1474,7 +1474,7 @@ msgstr "Guarde esto para su documentación. Es una parte importante para hacer v
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:309
 msgid "Landlord name"
-msgstr "Nombre del propietario"
+msgstr "Nombre del arrendador"
 
 #: src/types/LetterFormTypes.ts:85
 #~ msgid "Landlord name is required"
@@ -1482,7 +1482,7 @@ msgstr "Nombre del propietario"
 
 #: src/types/LetterFormTypes.ts:103
 msgid "Landlord name is required for the letter"
-msgstr "Se requiere el nombre del propietario para la carta."
+msgstr "Se requiere el nombre del arrendador para la carta"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:292
 #~ msgid "Landlord or property manager name"
@@ -1502,7 +1502,7 @@ msgstr "Los arrendadores pueden aumentar el alquiler más allá del incremento r
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:100
 msgid "Landlords often value stability, especially in a competitive market. A short, polite message pointing out your reliability can strengthen your case for a smaller increase."
-msgstr "Los propietarios suelen valorar la estabilidad, especialmente en un mercado competitivo. Un mensaje breve y educado en el que destaques tu fiabilidad puede reforzar tus argumentos para conseguir un aumento menor."
+msgstr "Los arrendadores suelen valorar la estabilidad, especialmente en un mercado competitivo. Un mensaje breve y educado en el que destaque su fiabilidad puede reforzar sus argumentos para conseguir un aumento menor."
 
 #: src/Components/Footer/Footer.tsx:16
 msgid "Language"
@@ -1522,7 +1522,7 @@ msgstr "Apellido"
 
 #: src/types/LetterFormTypes.ts:51
 msgid "Last name is required for the letter"
-msgstr "Se requiere el apellido para la carta."
+msgstr "Se requiere el apellido para la carta"
 
 #: src/Components/KYRContent/KYRContent.tsx:203
 msgid "Lawful source of income"
@@ -1575,7 +1575,7 @@ msgstr "Más información sobre los motivos de desalojo por justa causa."
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:822
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:893
 msgid "Learn more about Good Cause reasons for non renewal"
-msgstr "Más información sobre los motivos justificados para la no renovación."
+msgstr "Más información sobre los motivos justificados para la no renovación"
 
 #: src/Components/KYRContent/KYRContent.tsx:72
 msgid "Learn more about housing court"
@@ -1706,7 +1706,7 @@ msgstr "Cargando tus resultados..."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:53
 msgid "Look out for a text from JustFix"
-msgstr "Esté atento a un mensaje de JustFix."
+msgstr "Esté atento a un mensaje de JustFix"
 
 #: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:50
 #~ msgid "Lorem ipsum dolor sit amet"
@@ -1727,7 +1727,7 @@ msgstr "Enviar mi carta"
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:90
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:96
 msgid "Mail or deliver the letter yourself"
-msgstr "Envíe la carta por correo o entréguela usted mismo."
+msgstr "Envíe la carta por correo o entréguela usted mismo"
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:97
 #~ msgid "Mail the letter yourself"
@@ -1739,7 +1739,7 @@ msgstr "Método de envío por correo"
 
 #: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:91
 msgid "Make sure the information below is accurate. If it is not, you can go back to make changes."
-msgstr "Asegúrate de que la información que aparece a continuación es correcta. Si no lo es, puedes volver atrás para realizar cambios."
+msgstr "Asegúrese de que la información que aparece a continuación es correcta. Si no lo es, puede volver atrás para realizar cambios."
 
 #: src/hooks/useCriteriaResults.tsx:410
 msgid "manufactured housing"
@@ -1810,11 +1810,11 @@ msgstr "Hipoteca"
 
 #: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:140
 msgid "Need help choosing which letter is best for you?"
-msgstr "¿Necesitas ayuda para elegir la letra que más te conviene?"
+msgstr "¿Necesita ayuda para elegir la letra que más le conviene?"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:239
 msgid "Need support while you wait?"
-msgstr "¿Necesitas ayuda mientras esperas?"
+msgstr "¿Necesita ayuda mientras espera?"
 
 #: src/Components/Pages/Results/Results.tsx:399
 msgid "Need to update your information?"
@@ -1868,7 +1868,7 @@ msgstr "Incumplimiento del pago del alquiler"
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:74
 msgid "Not sure if you’re covered?"
-msgstr "¿No estás seguro de si estás cubierto?"
+msgstr "¿No está seguro de si está cubierto?"
 
 #: src/Components/KYRContent/KYRContent.tsx:329
 msgid "Note"
@@ -1905,11 +1905,11 @@ msgstr "Información sobre desalojos de NY Homes and Community Renewal"
 
 #: src/Components/KYRContent/KYRContent.tsx:421
 msgid "NYC Tenant Protection Cabinet’s Good Cause Eviction Guide"
-msgstr "Guía sobre desalojos por causa justificada del Gabinete de Protección al Inquilino de la Ciudad de Nueva York"
+msgstr "Guía sobre desalojos por Justa Causa del Gabinete de Protección al Inquilino de la Ciudad de Nueva York"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:346
 msgid "NYC’s Tenant Protection Cabinet’s Good Cause Guide."
-msgstr "Guía de causas justificadas del Gabinete de Protección al Inquilino de la Ciudad de Nueva York."
+msgstr "Guía de Justa Causa del Gabinete de Protección al Inquilino de la Ciudad de Nueva York."
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:200
 #~ msgid "NYC's Tenant Support Unit (311)"
