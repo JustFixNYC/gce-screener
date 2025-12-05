@@ -1,0 +1,62 @@
+@use "../../mixins.scss" as *;
+
+#gce-protections_rent {
+  @include for-tablet-portrait-up {
+    p {
+      width: 75%;
+    }
+  }
+  strong {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+  .callout-box {
+    flex-direction: column;
+    span,
+    a {
+      margin: 0;
+    }
+    .rent-increase {
+      display: block;
+      .amount {
+        @include body_large_desktop;
+        font-weight: 600;
+      }
+      .formula {
+        @include body_standard_desktop;
+        @include for-phone-only {
+          @include body_standard_mobile;
+        }
+      }
+      @include for-tablet-portrait-up {
+        br {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+#gce-protections_rent,
+#gce-protections_eviction {
+  .letter-callout {
+    padding: 1rem;
+    margin: 1rem 0 0;
+    gap: 0.5rem;
+    .notice__icon-container svg {
+      padding: 0.25rem 0;
+    }
+    .notice__body {
+      @include body_standard_desktop;
+      p {
+        margin-bottom: 1rem;
+        @include for-tablet-portrait-up {
+          width: 85%;
+        }
+      }
+      strong {
+        display: inline;
+      }
+    }
+  }
+}

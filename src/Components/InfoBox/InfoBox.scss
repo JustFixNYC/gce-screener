@@ -30,7 +30,13 @@
   }
   .info-box__content-container {
     flex: 1;
-    @include body_standard_mobile;
+    @include body_standard_desktop;
+    @include for-phone-only {
+      &,
+      .jfcl-link {
+        @include body_standard_mobile;
+      }
+    }
     .bold {
       font-weight: 600;
     }

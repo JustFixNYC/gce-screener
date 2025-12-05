@@ -16,9 +16,6 @@
     margin-bottom: 1.5rem;
     @include body_standard_desktop;
     font-weight: 600;
-    span {
-      font-weight: 400;
-    }
 
     button.jfcl-link {
       @include body_standard_desktop;
@@ -45,7 +42,6 @@
   .info-box {
     margin-bottom: 1.5rem;
     p {
-      @include body_standard_desktop;
       margin: 0;
       width: 80%;
       &:not(:last-of-type) {

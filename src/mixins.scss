@@ -1,10 +1,10 @@
 @mixin body_standard_desktop {
   font-family: "Degular", Arial, Helvetica, sans-serif;
   font-style: normal;
-  font-weight: 400; // Adjusted down from normal 500
+  font-weight: 500;
   font-size: 1.125rem; // 18px
   line-height: 120%; // 21.6px
-  letter-spacing: 0.54px;
+  letter-spacing: 0.03375rem; // 0.54px
 }
 
 @mixin h2_desktop {
@@ -13,7 +13,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 100%; /* 4rem */
-  letter-spacing: 0.12rem;
+  letter-spacing: 0.12rem; // 1.92px
 }
 
 @mixin h3_desktop {
@@ -36,25 +36,25 @@
   font-style: normal;
   font-weight: 500;
   line-height: 100%; /* 52px */
-  letter-spacing: 1.56px;
+  letter-spacing: 0.0975rem; // 1.56px
 }
 
 @mixin body_large_desktop {
   font-family: "Degular", Arial, Helvetica, sans-serif;
   font-style: normal;
-  font-weight: 400; // Adjusted down from normal 500
+  font-weight: 500;
   font-size: 1.5rem; // 24px
   line-height: 120%; // 28.8px
-  letter-spacing: 0.72px;
+  letter-spacing: 0.045rem; // 0.72px
 }
 
 @mixin small_text_desktop {
   font-family: "Degular", Arial, Helvetica, sans-serif;
   font-style: normal;
-  font-weight: 400; // Adjusted down from normal 500
+  font-weight: 500;
   font-size: 0.875rem; // 14px
   line-height: 130%; // 28.8px
-  letter-spacing: 0.42px;
+  letter-spacing: 0.02625rem; // 0.42px
 }
 
 @mixin eyebrow_small_desktop {
@@ -63,7 +63,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 115%; /* 18.4px */
-  letter-spacing: 0.48px;
+  letter-spacing: 0.03rem; // 0.48px
   text-transform: uppercase;
 }
 
@@ -73,22 +73,22 @@
   font-style: normal;
   font-weight: 400;
   line-height: 115%; /* 20.7px */
-  letter-spacing: 0.54px;
+  letter-spacing: 0.03375rem; // 0.54px
   text-transform: uppercase;
 }
 
 @mixin body_standard_mobile {
   font-family: Degular;
-  font-size: 18px;
+  font-size: 1.125rem; // 18px
   font-style: normal;
   font-weight: 500;
   line-height: 120%; /* 21.6px */
-  letter-spacing: 0.54px;
+  letter-spacing: 0.03375rem; // 0.54px
 }
 
 @mixin h3_mobile {
   font-family: Degular;
-  font-size: 24px;
+  font-size: 1.5rem; // 24px
   font-style: normal;
   font-weight: 600;
   line-height: 120%; /* 28.8px */
@@ -96,38 +96,38 @@
 
 @mixin page_header_mobile {
   font-family: "Degular Display";
-  font-size: 36px;
+  font-size: 2.25rem; // 36px
   font-style: normal;
   font-weight: 500;
   line-height: 104%; /* 37.44px */
-  letter-spacing: 1.08px;
+  letter-spacing: 0.0675rem; // 1.08px
 }
 
 @mixin body_large_mobile {
   font-family: Degular;
-  font-size: 24px;
+  font-size: 1.5rem; // 24px
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 120%; /* 28.8px */
-  letter-spacing: 0.72px;
+  letter-spacing: 0.045rem; // 0.72px
 }
 
 @mixin small_text_mobile {
   font-family: Degular;
-  font-size: 14px;
+  font-size: 0.875rem; // 14px
   font-style: normal;
   font-weight: 500;
   line-height: 130%; /* 18.2px */
-  letter-spacing: 0.42px;
+  letter-spacing: 0.02625rem; // 0.42px
 }
 
 @mixin eyebrow_mobile {
   font-family: "Suisse Int'l Mono";
-  font-size: 10px;
+  font-size: 0.625rem; // 10px
   font-style: normal;
   font-weight: 400;
   line-height: 115%; /* 11.5px */
-  letter-spacing: 0.3px;
+  letter-spacing: 0.01875rem; // 0.3px
   text-transform: uppercase;
 }
 
