@@ -16,7 +16,7 @@ msgstr ""
 "X-Crowdin-File-ID: 80\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Language-Team: Spanish, Latin America\n"
-"PO-Revision-Date: 2025-12-05 18:26\n"
+"PO-Revision-Date: 2025-12-05 20:39\n"
 
 #: GCE+Letter+-+Confirmation/415ff7ed-62e0-4fc7-846c-78d09f878db2/text:0
 msgid "JustFix here! Your letter is on its way to your landlord.\n\n"
@@ -60,7 +60,7 @@ msgid "Your USPS Certified Mail tracking number is @fields.gce_letter_tracking_n
 "💻 Learn about next steps you can take at https://goodcausenyc.org/letter/next_steps"
 msgstr "Su número de seguimiento del correo certificado de USPS es @fields.gce_letter_tracking_number.\n\n"
 "https://tools.usps.com/go/TrackConfirmAction?tLabels=@fields.gce_letter_tracking_number\n\n"
-"Es posible que USPS muestre inicialmente el mensaje «Seguimiento no disponible». Esto es normal. El seguimiento aparecerá una vez que USPS escanee su carta, lo que puede tardar entre 1 y 5 días.\n\n"
+"Es posible que la USPS muestre inicialmente el mensaje \"Seguimiento no disponible\". Esto es normal. El seguimiento aparecerá una vez que USPS escanee su carta, lo que puede tardar entre 1 y 5 días.\n\n"
 "Le recomendamos que espere hasta 10 días después de la entrega de su carta para recibir una respuesta de su arrendador. Si le envió una copia a su arrendador por correo electrónico, es posible que reciba una respuesta antes.\n\n"
 "Mientras espera:\n"
 "📝 Mantenga toda la comunicación con su arrendador por escrito.\n\n"
@@ -68,9 +68,9 @@ msgstr "Su número de seguimiento del correo certificado de USPS es @fields.gce_
 
 #: GCE+Letter+-+Confirmation/e2faed86-a363-451a-a2a9-1220c95c2404/name:0
 msgid "justfix_mail"
-msgstr "justfix_mail"
+msgstr "justfix_correo"
 
 #: GCE+Letter+-+Confirmation/a7fc4663-071e-422e-8653-ddcc96f7b1a8/name:0
 msgid "user_mail"
-msgstr "user_mail"
+msgstr "usuario_correo"
 
