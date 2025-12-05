@@ -149,6 +149,7 @@ export const LandlordDetailsStep: React.FC = () => {
               Checking city records for your landlord’s information...
             </Trans>
           }
+          headingLevel={4}
         >
           <p>
             <Trans>

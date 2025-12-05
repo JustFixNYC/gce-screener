@@ -9,6 +9,7 @@ import { JFCLLinkExternal } from "../../JFCLLink";
 import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { Notice } from "../../Notice/Notice";
 import { urlMyGov } from "../../../helpers";
+import { Heading } from "../../Heading/Heading";
 import "./AllowedIncreaseStep.scss";
 
 export const AllowedIncreaseStep: React.FC = () => {
@@ -24,6 +25,7 @@ export const AllowedIncreaseStep: React.FC = () => {
             Good Cause legal limit.
           </Trans>
         }
+        headingLevel={4}
       >
         <p>
           <Trans>
@@ -41,7 +43,8 @@ export const AllowedIncreaseStep: React.FC = () => {
       </Notice>
       <RentNegotiationTips />
       <GoodCauseProtections
-        subtitle={<Trans>Protections under Good Cause</Trans>}
+        title={<Trans>Protections under Good Cause</Trans>}
+        headingLevel={4}
       />
       <BackNextButtons hideButton2 backStepName="rent_increase" />
     </div>
@@ -58,6 +61,7 @@ const PhaseInIncrease: React.FC = () => (
         <Trans>Ask if your landlord can phase-in the increase</Trans>
       </>
     }
+    headingLevel={5}
   >
     <p>
       <Trans>
@@ -89,6 +93,7 @@ const HighlightTrackRecord: React.FC = () => (
         <Trans>Highlight your track record as a reliable tenant</Trans>
       </>
     }
+    headingLevel={5}
   >
     <p>
       <Trans>
@@ -115,6 +120,7 @@ const AskIncreaseReason: React.FC = () => (
         <Trans>Ask what’s driving the increase</Trans>
       </>
     }
+    headingLevel={5}
   >
     <p>
       <Trans>
@@ -146,6 +152,7 @@ const OfferLongerLease: React.FC = () => (
         <Trans>Offer a longer lease in exchange for a smaller increase</Trans>
       </>
     }
+    headingLevel={5}
   >
     <p>
       <Trans>
@@ -172,6 +179,7 @@ const GetOrganizationSupport: React.FC = () => (
         <Trans>Get support from a tenant organization</Trans>
       </>
     }
+    headingLevel={5}
   >
     <p>
       <Trans>
@@ -181,9 +189,9 @@ const GetOrganizationSupport: React.FC = () => (
       </Trans>
     </p>
     <section className="organizations-section">
-      <h5>
+      <Heading level={6}>
         <Trans>Organizations that can help</Trans>
-      </h5>
+      </Heading>
       <ul className="no-bullets">
         <li>
           <JFCLLinkExternal to="https://www.metcouncilonhousing.org/">
@@ -211,7 +219,10 @@ const GetOrganizationSupport: React.FC = () => (
 );
 
 const RentNegotiationTips: React.FC = () => (
-  <ContentBox subtitle={<Trans>Tips for negotiating a smaller increase</Trans>}>
+  <ContentBox
+    title={<Trans>Tips for negotiating a smaller increase</Trans>}
+    headingLevel={4}
+  >
     <PhaseInIncrease />
     <HighlightTrackRecord />
     <AskIncreaseReason />
