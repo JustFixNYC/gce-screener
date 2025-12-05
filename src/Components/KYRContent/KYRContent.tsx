@@ -14,32 +14,37 @@ import { CPI } from "../Pages/RentCalculator/RentIncreaseValues";
 import { Notice } from "../Notice/Notice";
 import "./KYRContent.scss";
 
-type KYRContentBoxProps = Omit<ContentBoxProps, "children"> & {
-  children?: React.ReactNode;
-  coverageResult?: CoverageResult;
-  className?: string;
-};
+type KYRContentBoxProps = Omit<ContentBoxProps, "children" | "headingLevel"> &
+  Required<Pick<ContentBoxProps, "headingLevel">> & {
+    children?: React.ReactNode;
+    coverageResult?: CoverageResult;
+    className?: string;
+  };
 
 export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
   title,
-  subtitle,
   children,
   coverageResult,
-  className,
+  headingLevel,
+  ...props
 }) => {
   const { _ } = useLingui();
-  const defaultSubtitle = _(msg`Protections that all NYC tenants have`);
+  const defaultTitle = _(msg`Protections that all NYC tenants have`);
+  const itemProps = {
+    coverageResult: coverageResult,
+    headingLevel: headingLevel + 1,
+  };
   return (
     <>
       <ContentBox
-        title={title}
-        subtitle={subtitle || defaultSubtitle}
-        className={className}
+        {...props}
+        title={title || defaultTitle}
+        headingLevel={headingLevel}
       >
         <ContentBoxItem
           title={_(msg`Your eviction protections`)}
           gtmId="universal_eviction"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -96,7 +101,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         <ContentBoxItem
           title={_(msg`Your right to a liveable home`)}
           gtmId="universal_habitability"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -163,6 +168,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         <ContentBoxItem
           title={_(msg`Your rights against discrimination`)}
           gtmId="universal_discrimination"
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -215,7 +221,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         <ContentBoxItem
           title={_(msg`Your right to organize`)}
           gtmId="universal_organize"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -247,7 +253,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         <ContentBoxItem
           title={_(msg`More resources about your rights as an NYC tenant`)}
           gtmId="universal_resources"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <JFCLLinkExternal to="https://ag.ny.gov/publications/residential-tenants-rights-guide">
             <Trans>Residential Tenants Guide</Trans>
@@ -271,21 +277,25 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
 
 export const GoodCauseProtections: React.FC<
   KYRContentBoxProps & { rent?: number }
-> = ({ title, subtitle, rent, children, coverageResult, className }) => {
-  const { _, i18n } = useLingui();
-  const defaultSubtitle = _(msg`Protections if you’re covered by Good Cause`);
+> = ({ title, rent, children, coverageResult, headingLevel, ...props }) => {
+  const { _ } = useLingui();
+  const defaultTitle = _(msg`Protections if you’re covered by Good Cause`);
   const increase_pct = CPI + 5;
+  const itemProps = {
+    coverageResult: coverageResult,
+    headingLevel: headingLevel + 1,
+  };
   return (
     <>
       <ContentBox
-        title={title}
-        subtitle={subtitle || defaultSubtitle}
-        className={className}
+        {...props}
+        title={title || defaultTitle}
+        headingLevel={headingLevel}
       >
         <ContentBoxItem
           title={_(msg`Your right to limited rent increases`)}
           gtmId="gce-protections_rent"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -376,7 +386,7 @@ export const GoodCauseProtections: React.FC<
         <ContentBoxItem
           title={_(msg`Your right to stay in your home`)}
           gtmId="gce-protections_eviction"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <>
             <p>
@@ -454,11 +464,10 @@ export const GoodCauseProtections: React.FC<
             </Notice>
           </>
         </ContentBoxItem>
-
         <ContentBoxItem
           title={_(msg`Learn more about Good Cause Eviction Law protections`)}
           gtmId="gce-protections_learn"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause">
             <Trans>
@@ -485,27 +494,29 @@ export const GoodCauseExercisingRights: React.FC<
   KYRContentBoxProps & { shareButtons: ReactNode }
 > = ({
   title,
-  subtitle,
   shareButtons,
   children,
   coverageResult,
-  className,
+  headingLevel,
+  ...props
 }) => {
   const { _ } = useLingui();
-
-  const defaultSubtitle = _(msg`How to assert your Good Cause rights`);
-
+  const defaultTitle = _(msg`How to assert your Good Cause rights`);
+  const itemProps = {
+    coverageResult: coverageResult,
+    headingLevel: headingLevel + 1,
+  };
   return (
     <>
       <ContentBox
-        title={title}
-        subtitle={subtitle || defaultSubtitle}
-        className={className}
+        {...props}
+        title={title || defaultTitle}
+        headingLevel={headingLevel}
       >
         <ContentBoxItem
           title={_(msg`Use Good Cause to stay in your home`)}
           gtmId="gce-exercise_eviction"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -543,6 +554,7 @@ export const GoodCauseExercisingRights: React.FC<
         <ContentBoxItem
           title={_(msg`Use Good Cause to fight your rent hike`)}
           gtmId="gce-exercise_rent"
+          {...itemProps}
         >
           <ol>
             <li>
@@ -609,7 +621,7 @@ export const GoodCauseExercisingRights: React.FC<
         <ContentBoxItem
           title={_(msg`Share your coverage with your landlord`)}
           gtmId="gce-exercise_share"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -623,6 +635,7 @@ export const GoodCauseExercisingRights: React.FC<
         <ContentBoxItem
           title={_(msg`Reach out to external resources`)}
           gtmId="gce-exercise_resources"
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -650,28 +663,31 @@ export const GoodCauseExercisingRights: React.FC<
 
 export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
   title,
-  subtitle,
   children,
   coverageResult,
-  className,
+  headingLevel,
+  ...props
 }) => {
   const { _ } = useLingui();
 
-  const defaultSubtitle = _(
+  const defaultTitle = _(
     msg`Protections if you live in a rent stabilized apartment`
   );
-
+  const itemProps = {
+    coverageResult: coverageResult,
+    headingLevel: headingLevel + 1,
+  };
   return (
     <>
       <ContentBox
-        title={title}
-        subtitle={subtitle || defaultSubtitle}
-        className={className}
+        {...props}
+        title={title || defaultTitle}
+        headingLevel={headingLevel}
       >
         <ContentBoxItem
           title={_(msg`Your right to limited rent increases`)}
           gtmId="rs_rent"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -685,11 +701,10 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
             <Trans>Learn about rent increase rights</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
-
         <ContentBoxItem
           title={_(msg`Your right to a lease renewal`)}
           gtmId="rs_renewal"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -702,11 +717,10 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
             <Trans>Learn about lease renewal rights</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
-
         <ContentBoxItem
           title={_(msg`Your right to succession`)}
           gtmId="rs_succession"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -719,11 +733,10 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
             <Trans>Learn about succession rights</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
-
         <ContentBoxItem
           title={_(msg`Learn more about rent stabilization`)}
           gtmId="rs_learn"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -745,28 +758,31 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
 
 export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
   title,
-  subtitle,
   children,
   coverageResult,
-  className,
+  headingLevel,
+  ...props
 }) => {
   const { _ } = useLingui();
 
-  const defaultSubtitle = _(
+  const defaultTitle = _(
     msg`Protections if you live in NYCHA or PACT/RAD housing`
   );
-
+  const itemProps = {
+    coverageResult: coverageResult,
+    headingLevel: headingLevel + 1,
+  };
   return (
     <>
       <ContentBox
-        title={title}
-        subtitle={subtitle || defaultSubtitle}
-        className={className}
+        {...props}
+        title={title || defaultTitle}
+        headingLevel={headingLevel}
       >
         <ContentBoxItem
           title={_(msg`Your right to repairs`)}
           gtmId="nycha_repairs"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -779,11 +795,10 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
             </Trans>
           </p>
         </ContentBoxItem>
-
         <ContentBoxItem
           title={_(msg`Your right to income-based rent`)}
           gtmId="nycha_rent"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -800,11 +815,10 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
             </Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
-
         <ContentBoxItem
           title={_(msg`Your right to grieve management decisions`)}
           gtmId="nycha_grieve"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -819,11 +833,10 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
             <Trans>Learn more about the grievance procedures</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
-
         <ContentBoxItem
           title={_(msg`Your right to legal representation if facing eviction`)}
           gtmId="nycha_legal"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <p>
             <Trans>
@@ -839,13 +852,12 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
             <Trans>Learn more about NYCHA lease terminations</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
-
         <ContentBoxItem
           title={_(
             msg`Learn more about NYCHA and PACT/RAD’s tenant protections`
           )}
           gtmId="nycha_learn"
-          coverageResult={coverageResult}
+          {...itemProps}
         >
           <JFCLLinkExternal to="https://www.nyc.gov/site/nycha/residents/acop.page">
             <Trans>NYCHA policies</Trans>
@@ -860,7 +872,6 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
             <Trans>PACT Rights and Responsibilities Fact Sheet</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
-
         {children}
       </ContentBox>
       <div className="divider__print" />
@@ -870,18 +881,14 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
 
 export const SubsidizedProtections: React.FC<
   KYRContentBoxProps & { lngLat?: string }
-> = ({ title, subtitle, children, coverageResult, lngLat, className }) => {
+> = ({ title, children, coverageResult, lngLat, ...props }) => {
   const { _ } = useLingui();
 
-  const defaultSubtitle = _(
+  const defaultTitle = _(
     msg`You are not covered by Good Cause because you have existing eviction protections through your building’s subsidy program`
   );
   return (
-    <ContentBox
-      title={title}
-      subtitle={subtitle || defaultSubtitle}
-      className={className}
-    >
+    <ContentBox {...props} title={title || defaultTitle}>
       <ContentBoxItem
         accordion={false}
         gtmId="subsidized_learn"
@@ -917,22 +924,17 @@ export const SubsidizedProtections: React.FC<
 
 export const UnknownProtections: React.FC<KYRContentBoxProps> = ({
   title,
-  subtitle,
   children,
   coverageResult,
-  className,
+  ...props
 }) => {
   const { _, i18n } = useLingui();
 
-  const defaultSubtitle = _(
+  const defaultTitle = _(
     msg`Whether or not you are covered by Good Cause, you still have important tenant rights`
   );
   return (
-    <ContentBox
-      title={title}
-      subtitle={subtitle || defaultSubtitle}
-      className={className}
-    >
+    <ContentBox {...props} title={title || defaultTitle}>
       <ContentBoxItem
         accordion={false}
         gtmId="unknown_learn"

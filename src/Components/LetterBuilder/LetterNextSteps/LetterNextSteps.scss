@@ -2,12 +2,20 @@
 @use "../../../mixins.scss" as *;
 
 .content-box {
-  .content-box__section__header .pill__circle {
-    margin-right: 1rem;
-    font-size: 1.125rem;
-    min-width: 1.5em;
-    min-height: 1.5em;
-    align-self: center;
+  .content-box__section__header {
+    h3,
+    h4,
+    h5,
+    h6 {
+      display: inherit;
+    }
+    .pill__circle {
+      margin-right: 1rem;
+      font-size: 1.125rem;
+      min-width: 1.5em;
+      min-height: 1.5em;
+      align-self: center;
+    }
   }
 
   &.next-steps {
@@ -22,6 +30,7 @@
   ul.no-bullets {
     padding: 0;
     margin-bottom: 0;
+    margin-left: -0.5rem;
     li {
       list-style-type: none;
       &:not(:last-of-type) {
@@ -33,6 +42,8 @@
   .next-step.while-you-wait {
     background-color: $OFF_WHITE_100;
     border-radius: 0 0 4px 4px;
+    padding: 1.5rem 2rem;
+
     .content-box__section__header,
     p {
       @include body_standard_desktop;

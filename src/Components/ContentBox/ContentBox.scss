@@ -59,11 +59,7 @@ $videoEmbedW: 623px;
     padding: 1.5rem; // 24px
   }
 
-  .content-box__header-title {
-    @include eyebrow_small_desktop;
-  }
-
-  .content-box__header-subtitle {
+  .content-box__header-title .jfcl-heading {
     @include h3_desktop;
   }
 }
@@ -73,24 +69,6 @@ $videoEmbedW: 623px;
   display: flex;
   flex-direction: column;
   border-top: 1px solid $GREY_200;
-  padding: 1.5rem 2rem;
-  @include for-phone-only {
-    padding: 1.5rem;
-  }
-
-  .content-box__section__step {
-    @include eyebrow_small_desktop;
-    margin-bottom: 0.25rem; // 4px
-  }
-  .content-box__section__header {
-    display: flex;
-    @include body_large_desktop;
-    font-weight: 500;
-    @include for-phone-only {
-      @include body_standard_mobile;
-      font-weight: 600;
-    }
-  }
 
   &,
   .content-box__section__content,
@@ -133,8 +111,7 @@ $videoEmbedW: 623px;
     li,
     p,
     a,
-    h5,
-    button {
+    .jfcl-heading button {
       @include body_standard_desktop;
       @include for-phone-only {
         @include body_standard_mobile;
@@ -146,8 +123,19 @@ $videoEmbedW: 623px;
       }
     }
 
-    h5 {
-      margin: 1rem 0 0 0;
+    section {
+      margin-bottom: 1rem;
+      &:first-of-type {
+        margin-top: 0.25rem;
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+      .jfcl-heading {
+        @include body_standard_desktop;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
     }
 
     p {
@@ -173,6 +161,10 @@ $videoEmbedW: 623px;
           font-weight: 600;
         }
       }
+    }
+
+    ul:last-child {
+      margin-bottom: 0;
     }
 
     .jfcl-button,
@@ -207,9 +199,22 @@ $videoEmbedW: 623px;
   }
 
   &.no-title {
+    padding: 1.5rem 2rem;
+    @include for-phone-only {
+      padding: 1.5rem;
+    }
     p {
       @include body_large_desktop;
     }
+  }
+}
+.content-box__section .content-box__section__header {
+  display: flex;
+  @include body_large_desktop;
+  font-weight: 500;
+  @include for-phone-only {
+    @include body_standard_mobile;
+    font-weight: 600;
   }
 }
 
