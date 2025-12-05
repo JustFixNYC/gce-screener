@@ -16,11 +16,11 @@ msgstr ""
 "X-Crowdin-File-ID: 88\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Language-Team: Spanish, Latin America\n"
-"PO-Revision-Date: 2025-11-26 17:38\n"
+"PO-Revision-Date: 2025-12-05 18:27\n"
 
 #: GCE+Letter+-+Resolution/8504a2b5-397a-4523-a091-0525474ea604/name:0
 msgid "Complete"
-msgstr "Completo"
+msgstr "Completado"
 
 #: GCE+Letter+-+Resolution/12209927-a1a4-45c9-9233-8f539c2dfd12/name:0
 msgid "Expired"
@@ -29,8 +29,8 @@ msgstr "Caducado"
 #: GCE+Letter+-+Resolution/73730909-fd22-444d-b869-e83ddd33d781/text:0
 msgid "JustFix here! Checking in to see how things are going. Have you reached a resolution with your landlord regarding your @(if(fields.gce_letter_reason = \"NON_RENEWAL\", \"lease renewal\", \"rent increase\"))?\n\n"
 "Reply \"YES\" or \"NO\""
-msgstr "¡Aquí JustFix! Me pongo en contacto contigo para ver cómo van las cosas. ¿Has llegado a un acuerdo con tu arrendador en relación con tu @(if(fields.gce_letter_reason = \"NON_RENEWAL\", \"renovación del contrato de alquiler\", \"aumento del alquiler\"))?\n\n"
-"Responde «SÍ» o «NO»."
+msgstr "¡Aquí JustFix! Me pongo en contacto con usted para ver cómo van las cosas. ¿Ha llegado a un acuerdo con su arrendador en relación con su @(if(fields.gce_letter_reason = \"NON_RENEWAL\", \"renovación del contrato de alquiler\", \"aumento del alquiler\"))?\n\n"
+"Responda \"SÍ\" o \"NO\""
 
 #: GCE+Letter+-+Resolution/b4e07666-5747-4fbd-8049-ef58d2b8872d/name:0
 msgid "No"
@@ -46,7 +46,7 @@ msgid "Sorry, we didn't understand your response.\n\n"
 "Reply \"YES\" or \"NO\""
 msgstr "Lo sentimos, no hemos entendido su respuesta.\n\n"
 "¿Ha llegado a un acuerdo con su arrendador en relación con su @(if(fields.gce_letter_reason = \"NON_RENEWAL\", \"renovación del contrato de alquiler\", \"aumento del alquiler\"))?\n\n"
-"Responda «SÍ» o «NO»."
+"Responda \"SÍ\" o \"NO\""
 
 #: GCE+Letter+-+Resolution/bf928b3f-0664-49a9-a609-7d104e8ccd04/text:0
 msgid "We are happy to hear that you've reached a resolution with your landlord.\n\n"
