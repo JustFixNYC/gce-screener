@@ -120,17 +120,3 @@ div.jfcl-input-header__invalid_text {
     margin-right: 8px;
   }
 }
-
-// update in JFCL
-.jfcl-text-input input.jfcl-text-input__input {
-  @include for-tablet-portrait-up {
-    font-weight: 400;
-  }
-}
-
-// update in JFCL
-.jfcl-select-button .jfcl-select-button__label {
-  @include for-tablet-portrait-up {
-    font-weight: 400;
-  }
-}
