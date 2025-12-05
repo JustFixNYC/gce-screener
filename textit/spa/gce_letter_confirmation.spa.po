@@ -16,13 +16,13 @@ msgstr ""
 "X-Crowdin-File-ID: 80\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Language-Team: Spanish, Latin America\n"
-"PO-Revision-Date: 2025-11-26 17:38\n"
+"PO-Revision-Date: 2025-12-05 18:26\n"
 
 #: GCE+Letter+-+Confirmation/415ff7ed-62e0-4fc7-846c-78d09f878db2/text:0
 msgid "JustFix here! Your letter is on its way to your landlord.\n\n"
 "Here's a link to a PDF version of your letter, for your records.\n\n"
 "https://app.justfix.org/gceletter/@fields.gce_letter_hash/gce-letter.pdf"
-msgstr "¡JustFix aquí! Su carta está en camino a su arrendador.\n\n"
+msgstr "¡JustFix aquí! Su carta está en camino hacia su arrendador.\n\n"
 "Aquí tiene un enlace a una versión en PDF de su carta, para sus registros.\n\n"
 "https://app.justfix.org/gceletter/@fields.gce_letter_hash/gce-letter.pdf"
 
@@ -31,10 +31,10 @@ msgid "JustFix here! Your letter is ready to be downloaded for you to mail to yo
 "@fields.gce_letter_landlord_name\n"
 "@fields.gce_letter_landlord_address\n\n\n"
 "Download your letter here: https://app.justfix.org/gceletter/@fields.gce_letter_hash/gce-letter.pdf"
-msgstr "¡JustFix aquí! Tu carta está lista para descargar y enviarla por correo a tu arrendador en: \n"
+msgstr "¡JustFix aquí! Su carta está lista para descargar y enviarla por correo a su arrendador en: \n"
 "@fields.gce_letter_landlord_name\n"
 "@fields.gce_letter_landlord_address\n\n\n"
-"Descarga tu carta aquí: https://app.justfix.org/gceletter/@fields.gce_letter_hash/gce-letter.pdf"
+"Descargue su carta aquí: https://app.justfix.org/gceletter/@fields.gce_letter_hash/gce-letter.pdf"
 
 #: GCE+Letter+-+Confirmation/c4971e0b-3ae2-451b-a032-33ca4b56d520/name:0
 msgid "Other"
@@ -72,5 +72,5 @@ msgstr "justfix_mail"
 
 #: GCE+Letter+-+Confirmation/a7fc4663-071e-422e-8653-ddcc96f7b1a8/name:0
 msgid "user_mail"
-msgstr "correo electrónico del usuario"
+msgstr "user_mail"
 
