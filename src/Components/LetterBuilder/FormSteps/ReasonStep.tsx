@@ -38,7 +38,7 @@ export const ReasonStep: React.FC = () => {
     <LetterStepForm nextStep={nextStep} className="reason-step">
       <FormGroup
         legendText={
-          <h4>
+          <h4 id="letter-reason-label">
             <Trans>Select the reason for your letter</Trans>
           </h4>
         }
@@ -47,7 +47,12 @@ export const ReasonStep: React.FC = () => {
         invalidRole="status"
         helperElement={<ReasonHelperText onClick={() => setShowModal(true)} />}
       >
-        <div className="reason-step__buttons">
+        <div
+          className="reason-step__radiogroup"
+          role="radiogroup"
+          aria-labelledby="letter-reason-label"
+          aria-describedby="letter-reason-description"
+        >
           <SelectButton
             {...register("reason")}
             labelText={_(msg`Your landlord is planning to raise your rent`)}
@@ -139,7 +144,7 @@ export const ReasonStep: React.FC = () => {
 
 const ReasonHelperText: React.FC<{ onClick: () => void }> = ({ onClick }) => {
   return (
-    <InfoBox>
+    <InfoBox id="letter-reason-description">
       <>
         <Trans>Need help choosing which letter is best for you?</Trans>{" "}
         <button

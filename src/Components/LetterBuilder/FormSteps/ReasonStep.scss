@@ -1,7 +1,7 @@
 @use "../../../mixins" as *;
 
 .reason-step {
-  .reason-step__buttons {
+  .reason-step__radiogroup {
     display: flex;
     flex-direction: column;
     gap: 1rem;
