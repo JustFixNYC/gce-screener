@@ -49,12 +49,12 @@ msgstr "(optional)"
 #~ msgstr "(Optional)"
 
 #. placeholder {0}: formatMoney( rent )
-#: src/Components/KYRContent/KYRContent.tsx:318
+#: src/Components/KYRContent/KYRContent.tsx:320
 msgid "(Your current monthly rent {0} + {increase_pct}%)"
 msgstr "(Your current monthly rent {0} + {increase_pct}%)"
 
 #. placeholder {0}: formatMoney(rent * (1 + increase_pct / 100))
-#: src/Components/KYRContent/KYRContent.tsx:307
+#: src/Components/KYRContent/KYRContent.tsx:309
 msgid "{0} "
 msgstr "{0} "
 
@@ -82,6 +82,15 @@ msgstr "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:249
 msgid "<0>Email</0>"
 msgstr "<0>Email</0>"
+
+#: src/Components/KYRContent/KYRContent.tsx:437
+msgid "<0>If you’re covered by Good Cause</0> and your landlord is not offering you a lease renewal, you can send a legally-vetted letter to your landlord to assert your right to a renewal."
+msgstr "<0>If you’re covered by Good Cause</0> and your landlord is not offering you a lease renewal, you can send a legally-vetted letter to your landlord to assert your right to a renewal."
+
+#: src/Components/KYRContent/KYRContent.tsx:344
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:213
+msgid "<0>If you’re covered by Good Cause</0> and your landlord is planning to raise your rent beyond this amount, you can send a legally-vetted letter to your landlord to ask for a lower rent increase."
+msgstr "<0>If you’re covered by Good Cause</0> and your landlord is planning to raise your rent beyond this amount, you can send a legally-vetted letter to your landlord to ask for a lower rent increase."
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:94
 #~ msgid "<0>If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings.</0><1>Unfortunately, it can be difficult to find out who your landlord really is and if your landlord owns other buildings. This is especially true if your building is owned by a corporation.</1><2>This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started.</2>"
@@ -247,7 +256,7 @@ msgstr "A new lease or renewal"
 msgid "A non-renewal or eviction notice"
 msgstr "A non-renewal or eviction notice"
 
-#: src/Components/Pages/Home/Home.tsx:214
+#: src/Components/Pages/Home/Home.tsx:235
 msgid "A nonprofit organization that builds online tools to help New Yorkers achieve affordable, healthy, eviction-free housing."
 msgstr "A nonprofit organization that builds online tools to help New Yorkers achieve affordable, healthy, eviction-free housing."
 
@@ -263,15 +272,15 @@ msgstr "A PDF copy of your letter has been sent to the following email address(e
 msgid "A rent increase above the thresholds, or"
 msgstr "A rent increase above the thresholds, or"
 
-#: src/Components/Pages/Home/Home.tsx:200
+#: src/Components/Pages/Home/Home.tsx:221
 msgid "A statewide coalition of tenants and homeless New Yorkers united in our fight for housing as a human right."
 msgstr "A statewide coalition of tenants and homeless New Yorkers united in our fight for housing as a human right."
 
-#: src/Components/Pages/Home/Home.tsx:109
+#: src/Components/Pages/Home/Home.tsx:110
 msgid "About the law"
 msgstr "About the law"
 
-#: src/Components/Pages/Home/Home.tsx:176
+#: src/Components/Pages/Home/Home.tsx:196
 msgid "About this site"
 msgstr "About this site"
 
@@ -311,12 +320,12 @@ msgstr "Agreement"
 #~ msgid "all apartments in your building are registered as rent stabilized."
 #~ msgstr "all apartments in your building are registered as rent stabilized."
 
-#: src/Components/KYRContent/KYRContent.tsx:891
+#: src/Components/KYRContent/KYRContent.tsx:942
 #: src/Components/Pages/TenantRights/TenantRights.tsx:25
 msgid "All tenants in NYC are protected by important rights. This guide provides information about many of those rights depending on the type of housing you live in."
 msgstr "All tenants in NYC are protected by important rights. This guide provides information about many of those rights depending on the type of housing you live in."
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:113
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:114
 msgid "Allowable rent increase amount:"
 msgstr "Allowable rent increase amount:"
 
@@ -353,7 +362,7 @@ msgstr "Ask your landlord for a written explanation of why they believe you’re
 msgid "Ask your landlord to put their reason in writing if they haven’t already."
 msgstr "Ask your landlord to put their reason in writing if they haven’t already."
 
-#: src/Components/KYRContent/KYRContent.tsx:564
+#: src/Components/KYRContent/KYRContent.tsx:615
 msgid "Assert your rights by printing your coverage results and sharing with your landlord. You can use these results as an indicator that your apartment is covered by Good Cause Eviction Law."
 msgstr "Assert your rights by printing your coverage results and sharing with your landlord. You can use these results as an indicator that your apartment is covered by Good Cause Eviction Law."
 
@@ -429,15 +438,15 @@ msgstr "By <0>Housing Justice for All</0> & <1>JustFix</1>"
 #~ msgid "By law, you must provide a Good Cause Eviction notice when issuing:"
 #~ msgstr "By law, you must provide a Good Cause Eviction notice when issuing:"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:108
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:109
 msgid "Calculate"
 msgstr "Calculate"
 
-#: src/Components/Pages/Home/Home.tsx:125
+#: src/Components/Pages/Home/Home.tsx:126
 msgid "Calculate your max rent increase."
 msgstr "Calculate your max rent increase."
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:66
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:67
 msgid "Calculate your rent increase"
 msgstr "Calculate your rent increase"
 
@@ -445,7 +454,7 @@ msgstr "Calculate your rent increase"
 msgid "Call <0>311</0> and ask for the Tenant Helpline. They can connect you to the right resource based on your situation."
 msgstr "Call <0>311</0> and ask for the Tenant Helpline. They can connect you to the right resource based on your situation."
 
-#: src/Components/KYRContent/KYRContent.tsx:590
+#: src/Components/KYRContent/KYRContent.tsx:641
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:137
 msgid "Call Met Council on Housing Hotline"
 msgstr "Call Met Council on Housing Hotline"
@@ -461,6 +470,12 @@ msgstr "CC me on the email that you send to my landlord "
 #: src/Components/Pages/Results/Results.tsx:291
 msgid "Certificate of occupancy"
 msgstr "Certificate of occupancy"
+
+#: src/Components/KYRContent/KYRContent.tsx:353
+#: src/Components/KYRContent/KYRContent.tsx:452
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:223
+msgid "Check out the Letter Sender"
+msgstr "Check out the Letter Sender"
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:121
 msgid "Check your lease renewal"
@@ -629,11 +644,11 @@ msgstr "Create a paper trail"
 msgid "Dear {0},"
 msgstr "Dear {0},"
 
-#: src/Components/KYRContent/KYRContent.tsx:499
+#: src/Components/KYRContent/KYRContent.tsx:550
 msgid "Demand notice"
 msgstr "Demand notice"
 
-#: src/Components/KYRContent/KYRContent.tsx:388
+#: src/Components/KYRContent/KYRContent.tsx:418
 #: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:66
 msgid "Demolition"
 msgstr "Demolition"
@@ -723,7 +738,7 @@ msgstr "Enter a valid phone number"
 msgid "Enter an address to get started"
 msgstr "Enter an address to get started"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:91
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:92
 msgid "Enter the total monthly rent for your entire apartment"
 msgstr "Enter the total monthly rent for your entire apartment"
 
@@ -756,11 +771,11 @@ msgstr "Even though you may not be covered by Good Cause Eviction, all NYC tenan
 msgid "Even when your landlord provides proof, you still have the right to review and, if needed, challenge whether their reason qualifies as lawful under the Good Cause law."
 msgstr "Even when your landlord provides proof, you still have the right to review and, if needed, challenge whether their reason qualifies as lawful under the Good Cause law."
 
-#: src/Components/KYRContent/KYRContent.tsx:721
+#: src/Components/KYRContent/KYRContent.tsx:772
 msgid "Everyone has the right to live in a safe and habitable environment. This includes timely repairs to your apartment. NYCHA Residents have the right to request repairs and expect prompt action from management. If NYCHA is not responding to ticket requests, residents can file housing court cases (HP actions) seeking a judicial order requiring NYCHA to make repairs."
 msgstr "Everyone has the right to live in a safe and habitable environment. This includes timely repairs to your apartment. NYCHA Residents have the right to request repairs and expect prompt action from management. If NYCHA is not responding to ticket requests, residents can file housing court cases (HP actions) seeking a judicial order requiring NYCHA to make repairs."
 
-#: src/Components/KYRContent/KYRContent.tsx:90
+#: src/Components/KYRContent/KYRContent.tsx:92
 msgid "Eviction Free NYC"
 msgstr "Eviction Free NYC"
 
@@ -768,7 +783,7 @@ msgstr "Eviction Free NYC"
 msgid "Example: If your rent is going up 8%, you could propose a 4% increase now and another 4% later in the year."
 msgstr "Example: If your rent is going up 8%, you could propose a 4% increase now and another 4% later in the year."
 
-#: src/Components/KYRContent/KYRContent.tsx:391
+#: src/Components/KYRContent/KYRContent.tsx:421
 msgid "Failure to sign lease renewal or provide access to apartment"
 msgstr "Failure to sign lease renewal or provide access to apartment"
 
@@ -776,7 +791,7 @@ msgstr "Failure to sign lease renewal or provide access to apartment"
 msgid "Failure to sign new lease or provide access to apartment"
 msgstr "Failure to sign new lease or provide access to apartment"
 
-#: src/Components/KYRContent/KYRContent.tsx:191
+#: src/Components/KYRContent/KYRContent.tsx:193
 msgid "Fair Housing NYC"
 msgstr "Fair Housing NYC"
 
@@ -804,16 +819,17 @@ msgstr "Fill out the request form"
 msgid "Find other buildings your landlord owns"
 msgstr "Find other buildings your landlord owns"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:84
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:85
 msgid "Find out how much your landlord can increase your rent"
 msgstr "Find out how much your landlord can increase your rent"
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:45
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:228
 msgid "Find out if I’m covered"
 msgstr "Find out if I’m covered"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:161
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:189
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:163
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:191
 #: src/Components/Pages/TenantRights/TenantRights.tsx:36
 msgid "Find out if you’re covered by Good Cause"
 msgstr "Find out if you’re covered by Good Cause"
@@ -880,7 +896,7 @@ msgstr "For leases offered after {0}, landlords cannot increase rent more than {
 msgid "For New York City, the CPI change is {0}% as of {1}, meaning increases above this level require justification under the statute."
 msgstr "For New York City, the CPI change is {0}% as of {1}, meaning increases above this level require justification under the statute."
 
-#: src/Components/KYRContent/KYRContent.tsx:626
+#: src/Components/KYRContent/KYRContent.tsx:677
 msgid "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
 msgstr "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
 
@@ -929,11 +945,11 @@ msgstr "Good Cause Eviction law only covers tenants whose landlord owns more tha
 msgid "Good Cause Eviction only applies to tenants who are not rent stabilized."
 msgstr "Good Cause Eviction only applies to tenants who are not rent stabilized."
 
-#: src/Components/Pages/Home/Home.tsx:112
+#: src/Components/Pages/Home/Home.tsx:113
 msgid "Good Cause Eviction protections went into effect on April 20th, 2024. If you are covered by the law, you have strong legal protections against eviction as long as you follow your lease. There are also limits to how much your landlord can raise your rent. "
 msgstr "Good Cause Eviction protections went into effect on April 20th, 2024. If you are covered by the law, you have strong legal protections against eviction as long as you follow your lease. There are also limits to how much your landlord can raise your rent. "
 
-#: src/Components/Pages/Home/Home.tsx:179
+#: src/Components/Pages/Home/Home.tsx:199
 msgid "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
 msgstr "Good Cause law can be complex to understand and to use to protect yourself. This site exists to make it easier for you and your neighbors to understand your tenant protections and to assert your rights."
 
@@ -962,7 +978,7 @@ msgstr "Google your landlord’s name and find mentions of other buildings they 
 msgid "Has your landlord provided any of the following reasons for not offering you a new lease?"
 msgstr "Has your landlord provided any of the following reasons for not offering you a new lease?"
 
-#: src/Components/KYRContent/KYRContent.tsx:219
+#: src/Components/KYRContent/KYRContent.tsx:221
 msgid "Has your landlord raised your rent? Is your landlord refusing to do basic repairs? Are you worried about getting evicted or non-renewed?"
 msgstr "Has your landlord raised your rent? Is your landlord refusing to do basic repairs? Are you worried about getting evicted or non-renewed?"
 
@@ -985,8 +1001,8 @@ msgstr "Helpful organizations"
 msgid "Highlight your track record as a reliable tenant"
 msgstr "Highlight your track record as a reliable tenant"
 
-#: src/Components/KYRContent/KYRContent.tsx:78
-#: src/Components/KYRContent/KYRContent.tsx:257
+#: src/Components/KYRContent/KYRContent.tsx:80
+#: src/Components/KYRContent/KYRContent.tsx:259
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:195
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:996
 msgid "Housing Court Answers"
@@ -996,20 +1012,20 @@ msgstr "Housing Court Answers"
 msgid "Housing Court Answers (HCA)"
 msgstr "Housing Court Answers (HCA)"
 
-#: src/Components/KYRContent/KYRContent.tsx:145
+#: src/Components/KYRContent/KYRContent.tsx:147
 msgid "Housing Court Answers repairs resources"
 msgstr "Housing Court Answers repairs resources"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1029
-#: src/Components/Pages/Home/Home.tsx:197
+#: src/Components/Pages/Home/Home.tsx:218
 msgid "Housing Justice for All"
 msgstr "Housing Justice for All"
 
-#: src/Components/KYRContent/KYRContent.tsx:413
+#: src/Components/KYRContent/KYRContent.tsx:464
 msgid "Housing Justice for All Good Cause Eviction fact sheet"
 msgstr "Housing Justice for All Good Cause Eviction fact sheet"
 
-#: src/Components/KYRContent/KYRContent.tsx:242
+#: src/Components/KYRContent/KYRContent.tsx:244
 msgid "Housing Justice for All tenant organizing form"
 msgstr "Housing Justice for All tenant organizing form"
 
@@ -1031,7 +1047,7 @@ msgstr "How it works"
 msgid "How might your landlord respond?"
 msgstr "How might your landlord respond?"
 
-#: src/Components/KYRContent/KYRContent.tsx:445
+#: src/Components/KYRContent/KYRContent.tsx:496
 msgid "How to assert your Good Cause rights"
 msgstr "How to assert your Good Cause rights"
 
@@ -1142,7 +1158,7 @@ msgstr "If those sources are correct, you may have existing tenant protections t
 msgid "If you applied for your apartment through \"NYC Housing Connect,\" your building is very likely subsidized, and you should select the option: <0>“Yes, Mitchell-Lama, HDFC, or other”</0>"
 msgstr "If you applied for your apartment through \"NYC Housing Connect,\" your building is very likely subsidized, and you should select the option: <0>“Yes, Mitchell-Lama, HDFC, or other”</0>"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:68
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:69
 msgid "If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
 msgstr "If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
 
@@ -1150,16 +1166,16 @@ msgstr "If you are covered by Good Cause legislation, you have a right to limite
 msgid "If you are covered by Good Cause, you have a legal right to limited rent increases and the right to stay in your home."
 msgstr "If you are covered by Good Cause, you have a legal right to limited rent increases and the right to stay in your home."
 
-#: src/Components/KYRContent/KYRContent.tsx:298
+#: src/Components/KYRContent/KYRContent.tsx:300
 msgid "If you are offered a new lease after April 20th, 2024, then your landlord can’t raise your apartment’s monthly rent higher than:"
 msgstr "If you are offered a new lease after April 20th, 2024, then your landlord can’t raise your apartment’s monthly rent higher than:"
 
-#: src/Components/KYRContent/KYRContent.tsx:644
+#: src/Components/KYRContent/KYRContent.tsx:695
 msgid "If you are rent-stabilized your landlord cannot simply decide they don’t want you as a tenant anymore, they are limited to certain reasons for evicting you."
 msgstr "If you are rent-stabilized your landlord cannot simply decide they don’t want you as a tenant anymore, they are limited to certain reasons for evicting you."
 
-#: src/Components/KYRContent/KYRContent.tsx:661
-#: src/Components/KYRContent/KYRContent.tsx:678
+#: src/Components/KYRContent/KYRContent.tsx:712
+#: src/Components/KYRContent/KYRContent.tsx:729
 msgid "If you are the immediate family member of a rent-stabilized tenant and have been living with them immediately prior to their moving or passing away, you might be entitled to take over the lease."
 msgstr "If you are the immediate family member of a rent-stabilized tenant and have been living with them immediately prior to their moving or passing away, you might be entitled to take over the lease."
 
@@ -1191,15 +1207,15 @@ msgstr "If you know that your building is part of public housing (NYCHA or PACT-
 msgid "If you know that your building receives 421a or J51 tax abatement, select the option:<0>“No, my building is not subsidized”</0>"
 msgstr "If you know that your building receives 421a or J51 tax abatement, select the option:<0>“No, my building is not subsidized”</0>"
 
-#: src/Components/Pages/Home/Home.tsx:136
+#: src/Components/Pages/Home/Home.tsx:137
 msgid "If you live in New York City, you can use this site to learn which requirements you meet and how to assert your rights."
 msgstr "If you live in New York City, you can use this site to learn which requirements you meet and how to assert your rights."
 
-#: src/Components/Pages/Home/Home.tsx:146
+#: src/Components/Pages/Home/Home.tsx:165
 msgid "If you live in NYC and are not covered by Good Cause Eviction, you still have important tenant protections. Depending on the type of housing you live in, your protections may be even stronger than those provided by Good Cause."
 msgstr "If you live in NYC and are not covered by Good Cause Eviction, you still have important tenant protections. Depending on the type of housing you live in, your protections may be even stronger than those provided by Good Cause."
 
-#: src/Components/Pages/Home/Home.tsx:159
+#: src/Components/Pages/Home/Home.tsx:178
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:93
 msgid "If you live outside of NYC"
 msgstr "If you live outside of NYC"
@@ -1236,6 +1252,10 @@ msgstr "If you use a voucher that covers some or all of your rent, and you can u
 msgid "If you’re comfortable, you can avoid signing a lease with an increase above the Good Cause limit."
 msgstr "If you’re comfortable, you can avoid signing a lease with an increase above the Good Cause limit."
 
+#: src/Components/Pages/Home/Home.tsx:145
+msgid "If you’re covered by Good Cause"
+msgstr "If you’re covered by Good Cause"
+
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:26
 msgid "If you’re covered by Good Cause and your landlord is planning to raise your rent or not offer you a new lease, you can send a letter defending your Good Cause rights."
 msgstr "If you’re covered by Good Cause and your landlord is planning to raise your rent or not offer you a new lease, you can send a letter defending your Good Cause rights."
@@ -1252,7 +1272,7 @@ msgstr "If you’re dealing with something that feels unfair, like a large rent 
 #~ msgid "If you’re dealing with something that feels unfair, like a large rent increase or a sudden non-renewal, chances are your neighbors might be facing similar issues."
 #~ msgstr "If you’re dealing with something that feels unfair, like a large rent increase or a sudden non-renewal, chances are your neighbors might be facing similar issues."
 
-#: src/Components/Pages/Home/Home.tsx:143
+#: src/Components/Pages/Home/Home.tsx:162
 msgid "If you’re not covered by Good Cause Eviction"
 msgstr "If you’re not covered by Good Cause Eviction"
 
@@ -1304,6 +1324,14 @@ msgstr "If your landlord is either planning to raise your rent, or not offer you
 #~ msgid "If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter defending your Good Cause rights. We will even send it for you, for free."
 #~ msgstr "If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter defending your Good Cause rights. We will even send it for you, for free."
 
+#: src/Components/KYRContent/KYRContent.tsx:444
+msgid "If your landlord is not offering you a lease renewal, you can send a legally-vetted letter to your landlord to assert your right to a renewal."
+msgstr "If your landlord is not offering you a lease renewal, you can send a legally-vetted letter to your landlord to assert your right to a renewal."
+
+#: src/Components/KYRContent/KYRContent.tsx:338
+msgid "If your landlord is planning to raise your rent beyond this amount, you can send a legally-vetted letter to your landlord to ask for a lower rent increase."
+msgstr "If your landlord is planning to raise your rent beyond this amount, you can send a legally-vetted letter to your landlord to ask for a lower rent increase."
+
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:779
 #~ msgid "If your landlord provides a reason, that doesn’t automatically mean the non-renewal is lawful — it must still meet the standards defined in the law."
 #~ msgstr "If your landlord provides a reason, that doesn’t automatically mean the non-renewal is lawful — it must still meet the standards defined in the law."
@@ -1316,7 +1344,7 @@ msgstr "If your landlord is either planning to raise your rent, or not offer you
 msgid "If your landlord provides a reason, that doesn’t automatically mean the non-renewal is lawful. Your landlord’s reason must still meet the standards defined in the law."
 msgstr "If your landlord provides a reason, that doesn’t automatically mean the non-renewal is lawful. Your landlord’s reason must still meet the standards defined in the law."
 
-#: src/Components/KYRContent/KYRContent.tsx:460
+#: src/Components/KYRContent/KYRContent.tsx:511
 msgid "If your landlord refuses to renew your lease, tells you that you have to leave for no reason, or tries to evict you for no reason, stay in your home!"
 msgstr "If your landlord refuses to renew your lease, tells you that you have to leave for no reason, or tries to evict you for no reason, stay in your home!"
 
@@ -1328,7 +1356,7 @@ msgstr "If your landlord starts a housing court case, don’t ignore it. Your la
 #~ msgid "If your landlord starts a housing court case, don’t panic, and don’t ignore it. You still have rights."
 #~ msgstr "If your landlord starts a housing court case, don’t panic, and don’t ignore it. You still have rights."
 
-#: src/Components/KYRContent/KYRContent.tsx:548
+#: src/Components/KYRContent/KYRContent.tsx:599
 msgid "If your landlord takes you to court, you can raise a “Good Cause” defense. Your landlord would then have to demonstrate to the judge that they raised the rent because of increased costs (taxes, maintenance costs, etc.) or be forced to lower the increase."
 msgstr "If your landlord takes you to court, you can raise a “Good Cause” defense. Your landlord would then have to demonstrate to the judge that they raised the rent because of increased costs (taxes, maintenance costs, etc.) or be forced to lower the increase."
 
@@ -1356,20 +1384,20 @@ msgstr "If your most recent lease renewal looks like the image below, then your 
 #~ "            to justify it based on increased costs."
 
 #. placeholder {0}: CPI + 5
-#: src/Components/KYRContent/KYRContent.tsx:525
+#: src/Components/KYRContent/KYRContent.tsx:576
 msgid "If your rent increase is more than {0}%, tell your landlord it is an unreasonable increase and that a judge could force your landlord to justify it based on increased costs."
 msgstr "If your rent increase is more than {0}%, tell your landlord it is an unreasonable increase and that a judge could force your landlord to justify it based on increased costs."
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:137
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:139
 msgid "If your rent was increased after April 20, 2024 beyond the allowable rent increase amount calculated above, your rent increase could be found unreasonable by housing court."
 msgstr "If your rent was increased after April 20, 2024 beyond the allowable rent increase amount calculated above, your rent increase could be found unreasonable by housing court."
 
-#: src/Components/KYRContent/KYRContent.tsx:382
+#: src/Components/KYRContent/KYRContent.tsx:412
 #: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:60
 msgid "Illegal Activity"
 msgstr "Illegal Activity"
 
-#: src/Components/KYRContent/KYRContent.tsx:759
+#: src/Components/KYRContent/KYRContent.tsx:810
 msgid "In instances where residents disagree with management decisions or believe their rights have been violated, they have the right to grieve these issues through a formal process. Residents can file grievances online through the resident portal or on paper by visiting the management office."
 msgstr "In instances where residents disagree with management decisions or believe their rights have been violated, they have the right to grieve these issues through a formal process. Residents can file grievances online through the resident portal or on paper by visiting the management office."
 
@@ -1377,7 +1405,7 @@ msgstr "In instances where residents disagree with management decisions or belie
 msgid "Ineligible"
 msgstr "Ineligible"
 
-#: src/Components/KYRContent/KYRContent.tsx:545
+#: src/Components/KYRContent/KYRContent.tsx:596
 msgid "Invoke “Good Cause” to a judge"
 msgstr "Invoke “Good Cause” to a judge"
 
@@ -1414,12 +1442,12 @@ msgstr "It’s often more effective to approach these problems together, by shar
 #~ msgid "It’s often more effective to approach these problems together, by sharing information, comparing experiences, and supporting one another."
 #~ msgstr "It’s often more effective to approach these problems together, by sharing information, comparing experiences, and supporting one another."
 
-#: src/Components/KYRContent/KYRContent.tsx:260
-#: src/Components/Pages/Home/Home.tsx:211
+#: src/Components/KYRContent/KYRContent.tsx:262
+#: src/Components/Pages/Home/Home.tsx:232
 msgid "JustFix"
 msgstr "JustFix"
 
-#: src/Components/KYRContent/KYRContent.tsx:158
+#: src/Components/KYRContent/KYRContent.tsx:160
 msgid "JustFix’s Letter of Complaint"
 msgstr "JustFix’s Letter of Complaint"
 
@@ -1483,7 +1511,7 @@ msgstr "Landlord name is required for the letter"
 #~ msgid "Landlord or property manager name"
 #~ msgstr "Landlord or property manager name"
 
-#: src/Components/KYRContent/KYRContent.tsx:385
+#: src/Components/KYRContent/KYRContent.tsx:415
 msgid "Landlord personal use/removal from market"
 msgstr "Landlord personal use/removal from market"
 
@@ -1491,7 +1519,7 @@ msgstr "Landlord personal use/removal from market"
 msgid "Landlord portfolio size"
 msgstr "Landlord portfolio size"
 
-#: src/Components/KYRContent/KYRContent.tsx:332
+#: src/Components/KYRContent/KYRContent.tsx:362
 msgid "Landlords can increase the rent more than the reasonable rent increase but they must explain why and must point to increases in their costs or substantial repairs they did to the apartment or building."
 msgstr "Landlords can increase the rent more than the reasonable rent increase but they must explain why and must point to increases in their costs or substantial repairs they did to the apartment or building."
 
@@ -1519,27 +1547,27 @@ msgstr "Last name"
 msgid "Last name is required for the letter"
 msgstr "Last name is required for the letter"
 
-#: src/Components/KYRContent/KYRContent.tsx:203
+#: src/Components/KYRContent/KYRContent.tsx:205
 msgid "Lawful source of income"
 msgstr "Lawful source of income"
 
-#: src/Components/KYRContent/KYRContent.tsx:651
+#: src/Components/KYRContent/KYRContent.tsx:702
 msgid "Learn about lease renewal rights"
 msgstr "Learn about lease renewal rights"
 
-#: src/Components/KYRContent/KYRContent.tsx:634
+#: src/Components/KYRContent/KYRContent.tsx:685
 msgid "Learn about rent increase rights"
 msgstr "Learn about rent increase rights"
 
-#: src/Components/KYRContent/KYRContent.tsx:668
+#: src/Components/KYRContent/KYRContent.tsx:719
 msgid "Learn about succession rights"
 msgstr "Learn about succession rights"
 
-#: src/Components/KYRContent/KYRContent.tsx:111
+#: src/Components/KYRContent/KYRContent.tsx:113
 msgid "Learn about Warranty of Habitability"
 msgstr "Learn about Warranty of Habitability"
 
-#: src/Components/KYRContent/KYRContent.tsx:121
+#: src/Components/KYRContent/KYRContent.tsx:123
 msgid "Learn how tenant associations can help"
 msgstr "Learn how tenant associations can help"
 
@@ -1554,15 +1582,15 @@ msgstr "Learn if you’re covered <0/>by Good Cause <1/>Eviction law in NYC"
 msgid "Learn more"
 msgstr "Learn more"
 
-#: src/Components/KYRContent/KYRContent.tsx:185
+#: src/Components/KYRContent/KYRContent.tsx:187
 msgid "Learn more about fair housing"
 msgstr "Learn more about fair housing"
 
-#: src/Components/KYRContent/KYRContent.tsx:408
+#: src/Components/KYRContent/KYRContent.tsx:459
 msgid "Learn more about Good Cause Eviction Law protections"
 msgstr "Learn more about Good Cause Eviction Law protections"
 
-#: src/Components/KYRContent/KYRContent.tsx:402
+#: src/Components/KYRContent/KYRContent.tsx:432
 msgid "Learn more about Good Cause reasons for eviction"
 msgstr "Learn more about Good Cause reasons for eviction"
 
@@ -1572,59 +1600,63 @@ msgstr "Learn more about Good Cause reasons for eviction"
 msgid "Learn more about Good Cause reasons for non renewal"
 msgstr "Learn more about Good Cause reasons for non renewal"
 
-#: src/Components/KYRContent/KYRContent.tsx:72
+#: src/Components/KYRContent/KYRContent.tsx:74
 msgid "Learn more about housing court"
 msgstr "Learn more about housing court"
 
-#: src/Components/KYRContent/KYRContent.tsx:747
+#: src/Components/KYRContent/KYRContent.tsx:798
 msgid "Learn more about income-based rent and recertification"
 msgstr "Learn more about income-based rent and recertification"
 
-#: src/Components/KYRContent/KYRContent.tsx:195
+#: src/Components/KYRContent/KYRContent.tsx:197
 msgid "Learn more about lawful source of income discrimination"
 msgstr "Learn more about lawful source of income discrimination"
 
-#: src/Components/KYRContent/KYRContent.tsx:794
+#: src/Components/KYRContent/KYRContent.tsx:845
 msgid "Learn more about NYCHA and PACT/RAD’s tenant protections"
 msgstr "Learn more about NYCHA and PACT/RAD’s tenant protections"
 
-#: src/Components/KYRContent/KYRContent.tsx:788
+#: src/Components/KYRContent/KYRContent.tsx:839
 msgid "Learn more about NYCHA lease terminations"
 msgstr "Learn more about NYCHA lease terminations"
 
-#: src/Components/KYRContent/KYRContent.tsx:343
+#: src/Components/KYRContent/KYRContent.tsx:373
 msgid "Learn more about Reasonable Rent Increase"
 msgstr "Learn more about Reasonable Rent Increase"
 
-#: src/Components/KYRContent/KYRContent.tsx:673
+#: src/Components/KYRContent/KYRContent.tsx:724
 msgid "Learn more about rent stabilization"
 msgstr "Learn more about rent stabilization"
 
-#: src/Components/KYRContent/KYRContent.tsx:133
+#: src/Components/KYRContent/KYRContent.tsx:135
 msgid "Learn more about requesting repairs"
 msgstr "Learn more about requesting repairs"
 
-#: src/Components/Pages/Home/Home.tsx:154
+#: src/Components/Pages/Home/Home.tsx:173
 msgid "Learn more about tenant protections in NYC"
 msgstr "Learn more about tenant protections in NYC"
 
-#: src/Components/KYRContent/KYRContent.tsx:54
+#: src/Components/KYRContent/KYRContent.tsx:56
 msgid "Learn more about the eviction process"
 msgstr "Learn more about the eviction process"
 
-#: src/Components/KYRContent/KYRContent.tsx:768
+#: src/Components/KYRContent/KYRContent.tsx:819
 msgid "Learn more about the grievance procedures"
 msgstr "Learn more about the grievance procedures"
 
-#: src/Components/Pages/Home/Home.tsx:134
+#: src/Components/Pages/Home/Home.tsx:135
 msgid "Learn more about the law."
 msgstr "Learn more about the law."
+
+#: src/Components/Pages/Home/Home.tsx:157
+msgid "Learn more about the Letter Sender"
+msgstr "Learn more about the Letter Sender"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:787
 #~ msgid "Learn more about valid Good Cause reasons"
 #~ msgstr "Learn more about valid Good Cause reasons"
 
-#: src/Components/KYRContent/KYRContent.tsx:898
+#: src/Components/KYRContent/KYRContent.tsx:949
 msgid "Learn more about your rights"
 msgstr "Learn more about your rights"
 
@@ -1632,11 +1664,11 @@ msgstr "Learn more about your rights"
 msgid "Learn where Good Cause Protections have already been won"
 msgstr "Learn where Good Cause Protections have already been won"
 
-#: src/Components/Pages/Home/Home.tsx:168
+#: src/Components/Pages/Home/Home.tsx:187
 msgid "Learn where Good Cause protections have been won"
 msgstr "Learn where Good Cause protections have been won"
 
-#: src/Components/KYRContent/KYRContent.tsx:376
+#: src/Components/KYRContent/KYRContent.tsx:406
 #: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:54
 msgid "Lease violations"
 msgstr "Lease violations"
@@ -1661,7 +1693,7 @@ msgstr "Legal Limits on Rent Increases"
 msgid "Legal rent increase"
 msgstr "Legal rent increase"
 
-#: src/Components/KYRContent/KYRContent.tsx:778
+#: src/Components/KYRContent/KYRContent.tsx:829
 msgid "Legal representation can make a significant difference in ensuring a fair and just resolution to housing disputes, protecting residents from wrongful eviction or other adverse outcomes. If you do not have a lawyer and are facing a termination of tenancy at the Office of Impartial Hearings, you can ask for your case to be adjourned in order for you to seek counsel."
 msgstr "Legal representation can make a significant difference in ensuring a fair and just resolution to housing disputes, protecting residents from wrongful eviction or other adverse outcomes. If you do not have a lawyer and are facing a termination of tenancy at the Office of Impartial Hearings, you can ask for your case to be adjourned in order for you to seek counsel."
 
@@ -1748,22 +1780,22 @@ msgstr "Many landlords prefer stable, predictable tenants. This saves them time 
 msgid "Map showing location of the entered address."
 msgstr "Map showing location of the entered address."
 
-#: src/Components/KYRContent/KYRContent.tsx:254
-#: src/Components/KYRContent/KYRContent.tsx:587
+#: src/Components/KYRContent/KYRContent.tsx:256
+#: src/Components/KYRContent/KYRContent.tsx:638
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:190
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1024
 msgid "Met Council on Housing"
 msgstr "Met Council on Housing"
 
-#: src/Components/KYRContent/KYRContent.tsx:418
+#: src/Components/KYRContent/KYRContent.tsx:469
 msgid "Met Council on Housing Good Cause Eviction fact sheet"
 msgstr "Met Council on Housing Good Cause Eviction fact sheet"
 
-#: src/Components/KYRContent/KYRContent.tsx:139
+#: src/Components/KYRContent/KYRContent.tsx:141
 msgid "Met Council on Housing guide to getting repairs"
 msgstr "Met Council on Housing guide to getting repairs"
 
-#: src/Components/KYRContent/KYRContent.tsx:66
+#: src/Components/KYRContent/KYRContent.tsx:68
 msgid "Met Council on Housing Nonpayment of Rent Eviction information"
 msgstr "Met Council on Housing Nonpayment of Rent Eviction information"
 
@@ -1771,15 +1803,15 @@ msgstr "Met Council on Housing Nonpayment of Rent Eviction information"
 msgid "Met Council on Housing’s free clinic offers tenants assistance with understanding their rent stabilization status and landlord-tenant disputes."
 msgstr "Met Council on Housing’s free clinic offers tenants assistance with understanding their rent stabilization status and landlord-tenant disputes."
 
-#: src/Components/KYRContent/KYRContent.tsx:127
+#: src/Components/KYRContent/KYRContent.tsx:129
 msgid "Met Council on Housing’s Guide to forming a tenant association"
 msgstr "Met Council on Housing’s Guide to forming a tenant association"
 
-#: src/Components/KYRContent/KYRContent.tsx:859
+#: src/Components/KYRContent/KYRContent.tsx:910
 msgid "Met Council on Housing’s Hotline"
 msgstr "Met Council on Housing’s Hotline"
 
-#: src/Components/KYRContent/KYRContent.tsx:685
+#: src/Components/KYRContent/KYRContent.tsx:736
 msgid "Met Council on Housing’s Rent Stabilization overview"
 msgstr "Met Council on Housing’s Rent Stabilization overview"
 
@@ -1795,7 +1827,7 @@ msgstr "Mobilization for Justice (MFJ)"
 msgid "modify your response."
 msgstr "modify your response."
 
-#: src/Components/KYRContent/KYRContent.tsx:246
+#: src/Components/KYRContent/KYRContent.tsx:248
 msgid "More resources about your rights as an NYC tenant"
 msgstr "More resources about your rights as an NYC tenant"
 
@@ -1852,7 +1884,7 @@ msgstr "No rent stabilized apartments were registered in your building in recent
 msgid "No, my building is not subsidized"
 msgstr "No, my building is not subsidized"
 
-#: src/Components/KYRContent/KYRContent.tsx:373
+#: src/Components/KYRContent/KYRContent.tsx:403
 #: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:51
 msgid "Non payment of rent"
 msgstr "Non payment of rent"
@@ -1865,7 +1897,7 @@ msgstr "Non payment of rent"
 msgid "Not sure if you’re covered?"
 msgstr "Not sure if you’re covered?"
 
-#: src/Components/KYRContent/KYRContent.tsx:329
+#: src/Components/KYRContent/KYRContent.tsx:359
 msgid "Note"
 msgstr "Note"
 
@@ -1877,20 +1909,20 @@ msgstr "Note:"
 msgid "Note: if your building is part of 421a or J51, your apartment should be rent stabilized"
 msgstr "Note: if your building is part of 421a or J51, your apartment should be rent stabilized"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:153
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:155
 msgid "Note: Landlords can increase the rent beyond the Reasonable Rent Increase limit, but they must explain why and must prove increases in their costs or substantial repairs they did to the apartment or building."
 msgstr "Note: Landlords can increase the rent beyond the Reasonable Rent Increase limit, but they must explain why and must prove increases in their costs or substantial repairs they did to the apartment or building."
 
-#: src/Components/KYRContent/KYRContent.tsx:379
+#: src/Components/KYRContent/KYRContent.tsx:409
 #: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:57
 msgid "Nuisance activity"
 msgstr "Nuisance activity"
 
-#: src/Components/KYRContent/KYRContent.tsx:117
+#: src/Components/KYRContent/KYRContent.tsx:119
 msgid "NY Courts Warranty of Habitability fact sheet"
 msgstr "NY Courts Warranty of Habitability fact sheet"
 
-#: src/Components/KYRContent/KYRContent.tsx:60
+#: src/Components/KYRContent/KYRContent.tsx:62
 msgid "NY Homes and Community Renewal eviction information"
 msgstr "NY Homes and Community Renewal eviction information"
 
@@ -1898,7 +1930,7 @@ msgstr "NY Homes and Community Renewal eviction information"
 #~ msgid "NYC 311 Tenant Helpline"
 #~ msgstr "NYC 311 Tenant Helpline"
 
-#: src/Components/KYRContent/KYRContent.tsx:421
+#: src/Components/KYRContent/KYRContent.tsx:472
 msgid "NYC Tenant Protection Cabinet’s Good Cause Eviction Guide"
 msgstr "NYC Tenant Protection Cabinet’s Good Cause Eviction Guide"
 
@@ -1935,7 +1967,7 @@ msgstr "NYCHA and PACT/RAD apartments are not covered by Good Cause because they
 #~ msgid "NYCHA or PACT/RAD"
 #~ msgstr "NYCHA or PACT/RAD"
 
-#: src/Components/KYRContent/KYRContent.tsx:800
+#: src/Components/KYRContent/KYRContent.tsx:851
 msgid "NYCHA policies"
 msgstr "NYCHA policies"
 
@@ -1943,7 +1975,7 @@ msgstr "NYCHA policies"
 #~ msgid "NYLAG's Public Housing Justice Project"
 #~ msgstr "NYLAG's Public Housing Justice Project"
 
-#: src/Components/KYRContent/KYRContent.tsx:803
+#: src/Components/KYRContent/KYRContent.tsx:854
 msgid "NYLAG’s Public Housing Justice Project"
 msgstr "NYLAG’s Public Housing Justice Project"
 
@@ -1979,11 +2011,11 @@ msgstr "other buildings."
 msgid "Our data is not showing additional buildings that may be owned by your landlord."
 msgstr "Our data is not showing additional buildings that may be owned by your landlord."
 
-#: src/Components/KYRContent/KYRContent.tsx:806
+#: src/Components/KYRContent/KYRContent.tsx:857
 msgid "PACT Fact Sheet"
 msgstr "PACT Fact Sheet"
 
-#: src/Components/KYRContent/KYRContent.tsx:809
+#: src/Components/KYRContent/KYRContent.tsx:860
 msgid "PACT Rights and Responsibilities Fact Sheet"
 msgstr "PACT Rights and Responsibilities Fact Sheet"
 
@@ -2183,24 +2215,24 @@ msgstr "Privacy policy"
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
-#: src/Components/KYRContent/KYRContent.tsx:610
+#: src/Components/KYRContent/KYRContent.tsx:661
 msgid "Protections if you live in a rent stabilized apartment"
 msgstr "Protections if you live in a rent stabilized apartment"
 
-#: src/Components/KYRContent/KYRContent.tsx:705
+#: src/Components/KYRContent/KYRContent.tsx:756
 msgid "Protections if you live in NYCHA or PACT/RAD housing"
 msgstr "Protections if you live in NYCHA or PACT/RAD housing"
 
-#: src/Components/KYRContent/KYRContent.tsx:274
+#: src/Components/KYRContent/KYRContent.tsx:276
 msgid "Protections if you’re covered by Good Cause"
 msgstr "Protections if you’re covered by Good Cause"
 
-#: src/Components/KYRContent/KYRContent.tsx:29
+#: src/Components/KYRContent/KYRContent.tsx:31
 msgid "Protections that all NYC tenants have"
 msgstr "Protections that all NYC tenants have"
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:44
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:186
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:188
 msgid "Protections under Good Cause"
 msgstr "Protections under Good Cause"
 
@@ -2277,7 +2309,7 @@ msgstr "Reach out to a tenant support organization for help navigating next step
 msgid "Reach out to a tenant support organization or legal aid provider listed in Who Can Help? for help reviewing whether the landlord’s reason meets the “good cause” standard."
 msgstr "Reach out to a tenant support organization or legal aid provider listed in Who Can Help? for help reviewing whether the landlord’s reason meets the “good cause” standard."
 
-#: src/Components/KYRContent/KYRContent.tsx:573
+#: src/Components/KYRContent/KYRContent.tsx:624
 msgid "Reach out to external resources"
 msgstr "Reach out to external resources"
 
@@ -2339,7 +2371,7 @@ msgstr "Rent stabilization"
 msgid "Rent stabilized apartments are not covered by Good Cause Eviction because they already have stronger tenant protections than Good Cause."
 msgstr "Rent stabilized apartments are not covered by Good Cause Eviction because they already have stronger tenant protections than Good Cause."
 
-#: src/Components/KYRContent/KYRContent.tsx:207
+#: src/Components/KYRContent/KYRContent.tsx:209
 msgid "Report source of income discrimination"
 msgstr "Report source of income discrimination"
 
@@ -2359,7 +2391,7 @@ msgstr "Request your rent history to help find out if your apartment is rent sta
 msgid "Required Notices from the Landlord"
 msgstr "Required Notices from the Landlord"
 
-#: src/Components/KYRContent/KYRContent.tsx:251
+#: src/Components/KYRContent/KYRContent.tsx:253
 msgid "Residential Tenants Guide"
 msgstr "Residential Tenants Guide"
 
@@ -2431,7 +2463,7 @@ msgstr "Save your result to your phone"
 msgid "Search new address"
 msgstr "Search new address"
 
-#: src/Components/KYRContent/KYRContent.tsx:82
+#: src/Components/KYRContent/KYRContent.tsx:84
 msgid "See if you are eligible for a free attorney in housing court"
 msgstr "See if you are eligible for a free attorney in housing court"
 
@@ -2491,7 +2523,7 @@ msgstr "Select the reason for your letter"
 #~ msgid "Send a free letter asserting your rights under Good Cause"
 #~ msgstr "Send a free letter asserting your rights under Good Cause"
 
-#: src/Components/KYRContent/KYRContent.tsx:149
+#: src/Components/KYRContent/KYRContent.tsx:151
 msgid "Send a free, legally vetted letter to notify your landlord of repair issues"
 msgstr "Send a free, legally vetted letter to notify your landlord of repair issues"
 
@@ -2507,8 +2539,8 @@ msgstr "Send a letter to your <0/>landlord defending <1/>your Good Cause rights"
 #~ msgid "Send a letter to your landlord via certified mail asserting your Good Cause"
 #~ msgstr "Send a letter to your landlord via certified mail asserting your Good Cause"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:74
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:177
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:75
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:179
 msgid "Send the rent increase calculator to your phone"
 msgstr "Send the rent increase calculator to your phone"
 
@@ -2520,7 +2552,7 @@ msgstr "Sending a letter clearly communicates to your landlord that you know you
 msgid "Share this site with your neighbors"
 msgstr "Share this site with your neighbors"
 
-#: src/Components/KYRContent/KYRContent.tsx:559
+#: src/Components/KYRContent/KYRContent.tsx:610
 msgid "Share your coverage with your landlord"
 msgstr "Share your coverage with your landlord"
 
@@ -2532,7 +2564,7 @@ msgstr "Showing {visibleCount} of {totalCount} buildings that your landlord may 
 msgid "Sign and return it to your landlord once you agree to the terms."
 msgstr "Sign and return it to your landlord once you agree to the terms."
 
-#: src/Components/KYRContent/KYRContent.tsx:478
+#: src/Components/KYRContent/KYRContent.tsx:529
 msgid "Since your apartment is covered by Good Cause Eviction, there is a good chance other apartments in your building are covered as well. Organizing with your neighbors can help you assert your rights as a group."
 msgstr "Since your apartment is covered by Good Cause Eviction, there is a good chance other apartments in your building are covered as well. Organizing with your neighbors can help you assert your rights as a group."
 
@@ -2553,7 +2585,7 @@ msgstr "Something unexpected happened while trying to generate your letter. We a
 msgid "Something went wrong. Try again later."
 msgstr "Something went wrong. Try again later."
 
-#: src/Components/KYRContent/KYRContent.tsx:175
+#: src/Components/KYRContent/KYRContent.tsx:177
 msgid "Source of income discrimination is the illegal practice by landlords, owners, and real estate brokers of refusing to rent to current or prospective tenants seeking to pay for housing with housing assistance vouchers, subsidies, or other forms of public assistance."
 msgstr "Source of income discrimination is the illegal practice by landlords, owners, and real estate brokers of refusing to rent to current or prospective tenants seeking to pay for housing with housing assistance vouchers, subsidies, or other forms of public assistance."
 
@@ -2612,8 +2644,8 @@ msgid "Survey"
 msgstr "Survey"
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:76
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:172
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:190
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:174
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:192
 #: src/Components/Pages/TenantRights/TenantRights.tsx:37
 msgid "Take the survey"
 msgstr "Take the survey"
@@ -2626,11 +2658,11 @@ msgstr "Talk to your neighbors"
 msgid "Talk to your neighbors to see if they know of any other buildings your landlord may own."
 msgstr "Talk to your neighbors to see if they know of any other buildings your landlord may own."
 
-#: src/Components/KYRContent/KYRContent.tsx:522
+#: src/Components/KYRContent/KYRContent.tsx:573
 msgid "Tell them it’s unreasonable"
 msgstr "Tell them it’s unreasonable"
 
-#: src/Components/KYRContent/KYRContent.tsx:468
+#: src/Components/KYRContent/KYRContent.tsx:519
 msgid "Tell your landlord you have a right to stay unless your landlord has a “Good Cause” to evict you. If your landlord then tries to formally evict you in court, you can raise a Good Cause defense and require your landlord to demonstrate they have a “Good Cause” to evict you."
 msgstr "Tell your landlord you have a right to stay unless your landlord has a “Good Cause” to evict you. If your landlord then tries to formally evict you in court, you can raise a Good Cause defense and require your landlord to demonstrate they have a “Good Cause” to evict you."
 
@@ -2638,7 +2670,7 @@ msgstr "Tell your landlord you have a right to stay unless your landlord has a �
 msgid "Tenant advocacy groups"
 msgstr "Tenant advocacy groups"
 
-#: src/Components/KYRContent/KYRContent.tsx:487
+#: src/Components/KYRContent/KYRContent.tsx:538
 msgid "Tenant Organizing Toolkit from Housing Justice for All"
 msgstr "Tenant Organizing Toolkit from Housing Justice for All"
 
@@ -2658,7 +2690,7 @@ msgstr "Tenant support groups can help you draft messages, practice negotiation 
 #~ msgid "Tenant Support Unit (TSU)"
 #~ msgstr "Tenant Support Unit (TSU)"
 
-#: src/Components/Pages/Home/Home.tsx:162
+#: src/Components/Pages/Home/Home.tsx:181
 msgid "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State."
 msgstr "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State."
 
@@ -2666,7 +2698,7 @@ msgstr "Tenants and tenant advocates are working to extend Good Cause protection
 msgid "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State. This product is not yet available for residents outside of New York City."
 msgstr "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State. This product is not yet available for residents outside of New York City."
 
-#: src/Components/KYRContent/KYRContent.tsx:100
+#: src/Components/KYRContent/KYRContent.tsx:102
 msgid "Tenants have the right to live in a safe, sanitary, and well-maintained apartment, including public areas of the building. This right is implied in every residential lease, and any lease provision that waives it is void. If your landlord is not providing these conditions in your apartment or building, there are actions you can take to exercise your rights."
 msgstr "Tenants have the right to live in a safe, sanitary, and well-maintained apartment, including public areas of the building. This right is implied in every residential lease, and any lease provision that waives it is void. If your landlord is not providing these conditions in your apartment or building, there are actions you can take to exercise your rights."
 
@@ -2707,7 +2739,7 @@ msgstr "The building must not be part of NYCHA, PACT/RAD, or other subsidized ho
 
 #. placeholder {0}: _(CPI_EFFECTIVE_DATE)
 #. placeholder {1}: CPI + 5
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:144
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:146
 msgid "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of {0}, the rate of inflation for New York City is {CPI}%, meaning that the current local Reasonable Rent Increase is {1}%."
 msgstr "The Good Cause law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of {0}, the rate of inflation for New York City is {CPI}%, meaning that the current local Reasonable Rent Increase is {1}%."
 
@@ -2731,11 +2763,11 @@ msgstr "The information on this website does not constitute legal advice and mus
 msgid "The landlord of the building must own more than 10 apartments."
 msgstr "The landlord of the building must own more than 10 apartments."
 
-#: src/Components/KYRContent/KYRContent.tsx:577
+#: src/Components/KYRContent/KYRContent.tsx:628
 msgid "The Met Council on Housing helps organize tenants to stand up not only for their individual rights, but also for changes to housing policies. You can visit the website, or use their hotline to get answers to your rights as a tenant, and understand your options for dealing with a housing situation."
 msgstr "The Met Council on Housing helps organize tenants to stand up not only for their individual rights, but also for changes to housing policies. You can visit the website, or use their hotline to get answers to your rights as a tenant, and understand your options for dealing with a housing situation."
 
-#: src/Components/KYRContent/KYRContent.tsx:43
+#: src/Components/KYRContent/KYRContent.tsx:45
 msgid "The only way your landlord can legally evict you is through an eviction lawsuit in housing court. Lockouts (also known as unlawful evictions or self-help evictions) are illegal. All tenants, including those in private residential programs, have the right to stay in their home unless they choose to leave or are evicted through a court process."
 msgstr "The only way your landlord can legally evict you is through an eviction lawsuit in housing court. Lockouts (also known as unlawful evictions or self-help evictions) are illegal. All tenants, including those in private residential programs, have the right to stay in their home unless they choose to leave or are evicted through a court process."
 
@@ -2743,7 +2775,7 @@ msgstr "The only way your landlord can legally evict you is through an eviction 
 msgid "The owner of the building may be different than the person listed on your lease."
 msgstr "The owner of the building may be different than the person listed on your lease."
 
-#: src/Components/KYRContent/KYRContent.tsx:289
+#: src/Components/KYRContent/KYRContent.tsx:291
 msgid "The state housing agency must publish each year’s \"Reasonable Rent Increases\" by August. The current maximum that your landlord can increase your rent by is ${increase_pct}%."
 msgstr "The state housing agency must publish each year’s \"Reasonable Rent Increases\" by August. The current maximum that your landlord can increase your rent by is ${increase_pct}%."
 
@@ -2810,7 +2842,7 @@ msgstr "This can take a few seconds. Please don’t refresh the page."
 msgid "This documentation can protect you if your landlord challenges your rights or starts a court case."
 msgstr "This documentation can protect you if your landlord challenges your rights or starts a court case."
 
-#: src/Components/KYRContent/KYRContent.tsx:738
+#: src/Components/KYRContent/KYRContent.tsx:789
 msgid "This ensures that housing remains affordable and equitable for all residents, regardless of financial circumstances. Residents who have recently experienced a change in income can request an interim recertification to ensure that their apartment remains affordable."
 msgstr "This ensures that housing remains affordable and equitable for all residents, regardless of financial circumstances. Residents who have recently experienced a change in income can request an interim recertification to ensure that their apartment remains affordable."
 
@@ -2842,7 +2874,7 @@ msgstr "This is your landlord’s information as registered with the NYC Departm
 msgid "This notice must state whether the unit is covered by Article 6-A and explain the tenant’s rights."
 msgstr "This notice must state whether the unit is covered by Article 6-A and explain the tenant’s rights."
 
-#: src/Components/Pages/Home/Home.tsx:187
+#: src/Components/Pages/Home/Home.tsx:207
 msgid "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for Good Cause protections."
 msgstr "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for Good Cause protections."
 
@@ -2858,7 +2890,7 @@ msgstr "Tip: The signature page is often located toward the end of the document"
 msgid "Tips for negotiating a smaller increase"
 msgstr "Tips for negotiating a smaller increase"
 
-#: src/Components/Pages/Home/Home.tsx:129
+#: src/Components/Pages/Home/Home.tsx:130
 msgid "To be covered by the law, your apartment must meet several requirements. "
 msgstr "To be covered by the law, your apartment must meet several requirements. "
 
@@ -2878,7 +2910,7 @@ msgstr "To learn more about tenant and landlord responsibilities under Good Caus
 #~ msgid "To learn more about tenant and landlord responsibilities under Good Cause Eviction law, you can visit <0>https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page</0>"
 #~ msgstr "To learn more about tenant and landlord responsibilities under Good Cause Eviction law, you can visit <0>https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page</0>"
 
-#: src/Components/KYRContent/KYRContent.tsx:849
+#: src/Components/KYRContent/KYRContent.tsx:900
 msgid "To learn what protections you have through your building’s subsidy program we recommend that you speak to your landlord and your neighbors. For further assistance you can also try contacting:"
 msgstr "To learn what protections you have through your building’s subsidy program we recommend that you speak to your landlord and your neighbors. For further assistance you can also try contacting:"
 
@@ -2942,8 +2974,8 @@ msgstr "Under Good Cause, a landlord cannot refuse to renew your lease without a
 #~ "Under the Good Cause Eviction law, landlords are allowed to evict\n"
 #~ "              tenants for the following “good cause” reasons:"
 
-#: src/Components/KYRContent/KYRContent.tsx:361
-#: src/Components/KYRContent/KYRContent.tsx:369
+#: src/Components/KYRContent/KYRContent.tsx:391
+#: src/Components/KYRContent/KYRContent.tsx:399
 msgid "Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:"
 msgstr "Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:"
 
@@ -2985,7 +3017,7 @@ msgstr "Unit Number"
 msgid "Unknown"
 msgstr "Unknown"
 
-#: src/Components/KYRContent/KYRContent.tsx:210
+#: src/Components/KYRContent/KYRContent.tsx:212
 msgid "Unlock NYC"
 msgstr "Unlock NYC"
 
@@ -2997,11 +3029,11 @@ msgstr "Update your coverage result"
 msgid "Urbanization is required for address in Puerto Rico"
 msgstr "Urbanization is required for address in Puerto Rico"
 
-#: src/Components/KYRContent/KYRContent.tsx:493
+#: src/Components/KYRContent/KYRContent.tsx:544
 msgid "Use Good Cause to fight your rent hike"
 msgstr "Use Good Cause to fight your rent hike"
 
-#: src/Components/KYRContent/KYRContent.tsx:455
+#: src/Components/KYRContent/KYRContent.tsx:506
 msgid "Use Good Cause to stay in your home"
 msgstr "Use Good Cause to stay in your home"
 
@@ -3102,11 +3134,11 @@ msgstr "View tenant protection information on following pages"
 msgid "View the guide"
 msgstr "View the guide"
 
-#: src/Components/Pages/Home/Home.tsx:206
+#: src/Components/Pages/Home/Home.tsx:227
 msgid "Visit Housing Justice for All"
 msgstr "Visit Housing Justice for All"
 
-#: src/Components/Pages/Home/Home.tsx:220
+#: src/Components/Pages/Home/Home.tsx:241
 msgid "Visit JustFix"
 msgstr "Visit JustFix"
 
@@ -3233,8 +3265,8 @@ msgstr "We will text you with:"
 #~ msgid "We'll also let you know when NYC changes the maximum rent increase amount each year."
 #~ msgstr "We'll also let you know when NYC changes the maximum rent increase amount each year."
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:76
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:179
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:77
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:181
 msgid "We’ll also let you know when NYC changes the maximum rent increase amount each year."
 msgstr "We’ll also let you know when NYC changes the maximum rent increase amount each year."
 
@@ -3326,7 +3358,7 @@ msgstr "What to expect, what to do next, and how to respond to your landlord."
 msgid "What to know"
 msgstr "What to know"
 
-#: src/Components/KYRContent/KYRContent.tsx:234
+#: src/Components/KYRContent/KYRContent.tsx:236
 msgid "When tenants come together, we have power. Tenants across our state are forming tenant unions to fight back. If you’re interested in organizing a tenant union with your neighbors, fill out this form to get support from a tenant group near you."
 msgstr "When tenants come together, we have power. Tenants across our state are forming tenant unions to fight back. If you’re interested in organizing a tenant union with your neighbors, fill out this form to get support from a tenant group near you."
 
@@ -3340,7 +3372,7 @@ msgstr "When to use"
 msgid "Where to find support"
 msgstr "Where to find support"
 
-#: src/Components/KYRContent/KYRContent.tsx:877
+#: src/Components/KYRContent/KYRContent.tsx:928
 msgid "Whether or not you are covered by Good Cause, you still have important tenant rights"
 msgstr "Whether or not you are covered by Good Cause, you still have important tenant rights"
 
@@ -3373,7 +3405,7 @@ msgstr "Why we ask for your landlord’s email"
 msgid "Why we ask for your phone number and email"
 msgstr "Why we ask for your phone number and email"
 
-#: src/Components/KYRContent/KYRContent.tsx:533
+#: src/Components/KYRContent/KYRContent.tsx:584
 msgid "Withhold the unreasonable increase"
 msgstr "Withhold the unreasonable increase"
 
@@ -3405,7 +3437,7 @@ msgstr "Yes, Mitchell-Lama, HDFC, or other"
 msgid "Yes, NYCHA / PACT-RAD"
 msgstr "Yes, NYCHA / PACT-RAD"
 
-#: src/Components/KYRContent/KYRContent.tsx:826
+#: src/Components/KYRContent/KYRContent.tsx:877
 msgid "You are not covered by Good Cause because you have existing eviction protections through your building’s subsidy program"
 msgstr "You are not covered by Good Cause because you have existing eviction protections through your building’s subsidy program"
 
@@ -3450,9 +3482,13 @@ msgstr "You can try again or contact our support team at <0>support@justfix.org<
 #~ "            landlord have totally resolved."
 
 #. placeholder {0}: CPI + 5
-#: src/Components/KYRContent/KYRContent.tsx:536
+#: src/Components/KYRContent/KYRContent.tsx:587
 msgid "You can withhold the rent increase above the ‘reasonable’ threshold. Pay your old rent plus {0}%. To be safe, set aside the extra rent in a separate escrow account until your negotiations with your landlord have totally resolved."
 msgstr "You can withhold the rent increase above the ‘reasonable’ threshold. Pay your old rent plus {0}%. To be safe, set aside the extra rent in a separate escrow account until your negotiations with your landlord have totally resolved."
+
+#: src/Components/Pages/Home/Home.tsx:148
+msgid "You have a legal right to limited rent increases and the right to stay in your home. If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter asserting your Good Cause rights. We will even send it for you, for free."
+msgstr "You have a legal right to limited rent increases and the right to stay in your home. If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter asserting your Good Cause rights. We will even send it for you, for free."
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:282
 msgid "You have chosen to overwrite the landlord information on record with the city. Please provide your own details below, or <0>use the recommended landlord information</0>."
@@ -3586,7 +3622,7 @@ msgstr "You reported that your rent is {0}."
 msgid "You still have rights, and you may be able to negotiate a smaller increase or request more information about how your rent is determined. Or, you can go back and "
 msgstr "You still have rights, and you may be able to negotiate a smaller increase or request more information about how your rent is determined. Or, you can go back and "
 
-#: src/Components/KYRContent/KYRContent.tsx:840
+#: src/Components/KYRContent/KYRContent.tsx:891
 msgid "You told us that that you live subsidized housing. If your building is subsidized then you are not covered by Good Cause Eviction law because you should already have important tenant protections associated with your building’s subsidy."
 msgstr "You told us that that you live subsidized housing. If your building is subsidized then you are not covered by Good Cause Eviction law because you should already have important tenant protections associated with your building’s subsidy."
 
@@ -3602,7 +3638,7 @@ msgstr "You told us that the landlord’s proposed rent increase is within the G
 msgid "You told us that you are unsure if you are rent stabilized. If your apartment is rent stabilized, you are not covered by Good Cause Eviction law, but rent stabilized protections are even stronger than the Good Cause Eviction law."
 msgstr "You told us that you are unsure if you are rent stabilized. If your apartment is rent stabilized, you are not covered by Good Cause Eviction law, but rent stabilized protections are even stronger than the Good Cause Eviction law.======="
 
-#: src/Components/KYRContent/KYRContent.tsx:227
+#: src/Components/KYRContent/KYRContent.tsx:229
 msgid "You’re not alone. Too many landlords care more about getting rich off our rent money than providing us with decent homes."
 msgstr "You’re not alone. Too many landlords care more about getting rich off our rent money than providing us with decent homes."
 
@@ -3688,11 +3724,11 @@ msgstr "Your building was issued a certificate of occupancy on {latestCoDateForm
 msgid "Your contact information"
 msgstr "Your contact information"
 
-#: src/Components/Pages/RentCalculator/RentCalculator.tsx:129
+#: src/Components/Pages/RentCalculator/RentCalculator.tsx:132
 msgid "Your current monthly rent"
 msgstr "Your current monthly rent"
 
-#: src/Components/KYRContent/KYRContent.tsx:310
+#: src/Components/KYRContent/KYRContent.tsx:312
 msgid "Your current monthly rent + {increase_pct}%"
 msgstr "Your current monthly rent + {increase_pct}%"
 
@@ -3712,7 +3748,7 @@ msgstr "Your email"
 #~ msgid "Your entered address:"
 #~ msgstr "Your entered address:"
 
-#: src/Components/KYRContent/KYRContent.tsx:38
+#: src/Components/KYRContent/KYRContent.tsx:40
 msgid "Your eviction protections"
 msgstr "Your eviction protections"
 
@@ -3720,7 +3756,7 @@ msgstr "Your eviction protections"
 msgid "Your information"
 msgstr "Your information"
 
-#: src/Components/KYRContent/KYRContent.tsx:166
+#: src/Components/KYRContent/KYRContent.tsx:168
 msgid "Your landlord can’t evict you based on your race, religion, gender, national origin, familial status, or disability. New York State law promises protection from discrimination, banning bias based on age, sexual orientation, and military status."
 msgstr "Your landlord can’t evict you based on your race, religion, gender, national origin, familial status, or disability. New York State law promises protection from discrimination, banning bias based on age, sexual orientation, and military status."
 
@@ -3776,7 +3812,7 @@ msgstr "Your landlord may reply with an explanation or justification for increas
 msgid "Your landlord may share documentation or other evidence to support their claimed “good cause” reason for not renewing your lease. For example, proof that they or an immediate family member intend to move in, or that you’ve repeatedly violated the lease."
 msgstr "Your landlord may share documentation or other evidence to support their claimed “good cause” reason for not renewing your lease. For example, proof that they or an immediate family member intend to move in, or that you’ve repeatedly violated the lease."
 
-#: src/Components/KYRContent/KYRContent.tsx:502
+#: src/Components/KYRContent/KYRContent.tsx:553
 msgid "Your landlord must give you written notice to raise your rent more than 5% (30 days notice if you’ve lived there less than 1 year, 60 days if you’ve lived there 1-2 years, and 90 days notice if you’ve lived there longer than 2 years). If your landlord tries to raise rent without proper notice, inform them they are violating <0>Real Property Law L Section 226-C</0>. Do not pay any rent increase until they give written notice."
 msgstr "Your landlord must give you written notice to raise your rent more than 5% (30 days notice if you’ve lived there less than 1 year, 60 days if you’ve lived there 1-2 years, and 90 days notice if you’ve lived there longer than 2 years). If your landlord tries to raise rent without proper notice, inform them they are violating <0>Real Property Law L Section 226-C</0>. Do not pay any rent increase until they give written notice."
 
@@ -3820,7 +3856,7 @@ msgstr "Your landlord says you’re not covered by Good Cause"
 msgid "Your landlord sends court papers"
 msgstr "Your landlord sends court papers"
 
-#: src/Components/KYRContent/KYRContent.tsx:353
+#: src/Components/KYRContent/KYRContent.tsx:383
 msgid "Your landlord will need to provide a good reason for ending a tenancy. Even if your lease expires, your landlord cannot evict you, as long as you abide by the terms of your expired lease."
 msgstr "Your landlord will need to provide a good reason for ending a tenancy. Even if your lease expires, your landlord cannot evict you, as long as you abide by the terms of your expired lease."
 
@@ -3895,7 +3931,7 @@ msgstr "Your letter is ready"
 #~ msgid "Your letter still may reach the intended destination, but if you see any errors, please review and adjust the address."
 #~ msgstr "Your letter still may reach the intended destination, but if you see any errors, please review and adjust the address."
 
-#: src/Components/KYRContent/KYRContent.tsx:856
+#: src/Components/KYRContent/KYRContent.tsx:907
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:205
 msgid "Your local City Council representative"
 msgstr "Your local City Council representative"
@@ -3912,48 +3948,48 @@ msgstr "Your mailing address"
 msgid "Your rent increase amount"
 msgstr "Your rent increase amount"
 
-#: src/Components/KYRContent/KYRContent.tsx:639
+#: src/Components/KYRContent/KYRContent.tsx:690
 msgid "Your right to a lease renewal"
 msgstr "Your right to a lease renewal"
 
-#: src/Components/KYRContent/KYRContent.tsx:95
+#: src/Components/KYRContent/KYRContent.tsx:97
 msgid "Your right to a liveable home"
 msgstr "Your right to a liveable home"
 
-#: src/Components/KYRContent/KYRContent.tsx:754
+#: src/Components/KYRContent/KYRContent.tsx:805
 msgid "Your right to grieve management decisions"
 msgstr "Your right to grieve management decisions"
 
-#: src/Components/KYRContent/KYRContent.tsx:733
+#: src/Components/KYRContent/KYRContent.tsx:784
 msgid "Your right to income-based rent"
 msgstr "Your right to income-based rent"
 
-#: src/Components/KYRContent/KYRContent.tsx:773
+#: src/Components/KYRContent/KYRContent.tsx:824
 msgid "Your right to legal representation if facing eviction"
 msgstr "Your right to legal representation if facing eviction"
 
-#: src/Components/KYRContent/KYRContent.tsx:284
-#: src/Components/KYRContent/KYRContent.tsx:621
+#: src/Components/KYRContent/KYRContent.tsx:286
+#: src/Components/KYRContent/KYRContent.tsx:672
 msgid "Your right to limited rent increases"
 msgstr "Your right to limited rent increases"
 
-#: src/Components/KYRContent/KYRContent.tsx:214
+#: src/Components/KYRContent/KYRContent.tsx:216
 msgid "Your right to organize"
 msgstr "Your right to organize"
 
-#: src/Components/KYRContent/KYRContent.tsx:716
+#: src/Components/KYRContent/KYRContent.tsx:767
 msgid "Your right to repairs"
 msgstr "Your right to repairs"
 
-#: src/Components/KYRContent/KYRContent.tsx:347
+#: src/Components/KYRContent/KYRContent.tsx:377
 msgid "Your right to stay in your home"
 msgstr "Your right to stay in your home"
 
-#: src/Components/KYRContent/KYRContent.tsx:656
+#: src/Components/KYRContent/KYRContent.tsx:707
 msgid "Your right to succession"
 msgstr "Your right to succession"
 
-#: src/Components/KYRContent/KYRContent.tsx:162
+#: src/Components/KYRContent/KYRContent.tsx:164
 msgid "Your rights against discrimination"
 msgstr "Your rights against discrimination"
 
