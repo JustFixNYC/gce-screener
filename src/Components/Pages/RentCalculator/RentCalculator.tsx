@@ -80,11 +80,11 @@ export const RentCalculator: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           <div className="rent-calculator-callout-box">
-            <span className="callout-box__header">
+            <h3 className="callout-box__header">
               <Trans>
                 Find out how much your landlord can increase your rent
               </Trans>
-            </span>
+            </h3>
             <form className="rent-input-container" onSubmit={handleSubmit}>
               <TextInput
                 labelText={_(
@@ -183,7 +183,8 @@ export const RentCalculator: React.FC = () => {
 
           <GoodCauseProtections
             rent={showRentInput ? Number(rentInput) : undefined}
-            subtitle={_(msg`Protections under Good Cause`)}
+            title={_(msg`Protections under Good Cause`)}
+            headingLevel={3}
           >
             <ContentBoxFooter
               message={_(msg`Find out if you’re covered by Good Cause`)}
@@ -196,7 +197,7 @@ export const RentCalculator: React.FC = () => {
               }
             />
           </GoodCauseProtections>
-          <UniversalProtections />
+          <UniversalProtections headingLevel={3} />
         </div>
       </div>
     </div>
