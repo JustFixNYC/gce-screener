@@ -37,7 +37,11 @@ export const ReasonStep: React.FC = () => {
   return (
     <LetterStepForm nextStep={nextStep} className="reason-step">
       <FormGroup
-        legendText={_(msg`Select the reason for your letter`)}
+        legendText={
+          <h4>
+            <Trans>Select the reason for your letter</Trans>
+          </h4>
+        }
         invalid={!!errors?.reason}
         invalidText={errors?.reason?.message}
         invalidRole="status"

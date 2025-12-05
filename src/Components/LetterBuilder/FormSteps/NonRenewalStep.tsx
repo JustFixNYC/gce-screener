@@ -39,9 +39,14 @@ export const NonRenewalStep: React.FC = () => {
   return (
     <LetterStepForm onSubmit={onSubmit} className="non-renewal-step">
       <FormGroup
-        legendText={_(
-          msg`Has your landlord provided any of the following reasons for not offering you a new lease?`
-        )}
+        legendText={
+          <h4>
+            <Trans>
+              Has your landlord provided any of the following reasons for not
+              offering you a new lease?
+            </Trans>
+          </h4>
+        }
         invalid={!!errors?.good_cause_given}
         invalidText={errors?.good_cause_given?.message}
         invalidRole="status"

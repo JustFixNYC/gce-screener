@@ -161,7 +161,11 @@ export const LandlordDetailsStep: React.FC = () => {
       {hpdLandlord && !showManual && (
         <>
           <FormGroup
-            legendText={_(msg`Your landlord’s information`)}
+            legendText={
+              <h4>
+                <Trans>Your landlord’s information</Trans>
+              </h4>
+            }
             key="landlord-details__hpd-lookup"
           >
             <InfoBox>
@@ -274,7 +278,11 @@ const LandlordFormGroup: React.FC<{
   return (
     <>
       <FormGroup
-        legendText={_(msg`Your landlord’s mailing address`)}
+        legendText={
+          <h4>
+            <Trans>Your landlord’s mailing address</Trans>
+          </h4>
+        }
         invalid={anyLandlordInfoErrors}
         invalidText={errors?.landlord_details?.message}
         helperElement={
@@ -433,7 +441,11 @@ const LandlordEmailFormGroup: React.FC = () => {
   return (
     <>
       <FormGroup
-        legendText={_(msg`Your landlord’s email address`)}
+        legendText={
+          <h4>
+            <Trans>Your landlord’s email address</Trans>
+          </h4>
+        }
         className="form-group__section-header landlord-email-group"
         invalid={!!errors.landlord_details?.email}
       >

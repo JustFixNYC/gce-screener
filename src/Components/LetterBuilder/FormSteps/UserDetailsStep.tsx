@@ -88,7 +88,11 @@ export const UserDetailsStep: React.FC = () => {
   return (
     <LetterStepForm nextStep="landlord_details" className="user-details-step">
       <FormGroup
-        legendText={_(msg`Your mailing address`)}
+        legendText={
+          <h4>
+            <Trans>Your mailing address</Trans>
+          </h4>
+        }
         helperElement={
           <InfoBox>
             <Trans>
@@ -180,7 +184,11 @@ export const UserDetailsStep: React.FC = () => {
         </FormGroup>
       </FormGroup>
       <FormGroup
-        legendText={_(msg`Your contact information`)}
+        legendText={
+          <h4>
+            <Trans>Your contact information</Trans>
+          </h4>
+        }
         className="form-group__section-header"
         invalid={anyContactErrors}
       >

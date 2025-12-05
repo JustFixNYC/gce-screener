@@ -45,11 +45,15 @@ export const PlannedIncreaseStep: React.FC = () => {
     <div className="reason-details-step">
       <LetterStepForm nextStep={nextStep}>
         <FormGroup
-          legendText={_(
-            msg`Is your landlord increasing your monthly rent more than ${
-              CPI + 5
-            }%?`
-          )}
+          legendText={
+            <h4>
+              {_(
+                msg`Is your landlord increasing your monthly rent more than ${
+                  CPI + 5
+                }%?`
+              )}
+            </h4>
+          }
           invalid={!!errors?.unreasonable_increase}
           invalidText={errors?.unreasonable_increase?.message}
           invalidRole="status"

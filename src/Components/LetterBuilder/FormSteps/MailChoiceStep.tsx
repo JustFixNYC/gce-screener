@@ -57,7 +57,11 @@ export const MailChoiceStep: React.FC = () => {
   return (
     <LetterStepForm nextStep="confirmation" className="mail-choice-step">
       <FormGroup
-        legendText={_(msg`Select a mailing method`)}
+        legendText={
+          <h4>
+            <Trans>Select a mailing method</Trans>
+          </h4>
+        }
         invalid={!!errors?.mail_choice}
         invalidText={errors?.mail_choice?.message}
       >
@@ -106,9 +110,13 @@ export const MailChoiceStep: React.FC = () => {
         />
       </FormGroup>
       <FormGroup
-        legendText={_(
-          msg`Email a copy to yourself and your landlord or property manager`
-        )}
+        legendText={
+          <h4>
+            <Trans>
+              Email a copy to yourself and your landlord or property manager
+            </Trans>
+          </h4>
+        }
         helperElement={
           <InfoBox>
             <Trans>

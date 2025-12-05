@@ -135,11 +135,6 @@
         min-width: 1.5em;
         min-height: 1.5em;
         margin-bottom: 0;
-        // should update in JFCL
-        border-width: 1px;
-        &--is-invalid {
-          border-width: 1.5px;
-        }
       }
     }
   }
