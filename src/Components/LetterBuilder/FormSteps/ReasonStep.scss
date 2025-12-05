@@ -19,10 +19,13 @@
       text-wrap-mode: wrap;
     }
 
-    .jfcl-select-button__label:hover {
-      // adjust padding by 1px when hover triggers a 2px border
-      // so the FormGroup container stays the same size
-      padding: calc(0.75rem - 1px) calc(1.875rem - 1px);
+    // only apply hover styles on devices that support hover and not touch devices
+    @media (hover: hover) {
+      .jfcl-select-button__label:hover {
+        // adjust padding by 1px when hover triggers a 2px border
+        // so the FormGroup container stays the same size
+        padding: calc(0.75rem - 1px) calc(1.875rem - 1px);
+      }
     }
   }
 }
