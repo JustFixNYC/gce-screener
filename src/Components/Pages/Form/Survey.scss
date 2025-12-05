@@ -30,12 +30,6 @@
   .info-box {
     margin-top: 1.125rem; // 18px
     margin-bottom: 2.25rem; // 24px
-    .info-box__content-container {
-      @include body_standard_desktop;
-      @include for-phone-only {
-        @include body_standard_mobile;
-      }
-    }
     &.orange {
       border-width: 2px;
       margin: 0 0 2.25rem;
@@ -76,10 +70,6 @@
       padding: 0.75rem 1.5rem 0.75rem 0; // 12px 24px 12px 0;
       align-self: center;
     }
-  }
-
-  .jfcl-select-button__label {
-    font-weight: 400;
   }
 
   .jfcl-input-header__invalid_text {
