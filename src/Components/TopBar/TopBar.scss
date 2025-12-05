@@ -4,14 +4,8 @@
 
 $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
 
-#topbar-placeholder {
-  height: $headerH;
-  &.hide {
-    position: absolute;
-  }
-}
 #topbar {
-  position: sticky;
+  position: fixed;
   top: 0;
   background-color: $OFF_WHITE_200;
   border-bottom: 1px solid $OFF_BLACK;
@@ -21,9 +15,10 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
   align-items: center;
   text-wrap: nowrap;
   z-index: 100;
+  transition: top 0.2s ease-in-out;
 
   &.hide {
-    display: none;
+    top: -$headerH;
   }
 
   div {
@@ -112,9 +107,6 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
         font-size: 0.875rem; //14px
         line-height: 1.0625rem; //17px
         letter-spacing: 0.02625rem; //0.42px
-      }
-      svg {
-        display: unset;
       }
     }
   }

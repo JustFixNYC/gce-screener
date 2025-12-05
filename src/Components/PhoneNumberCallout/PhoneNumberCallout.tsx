@@ -54,9 +54,8 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
   const VALID_PHONE_NUMBER_LENGTH = 10;
 
   const [, setUser] = useSessionStorage<GCEUser>("user");
-  const { user } = useLoaderData() as {
-    user?: GCEUser;
-  };
+  const loaderData = useLoaderData() as { user?: GCEUser } | undefined;
+  const user = loaderData?.user;
   const { trigger } = useSendGceData();
   const rollbar = useRollbar();
 
@@ -97,14 +96,14 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
       setShowFieldError(true);
       return;
     }
-    try {
-      const sendData = async () => {
-        const resultUrlParam =
-          window.location.pathname === "/results"
-            ? {
-                result_url: window.location.href,
-              }
-            : {};
+
+    const sendData = async () => {
+      try {
+        const resultUrlParam = window.location.pathname.includes("/results")
+          ? {
+              result_url: window.location.href,
+            }
+          : {};
         const postData = {
           id: user?.id,
           phone_number: parseInt(cleaned),
@@ -112,18 +111,18 @@ const PhoneNumberCapture: React.FC<PhoneNumberCaptureProps> = (props) => {
         };
         const userResp = (await trigger(postData)) as GCEUser;
         if (!user?.id) setUser(userResp);
-      };
-      sendData();
-      setShowFieldError(false);
-      setShowSuccess(true);
-      gtmPush("gce_phone_submit", {
-        gce_result: coverageResult,
-        from: gtmId,
-      });
-    } catch {
-      setShowError(true);
-      rollbar.critical("Cannot connect to tenant platform");
-    }
+        setShowFieldError(false);
+        setShowSuccess(true);
+        gtmPush("gce_phone_submit", {
+          gce_result: coverageResult,
+          from: gtmId,
+        });
+      } catch {
+        setShowError(true);
+        rollbar.critical("Cannot connect to tenant platform");
+      }
+    };
+    sendData();
   };
 
   return (

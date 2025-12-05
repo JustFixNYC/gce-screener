@@ -102,27 +102,23 @@ export const Results: React.FC = () => {
     if (hasShownPhoneModal || getCookie("phone_modal_shown")) return;
     const contentSection = document.querySelector(".content-section__content");
     if (!contentSection) return;
-    // Checks if user has scrolled down at least a bit before showing modal
-    // Without this, the modal renders on page load
+
+    // Checks if user has scrolled down a significant amount before showing modal
+    // Without this, the modal renders on page load.
     const hasScrolled = () => {
       const scrollY = window.scrollY || window.pageYOffset;
-      return scrollY > 100; // user has scrolled down at least 100px
+      return scrollY > 500; // require a significant scroll (500px) so modal isn't accidentally triggered
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && hasScrolled()) {
-            setShowPhoneModal(true);
-            setHasShownPhoneModal(true);
-            observer.disconnect();
-          }
-        });
-      },
-      {
-        threshold: 0.15, // Trigger when 15% of the element is visible
-      }
-    );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && hasScrolled()) {
+          setShowPhoneModal(true);
+          setHasShownPhoneModal(true);
+          observer.disconnect();
+        }
+      });
+    });
 
     observer.observe(contentSection);
 
@@ -367,50 +363,57 @@ const CriterionRow: React.FC<CriterionDetails> = (props) => {
 
 const CriteriaTable: React.FC<{
   criteria?: CriteriaDetails;
-}> = ({ criteria }) => (
-  <ContentBox className="criteria-table">
-    <div className="criteria-table__header">
-      <span className="criteria-table__header__title">
-        <Trans>How we determined your coverage</Trans>
-      </span>
-      <p>
-        <Trans>
-          Results are based on publicly available data about your building and
-          the answers you provided. This does not constitute legal advice.
-        </Trans>
-      </p>
-    </div>
-    <ul className="criteria-table__list">
-      {criteria?.rent && <CriterionRow {...criteria.rent} />}
-      {criteria?.rentStabilized && (
-        <CriterionRow {...criteria.rentStabilized} />
-      )}
-      {criteria?.buildingClass && <CriterionRow {...criteria.buildingClass} />}
-      {criteria?.certificateOfOccupancy && (
-        <CriterionRow {...criteria.certificateOfOccupancy} />
-      )}
-      {criteria?.subsidy && <CriterionRow {...criteria.subsidy} />}
-      {criteria?.landlord && <CriterionRow {...criteria.landlord} />}
-      {criteria?.portfolioSize && <CriterionRow {...criteria.portfolioSize} />}
-    </ul>
-    <ContentBoxFooter
-      message="Need to update your information?"
-      linkText="Back to survey"
-      linkTo="/survey"
-      linkOnClick={() =>
-        gtmPush("gce_return_survey", { from: "results-page_criteria-table" })
-      }
-      className="criteria-table__footer"
-    />
-  </ContentBox>
-);
+}> = ({ criteria }) => {
+  const { _, i18n } = useLingui();
+  return (
+    <ContentBox className="criteria-table">
+      <div className="criteria-table__header">
+        <span className="criteria-table__header__title">
+          <Trans>How we determined your coverage</Trans>
+        </span>
+        <p>
+          <Trans>
+            Results are based on publicly available data about your building and
+            the answers you provided. This does not constitute legal advice.
+          </Trans>
+        </p>
+      </div>
+      <ul className="criteria-table__list">
+        {criteria?.rent && <CriterionRow {...criteria.rent} />}
+        {criteria?.rentStabilized && (
+          <CriterionRow {...criteria.rentStabilized} />
+        )}
+        {criteria?.buildingClass && (
+          <CriterionRow {...criteria.buildingClass} />
+        )}
+        {criteria?.certificateOfOccupancy && (
+          <CriterionRow {...criteria.certificateOfOccupancy} />
+        )}
+        {criteria?.subsidy && <CriterionRow {...criteria.subsidy} />}
+        {criteria?.landlord && <CriterionRow {...criteria.landlord} />}
+        {criteria?.portfolioSize && (
+          <CriterionRow {...criteria.portfolioSize} />
+        )}
+      </ul>
+      <ContentBoxFooter
+        message={_(msg`Need to update your information?`)}
+        linkText={_(msg`Back to survey`)}
+        linkTo={`/${i18n.locale}/survey`}
+        linkOnClick={() =>
+          gtmPush("gce_return_survey", { from: "results-page_criteria-table" })
+        }
+        className="criteria-table__footer"
+      />
+    </ContentBox>
+  );
+};
 
 const EligibilityNextSteps: React.FC<{
   bldgData: BuildingData;
   criteriaDetails: CriteriaDetails;
   searchParams: URLSearchParams;
 }> = ({ bldgData, criteriaDetails, searchParams }) => {
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
   const rentStabilizedUnknown =
     criteriaDetails?.rentStabilized?.determination === "UNKNOWN";
   const portfolioSizeUnknown =
@@ -449,7 +452,9 @@ const EligibilityNextSteps: React.FC<{
               </Trans>
             </p>
             <JFCLLinkInternal
-              to={`/rent_stabilization?${searchParams.toString()}`}
+              to={`/${
+                i18n.locale
+              }/rent_stabilization?${searchParams.toString()}`}
             >
               <Trans>Find out if your apartment is rent stabilized</Trans>
             </JFCLLinkInternal>
@@ -473,7 +478,9 @@ const EligibilityNextSteps: React.FC<{
                 buildings.
               </Trans>
             </p>
-            <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
+            <JFCLLinkInternal
+              to={`/${i18n.locale}/portfolio_size?${searchParams.toString()}`}
+            >
               <Trans>Find other buildings your landlord owns</Trans>
             </JFCLLinkInternal>
           </ContentBoxItem>
@@ -482,7 +489,7 @@ const EligibilityNextSteps: React.FC<{
         <ContentBoxFooter
           message={_(msg`Have you learned something new?`)}
           linkText={_(msg`Adjust survey answers`)}
-          linkTo="/survey"
+          linkTo={`/${i18n.locale}/survey`}
           linkOnClick={() =>
             gtmPush("gce_return_survey", { from: "results-page_next-steps" })
           }
@@ -538,7 +545,7 @@ const CoverageResultHeadline: React.FC<{
         <Trans>
           <span className="result-headline__top">You are</span>{" "}
           <span className="coverage-pill orange">likely not covered</span>{" "}
-          <br />
+          <br aria-hidden />
           by Good Cause Eviction
         </Trans>
       );

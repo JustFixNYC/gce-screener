@@ -87,17 +87,12 @@ export const PreviewStep: React.FC = () => {
 
   return (
     <div className="preview-step">
-      <section className="preview-step__page-header">
-        <h3>
-          <Trans>Review your letter</Trans>
-        </h3>
-        <p>
-          <Trans>
-            Make sure the information below is accurate. If it is not, you can
-            go back to make changes.
-          </Trans>
-        </p>
-      </section>
+      <p className="preview-step__review">
+        <Trans>
+          Make sure the information below is accurate. If it is not, you can go
+          back to make changes.
+        </Trans>
+      </p>
       <div className="preview-step__locale-toggle">
         <Trans>Letter preview language:</Trans>{" "}
         <button
@@ -107,7 +102,7 @@ export const PreviewStep: React.FC = () => {
         >
           {languageNames["en"]}
         </button>
-        {" / "}
+        <span>{" / "}</span>
         <button
           className="jfcl-link"
           onClick={() => setPreviewLocale("es")}

@@ -14,7 +14,12 @@ const lobAddressSchema = (i18n: I18n) =>
   z.object({
     primary_line: z
       .string()
-      .min(1, i18n._(msg`Address is required for the letter`)),
+      .min(1, i18n._(msg`Address is required for the letter`))
+      // don't allow only special characters
+      .regex(
+        /.*[a-zA-Z0-9].*/,
+        i18n._(msg`Address is required for the letter`)
+      ),
     city: z
       .string()
       .min(1, i18n._(msg`City/Borough is required for the letter`)),
@@ -29,7 +34,7 @@ const lobAddressSchema = (i18n: I18n) =>
       .length(2, i18n._(msg`State must be two-letter abbreviation`)),
     zip_code: z
       .string()
-      .min(1, i18n._(msg`ZIP Code is required for the letter`))
+      .min(1, i18n._(msg`ZIP code is required for the letter`))
       .regex(/^\d{5}((-)?\d{4})?$/, i18n._(msg`Please enter a valid ZIP Code`)),
     urbanization: z.string().optional(),
     secondary_line: z.string().optional(),
@@ -51,7 +56,12 @@ const userDetailsSchema = (i18n: I18n) => {
             ? i18n._(msg`Phone number is required for follow up`)
             : i18n._(msg`Please enter a complete US phone number`),
       })
-      .length(10, i18n._(msg`Please enter a complete US phone number`)),
+      // 10 digits, not starting with 0 or 1 (invalid first digits of area code,
+      // part of validation on tenants2)
+      .regex(
+        /^[3-9]\d{9}$/,
+        i18n._(msg`Please enter a complete US phone number`)
+      ),
     email: looseOptional(
       z.email(i18n._(msg`Please enter a valid email address`))
     ),

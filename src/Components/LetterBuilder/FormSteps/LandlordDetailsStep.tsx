@@ -34,14 +34,16 @@ import "./LandlordDetailsStep.scss";
 
 export const LandlordDetailsStep: React.FC = () => {
   const nextStep = "preview";
-  const { next, formMethods } = useContext(FormContext);
   const {
-    formState: { errors },
-    getValues,
-    setValue,
-    trigger,
-    clearErrors,
-  } = formMethods;
+    next,
+    formMethods: {
+      formState: { errors },
+      getValues,
+      setValue,
+      trigger,
+      clearErrors,
+    },
+  } = useContext(FormContext);
 
   const { _ } = useLingui();
 
@@ -144,13 +146,13 @@ export const LandlordDetailsStep: React.FC = () => {
           color="off-white-200"
           header={
             <Trans>
-              Checking city records for your landlord's information...
+              Checking city records for your landlord’s information...
             </Trans>
           }
         >
           <p>
             <Trans>
-              This can take up to a few seconds. Please don’t refresh the page.
+              This can take a few seconds. Please don’t refresh the page.
             </Trans>
           </p>
         </Notice>
@@ -158,15 +160,14 @@ export const LandlordDetailsStep: React.FC = () => {
       {hpdLandlord && !showManual && (
         <>
           <FormGroup
-            legendText={_(msg`Please review your landlord's information`)}
+            legendText={_(msg`Your landlord’s information`)}
             key="landlord-details__hpd-lookup"
           >
             <InfoBox>
               <Trans>
-                This is your landlord's information as registered with the NYC
+                This is your landlord’s information as registered with the NYC
                 Department of Housing and Preservation (HPD). This may be
-                different than where you send your rent checks. We will use this
-                address to ensure your landlord receives the letter.
+                different than where you send your rent checks.
               </Trans>
             </InfoBox>
 
@@ -211,12 +212,12 @@ export const LandlordDetailsStep: React.FC = () => {
         onClose={() => setShowHpdInvalidModal(false)}
         hasCloseBtn={true}
         header={_(
-          msg`There is an issue with your landlord's information on record with the city`
+          msg`There is an issue with your landlord’s information on record with the city`
         )}
         className="hpd-invalid-modal"
       >
         <Trans>
-          Please make any necessary corrections to your landlord's information
+          Please make any necessary corrections to your landlord’s information
         </Trans>
         <div className="modal__buttons">
           <Button
@@ -272,24 +273,31 @@ const LandlordFormGroup: React.FC<{
   return (
     <>
       <FormGroup
-        legendText={_(msg`Your landlord's information`)}
+        legendText={_(msg`Your landlord’s mailing address`)}
         invalid={anyLandlordInfoErrors}
         invalidText={errors?.landlord_details?.message}
         helperElement={
-          isOverwrite && (
+          isOverwrite ? (
             <InfoBox color="blue">
               <Trans>
-                You have chosen to overwrite the landlord information
-                recommended by JustFix. Please provide your own details below,
-                or use the{" "}
+                You have chosen to overwrite the landlord information on record
+                with the city. Please provide your own details below, or{" "}
                 <button
                   type="button"
                   className="text-link-button"
                   onClick={onBackToHpdLookup}
                 >
-                  recommended landlord information
+                  use the recommended landlord information
                 </button>
                 .
+              </Trans>
+            </InfoBox>
+          ) : (
+            <InfoBox color="white">
+              <Trans>
+                This is where we will send your letter. We recommend using the
+                best address you can find whether it is on your lease, where you
+                send your rent to, or other.
               </Trans>
             </InfoBox>
           )
@@ -303,7 +311,6 @@ const LandlordFormGroup: React.FC<{
           invalidText={errors.landlord_details?.name?.message}
           invalidRole="status"
           type="text"
-          autoFocus
         />
         <TextInput
           {...register("landlord_details.primary_line")}
@@ -350,6 +357,7 @@ const LandlordFormGroup: React.FC<{
                   msg`This address does not have a unit/suite/apartment`
                 )}
                 id="no_unit"
+                invalid={!!landlordErrors?.secondary_line}
               />
             )}
           />
@@ -358,7 +366,7 @@ const LandlordFormGroup: React.FC<{
           {...register("landlord_details.city")}
           id="landlord-city"
           className="landlord-city-input"
-          labelText={_(msg`City/Borough`)}
+          labelText={_(msg`City`)}
           invalid={!!landlordErrors?.city}
           invalidText={landlordErrors?.city?.message}
           invalidRole="status"
@@ -398,7 +406,7 @@ const LandlordFormGroup: React.FC<{
         <TextInput
           {...register("landlord_details.zip_code")}
           id="landlord-zip-code"
-          labelText="ZIP Code"
+          labelText={_(msg`ZIP code`)}
           invalid={!!landlordErrors?.zip_code}
           invalidText={landlordErrors?.zip_code?.message}
           invalidRole="status"
@@ -424,14 +432,14 @@ const LandlordEmailFormGroup: React.FC = () => {
   return (
     <>
       <FormGroup
-        legendText={_(msg`Your landlord's contact information`)}
-        className="form-group__section-header"
+        legendText={_(msg`Your landlord’s email address`)}
+        className="form-group__section-header landlord-email-group"
         invalid={!!errors.landlord_details?.email}
       >
         <TextInput
           {...register("landlord_details.email")}
           id={`landlord-email`}
-          labelText={_(msg`Email`) + " " + _(msg`(Optional)`)}
+          labelText={_(msg`Email`) + " " + _(msg`(optional)`)}
           invalid={!!errors.landlord_details?.email}
           invalidText={errors.landlord_details?.email?.message}
           invalidRole="status"
@@ -455,18 +463,19 @@ const LandlordEmailFormGroup: React.FC = () => {
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         hasCloseBtn={true}
-        header={_(msg`Why we ask for your landlord's email`)}
+        header={_(msg`Why we ask for your landlord’s email`)}
+        className="email-modal"
       >
         <p>
           <Trans>
-            We ask for your landlord's email address so that we can send them a
+            We ask for your landlord’s email address so that we can send them a
             PDF copy of your letter. This helps ensure that the landlord sees
             your letter.
           </Trans>
-          <br />
-          <br />
+        </p>
+        <p>
           <Trans>
-            We highly recommend providing your landlord's email, especially if
+            We highly recommend providing your landlord’s email, especially if
             you normally correspond with your landlord via email.
           </Trans>
         </p>
@@ -483,16 +492,15 @@ const LandlordEmailFormGroup: React.FC = () => {
 export const FormattedLandlordAddress: React.FC<{
   landlordDetails: FormFields["landlord_details"];
 }> = ({ landlordDetails: ld }) => {
-  console.log(ld);
   return (
     <div className="landlord-address">
       <span className="landlord-address__name">{toTitleCase(ld.name)}</span>
       <span className="landlord-address__line-1">
-        {ld.primary_line}
-        {ld.secondary_line ? " " + ld.secondary_line : ""}
+        {toTitleCase(ld.primary_line)}
+        {ld.secondary_line ? " " + toTitleCase(ld.secondary_line) : ""}
       </span>
       <span className="landlord-address__line-2">
-        {ld.city}, {ld.state} {ld.zip_code}
+        {toTitleCase(ld.city)}, {ld.state} {ld.zip_code}
       </span>
     </div>
   );

@@ -3,25 +3,6 @@
 @use "../../../colors" as *;
 
 .mail-choice-step {
-  .mail-choice-step__header {
-    h3 {
-      @include h3_desktop;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      @include body_large_desktop;
-      margin: 0 0 2.1875rem 0; // 35px
-    }
-    @include for-phone-only {
-      h3 {
-        @include h3_mobile;
-      }
-      p {
-        @include body_standard_mobile;
-      }
-    }
-  }
-
   .jfcl-radio-button {
     display: flex;
     border: 1px solid $GREY_200;
@@ -56,6 +37,31 @@
     gap: 0.75rem;
     align-items: flex-start;
     padding: 1rem 1.25rem; // 16px 20px
+  }
+
+  .jfcl-radio-button {
+    &:has(input[type="radio"]:active) {
+      background-color: $BLUE_50;
+      border: 2px solid $OFF_BLACK;
+      // make room for thicker border
+      label {
+        padding: calc(1rem - 1px) calc(1.25rem - 1px);
+      }
+    }
+
+    &:has(input[type="radio"]:not(:checked)):hover {
+      background-color: $OFF_WHITE_200;
+      border: 2px solid $OFF_BLACK;
+      // make room for thicker border
+      label {
+        padding: calc(1rem - 1px) calc(1.25rem - 1px);
+      }
+    }
+
+    &:has(input[type="radio"]:checked):hover {
+      background-color: $BLUE_150;
+      border: 2px solid $OFF_BLACK;
+    }
   }
 
   strong {
@@ -94,6 +100,15 @@
 
     .landlord-email {
       margin-bottom: 0.75rem;
+    }
+
+    .jfcl-checkbox {
+      margin-bottom: 1.5rem;
+      &__checkmark {
+        min-width: 1.5em;
+        min-height: 1.5em;
+        margin-bottom: 0;
+      }
     }
 
     .additional-email-form-group {

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
+import { msg } from "@lingui/core/macro";
 import { Icon } from "@justfixnyc/component-library";
 
 import { JFCLLinkExternal } from "../../JFCLLink";
@@ -13,6 +14,8 @@ import {
 import { Notice } from "../../Notice/Notice";
 import { GCELetterConfirmation } from "../../../types/APIDataTypes";
 import { FormContext } from "../../../types/LetterFormTypes";
+import { ProgressBar } from "../ProgressBar/ProgressBar";
+import { letterSteps } from "../LetterSteps";
 import "./ConfirmationStep.scss";
 
 const USPS_TRACKING_URL_PREFIX =
@@ -38,21 +41,23 @@ export const ConfirmationStep: React.FC<{
 
   if (!confirmationResponse) {
     return (
-      <div className="confirmation-step">
-        <Notice
-          className="loading-notice"
-          color="off-white-200"
-          icon="envelopeLight"
-          header={<Trans>We’re finishing up your letter…</Trans>}
-        >
-          <p>
-            <Trans>
-              This can take up to a few seconds. Please don’t refresh or close
-              the page.
-            </Trans>
-          </p>
-        </Notice>
-      </div>
+      <>
+        <ProgressBar stepName={msg`Finishing up`} progress={98} />
+        <div className="confirmation-step">
+          <Notice
+            className="loading-notice"
+            color="off-white-200"
+            icon="envelopeLight"
+            header={<Trans>We’re finishing up your letter…</Trans>}
+          >
+            <p>
+              <Trans>
+                This can take a few seconds. Please don’t close the page.
+              </Trans>
+            </p>
+          </Notice>
+        </div>
+      </>
     );
   } else if (letterResponseIsError(confirmationResponse)) {
     const supportSubject = "Good Cause Letter submission error";
@@ -60,51 +65,54 @@ export const ConfirmationStep: React.FC<{
       "There was an error and my Good Cause letter could not be completed. To look up my letter and resolve this problem, my phone number is: <YOUR PHONE NUMBER>";
     const mailToSupport = `mailto:support@justfix.org?subject=${supportSubject}&body=${supportBody}`;
     return (
-      <div className="confirmation-step">
-        <Notice
-          className="error-notice"
-          color="yellow"
-          icon="envelopeCircleExclamationLight"
-          header={<Trans>We couldn’t finish your letter</Trans>}
-        >
-          <p>
-            <Trans>
-              Something unexpected happened while trying to generate your
-              letter. We apologize for the inconvenience.
-            </Trans>
-          </p>
-          <p>
-            <Trans>
-              You can try again or contact our support team at
-              support@justfix.org if the issue continues.{" "}
-            </Trans>
-          </p>
-          <div className="error-letter-buttons">
-            {/* TODO: we should probably just give in an make a JFCL link styled as button and button as link */}
-            <a
-              href={`/${i18n.locale}/letter`}
-              className="jfcl-button jfcl-variant-primary jfcl-size-small"
-            >
-              <span className="jfcl-button__label">
-                <Trans>Try again</Trans>
-              </span>
-            </a>
-            <a
-              href={mailToSupport}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="jfcl-button jfcl-variant-secondary jfcl-size-small"
-            >
-              <span className="jfcl-button__label">
-                <Trans>Contact support</Trans>
-                <span className="jfcl-button__icon jfcl-button__icon_right">
-                  <Icon icon="squareArrowUpRight" />
+      <>
+        <ProgressBar stepName={msg`Error`} progress={100} />
+        <div className="confirmation-step">
+          <Notice
+            className="error-notice"
+            color="yellow"
+            icon="envelopeCircleExclamationLight"
+            header={<Trans>We couldn’t finish your letter</Trans>}
+          >
+            <p>
+              <Trans>
+                Something unexpected happened while trying to generate your
+                letter. We apologize for the inconvenience.
+              </Trans>
+            </p>
+            <p>
+              <Trans>
+                You can try again or contact our support team at{" "}
+                <strong>support@justfix.org</strong> if the issue continues.{" "}
+              </Trans>
+            </p>
+            <div className="error-letter-buttons">
+              {/* TODO: we should probably just give in an make a JFCL link styled as button and button as link */}
+              <a
+                href={`/${i18n.locale}/letter`}
+                className="jfcl-button jfcl-variant-primary jfcl-size-small"
+              >
+                <span className="jfcl-button__label">
+                  <Trans>Start over</Trans>
                 </span>
-              </span>
-            </a>
-          </div>
-        </Notice>
-      </div>
+              </a>
+              <a
+                href={mailToSupport}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="jfcl-button jfcl-variant-secondary jfcl-size-small"
+              >
+                <span className="jfcl-button__label">
+                  <Trans>Contact support</Trans>
+                  <span className="jfcl-button__icon jfcl-button__icon_right">
+                    <Icon icon="squareArrowUpRight" />
+                  </span>
+                </span>
+              </a>
+            </div>
+          </Notice>
+        </div>
+      </>
     );
   }
 
@@ -119,104 +127,122 @@ export const ConfirmationStep: React.FC<{
     .filter((email): email is string => !!email);
 
   return (
-    <div className="confirmation-step">
-      <Notice
-        className="success-notice"
-        color="green"
-        icon="envelopeCircleCheck"
-        header={
-          data.mail_choice === "WE_WILL_MAIL" ? (
-            <Trans>Your letter is on its way</Trans>
-          ) : (
-            <Trans>Your letter is ready for download</Trans>
-          )
-        }
-      >
-        {data.mail_choice === "WE_WILL_MAIL" ? (
-          <p>
-            <Trans>
-              Your letter is now on its way to your landlord. Your USPS
-              Certified Mail® tracking number is{" "}
-              <JFCLLinkExternal
-                to={USPS_TRACKING_URL_PREFIX + data.tracking_number}
-              >
-                {data.tracking_number}
-              </JFCLLinkExternal>
-            </Trans>
-          </p>
-        ) : (
-          <p>
-            <Trans>
-              Your letter has been created and is now ready for you to download
-              and mail yourself.
-            </Trans>
-          </p>
-        )}
-
-        <div className="success-letter-buttons">
-          {/* TODO: we should probably just give in an make a JFCL link styled as button and button as link */}
-          <a
-            href={letterPdfUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="jfcl-button jfcl-variant-primary jfcl-size-small"
-          >
-            <span className="jfcl-button__label">
-              <span className="jfcl-button__icon">
-                <Icon icon="downloadRegular" />
-              </span>
-              <Trans>Download letter (PDF)</Trans>
-            </span>
-          </a>
-          {data.mail_choice === "WE_WILL_MAIL" && (
-            <a
-              href={USPS_TRACKING_URL_PREFIX + data.tracking_number}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="jfcl-button jfcl-variant-secondary jfcl-size-small"
-            >
-              <span className="jfcl-button__label">
-                <Trans>Track your letter</Trans>
-                <span className="jfcl-button__icon jfcl-button__icon_right">
-                  <Icon icon="squareArrowUpRight" />
-                </span>
-              </span>
-            </a>
-          )}
-        </div>
-      </Notice>
-
-      {!!allEmailsSent?.length && (
+    <>
+      <ProgressBar {...letterSteps["confirmation"]} />
+      <div className="confirmation-step">
         <Notice
-          className="emails-sent-notice"
-          color="off-white-200"
-          icon="paperPlaneLight"
+          className="success-notice"
+          color="green"
+          icon="envelopeCircleCheck"
           header={
-            <Trans>
-              A PDF copy of your letter has been sent to the following email
-              addresses:
-            </Trans>
+            data.mail_choice === "WE_WILL_MAIL" ? (
+              <Trans>Your letter is on its way</Trans>
+            ) : (
+              <Trans>Your letter is ready</Trans>
+            )
           }
         >
-          <ul>
-            {allEmailsSent.map((email, index) => (
-              <li key={index}>
-                <Trans>{email}</Trans>
-              </li>
-            ))}
-          </ul>
+          {data.mail_choice === "WE_WILL_MAIL" ? (
+            <>
+              <p>
+                <Trans>
+                  Your letter is now on its way to your landlord. Your USPS
+                  Certified Mail® tracking number is{" "}
+                  <JFCLLinkExternal
+                    to={USPS_TRACKING_URL_PREFIX + data.tracking_number}
+                  >
+                    {data.tracking_number}
+                  </JFCLLinkExternal>
+                </Trans>
+              </p>
+              <Notice
+                className="usps-delay"
+                icon="circleInfo"
+                color="off-white-100"
+              >
+                <strong>
+                  <Trans>Note:</Trans>
+                </strong>{" "}
+                <Trans>
+                  USPS may show “Tracking not available” at first. This is
+                  normal. Tracking will appear once USPS scans your letter.
+                </Trans>
+              </Notice>
+            </>
+          ) : (
+            <p>
+              <Trans>
+                Your letter has been created and is now ready for you to
+                download and mail or deliver yourself.
+              </Trans>
+            </p>
+          )}
+
+          <div className="success-letter-buttons">
+            {/* TODO: we should probably just give in an make a JFCL link styled as button and button as link */}
+            <a
+              href={letterPdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="jfcl-button jfcl-variant-primary jfcl-size-small"
+            >
+              <span className="jfcl-button__label">
+                <span className="jfcl-button__icon">
+                  <Icon icon="downloadRegular" />
+                </span>
+                <Trans>Download letter (PDF)</Trans>
+              </span>
+            </a>
+            {data.mail_choice === "WE_WILL_MAIL" && (
+              <a
+                href={USPS_TRACKING_URL_PREFIX + data.tracking_number}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="jfcl-button jfcl-variant-secondary jfcl-size-small"
+              >
+                <span className="jfcl-button__label">
+                  <Trans>Track your letter</Trans>
+                  <span className="jfcl-button__icon jfcl-button__icon_right">
+                    <Icon icon="squareArrowUpRight" />
+                  </span>
+                </span>
+              </a>
+            )}
+          </div>
         </Notice>
-      )}
 
-      <LetterNextSteps className="next-steps" />
+        {!!allEmailsSent?.length && (
+          <Notice
+            className="emails-sent-notice"
+            color="off-white-200"
+            icon="paperPlaneLight"
+            header={
+              <Trans>
+                A PDF copy of your letter has been sent to the following email
+                address(es):
+              </Trans>
+            }
+          >
+            <ul>
+              {allEmailsSent.map((email, index) => (
+                <li key={index}>
+                  <Trans>{email}</Trans>
+                </li>
+              ))}
+            </ul>
+          </Notice>
+        )}
 
-      {data.reason === "NON_RENEWAL" ? (
-        <LetterResponsesNonRenewal includeUniversal />
-      ) : data.reason === "PLANNED_INCREASE" ? (
-        <LetterResponsesRentIncrease includeUniversal />
-      ) : null}
+        <LetterNextSteps className="next-steps" mailChoice={data.mail_choice} />
 
-      <LetterWhoCanHelp />
-    </div>
+        {data.reason === "NON_RENEWAL" ? (
+          <LetterResponsesNonRenewal includeUniversal />
+        ) : data.reason === "PLANNED_INCREASE" ? (
+          <LetterResponsesRentIncrease includeUniversal />
+        ) : null}
+
+        <LetterWhoCanHelp />
+      </div>
+    </>
   );
 };

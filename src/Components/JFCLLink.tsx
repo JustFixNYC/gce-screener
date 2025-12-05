@@ -1,7 +1,9 @@
 import React from "react";
-import { Link, LinkProps } from "react-router-dom";
+import { Link, LinkProps, To } from "react-router-dom";
 import { Icon, IconNames } from "@justfixnyc/component-library";
 import classNames from "classnames";
+import { useLingui } from "@lingui/react";
+import { removeLocalePrefix } from "../i18n";
 
 // Creating versions of React Router's Link component styled like our Component
 // library's Link.
@@ -28,9 +30,29 @@ export const JFCLLink: React.FC<JFCLLinkProps> = ({
   </Link>
 );
 
+export const JFCLLocaleLink: React.FC<JFCLLinkProps> = (props) => {
+  const { i18n } = useLingui();
+
+  let to: To;
+  if (typeof props.to === "string") {
+    to = props.to.startsWith("/")
+      ? `/${i18n.locale}${removeLocalePrefix(props.to)}`
+      : props.to;
+  } else {
+    to = {
+      ...props.to,
+      pathname: props.to.pathname?.startsWith("/")
+        ? `/${i18n.locale}${removeLocalePrefix(props.to.pathname)}`
+        : props.to.pathname,
+    };
+  }
+
+  return <JFCLLink {...props} to={to} />;
+};
+
 export const JFCLLinkInternal: React.FC<Omit<JFCLLinkProps, "icon">> = (
   props
-) => <JFCLLink icon="arrowRight" {...props} />;
+) => <JFCLLocaleLink icon="arrowRight" {...props} />;
 
 export const JFCLLinkExternal: React.FC<Omit<JFCLLinkProps, "icon">> = (
   props

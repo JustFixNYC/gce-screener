@@ -33,7 +33,11 @@ import {
   LetterLayout,
   LetterSender,
 } from "./Components/Pages/LetterSender/LetterSender";
-import { stepRouteNames } from "./Components/LetterBuilder/LetterSteps";
+import {
+  firstLetterStep,
+  stepRouteNames,
+} from "./Components/LetterBuilder/LetterSteps";
+import { FormFields } from "./types/LetterFormTypes";
 import "./App.scss";
 
 const Layout = () => {
@@ -55,7 +59,7 @@ const Layout = () => {
   );
 };
 
-function isJsonString(str: string | null) {
+function isJsonString(str: string | null): str is string {
   if (!str) return false;
 
   try {
@@ -173,6 +177,26 @@ const LoadURLSessionOptional = ({ request }: { request: Request }) => {
   }
 };
 
+const LoadLetterSession = ({ request }: { request: Request }) => {
+  const formValues = window.sessionStorage.getItem("formValues");
+  const allowedRoutes = window.sessionStorage.getItem("allowedLetterRoutes");
+  const stepRoute = request.url.split("/").pop();
+
+  if (
+    stepRoute === firstLetterStep.route ||
+    (allowedRoutes && stepRoute && allowedRoutes?.includes(stepRoute))
+  ) {
+    return {
+      allowedRoutes,
+      formValues: !isJsonString(formValues)
+        ? undefined
+        : (JSON.parse(formValues) as FormFields),
+    };
+  } else {
+    throw redirect("/letter");
+  }
+};
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -216,13 +240,16 @@ const router = createBrowserRouter(
               path={stepRouteName}
               element={<LetterSender />}
               key={index}
+              loader={LoadLetterSession}
             />
           ))}
           <Route path="next_steps" element={<LetterNextStepsStandalone />} />
-          <Route
-            path="confirmation_test"
-            element={<LetterConfirmationTest />}
-          />
+          {import.meta.env.DEV && (
+            <Route
+              path="confirmation_test"
+              element={<LetterConfirmationTest />}
+            />
+          )}
         </Route>
         <Route path="tenant_rights" element={<TenantRights />} />
         <Route path="privacy_policy" element={<PrivacyPolicy />} />

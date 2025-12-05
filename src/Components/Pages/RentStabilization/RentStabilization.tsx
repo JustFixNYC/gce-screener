@@ -22,7 +22,7 @@ import { RentStabilizedProtections } from "../../KYRContent/KYRContent";
 import { RentStabLeaseModal } from "../../Modal/Modal";
 
 export const RentStabilization: React.FC = () => {
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
   const { user, address, fields } = useLoaderData() as {
     user: GCEUser;
     address: Address;
@@ -75,7 +75,6 @@ export const RentStabilization: React.FC = () => {
                   is rent stabilized and if you’re being overcharged.
                 </Trans>
               </p>
-              <br />
               <p>
                 <Trans>
                   If your apartment has ever been rent stabilized, you’ll
@@ -84,7 +83,6 @@ export const RentStabilization: React.FC = () => {
                   your apartment is still rent stabilized.
                 </Trans>
               </p>
-              <br />
               <p>
                 <Trans>
                   If your apartment has never been rent stabilized, you should
@@ -142,7 +140,7 @@ export const RentStabilization: React.FC = () => {
             <ContentBoxFooter
               message={_(msg`Update your coverage result`)}
               linkText={_(msg`Adjust survey answers`)}
-              linkTo="/survey"
+              linkTo={`/${i18n.locale}/survey`}
               linkOnClick={() =>
                 gtmPush("gce_return_survey", {
                   from: "rent-stab-guide-page",

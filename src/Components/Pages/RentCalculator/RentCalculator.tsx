@@ -12,15 +12,18 @@ import {
   GoodCauseProtections,
   UniversalProtections,
 } from "../../KYRContent/KYRContent";
-import { formatMoney } from "../../../helpers";
+import { formatMoney, getCookie, setCookie } from "../../../helpers";
 import { gtmPush } from "../../../google-tag-manager";
-import { PhoneNumberCallout } from "../../PhoneNumberCallout/PhoneNumberCallout";
 import { CPI, CPI_EFFECTIVE_DATE } from "./RentIncreaseValues";
 import { Notice } from "../../Notice/Notice";
+import {
+  PhoneNumberCallout,
+  PhoneNumberModal,
+} from "../../PhoneNumberCallout/PhoneNumberCallout";
 import "./RentCalculator.scss";
 
 export const RentCalculator: React.FC = () => {
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
   useAccordionsOpenForPrint();
 
   const increase_pct = CPI + 5;
@@ -36,10 +39,25 @@ export const RentCalculator: React.FC = () => {
     setRentInput(value);
   };
 
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [hasShownPhoneModal, setHasShownPhoneModal] = useState(false);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setShowRentInput(true);
     gtmPush("gce_rent_calculator_submit");
+
+    if (!hasShownPhoneModal && !getCookie("phone_modal_shown")) {
+      setTimeout(() => {
+        setShowPhoneModal(true);
+        setHasShownPhoneModal(true);
+      }, 3000);
+    }
+  };
+
+  const handlePhoneModalClose = () => {
+    setShowPhoneModal(false);
+    setCookie("phone_modal_shown", "1");
   };
 
   return (
@@ -51,6 +69,15 @@ export const RentCalculator: React.FC = () => {
           msg`If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause.`
         )}
       ></Header>
+      <PhoneNumberModal
+        modalIsOpen={showPhoneModal}
+        modalOnClose={handlePhoneModalClose}
+        headerText={_(msg`Send the rent increase calculator to your phone`)}
+        bodyText={_(
+          msg`We’ll also let you know when NYC changes the maximum rent increase amount each year.`
+        )}
+        gtmId="rent-calculator-page-modal"
+      />
       <div className="content-section">
         <div className="content-section__content">
           <div className="rent-calculator-callout-box">
@@ -79,7 +106,7 @@ export const RentCalculator: React.FC = () => {
                 type="submit"
                 variant="primary"
                 size="small"
-                labelText="Calculate"
+                labelText={_(msg`Calculate`)}
               />
             </form>
             <div className="rent-increase-container">
@@ -119,9 +146,9 @@ export const RentCalculator: React.FC = () => {
               <Trans>
                 The Good Cause law establishes a Reasonable Rent Increase, which
                 is set every year at the rate of inflation plus 5%, with a
-                maximum of 10% total. As of ${_(CPI_EFFECTIVE_DATE)}, the rate
-                of inflation for New York City is ${CPI}%, meaning that the
-                current local Reasonable Rent Increase is ${CPI + 5}%.
+                maximum of 10% total. As of {_(CPI_EFFECTIVE_DATE)}, the rate of
+                inflation for New York City is {CPI}%, meaning that the current
+                local Reasonable Rent Increase is {CPI + 5}%.
               </Trans>
             </p>
             <p>
@@ -137,7 +164,7 @@ export const RentCalculator: React.FC = () => {
             </strong>{" "}
             <p className="mobile-breakpoint"></p>
             <JFCLLinkInternal
-              to="/"
+              to={`/${i18n.locale}`}
               onClick={() =>
                 gtmPush("gce_return_survey", {
                   from: "rent-calculator-page",
@@ -149,9 +176,9 @@ export const RentCalculator: React.FC = () => {
           </div>
           <div className="divider__print" />
           <PhoneNumberCallout
-            headerText={_(msg`Help build tenant power in NYC`)}
+            headerText={_(msg`Send the rent increase calculator to your phone`)}
             bodyText={_(
-              msg`We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights.`
+              msg`We’ll also let you know when NYC changes the maximum rent increase amount each year.`
             )}
             gtmId="rent-calculator-page"
           />
@@ -163,7 +190,7 @@ export const RentCalculator: React.FC = () => {
             <ContentBoxFooter
               message={_(msg`Find out if you’re covered by Good Cause`)}
               linkText={_(msg`Take the survey`)}
-              linkTo="/"
+              linkTo={`/${i18n.locale}}`}
               linkOnClick={() =>
                 gtmPush("gce_return_survey", {
                   from: "rent-calculator-page",

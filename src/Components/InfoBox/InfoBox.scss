@@ -13,6 +13,9 @@
   &.white {
     background-color: $WHITE;
     border-color: $GREY_200;
+    .info-box__content-container {
+      max-width: 80%;
+    }
   }
   &.blue {
     background-color: $BLUE_50;
@@ -27,7 +30,13 @@
   }
   .info-box__content-container {
     flex: 1;
-    @include body_standard_mobile;
+    @include body_standard_desktop;
+    @include for-phone-only {
+      &,
+      .jfcl-link {
+        @include body_standard_mobile;
+      }
+    }
     .bold {
       font-weight: 600;
     }

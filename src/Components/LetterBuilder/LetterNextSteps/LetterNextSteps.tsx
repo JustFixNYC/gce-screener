@@ -1,5 +1,6 @@
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
+import classNames from "classnames";
 
 import {
   ContentBox,
@@ -8,27 +9,41 @@ import {
   ContentBoxProps,
 } from "../../ContentBox/ContentBox";
 import { Pill } from "../../Pill/Pill";
-import { JFCLLink, JFCLLinkExternal } from "../../JFCLLink";
-import "./LetterNextSteps.scss";
+import { JFCLLinkExternal } from "../../JFCLLink";
 import { Header } from "../../Header/Header";
-import classNames from "classnames";
+import "./LetterNextSteps.scss";
 
 type NextStepItemProps = Partial<Omit<ContentBoxItemProps, "children">>;
-type NextStepCollectionProps = Partial<Omit<ContentBoxProps, "children">>;
+type NextStepCollectionProps = Partial<Omit<ContentBoxProps, "children">> & {
+  mailChoice?: string;
+};
 
 // Common Links
 
 const RentIncreaseCalculatorLink = () => {
   const { i18n } = useLingui();
   return (
-    <JFCLLink to={`/${i18n.locale}/rent_calculator`}>
+    <JFCLLinkExternal
+      to={`https://www.goodcausenyc.org/${i18n.locale}/rent_calculator`}
+    >
       JustFix Rent Increase Calculator
-    </JFCLLink>
+    </JFCLLinkExternal>
+  );
+};
+
+const GoodCauseScreenerLink = () => {
+  const { i18n } = useLingui();
+  return (
+    <JFCLLinkExternal to={`https://www.goodcausenyc.org/${i18n.locale}/`}>
+      Good Cause Screener
+    </JFCLLinkExternal>
   );
 };
 
 // Next Steps
-export const TextFollowup: React.FC<NextStepItemProps> = (props) => (
+export const TextFollowup: React.FC<
+  NextStepItemProps & { mailChoice?: string }
+> = ({ mailChoice, ...props }) => (
   <ContentBoxItem
     title={
       <>
@@ -40,28 +55,68 @@ export const TextFollowup: React.FC<NextStepItemProps> = (props) => (
     }
     {...props}
   >
-    <p>
-      <Trans>We will text you with:</Trans>
-    </p>
-    <ul>
-      <li>
+    {!mailChoice && (
+      <>
+        <p>
+          <Trans>
+            We will text you with a link to download a PDF copy of your letter
+            for your records.
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            If you opted to have us mail the letter for you, we will text you
+            your USPS tracking number, so you can confirm your letter was
+            delivered. USPS may show “Tracking not available” at first. This is
+            normal. Tracking will appear once USPS scans your letter. This can
+            take between 1-5 days.
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            Keep this for your documentation. It's an important part of
+            asserting your rights.
+          </Trans>
+        </p>
+      </>
+    )}
+    {mailChoice === "USER_WILL_MAIL" && (
+      <p>
         <Trans>
-          Your USPS tracking number, so you can confirm your letter was
-          delivered.
+          We will text you with a link to download a PDF copy of your letter for
+          your records. Keep this for your documentation. It’s an important part
+          of asserting your rights.
         </Trans>
-      </li>
-      <li>
-        <Trans>
-          A link to download a PDF copy of your letter for your records.
-        </Trans>
-      </li>
-    </ul>
-    <p>
-      <Trans>
-        Keep this for your documentation. It’s an important part of asserting
-        your rights.
-      </Trans>
-    </p>
+      </p>
+    )}
+    {mailChoice === "WE_WILL_MAIL" && (
+      <>
+        <p>
+          <Trans>We will text you with:</Trans>
+        </p>
+        <ul>
+          <li>
+            <Trans>
+              A link to download a PDF copy of your letter for your records.
+            </Trans>
+          </li>
+          <li>
+            <Trans>
+              Your USPS tracking number, so you can confirm your letter was
+              delivered. USPS may show “Tracking not available” at first. This
+              is normal. Tracking will appear once USPS scans your letter. This
+              can take between 1-5 days.
+            </Trans>
+          </li>
+        </ul>
+        <p>
+          <Trans>
+            Keep this for your documentation. It’s an important part of
+            asserting your rights.
+          </Trans>
+        </p>
+      </>
+    )}
   </ContentBoxItem>
 );
 
@@ -160,16 +215,20 @@ export const TalkToNeighbors: React.FC<NextStepItemProps> = (props) => (
     <p>
       <Trans>
         If you’re dealing with something that feels unfair, like a large rent
-        increase or a sudden non-renewal, chances are your neighbors might be
-        facing similar issues.
+        increase or a sudden non-renewal of your lease, chances are your
+        neighbors might be facing similar issues.
       </Trans>
     </p>
     <p>
       <Trans>
         It’s often more effective to approach these problems together, by
-        sharing information, comparing experiences, and supporting one another.
+        sharing information, comparing experiences, and contacting your landlord
+        together.
       </Trans>
     </p>
+    <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/forming-a-tenants-association">
+      Met Council on Housing’s Guide to Forming a Tenant Association
+    </JFCLLinkExternal>
   </ContentBoxItem>
 );
 
@@ -193,9 +252,12 @@ export const WhileYouWait: React.FC<NextStepItemProps> = (props) => (
   </ContentBoxItem>
 );
 
-export const LetterNextSteps: React.FC<NextStepCollectionProps> = (props) => (
+export const LetterNextSteps: React.FC<NextStepCollectionProps> = ({
+  mailChoice,
+  ...props
+}) => (
   <ContentBox subtitle={<Trans>What happens next?</Trans>} {...props}>
-    <TextFollowup />
+    <TextFollowup mailChoice={mailChoice} />
     <PayRentAndWait />
     <CommunicateInWriting />
     <TalkToNeighbors />
@@ -256,8 +318,10 @@ export const ClaimsNotCoveredByGCE: React.FC<NextStepItemProps> = (props) => (
         <Trans>What to know</Trans>
       </h5>
       <p>
-        Coverage depends on your building type, age, subsidy status, and other
-        factors.
+        <Trans>
+          Coverage depends on your building type, subsidy status, and other
+          factors.
+        </Trans>
       </p>
     </section>
     <section>
@@ -272,10 +336,15 @@ export const ClaimsNotCoveredByGCE: React.FC<NextStepItemProps> = (props) => (
           </Trans>
         </li>
         <li>
-          <Trans>Use the Good Cause Screener to check your coverage.</Trans>
+          <Trans>
+            Use the <GoodCauseScreenerLink /> to check your coverage.
+          </Trans>
         </li>
         <li>
-          <Trans>Compare your results with HPD’s Good Cause guidelines.</Trans>
+          <Trans>Compare your results with </Trans>
+          <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants">
+            <Trans>NYC’s Tenant Protection Cabinet’s Good Cause Guide.</Trans>
+          </JFCLLinkExternal>
         </li>
       </ul>
     </section>
@@ -310,7 +379,7 @@ export const NoResponse: React.FC<NextStepItemProps> = (props) => (
           </Trans>
         </li>
         <li>
-          <Trans>Keep paying rent under your current lease.</Trans>
+          <Trans>You can keep paying rent under your current lease.</Trans>
         </li>
         <li>
           <Trans>
@@ -334,8 +403,9 @@ export const SendsCourtPaper: React.FC<NextStepItemProps> = (props) => (
       </h5>
       <p>
         <Trans>
-          If your landlord starts a housing court case, don’t panic, and don’t
-          ignore it. You still have rights.
+          If your landlord starts a housing court case, don’t ignore it. Your
+          landlord has to follow the law if they want to evict you and you have
+          rights.
         </Trans>
       </p>
     </section>
@@ -359,14 +429,11 @@ export const SendsCourtPaper: React.FC<NextStepItemProps> = (props) => (
         <li>
           <Trans>
             Contact{" "}
-            <JFCLLink
-              to="https://housingcourtanswers.org/answers/for-tenants/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Housing Court Answers
-            </JFCLLink>{" "}
-            or a <JFCLLink to="">legal aid provider</JFCLLink> immediately.
+            <JFCLLinkExternal to="https://housingcourtanswers.org/answers/for-tenants/">
+              <Trans>Housing Court Answers</Trans>
+            </JFCLLinkExternal>{" "}
+            or one of the organizations in the “legal advice and assistance”
+            section below as soon as you can.
           </Trans>
         </li>
       </ul>
@@ -378,7 +445,7 @@ export const LetterResponsesUniversal: React.FC<NextStepCollectionProps> = (
   props
 ) => (
   <ContentBox
-    subtitle={<Trans>What to expect from your landlord’s response</Trans>}
+    subtitle={<Trans>How might your landlord respond?</Trans>}
     {...props}
   >
     <NewCompliantLease />
@@ -397,18 +464,18 @@ export const RefuseSmallerIncrease: React.FC<NextStepItemProps> = (props) => (
     }
     {...props}
   >
-    <strong>
+    <h5>
       <Trans>What to know</Trans>
-    </strong>
+    </h5>
     <p>
       Your landlord might reject your request and keep the higher rent increase.
       Even if they refuse, your Good Cause rights still apply. Increases above
       the local rent standard (annual inflation + 5%, or a maximum of 10%) are
       presumed unreasonable unless your landlord can prove a valid reason.
     </p>
-    <strong>
+    <h5>
       <Trans>What to do</Trans>
-    </strong>
+    </h5>
     <ul>
       <li>
         <Trans>Document their refusal or lack of response.</Trans>
@@ -490,28 +557,28 @@ export const NoSmallerIncreaseBeforeLeaseEnd: React.FC<NextStepItemProps> = (
     }
     {...props}
   >
-    <strong>
+    <h5>
       <Trans>What to know</Trans>
-    </strong>
+    </h5>
     <p>
       If your lease expires before a new one is offered, your Good Cause rights
       still apply. You have the right to stay in your home.
     </p>
-    <strong>
+    <h5>
       <Trans>What to do</Trans>
-    </strong>
+    </h5>
     <ul>
-      <li>
-        <Trans>If possible, keep paying rent under your current lease.</Trans>
-      </li>
-      <li>
-        <Trans>Avoid signing a new lease with an illegal increase.</Trans>
-      </li>
       <li>
         <Trans>
           You can continue to stay in your apartment and abide by the terms of
           your existing or most recent lease. This includes continuing to pay
           the rent amount on your most recent lease.
+        </Trans>
+      </li>
+      <li>
+        <Trans>
+          If you’re comfortable, you can avoid signing a lease with an increase
+          above the Good Cause limit.
         </Trans>
       </li>
       <li>
@@ -600,21 +667,32 @@ export const LetterResponsesRentIncrease: React.FC<
   <ContentBox
     subtitle={
       includeUniversal ? (
-        <Trans>What to expect from your landlord’s response</Trans>
+        <Trans>How might your landlord respond?</Trans>
       ) : (
         <Trans>What to do if your landlord raises your rent</Trans>
       )
     }
     {...props}
   >
-    {includeUniversal && <NewCompliantLease />}
-    <SmallerButUnreasonableIncrease />
-    <ProvidesReasonForRentIncrease />
-    <NoSmallerIncreaseBeforeLeaseEnd />
-    <RefuseSmallerIncrease />
-    {includeUniversal && <ClaimsNotCoveredByGCE />}
-    {includeUniversal && <NoResponse />}
-    {includeUniversal && <SendsCourtPaper />}
+    {includeUniversal ? (
+      <>
+        <NewCompliantLease />
+        <SmallerButUnreasonableIncrease />
+        <NoSmallerIncreaseBeforeLeaseEnd />
+        <RefuseSmallerIncrease />
+        <ProvidesReasonForRentIncrease />
+        <ClaimsNotCoveredByGCE />
+        <NoResponse />
+        <SendsCourtPaper />
+      </>
+    ) : (
+      <>
+        <RefuseSmallerIncrease />
+        <SmallerButUnreasonableIncrease />
+        <NoSmallerIncreaseBeforeLeaseEnd />
+        <ProvidesReasonForRentIncrease />
+      </>
+    )}
   </ContentBox>
 );
 
@@ -632,11 +710,13 @@ export const RefusesNewLease: React.FC<NextStepItemProps> = (props) => (
       <p>
         <Trans>
           Under Good Cause, a landlord cannot refuse to renew your lease without
-          a legally valid reason.{" "}
-          <JFCLLink to="">
-            Learn more about Good Cause reasons for non renewal
-          </JFCLLink>
+          a legally valid reason.
         </Trans>
+      </p>
+      <p>
+        <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
+          <Trans>Learn more about Good Cause reasons for non renewal</Trans>
+        </JFCLLinkExternal>
       </p>
     </section>
     <section>
@@ -694,8 +774,7 @@ export const NewLeaseUnreasonableIncrease: React.FC<NextStepItemProps> = (
         </li>
         <li>
           <Trans>
-            Use the const
-            <RentIncreaseCalculatorLink /> to confirm if the increase is
+            Use the <RentIncreaseCalculatorLink /> to confirm if the increase is
             allowed.
           </Trans>
         </li>
@@ -734,13 +813,13 @@ export const ReasonForNonRenewal: React.FC<NextStepItemProps> = (props) => (
       <p>
         <Trans>
           If your landlord provides a reason, that doesn’t automatically mean
-          the non-renewal is lawful — it must still meet the standards defined
-          in the law.
+          the non-renewal is lawful. Your landlord’s reason must still meet the
+          standards defined in the law.
         </Trans>
       </p>
       <p>
-        <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction/">
-          <Trans>Learn more about valid Good Cause reasons</Trans>
+        <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
+          <Trans>Learn more about Good Cause reasons for non renewal</Trans>
         </JFCLLinkExternal>
       </p>
     </section>
@@ -810,8 +889,8 @@ export const ProofForNonRenewalReason: React.FC<NextStepItemProps> = (
         </Trans>
       </p>
       <p>
-        <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction/">
-          <Trans>See the list of valid Good Cause reasons</Trans>
+        <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
+          <Trans>Learn more about Good Cause reasons for non renewal</Trans>
         </JFCLLinkExternal>
       </p>
     </section>
@@ -858,21 +937,32 @@ export const LetterResponsesNonRenewal: React.FC<
   <ContentBox
     subtitle={
       includeUniversal ? (
-        <Trans>What to expect from your landlord’s response</Trans>
+        <Trans>How might your landlord respond?</Trans>
       ) : (
         <Trans>What to do if your landlord won’t renew your lease</Trans>
       )
     }
     {...props}
   >
-    {includeUniversal && <NewCompliantLease />}
-    <NewLeaseUnreasonableIncrease />
-    <RefusesNewLease />
-    <ReasonForNonRenewal />
-    <ProofForNonRenewalReason />
-    {includeUniversal && <ClaimsNotCoveredByGCE />}
-    {includeUniversal && <NoResponse />}
-    {includeUniversal && <SendsCourtPaper />}
+    {includeUniversal ? (
+      <>
+        <NewCompliantLease />
+        <NewLeaseUnreasonableIncrease />
+        <RefusesNewLease />
+        <ReasonForNonRenewal />
+        <ProofForNonRenewalReason />
+        <ClaimsNotCoveredByGCE />
+        <NoResponse />
+        <SendsCourtPaper />
+      </>
+    ) : (
+      <>
+        <RefusesNewLease />
+        <NewLeaseUnreasonableIncrease />
+        <ReasonForNonRenewal />
+        <ProofForNonRenewalReason />
+      </>
+    )}
   </ContentBox>
 );
 
@@ -895,15 +985,10 @@ export const CommunityResources: React.FC<NextStepItemProps> = (props) => (
       <h5>
         <Trans>Helpful organizations</Trans>
       </h5>
-      <ul>
+      <ul className="no-bullets">
         <li>
-          <JFCLLinkExternal to="https://housingcourtanswers.org/answers/for-tenants/">
-            <Trans>NYC 311 Tenant Helpline</Trans>
-          </JFCLLinkExternal>
-        </li>
-        <li>
-          <JFCLLinkExternal to="">
-            <Trans>Tenant Support Unit (TSU)</Trans>
+          <JFCLLinkExternal to="https://www.nyc.gov/site/mayorspeu/programs/contact-the-tenant-support-unit.page">
+            <Trans>NYC’s Tenant Support Unit (TSU)</Trans>
           </JFCLLinkExternal>
         </li>
         <li>
@@ -933,7 +1018,7 @@ export const TenantAdvocacyGroups: React.FC<NextStepItemProps> = (props) => (
       <h5>
         <Trans>Helpful organizations</Trans>
       </h5>
-      <ul>
+      <ul className="no-bullets">
         <li>
           <JFCLLinkExternal to="https://www.metcouncilonhousing.org/">
             <Trans>Met Council on Housing</Trans>
@@ -950,15 +1035,15 @@ export const TenantAdvocacyGroups: React.FC<NextStepItemProps> = (props) => (
 );
 
 export const LegalAdviceAssistance: React.FC<NextStepItemProps> = (props) => (
-  <ContentBoxItem title={<Trans>Legal Advice and Assistance</Trans>} {...props}>
+  <ContentBoxItem title={<Trans>Legal advice and assistance</Trans>} {...props}>
     <section>
       <h5>
         <Trans>When to use</Trans>
       </h5>
       <p>
         <Trans>
-          If you’re organizing with neighbors, challenging a landlord’s actions,
-          or want to connect with tenant campaigns for stronger protections.
+          If your landlord files a court case, refuses to renew your lease, or
+          you’re unsure how to respond to legal documents.
         </Trans>
       </p>
     </section>
@@ -966,7 +1051,7 @@ export const LegalAdviceAssistance: React.FC<NextStepItemProps> = (props) => (
       <h5>
         <Trans>Helpful organizations</Trans>
       </h5>
-      <ul>
+      <ul className="no-bullets">
         <li>
           <JFCLLinkExternal to="https://housingcourtanswers.org/contact-us/">
             <Trans>Housing Court Answers (HCA)</Trans>

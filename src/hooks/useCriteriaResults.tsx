@@ -1,5 +1,5 @@
 import { Plural, Trans } from "@lingui/react/macro";
-
+import { I18n } from "@lingui/core";
 import { JFCLLinkExternal, JFCLLinkInternal } from "../Components/JFCLLink";
 import {
   BuildingSubsidyLanguage,
@@ -16,6 +16,7 @@ import {
   urlWOWTimelineRS,
   urlZOLA,
 } from "../helpers";
+import { useLingui } from "@lingui/react";
 
 // These values need to be updated annually. They are published by DHCR on or before August 1 each year
 const RENT_CUTOFFS = {
@@ -59,14 +60,15 @@ export function useCriteriaResults(
   searchParams: URLSearchParams,
   bldgData?: BuildingData
 ): CriteriaDetails | undefined {
+  const { i18n } = useLingui();
   if (!bldgData) return undefined;
   const criteriaData: CriteriaData = { ...formFields, ...bldgData };
   return {
-    portfolioSize: eligibilityPortfolioSize(criteriaData, searchParams),
+    portfolioSize: eligibilityPortfolioSize(criteriaData, searchParams, i18n),
     landlord: eligibilityLandlord(criteriaData),
     buildingClass: eligibilityBuildingClass(criteriaData),
     rent: eligibilityRent(criteriaData),
-    rentStabilized: eligibilityRentStabilized(criteriaData, searchParams),
+    rentStabilized: eligibilityRentStabilized(criteriaData, searchParams, i18n),
     certificateOfOccupancy: eligibilityCertificateOfOccupancy(criteriaData),
     subsidy: eligibilitySubsidy(criteriaData),
   };
@@ -74,7 +76,8 @@ export function useCriteriaResults(
 
 function eligibilityPortfolioSize(
   criteriaData: CriteriaData,
-  searchParams: URLSearchParams
+  searchParams: URLSearchParams,
+  i18n: I18n
 ): CriterionDetails {
   const {
     bbl,
@@ -154,8 +157,8 @@ function eligibilityPortfolioSize(
   } else {
     determination = "UNKNOWN";
     userValue = (
-      <Trans>
-        Your building has only {pluralApartments}, but
+      <>
+        <Trans>Your building has only {pluralApartments}, but</Trans>
         {relatedProperties ? (
           <Trans>
             publicly available data sources indicate that your landlord may be
@@ -164,11 +167,13 @@ function eligibilityPortfolioSize(
         ) : (
           <Trans>your landlord may own</Trans>
         )}{" "}
-        other buildings.{" "}
-        <JFCLLinkInternal to={`/portfolio_size?${searchParams.toString()}`}>
-          Find your landlord’s other buildings
+        <Trans>other buildings.</Trans>{" "}
+        <JFCLLinkInternal
+          to={`/${i18n.locale}/portfolio_size?${searchParams.toString()}`}
+        >
+          <Trans>Find your landlord’s other buildings</Trans>
         </JFCLLinkInternal>
-      </Trans>
+      </>
     );
   }
 
@@ -288,7 +293,8 @@ function eligibilityRent(criteriaData: CriteriaData): CriterionDetails {
 
 function eligibilityRentStabilized(
   criteriaData: CriteriaData,
-  searchParams: URLSearchParams
+  searchParams: URLSearchParams,
+  i18n: I18n
 ): CriterionDetails {
   const {
     rentStabilized,
@@ -317,7 +323,9 @@ function eligibilityRentStabilized(
     </JFCLLinkExternal>
   );
   const guideLink = (
-    <JFCLLinkInternal to={`/rent_stabilization?${searchParams.toString()}`}>
+    <JFCLLinkInternal
+      to={`/${i18n.locale}/rent_stabilization?${searchParams.toString()}`}
+    >
       <Trans>Find out if your apartment is rent stabilized</Trans>
     </JFCLLinkInternal>
   );
@@ -336,41 +344,44 @@ function eligibilityRentStabilized(
     userValue = (
       <Trans>You reported that your apartment is rent stabilized.</Trans>
     );
-  } else {
-    determination = rentStabilized === "NO" ? "ELIGIBLE" : "UNKNOWN";
-    userValue =
-      allUnitsRS || active421a || activeJ51 ? (
+  } else if (rentStabilized === "NO") {
+    determination = "ELIGIBLE";
+    if (allUnitsRS) {
+      userValue = (
         <Trans>
-          You reported that{" "}
-          {rentStabilized === "NO" ? (
-            <Trans>your apartment is not</Trans>
-          ) : (
-            <Trans>you are not sure if your apartment is</Trans>
-          )}{" "}
-          rent stabilized, and we are using your answer as part of our coverage
-          assessment. Note: publicly available data sources indicate that
-          {allUnitsRS ? (
-            <Trans>
-              all apartments in your building are registered as rent stabilized.
-            </Trans>
-          ) : (
-            <Trans>
-              your building receives the {activeJ51 ? "421a" : "J51"} tax
-              incentive, which means your apartment should be rent stabilized.
-            </Trans>
-          )}{" "}
-          {allUnitsRS ? wowLink : subsidyLink}
-          If those sources are correct, then you may already have stronger
-          tenant protections than Good Cause Eviction provides. {guideLink}
-        </Trans>
-      ) : rentStabilized === "NO" ? (
-        <Trans>You reported that your apartment is not rent stabilized.</Trans>
-      ) : (
-        <Trans>
-          You reported that you are not sure if your apartment is rent
-          stabilized. {guideLink}
+          You reported that your apartment is not rent stabilized, and we are
+          using your answer as part of our coverage assessment. Note: publicly
+          available data sources indicate that all apartments in your building
+          are registered as rent stabilized. {wowLink} If those sources are
+          correct, then you may already have stronger tenant protections than
+          Good Cause Eviction provides. {guideLink}
         </Trans>
       );
+    } else if (active421a || activeJ51) {
+      userValue = (
+        <Trans>
+          You reported that your apartment is not rent stabilized, and we are
+          using your answer as part of our coverage assessment. Note: publicly
+          available data sources indicate that your building receives the{" "}
+          {activeJ51 ? "421a" : "J51"} tax incentive, which means your apartment
+          should be rent stabilized. {subsidyLink} If those sources are correct,
+          then you may already have stronger tenant protections than Good Cause
+          Eviction provides. {guideLink}
+        </Trans>
+      );
+    } else {
+      userValue = (
+        <Trans>You reported that your apartment is not rent stabilized.</Trans>
+      );
+    }
+  } else {
+    determination = "UNKNOWN";
+    userValue = (
+      <Trans>
+        You reported that you are not sure if your apartment is rent stabilized.{" "}
+        {guideLink}
+      </Trans>
+    );
   }
 
   return {

@@ -4,4 +4,4 @@ import { msg } from "@lingui/core/macro";
 export const CPI = 3.79;
 // This date isn't actually official, just what HPD has on their site.
 // The law never included when the changes come into effect
-export const CPI_EFFECTIVE_DATE = msg`February 19, 2025`;
+export const CPI_EFFECTIVE_DATE = msg`February 18, 2025`;

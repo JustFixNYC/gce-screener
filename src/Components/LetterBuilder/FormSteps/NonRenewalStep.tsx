@@ -40,7 +40,7 @@ export const NonRenewalStep: React.FC = () => {
     <LetterStepForm onSubmit={onSubmit} className="non-renewal-step">
       <FormGroup
         legendText={_(
-          msg`Has your landlord provided any of the following reasons for ending your tenancy?`
+          msg`Has your landlord provided any of the following reasons for not offering you a new lease?`
         )}
         invalid={!!errors?.good_cause_given}
         invalidText={errors?.good_cause_given?.message}
@@ -60,14 +60,14 @@ export const NonRenewalStep: React.FC = () => {
             <Trans>Illegal Activity</Trans>
           </li>
           <li>
-            <Trans>Landlord personal use/removal from market</Trans>
+            <Trans>Removal of apartment from market</Trans>
           </li>
           <li>
             <Trans>Demolition</Trans>
           </li>
           <li>
             <Trans>
-              Failure to sign lease renewal or provide access to apartment
+              Failure to sign new lease or provide access to apartment
             </Trans>
           </li>
         </ul>
@@ -108,21 +108,25 @@ export const NonRenewalStep: React.FC = () => {
         hasCloseBtn={true}
         header={_(msg`Something to know`)}
       >
-        <section>
-          <p>
-            <Trans>
-              You’ve shared that your landlord has provided a reason for ending
-              your tenancy. If the reason that your landlord provided is
-              legitimate,{" "}
-              <strong>you may not be guaranteed a lease renewal.</strong>
-            </Trans>
-          </p>
-          <p>
-            <Trans>
-              We still recommend continuing to send a letter asserting your Good
-              Cause right to a lease renewal.
-            </Trans>
-          </p>
+        <>
+          <div className="callout-box">
+            <section>
+              <p>
+                <Trans>
+                  You’ve shared that your landlord has provided a reason for
+                  ending your tenancy. If the reason that your landlord provided
+                  is legitimate,{" "}
+                  <strong>you may not be guaranteed a new lease by law.</strong>
+                </Trans>
+              </p>
+              <p>
+                <Trans>
+                  But we still recommend continuing to send this letter because
+                  your landlord may still listen to your demand for a new lease.
+                </Trans>
+              </p>
+            </section>
+          </div>
           <div className="buttons">
             <Button
               variant="secondary"
@@ -131,7 +135,7 @@ export const NonRenewalStep: React.FC = () => {
             />
             <Button labelText={_(msg`Continue`)} type="submit" />
           </div>
-        </section>
+        </>
       </Modal>
     </LetterStepForm>
   );

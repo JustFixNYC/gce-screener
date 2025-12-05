@@ -1,6 +1,7 @@
 @use "colors" as *;
 @use "variables" as *;
 @use "mixins" as *;
+@use "./Components/TopBar/TopBar.scss" as *;
 @import "@justfixnyc/component-library/dist/src/assets/index.css";
 
 html {
@@ -9,7 +10,7 @@ html {
 
 body {
   font-family: "Degular";
-  margin: 0;
+  margin: $headerH 0 0;
   height: 100%;
 }
 

@@ -19,14 +19,14 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   lastStepReached = ProgressStep.Home,
 }) => {
   const location = useLocation();
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
   const steps: StepInfo[] = [
     {
-      path: "/confirm_address",
+      path: `/${i18n.locale}/confirm_address`,
       name: progressBarAddress(lastStepReached, address) || _(msg`Address`),
     },
-    { path: "/survey", name: _(msg`Survey`) },
-    { path: "/results", name: _(msg`Result`) },
+    { path: `/${i18n.locale}/survey`, name: _(msg`Survey`) },
+    { path: `/${i18n.locale}/results`, name: _(msg`Result`) },
   ].map((step) => {
     return { ...step, active: step.path == location.pathname };
   });
@@ -36,7 +36,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       step.active || index > lastStepReached ? (
         <span>{step.name}</span>
       ) : (
-        <Link to={step.path ?? "/"} className="jfcl-link">
+        <Link to={step.path ?? `/${i18n.locale}`} className="jfcl-link">
           {step.name}
         </Link>
       );

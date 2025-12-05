@@ -289,8 +289,8 @@ export const GoodCauseProtections: React.FC<
         >
           <p>
             <Trans>
-              The state housing agency must publish each year’s Reasonable Rent
-              Increase by August. This year the maximum amount your landlord can
+              The state housing agency must publish each year’s "Reasonable Rent
+              Increases" by August. The current maximum that your landlord can
               increase your rent by is ${increase_pct}%.
             </Trans>
           </p>
@@ -386,35 +386,45 @@ export const GoodCauseProtections: React.FC<
                 you, as long as you abide by the terms of your expired lease.
               </Trans>
             </p>
-            <ul
-              aria-label={_(
-                msg`Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:`
-              )}
-            >
-              <li>
-                <Trans>Non payment of rent</Trans>
-              </li>
-              <li>
-                <Trans>Lease violations</Trans>
-              </li>
-              <li>
-                <Trans>Nuisance activity</Trans>
-              </li>
-              <li>
-                <Trans>Illegal Activity</Trans>
-              </li>
-              <li>
-                <Trans>Landlord personal use/removal from market</Trans>
-              </li>
-              <li>
-                <Trans>Demolition</Trans>
-              </li>
-              <li>
+            <section>
+              <h5 id="good-cause-eviction-reasons">
                 <Trans>
-                  Failure to sign lease renewal or provide access to apartment
+                  Under the Good Cause Eviction law, landlords are allowed to
+                  evict tenants for the following “good cause” reasons:
                 </Trans>
-              </li>
-            </ul>
+              </h5>
+              <ul
+                id="good-cause-eviction-reasons-list"
+                aria-label={_(
+                  msg`Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:`
+                )}
+              >
+                <li>
+                  <Trans>Non payment of rent</Trans>
+                </li>
+                <li>
+                  <Trans>Lease violations</Trans>
+                </li>
+                <li>
+                  <Trans>Nuisance activity</Trans>
+                </li>
+                <li>
+                  <Trans>Illegal Activity</Trans>
+                </li>
+                <li>
+                  <Trans>Landlord personal use/removal from market</Trans>
+                </li>
+                <li>
+                  <Trans>Demolition</Trans>
+                </li>
+                <li>
+                  <Trans>
+                    Failure to sign lease renewal or provide access to apartment
+                  </Trans>
+                </li>
+              </ul>
+            </section>
+
             <JFCLLinkExternal
               className="has-label"
               to="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page#:~:text=What%20are%20the%20“good%20cause”%20reasons%20for%20eviction%2C%20nonrenewal%20of%20lease%2C%20or%20termination%20of%20tenancy%3F"
@@ -458,9 +468,9 @@ export const GoodCauseProtections: React.FC<
           <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction">
             <Trans>Met Council on Housing Good Cause Eviction fact sheet</Trans>
           </JFCLLinkExternal>
-          <JFCLLinkExternal to="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page">
+          <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants">
             <Trans>
-              Housing Preservation and Development Good Cause Eviction overview
+              NYC Tenant Protection Cabinet’s Good Cause Eviction Guide
             </Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -841,7 +851,7 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
             <Trans>NYCHA policies</Trans>
           </JFCLLinkExternal>
           <JFCLLinkExternal to="https://nylag.org/tenants-rights/public-housing-justice-project/">
-            <Trans>NYLAG's Public Housing Justice Project</Trans>
+            <Trans>NYLAG’s Public Housing Justice Project</Trans>
           </JFCLLinkExternal>
           <JFCLLinkExternal to="https://nylag.org/tenants-rights/public-housing-justice-project/">
             <Trans>PACT Fact Sheet</Trans>
@@ -912,7 +922,7 @@ export const UnknownProtections: React.FC<KYRContentBoxProps> = ({
   coverageResult,
   className,
 }) => {
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
 
   const defaultSubtitle = _(
     msg`Whether or not you are covered by Good Cause, you still have important tenant rights`
@@ -935,7 +945,7 @@ export const UnknownProtections: React.FC<KYRContentBoxProps> = ({
             type of housing you live in.
           </Trans>
         </p>
-        <JFCLLinkInternal to="/tenant_rights">
+        <JFCLLinkInternal to={`/${i18n.locale}/tenant_rights`}>
           <Trans>Learn more about your rights</Trans>
         </JFCLLinkInternal>
       </ContentBoxItem>

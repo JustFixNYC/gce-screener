@@ -5,7 +5,7 @@ import { Button } from "@justfixnyc/component-library";
 import { useNavigate } from "react-router-dom";
 
 import { Header } from "../../Header/Header";
-import { JFCLLink } from "../../JFCLLink";
+import { JFCLLink, JFCLLinkExternal } from "../../JFCLLink";
 import "./LetterLanding.scss";
 
 export const LetterLanding: React.FC = () => {
@@ -15,12 +15,18 @@ export const LetterLanding: React.FC = () => {
   return (
     <div id="letter-sender-landing-page">
       <Header
-        title={_(msg`Send a letter to your landlord`)}
+        title={
+          <Trans>
+            Send a letter to your <br aria-hidden />
+            landlord defending <br aria-hidden />
+            your Good Cause rights
+          </Trans>
+        }
         subtitle={
           <Trans>
             If you’re covered by Good Cause and your landlord is planning to
             raise your rent or not offer you a new lease, you can send a letter
-            to your landlord asserting your Good Cause rights.
+            defending your Good Cause rights.
           </Trans>
         }
         showProgressBar={false}
@@ -59,33 +65,45 @@ export const LetterLanding: React.FC = () => {
             <p>
               <Trans>
                 If your landlord is either planning to raise your rent, or not
-                offering you a new lease, we will draft a USPS Certified Mail®
-                letter asserting your Good Cause rights. We will even send it
+                offer you a new lease, we will draft a USPS Certified Mail
+                letter defending your Good Cause rights. We will even send it
                 for you, for free.
               </Trans>
             </p>
             <p>
-              <strong>
-                <Trans>Not sure if you’re covered?</Trans>
-              </strong>{" "}
+              <Trans>Not sure if you’re covered?</Trans>{" "}
               <JFCLLink to={`/${i18n.locale}`}>
                 <Trans>Take the survey</Trans>
               </JFCLLink>
             </p>
           </section>
-          <section>
-            <div className="callout-box">
-              <h4>
-                <Trans>Designed with tenants and experts</Trans>
-              </h4>
-              <p>
-                <Trans>
-                  The Good Cause Letter Sender was developed with housing
-                  attorneys, tenant organizers, community leaders, and tenants
-                  themselves.
-                </Trans>
-              </p>
-            </div>
+          <section className="callout-box">
+            <h4>
+              <Trans>This free service has been legally vetted</Trans>
+            </h4>
+            <p>
+              <Trans>
+                The Good Cause Letter Sender was developed with housing
+                attorneys, tenant organizers, community leaders, and tenants.
+              </Trans>
+            </p>
+          </section>
+          <section className="callout-box outside-nyc">
+            <h4>
+              <Trans>If you live outside of NYC</Trans>
+            </h4>
+            <p>
+              <Trans>
+                Tenants and tenant advocates are working to extend Good Cause
+                protections throughout New York State. This product is not yet
+                available for residents outside of New York City.
+              </Trans>
+            </p>
+            <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause/#:~:text=Outside%20of%20NYC%20eligibility%20differs%20by%20locality%20because%20municipalities%20that%20opt%20in%20can%20change%20the%20real%20estate%20portfolio%20exemption%20and%20the%20luxury%20rent%20exemption%20thresholds%3A">
+              <Trans>
+                Learn where Good Cause Protections have already been won
+              </Trans>
+            </JFCLLinkExternal>
           </section>
         </div>
       </div>
@@ -99,7 +117,7 @@ export const LetterLanding: React.FC = () => {
             <ol>
               <li>
                 <strong>
-                  <Trans>Formally asserts your rights</Trans>
+                  <Trans>Formally assert your rights</Trans>
                 </strong>
                 <p>
                   <Trans>
@@ -110,23 +128,23 @@ export const LetterLanding: React.FC = () => {
               </li>
               <li>
                 <strong>
-                  <Trans>Creates a paper trail</Trans>
-                </strong>
-                <p>
-                  <Trans>
-                    Communicating your request to your landlord in writing
-                    provides documented evidence of your complaint.
-                  </Trans>
-                </p>
-              </li>
-              <li>
-                <strong>
-                  <Trans>Opens negotiation</Trans>
+                  <Trans>Open negotiation</Trans>
                 </strong>
                 <p>
                   <Trans>
                     Establishes a professional channel to negotiate solutions to
                     your rent increase or non-renewal.
+                  </Trans>
+                </p>
+              </li>
+              <li>
+                <strong>
+                  <Trans>Create a paper trail</Trans>
+                </strong>
+                <p>
+                  <Trans>
+                    Communicating your request to your landlord in writing
+                    provides documented evidence of your complaint.
                   </Trans>
                 </p>
               </li>

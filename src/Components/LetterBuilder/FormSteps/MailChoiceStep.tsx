@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
@@ -26,6 +26,7 @@ export const MailChoiceStep: React.FC = () => {
       register,
       control,
       watch,
+      setValue,
       formState: { errors },
     },
   } = useContext(FormContext);
@@ -42,19 +43,19 @@ export const MailChoiceStep: React.FC = () => {
     anyErrors(["email"], errors.user_details) ||
     anyErrors(["email"], errors.landlord_details);
 
+  const mailChoice = watch("mail_choice");
+  const landlordEmail = watch("landlord_details.email");
+
+  // Ensure that CC value is set back to false if no landlord email provided,
+  // even though automatically unchecked and disabled
+  useEffect(() => {
+    if (!landlordEmail) {
+      setValue("cc_user", false);
+    }
+  }, [landlordEmail, setValue]);
+
   return (
     <LetterStepForm nextStep="confirmation" className="mail-choice-step">
-      <div className="mail-choice-step__header">
-        <h3>
-          <Trans>How do you want to send your letter?</Trans>
-        </h3>
-        <p>
-          <Trans>
-            Select a mailing method and provide email addresses to receive a
-            copy of your letter.
-          </Trans>
-        </p>
-      </div>
       <FormGroup
         legendText={_(msg`Select a mailing method`)}
         invalid={!!errors?.mail_choice}
@@ -76,9 +77,9 @@ export const MailChoiceStep: React.FC = () => {
               </div>
               <p>
                 <Trans>
-                  We will send your letter for you via USPS Certified Mail in
-                  1-2 business days, at no cost to you. We will also provide a
-                  PDF for you to download for your records.
+                  We will send your letter for you via USPS Certified Mail at no
+                  cost to you. We will also provide a PDF for you to download
+                  for your records.
                 </Trans>
               </p>
             </div>
@@ -86,18 +87,18 @@ export const MailChoiceStep: React.FC = () => {
         />
         <RadioButton
           {...register("mail_choice")}
-          aria-label={_(msg`Mail the letter yourself`)}
+          aria-label={_(msg`Mail or deliver the letter yourself`)}
           value="USER_WILL_MAIL"
           id="user-will-mail"
           labelElement={
             <div>
               <strong>
-                <Trans>Mail the letter yourself</Trans>
+                <Trans>Mail or deliver the letter yourself</Trans>
               </strong>
               <p>
                 <Trans>
-                  We will provide a PDF for you to download, print, and mail to
-                  your landlord or property manager.
+                  We will provide a PDF for you to download, print, and mail or
+                  deliver to your landlord or property manager.
                 </Trans>
               </p>
             </div>
@@ -134,7 +135,7 @@ export const MailChoiceStep: React.FC = () => {
           {...register("landlord_details.email")}
           id={`form-landlord-email`}
           className="landlord-email"
-          labelText={_(msg`Your landlord's email`) + " " + _(msg`(optional)`)}
+          labelText={_(msg`Your landlord’s email`) + " " + _(msg`(optional)`)}
           invalid={!!errors?.landlord_details?.email}
           invalidText={errors?.landlord_details?.email?.message}
           invalidRole="status"
@@ -156,6 +157,7 @@ export const MailChoiceStep: React.FC = () => {
                 msg`CC me on the email that you send to my landlord `
               )}
               id="cc_user"
+              invalid={errors?.user_details?.email?.message?.includes("CC")}
             />
           )}
         />
@@ -202,7 +204,12 @@ export const MailChoiceStep: React.FC = () => {
       </FormGroup>
       <BackNextButtons
         backStepName="preview"
-        button2Props={{ labelText: _(msg`Mail my letter`) }}
+        button2Props={{
+          labelText:
+            mailChoice === "USER_WILL_MAIL"
+              ? _(msg`Download my letter`)
+              : _(msg`Mail my letter`),
+        }}
       />
     </LetterStepForm>
   );
