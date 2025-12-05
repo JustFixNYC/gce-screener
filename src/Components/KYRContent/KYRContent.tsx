@@ -278,7 +278,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
 export const GoodCauseProtections: React.FC<
   KYRContentBoxProps & { rent?: number }
 > = ({ title, rent, children, coverageResult, headingLevel, ...props }) => {
-  const { _ } = useLingui();
+  const { i18n, _ } = useLingui();
   const defaultTitle = _(msg`Protections if you’re covered by Good Cause`);
   const increase_pct = CPI + 5;
   const itemProps = {
