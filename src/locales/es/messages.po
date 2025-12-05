@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-12-04 23:39\n"
+"PO-Revision-Date: 2025-12-05 16:19\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -2573,12 +2573,12 @@ msgstr "Estado"
 #: src/types/LetterFormTypes.ts:30
 #: src/types/LetterFormTypes.ts:33
 msgid "State is required for the letter"
-msgstr "Se requiere el estado para la carta."
+msgstr "Se requiere el estado para la carta"
 
 #: src/types/LetterFormTypes.ts:31
 #: src/types/LetterFormTypes.ts:34
 msgid "State must be two-letter abbreviation"
-msgstr "El estado debe ser una abreviatura de dos letras."
+msgstr "El estado debe ser una abreviatura de dos letras"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:318
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:129
@@ -2625,7 +2625,7 @@ msgstr "Participe en la encuesta"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:210
 msgid "Talk to your neighbors"
-msgstr "Habla con tus vecinos."
+msgstr "Hable con sus vecinos"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:408
 msgid "Talk to your neighbors to see if they know of any other buildings your landlord may own."
@@ -2653,7 +2653,7 @@ msgstr "Derechos de los inquilinos en virtud de la estabilización de alquileres
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:177
 msgid "Tenant support groups can help you draft messages, practice negotiation conversations, or understand your rights if your landlord refuses to negotiate."
-msgstr "Los grupos de apoyo a los inquilinos pueden ayudarte a redactar mensajes, practicar conversaciones de negociación o comprender tus derechos si tu propietario se niega a negociar."
+msgstr "Los grupos de apoyo a los inquilinos pueden ayudarle a redactar mensajes, practicar conversaciones de negociación o comprender sus derechos si su propietario se niega a negociar."
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:186
 #~ msgid "Tenant Support Unit (311)"
@@ -2726,7 +2726,7 @@ msgstr "La Ley por Justa Causa establece un aumento razonable del alquiler, que 
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:85
 msgid "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants."
-msgstr "La herramienta Good Cause Letter Sender se desarrolló en colaboración con abogados especializados en vivienda, organizadores de inquilinos, líderes comunitarios e inquilinos."
+msgstr "La herramienta Good Cause Letter Sender (Remitente de la carta por Justa Causa) se desarrolló en colaboración con abogados especializados en vivienda, organizadores de inquilinos, líderes comunitarios e inquilinos."
 
 #: src/Components/Footer/Footer.tsx:25
 msgid "The information on this website does not constitute legal advice and must not be used as a substitute for the advice of a lawyer qualified to give advice on legal issues pertaining to housing."
@@ -2750,7 +2750,7 @@ msgstr "El propietario del edificio puede ser diferente de la persona que figura
 
 #: src/Components/KYRContent/KYRContent.tsx:289
 msgid "The state housing agency must publish each year’s \"Reasonable Rent Increases\" by August. The current maximum that your landlord can increase your rent by is ${increase_pct}%."
-msgstr "La agencia estatal de vivienda debe publicar cada año, antes de agosto, los «aumentos razonables de renta». El máximo actual que su arrendador puede aumentar su renta es del ${increase_pct}%."
+msgstr "La agencia estatal de vivienda debe publicar cada año, antes de agosto, los \"aumentos razonables de renta\". El máximo actual que su arrendador puede aumentar su renta es del ${increase_pct} %."
 
 #: src/Components/KYRContent/KYRContent.tsx:289
 #~ msgid ""
@@ -2780,7 +2780,7 @@ msgstr "Hay un problema con la información de su arrendador registrada en la ci
 
 #: src/Components/AddressConfirmationModal/AddressConfirmationModal.tsx:33
 msgid "There may be inaccuracies in this address"
-msgstr "Puede haber inexactitudes en esta dirección."
+msgstr "Puede haber inexactitudes en esta dirección"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:77
 #: src/Components/Pages/Results/Results.tsx:175
@@ -2789,11 +2789,11 @@ msgstr "Se produjo un error al cargar los resultados. Inténtelo de nuevo en uno
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:357
 msgid "This address does not have a unit/suite/apartment"
-msgstr "Esta dirección no tiene unidad/suite/apartamento."
+msgstr "Esta dirección no tiene unidad/suite/apartamento"
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:75
 msgid "This approach can make the increase more manageable while showing your landlord you’re willing to meet halfway."
-msgstr "Este enfoque puede hacer que el aumento sea más manejable y, al mismo tiempo, demostrarle a tu arrendador que estás dispuesto a llegar a un acuerdo."
+msgstr "Este enfoque puede hacer que el aumento sea más manejable y, al mismo tiempo, demostrarle a su arrendador que está dispuesto a llegar a un acuerdo."
 
 #: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:54
 msgid "This can take a few seconds. Please don’t close the page."
@@ -2801,7 +2801,7 @@ msgstr "Esto puede tardar unos segundos. Por favor, no cierre la página."
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:154
 msgid "This can take a few seconds. Please don’t refresh the page."
-msgstr "Esto puede tardar unos segundos. Por favor, no actualices la página."
+msgstr "Esto puede tardar unos segundos. Por favor, no actualice la página."
 
 #: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:49
 #~ msgid "This can take up to a few seconds. Please don’t refresh or close the page."
@@ -2813,7 +2813,7 @@ msgstr "Esto puede tardar unos segundos. Por favor, no actualices la página."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:194
 msgid "This documentation can protect you if your landlord challenges your rights or starts a court case."
-msgstr "Esta documentación puede protegerte si tu arrendador cuestiona tus derechos o inicia un proceso judicial."
+msgstr "Esta documentación puede protegerlo si su arrendador cuestiona sus derechos o inicia un proceso judicial."
 
 #: src/Components/KYRContent/KYRContent.tsx:738
 msgid "This ensures that housing remains affordable and equitable for all residents, regardless of financial circumstances. Residents who have recently experienced a change in income can request an interim recertification to ensure that their apartment remains affordable."
@@ -2821,7 +2821,7 @@ msgstr "Esto garantiza que la vivienda siga siendo asequible y equitativa para t
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:82
 msgid "This free service has been legally vetted"
-msgstr "Este servicio gratuito ha sido revisado legalmente."
+msgstr "Este servicio gratuito ha sido revisado legalmente"
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:109
 msgid "This guide will walk you through two steps that will help you prove who you landlord is and if they own other buildings. Please watch the instruction video, below, to get started."
