@@ -37,96 +37,63 @@
   }
 
   .content-section {
-    padding: 3rem 0;
+    padding: 4.5rem 2rem;
     @include for-phone-only() {
       padding: 2rem 1.5rem;
     }
-    @include for-tablet-portrait-up {
-      .content-section__content > section p {
-        width: 85%;
-        &:not(:last-of-type) {
-          margin-bottom: 1rem;
-        }
-      }
-    }
+
     &.home__about-law {
       border-bottom: 1px solid $OFF_BLACK;
-      section {
-        margin-bottom: 1.5rem;
-        @include for-tablet-portrait-up {
-          &:not(.callout-box) {
-            margin-bottom: 3rem;
-          }
-        }
-        p,
-        a {
-          font-weight: 400;
-        }
-      }
-      .callout-box {
-        @include for-tablet-portrait-up {
-          p {
-            width: 75%;
-          }
-        }
-        @include for-phone-only() {
-          margin-top: 1.5rem; // 24px
-        }
-      }
     }
+
     h3 {
       @include h3_desktop;
-      margin: 0 0 1rem 0; // 16px
+      margin: 0 0 1rem 0;
 
       @include for-phone-only {
         @include h3_mobile;
       }
     }
-    p,
-    p a {
-      @include body_large_desktop;
-      margin: 0;
 
+    h4,
+    p,
+    a,
+    .jfcl-link {
+      @include body_large_desktop;
+      font-weight: 400;
       @include for-phone-only {
-        @include body_standard_mobile;
+        @include body_large_mobile;
       }
     }
+
+    p {
+      margin: 0 0 1.5rem 0;
+      @include for-tablet-portrait-up {
+        width: 85%;
+      }
+    }
+
     .callout-box {
       display: flex;
       flex-direction: column;
       background-color: $OFF_WHITE_200;
       border-radius: 4px;
+      margin: 1.5rem 0 0 0;
       padding: 2rem;
+
       @include for-phone-only {
         padding: 1.5rem;
       }
 
       .callout-box__header {
-        @include body_large_desktop;
         margin-bottom: 0.5rem;
         font-weight: 600;
         @include for-phone-only {
-          @include body_standard_mobile;
           font-weight: 600;
         }
       }
-
-      p {
-        @include body_large_desktop;
-        font-weight: 400;
-        margin: 0;
-        margin-bottom: 1rem;
-        @include for-phone-only {
-          @include small_text_mobile;
-        }
-      }
-
-      a {
-        @include for-phone-only {
-          @include small_text_mobile;
-        }
-      }
     }
+
     .about-project__orgs-container {
       display: flex;
       gap: 2.25rem; // 36px;
@@ -137,10 +104,19 @@
       .callout-box {
         width: 100%;
         height: fit-content;
-        margin-top: 2.25rem; // 36px;
+        margin-top: 0.75rem;
+        padding: 1.5rem;
         @include for-phone-only() {
           margin-top: 1.5rem; // 24px
           width: unset;
+        }
+        @include for-tablet-portrait-up {
+          p,
+          a {
+            @include body_standard_desktop;
+            font-weight: 400;
+            width: unset;
+          }
         }
       }
     }
