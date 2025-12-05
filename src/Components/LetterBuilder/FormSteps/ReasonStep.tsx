@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
@@ -33,6 +33,12 @@ export const ReasonStep: React.FC = () => {
       : watch("reason") === "NON_RENEWAL"
       ? "non_renewal"
       : undefined;
+
+  useEffect(() => {
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  }, []);
 
   return (
     <LetterStepForm nextStep={nextStep} className="reason-step">
