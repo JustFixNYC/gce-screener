@@ -46,7 +46,7 @@ export const PlannedIncreaseStep: React.FC = () => {
       <LetterStepForm nextStep={nextStep}>
         <FormGroup
           legendText={
-            <h4>
+            <h4 id="reason-details-label">
               {_(
                 msg`Is your landlord increasing your monthly rent more than ${
                   CPI + 5
@@ -59,34 +59,40 @@ export const PlannedIncreaseStep: React.FC = () => {
           invalidRole="status"
           helperElement={<IncreaseHelperText />}
         >
-          <Controller
-            name="unreasonable_increase"
-            control={control}
-            render={({ field }) => (
-              <SelectButton
-                {...field}
-                value="true"
-                checked={field.value === true}
-                onChange={() => field.onChange(true)}
-                labelText={_(msg`Yes`)}
-                id="reason-verified__yes"
-              />
-            )}
-          />
-          <Controller
-            name="unreasonable_increase"
-            control={control}
-            render={({ field }) => (
-              <SelectButton
-                {...field}
-                value="false"
-                checked={field.value === false}
-                onChange={() => field.onChange(false)}
-                labelText={_(msg`No`)}
-                id="reason-verified__no"
-              />
-            )}
-          />
+          <div
+            role="radiogroup"
+            aria-labelledby="reason-details-label"
+            aria-describedby="reason-details-description"
+          >
+            <Controller
+              name="unreasonable_increase"
+              control={control}
+              render={({ field }) => (
+                <SelectButton
+                  {...field}
+                  value="true"
+                  checked={field.value === true}
+                  onChange={() => field.onChange(true)}
+                  labelText={_(msg`Yes`)}
+                  id="reason-verified__yes"
+                />
+              )}
+            />
+            <Controller
+              name="unreasonable_increase"
+              control={control}
+              render={({ field }) => (
+                <SelectButton
+                  {...field}
+                  value="false"
+                  checked={field.value === false}
+                  onChange={() => field.onChange(false)}
+                  labelText={_(msg`No`)}
+                  id="reason-verified__no"
+                />
+              )}
+            />
+          </div>
         </FormGroup>
         <BackNextButtons backStepName="reason" />
       </LetterStepForm>
@@ -97,7 +103,7 @@ export const PlannedIncreaseStep: React.FC = () => {
 const IncreaseHelperText: React.FC = () => {
   const { _, i18n } = useLingui();
   return (
-    <InfoBox>
+    <InfoBox id="reason-details-description">
       <Trans>
         For leases offered after {_(CPI_EFFECTIVE_DATE)}, landlords cannot
         increase rent more than {CPI + 5}% without legitimate justification. You

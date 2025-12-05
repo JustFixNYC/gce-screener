@@ -871,7 +871,7 @@ msgstr "Para cualquiera de las direcciones que se enumeran a continuación, solo
 #. placeholder {0}: _(CPI_EFFECTIVE_DATE)
 #. placeholder {1}: CPI + 5
 #. placeholder {2}: CPI + 5
-#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:101
+#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:107
 msgid "For leases offered after {0}, landlords cannot increase rent more than {1}% without legitimate justification. You can use our <0>rent increase calculator</0> to determine if your landlord’s proposed rent exceeds {2}%."
 msgstr ""
 
@@ -1040,7 +1040,7 @@ msgstr "¿Cómo podría responder tu arrendador?"
 msgid "How to assert your Good Cause rights"
 msgstr "Cómo hacer valer sus derechos por Justa Causa"
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:73
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:78
 msgid "How to choose the reason for your letter"
 msgstr "Cómo elegir el motivo de tu carta"
 
@@ -1553,7 +1553,7 @@ msgid "Learn if you’re covered <0/>by Good Cause <1/>Eviction law in NYC"
 msgstr "Averigüe si está amparado por la Ley de Desalojo <0/>por Justa Causa <1/>en la ciudad de Nueva York"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:470
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:150
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:155
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:232
 #: src/Components/Pages/Form/Survey.tsx:603
 msgid "Learn more"
@@ -1808,7 +1808,7 @@ msgstr "Más recursos sobre sus derechos como inquilino en la ciudad de Nueva Yo
 msgid "Mortgage"
 msgstr "Hipoteca"
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:144
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:149
 msgid "Need help choosing which letter is best for you?"
 msgstr "¿Necesitas ayuda para elegir la letra que más te conviene?"
 
@@ -1829,7 +1829,7 @@ msgid "Next"
 msgstr "Siguiente"
 
 #: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:102
-#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:85
+#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:90
 #: src/Components/Pages/Form/Survey.tsx:232
 #: src/Components/Pages/Form/Survey.tsx:307
 #: src/Components/Pages/Form/Survey.tsx:346
@@ -2456,7 +2456,7 @@ msgstr "Vea sus resultados"
 #~ msgid "Select \"Continue\" to proceed with this address."
 #~ msgstr "Select \"Continue\" to proceed with this address."
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:106
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:111
 msgid "Select <0>“Your landlord is not offering you a new lease”</0> <1/>if any of the following apply:"
 msgstr ""
 
@@ -2468,7 +2468,7 @@ msgstr ""
 #~ msgid "Select <0>“Your landlord is not offering you a new lease”</0>if any of the following apply:"
 #~ msgstr "Select <0>“Your landlord is not offering you a new lease”</0>if any of the following apply:"
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:77
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:82
 msgid "Select <0>“Your landlord is planning to raise your rent”</0> <1/> if any of the following apply:"
 msgstr ""
 
@@ -3387,7 +3387,7 @@ msgstr "Retener el aumento injustificado"
 #~ msgstr "Would you like us to email a copy of your letter to your landlord?"
 
 #: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:88
-#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:71
+#: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:76
 #: src/Components/Pages/Form/Survey.tsx:231
 #: src/Components/Pages/Form/Survey.tsx:306
 #: src/Components/Pages/Form/Survey.tsx:345
@@ -3611,15 +3611,15 @@ msgstr "Nos ha dicho que no está seguro de si su alquiler está estabilizado. S
 msgid "You’re not alone. Too many landlords care more about getting rich off our rent money than providing us with decent homes."
 msgstr "No está solo. Demasiados propietarios se preocupan más por enriquecerse con el dinero de nuestro alquiler que por proporcionarnos viviendas dignas."
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:95
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:100
 msgid "You’ve received a <0>226c notice detailing an upcoming rent increase</0>"
 msgstr "Ha recibido un <0>aviso 226c en el que se detalla un próximo aumento del alquiler</0>."
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:120
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:125
 msgid "You’ve received a <0>226c notice stating that your lease will not be renewed</0>"
 msgstr "Ha recibido un <0>aviso 226c en el que se le informa de que su contrato de arrendamiento no se renovará</0>."
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:128
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:133
 msgid "You’ve received a <0>notice of termination</0>"
 msgstr "Ha recibido una <0>notificación de terminación</0>."
 
@@ -3741,11 +3741,11 @@ msgstr "Tu arrendador no responde"
 #~ msgid "Your landlord has recently given you a new lease with a rent increase"
 #~ msgstr "Your landlord has recently given you a new lease with a rent increase"
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:89
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:94
 msgid "Your landlord has recently given you a new lease with a rent increase."
 msgstr "Tu arrendador te ha dado recientemente un nuevo contrato de alquiler con un aumento del alquiler."
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:114
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:119
 msgid "Your landlord has told you that they will not offer you a new lease."
 msgstr "Tu arrendador te ha dicho que no te ofrecerá un nuevo contrato de alquiler."
 
@@ -3757,15 +3757,15 @@ msgstr "Tu arrendador te ha dicho que no te ofrecerá un nuevo contrato de alqui
 #~ msgid "Your landlord has told you your rent will be increasing"
 #~ msgstr "Your landlord has told you your rent will be increasing"
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:84
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:89
 msgid "Your landlord has told you your rent will be increasing."
 msgstr "Tu arrendador te ha dicho que tu renta aumentará."
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:59
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:64
 msgid "Your landlord is not offering you a new lease"
 msgstr "Tu arrendador no te ofrece un nuevo contrato de alquiler."
 
-#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:53
+#: src/Components/LetterBuilder/FormSteps/ReasonStep.tsx:58
 msgid "Your landlord is planning to raise your rent"
 msgstr "Tu arrendador tiene previsto aumentar el alquiler."
 

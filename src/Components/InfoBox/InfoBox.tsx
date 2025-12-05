@@ -8,6 +8,7 @@ type InfoBoxProps = {
   color?: "white" | "blue" | "orange";
   role?: string;
   className?: string;
+  id?: string;
 };
 
 export const InfoBox: React.FC<InfoBoxProps> = ({
@@ -15,8 +16,9 @@ export const InfoBox: React.FC<InfoBoxProps> = ({
   color = "white",
   role,
   className,
+  id,
 }) => (
-  <div className={classNames("info-box", color, className)}>
+  <div id={id} className={classNames("info-box", color, className)}>
     <div className="info-box__icon-container">
       <Icon icon={color === "orange" ? "circleExclamation" : "circleInfo"} />
     </div>
