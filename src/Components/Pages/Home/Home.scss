@@ -60,7 +60,6 @@
     a,
     .jfcl-link {
       @include body_large_desktop;
-      font-weight: 400;
       @include for-phone-only {
         @include body_large_mobile;
       }
@@ -114,7 +113,6 @@
           p,
           a {
             @include body_standard_desktop;
-            font-weight: 400;
             width: unset;
           }
         }
