@@ -12,6 +12,9 @@ body {
   font-family: "Degular";
   margin: $headerH 0 0;
   height: 100%;
+  // Ensures visual parity with figma (otherwise appears too heavy)
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
