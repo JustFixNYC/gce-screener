@@ -218,7 +218,11 @@ export const LetterStepForm: React.FC<LetterStepFormProps> = ({
       className={classNames("letter-form", className)}
     >
       {anyErrors && (
-        <InfoBox color="orange" className="letter-form__global-error">
+        <InfoBox
+          role="alert"
+          color="orange"
+          className="letter-form__global-error"
+        >
           <Trans>Please review the page and fix the issues below.</Trans>
         </InfoBox>
       )}

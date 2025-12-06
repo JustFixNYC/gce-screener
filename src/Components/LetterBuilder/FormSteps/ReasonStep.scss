@@ -13,15 +13,13 @@
       }
     }
 
-    .jfcl-select-button__label,
-    .jfcl-select-button__input:checked + .jfcl-select-button__label {
+    .jfcl-select-button__label {
       padding: 0.75rem 1.875rem;
       text-wrap-mode: wrap;
     }
-
+    .jfcl-select-button__input:checked + .jfcl-select-button__label,
     .jfcl-select-button__label:hover {
-      // adjust padding by 1px when hover triggers a 2px border
-      // so the FormGroup container stays the same size
+      // adjust padding when the border width increases to avoid layout shift
       padding: calc(0.75rem - 1px) calc(1.875rem - 1px);
     }
   }
