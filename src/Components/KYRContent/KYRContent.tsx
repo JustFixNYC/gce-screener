@@ -11,6 +11,8 @@ import { formatMoney, urlMyGov } from "../../helpers";
 import { JFCLLinkExternal, JFCLLinkInternal } from "../JFCLLink";
 import { CoverageResult } from "../../types/APIDataTypes";
 import { CPI } from "../Pages/RentCalculator/RentIncreaseValues";
+import { Notice } from "../Notice/Notice";
+import "./KYRContent.scss";
 
 type KYRContentBoxProps = Omit<ContentBoxProps, "children" | "headingLevel"> &
   Required<Pick<ContentBoxProps, "headingLevel">> & {
@@ -276,7 +278,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
 export const GoodCauseProtections: React.FC<
   KYRContentBoxProps & { rent?: number }
 > = ({ title, rent, children, coverageResult, headingLevel, ...props }) => {
-  const { _ } = useLingui();
+  const { i18n, _ } = useLingui();
   const defaultTitle = _(msg`Protections if you’re covered by Good Cause`);
   const increase_pct = CPI + 5;
   const itemProps = {
@@ -333,6 +335,34 @@ export const GoodCauseProtections: React.FC<
                 </>
               )}
             </span>
+            <JFCLLinkInternal to={`/${i18n.locale}/rent_calculator`}>
+              Calculate your maximum rent increase
+            </JFCLLinkInternal>
+            <Notice
+              icon="circleInfo"
+              className="letter-callout"
+              color="off-white-100"
+            >
+              <p>
+                {coverageResult == "COVERED" ? (
+                  <Trans>
+                    If your landlord is planning to raise your rent beyond this
+                    amount, you can send a legally-vetted letter to your
+                    landlord to ask for a lower rent increase.
+                  </Trans>
+                ) : (
+                  <Trans>
+                    <strong>If you’re covered by Good Cause</strong> and your
+                    landlord is planning to raise your rent beyond this amount,
+                    you can send a legally-vetted letter to your landlord to ask
+                    for a lower rent increase.
+                  </Trans>
+                )}
+              </p>
+              <JFCLLinkInternal to={`/${i18n.locale}/letter`}>
+                <Trans>Check out the Letter Sender</Trans>
+              </JFCLLinkInternal>
+            </Notice>
           </div>
           <p>
             <strong>
@@ -411,6 +441,27 @@ export const GoodCauseProtections: React.FC<
             >
               <Trans>Learn more about Good Cause reasons for eviction</Trans>
             </JFCLLinkExternal>
+            <Notice icon="circleInfo" className="letter-callout" color="white">
+              <p>
+                {coverageResult == "COVERED" ? (
+                  <Trans>
+                    <strong>If you’re covered by Good Cause</strong> and your
+                    landlord is not offering you a lease renewal, you can send a
+                    legally-vetted letter to your landlord to assert your right
+                    to a renewal.
+                  </Trans>
+                ) : (
+                  <Trans>
+                    If your landlord is not offering you a lease renewal, you
+                    can send a legally-vetted letter to your landlord to assert
+                    your right to a renewal.
+                  </Trans>
+                )}
+              </p>
+              <JFCLLinkInternal to={`/${i18n.locale}/letter`}>
+                <Trans>Check out the Letter Sender</Trans>
+              </JFCLLinkInternal>
+            </Notice>
           </>
         </ContentBoxItem>
         <ContentBoxItem
