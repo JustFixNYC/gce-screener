@@ -37,18 +37,16 @@
     gap: 0.75rem;
     align-items: flex-start;
     padding: 1rem 1.25rem; // 16px 20px
+
+    &:active {
+      background-color: $BLUE_50;
+      border-radius: 6px;
+      // make room for thicker border
+      padding: calc(1rem - 1px) calc(1.25rem - 1px);
+    }
   }
 
   .jfcl-radio-button {
-    &:has(input[type="radio"]:active) {
-      background-color: $BLUE_50;
-      border: 2px solid $OFF_BLACK;
-      // make room for thicker border
-      label {
-        padding: calc(1rem - 1px) calc(1.25rem - 1px);
-      }
-    }
-
     &:has(input[type="radio"]:not(:checked)):hover {
       background-color: $OFF_WHITE_200;
       border: 2px solid $OFF_BLACK;
@@ -61,6 +59,13 @@
     &:has(input[type="radio"]:checked):hover {
       background-color: $BLUE_150;
       border: 2px solid $OFF_BLACK;
+    }
+
+    &:has(input[type="radio"]:checked) {
+      // make room for thicker border
+      label {
+        padding: calc(1rem - 1px) calc(1.25rem - 1px);
+      }
     }
   }
 
