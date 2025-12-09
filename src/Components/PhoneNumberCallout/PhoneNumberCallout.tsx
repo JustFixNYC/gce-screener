@@ -281,6 +281,7 @@ const PhoneNumberModalUI: React.FC<PhoneNumberUIProps> = ({
             className="phone-number-submit"
             labelText={_(msg`Submit`)}
             variant="primary"
+            type="submit"
           />
         </div>
       </form>

@@ -96,34 +96,16 @@ export const Results: React.FC = () => {
   useSearchParamsURL(setSearchParams, address, fields, user);
 
   const [showPhoneModal, setShowPhoneModal] = useState(false);
-  const [hasShownPhoneModal, setHasShownPhoneModal] = useState(false);
 
   useEffect(() => {
-    if (hasShownPhoneModal || getCookie("phone_modal_shown")) return;
-    const contentSection = document.querySelector(".content-section__content");
-    if (!contentSection) return;
+    if (getCookie("phone_modal_shown")) return;
 
-    // Checks if user has scrolled down a significant amount before showing modal
-    // Without this, the modal renders on page load.
-    const hasScrolled = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
-      return scrollY > 500; // require a significant scroll (500px) so modal isn't accidentally triggered
-    };
+    const timer = setTimeout(() => {
+      setShowPhoneModal(true);
+    }, 1000);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && hasScrolled()) {
-          setShowPhoneModal(true);
-          setHasShownPhoneModal(true);
-          observer.disconnect();
-        }
-      });
-    });
-
-    observer.observe(contentSection);
-
-    return () => observer.disconnect();
-  }, [hasShownPhoneModal]);
+    return () => clearTimeout(timer);
+  }, []);
 
   // When modal closes, set cookie
   const handlePhoneModalClose = () => {

@@ -92,6 +92,9 @@
 
 .phone-capture-modal {
   max-width: 30rem;
+  @include for-phone-only {
+    max-width: calc(100vw - 2rem);
+  }
 
   .jfcl-text-input {
     margin-bottom: 0.5rem;
