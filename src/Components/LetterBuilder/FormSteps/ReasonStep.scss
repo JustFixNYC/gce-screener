@@ -1,5 +1,4 @@
 @use "../../../mixins" as *;
-@use "../../../colors" as *;
 
 .reason-step {
   .reason-step__buttons {
@@ -25,24 +24,12 @@
       .jfcl-select-button__label,
       .jfcl-select-button__label:hover,
       .jfcl-select-button__label:focus,
-      .jfcl-select-button__label:active,
       .jfcl-select-button__input:focus + .jfcl-select-button__label,
       .jfcl-select-button__input:hover + .jfcl-select-button__label {
         // Reset hover/focus visual effects - use !important to override component library
-        border: 1px solid $OFF_BLACK !important;
-        padding: 0.75rem 1.875rem !important;
-        background-color: transparent !important;
+        border-width: 1px !important;
         box-shadow: none !important;
         outline: none !important;
-      }
-
-      // Reset checked state (needs 2px border per design)
-      .jfcl-select-button__input:checked + .jfcl-select-button__label,
-      .jfcl-select-button__input:checked + .jfcl-select-button__label:hover,
-      .jfcl-select-button__input:checked + .jfcl-select-button__label:active {
-        border: 2px solid $OFF_BLACK !important;
-        padding: calc(0.75rem - 1px) calc(1.875rem - 1px) !important;
-        background-color: $BLUE_100 !important;
       }
     }
 
