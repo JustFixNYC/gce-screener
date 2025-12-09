@@ -19,7 +19,9 @@
       text-wrap-mode: wrap;
     }
 
-    // Disable hover/focus styles on touch devices
+    // On mobile, the hover state from the previous page remains sticky on page load.
+    // The buggy behavior isn't reproducible every time, but does happen enough to warrant a fix.
+    // https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/
     @media (hover: none), (pointer: coarse) {
       .jfcl-select-button__label,
       .jfcl-select-button__label:hover,
@@ -33,15 +35,6 @@
         background-color: $OFF_WHITE_100 !important;
         box-shadow: none !important;
         outline: none !important;
-      }
-
-      // Reset checked state (needs 2px border per design)
-      .jfcl-select-button__input:checked + .jfcl-select-button__label,
-      .jfcl-select-button__input:checked + .jfcl-select-button__label:hover,
-      .jfcl-select-button__input:checked + .jfcl-select-button__label:active {
-        border: 2px solid $OFF_BLACK !important;
-        padding: calc(0.75rem - 1px) calc(1.875rem - 1px) !important;
-        background-color: $BLUE_100 !important;
       }
     }
   }
