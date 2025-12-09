@@ -16,7 +16,7 @@ msgstr ""
 "X-Crowdin-File-ID: 90\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Language-Team: Spanish, Latin America\n"
-"PO-Revision-Date: 2025-12-05 18:27\n"
+"PO-Revision-Date: 2025-12-09 20:45\n"
 
 #: GCE+Letter+-+Working+on+Resolution/08bd6083-372d-4dd5-b4d9-6d9eaabfa4b6/name:0
 msgid "No"
@@ -49,7 +49,7 @@ msgid "Thanks for the update.\n\n"
 "Is your landlord working with you on a resolution regarding your @(if(fields.gce_letter_reason = \"NON_RENEWAL\", \"lease renewal\", \"rent increase\"))\n\n"
 "Reply \"YES\" or \"NO\""
 msgstr "Gracias por la información.\n\n"
-"¿Está colaborando su arrendador con usted para encontrar una solución con respecto a tu @(if(fields.gce_letter_reason = \"NON_RENEWAL\", \"renovación del contrato de alquiler\", \"aumento del alquiler\"))\n\n"
+"¿Está colaborando su arrendador con usted para encontrar una solución con respecto a tu @(if(fields.gce_letter_reason = \"NON_RENEWAL\", \"renovación del contrato de arrendamiento\", \"aumento de la renta\"))\n\n"
 "Responda \"SÍ\" o \"NO\""
 
 #: GCE+Letter+-+Working+on+Resolution/4b71fc2b-a332-4b0a-8a52-0a2d2f20bc71/text:0
