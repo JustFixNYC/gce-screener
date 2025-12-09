@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, useRef } from "react";
+import { useContext, useState } from "react";
 import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
@@ -26,7 +26,6 @@ export const ReasonStep: React.FC = () => {
   const { _, i18n } = useLingui();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  const buttonsRef = useRef<HTMLDivElement>(null);
 
   const nextStep =
     watch("reason") === "PLANNED_INCREASE"
@@ -34,17 +33,6 @@ export const ReasonStep: React.FC = () => {
       : watch("reason") === "NON_RENEWAL"
       ? "non_renewal"
       : undefined;
-
-  useEffect(() => {
-    if (buttonsRef.current) {
-      setTimeout(() => {
-        if (buttonsRef.current) {
-          const inputs = buttonsRef.current.querySelectorAll("input");
-          inputs.forEach((input) => input.blur());
-        }
-      }, 0);
-    }
-  }, []);
 
   return (
     <LetterStepForm nextStep={nextStep} className="reason-step">
@@ -55,7 +43,7 @@ export const ReasonStep: React.FC = () => {
         invalidRole="status"
         helperElement={<ReasonHelperText onClick={() => setShowModal(true)} />}
       >
-        <div className="reason-step__buttons" ref={buttonsRef}>
+        <div className="reason-step__buttons">
           <SelectButton
             {...register("reason")}
             labelText={_(msg`Your landlord is planning to raise your rent`)}
