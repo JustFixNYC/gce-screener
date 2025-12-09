@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-12-09 20:45\n"
+"PO-Revision-Date: 2025-12-09 22:02\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -1231,7 +1231,7 @@ msgstr "Si necesita ayuda para comprender sus derechos, ponerse en contacto con 
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:70
 msgid "If you opted to have us mail the letter for you, we will text you your USPS tracking number, so you can confirm your letter was delivered. USPS may show “Tracking not available” at first. This is normal. Tracking will appear once USPS scans your letter. This can take between 1-5 days."
-msgstr "Si ha optado por que le enviemos la carta por correo, le enviaremos un mensaje de texto con su número de seguimiento de la USPS para que pueda confirmar que su carta ha sido entregada. Es posible que la USPS muestre inicialmente el mensaje \"Seguimiento no disponible\". Esto es normal. El seguimiento aparecerá una vez que la USPS escanee su carta. Esto puede tardar entre 1 y 5 días."
+msgstr "Si ha optado por que le enviemos la carta por correo, le enviaremos un mensaje de texto con su número de seguimiento del USPS para que pueda confirmar que su carta ha sido entregada. Es posible que el USPS muestre inicialmente el mensaje \"Seguimiento no disponible\". Esto es normal. El seguimiento aparecerá una vez que el USPS escanee su carta. Esto puede tardar entre 1 y 5 días."
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:158
 msgid "If you plan to stay long-term, you could offer to renew for two years instead of one in exchange for a smaller rent increase."
@@ -1303,7 +1303,7 @@ msgstr "Si su departamento nunca ha estado sujeto a una renta estabilizada, debe
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:58
 msgid "If your apartment is rent stabilized, you are not covered by Good Cause because you already have stronger existing protections through rent stabilization law."
-msgstr "Si su departamento está sujeto a un alquiler estabilizado, no está amparado por la cláusula de protecciones de Desalojo por Justa Causa, porque ya cuenta con protecciones más sólidas a través de la Ley de Estabilización de Rentas."
+msgstr "Si su departamento está sujeto a una renta estabilizada, no está amparado por la cláusula de protecciones de Desalojo por Justa Causa, porque ya cuenta con protecciones más sólidas a través de la Ley de Estabilización de Rentas."
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:96
 msgid "If your building has fewer than 11 apartments, you need to learn if your landlord owns other residential buildings."
@@ -1395,7 +1395,7 @@ msgstr "Si el aumento de su renta es superior al {0} %, comuníquele a su arrend
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:139
 msgid "If your rent was increased after April 20, 2024 beyond the allowable rent increase amount calculated above, your rent increase could be found unreasonable by housing court."
-msgstr "Si su alquiler se incrementó después del 20 de abril de 2024 por encima del monto de incremento de alquiler permitido calculado anteriormente, el Tribunal de Vivienda podría considerar que el incremento de su renta no es razonable."
+msgstr "Si su renta se incrementó después del 20 de abril de 2024 por encima del monto de incremento de renta permitido calculado anteriormente, el Tribunal de Vivienda podría considerar que el incremento de su renta no es razonable."
 
 #: src/Components/KYRContent/KYRContent.tsx:422
 #: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:65
@@ -1875,7 +1875,7 @@ msgstr "No hay datos disponibles sobre el número de departamentos en su edifici
 
 #: src/Components/Pages/Form/Survey.tsx:532
 msgid "No rent stabilized apartments were registered in your building in recent years, but based on the size and age of your building some of the apartments may still be rent stabilized."
-msgstr "En los últimos años no se han registrado departamentos con alquiler estabilizado en su edificio, pero según el tamaño y la antigüedad del mismo, es posible que algunos departamentos sigan teniendo alquiler estabilizado."
+msgstr "En su edificio no se registraron departamentos con renta estabilizada en los últimos años, pero según el tamaño y la antigüedad del edificio, es posible que algunos departamentos aún estén bajo renta estabilizada."
 
 #: src/Components/LetterBuilder/FormSteps/EmailChoiceStep.tsx:64
 #~ msgid "No, don't email my landlord"
@@ -1892,7 +1892,7 @@ msgstr "No, mi edificio no está subsidiado."
 #: src/Components/KYRContent/KYRContent.tsx:413
 #: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:56
 msgid "Non payment of rent"
-msgstr "Incumplimiento del pago del alquiler"
+msgstr "Incumplimiento del pago de la renta"
 
 #: src/Components/Pages/Form/Survey.tsx:255
 #~ msgid "None of the above"
@@ -1912,11 +1912,11 @@ msgstr "Nota:"
 
 #: src/Components/Pages/Form/Survey.tsx:435
 msgid "Note: if your building is part of 421a or J51, your apartment should be rent stabilized"
-msgstr "Nota: Si su edificio forma parte de los programas 421a o J51, el alquiler de su departamento debería estar estabilizado"
+msgstr "Nota: Si su edificio forma parte de los programas 421a o J51, la renta de su departamento debería estar estabilizada"
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:155
 msgid "Note: Landlords can increase the rent beyond the Reasonable Rent Increase limit, but they must explain why and must prove increases in their costs or substantial repairs they did to the apartment or building."
-msgstr "Nota: Los propietarios pueden aumentar el alquiler más allá del límite de aumento razonable, pero deben explicar por qué y demostrar el aumento de sus costos o las reparaciones sustanciales que han realizado en el departamento o el edificio."
+msgstr "Nota: Los propietarios pueden aumentar la renta más allá del límite de aumento razonable, pero deben explicar por qué y demostrar el aumento de sus costos o las reparaciones sustanciales que han realizado en el departamento o el edificio."
 
 #: src/Components/KYRContent/KYRContent.tsx:419
 #: src/Components/LetterBuilder/FormSteps/NonRenewalStep.tsx:62
@@ -2222,7 +2222,7 @@ msgstr "Política de privacidad"
 
 #: src/Components/KYRContent/KYRContent.tsx:674
 msgid "Protections if you live in a rent stabilized apartment"
-msgstr "Protecciones si vive en un departamento con alquiler estabilizado"
+msgstr "Protecciones si vive en un departamento con renta estabilizada"
 
 #: src/Components/KYRContent/KYRContent.tsx:769
 msgid "Protections if you live in NYCHA or PACT/RAD housing"
@@ -2269,11 +2269,11 @@ msgstr "Las fuentes de datos disponibles públicamente no indican que su edifici
 #. placeholder {1}: formatNumber(bldgUnits)
 #: src/Components/Pages/Form/Survey.tsx:521
 msgid "Publicly available data sources indicate that {0} of the {1} apartments in your building are registered as rent stabilized."
-msgstr "Las fuentes de datos disponibles públicamente indican que {0} de los {1} departamentos de su edificio están registrados como sujetos a un alquiler estabilizado."
+msgstr "Las fuentes de datos disponibles públicamente indican que {0} de los {1} departamentos de su edificio están registrados como sujetos a una renta estabilizada."
 
 #: src/Components/Pages/Form/Survey.tsx:511
 msgid "Publicly available data sources indicate that all apartments in your building are registered as rent stabilized."
-msgstr "Las fuentes de datos disponibles públicamente indican que todos los departamentos de su edificio están registrados como sujetos a un alquiler estabilizado."
+msgstr "Las fuentes de datos disponibles públicamente indican que todos los departamentos de su edificio están registrados como sujetos a una renta estabilizada."
 
 #. placeholder {0}: bldgData.unitsres == 1 ? "is 1 apartment" : `are ${bldgData.unitsres} apartments`
 #: src/Components/Pages/Form/Survey.tsx:326
@@ -2295,7 +2295,7 @@ msgstr "Las fuentes de datos disponibles públicamente indican que su edificio f
 #. placeholder {0}: active421a ? "421a" : "J51"
 #: src/Components/Pages/Form/Survey.tsx:498
 msgid "Publicly available data sources indicate that your building receives the {0} tax incentive. This means your apartment is rent stabilized."
-msgstr "Las fuentes de datos disponibles públicamente indican que su edificio recibe el incentivo fiscal {0} del Programa de Estabilización de Alquileres. Esto significa que su departamento está sujeto a un alquiler estabilizado."
+msgstr "Las fuentes de datos disponibles públicamente indican que su edificio recibe el incentivo fiscal {0} del Programa de Estabilización de Rentas. Esto significa que su departamento está sujeto a una renta estabilizada."
 
 #. placeholder {0}: formatNumber(relatedProperties)
 #: src/hooks/useCriteriaResults.tsx:163
@@ -2358,7 +2358,7 @@ msgstr "Las renovaciones de contratos de arrendamiento también deben cumplir la
 
 #: src/Components/Pages/Results/Results.tsx:304
 msgid "Rent Amount"
-msgstr "Importe del alquiler"
+msgstr "Importe de la renta"
 
 #: src/Components/TopBar/TopBar.tsx:55
 msgid "Rent increase calculator"
@@ -2370,11 +2370,11 @@ msgstr "Calculadora de aumento de renta"
 
 #: src/Components/Pages/Results/Results.tsx:306
 msgid "Rent stabilization"
-msgstr "Estabilización de alquiler"
+msgstr "Estabilización de renta"
 
 #: src/hooks/useCriteriaResults.tsx:339
 msgid "Rent stabilized apartments are not covered by Good Cause Eviction because they already have stronger tenant protections than Good Cause."
-msgstr "Los departamentos con alquiler estabilizado no están amparados por la Ley de Desalojo por Justa Causa, ya que cuentan con protecciones para los inquilinos más sólidas que las de dicha ley."
+msgstr "Los departamentos con renta estabilizada no están amparados por la Ley de Desalojo por Justa Causa, ya que cuentan con protecciones para los inquilinos más sólidas que las de dicha ley."
 
 #: src/Components/KYRContent/KYRContent.tsx:215
 msgid "Report source of income discrimination"
@@ -2386,11 +2386,11 @@ msgstr "Solicite copias de cualquier documento al que haga referencia su arrenda
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:72
 msgid "Request your rent history"
-msgstr "Solicite su historial de alquileres"
+msgstr "Solicite su historial de rentas"
 
 #: src/Components/Pages/RentStabilization/RentStabilization.tsx:76
 msgid "Request your rent history to help find out if your apartment is rent stabilized and if you’re being overcharged."
-msgstr "Solicite su historial de alquileres para averiguar si su departamento está sujeto a un alquiler estabilizado y si le están cobrando de más."
+msgstr "Solicite su historial de rentas para averiguar si su departamento está sujeto a una renta estabilizada y si le están cobrando de más."
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:173
 msgid "Required Notices from the Landlord"
@@ -3096,11 +3096,11 @@ msgstr "El USPS ha señalado que es posible que a esta dirección le falte el n�
 
 #: src/Components/AddressConfirmationModal/AddressConfirmationModal.tsx:62
 msgid "USPS has flagged this address as undeliverable. Your letter may not be delivered if you proceed with this address. If you know of an alternate address for your landlord, we encourage you to use it. "
-msgstr "La USPS ha marcado esta dirección como imposible de entregar. Es posible que su carta no se entregue si continúa con esta dirección. Si conoce otra dirección de su arrendador, le recomendamos que la utilice. "
+msgstr "Es posible que el USPS muestre inicialmente el mensaje \"Seguimiento no disponible\". Esto es normal. El seguimiento aparecerá una vez que la USPS haya escaneado su carta."
 
 #: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:169
 msgid "USPS may show “Tracking not available” at first. This is normal. Tracking will appear once USPS scans your letter."
-msgstr "Es posible que la USPS muestre inicialmente el mensaje \"Seguimiento no disponible\". Esto es normal. El seguimiento aparecerá una vez que la USPS haya escaneado su carta."
+msgstr "Es posible que el USPS muestre inicialmente el mensaje \"Seguimiento no disponible\". Esto es normal. El seguimiento aparecerá una vez que la USPS haya escaneado su carta."
 
 #: src/Components/AddressConfirmationModal/AddressConfirmationModal.tsx:97
 #~ msgid "USPS verified address:"
@@ -3235,7 +3235,7 @@ msgstr "Le proporcionaremos un PDF para que lo descargue, imprima y envíe por c
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:83
 msgid "We will send your letter for you via USPS Certified Mail at no cost to you. We will also provide a PDF for you to download for your records."
-msgstr "Enviaremos su carta por correo certificado de la USPS sin costo alguno para usted. También le proporcionaremos un PDF para que lo descargue y lo guarde en sus archivos."
+msgstr "Enviaremos su carta por correo certificado del USPS sin costo alguno para usted. También le proporcionaremos un PDF para que lo descargue y lo guarde en sus archivos."
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:78
 #~ msgid "We will send your letter for you via USPS Certified Mail in 1-2 business days, at no cost to you. We will also provide a PDF for you to download for your records."
@@ -3289,7 +3289,7 @@ msgstr "Le enviaremos por correo electrónico una copia en PDF de su carta. Tamb
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:249
 msgid "We’ll text you with your USPS tracking number. We will also check in after your letter is mailed. We will never call you or share your phone number."
-msgstr "Le enviaremos un mensaje de texto con su número de seguimiento de la USPS. También le informaremos una vez que su carta haya sido enviada. Nunca lo llamaremos ni compartiremos su número de teléfono."
+msgstr "Le enviaremos un mensaje de texto con su número de seguimiento del USPS. También le informaremos una vez que su carta haya sido enviada. Nunca lo llamaremos ni compartiremos su número de teléfono."
 
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:69
 msgid "We’ll use publicly available information about your building to help learn if you’re covered."
@@ -3918,7 +3918,7 @@ msgstr "Su carta se ha creado y ya está lista para que la descargue y la envíe
 #. placeholder {0}: data.tracking_number
 #: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:151
 msgid "Your letter is now on its way to your landlord. Your USPS Certified Mail® tracking number is <0>{0}</0>"
-msgstr "Su carta ya está en camino hacia su arrendador. Su número de seguimiento de USPS Certified Mail® es <0>{0}</0>"
+msgstr "Su carta ya está en camino hacia su arrendador. Su número de seguimiento del USPS Certified Mail® es <0>{0}</0>"
 
 #: src/Components/LetterBuilder/FormSteps/ConfirmationStep.tsx:141
 msgid "Your letter is on its way"
@@ -3967,7 +3967,7 @@ msgstr "Su derecho a impugnar las decisiones de la dirección"
 
 #: src/Components/KYRContent/KYRContent.tsx:799
 msgid "Your right to income-based rent"
-msgstr "Su derecho a un alquiler basado en sus ingresos"
+msgstr "Su derecho a una renta basada en sus ingresos"
 
 #: src/Components/KYRContent/KYRContent.tsx:837
 msgid "Your right to legal representation if facing eviction"
@@ -3976,7 +3976,7 @@ msgstr "Su derecho a representación legal si se enfrenta a un desalojo"
 #: src/Components/KYRContent/KYRContent.tsx:296
 #: src/Components/KYRContent/KYRContent.tsx:688
 msgid "Your right to limited rent increases"
-msgstr "Su derecho a aumentos limitados del alquiler"
+msgstr "Su derecho a aumentos limitados de la renta"
 
 #: src/Components/KYRContent/KYRContent.tsx:222
 msgid "Your right to organize"
@@ -4004,7 +4004,7 @@ msgstr "Sus derechos contra la discriminación"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:107
 msgid "Your USPS tracking number, so you can confirm your letter was delivered. USPS may show “Tracking not available” at first. This is normal. Tracking will appear once USPS scans your letter. This can take between 1-5 days."
-msgstr "Su número de seguimiento de USPS, para que pueda confirmar que su carta ha sido entregada. Es posible que la USPS muestre inicialmente el mensaje \"Seguimiento no disponible\". Esto es normal. El seguimiento aparecerá una vez que la USPS haya escaneado su carta. Esto puede tardar entre 1 y 5 días."
+msgstr "Su número de seguimiento del USPS, para que pueda confirmar que su carta ha sido entregada. Es posible que la USPS muestre inicialmente el mensaje \"Seguimiento no disponible\". Esto es normal. El seguimiento aparecerá una vez que la USPS haya escaneado su carta. Esto puede tardar entre 1 y 5 días."
 
 #: src/Components/Pages/PortfolioSize/PortfolioSize.tsx:308
 msgid "YouTube video for how to find other apartments your landlord owns"
