@@ -49,6 +49,7 @@
       text-wrap: pretty;
       @include h3_desktop;
       @include for-phone-only {
+        margin: 0 4rem 0 0;
         @include h3_mobile;
       }
     }
