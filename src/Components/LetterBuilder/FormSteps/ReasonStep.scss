@@ -47,7 +47,7 @@
       .jfcl-select-button__input:checked + .jfcl-select-button__label,
       .jfcl-select-button__label:hover {
         // adjust padding when the border width increases to avoid layout shift
-        padding: calc(0.75rem - 1px) calc(1.875rem - 1px) !important;
+        //padding: calc(0.75rem - 1px) calc(1.875rem - 1px) !important;
       }
 
     }
