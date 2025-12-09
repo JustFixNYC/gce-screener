@@ -32,7 +32,6 @@
     // form level error message
     .jfcl-input-header__invalid_text {
       font-size: 1rem;
-      font-weight: 400;
       display: block;
     }
 
@@ -94,7 +93,6 @@
       @include body_standard_desktop;
 
       button {
-        font-weight: 500;
         min-width: fit-content;
       }
     }
@@ -136,11 +134,6 @@
         min-width: 1.5em;
         min-height: 1.5em;
         margin-bottom: 0;
-        // should update in JFCL
-        border-width: 1px;
-        &--is-invalid {
-          border-width: 1.5px;
-        }
       }
     }
   }

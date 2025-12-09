@@ -15,6 +15,7 @@ import {
 import { formatMoney, getCookie, setCookie } from "../../../helpers";
 import { gtmPush } from "../../../google-tag-manager";
 import { CPI, CPI_EFFECTIVE_DATE } from "./RentIncreaseValues";
+import { Notice } from "../../Notice/Notice";
 import {
   PhoneNumberCallout,
   PhoneNumberModal,
@@ -50,7 +51,7 @@ export const RentCalculator: React.FC = () => {
       setTimeout(() => {
         setShowPhoneModal(true);
         setHasShownPhoneModal(true);
-      }, 3000);
+      }, 1000);
     }
   };
 
@@ -80,11 +81,11 @@ export const RentCalculator: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           <div className="rent-calculator-callout-box">
-            <span className="callout-box__header">
+            <h3 className="callout-box__header">
               <Trans>
                 Find out how much your landlord can increase your rent
               </Trans>
-            </span>
+            </h3>
             <form className="rent-input-container" onSubmit={handleSubmit}>
               <TextInput
                 labelText={_(
@@ -112,9 +113,9 @@ export const RentCalculator: React.FC = () => {
               <p className="rent-increase-header">
                 <Trans>Allowable rent increase amount:</Trans>
               </p>
-              <p className="rent-increase-result">
-                {rentInput && showRentInput ? (
-                  <>
+              {rentInput && showRentInput ? (
+                <>
+                  <p className="rent-increase-result">
                     <span className="rent-increase-formula">
                       {`${formatMoney(Number(rentInput))} + ${increase_pct}% =`}{" "}
                     </span>
@@ -123,13 +124,14 @@ export const RentCalculator: React.FC = () => {
                         Number(rentInput) * (1 + increase_pct / 100)
                       )} `}
                     </span>
-                  </>
-                ) : (
-                  <>
-                    <Trans>Your current monthly rent</Trans> + {increase_pct}%
-                  </>
-                )}
-              </p>
+                  </p>
+                  <LetterSenderCallout />
+                </>
+              ) : (
+                <p className="rent-increase-result">
+                  <Trans>Your current monthly rent</Trans> + {increase_pct}%
+                </p>
+              )}
             </div>
           </div>
           <div className="rent-increase-explanation">
@@ -183,7 +185,8 @@ export const RentCalculator: React.FC = () => {
 
           <GoodCauseProtections
             rent={showRentInput ? Number(rentInput) : undefined}
-            subtitle={_(msg`Protections under Good Cause`)}
+            title={_(msg`Protections under Good Cause`)}
+            headingLevel={3}
           >
             <ContentBoxFooter
               message={_(msg`Find out if you’re covered by Good Cause`)}
@@ -196,9 +199,37 @@ export const RentCalculator: React.FC = () => {
               }
             />
           </GoodCauseProtections>
-          <UniversalProtections />
+          <UniversalProtections headingLevel={3} />
         </div>
       </div>
     </div>
+  );
+};
+
+const LetterSenderCallout = () => {
+  const { i18n } = useLingui();
+  return (
+    <Notice icon="circleInfo" className="letter-callout" color="off-white-100">
+      <p>
+        <Trans>
+          <strong>If you’re covered by Good Cause</strong> and your landlord is
+          planning to raise your rent beyond this amount, you can send a
+          legally-vetted letter to your landlord to ask for a lower rent
+          increase.
+        </Trans>
+      </p>
+      <ul>
+        <li>
+          <JFCLLinkInternal to={`/${i18n.locale}/letter`}>
+            <Trans>Check out the Letter Sender</Trans>
+          </JFCLLinkInternal>
+        </li>
+        <li>
+          <JFCLLinkInternal to={`/${i18n.locale}`}>
+            <Trans>Find out if I’m covered</Trans>
+          </JFCLLinkInternal>
+        </li>
+      </ul>
+    </Notice>
   );
 };

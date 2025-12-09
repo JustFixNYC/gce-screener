@@ -1,33 +1,43 @@
 import { ReactNode } from "react";
-import "./ContentBox.scss";
-import { Accordion } from "../Accordion/Accordion";
-import classNames from "classnames";
 import { Link, To } from "react-router-dom";
+import classNames from "classnames";
+
+import { Accordion } from "../Accordion/Accordion";
 import { gtmPush } from "../../google-tag-manager";
 import { CoverageResult } from "../../types/APIDataTypes";
+import { Heading } from "../Heading/Heading";
+import "./ContentBox.scss";
 
-export type ContentBoxProps = {
+type Box = {
   title?: ReactNode;
-  subtitle?: ReactNode;
   headerExtra?: ReactNode;
   className?: string;
+  headingLevel?: number;
   children: ReactNode;
 };
 
+// enforces title and headingLevel as jointly required (or both missing)
+export type ContentBoxProps =
+  | (Required<Pick<Box, "title" | "headingLevel">> &
+      Omit<Box, "title" | "headingLevel">)
+  | (Omit<Box, "title" | "headingLevel"> &
+      Partial<Record<"title" | "headingLevel", never>>);
+
 export const ContentBox: React.FC<ContentBoxProps> = ({
   title,
-  subtitle,
   headerExtra,
   className,
+  headingLevel,
   children,
 }) => {
   return (
     <div className={classNames("content-box", className)}>
-      {(title || subtitle || headerExtra) && (
+      {(title || headerExtra) && (
         <div className="content-box__header">
-          {title && <div className="content-box__header-title">{title}</div>}
-          {subtitle && (
-            <div className="content-box__header-subtitle">{subtitle}</div>
+          {title && (
+            <div className="content-box__header-title">
+              <Heading level={headingLevel}>{title}</Heading>
+            </div>
           )}
           {headerExtra}
         </div>
@@ -37,10 +47,10 @@ export const ContentBox: React.FC<ContentBoxProps> = ({
   );
 };
 
-export type ContentBoxItemProps = {
+type Item = {
   title?: ReactNode;
+  headingLevel?: number;
   subtitle?: ReactNode;
-  step?: number;
   icon?: ReactNode;
   children?: ReactNode;
   accordion?: boolean;
@@ -50,10 +60,16 @@ export type ContentBoxItemProps = {
   coverageResult?: CoverageResult;
 };
 
+// enforces title and headingLevel as jointly required (or both missing)
+export type ContentBoxItemProps =
+  | (Required<Pick<Item, "title" | "headingLevel">> &
+      Omit<Item, "title" | "headingLevel">)
+  | (Omit<Item, "title" | "headingLevel"> &
+      Partial<Record<"title" | "headingLevel", never>>);
+
 export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
   title,
   subtitle,
-  step,
   icon,
   accordion = true,
   open = false,
@@ -61,16 +77,18 @@ export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
   children,
   gtmId,
   coverageResult,
+  headingLevel,
 }) => {
   const headerSection = (
     <>
       {icon}
-      {(step || title || subtitle) && (
+      {(title || subtitle) && (
         <div className="content-box__section__header-container">
-          {step && (
-            <div className="content-box__section__step">{`Step ${step}`}</div>
+          {title && headingLevel && (
+            <div className="content-box__section__header">
+              <Heading level={headingLevel}>{title}</Heading>
+            </div>
           )}
-          {title && <div className="content-box__section__header">{title}</div>}
           {subtitle && (
             <div className="content-box__section__header-subtitle">
               {subtitle}

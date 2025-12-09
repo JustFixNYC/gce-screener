@@ -48,7 +48,6 @@ import {
   toTitleCase,
 } from "../../../helpers";
 import { ShareButtons } from "../../ShareButtons/ShareButtons";
-import "./Results.scss";
 import { useAccordionsOpenForPrint } from "../../../hooks/useAccordionsOpenForPrint";
 import { useSearchParamsURL } from "../../../hooks/useSearchParamsURL";
 import { JFCLLinkInternal } from "../../JFCLLink";
@@ -57,6 +56,7 @@ import {
   PhoneNumberCallout,
   PhoneNumberModal,
 } from "../../PhoneNumberCallout/PhoneNumberCallout";
+import "./Results.scss";
 
 export const Results: React.FC = () => {
   const { _ } = useLingui();
@@ -96,34 +96,16 @@ export const Results: React.FC = () => {
   useSearchParamsURL(setSearchParams, address, fields, user);
 
   const [showPhoneModal, setShowPhoneModal] = useState(false);
-  const [hasShownPhoneModal, setHasShownPhoneModal] = useState(false);
 
   useEffect(() => {
-    if (hasShownPhoneModal || getCookie("phone_modal_shown")) return;
-    const contentSection = document.querySelector(".content-section__content");
-    if (!contentSection) return;
+    if (getCookie("phone_modal_shown")) return;
 
-    // Checks if user has scrolled down a significant amount before showing modal
-    // Without this, the modal renders on page load.
-    const hasScrolled = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
-      return scrollY > 500; // require a significant scroll (500px) so modal isn't accidentally triggered
-    };
+    const timer = setTimeout(() => {
+      setShowPhoneModal(true);
+    }, 1000);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && hasScrolled()) {
-          setShowPhoneModal(true);
-          setHasShownPhoneModal(true);
-          observer.disconnect();
-        }
-      });
-    });
-
-    observer.observe(contentSection);
-
-    return () => observer.disconnect();
-  }, [hasShownPhoneModal]);
+    return () => clearTimeout(timer);
+  }, []);
 
   // When modal closes, set cookie
   const handlePhoneModalClose = () => {
@@ -219,6 +201,7 @@ export const Results: React.FC = () => {
               <UnknownProtections
                 className="unknown-protections"
                 coverageResult={coverageResult}
+                headingLevel={3}
               />
             </>
           )}
@@ -227,16 +210,24 @@ export const Results: React.FC = () => {
               lngLat={address.longLat}
               coverageResult={coverageResult}
               className="subsidized-protections"
+              headingLevel={3}
             />
           )}
           {coverageResult === "RENT_STABILIZED" && (
-            <RentStabilizedProtections coverageResult={coverageResult} />
+            <RentStabilizedProtections
+              coverageResult={coverageResult}
+              headingLevel={3}
+            />
           )}
           {coverageResult === "COVERED" && (
             <>
-              <GoodCauseProtections rent={Number(fields.rent)} />
+              <GoodCauseProtections
+                rent={Number(fields.rent)}
+                headingLevel={3}
+              />
               <GoodCauseExercisingRights
                 coverageResult={coverageResult}
+                headingLevel={3}
                 shareButtons={
                   <ShareButtons
                     buttonsInfo={[
@@ -252,17 +243,24 @@ export const Results: React.FC = () => {
             </>
           )}
           {coverageResult === "NYCHA" && (
-            <NYCHAProtections coverageResult={coverageResult} />
+            <NYCHAProtections
+              coverageResult={coverageResult}
+              headingLevel={3}
+            />
           )}
           {coverageResult !== "UNKNOWN" && coverageResult !== "NOT_COVERED" && (
-            <UniversalProtections coverageResult={coverageResult} />
+            <UniversalProtections
+              coverageResult={coverageResult}
+              headingLevel={3}
+            />
           )}
           {coverageResult === "NOT_COVERED" && (
             <UniversalProtections
               coverageResult={coverageResult}
-              subtitle={_(
+              title={_(
                 msg`Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights`
               )}
+              headingLevel={3}
             />
           )}
           <PhoneNumberCallout
@@ -354,6 +352,7 @@ const CriterionRow: React.FC<CriterionDetails> = (props) => {
         title={_(CRITERIA_LABELS[props?.criteria])}
         subtitle={props?.requirement}
         icon={<EligibilityIcon {...props} />}
+        headingLevel={4}
       >
         <div className="callout-box">{props?.userValue}</div>
       </ContentBoxItem>
@@ -368,9 +367,9 @@ const CriteriaTable: React.FC<{
   return (
     <ContentBox className="criteria-table">
       <div className="criteria-table__header">
-        <span className="criteria-table__header__title">
+        <h3 className="criteria-table__header__title">
           <Trans>How we determined your coverage</Trans>
-        </span>
+        </h3>
         <p>
           <Trans>
             Results are based on publicly available data about your building and
@@ -427,12 +426,13 @@ const EligibilityNextSteps: React.FC<{
   return (
     <>
       <ContentBox
-        subtitle={_(
+        title={_(
           msg`There ${plural(steps, {
             one: "is # thing",
             other: "are # things",
           })} you need to verify to confirm your coverage`
         )}
+        headingLevel={3}
       >
         {rentStabilizedUnknown && (
           <ContentBoxItem
@@ -442,6 +442,7 @@ const EligibilityNextSteps: React.FC<{
             icon={unsureIcon}
             className="next-step"
             gtmId="next-step_rs"
+            headingLevel={4}
           >
             <p>
               <Trans>
@@ -469,6 +470,7 @@ const EligibilityNextSteps: React.FC<{
             icon={unsureIcon}
             className="next-step"
             gtmId="next-step_portfolio"
+            headingLevel={4}
           >
             <p>
               <Trans>

@@ -48,9 +48,10 @@ export const RentStabilization: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           <ContentBox
-            subtitle={_(
+            title={_(
               msg`Good Cause Eviction only applies to tenants who are not rent stabilized.`
             )}
+            headingLevel={3}
           >
             <ContentBoxItem accordion={false}>
               <p>
@@ -64,11 +65,13 @@ export const RentStabilization: React.FC = () => {
           </ContentBox>
           <div className="divider__print" />
           <ContentBox
-            subtitle={_(
-              msg`How to find out if your apartment is rent stabilized`
-            )}
+            title={_(msg`How to find out if your apartment is rent stabilized`)}
+            headingLevel={3}
           >
-            <ContentBoxItem title={_(msg`Request your rent history`)}>
+            <ContentBoxItem
+              title={_(msg`Request your rent history`)}
+              headingLevel={4}
+            >
               <p>
                 <Trans>
                   Request your rent history to help find out if your apartment
@@ -100,6 +103,7 @@ export const RentStabilization: React.FC = () => {
 
             <ContentBoxItem
               title={_(msg`Check your most recent lease renewal`)}
+              headingLevel={4}
             >
               <p>
                 <Trans>
@@ -125,6 +129,7 @@ export const RentStabilization: React.FC = () => {
               title={_(
                 msg`Attend a walk-in Clinic hosted by the Met Council on Housing`
               )}
+              headingLevel={4}
             >
               <p>
                 <Trans>
@@ -150,7 +155,8 @@ export const RentStabilization: React.FC = () => {
           </ContentBox>
           <div className="divider__print" />
           <RentStabilizedProtections
-            subtitle={_(msg`Tenant rights under rent stabilization`)}
+            title={_(msg`Tenant rights under rent stabilization`)}
+            headingLevel={3}
           />
         </div>
       </div>

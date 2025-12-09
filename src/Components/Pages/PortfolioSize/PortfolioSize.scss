@@ -13,13 +13,6 @@
     @include for-tablet-portrait-up {
       width: 78%;
     }
-    .info-box__content-container {
-      @include body_standard_desktop;
-      @include for-phone-only {
-        @include body_standard_mobile;
-        font-weight: 500;
-      }
-    }
   }
 
   .headline-section {
@@ -247,7 +240,7 @@
       .content-box__header-title {
         display: none;
       }
-      .content-box__header-subtitle {
+      .content-box__header-title {
         @include h3_mobile;
       }
       .content-box__section.no-title {
