@@ -51,7 +51,7 @@ export const RentCalculator: React.FC = () => {
       setTimeout(() => {
         setShowPhoneModal(true);
         setHasShownPhoneModal(true);
-      }, 3000);
+      }, 1000);
     }
   };
 
