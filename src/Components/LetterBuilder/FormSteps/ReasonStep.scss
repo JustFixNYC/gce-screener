@@ -35,14 +35,7 @@
       .jfcl-select-button__input:hover + .jfcl-select-button__label {
         border: 1px solid $OFF_BLACK !important;
         background-color: $OFF_WHITE_100 !important;
-      }
-
-      .jfcl-select-button__input:checked + .jfcl-select-button__label,
-      .jfcl-select-button__label:hover {
-        // adjust padding when the border width increases to avoid layout shift
-        padding: calc(0.75rem - 1px) calc(1.875rem - 1px) !important;
-      }
-  
+      }  
 
       .jfcl-select-button__input:checked + .jfcl-select-button__label,
       .jfcl-select-button__input:checked + .jfcl-select-button__label:hover,
@@ -50,6 +43,13 @@
         border: 2px solid $OFF_BLACK !important;
         background-color: $BLUE_100 !important;
       }
+
+      .jfcl-select-button__input:checked + .jfcl-select-button__label,
+      .jfcl-select-button__label:hover {
+        // adjust padding when the border width increases to avoid layout shift
+        padding: calc(0.75rem - 1px) calc(1.875rem - 1px) !important;
+      }
+
     }
   }
 }
