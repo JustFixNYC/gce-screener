@@ -35,6 +35,9 @@
         @include for-phone-only {
           @include body_standard_mobile;
         }
+        svg {
+          height: 0.9em;
+        }
       }
     }
 
