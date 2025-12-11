@@ -13,9 +13,10 @@
     &:hover:not(:disabled) {
       background-color: unset;
     }
+    // TODO: Remove once changed in JFCL
     svg {
       height: 0.9em;
-      margin-top: 1px;
+      margin-top: 4px;
     }
   }
 }
