@@ -13,5 +13,8 @@
     &:hover:not(:disabled) {
       background-color: unset;
     }
+    svg {
+      height: 0.9em;
+    }
   }
 }
