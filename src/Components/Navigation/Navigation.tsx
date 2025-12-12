@@ -113,7 +113,7 @@ export const Sidebar: React.FC = () => {
               )}
             >
               <JFCLLink to="/">
-                <Icon icon="check" />
+                <Icon icon="house" />
                 <Trans>Find out if you're covered</Trans>
               </JFCLLink>
             </li>
@@ -128,7 +128,7 @@ export const Sidebar: React.FC = () => {
                   gtmPush("gce_rent_calculator", { from: "navbar" })
                 }
               >
-                <Icon icon="check" />
+                <Icon icon="calculatorSimple" />
                 <Trans>Calculate your rent increase</Trans>
               </JFCLLink>
             </li>
@@ -137,7 +137,7 @@ export const Sidebar: React.FC = () => {
                 to={`/${i18n.locale}/letter`}
                 onClick={() => gtmPush("gce_letter_sender", { from: "navbar" })}
               >
-                <Icon icon="check" />
+                <Icon icon="mailboxOpenLetter" />
                 <Trans>Draft your Good Cause letter</Trans>
               </JFCLLink>
             </li>
@@ -147,7 +147,7 @@ export const Sidebar: React.FC = () => {
               )}
             >
               <JFCLLink to={`/${i18n.locale}/tenant_rights`}>
-                <Icon icon="check" />
+                <Icon icon="shieldCheck" />
                 <Trans>Know your rights</Trans>
               </JFCLLink>
             </li>
