@@ -23,8 +23,8 @@ export const LocaleToggle: React.FC = () => {
         disabled={i18n.locale === "en"}
       >
         English
-      </button>{" "}
-      /{" "}
+      </button>
+      /
       <button
         className="jfcl-link"
         type="button"

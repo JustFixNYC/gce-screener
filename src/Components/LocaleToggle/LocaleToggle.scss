@@ -5,16 +5,17 @@
   button {
     background: none;
     border: none;
-    text-decoration: underline;
     cursor: pointer;
-    color: inherit;
+    color: $GREY_600;
+    font-weight: 600;
     &:hover {
       color: $GREY_700;
+      text-decoration: underline;
     }
     &:disabled {
-      text-decoration: none;
+      text-decoration: underline;
       cursor: default;
-      color: $GREY_600;
+      color: $OFF_BLACK;
     }
   }
 }
