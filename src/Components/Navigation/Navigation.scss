@@ -251,7 +251,7 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
     .sidebar__locale-toggle {
       @include body_standard_desktop;
       font-weight: 600;
-      padding: 1.5rem 1.5rem 1.5rem 2.25rem;
+      padding: 1.5rem 1.5rem 0 2.25rem;
       color: $OFF_BLACK;
       margin-top: auto;
       margin-bottom: 2rem;
