@@ -153,6 +153,12 @@ export const Sidebar: React.FC = () => {
             </li>
           </ul>
         </nav>
+        <div className="sidebar__locale-toggle">
+          <span>
+            <Trans>Language</Trans>:
+          </span>
+          <LocaleToggle />
+        </div>
       </div>
     </div>
   );
