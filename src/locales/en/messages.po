@@ -75,7 +75,7 @@ msgstr "{email}"
 msgid "{unitsres, plural, one {# apartment} other {# apartments}}"
 msgstr "{unitsres, plural, one {# apartment} other {# apartments}}"
 
-#: src/Components/Navigation/Navigation.tsx:175
+#: src/Components/Navigation/Navigation.tsx:195
 msgid "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 msgstr "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 
@@ -446,7 +446,7 @@ msgstr "Calculate"
 msgid "Calculate your max rent increase."
 msgstr "Calculate your max rent increase."
 
-#: src/Components/Navigation/Navigation.tsx:132
+#: src/Components/Navigation/Navigation.tsx:140
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:67
 msgid "Calculate your rent increase"
 msgstr "Calculate your rent increase"
@@ -541,7 +541,7 @@ msgstr "Close"
 msgid "Close modal"
 msgstr "Close modal"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:145
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:144
 msgid "Communicating your request to your landlord in writing provides documented evidence of your complaint."
 msgstr "Communicating your request to your landlord in writing provides documented evidence of your complaint."
 
@@ -629,7 +629,7 @@ msgstr "Copy goodcausenyc.org"
 msgid "Coverage depends on your building type, subsidy status, and other factors."
 msgstr "Coverage depends on your building type, subsidy status, and other factors."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:142
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:141
 msgid "Create a paper trail"
 msgstr "Create a paper trail"
 
@@ -696,7 +696,7 @@ msgstr "Download letter (PDF)"
 msgid "Download my letter"
 msgstr "Download my letter"
 
-#: src/Components/Navigation/Navigation.tsx:141
+#: src/Components/Navigation/Navigation.tsx:152
 msgid "Draft your Good Cause letter"
 msgstr "Draft your Good Cause letter"
 
@@ -761,7 +761,7 @@ msgstr "Error"
 msgid "Error with address selection"
 msgstr "Error with address selection"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:134
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:133
 msgid "Establishes a professional channel to negotiate solutions to your rent increase or non-renewal."
 msgstr "Establishes a professional channel to negotiate solutions to your rent increase or non-renewal."
 
@@ -829,12 +829,12 @@ msgstr "Find other buildings your landlord owns"
 msgid "Find out how much your landlord can increase your rent"
 msgstr "Find out how much your landlord can increase your rent"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:45
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:44
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:229
 msgid "Find out if I’m covered"
 msgstr "Find out if I’m covered"
 
-#: src/Components/Navigation/Navigation.tsx:117
+#: src/Components/Navigation/Navigation.tsx:124
 msgid "Find out if you're covered"
 msgstr "Find out if you're covered"
 
@@ -910,7 +910,7 @@ msgstr "For New York City, the CPI change is {0}% as of {1}, meaning increases a
 msgid "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
 msgstr "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:120
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:119
 msgid "Formally assert your rights"
 msgstr "Formally assert your rights"
 
@@ -972,7 +972,7 @@ msgid "Good Cause Letter Preview"
 msgstr "Good Cause Letter Preview"
 
 #: src/Components/Footer/Footer.tsx:63
-#: src/Components/Navigation/Navigation.tsx:165
+#: src/Components/Navigation/Navigation.tsx:185
 msgid "Good Cause NYC"
 msgstr "Good Cause NYC"
 
@@ -1047,7 +1047,7 @@ msgstr "Housing Justice for All tenant organizing form"
 #~ msgid "How do you want to send your letter?"
 #~ msgstr "How do you want to send your letter?"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:57
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:56
 msgid "How it works"
 msgstr "How it works"
 
@@ -1114,7 +1114,7 @@ msgstr "I respectfully request the following:"
 msgid "I value our landlord–tenant relationship and wish to continue it on clear and lawful terms. Please let me know if you’d like to discuss or clarify any of these requirements. I hope we can work cooperatively to uphold both legal obligations and good-faith communication. "
 msgstr "I value our landlord–tenant relationship and wish to continue it on clear and lawful terms. Please let me know if you’d like to discuss or clarify any of these requirements. I hope we can work cooperatively to uphold both legal obligations and good-faith communication. "
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:41
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:40
 msgid "I’m covered, start my free letter"
 msgstr "I’m covered, start my free letter"
 
@@ -1172,7 +1172,7 @@ msgstr "If you applied for your apartment through \"NYC Housing Connect,\" your 
 msgid "If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
 msgstr "If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:60
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:59
 msgid "If you are covered by Good Cause, you have a legal right to limited rent increases and the right to stay in your home."
 msgstr "If you are covered by Good Cause, you have a legal right to limited rent increases and the right to stay in your home."
 
@@ -1226,7 +1226,7 @@ msgid "If you live in NYC and are not covered by Good Cause Eviction, you still 
 msgstr "If you live in NYC and are not covered by Good Cause Eviction, you still have important tenant protections. Depending on the type of housing you live in, your protections may be even stronger than those provided by Good Cause."
 
 #: src/Components/Pages/Home/Home.tsx:178
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:93
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:92
 msgid "If you live outside of NYC"
 msgstr "If you live outside of NYC"
 
@@ -1322,7 +1322,7 @@ msgstr "If your landlord files a court case, refuses to renew your lease, or you
 msgid "If your landlord ignores your letter, you still have your Good Cause protections."
 msgstr "If your landlord ignores your letter, you still have your Good Cause protections."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:66
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:65
 msgid "If your landlord is either planning to raise your rent, or not offer you a new lease, we will draft a USPS Certified Mail letter defending your Good Cause rights. We will even send it for you, for free."
 msgstr "If your landlord is either planning to raise your rent, or not offer you a new lease, we will draft a USPS Certified Mail letter defending your Good Cause rights. We will even send it for you, for free."
 
@@ -1497,7 +1497,7 @@ msgstr "Keep this for your documentation. It's an important part of asserting yo
 msgid "Keep this for your documentation. It’s an important part of asserting your rights."
 msgstr "Keep this for your documentation. It’s an important part of asserting your rights."
 
-#: src/Components/Navigation/Navigation.tsx:151
+#: src/Components/Navigation/Navigation.tsx:165
 msgid "Know your rights"
 msgstr "Know your rights"
 
@@ -1542,6 +1542,7 @@ msgid "Landlords often value stability, especially in a competitive market. A sh
 msgstr "Landlords often value stability, especially in a competitive market. A short, polite message pointing out your reliability can strengthen your case for a smaller increase."
 
 #: src/Components/Footer/Footer.tsx:16
+#: src/Components/Navigation/Navigation.tsx:172
 msgid "Language"
 msgstr "Language"
 
@@ -1674,7 +1675,7 @@ msgstr "Learn more about the Letter Sender"
 msgid "Learn more about your rights"
 msgstr "Learn more about your rights"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:103
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:102
 msgid "Learn where Good Cause Protections have already been won"
 msgstr "Learn where Good Cause Protections have already been won"
 
@@ -1915,7 +1916,7 @@ msgstr "Non payment of rent"
 #~ msgid "None of the above"
 #~ msgstr "None of the above"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:74
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:73
 msgid "Not sure if you’re covered?"
 msgstr "Not sure if you’re covered?"
 
@@ -2009,7 +2010,7 @@ msgstr "Offer a longer lease in exchange for a smaller increase"
 msgid "Once you find the name of your building’s owner, remember it because you’ll need it in Step 2."
 msgstr "Once you find the name of your building’s owner, remember it because you’ll need it in Step 2."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:131
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:130
 msgid "Open negotiation"
 msgstr "Open negotiation"
 
@@ -2566,7 +2567,7 @@ msgstr "Send a letter to your <0/>landlord defending <1/>your Good Cause rights"
 msgid "Send the rent increase calculator to your phone"
 msgstr "Send the rent increase calculator to your phone"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:123
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:122
 msgid "Sending a letter clearly communicates to your landlord that you know your legal protections."
 msgstr "Sending a letter clearly communicates to your landlord that you know your legal protections."
 
@@ -2665,7 +2666,7 @@ msgstr "Subsidized housing"
 msgid "Survey"
 msgstr "Survey"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:76
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:75
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:174
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:193
 #: src/Components/Pages/TenantRights/TenantRights.tsx:37
@@ -2716,7 +2717,7 @@ msgstr "Tenant support groups can help you draft messages, practice negotiation 
 msgid "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State."
 msgstr "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:96
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:95
 msgid "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State. This product is not yet available for residents outside of New York City."
 msgstr "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State. This product is not yet available for residents outside of New York City."
 
@@ -2777,7 +2778,7 @@ msgstr "The Good Cause law establishes a Reasonable Rent Increase, which is set 
 #~ msgid "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants themselves."
 #~ msgstr "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants themselves."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:85
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:84
 msgid "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants."
 msgstr "The Good Cause Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants."
 
@@ -2872,7 +2873,7 @@ msgstr "This documentation can protect you if your landlord challenges your righ
 msgid "This ensures that housing remains affordable and equitable for all residents, regardless of financial circumstances. Residents who have recently experienced a change in income can request an interim recertification to ensure that their apartment remains affordable."
 msgstr "This ensures that housing remains affordable and equitable for all residents, regardless of financial circumstances. Residents who have recently experienced a change in income can request an interim recertification to ensure that their apartment remains affordable."
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:82
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:81
 msgid "This free service has been legally vetted"
 msgstr "This free service has been legally vetted"
 
@@ -3415,7 +3416,7 @@ msgstr "Who can help?"
 msgid "Why are we asking for this information?"
 msgstr "Why are we asking for this information?"
 
-#: src/Components/Pages/LetterLanding/LetterLanding.tsx:115
+#: src/Components/Pages/LetterLanding/LetterLanding.tsx:114
 msgid "Why send a letter to your landlord?"
 msgstr "Why send a letter to your landlord?"
 

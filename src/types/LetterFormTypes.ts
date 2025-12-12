@@ -59,7 +59,7 @@ const userDetailsSchema = (i18n: I18n) => {
       // 10 digits, not starting with 0 or 1 (invalid first digits of area code,
       // part of validation on tenants2)
       .regex(
-        /^[3-9]\d{9}$/,
+        /^[2-9]\d{9}$/,
         i18n._(msg`Please enter a complete US phone number`)
       ),
     email: looseOptional(
