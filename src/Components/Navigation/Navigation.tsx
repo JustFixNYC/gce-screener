@@ -101,6 +101,13 @@ export const Sidebar: React.FC = () => {
   const { i18n } = useLingui();
   const { pathname } = useLocation();
 
+  const scrollToTop = () => {
+    const mainElement = document.getElementById("main");
+    if (mainElement) {
+      mainElement.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <div id="sidebar">
       <div className="sidebar__content">
@@ -112,7 +119,7 @@ export const Sidebar: React.FC = () => {
                 removeLocalePrefix(pathname) === "/" && "active"
               )}
             >
-              <JFCLLink to="/">
+              <JFCLLink to={`/${i18n.locale}/`} onClick={scrollToTop}>
                 <Icon icon="house" />
                 <Trans>Find out if you're covered</Trans>
               </JFCLLink>
@@ -124,9 +131,10 @@ export const Sidebar: React.FC = () => {
             >
               <JFCLLink
                 to={`/${i18n.locale}/rent_calculator`}
-                onClick={() =>
-                  gtmPush("gce_rent_calculator", { from: "navbar" })
-                }
+                onClick={() => {
+                  scrollToTop();
+                  gtmPush("gce_rent_calculator", { from: "navbar" });
+                }}
               >
                 <Icon icon="calculatorSimple" />
                 <Trans>Calculate your rent increase</Trans>
@@ -135,7 +143,10 @@ export const Sidebar: React.FC = () => {
             <li className={classNames(pathname.includes("letter") && "active")}>
               <JFCLLink
                 to={`/${i18n.locale}/letter`}
-                onClick={() => gtmPush("gce_letter_sender", { from: "navbar" })}
+                onClick={() => {
+                  scrollToTop();
+                  gtmPush("gce_letter_sender", { from: "navbar" });
+                }}
               >
                 <Icon icon="mailboxOpenLetter" />
                 <Trans>Draft your Good Cause letter</Trans>
@@ -146,7 +157,10 @@ export const Sidebar: React.FC = () => {
                 pathname.includes("tenant_rights") && "active"
               )}
             >
-              <JFCLLink to={`/${i18n.locale}/tenant_rights`}>
+              <JFCLLink
+                to={`/${i18n.locale}/tenant_rights`}
+                onClick={scrollToTop}
+              >
                 <Icon icon="shieldCheck" />
                 <Trans>Know your rights</Trans>
               </JFCLLink>
