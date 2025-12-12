@@ -72,7 +72,7 @@ export const BackLink: React.FC<JFCLLinkProps> = (props) => (
   >
     <span className="jfcl-link__icon-wrapper">
       &#xfeff;
-      <Icon icon="arrowLeft" className="jfcl-link__icon" />
+      <Icon icon="chevronLeft" className="jfcl-link__icon" />
     </span>
     {props.children}
   </Link>

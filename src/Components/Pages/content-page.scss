@@ -35,6 +35,11 @@
         @include for-phone-only {
           @include body_standard_mobile;
         }
+        // TODO: Remove once changed in JFCL
+        svg {
+          height: 0.9em;
+          margin-top: 4px;
+        }
       }
     }
 
