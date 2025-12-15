@@ -75,7 +75,7 @@ msgstr "{email}"
 msgid "{unitsres, plural, one {# apartment} other {# apartments}}"
 msgstr "{unitsres, plural, one {# apartment} other {# apartments}}"
 
-#: src/Components/Navigation/Navigation.tsx:195
+#: src/Components/Navigation/Navigation.tsx:139
 msgid "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 msgstr "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 
@@ -446,7 +446,7 @@ msgstr "Calculate"
 msgid "Calculate your max rent increase."
 msgstr "Calculate your max rent increase."
 
-#: src/Components/Navigation/Navigation.tsx:140
+#: src/Components/Navigation/Navigation.tsx:84
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:67
 msgid "Calculate your rent increase"
 msgstr "Calculate your rent increase"
@@ -532,7 +532,6 @@ msgstr "classified as an educational building"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:497
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:270
-#: src/Components/Navigation/Navigation.tsx:70
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:275
 msgid "Close"
 msgstr "Close"
@@ -696,7 +695,7 @@ msgstr "Download letter (PDF)"
 msgid "Download my letter"
 msgstr "Download my letter"
 
-#: src/Components/Navigation/Navigation.tsx:152
+#: src/Components/Navigation/Navigation.tsx:96
 msgid "Draft your Good Cause letter"
 msgstr "Draft your Good Cause letter"
 
@@ -834,7 +833,7 @@ msgstr "Find out how much your landlord can increase your rent"
 msgid "Find out if I’m covered"
 msgstr "Find out if I’m covered"
 
-#: src/Components/Navigation/Navigation.tsx:124
+#: src/Components/Navigation/Navigation.tsx:68
 msgid "Find out if you're covered"
 msgstr "Find out if you're covered"
 
@@ -972,7 +971,8 @@ msgid "Good Cause Letter Preview"
 msgstr "Good Cause Letter Preview"
 
 #: src/Components/Footer/Footer.tsx:63
-#: src/Components/Navigation/Navigation.tsx:185
+#: src/Components/Navigation/Navigation.tsx:28
+#: src/Components/Navigation/Navigation.tsx:129
 msgid "Good Cause NYC"
 msgstr "Good Cause NYC"
 
@@ -1497,7 +1497,7 @@ msgstr "Keep this for your documentation. It's an important part of asserting yo
 msgid "Keep this for your documentation. It’s an important part of asserting your rights."
 msgstr "Keep this for your documentation. It’s an important part of asserting your rights."
 
-#: src/Components/Navigation/Navigation.tsx:165
+#: src/Components/Navigation/Navigation.tsx:109
 msgid "Know your rights"
 msgstr "Know your rights"
 
@@ -1542,7 +1542,7 @@ msgid "Landlords often value stability, especially in a competitive market. A sh
 msgstr "Landlords often value stability, especially in a competitive market. A short, polite message pointing out your reliability can strengthen your case for a smaller increase."
 
 #: src/Components/Footer/Footer.tsx:16
-#: src/Components/Navigation/Navigation.tsx:172
+#: src/Components/Navigation/Navigation.tsx:116
 msgid "Language"
 msgstr "Language"
 
@@ -1725,8 +1725,8 @@ msgid "Letter preview language:"
 msgstr "Letter preview language:"
 
 #: src/Components/Navigation/Navigation.tsx:17
-msgid "Letter sender"
-msgstr "Letter sender"
+#~ msgid "Letter sender"
+#~ msgstr "Letter sender"
 
 #: src/Components/Pages/Results/Results.tsx:285
 msgid "Live-in landlord"
@@ -1800,8 +1800,8 @@ msgid "Map showing location of the entered address."
 msgstr "Map showing location of the entered address."
 
 #: src/Components/Navigation/Navigation.tsx:70
-msgid "Menu"
-msgstr "Menu"
+#~ msgid "Menu"
+#~ msgstr "Menu"
 
 #: src/Components/KYRContent/KYRContent.tsx:262
 #: src/Components/KYRContent/KYRContent.tsx:651
@@ -2378,7 +2378,7 @@ msgstr "Renewal leases must also follow Good Cause rules. A rent increase above 
 msgid "Rent Amount"
 msgstr "Rent Amount"
 
-#: src/Components/Navigation/Navigation.tsx:16
+#: src/Components/Navigation/Navigation.tsx:37
 msgid "Rent increase calculator"
 msgstr "Rent increase calculator"
 
@@ -2726,8 +2726,8 @@ msgid "Tenants have the right to live in a safe, sanitary, and well-maintained a
 msgstr "Tenants have the right to live in a safe, sanitary, and well-maintained apartment, including public areas of the building. This right is implied in every residential lease, and any lease provision that waives it is void. If your landlord is not providing these conditions in your apartment or building, there are actions you can take to exercise your rights."
 
 #: src/Components/Navigation/Navigation.tsx:18
-msgid "Tenants rights"
-msgstr "Tenants rights"
+#~ msgid "Tenants rights"
+#~ msgstr "Tenants rights"
 
 #: src/Components/Pages/Legal/TermsOfUse.tsx:14
 msgid "Terms of use"

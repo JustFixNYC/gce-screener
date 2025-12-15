@@ -80,7 +80,7 @@ msgstr "{email}"
 msgid "{unitsres, plural, one {# apartment} other {# apartments}}"
 msgstr "{unitsres, plural, one {# departamento} other {# departamentos}}"
 
-#: src/Components/Navigation/Navigation.tsx:195
+#: src/Components/Navigation/Navigation.tsx:139
 msgid "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 msgstr "<0>Por</0> <1>Housing Justice for All</1> <2>y</2> <3>JustFix</3>"
 
@@ -451,7 +451,7 @@ msgstr "Calcular"
 msgid "Calculate your max rent increase."
 msgstr "Calcule el aumento máximo de su renta."
 
-#: src/Components/Navigation/Navigation.tsx:140
+#: src/Components/Navigation/Navigation.tsx:84
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:67
 msgid "Calculate your rent increase"
 msgstr "Calcule el aumento de su alquiler"
@@ -537,7 +537,6 @@ msgstr "clasificado como edificio educativo"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:497
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:270
-#: src/Components/Navigation/Navigation.tsx:70
 #: src/Components/PhoneNumberCallout/PhoneNumberCallout.tsx:275
 msgid "Close"
 msgstr "Cerrar"
@@ -701,7 +700,7 @@ msgstr "Descargar carta (PDF)"
 msgid "Download my letter"
 msgstr "Descargar mi carta"
 
-#: src/Components/Navigation/Navigation.tsx:152
+#: src/Components/Navigation/Navigation.tsx:96
 msgid "Draft your Good Cause letter"
 msgstr ""
 
@@ -839,7 +838,7 @@ msgstr "Averigüe cuánto puede aumentar la renta su arrendador"
 msgid "Find out if I’m covered"
 msgstr "Averiguar si estoy cubierto"
 
-#: src/Components/Navigation/Navigation.tsx:124
+#: src/Components/Navigation/Navigation.tsx:68
 msgid "Find out if you're covered"
 msgstr ""
 
@@ -977,7 +976,8 @@ msgid "Good Cause Letter Preview"
 msgstr "Vista previa de la carta de justa causa"
 
 #: src/Components/Footer/Footer.tsx:63
-#: src/Components/Navigation/Navigation.tsx:185
+#: src/Components/Navigation/Navigation.tsx:28
+#: src/Components/Navigation/Navigation.tsx:129
 msgid "Good Cause NYC"
 msgstr "Justa Causa de NYC"
 
@@ -1502,7 +1502,7 @@ msgstr "Guarde esto para su documentación. Es una parte importante para hacer v
 msgid "Keep this for your documentation. It’s an important part of asserting your rights."
 msgstr "Guarde esto para su documentación. Es una parte importante para hacer valer sus derechos."
 
-#: src/Components/Navigation/Navigation.tsx:165
+#: src/Components/Navigation/Navigation.tsx:109
 msgid "Know your rights"
 msgstr ""
 
@@ -1547,7 +1547,7 @@ msgid "Landlords often value stability, especially in a competitive market. A sh
 msgstr "Los arrendadores suelen valorar la estabilidad, especialmente en un mercado competitivo. Un mensaje breve y educado en el que destaque su fiabilidad puede reforzar sus argumentos para conseguir un aumento menor."
 
 #: src/Components/Footer/Footer.tsx:16
-#: src/Components/Navigation/Navigation.tsx:172
+#: src/Components/Navigation/Navigation.tsx:116
 msgid "Language"
 msgstr "Idioma"
 
@@ -1730,8 +1730,8 @@ msgid "Letter preview language:"
 msgstr "Idioma de la vista previa de la carta:"
 
 #: src/Components/Navigation/Navigation.tsx:17
-msgid "Letter sender"
-msgstr ""
+#~ msgid "Letter sender"
+#~ msgstr ""
 
 #: src/Components/Pages/Results/Results.tsx:285
 msgid "Live-in landlord"
@@ -1805,8 +1805,8 @@ msgid "Map showing location of the entered address."
 msgstr "Mapa que muestra la ubicación de la dirección ingresada."
 
 #: src/Components/Navigation/Navigation.tsx:70
-msgid "Menu"
-msgstr ""
+#~ msgid "Menu"
+#~ msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:262
 #: src/Components/KYRContent/KYRContent.tsx:651
@@ -2383,7 +2383,7 @@ msgstr "Las renovaciones de contratos de arrendamiento también deben cumplir la
 msgid "Rent Amount"
 msgstr "Importe de la renta"
 
-#: src/Components/Navigation/Navigation.tsx:16
+#: src/Components/Navigation/Navigation.tsx:37
 msgid "Rent increase calculator"
 msgstr "Calculadora de aumento de renta"
 
@@ -2731,8 +2731,8 @@ msgid "Tenants have the right to live in a safe, sanitary, and well-maintained a
 msgstr "Los inquilinos tienen derecho a vivir en un departamento seguro, higiénico y en buen estado, incluidas las zonas comunes del edificio. Este derecho está implícito en todos los contratos de alquiler residencial, y cualquier cláusula del contrato que pretenda renunciar a él carece de validez. Si su arrendador no le proporciona estas condiciones en su departamento o edificio, hay medidas que puede tomar para ejercer sus derechos."
 
 #: src/Components/Navigation/Navigation.tsx:18
-msgid "Tenants rights"
-msgstr ""
+#~ msgid "Tenants rights"
+#~ msgstr ""
 
 #: src/Components/Pages/Legal/TermsOfUse.tsx:14
 msgid "Terms of use"
