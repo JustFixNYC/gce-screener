@@ -1,0 +1,285 @@
+@use "../../colors" as *;
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+$headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
+
+@include for-tablet-landscape-up {
+  #topbar {
+    display: none;
+  }
+}
+
+#topbar {
+  @include for-tablet-landscape-down {
+    position: fixed;
+    top: 0;
+    background-color: $OFF_WHITE_200;
+    border-bottom: 1px solid $OFF_BLACK;
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-wrap: nowrap;
+    z-index: 100;
+    transition: top 0.2s ease-in-out;
+
+    &.hide {
+      top: -$headerH;
+    }
+
+    div {
+      height: $headerH - (1.5rem * 2);
+    }
+
+    &,
+    h1,
+    span {
+      color: $OFF_BLACK;
+      text-decoration: none;
+    }
+
+    a {
+      color: $OFF_BLACK;
+      text-decoration: none;
+      padding: 0.5rem 0;
+      &:hover {
+        color: $GREY_600;
+      }
+    }
+  }
+
+  .topbar__name {
+    @include for-tablet-landscape-down {
+      border-right: 1px solid $OFF_BLACK;
+      padding: 1.5rem 2.25rem;
+      h1,
+      a {
+        margin: 0;
+        font-family: "Degular Display";
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 100%; /* 1.5rem */
+        letter-spacing: 0.045rem;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .topbar__rent-calculator {
+    @include for-tablet-landscape-down {
+      padding: 1.5rem;
+      font-family: "Degular Display";
+      font-size: 1.125rem;
+      font-weight: 500;
+      letter-spacing: 0.03375rem;
+      a {
+        text-decoration: underline;
+        text-underline-position: from-font;
+      }
+      svg {
+        display: none;
+      }
+      @include for-tablet-landscape-up {
+        display: none;
+      }
+    }
+  }
+
+  @media print {
+    position: unset;
+    background-color: unset;
+
+    .topbar__name {
+      padding: 0.5rem 1rem;
+    }
+    .topbar__rent-calculator {
+      display: none;
+    }
+    &,
+    h1 {
+      color: black;
+      @include body_large_desktop;
+    }
+
+    a {
+      color: black;
+      @include body_large_desktop;
+    }
+  }
+}
+
+.collab-header {
+  height: 1.5rem;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid $OFF_BLACK;
+  padding: 1.5rem 2.25rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 100%; /* 1.125rem */
+  letter-spacing: 0.0225rem;
+  background-color: $OFF_WHITE_200;
+  flex-shrink: 0;
+
+  &,
+  span {
+    color: $OFF_BLACK;
+    text-decoration: none;
+  }
+
+  a {
+    color: $OFF_BLACK;
+    text-decoration: underline;
+    text-underline-position: from-font;
+    padding: 0.5rem 0;
+    &:hover {
+      color: $GREY_600;
+    }
+  }
+  span,
+  a {
+    vertical-align: sub;
+  }
+
+  @include for-tablet-landscape-down {
+    display: none;
+  }
+
+  @media print {
+    padding: 0.5rem 1rem;
+    border: none;
+    &,
+    span {
+      color: black;
+      @include body_large_desktop;
+    }
+
+    a {
+      color: black;
+      @include body_large_desktop;
+    }
+  }
+}
+
+#sidebar {
+  background-color: $OFF_WHITE_200;
+  border-right: 1px solid $OFF_BLACK;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .nameplate {
+    border-bottom: 1px solid $OFF_BLACK;
+    flex-shrink: 0;
+  }
+
+  .sidebar__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      li {
+        margin: 0;
+        background-color: $OFF_WHITE_200;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        // Hover state
+        &:hover:not(.active) {
+          background-color: #e4dcc9;
+        }
+
+        // Pressed state
+        &:active:not(.active) {
+          background-color: #d7cdb7;
+        }
+
+        // Selected state
+        &.active {
+          background-color: $OFF_BLACK;
+        }
+
+        // Hover on selected state
+        &.active:hover,
+        &.active:active {
+          background-color: $GREY_700;
+        }
+
+        a {
+          @include body_standard_desktop;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          padding: 1.5rem 1.5rem 1.5rem 2.25rem;
+          color: $OFF_BLACK;
+          gap: 1rem;
+
+          svg {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            color: $OFF_BLACK;
+          }
+        }
+
+        &.active a {
+          color: $WHITE;
+          font-weight: 500;
+
+          svg {
+            color: $WHITE;
+          }
+        }
+      }
+    }
+
+    .sidebar__locale-toggle {
+      @include body_standard_desktop;
+      font-weight: 600;
+      padding: 1.5rem 1.5rem 0 2.25rem;
+      color: $OFF_BLACK;
+      margin-top: auto;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-shrink: 0;
+      flex-direction: column;
+
+      .locale-toggle {
+        margin-top: 0.5rem;
+        button:first-child {
+          padding-left: 0;
+        }
+      }
+
+      @include for-tablet-landscape-down() {
+        display: none;
+      }
+    }
+  }
+}
+
+.nameplate {
+  height: 1.5rem;
+  width: $sidebarWidth;
+  padding: 1.5rem 2.25rem;
+  h1,
+  a {
+    margin: 0;
+    font-family: "Degular Display";
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 100%; /* 1.5rem */
+    letter-spacing: 0.045rem; // 0.72px
+    white-space: nowrap;
+    text-decoration: none;
+    color: $OFF_BLACK;
+    &:hover {
+      color: $GREY_600;
+    }
+  }
+}

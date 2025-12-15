@@ -42,6 +42,9 @@
     span {
       display: inline;
     }
+    @include for-tablet-landscape-up() {
+      display: none;
+    }
   }
 
   .footer__legal-pages {
