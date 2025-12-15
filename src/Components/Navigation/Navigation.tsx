@@ -1,99 +1,43 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { gtmPush } from "../../google-tag-manager";
-import { JFCLLink, JFCLLinkExternal, JFCLLinkInternal } from "../JFCLLink";
+import { JFCLLink, JFCLLinkInternal } from "../JFCLLink";
 import "./Navigation.scss";
 import { removeLocalePrefix } from "../../i18n";
 import { LocaleToggle } from "../LocaleToggle/LocaleToggle";
 import { Icon } from "@justfixnyc/component-library";
-
-export type LinkWithLabel = [string, JSX.Element];
-
-const SITE_LINKS = [
-  ["rent_calculator", <Trans>Rent increase calculator</Trans>],
-  ["letter", <Trans>Letter sender</Trans>],
-  ["tenant_rights", <Trans>Tenants rights</Trans>],
-] as LinkWithLabel[];
-
-const HeaderLink: React.FC<{ link: LinkWithLabel }> = ({ link }) =>
-  link[0].charAt(0) === "/" ? (
-    <JFCLLinkInternal
-      className="navbar-item jf-menu-page-link px-0 py-3 has-text-white"
-      to={link[0]}
-    >
-      {link[1]}
-    </JFCLLinkInternal>
-  ) : (
-    <JFCLLinkExternal
-      className="navbar-item jf-menu-page-link px-0 py-3 has-text-white"
-      to={link[0]}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {link[1]}
-    </JFCLLinkExternal>
-  );
+import { useHideHeader } from "../../hooks/useHideHeader";
 
 export const TopBar: React.FC = () => {
-  const [burgerMenuIsOpen, setBurgerMenuStatus] = useState(false);
+  const { i18n } = useLingui();
+  const headerRef = useRef<HTMLElement>(null);
+  const hideHeader = useHideHeader(headerRef);
 
   return (
-    <>
-      <header id="topbar">
-        <NamePlate />
-        <div
-          className={classNames(
-            "navbar-item is-justify-content-center",
-            burgerMenuIsOpen && "is-active"
-          )}
+    <header
+      ref={headerRef}
+      id="topbar"
+      className={classNames({ hide: hideHeader })}
+    >
+      <div className="topbar__name">
+        <h1>
+          <Link to={`/${i18n.locale}`}>
+            <Trans>Good Cause NYC</Trans>
+          </Link>
+        </h1>
+      </div>
+      <div className="topbar__rent-calculator">
+        <JFCLLinkInternal
+          to={`/${i18n.locale}/rent_calculator`}
+          onClick={() => gtmPush("gce_rent_calculator", { from: "navbar" })}
         >
-          <button
-            role="button"
-            className={classNames(
-              "navbar-burger burger",
-              "is-flex is-align-items-center is-justify-content-center",
-              burgerMenuIsOpen && "is-active"
-            )}
-            aria-expanded="false"
-            onClick={() => setBurgerMenuStatus(!burgerMenuIsOpen)}
-            data-target="navbar"
-          >
-            {burgerMenuIsOpen ? (
-              <Icon icon="xmark" />
-            ) : (
-              <Icon icon="arrowDown" />
-            )}
-            <div className="is-inline-block">
-              {burgerMenuIsOpen ? <Trans>Close</Trans> : <Trans>Menu</Trans>}
-            </div>
-          </button>
-        </div>
-        <div
-          id="main-navbar-menu"
-          className={
-            "navbar-menu has-background-black px-1-mobile " +
-            (burgerMenuIsOpen && "is-active")
-          }
-        >
-          <div className="navbar-end is-flex is-flex-direction-column py-3 px-5">
-            <div>
-              {SITE_LINKS.map((link, i) => (
-                <HeaderLink link={link} key={i} />
-              ))}
-            </div>
-
-            <div className="navbar-item has-dropdown is-hoverable mt-7 mb-4 mb-7-mobile">
-              <div className="navbar-dropdown is-right pt-1 pb-0">
-                <LocaleToggle />
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-    </>
+          <Trans>Rent increase calculator</Trans>
+        </JFCLLinkInternal>
+      </div>
+    </header>
   );
 };
 
@@ -191,7 +135,7 @@ const NamePlate: React.FC<{ className?: string }> = ({ className }) => (
 export const CollabHeader: React.FC<{ className?: string }> = ({
   className,
 }) => (
-  <div className={classNames("topbar__collab", className)}>
+  <div className={classNames("collab-header", className)}>
     <Trans>
       <span>By</span>{" "}
       <a

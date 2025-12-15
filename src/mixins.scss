@@ -155,15 +155,14 @@
   }
 }
 
-@mixin for-tablet-landscape-up {
-  @media (min-width: 900px) {
+@mixin for-tablet-landscape-down {
+  @media (max-width: 1023px) {
     @content;
   }
 }
 
-// TODO define a good breakpoint for sidebar display
-@mixin for-tablet-landscape-down {
-  @media (max-width: 899px) {
+@mixin for-tablet-landscape-up {
+  @media (min-width: 1024px) {
     @content;
   }
 }

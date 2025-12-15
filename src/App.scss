@@ -25,6 +25,10 @@
 #sidebar {
   width: $sidebarWidth;
   flex-shrink: 0; // Prevent sidebar from shrinking
+
+  @include for-tablet-landscape-down {
+    display: none;
+  }
 }
 
 #main {

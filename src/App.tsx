@@ -20,7 +20,11 @@ import { RentStabilization } from "./Components/Pages/RentStabilization/RentStab
 import { PortfolioSize } from "./Components/Pages/PortfolioSize/PortfolioSize";
 import { Footer } from "./Components/Footer/Footer";
 import { TenantRights } from "./Components/Pages/TenantRights/TenantRights";
-import { CollabHeader, Sidebar } from "./Components/Navigation/Navigation";
+import {
+  CollabHeader,
+  Sidebar,
+  TopBar,
+} from "./Components/Navigation/Navigation";
 import { NetworkError } from "./api/error-reporting";
 import { PrivacyPolicy } from "./Components/Pages/Legal/PrivacyPolicy";
 import { TermsOfUse } from "./Components/Pages/Legal/TermsOfUse";
@@ -48,6 +52,7 @@ const Layout = () => {
         <main id="main">
           <div id="content">
             <CollabHeader />
+            <TopBar />
             <Outlet />
             <Footer />
           </div>
