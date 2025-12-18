@@ -5,8 +5,9 @@ import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
-  ScrollRestoration,
+  useLocation,
 } from "react-router-dom";
+import { useEffect } from "react";
 import { SWRConfig } from "swr";
 import { useRollbar } from "@rollbar/react";
 
@@ -45,6 +46,15 @@ import { FormFields } from "./types/LetterFormTypes";
 import "./App.scss";
 
 const Layout = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const mainElement = document.getElementById("main");
+    if (mainElement) {
+      mainElement.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [pathname]);
+
   return (
     <I18n>
       <div id="grid">
@@ -57,7 +67,6 @@ const Layout = () => {
             <Footer />
           </div>
         </main>
-        <ScrollRestoration />
       </div>
     </I18n>
   );

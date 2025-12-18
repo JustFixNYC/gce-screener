@@ -44,14 +44,8 @@ export const TopBar: React.FC = () => {
 export const Sidebar: React.FC = () => {
   const { i18n } = useLingui();
   const { pathname } = useLocation();
-
-  const scrollToTop = () => {
-    const mainElement = document.getElementById("main");
-    if (mainElement) {
-      mainElement.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
-
+  const cleanedPathname = pathname.toLowerCase();
+  
   return (
     <div id="sidebar">
       <div className="sidebar__content">
@@ -63,20 +57,19 @@ export const Sidebar: React.FC = () => {
                 removeLocalePrefix(pathname) === "/" && "active"
               )}
             >
-              <JFCLLink to={`/${i18n.locale}/`} onClick={scrollToTop}>
+              <JFCLLink to={`/${i18n.locale}/`} >
                 <Icon icon="house" />
                 <Trans>Find out if you're covered</Trans>
               </JFCLLink>
             </li>
             <li
               className={classNames(
-                pathname.includes("rent_calculator") && "active"
+                cleanedPathname.includes("rent_calculator") && "active"
               )}
             >
               <JFCLLink
                 to={`/${i18n.locale}/rent_calculator`}
                 onClick={() => {
-                  scrollToTop();
                   gtmPush("gce_rent_calculator", { from: "navbar" });
                 }}
               >
@@ -84,11 +77,10 @@ export const Sidebar: React.FC = () => {
                 <Trans>Calculate your rent increase</Trans>
               </JFCLLink>
             </li>
-            <li className={classNames(pathname.includes("letter") && "active")}>
+            <li className={classNames(cleanedPathname.includes("letter") && "active")}>
               <JFCLLink
                 to={`/${i18n.locale}/letter`}
                 onClick={() => {
-                  scrollToTop();
                   gtmPush("gce_letter_sender", { from: "navbar" });
                 }}
               >
@@ -98,12 +90,11 @@ export const Sidebar: React.FC = () => {
             </li>
             <li
               className={classNames(
-                pathname.includes("tenant_rights") && "active"
+                cleanedPathname.includes("tenant_rights") && "active"
               )}
             >
               <JFCLLink
                 to={`/${i18n.locale}/tenant_rights`}
-                onClick={scrollToTop}
               >
                 <Icon icon="shieldCheck" />
                 <Trans>Know your rights</Trans>
