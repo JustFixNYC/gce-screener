@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-12-15 20:47\n"
+"PO-Revision-Date: 2025-12-19 14:25\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -80,7 +80,7 @@ msgstr "{email}"
 msgid "{unitsres, plural, one {# apartment} other {# apartments}}"
 msgstr "{unitsres, plural, one {# departamento} other {# departamentos}}"
 
-#: src/Components/Navigation/Navigation.tsx:139
+#: src/Components/Navigation/Navigation.tsx:130
 msgid "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 msgstr "<0>Por</0> <1>Housing Justice for All</1> <2>y</2> <3>JustFix</3>"
 
@@ -451,7 +451,7 @@ msgstr "Calcular"
 msgid "Calculate your max rent increase."
 msgstr "Calcule el aumento máximo de su renta."
 
-#: src/Components/Navigation/Navigation.tsx:84
+#: src/Components/Navigation/Navigation.tsx:77
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:67
 msgid "Calculate your rent increase"
 msgstr "Calcule el aumento de su alquiler"
@@ -700,7 +700,7 @@ msgstr "Descargar carta (PDF)"
 msgid "Download my letter"
 msgstr "Descargar mi carta"
 
-#: src/Components/Navigation/Navigation.tsx:96
+#: src/Components/Navigation/Navigation.tsx:88
 msgid "Draft your Good Cause letter"
 msgstr ""
 
@@ -838,7 +838,7 @@ msgstr "Averigüe cuánto puede aumentar la renta su arrendador"
 msgid "Find out if I’m covered"
 msgstr "Averiguar si estoy cubierto"
 
-#: src/Components/Navigation/Navigation.tsx:68
+#: src/Components/Navigation/Navigation.tsx:62
 msgid "Find out if you're covered"
 msgstr ""
 
@@ -977,7 +977,7 @@ msgstr "Vista previa de la carta de justa causa"
 
 #: src/Components/Footer/Footer.tsx:63
 #: src/Components/Navigation/Navigation.tsx:28
-#: src/Components/Navigation/Navigation.tsx:129
+#: src/Components/Navigation/Navigation.tsx:120
 msgid "Good Cause NYC"
 msgstr "Justa Causa de NYC"
 
@@ -1502,7 +1502,7 @@ msgstr "Guarde esto para su documentación. Es una parte importante para hacer v
 msgid "Keep this for your documentation. It’s an important part of asserting your rights."
 msgstr "Guarde esto para su documentación. Es una parte importante para hacer valer sus derechos."
 
-#: src/Components/Navigation/Navigation.tsx:109
+#: src/Components/Navigation/Navigation.tsx:100
 msgid "Know your rights"
 msgstr ""
 
@@ -1547,7 +1547,7 @@ msgid "Landlords often value stability, especially in a competitive market. A sh
 msgstr "Los arrendadores suelen valorar la estabilidad, especialmente en un mercado competitivo. Un mensaje breve y educado en el que destaque su fiabilidad puede reforzar sus argumentos para conseguir un aumento menor."
 
 #: src/Components/Footer/Footer.tsx:16
-#: src/Components/Navigation/Navigation.tsx:116
+#: src/Components/Navigation/Navigation.tsx:107
 msgid "Language"
 msgstr "Idioma"
 
