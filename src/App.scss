@@ -15,17 +15,33 @@
   margin: 24px;
 }
 
-#container {
+#grid {
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#sidebar {
+  width: $sidebarWidth;
+  flex-shrink: 0; // Prevent sidebar from shrinking
+
+  @include for-tablet-landscape-down {
+    display: none;
+  }
 }
 
 #main {
-  flex-grow: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: $OFF_WHITE_200;
 
   #content {
     height: 100%;
+    width: 100%;
   }
 }
 
@@ -47,9 +63,6 @@ a.jfcl-link {
   }
   .jfcl-link__icon-wrapper {
     white-space: nowrap;
-    svg.jfcl-link__icon {
-      margin-left: 6px;
-    }
   }
 }
 

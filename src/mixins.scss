@@ -155,11 +155,18 @@
   }
 }
 
-@mixin for-tablet-landscape-up {
-  @media (min-width: 900px) {
+@mixin for-tablet-landscape-down {
+  @media (max-width: 1023px) {
     @content;
   }
 }
+
+@mixin for-tablet-landscape-up {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
 @mixin for-desktop-up {
   @media (min-width: 1200px) {
     @content;

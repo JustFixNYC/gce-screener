@@ -37,7 +37,6 @@ export const LetterLanding: React.FC = () => {
           </Trans>
           <div className="hero-cta__buttons">
             <Button
-              labelIcon="mailboxOpenLetter"
               labelText={_(msg`I’m covered, start my free letter`)}
               onClick={() => navigate("reason")}
             />

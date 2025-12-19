@@ -88,10 +88,6 @@
 
       &.outside-nyc {
         margin-bottom: 2.25rem;
-        p,
-        a {
-          @include body_standard_desktop;
-        }
         p {
           width: 85%;
           margin-bottom: 1.5rem;
