@@ -80,7 +80,7 @@ msgstr "{email}"
 msgid "{unitsres, plural, one {# apartment} other {# apartments}}"
 msgstr "{unitsres, plural, one {# departamento} other {# departamentos}}"
 
-#: src/Components/TopBar/TopBar.tsx:31
+#: src/Components/Navigation/Navigation.tsx:139
 msgid "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 msgstr "<0>Por</0> <1>Housing Justice for All</1> <2>y</2> <3>JustFix</3>"
 
@@ -451,6 +451,7 @@ msgstr "Calcular"
 msgid "Calculate your max rent increase."
 msgstr "Calcule el aumento máximo de su renta."
 
+#: src/Components/Navigation/Navigation.tsx:84
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:67
 msgid "Calculate your rent increase"
 msgstr "Calcule el aumento de su alquiler"
@@ -699,6 +700,10 @@ msgstr "Descargar carta (PDF)"
 msgid "Download my letter"
 msgstr "Descargar mi carta"
 
+#: src/Components/Navigation/Navigation.tsx:96
+msgid "Draft your Good Cause letter"
+msgstr ""
+
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:175
 #~ msgid "Edit"
 #~ msgstr "Edit"
@@ -832,6 +837,10 @@ msgstr "Averigüe cuánto puede aumentar la renta su arrendador"
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:229
 msgid "Find out if I’m covered"
 msgstr "Averiguar si estoy cubierto"
+
+#: src/Components/Navigation/Navigation.tsx:68
+msgid "Find out if you're covered"
+msgstr ""
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:163
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:192
@@ -967,7 +976,8 @@ msgid "Good Cause Letter Preview"
 msgstr "Vista previa de la carta de justa causa"
 
 #: src/Components/Footer/Footer.tsx:63
-#: src/Components/TopBar/TopBar.tsx:26
+#: src/Components/Navigation/Navigation.tsx:28
+#: src/Components/Navigation/Navigation.tsx:129
 msgid "Good Cause NYC"
 msgstr "Justa Causa de NYC"
 
@@ -1492,6 +1502,10 @@ msgstr "Guarde esto para su documentación. Es una parte importante para hacer v
 msgid "Keep this for your documentation. It’s an important part of asserting your rights."
 msgstr "Guarde esto para su documentación. Es una parte importante para hacer valer sus derechos."
 
+#: src/Components/Navigation/Navigation.tsx:109
+msgid "Know your rights"
+msgstr ""
+
 #: src/Components/LetterBuilder/AddressModalHelpers.tsx:47
 #~ msgid "Landlord address as entered is not deliverable by USPS"
 #~ msgstr "Landlord address as entered is not deliverable by USPS"
@@ -1533,6 +1547,7 @@ msgid "Landlords often value stability, especially in a competitive market. A sh
 msgstr "Los arrendadores suelen valorar la estabilidad, especialmente en un mercado competitivo. Un mensaje breve y educado en el que destaque su fiabilidad puede reforzar sus argumentos para conseguir un aumento menor."
 
 #: src/Components/Footer/Footer.tsx:16
+#: src/Components/Navigation/Navigation.tsx:116
 msgid "Language"
 msgstr "Idioma"
 
@@ -1714,6 +1729,10 @@ msgstr "Servicios legales en la ciudad de Nueva York"
 msgid "Letter preview language:"
 msgstr "Idioma de la vista previa de la carta:"
 
+#: src/Components/Navigation/Navigation.tsx:17
+#~ msgid "Letter sender"
+#~ msgstr ""
+
 #: src/Components/Pages/Results/Results.tsx:285
 msgid "Live-in landlord"
 msgstr "Propietario que vive en la propiedad"
@@ -1784,6 +1803,10 @@ msgstr "Muchos propietarios prefieren inquilinos estables y predecibles. Esto le
 #: src/Components/Pages/ConfirmAddress/ConfirmAddress.tsx:96
 msgid "Map showing location of the entered address."
 msgstr "Mapa que muestra la ubicación de la dirección ingresada."
+
+#: src/Components/Navigation/Navigation.tsx:70
+#~ msgid "Menu"
+#~ msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:262
 #: src/Components/KYRContent/KYRContent.tsx:651
@@ -2360,7 +2383,7 @@ msgstr "Las renovaciones de contratos de arrendamiento también deben cumplir la
 msgid "Rent Amount"
 msgstr "Importe de la renta"
 
-#: src/Components/TopBar/TopBar.tsx:55
+#: src/Components/Navigation/Navigation.tsx:37
 msgid "Rent increase calculator"
 msgstr "Calculadora de aumento de renta"
 
@@ -2706,6 +2729,10 @@ msgstr "Los inquilinos y los defensores de los inquilinos están trabajando para
 #: src/Components/KYRContent/KYRContent.tsx:107
 msgid "Tenants have the right to live in a safe, sanitary, and well-maintained apartment, including public areas of the building. This right is implied in every residential lease, and any lease provision that waives it is void. If your landlord is not providing these conditions in your apartment or building, there are actions you can take to exercise your rights."
 msgstr "Los inquilinos tienen derecho a vivir en un departamento seguro, higiénico y en buen estado, incluidas las zonas comunes del edificio. Este derecho está implícito en todos los contratos de alquiler residencial, y cualquier cláusula del contrato que pretenda renunciar a él carece de validez. Si su arrendador no le proporciona estas condiciones en su departamento o edificio, hay medidas que puede tomar para ejercer sus derechos."
+
+#: src/Components/Navigation/Navigation.tsx:18
+#~ msgid "Tenants rights"
+#~ msgstr ""
 
 #: src/Components/Pages/Legal/TermsOfUse.tsx:14
 msgid "Terms of use"
