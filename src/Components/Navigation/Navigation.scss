@@ -67,6 +67,9 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
   }
 
   .topbar__rent-calculator {
+    @include for-tablet-landscape-up {
+      display: none;
+    }
     @include for-tablet-landscape-down {
       padding: 1.5rem;
       font-family: "Degular Display";
@@ -80,8 +83,17 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
       svg {
         display: none;
       }
-      @include for-tablet-landscape-up {
-        display: none;
+    }
+    // handle rent calculator link wrapping on mobile
+    @include for-phone-only {
+      display: flex;
+      align-items: center;
+
+      .jfcl-link {
+        text-wrap: auto;
+        font-size: 0.875rem; //14px
+        line-height: 1.0625rem; //17px
+        letter-spacing: 0.02625rem; //0.42px
       }
     }
   }
