@@ -5,6 +5,7 @@
   max-width: 45rem;
   @include for-phone-only {
     max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 10rem);
   }
   border: 0;
   padding: 0;
