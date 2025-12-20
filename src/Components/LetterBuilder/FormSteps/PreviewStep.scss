@@ -19,17 +19,22 @@
 
     button.jfcl-link {
       @include body_standard_desktop;
-      text-decoration: underline;
       padding: 0;
       margin: 0;
       background: none;
       border: none;
       cursor: pointer;
+      color: $GREY_600;
+      font-weight: inherit;
 
+      &:hover {
+        color: $GREY_700;
+        text-decoration: underline;
+      }
       &:disabled {
-        color: inherit;
-        text-decoration: none;
+        text-decoration: underline;
         cursor: default;
+        color: $OFF_BLACK;
       }
     }
 
