@@ -3,7 +3,7 @@ import { useLingui } from "@lingui/react";
 import { msg } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { useNavigate } from "react-router-dom";
-import { FormGroup, SelectButton } from "@justfixnyc/component-library";
+import { Button, FormGroup, SelectButton } from "@justfixnyc/component-library";
 
 import { InfoBox } from "../../InfoBox/InfoBox";
 import Modal from "../../Modal/Modal";
@@ -132,6 +132,11 @@ export const ReasonStep: React.FC = () => {
             </li>
           </ul>
         </div>
+        <Button
+          variant="secondary"
+          labelText={_(msg`Close`)}
+          onClick={() => setShowModal(false)}
+        />
       </Modal>
     </LetterStepForm>
   );

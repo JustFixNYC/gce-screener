@@ -129,6 +129,11 @@ export const RentStabLeaseModal: React.FC<Omit<ModalProps, "children">> = (
           alt={_(msg`Sample image of blank rent stabilized lease`)}
         />
       </figure>
+      <Button
+        variant="secondary"
+        labelText={_(msg`Close`)}
+        onClick={() => props.onClose && props.onClose()}
+      />
     </Modal>
   );
 };

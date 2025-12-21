@@ -380,7 +380,7 @@ export const Survey: React.FC = () => {
         isOpen={showSubsidyModal}
         onClose={() => setShowSubsidyModal(false)}
         hasCloseBtn={true}
-        header={_(msg`FAQs to help guide your answer`)}
+        header={_(msg`To help guide your answer`)}
       >
         <p>
           <strong>
@@ -448,6 +448,11 @@ export const Survey: React.FC = () => {
             </Trans>
           </p>
         </div>
+        <Button
+          variant="secondary"
+          labelText={_(msg`Close`)}
+          onClick={() => setShowSubsidyModal(false)}
+        />
       </Modal>
     </div>
   );

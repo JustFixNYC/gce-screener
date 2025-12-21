@@ -20,6 +20,13 @@
 
   .content-box {
     margin: 0 0 1.5rem;
+
+    .modal__content {
+      button {
+        margin-top: 2rem;
+        width: 100%;
+      }
+    }
   }
 
   @include for-phone-only() {
