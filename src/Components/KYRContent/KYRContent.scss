@@ -1,11 +1,6 @@
 @use "../../mixins.scss" as *;
 
 #gce-protections_rent {
-  @include for-tablet-portrait-up {
-    p {
-      width: 75%;
-    }
-  }
   strong {
     display: inline-block;
     margin-bottom: 0.5rem;
