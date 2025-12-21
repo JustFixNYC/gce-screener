@@ -45,7 +45,7 @@ export const Sidebar: React.FC = () => {
   const { i18n } = useLingui();
   const { pathname } = useLocation();
   const cleanedPathname = pathname.toLowerCase();
-  
+
   return (
     <div id="sidebar">
       <div className="sidebar__content">
@@ -57,7 +57,7 @@ export const Sidebar: React.FC = () => {
                 removeLocalePrefix(pathname) === "/" && "active"
               )}
             >
-              <JFCLLink to={`/${i18n.locale}/`} >
+              <JFCLLink to={`/${i18n.locale}/`}>
                 <Icon icon="house" />
                 <Trans>Find out if you're covered</Trans>
               </JFCLLink>
@@ -77,7 +77,11 @@ export const Sidebar: React.FC = () => {
                 <Trans>Calculate your rent increase</Trans>
               </JFCLLink>
             </li>
-            <li className={classNames(cleanedPathname.includes("letter") && "active")}>
+            <li
+              className={classNames(
+                cleanedPathname.includes("letter") && "active"
+              )}
+            >
               <JFCLLink
                 to={`/${i18n.locale}/letter`}
                 onClick={() => {
@@ -93,9 +97,7 @@ export const Sidebar: React.FC = () => {
                 cleanedPathname.includes("tenant_rights") && "active"
               )}
             >
-              <JFCLLink
-                to={`/${i18n.locale}/tenant_rights`}
-              >
+              <JFCLLink to={`/${i18n.locale}/tenant_rights`}>
                 <Icon icon="shieldCheck" />
                 <Trans>Know your rights</Trans>
               </JFCLLink>
