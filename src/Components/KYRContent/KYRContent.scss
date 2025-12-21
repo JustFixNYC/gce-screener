@@ -32,8 +32,35 @@
   }
 }
 
+#gce-protections_eviction {
+  .accordion__content {
+    h5 {
+      @include body_standard_desktop;
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+    ul {
+      padding-left: 0;
+    }
+    li {
+      @include body_standard_desktop;
+      list-style-position: inside;
+      margin-left: 1.5rem;
+    }
+    li:first-of-type {
+      margin-top: 1rem;
+    }
+    ::marker {
+      font-size: 0.75rem;
+    }
+  }
+}
+
 #gce-protections_rent,
 #gce-protections_eviction {
+  .accordion__content {
+    max-width: 80%;
+  }
   .letter-callout {
     padding: 1rem;
     margin: 1rem 0 0;
