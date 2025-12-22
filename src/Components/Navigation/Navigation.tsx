@@ -115,15 +115,26 @@ export const Sidebar: React.FC = () => {
   );
 };
 
-const NamePlate: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={classNames("nameplate", className)}>
-    <h1>
-      <Link to="/">
-        <Trans>Good Cause NYC</Trans>
-      </Link>
-    </h1>
-  </div>
-);
+const NamePlate: React.FC<{ className?: string }> = ({ className }) => {
+  const { i18n } = useLingui();
+  const isSpanish = i18n.locale === "es";
+
+  return (
+    <div
+      className={classNames(
+        "nameplate",
+        className,
+        isSpanish && "nameplate-es"
+      )}
+    >
+      <h1>
+        <Link to="/">
+          <Trans>Good Cause NYC</Trans>
+        </Link>
+      </h1>
+    </div>
+  );
+};
 
 export const CollabHeader: React.FC<{ className?: string }> = ({
   className,
