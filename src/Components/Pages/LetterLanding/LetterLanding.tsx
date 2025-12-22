@@ -118,7 +118,7 @@ export const LetterLanding: React.FC = () => {
 
       <div className="content-section">
         <div className="content-section__content">
-          <section>
+          <section className="reasons-section">
             <h3>
               <Trans>Why send a letter to your landlord?</Trans>
             </h3>
