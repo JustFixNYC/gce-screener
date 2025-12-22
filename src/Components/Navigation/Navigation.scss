@@ -50,8 +50,10 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
   }
 
   .topbar__name {
+    @include for-tablet-landscape-up {
+      display: none;
+    }
     @include for-tablet-landscape-down {
-      border-right: 1px solid $OFF_BLACK;
       padding: 1.5rem 2.25rem;
       h1,
       a {
@@ -64,36 +66,59 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
         white-space: nowrap;
       }
     }
+
+    &.topbar__name--es {
+      a {
+        font-size: 1.3rem;
+      }
+    }
   }
 
-  .topbar__rent-calculator {
+  .topbar__menu {
     @include for-tablet-landscape-up {
       display: none;
     }
     @include for-tablet-landscape-down {
+      border-left: 1px solid $OFF_BLACK;
       padding: 1.5rem;
-      font-family: "Degular Display";
-      font-size: 1.125rem;
-      font-weight: 500;
-      letter-spacing: 0.03375rem;
-      a {
-        text-decoration: underline;
-        text-underline-position: from-font;
-      }
-      svg {
-        display: none;
-      }
-    }
-    // handle rent calculator link wrapping on mobile
-    @include for-phone-only {
       display: flex;
       align-items: center;
 
-      .jfcl-link {
-        text-wrap: auto;
-        font-size: 0.875rem; //14px
-        line-height: 1.0625rem; //17px
-        letter-spacing: 0.02625rem; //0.42px
+      &.topbar__menu--open {
+        background-color: $OFF_BLACK;
+      }
+    }
+  }
+
+  .topbar__menu-button {
+    @include for-tablet-landscape-up {
+      display: none;
+    }
+    @include for-tablet-landscape-down {
+      @include body_standard_mobile;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: $OFF_BLACK;
+      text-decoration: none;
+
+      svg {
+        width: 1rem;
+        height: 1rem;
+        color: $OFF_BLACK;
+      }
+
+      &.topbar__menu-button--close {
+        background: none;
+        color: $WHITE;
+
+        svg {
+          color: $WHITE;
+        }
       }
     }
   }
@@ -105,7 +130,7 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
     .topbar__name {
       padding: 0.5rem 1rem;
     }
-    .topbar__rent-calculator {
+    .topbar__menu {
       display: none;
     }
     &,
@@ -181,9 +206,32 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
   display: flex;
   flex-direction: column;
 
+  @include for-tablet-landscape-down {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: unset;
+    height: calc(100vh - $headerH);
+    z-index: 1000;
+    border-right: none;
+    transform: translateY(-100%);
+    overflow-y: auto;
+
+    &.mobile-menu-open {
+      margin-top: $headerH;
+      transform: translateY(0);
+    }
+  }
+
   .nameplate {
     border-bottom: 1px solid $OFF_BLACK;
     flex-shrink: 0;
+
+    @include for-tablet-landscape-down {
+      display: none;
+    }
   }
 
   .sidebar__content {
@@ -191,10 +239,19 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
     flex-direction: column;
     flex: 1;
 
+    @include for-tablet-landscape-down {
+      background-color: $OFF_BLACK;
+      @include body_large_desktop;
+    }
+
     nav ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
+      @include for-tablet-landscape-down {
+        padding-top: 0.75rem;
+      }
+
       li {
         margin: 0;
         background-color: $OFF_WHITE_200;
@@ -222,6 +279,18 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
           background-color: $GREY_700;
         }
 
+        @include for-tablet-landscape-down {
+          background-color: $OFF_BLACK;
+          // Undo hover and active states from desktop
+          &:hover:not(.active),
+          &:active:not(.active),
+          &.active,
+          &.active:hover,
+          &.active:active {
+            background-color: unset;
+          }
+        }
+
         a {
           @include body_standard_desktop;
           text-decoration: none;
@@ -237,6 +306,15 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
             height: 1.5rem;
             color: $OFF_BLACK;
           }
+
+          @include for-tablet-landscape-down {
+            color: $WHITE;
+            @include body_large_desktop;
+
+            svg {
+              color: $WHITE;
+            }
+          }
         }
 
         &.active a {
@@ -245,6 +323,11 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
 
           svg {
             color: $WHITE;
+          }
+
+          @include for-tablet-landscape-down {
+            text-decoration: underline;
+            font-weight: 600;
           }
         }
       }
@@ -268,8 +351,27 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
         }
       }
 
-      @include for-tablet-landscape-down() {
-        display: none;
+      @include for-tablet-landscape-down {
+        display: flex;
+        flex-direction: row;
+        padding: 0 2.25rem;
+        margin-bottom: 2.25rem;
+        color: $WHITE;
+        @include body_standard_mobile;
+
+        .locale-toggle {
+          margin-top: unset;
+          margin-left: 0.5rem;
+          button {
+            color: $WHITE;
+            text-decoration: underline;
+
+            &:disabled {
+              text-decoration: none;
+              font-weight: 600;
+            }
+          }
+        }
       }
     }
   }
