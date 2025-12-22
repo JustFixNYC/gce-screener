@@ -237,12 +237,6 @@
         display: block;
         padding: 1rem 1.5rem;
       }
-      .content-box__header-title {
-        display: none;
-      }
-      .content-box__header-title {
-        @include h3_mobile;
-      }
       .content-box__section.no-title {
         padding: 1.5rem;
         p {
