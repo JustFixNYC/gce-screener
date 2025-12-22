@@ -84,7 +84,7 @@ msgstr "{email}"
 msgid "{unitsres, plural, one {# apartment} other {# apartments}}"
 msgstr "{unitsres, plural, one {# departamento} other {# departamentos}}"
 
-#: src/Components/Navigation/Navigation.tsx:132
+#: src/Components/Navigation/Navigation.tsx:153
 msgid "<0>By</0> <1>Housing Justice for All</1> <2>&</2> <3>JustFix</3>"
 msgstr "<0>Por</0> <1>Housing Justice for All</1> <2>y</2> <3>JustFix</3>"
 
@@ -492,7 +492,7 @@ msgstr "Calcular"
 msgid "Calculate your max rent increase."
 msgstr "Calcule el aumento máximo de su renta."
 
-#: src/Components/Navigation/Navigation.tsx:77
+#: src/Components/Navigation/Navigation.tsx:87
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:67
 msgid "Calculate your rent increase"
 msgstr "Calcule el aumento de su alquiler"
@@ -752,7 +752,7 @@ msgstr "Descargar carta (PDF)"
 msgid "Download my letter"
 msgstr "Descargar mi carta"
 
-#: src/Components/Navigation/Navigation.tsx:92
+#: src/Components/Navigation/Navigation.tsx:102
 msgid "Draft your Good Cause letter"
 msgstr "Crea tu carta de justa causa"
 
@@ -902,7 +902,7 @@ msgstr "Averigüe cuánto puede aumentar la renta su arrendador"
 msgid "Find out if I’m covered"
 msgstr "Averiguar si estoy cubierto"
 
-#: src/Components/Navigation/Navigation.tsx:62
+#: src/Components/Navigation/Navigation.tsx:72
 msgid "Find out if you're covered"
 msgstr "Averigüe si estás cubierto"
 
@@ -1044,7 +1044,7 @@ msgstr "Vista previa de la carta de justa causa"
 
 #: src/Components/Footer/Footer.tsx:63
 #: src/Components/Navigation/Navigation.tsx:28
-#: src/Components/Navigation/Navigation.tsx:122
+#: src/Components/Navigation/Navigation.tsx:142
 msgid "Good Cause NYC"
 msgstr "Justa Causa de NYC"
 
@@ -1649,7 +1649,7 @@ msgstr "Guarde esto para su documentación. Es una parte importante para hacer v
 msgid "Keep this for your documentation. It’s an important part of asserting your rights."
 msgstr "Guarde esto para su documentación. Es una parte importante para hacer valer sus derechos."
 
-#: src/Components/Navigation/Navigation.tsx:102
+#: src/Components/Navigation/Navigation.tsx:112
 #: src/Components/Pages/TenantRights/TenantRights.tsx:23
 msgid "Know your rights"
 msgstr "Conoce tus derechos"
@@ -1695,7 +1695,7 @@ msgid "Landlords often value stability, especially in a competitive market. A sh
 msgstr "Los arrendadores suelen valorar la estabilidad, especialmente en un mercado competitivo. Un mensaje breve y educado en el que destaque su fiabilidad puede reforzar sus argumentos para conseguir un aumento menor."
 
 #: src/Components/Footer/Footer.tsx:16
-#: src/Components/Navigation/Navigation.tsx:109
+#: src/Components/Navigation/Navigation.tsx:119
 msgid "Language"
 msgstr "Idioma"
 
