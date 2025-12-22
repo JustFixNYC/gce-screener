@@ -34,14 +34,10 @@
       margin-top: 2.25rem !important; // overrides ShareButton.scss
     }
     .content-box__header-title {
-      display: none;
-    }
-    .content-box__header-title {
       @include h3_mobile;
     }
     .content-box__section {
       p {
-        margin: unset;
         @include body_standard_mobile;
       }
     }
