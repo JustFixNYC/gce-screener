@@ -380,13 +380,13 @@ export const Survey: React.FC = () => {
         isOpen={showLeaseModal}
         onClose={() => setShowLeaseModal(false)}
         hasCloseBtn={true}
-        header={_(msg`To help guide your answer`)}
+        header={_(msg`Help determining your rent stabilization status`)}
       />
       <Modal
         isOpen={showSubsidyModal}
         onClose={() => setShowSubsidyModal(false)}
         hasCloseBtn={true}
-        header={_(msg`To help guide your answer`)}
+        header={_(msg`Help determining your building’s subsidy status`)}
       >
         <p>
           <strong>
