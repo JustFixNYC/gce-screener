@@ -24,7 +24,7 @@ export const TopBar: React.FC = () => {
     >
       <div className="topbar__name">
         <h1>
-          <Link to={`/${i18n.locale}`}>
+          <Link to={`/${i18n.locale}/`}>
             <Trans>Good Cause NYC</Trans>
           </Link>
         </h1>
@@ -45,6 +45,20 @@ export const Sidebar: React.FC = () => {
   const { i18n } = useLingui();
   const { pathname } = useLocation();
   const cleanedPathname = pathname.toLowerCase();
+  const pathWithoutLocale = removeLocalePrefix(pathname);
+
+  const screenerPath = [
+    "survey",
+    "results",
+    "confirm_address",
+    "rent_stabilization",
+    "portfolio_size",
+  ];
+  const isHomeActive =
+    pathWithoutLocale === "/" ||
+    pathWithoutLocale === "/en" ||
+    pathWithoutLocale === "/es" ||
+    screenerPath.some((path) => cleanedPathname.includes(path));
 
   return (
     <div id="sidebar">
@@ -52,11 +66,7 @@ export const Sidebar: React.FC = () => {
         <NamePlate />
         <nav id="site-nav">
           <ul>
-            <li
-              className={classNames(
-                removeLocalePrefix(pathname) === "/" && "active"
-              )}
-            >
+            <li className={classNames(isHomeActive && "active")}>
               <JFCLLink to={`/${i18n.locale}/`}>
                 <Icon icon="house" />
                 <Trans>Find out if you're covered</Trans>
