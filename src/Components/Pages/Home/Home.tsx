@@ -142,15 +142,19 @@ export const Home: React.FC = () => {
           </section>
           <section className="callout-box">
             <h4 className="callout-box__header">
-              <Trans>If you’re covered by Good Cause</Trans>
+              <Trans>
+                If you’re covered by{" "}
+                <span className="good-cause-text-group">Good Cause</span>
+              </Trans>
             </h4>
             <p>
               <Trans>
                 You have a legal right to limited rent increases and the right
                 to stay in your home. If your landlord is either planning to
                 raise your rent, or not offering you a new lease, we will draft
-                a USPS Certified Mail® letter asserting your Good Cause rights.
-                We will even send it for you, for free.
+                a USPS Certified Mail® letter asserting your{" "}
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                rights. We will even send it for you, for free.
               </Trans>
             </p>
             <JFCLLinkInternal to={`/${i18n.locale}/letter`}>
@@ -159,14 +163,20 @@ export const Home: React.FC = () => {
           </section>
           <section className="callout-box">
             <h4 className="callout-box__header">
-              <Trans>If you’re not covered by Good Cause Eviction</Trans>
+              <Trans>
+                If you’re not covered by{" "}
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                Eviction
+              </Trans>
             </h4>
             <p>
               <Trans>
-                If you live in NYC and are not covered by Good Cause Eviction,
-                you still have important tenant protections. Depending on the
-                type of housing you live in, your protections may be even
-                stronger than those provided by Good Cause.
+                If you live in NYC and are not covered by{" "}
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                Eviction, you still have important tenant protections. Depending
+                on the type of housing you live in, your protections may be even
+                stronger than those provided by{" "}
+                <span className="good-cause-text-group">Good Cause</span>.
               </Trans>
             </p>
             <JFCLLinkInternal to={`/${i18n.locale}/tenant_rights`}>
@@ -179,12 +189,17 @@ export const Home: React.FC = () => {
             </h4>
             <p>
               <Trans>
-                Tenants and tenant advocates are working to extend Good Cause
+                Tenants and tenant advocates are working to extend{" "}
+                <span className="good-cause-text-group">Good Cause</span>{" "}
                 protections throughout New York State.
               </Trans>
             </p>
             <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause/">
-              <Trans>Learn where Good Cause protections have been won</Trans>
+              <Trans>
+                Learn where{" "}
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                protections have been won
+              </Trans>
             </JFCLLinkExternal>
           </section>
         </div>
@@ -207,8 +222,9 @@ export const Home: React.FC = () => {
               <Trans>
                 This site is a collaboration between the Housing Justice for All
                 Coalition and JustFix. We thank all individuals who contributed
-                to this site and to all the tenants and advocates who fight for
-                Good Cause protections.
+                to this site and to all the tenants and advocates who fight for{" "}
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                protections.
               </Trans>
             </p>
           </section>

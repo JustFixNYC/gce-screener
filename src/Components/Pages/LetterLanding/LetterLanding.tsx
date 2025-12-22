@@ -26,14 +26,17 @@ export const LetterLanding: React.FC = () => {
           <Trans>
             If you’re covered by Good Cause and your landlord is planning to
             raise your rent or not offer you a new lease, you can send a letter
-            defending your Good Cause rights.
+            defending your{" "}
+            <span className="good-cause-text-group">Good Cause</span> rights. We
+            will even send it for you, for free.
           </Trans>
         }
         showProgressBar={false}
       >
         <div className="hero-cta">
           <Trans>
-            <strong>Start here:</strong> are you covered by Good Cause?
+            <strong>Start here:</strong> are you covered by{" "}
+            <span className="good-cause-text-group">Good Cause</span>?
           </Trans>
           <div className="hero-cta__buttons">
             <Button
@@ -57,16 +60,19 @@ export const LetterLanding: React.FC = () => {
             </h3>
             <p>
               <Trans>
-                If you are covered by Good Cause, you have a legal right to
-                limited rent increases and the right to stay in your home.
+                If you are covered by{" "}
+                <span className="good-cause-text-group">Good Cause</span>, you
+                have a legal right to limited rent increases and the right to
+                stay in your home.
               </Trans>
             </p>
             <p>
               <Trans>
                 If your landlord is either planning to raise your rent, or not
                 offer you a new lease, we will draft a USPS Certified Mail
-                letter defending your Good Cause rights. We will even send it
-                for you, for free.
+                letter defending your{" "}
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                rights. We will even send it for you, for free.
               </Trans>
             </p>
             <p>
@@ -93,14 +99,17 @@ export const LetterLanding: React.FC = () => {
             </h4>
             <p>
               <Trans>
-                Tenants and tenant advocates are working to extend Good Cause
+                Tenants and tenant advocates are working to extend{" "}
+                <span className="good-cause-text-group">Good Cause</span>{" "}
                 protections throughout New York State. This product is not yet
                 available for residents outside of New York City.
               </Trans>
             </p>
             <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause/#:~:text=Outside%20of%20NYC%20eligibility%20differs%20by%20locality%20because%20municipalities%20that%20opt%20in%20can%20change%20the%20real%20estate%20portfolio%20exemption%20and%20the%20luxury%20rent%20exemption%20thresholds%3A">
               <Trans>
-                Learn where Good Cause Protections have already been won
+                Learn where{" "}
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                Protections have already been won
               </Trans>
             </JFCLLinkExternal>
           </section>

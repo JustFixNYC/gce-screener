@@ -322,13 +322,19 @@ export const Survey: React.FC = () => {
                     )}
                     helperElement={
                       <InfoBox>
-                        {_(
-                          msg`Publicly available data sources indicate that there ${
-                            bldgData.unitsres == 1
-                              ? "is 1 apartment"
-                              : `are ${bldgData.unitsres} apartments`
-                          } in your building. Good Cause protections only apply to tenants whose landlord owns more than 10 apartments, even if those apartments are spread across multiple buildings.`
-                        )}
+                        <Trans>
+                          Publicly available data sources indicate that there{" "}
+                          {bldgData.unitsres == 1
+                            ? "is 1 apartment"
+                            : `are ${bldgData.unitsres} apartments`}{" "}
+                          in your building.{" "}
+                          <span className="good-cause-text-group">
+                            Good Cause
+                          </span>{" "}
+                          protections only apply to tenants whose landlord owns
+                          more than 10 apartments, even if those apartments are
+                          spread across multiple buildings.
+                        </Trans>
                       </InfoBox>
                     }
                     invalid={showErrors && localFields.portfolioSize === null}

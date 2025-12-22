@@ -162,7 +162,8 @@ export const PayRentAndWait: React.FC<NextStepItemProps> = (props) => (
     <p>
       <Trans>
         If they refuse, ignore you, or offer an increase above the legal limit,
-        you still retain your Good Cause protections.
+        you still retain your{" "}
+        <span className="good-cause-text-group">Good Cause</span> protections.
       </Trans>
     </p>
   </ContentBoxItem>
@@ -299,7 +300,8 @@ export const NewCompliantLease: React.FC<NextStepItemProps> = ({
         </Heading>
         <p>
           That’s a good sign, it means your letter worked. The new lease should
-          include a Good Cause lease rider and a lawful rent amount.
+          include a <span className="good-cause-text-group">Good Cause</span>{" "}
+          lease rider and a lawful rent amount.
         </p>
       </section>
       <section>
@@ -367,7 +369,10 @@ export const ClaimsNotCoveredByGCE: React.FC<NextStepItemProps> = ({
           <li>
             <Trans>Compare your results with </Trans>
             <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants">
-              <Trans>NYC’s Tenant Protection Cabinet’s Good Cause Guide.</Trans>
+              <Trans>
+                NYC’s Tenant Protection Cabinet’s{" "}
+                <span className="good-cause-text-group">Good Cause</span> Guide.
+              </Trans>
             </JFCLLinkExternal>
           </li>
         </ul>
@@ -393,7 +398,8 @@ export const NoResponse: React.FC<NextStepItemProps> = ({
         </Heading>
         <p>
           <Trans>
-            If your landlord ignores your letter, you still have your Good Cause
+            If your landlord ignores your letter, you still have your{" "}
+            <span className="good-cause-text-group">Good Cause</span>{" "}
             protections.
           </Trans>
         </p>
@@ -520,10 +526,11 @@ export const RefuseSmallerIncrease: React.FC<NextStepItemProps> = ({
         </Heading>
         <p>
           Your landlord might reject your request and keep the higher rent
-          increase. Even if they refuse, your Good Cause rights still apply.
-          Increases above the local rent standard (annual inflation + 5%, or a
-          maximum of 10%) are presumed unreasonable unless your landlord can
-          prove a valid reason.
+          increase. Even if they refuse, your{" "}
+          <span className="good-cause-text-group">Good Cause</span> rights still
+          apply. Increases above the local rent standard (annual inflation + 5%,
+          or a maximum of 10%) are presumed unreasonable unless your landlord
+          can prove a valid reason.
         </p>
       </section>
       <section>
@@ -573,8 +580,8 @@ export const SmallerButUnreasonableIncrease: React.FC<NextStepItemProps> = ({
           <Trans>What to know</Trans>
         </Heading>
         <p>
-          Even if your landlord lowers the increase, it may still be above what
-          Good Cause allows.
+          Even if your landlord lowers the increase, it may still be above what{" "}
+          <span className="good-cause-text-group">Good Cause</span> allows.
         </p>
       </section>
       <section>
@@ -590,8 +597,9 @@ export const SmallerButUnreasonableIncrease: React.FC<NextStepItemProps> = ({
           </li>
           <li>
             <Trans>
-              If it’s still too high, write back citing Good Cause protections
-              and request a compliant rent amount.
+              If it’s still too high, write back citing{" "}
+              <span className="good-cause-text-group">Good Cause</span>{" "}
+              protections and request a compliant rent amount.
             </Trans>
           </li>
           <li>
@@ -627,8 +635,9 @@ export const NoSmallerIncreaseBeforeLeaseEnd: React.FC<NextStepItemProps> = ({
           <Trans>What to know</Trans>
         </Heading>
         <p>
-          If your lease expires before a new one is offered, your Good Cause
-          rights still apply. You have the right to stay in your home.
+          If your lease expires before a new one is offered, your{" "}
+          <span className="good-cause-text-group">Good Cause</span> rights still
+          apply. You have the right to stay in your home.
         </p>
       </section>
       <section>
@@ -646,7 +655,8 @@ export const NoSmallerIncreaseBeforeLeaseEnd: React.FC<NextStepItemProps> = ({
           <li>
             <Trans>
               If you’re comfortable, you can avoid signing a lease with an
-              increase above the Good Cause limit.
+              increase above the{" "}
+              <span className="good-cause-text-group">Good Cause</span> limit.
             </Trans>
           </li>
           <li>
@@ -687,11 +697,13 @@ export const ProvidesReasonForRentIncrease: React.FC<NextStepItemProps> = ({
         </p>
         <p>
           <Trans>
-            Under the Good Cause law, landlords can only raise rent above the
-            local rent standard (annual inflation + 5%, or a maximum of 10%) if
-            they can prove there’s a legitimate “good cause” reason for doing
-            so. The reason must be specific, factual, and reasonable, not just a
-            general claim of higher expenses.
+            Under the <span className="good-cause-text-group">Good Cause</span>{" "}
+            law, landlords can only raise rent above the local rent standard
+            (annual inflation + 5%, or a maximum of 10%) if they can prove
+            there’s a legitimate{" "}
+            <span className="good-cause-text-group">“good cause”</span> reason
+            for doing so. The reason must be specific, factual, and reasonable,
+            not just a general claim of higher expenses.
           </Trans>
         </p>
       </section>
@@ -721,7 +733,9 @@ export const ProvidesReasonForRentIncrease: React.FC<NextStepItemProps> = ({
             <Trans>
               Reach out to a tenant support organization or legal aid provider
               listed in Who Can Help? for help reviewing whether the landlord’s
-              reason meets the “good cause” standard.
+              reason meets the{" "}
+              <span className="good-cause-text-group">“good cause”</span>{" "}
+              standard.
             </Trans>
           </li>
           <li>
@@ -796,13 +810,18 @@ export const RefusesNewLease: React.FC<NextStepItemProps> = ({
         </Heading>
         <p>
           <Trans>
-            Under Good Cause, a landlord cannot refuse to renew your lease
-            without a legally valid reason.
+            Under <span className="good-cause-text-group">Good Cause</span> , a
+            landlord cannot refuse to renew your lease without a legally valid
+            reason.
           </Trans>
         </p>
         <p>
           <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
-            <Trans>Learn more about Good Cause reasons for non renewal</Trans>
+            <Trans>
+              Learn more about{" "}
+              <span className="good-cause-text-group">Good Cause</span> reasons
+              for non renewal
+            </Trans>
           </JFCLLinkExternal>
         </p>
       </section>
@@ -851,8 +870,9 @@ export const NewLeaseUnreasonableIncrease: React.FC<NextStepItemProps> = ({
         </Heading>
         <p>
           <Trans>
-            Renewal leases must also follow Good Cause rules. A rent increase
-            above the legal limit is presumed unreasonable.
+            Renewal leases must also follow{" "}
+            <span className="good-cause-text-group">Good Cause</span> rules. A
+            rent increase above the legal limit is presumed unreasonable.
           </Trans>
         </p>
       </section>
@@ -872,7 +892,8 @@ export const NewLeaseUnreasonableIncrease: React.FC<NextStepItemProps> = ({
           </li>
           <li>
             <Trans>
-              Respond in writing: note that you’re covered by Good Cause and
+              Respond in writing: note that you’re covered by{" "}
+              <span className="good-cause-text-group">Good Cause</span> and
               request a rent below the legal limit.
             </Trans>
           </li>
@@ -903,12 +924,13 @@ export const ReasonForNonRenewal: React.FC<NextStepItemProps> = ({
         </Heading>
         <p>
           <Trans>
-            Under the Good Cause law, your landlord can only refuse to renew
-            your lease if they have a legally valid reason, known as a “good
-            cause.” These reasons are limited and must meet specific criteria.
-            For example, if the landlord or their immediate family intends to
-            move in, if you’ve violated a substantial lease term, or if you’ve
-            consistently failed to pay rent.
+            Under the <span className="good-cause-text-group">Good Cause</span>{" "}
+            law, your landlord can only refuse to renew your lease if they have
+            a legally valid reason, known as a “good cause.” These reasons are
+            limited and must meet specific criteria. For example, if the
+            landlord or their immediate family intends to move in, if you’ve
+            violated a substantial lease term, or if you’ve consistently failed
+            to pay rent.
           </Trans>
         </p>
         <p>
@@ -920,7 +942,11 @@ export const ReasonForNonRenewal: React.FC<NextStepItemProps> = ({
         </p>
         <p>
           <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
-            <Trans>Learn more about Good Cause reasons for non renewal</Trans>
+            <Trans>
+              Learn more about{" "}
+              <span className="good-cause-text-group">Good Cause</span> reasons
+              for non renewal
+            </Trans>
           </JFCLLinkExternal>
         </p>
       </section>
@@ -943,8 +969,9 @@ export const ReasonForNonRenewal: React.FC<NextStepItemProps> = ({
           </li>
           <li>
             <Trans>
-              Compare your landlord’s stated reason with the list of Good Cause
-              reasons to see if it qualifies under the law.
+              Compare your landlord’s stated reason with the list of{" "}
+              <span className="good-cause-text-group">Good Cause</span> reasons
+              to see if it qualifies under the law.
             </Trans>
           </li>
           <li>
@@ -969,8 +996,9 @@ export const ProofForNonRenewalReason: React.FC<NextStepItemProps> = ({
     <ContentBoxItem
       title={
         <Trans>
-          Your landlord provides proof of a “good cause” reason for not renewing
-          your lease
+          Your landlord provides proof of a{" "}
+          <span className="good-cause-text-group">“good cause”</span> reason for
+          not renewing your lease
         </Trans>
       }
       headingLevel={headingLevel}
@@ -983,21 +1011,28 @@ export const ProofForNonRenewalReason: React.FC<NextStepItemProps> = ({
         <p>
           <Trans>
             Your landlord may share documentation or other evidence to support
-            their claimed “good cause” reason for not renewing your lease. For
-            example, proof that they or an immediate family member intend to
-            move in, or that you’ve repeatedly violated the lease.
+            their claimed{" "}
+            <span className="good-cause-text-group">“good cause”</span> reason
+            for not renewing your lease. For example, proof that they or an
+            immediate family member intend to move in, or that you’ve repeatedly
+            violated the lease.
           </Trans>
         </p>
         <p>
           <Trans>
             Even when your landlord provides proof, you still have the right to
             review and, if needed, challenge whether their reason qualifies as
-            lawful under the Good Cause law.
+            lawful under the{" "}
+            <span className="good-cause-text-group">Good Cause</span> law.
           </Trans>
         </p>
         <p>
           <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants#:~:text=My%20landlord%20is%20threatening%20to%20evict%20me%20or%20refusing%20to%20renew%20my%20lease%2C%20and%20I%20think%20I%E2%80%99m%20covered%20by%20Good%20Cause%20Eviction.%20What%20can%20I%20do%3F">
-            <Trans>Learn more about Good Cause reasons for non renewal</Trans>
+            <Trans>
+              Learn more about{" "}
+              <span className="good-cause-text-group">Good Cause</span> reasons
+              for non renewal
+            </Trans>
           </JFCLLinkExternal>
         </p>
       </section>

@@ -257,9 +257,13 @@ export const Results: React.FC = () => {
           {coverageResult === "NOT_COVERED" && (
             <UniversalProtections
               coverageResult={coverageResult}
-              title={_(
-                msg`Even though you may not be covered by Good Cause Eviction, all NYC tenants are guaranteed the following rights`
-              )}
+              title={
+                <Trans>
+                  Even though you may not be covered by{" "}
+                  <span className="good-cause-text-group">Good Cause</span>{" "}
+                  Eviction, all NYC tenants are guaranteed the following rights
+                </Trans>
+              }
               headingLevel={3}
             />
           )}
@@ -449,7 +453,9 @@ const EligibilityNextSteps: React.FC<{
                 You told us that you are unsure if you are rent stabilized. If
                 your apartment is rent stabilized, you are not covered by Good
                 Cause Eviction law, but rent stabilized protections are even
-                stronger than the Good Cause Eviction law.
+                stronger than the{" "}
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                Eviction law.
               </Trans>
             </p>
             <JFCLLinkInternal
@@ -548,7 +554,7 @@ const CoverageResultHeadline: React.FC<{
           <span className="result-headline__top">You are</span>{" "}
           <span className="coverage-pill orange">likely not covered</span>{" "}
           <br aria-hidden />
-          by Good Cause Eviction
+          by <span className="good-cause-text-group">Good Cause</span> Eviction
         </Trans>
       );
       break;
@@ -557,7 +563,8 @@ const CoverageResultHeadline: React.FC<{
         <Trans>
           <span className="result-headline__top">Your apartment is</span>{" "}
           <span className="coverage-pill green">rent stabilized</span> which
-          provides stronger protections than Good Cause Eviction
+          provides stronger protections than{" "}
+          <span className="good-cause-text-group">Good Cause</span> Eviction
         </Trans>
       );
       break;
@@ -565,8 +572,8 @@ const CoverageResultHeadline: React.FC<{
       headlineContent = (
         <Trans>
           <span className="result-headline__top">You are</span>{" "}
-          <span className="coverage-pill green">likely covered</span> by Good
-          Cause Eviction
+          <span className="coverage-pill green">likely covered</span> by{" "}
+          <span className="good-cause-text-group">Good Cause</span> Eviction
         </Trans>
       );
       break;
@@ -577,7 +584,8 @@ const CoverageResultHeadline: React.FC<{
             Your apartment is part of
           </span>{" "}
           <span className="coverage-pill green">NYCHA or PACT/RAD</span> which
-          provides stronger protections than Good Cause Eviction
+          provides stronger protections than{" "}
+          <span className="good-cause-text-group">Good Cause</span> Eviction
         </Trans>
       );
       break;
