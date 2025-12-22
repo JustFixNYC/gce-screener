@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { SWRConfig } from "swr";
 import { useRollbar } from "@rollbar/react";
 
-import { I18n } from "./i18n";
+import { I18n, parseLocaleFromPath } from "./i18n";
 import { Home } from "./Components/Pages/Home/Home";
 import { Survey } from "./Components/Pages/Form/Survey";
 import { Results } from "./Components/Pages/Results/Results";
@@ -206,7 +206,9 @@ const LoadLetterSession = ({ request }: { request: Request }) => {
         : (JSON.parse(formValues) as FormFields),
     };
   } else {
-    throw redirect("/letter");
+    const url = new URL(request.url);
+    const locale = parseLocaleFromPath(url.pathname) || "en";
+    throw redirect(`/${locale}/letter`);
   }
 };
 

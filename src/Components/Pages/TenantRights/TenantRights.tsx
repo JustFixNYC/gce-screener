@@ -20,7 +20,7 @@ export const TenantRights: React.FC = () => {
   return (
     <div id="tenant-rights-page">
       <Header
-        title={_(msg`Understanding your rights`)}
+        title={_(msg`Know your rights`)}
         subtitle={_(
           msg`All tenants in NYC are protected by important rights. This guide provides information about many of those rights depending on the type of housing you live in.`
         )}

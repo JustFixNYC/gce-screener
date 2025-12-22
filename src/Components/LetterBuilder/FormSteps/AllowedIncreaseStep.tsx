@@ -21,8 +21,9 @@ export const AllowedIncreaseStep: React.FC = () => {
         color="yellow"
         header={
           <Trans>
-            You told us that the landlord’s proposed rent increase is within the
-            Good Cause legal limit.
+            You told us that the landlord’s proposed rent increase is within the{" "}
+            <span className="good-cause-text-group">Good Cause</span> legal
+            limit.
           </Trans>
         }
         headingLevel={4}
@@ -43,7 +44,12 @@ export const AllowedIncreaseStep: React.FC = () => {
       </Notice>
       <RentNegotiationTips />
       <GoodCauseProtections
-        title={<Trans>Protections under Good Cause</Trans>}
+        title={
+          <Trans>
+            Protections under{" "}
+            <span className="good-cause-text-group">Good Cause</span>
+          </Trans>
+        }
         headingLevel={4}
       />
       <BackNextButtons hideButton2 backStepName="rent_increase" />
@@ -65,8 +71,9 @@ const PhaseInIncrease: React.FC = () => (
   >
     <p>
       <Trans>
-        Even if the full increase is allowed under Good Cause, you can ask to
-        spread it out over several months.
+        Even if the full increase is allowed under{" "}
+        <span className="good-cause-text-group">Good Cause</span>, you can ask
+        to spread it out over several months.
       </Trans>
     </p>
     <p>

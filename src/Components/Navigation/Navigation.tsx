@@ -24,7 +24,7 @@ export const TopBar: React.FC = () => {
     >
       <div className="topbar__name">
         <h1>
-          <Link to={`/${i18n.locale}`}>
+          <Link to={`/${i18n.locale}/`}>
             <Trans>Good Cause NYC</Trans>
           </Link>
         </h1>
@@ -45,19 +45,29 @@ export const Sidebar: React.FC = () => {
   const { i18n } = useLingui();
   const { pathname } = useLocation();
   const cleanedPathname = pathname.toLowerCase();
-  
+  const pathWithoutLocale = removeLocalePrefix(pathname);
+
+  const screenerPath = [
+    "survey",
+    "results",
+    "confirm_address",
+    "rent_stabilization",
+    "portfolio_size",
+  ];
+  const isHomeActive =
+    pathWithoutLocale === "/" ||
+    pathWithoutLocale === "/en" ||
+    pathWithoutLocale === "/es" ||
+    screenerPath.some((path) => cleanedPathname.includes(path));
+
   return (
     <div id="sidebar">
       <div className="sidebar__content">
         <NamePlate />
         <nav id="site-nav">
           <ul>
-            <li
-              className={classNames(
-                removeLocalePrefix(pathname) === "/" && "active"
-              )}
-            >
-              <JFCLLink to={`/${i18n.locale}/`} >
+            <li className={classNames(isHomeActive && "active")}>
+              <JFCLLink to={`/${i18n.locale}/`}>
                 <Icon icon="house" />
                 <Trans>Find out if you're covered</Trans>
               </JFCLLink>
@@ -77,7 +87,11 @@ export const Sidebar: React.FC = () => {
                 <Trans>Calculate your rent increase</Trans>
               </JFCLLink>
             </li>
-            <li className={classNames(cleanedPathname.includes("letter") && "active")}>
+            <li
+              className={classNames(
+                cleanedPathname.includes("letter") && "active"
+              )}
+            >
               <JFCLLink
                 to={`/${i18n.locale}/letter`}
                 onClick={() => {
@@ -93,9 +107,7 @@ export const Sidebar: React.FC = () => {
                 cleanedPathname.includes("tenant_rights") && "active"
               )}
             >
-              <JFCLLink
-                to={`/${i18n.locale}/tenant_rights`}
-              >
+              <JFCLLink to={`/${i18n.locale}/tenant_rights`}>
                 <Icon icon="shieldCheck" />
                 <Trans>Know your rights</Trans>
               </JFCLLink>
@@ -113,15 +125,26 @@ export const Sidebar: React.FC = () => {
   );
 };
 
-const NamePlate: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={classNames("nameplate", className)}>
-    <h1>
-      <Link to="/">
-        <Trans>Good Cause NYC</Trans>
-      </Link>
-    </h1>
-  </div>
-);
+const NamePlate: React.FC<{ className?: string }> = ({ className }) => {
+  const { i18n } = useLingui();
+  const isSpanish = i18n.locale === "es";
+
+  return (
+    <div
+      className={classNames(
+        "nameplate",
+        className,
+        isSpanish && "nameplate-es"
+      )}
+    >
+      <h1>
+        <Link to="/">
+          <Trans>Good Cause NYC</Trans>
+        </Link>
+      </h1>
+    </div>
+  );
+};
 
 export const CollabHeader: React.FC<{ className?: string }> = ({
   className,

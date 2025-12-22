@@ -20,6 +20,13 @@
 
   .content-box {
     margin: 0 0 1.5rem;
+
+    .modal__content {
+      button {
+        margin-top: 2rem;
+        width: 100%;
+      }
+    }
   }
 
   @include for-phone-only() {
@@ -27,14 +34,10 @@
       margin-top: 2.25rem !important; // overrides ShareButton.scss
     }
     .content-box__header-title {
-      display: none;
-    }
-    .content-box__header-title {
       @include h3_mobile;
     }
     .content-box__section {
       p {
-        margin: unset;
         @include body_standard_mobile;
       }
     }

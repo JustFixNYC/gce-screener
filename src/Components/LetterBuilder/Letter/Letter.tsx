@@ -30,9 +30,9 @@ export const Letter: React.FC<LetterData> = ({ letterData }) => {
           <LetterHeader letterData={letterData} />
           <main id="letter">
             <LetterIntro letterData={letterData} />
-            <LetterRightsList />
             <LetterReason letterData={letterData} />
             <LetterRequest letterData={letterData} />
+            <LetterRightsList />
             <LetterOutro />
           </main>
           <LetterFooter letterData={letterData} />
@@ -90,7 +90,7 @@ const LetterHeader: React.FC<LetterData> = ({ letterData }) => {
 };
 
 const LetterIntro: React.FC<LetterData> = ({ letterData }) => {
-  const { landlord_details: ld, user_details: ud } = letterData;
+  const { landlord_details: ld, user_details: ud, reason } = letterData;
   return (
     <>
       <p className="salutation" style={{ paddingTop: "1em" }}>
@@ -105,8 +105,16 @@ const LetterIntro: React.FC<LetterData> = ({ letterData }) => {
             }, ${toTitleCase(ud.city)}, ${ud.zip_code} ${" "}`}
             is covered under New York State Real Property Law (RPL) Article 6-A,
             also known as the Good Cause Eviction Law, which took effect in New
-            York City on April 20, 2024. As a tenant covered by this law, I want
-            to outline my protections and our mutual responsibilities.
+            York City on April 20, 2024. As a tenant covered by Good Cause, I
+            want to address your{" "}
+          </Trans>
+          {reason === "PLANNED_INCREASE" ? (
+            <Trans>proposed rent increase</Trans>
+          ) : (
+            <Trans>intent to end my tenancy</Trans>
+          )}
+          <Trans>
+            , outline my housing protections, and our mutual responsibilities.
           </Trans>
         </p>
       </section>
@@ -119,6 +127,10 @@ const LetterRightsList = () => {
 
   return (
     <section className="rights">
+      <h2 style={{ fontSize: "1.125rem" }}>
+        <Trans>Protections I have as a tenant covered by Good Cause:</Trans>
+      </h2>
+
       <ol>
         <li style={{ fontWeight: "bold" }}>
           <span style={{ fontWeight: "normal" }}>
@@ -174,8 +186,8 @@ const LetterRightsList = () => {
             </strong>
             <p>
               <Trans>
-                Under Good Cause Eviction Law, you must provide a Good Cause
-                Eviction notice when issuing:
+                Under Good Cause Eviction Law, pursuant to RPL § 231-c, you must
+                provide a Good Cause Eviction notice when issuing:
               </Trans>
             </p>
             <ul style={{ listStyleType: "disc" }}>
@@ -186,7 +198,10 @@ const LetterRightsList = () => {
                 <Trans>A rent increase above the thresholds, or</Trans>
               </li>
               <li>
-                <Trans>A non-renewal or eviction notice</Trans>
+                <Trans>
+                  A non-renewal or a notice stating that you intend to file a
+                  housing court case against me.
+                </Trans>
               </li>
             </ul>
             <p>
@@ -208,7 +223,7 @@ const LetterReason: React.FC<LetterData> = ({ letterData }) => (
       {letterData.reason === "PLANNED_INCREASE" ? (
         <Trans>Concerning the proposed rent increase:</Trans>
       ) : (
-        <Trans>Concerning your intent to end my tenancy</Trans>
+        <Trans>Concerning your intent to end my tenancy:</Trans>
       )}
     </h2>
     <p>
@@ -235,11 +250,11 @@ const LetterRequest: React.FC<LetterData> = ({ letterData }) => (
     <h2 style={{ fontSize: "1.125rem" }}>
       <Trans>I respectfully request the following:</Trans>
     </h2>
-    <ul style={{ marginLeft: "-1em" }}>
+    <ul>
       <li>
         <Trans>
           Please confirm in writing that this unit is covered under Good Cause
-          Eviction Law, as required by RPL § 213.
+          Eviction Law, as required by RPL § 213-c.
         </Trans>
       </li>
       <li>
@@ -247,14 +262,14 @@ const LetterRequest: React.FC<LetterData> = ({ letterData }) => (
           <Trans>
             Please send me a new lease with a rent increase of less than{" "}
             {CPI + 5}%, consistent with the limits established under RPL §
-            216(1)(a).
+            211(7) and 216(1)(a)(i).
           </Trans>
         ) : (
           <Trans>
-            Please confirm whether you intend to renew my lease, If you do not
+            Please confirm that you intend to renew my lease, If you do not
             intend to renew, please provide the specific “good cause” ground, as
-            required under RPL § 215 and RPL § 216(4). If you do not provide
-            such reason, I will assume I retain the right to continue my tenancy
+            required under RPL § 216. If you do not provide a valid, good cause
+            reason, I will assume I retain the right to continue my tenancy
             under existing terms.
           </Trans>
         )}
