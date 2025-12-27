@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-12-27 22:53\n"
+"PO-Revision-Date: 2025-12-27 23:11\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -99,7 +99,7 @@ msgstr "<0>Si usted está cubierto por la <1>Justa Causa</1></0> y su arrendador
 #: src/Components/KYRContent/KYRContent.tsx:359
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:229
 msgid "<0>If you’re covered by <1>Good Cause</1></0> and your landlord is planning to raise your rent beyond this amount, you can send a legally-vetted letter to your landlord to ask for a lower rent increase."
-msgstr ""
+msgstr "<0>Si está cubierto por la <1>Justa Causa</1></0> y su arrendador tiene previsto aumentar su renta por encima de este monto, puede enviarle una carta revisada legalmente para solicitarle un aumento menor."
 
 #: src/Components/KYRContent/KYRContent.tsx:447
 #~ msgid "<0>If you’re covered by Good Cause</0> and your landlord is not offering you a lease renewal, you can send a legally-vetted letter to your landlord to assert your right to a renewal."
@@ -128,7 +128,7 @@ msgstr "<0>Número de teléfono</0>"
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:37
 msgid "<0>Start here:</0> are you covered by <1>Good Cause</1>?"
-msgstr ""
+msgstr "<0>Empezar aquí:</0> ¿está cubierto por la <1>Justa Causa</1>?"
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:35
 #~ msgid "<0>Start here:</0> are you covered by Good Cause?"
@@ -172,7 +172,7 @@ msgstr "<0>Consejo:</0> recomendamos realizar la siguiente investigación en una
 
 #: src/Components/Pages/Results/Results.tsx:573
 msgid "<0>You are</0> <1>likely covered</1> by <2>Good Cause</2> Eviction"
-msgstr ""
+msgstr "<1>Es probable que</1> <0>usted esté</0> <1>amparado</1> por el Desalojo por <2>Justa Causa</2>"
 
 #: src/Components/Pages/Results/Results.tsx:566
 #~ msgid "<0>You are</0> <1>likely covered</1> by Good Cause Eviction"
