@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-12-28 14:33\n"
+"PO-Revision-Date: 2025-12-28 15:29\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -3756,7 +3756,7 @@ msgstr "Sí, NYCHA / PACT-RAD"
 
 #: src/Components/KYRContent/KYRContent.tsx:925
 msgid "You are not covered by <0>Good Cause</0> because you have existing eviction protections through your building's subsidy program"
-msgstr ""
+msgstr "No está amparado por la Ley por <0>Justa Causa</0> porque ya cuenta con protecciones contra el desalojo a través del programa de subsidios de su edificio"
 
 #: src/Components/KYRContent/KYRContent.tsx:888
 #~ msgid "You are not covered by Good Cause because you have existing eviction protections through your building’s subsidy program"
@@ -3809,7 +3809,7 @@ msgstr "Puede retener el aumento del alquiler que supere el límite \"razonable\
 
 #: src/Components/Pages/Home/Home.tsx:151
 msgid "You have a legal right to limited rent increases and the right to stay in your home. If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter asserting your <0>Good Cause</0> rights. We will even send it for you, for free."
-msgstr ""
+msgstr "Tiene derecho legal a aumentos limitados de la renta y el derecho a permanecer en su vivienda. Si su arrendador tiene previsto aumentar la renta o no le ofrece un nuevo contrato de arrendamiento, redactaremos una carta certificada por el USPS® en la que se hagan valer sus derechos por <0>Justa Causa</0>. Incluso la enviaremos por usted, sin costo alguno."
 
 #: src/Components/Pages/Home/Home.tsx:148
 #~ msgid "You have a legal right to limited rent increases and the right to stay in your home. If your landlord is either planning to raise your rent, or not offering you a new lease, we will draft a USPS Certified Mail® letter asserting your Good Cause rights. We will even send it for you, for free."
@@ -3853,7 +3853,7 @@ msgstr "Usted informó que no está seguro de si su departamento tiene alquiler 
 
 #: src/hooks/useCriteriaResults.tsx:353
 msgid "You reported that your apartment is not rent stabilized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that all apartments in your building are registered as rent stabilized. {wowLink} If those sources are correct, then you may already have stronger tenant protections than <0>Good Cause</0> Eviction provides. {guideLink}"
-msgstr ""
+msgstr "Usted informó que su departamento no tiene alquiler estabilizado, y estamos utilizando su respuesta como parte de nuestra evaluación de cobertura. Nota: Las fuentes de datos disponibles públicamente indican que todos los departamentos de su edificio están registrados como de renta estabilizada. {wowLink} Si esas fuentes son correctas, es posible que ya cuente con protecciones para inquilinos más sólidas que las que ofrece la Ley de Desalojo por <0>Justa Causa</0>. {guideLink}"
 
 #: src/hooks/useCriteriaResults.tsx:351
 #~ msgid "You reported that your apartment is not rent stabilized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that all apartments in your building are registered as rent stabilized. {wowLink} If those sources are correct, then you may already have stronger tenant protections than Good Cause Eviction provides. {guideLink}"
@@ -3862,7 +3862,7 @@ msgstr ""
 #. placeholder {0}: activeJ51 ? "421a" : "J51"
 #: src/hooks/useCriteriaResults.tsx:365
 msgid "You reported that your apartment is not rent stabilized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building receives the {0} tax incentive, which means your apartment should be rent stabilized. {subsidyLink} If those sources are correct, then you may already have stronger tenant protections than <0>Good Cause</0> Eviction provides. {guideLink}"
-msgstr ""
+msgstr "Usted informó que su departamento no tiene alquiler estabilizado, y estamos utilizando su respuesta como parte de nuestra evaluación de cobertura. Nota: Las fuentes de datos disponibles públicamente indican que su edificio recibe el incentivo fiscal {0}, lo que significa que su departamento debería tener renta estabilizada. {subsidyLink} Si esas fuentes son correctas, es posible que ya cuente con protecciones para inquilinos más sólidas que las que ofrece la Ley de Desalojo por <0>Justa Causa</0>. {guideLink}"
 
 #: src/hooks/useCriteriaResults.tsx:362
 #~ msgid "You reported that your apartment is not rent stabilized, and we are using your answer as part of our coverage assessment. Note: publicly available data sources indicate that your building receives the {0} tax incentive, which means your apartment should be rent stabilized. {subsidyLink} If those sources are correct, then you may already have stronger tenant protections than Good Cause Eviction provides. {guideLink}"
@@ -3957,7 +3957,7 @@ msgstr "Aún tiene derechos y es posible que pueda negociar un aumento menor o s
 
 #: src/Components/KYRContent/KYRContent.tsx:939
 msgid "You told us that that you live subsidized housing. If your building is subsidized then you are not covered by <0>Good Cause</0> Eviction law because you should already have important tenant protections associated with your building’s subsidy."
-msgstr ""
+msgstr "Nos dijo que vive en una vivienda subsidiada. Si su edificio está subsidiado, entonces no está amparado por la Ley de Desalojo por <0>Justa Causa</0>, ya que debería contar con importantes protecciones para inquilinos asociadas con el subsidio de su edificio."
 
 #: src/Components/KYRContent/KYRContent.tsx:898
 #~ msgid "You told us that that you live subsidized housing. If your building is subsidized then you are not covered by Good Cause Eviction law because you should already have important tenant protections associated with your building’s subsidy."
@@ -3965,7 +3965,7 @@ msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:23
 msgid "You told us that the landlord’s proposed rent increase is within the <0>Good Cause</0> legal limit."
-msgstr ""
+msgstr "Nos ha informado de que el aumento de renta propuesto por el propietario se encuentra dentro del límite legal por <0>Justa Causa</0>."
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:22
 #~ msgid "You told us that the landlord's proposed rent increase is within the Good Cause legal limit."
@@ -4159,7 +4159,7 @@ msgstr "Su arrendador puede responder con una explicación o justificación para
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1012
 msgid "Your landlord may share documentation or other evidence to support their claimed <0>“good cause”</0> reason for not renewing your lease. For example, proof that they or an immediate family member intend to move in, or that you’ve repeatedly violated the lease."
-msgstr ""
+msgstr "Su arrendador puede compartir documentación u otras pruebas que respalden la <0>\"justa causa\"</0> que alega para no renovar su contrato de arrendamiento. Por ejemplo, pruebas de que él o un familiar directo tienen intención de mudarse a la vivienda, o de que usted ha incumplido repetidamente el contrato de arrendamiento."
 
 #: src/Components/KYRContent/KYRContent.tsx:597
 msgid "Your landlord must give you written notice to raise your rent more than 5% (30 days notice if you’ve lived there less than 1 year, 60 days if you’ve lived there 1-2 years, and 90 days notice if you’ve lived there longer than 2 years). If your landlord tries to raise rent without proper notice, inform them they are violating <0>Real Property Law L Section 226-C</0>. Do not pay any rent increase until they give written notice."
@@ -4191,7 +4191,7 @@ msgstr "Su arrendador le da una razón para aumentar su contrato de arrendamient
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:998
 msgid "Your landlord provides proof of a <0>“good cause”</0> reason for not renewing your lease"
-msgstr ""
+msgstr "Su arrendador proporciona pruebas de una <0>\"justa causa\"</0> para no renovar su contrato de arrendamiento"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:518
 msgid "Your landlord refuses to offer a smaller rent increase"
