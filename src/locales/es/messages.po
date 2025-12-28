@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-12-28 00:10\n"
+"PO-Revision-Date: 2025-12-28 14:33\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -2456,7 +2456,7 @@ msgstr "Protecciones si vive en una vivienda de NYCHA o PACT/RAD"
 
 #: src/Components/KYRContent/KYRContent.tsx:283
 msgid "Protections if you're covered by <0>Good Cause</0>"
-msgstr ""
+msgstr "Protecciones si está amparado por la Ley de Desalojo por <0>Justa Causa</0>"
 
 #: src/Components/KYRContent/KYRContent.tsx:282
 #~ msgid "Protections if you’re covered by Good Cause"
@@ -2469,7 +2469,7 @@ msgstr "Protecciones que tienen todos los inquilinos de la ciudad de Nueva York"
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:48
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:199
 msgid "Protections under <0>Good Cause</0>"
-msgstr ""
+msgstr "Protecciones por <0>Justa Causa</0>"
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:46
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:188
@@ -2478,7 +2478,7 @@ msgstr ""
 
 #: src/hooks/useCriteriaResults.tsx:449
 msgid "Public data sources indicate that your building is {bldgTypeName}, and so is not covered by <0>Good Cause</0> Eviction."
-msgstr ""
+msgstr "Las fuentes de datos públicas indican que su edificio es {bldgTypeName}, por lo que no está amparado por la Ley de Desalojo por <0>Justa Causa</0>."
 
 #: src/hooks/useCriteriaResults.tsx:445
 #~ msgid "Public data sources indicate that your building is {bldgTypeName}, and so is not covered by Good Cause Eviction."
@@ -2517,7 +2517,7 @@ msgstr "Las fuentes de datos disponibles públicamente indican que todos los dep
 #. placeholder {0}: bldgData.unitsres == 1 ? "is 1 apartment" : `are ${bldgData.unitsres} apartments`
 #: src/Components/Pages/Form/Survey.tsx:325
 msgid "Publicly available data sources indicate that there {0} in your building. <0>Good Cause</0> protections only apply to tenants whose landlord owns more than 10 apartments, even if those apartments are spread across multiple buildings."
-msgstr ""
+msgstr "Las fuentes de datos disponibles públicamente indican que hay {0} en su edificio. Las protecciones por <0>Justa Causa</0> solo se aplican a los inquilinos cuyo arrendador posea más de 10 apartamentos, incluso si esos departamentos están repartidos en varios edificios."
 
 #: src/Components/Pages/Form/Survey.tsx:326
 #~ msgid "Publicly available data sources indicate that there {0} in your building. Good Cause protections only apply to tenants whose landlord owns more than 10 apartments, even if those apartments are spread across multiple buildings."
@@ -2559,7 +2559,7 @@ msgstr "Póngase en contacto con una organización de apoyo a los inquilinos par
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:733
 msgid "Reach out to a tenant support organization or legal aid provider listed in Who Can Help? for help reviewing whether the landlord’s reason meets the <0>“good cause”</0> standard."
-msgstr ""
+msgstr "Póngase en contacto con una organización de apoyo a los inquilinos o un proveedor de asistencia jurídica que figure en ¿Quién puede ayudarle? para que le ayuden a determinar si el motivo del propietario cumple el criterio de <0>\"Justa Causa\"</0>."
 
 #: src/Components/KYRContent/KYRContent.tsx:675
 msgid "Reach out to external resources"
@@ -2601,7 +2601,7 @@ msgstr "Retirada del departamento del mercado"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:872
 msgid "Renewal leases must also follow <0>Good Cause</0> rules. A rent increase above the legal limit is presumed unreasonable."
-msgstr ""
+msgstr "Las renovaciones de contratos de arrendamiento también deben cumplir las normas de la <0>Justa Causa</0>. Se considera que un aumento de la renta por encima del límite legal es injustificado."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:853
 #~ msgid "Renewal leases must also follow Good Cause rules. A rent increase above the legal limit is presumed unreasonable."
@@ -2625,7 +2625,7 @@ msgstr "Estabilización de renta"
 
 #: src/hooks/useCriteriaResults.tsx:339
 msgid "Rent stabilized apartments are not covered by <0>Good Cause</0> Eviction because they already have stronger tenant protections than <1>Good Cause</1>."
-msgstr ""
+msgstr "Los departamentos con renta estabilizada no están amparados por la Ley de Desalojo por <0>Justa Causa</0>, ya que cuentan con protecciones para los inquilinos más sólidas que las de la <1>Justa Causa</1>."
 
 #: src/hooks/useCriteriaResults.tsx:339
 #~ msgid "Rent stabilized apartments are not covered by Good Cause Eviction because they already have stronger tenant protections than Good Cause."
@@ -2657,7 +2657,7 @@ msgstr "Guía para inquilinos residenciales"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:894
 msgid "Respond in writing: note that you’re covered by <0>Good Cause</0> and request a rent below the legal limit."
-msgstr ""
+msgstr "Responda por escrito: indique que está cubierto por la <0>Justa Causa</0> y solicite un alquiler inferior al límite legal."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:874
 #~ msgid "Respond in writing: note that you’re covered by Good Cause and request a rent below the legal limit."
@@ -2830,7 +2830,7 @@ msgstr "Fírmelo y devuélvaselo a su arrendador una vez que esté de acuerdo co
 
 #: src/Components/KYRContent/KYRContent.tsx:571
 msgid "Since your apartment is covered by <0>Good Cause</0> Eviction, there is a good chance other apartments in your building are covered as well. Organizing with your neighbors can help you assert your rights as a group."
-msgstr ""
+msgstr "Dado que su departamento está amparado por la Ley de Desalojo por <0>Justa Causa</0>, es muy probable que otros departamentos de su edificio también lo estén. Organizarse con sus vecinos puede ayudarle a hacer valer sus derechos como grupo."
 
 #: src/Components/KYRContent/KYRContent.tsx:540
 #~ msgid "Since your apartment is covered by Good Cause Eviction, there is a good chance other apartments in your building are covered as well. Organizing with your neighbors can help you assert your rights as a group."
@@ -2901,7 +2901,7 @@ msgstr "Enviar"
 #: src/hooks/useCriteriaResults.tsx:558
 #: src/hooks/useCriteriaResults.tsx:660
 msgid "Subsidized buildings are not covered by <0>Good Cause</0> Eviction because they already have similar, and sometimes stronger, existing tenant protections."
-msgstr ""
+msgstr "Los edificios subsidiados no están amparados por la Ley de Desalojo por <0>Justa Causa</0>, ya que cuentan con protecciones similares, y en ocasiones más sólidas, para los inquilinos."
 
 #: src/hooks/useCriteriaResults.tsx:551
 #: src/hooks/useCriteriaResults.tsx:649
@@ -2941,7 +2941,7 @@ msgstr "Dígales que no es razonable"
 
 #: src/Components/KYRContent/KYRContent.tsx:558
 msgid "Tell your landlord you have a right to stay unless your landlord has a <0>“Good Cause”</0> to evict you. If your landlord then tries to formally evict you in court, you can raise a <1>Good Cause</1> defense and require your landlord to demonstrate they have a <2>“Good Cause”</2> to evict you."
-msgstr ""
+msgstr "Dígale a su arrendador que tiene derecho a quedarse a menos que él tenga una <0>\"Justa Causa\"</0> para desalojarlo. Si su arrendador intenta desalojarlo formalmente en un tribunal, usted puede presentar una defensa por <1>Justa Causa</1> y exigirle que demuestre que tiene una <2>\"Justa Causa\"</2> para desalojarlo."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:1169
 msgid "Tenant advocacy groups"
@@ -2969,11 +2969,11 @@ msgstr "Los grupos de apoyo a los inquilinos pueden ayudarle a redactar mensajes
 
 #: src/Components/Pages/Home/Home.tsx:191
 msgid "Tenants and tenant advocates are working to extend <0>Good Cause</0> protections throughout New York State."
-msgstr ""
+msgstr "Los inquilinos y los defensores de los inquilinos están trabajando para ampliar las protecciones por <0>Justa Causa</0> en todo el estado de Nueva York."
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:101
 msgid "Tenants and tenant advocates are working to extend <0>Good Cause</0> protections throughout New York State. This product is not yet available for residents outside of New York City."
-msgstr ""
+msgstr "Los inquilinos y los defensores de los inquilinos están trabajando para ampliar las protecciones por <0>Justa Causa</0> en todo el estado de Nueva York. Este producto aún no está disponible para los residentes fuera de la ciudad de Nueva York."
 
 #: src/Components/Pages/Home/Home.tsx:181
 #~ msgid "Tenants and tenant advocates are working to extend Good Cause protections throughout New York State."
@@ -3165,7 +3165,7 @@ msgstr "Este aviso debe indicar si la unidad está cubierta por el artículo 6-A
 
 #: src/Components/Pages/Home/Home.tsx:222
 msgid "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for <0>Good Cause</0> protections."
-msgstr ""
+msgstr "Este sitio es una colaboración entre Housing Justice for All y JustFix. Agradecemos a todas las personas que contribuyeron a este sitio y a todos los inquilinos y defensores que luchan por las protecciones de <0>Justa Causa</0>."
 
 #: src/Components/Pages/Home/Home.tsx:207
 #~ msgid "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for Good Cause protections."
@@ -3230,7 +3230,7 @@ msgstr "Tipo de edificio"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:812
 msgid "Under <0>Good Cause</0> , a landlord cannot refuse to renew your lease without a legally valid reason."
-msgstr ""
+msgstr "En virtud de la <0>Justa Causa</0>, el arrendador no puede negarse a renovar su contrato de arrendamiento sin una razón legalmente válida."
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:173
 msgid "Under Good Cause Eviction Law, a landlord may not lawfully evict a tenant or refuse a new lease unless there is a statutorily defined \"good cause.\""
@@ -3262,15 +3262,15 @@ msgstr "Según la Ley de Desalojo por Justa Causa, los aumentos de renta se cons
 
 #: src/Components/KYRContent/KYRContent.tsx:409
 msgid "Under the <0>Good Cause</0> Eviction law, landlords are allowed to evict tenants for the following <1>“good cause”</1> reasons:"
-msgstr ""
+msgstr "Según la Ley de Desalojo por <0>Justa Causa</0>, los arrendadores pueden desalojar a los inquilinos por las siguientes <1>\"causas justificadas\"</1>:"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:699
 msgid "Under the <0>Good Cause</0> law, landlords can only raise rent above the local rent standard (annual inflation + 5%, or a maximum of 10%) if they can prove there’s a legitimate <1>“good cause”</1> reason for doing so. The reason must be specific, factual, and reasonable, not just a general claim of higher expenses."
-msgstr ""
+msgstr "Según la Ley de <0>Justa Causa</0>, los arrendadores solo pueden aumentar el alquiler por encima del estándar local (inflación anual + 5 %, o un máximo del 10 %) si pueden demostrar que existe una <1>\"justa causa\"</1> legítima para hacerlo. La razón debe ser específica, objetiva y razonable, y no solo una afirmación general de que los gastos son más elevados."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:926
 msgid "Under the <0>Good Cause</0> law, your landlord can only refuse to renew your lease if they have a legally valid reason, known as a “good cause.” These reasons are limited and must meet specific criteria. For example, if the landlord or their immediate family intends to move in, if you’ve violated a substantial lease term, or if you’ve consistently failed to pay rent."
-msgstr ""
+msgstr "Según la Ley de <0>Justa Causa</0>, su arrendador solo puede negarse a renovar su contrato de alquiler si tiene una razón legalmente válida, conocida como \"justa causa\". Estas razones son limitadas y deben cumplir criterios específicos. Por ejemplo, si el arrendador o su familia inmediata tienen la intención de mudarse al inmueble, si usted ha incumplido una cláusula importante del contrato de arrendamiento o si ha dejado de pagar la renta de forma sistemática."
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:142
 #~ msgid "Under the Good Cause Eviction law, a landlord may not lawfully evict a tenant or refuse a new lease unless there is a statutorily defined “good cause.”"
@@ -3687,7 +3687,7 @@ msgstr "Dónde encontrar apoyo"
 
 #: src/Components/KYRContent/KYRContent.tsx:976
 msgid "Whether or not you are covered by <0>Good Cause</0>, you still have important tenant rights"
-msgstr ""
+msgstr "Independientemente de si está amparado por <0>Justa Causa</0>, sigue teniendo importantes derechos como inquilino"
 
 #: src/Components/KYRContent/KYRContent.tsx:934
 #~ msgid "Whether or not you are covered by Good Cause, you still have important tenant rights"
