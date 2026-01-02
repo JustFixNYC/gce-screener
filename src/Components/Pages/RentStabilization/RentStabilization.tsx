@@ -48,9 +48,12 @@ export const RentStabilization: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           <ContentBox
-            title={_(
-              msg`Good Cause Eviction only applies to tenants who are not rent stabilized.`
-            )}
+            title={
+              <Trans>
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                Eviction only applies to tenants who are not rent stabilized.
+              </Trans>
+            }
             headingLevel={3}
           >
             <ContentBoxItem accordion={false}>

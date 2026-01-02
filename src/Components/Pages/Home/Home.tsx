@@ -111,11 +111,13 @@ export const Home: React.FC = () => {
             </h3>
             <p>
               <Trans>
-                Good Cause Eviction protections went into effect on April 20th,
-                2024. If you are covered by the law, you have strong legal
-                protections against eviction as long as you follow your lease.
-                There are also limits to how much your landlord can raise your
-                rent.{" "}
+                <span className="good-cause-text-group">
+                  Good Cause Eviction
+                </span>{" "}
+                protections went into effect on April 20th, 2024. If you are
+                covered by the law, you have strong legal protections against
+                eviction as long as you follow your lease. There are also limits
+                to how much your landlord can raise your rent.{" "}
               </Trans>
               <JFCLLink
                 to={`${i18n.locale}/rent_calculator`}
@@ -212,10 +214,10 @@ export const Home: React.FC = () => {
             </h3>
             <p>
               <Trans>
-                Good Cause law can be complex to understand and to use to
-                protect yourself. This site exists to make it easier for you and
-                your neighbors to understand your tenant protections and to
-                assert your rights.
+                <span className="good-cause-text-group">Good Cause</span> law
+                can be complex to understand and to use to protect yourself.
+                This site exists to make it easier for you and your neighbors to
+                understand your tenant protections and to assert your rights.
               </Trans>
             </p>
             <p>

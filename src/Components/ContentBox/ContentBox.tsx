@@ -135,7 +135,7 @@ export const ContentBoxItem: React.FC<ContentBoxItemProps> = ({
 };
 
 export type ContentBoxFooterProps = {
-  message: string;
+  message: ReactNode;
   linkText: string;
   linkTo: To;
   className?: string;
