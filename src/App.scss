@@ -133,3 +133,11 @@ div.jfcl-input-header__invalid_text {
     margin-right: 8px;
   }
 }
+
+// Keeps "Good Cause" span together anytime it appears in a sentence
+.good-cause-text-group {
+  display: inline-block;
+  white-space: nowrap;
+  width: auto;
+  text-decoration: inherit;
+}

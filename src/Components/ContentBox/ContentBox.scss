@@ -61,6 +61,9 @@ $videoEmbedW: 623px;
 
   .content-box__header-title .jfcl-heading {
     @include h3_desktop;
+    @include for-phone-only {
+      @include h3_mobile;
+    }
   }
 }
 
@@ -70,6 +73,13 @@ $videoEmbedW: 623px;
   flex-direction: column;
   border-top: 1px solid $GREY_200;
 
+  .content-box__section__header .jfcl-heading {
+    display: block;
+
+    &:has(.pill) {
+      display: inherit;
+    }
+  }
   &,
   .content-box__section__content,
   .accordion__content {

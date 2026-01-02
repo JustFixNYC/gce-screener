@@ -337,8 +337,10 @@ function eligibilityRentStabilized(
     determination = "OTHER_PROTECTION";
     requirement = (
       <Trans>
-        Rent stabilized apartments are not covered by Good Cause Eviction
-        because they already have stronger tenant protections than Good Cause.
+        Rent stabilized apartments are not covered by{" "}
+        <span className="good-cause-text-group">Good Cause</span> Eviction
+        because they already have stronger tenant protections than{" "}
+        <span className="good-cause-text-group">Good Cause</span>.
       </Trans>
     );
     userValue = (
@@ -353,8 +355,9 @@ function eligibilityRentStabilized(
           using your answer as part of our coverage assessment. Note: publicly
           available data sources indicate that all apartments in your building
           are registered as rent stabilized. {wowLink} If those sources are
-          correct, then you may already have stronger tenant protections than
-          Good Cause Eviction provides. {guideLink}
+          correct, then you may already have stronger tenant protections than{" "}
+          <span className="good-cause-text-group">Good Cause</span> Eviction
+          provides. {guideLink}
         </Trans>
       );
     } else if (active421a || activeJ51) {
@@ -365,8 +368,9 @@ function eligibilityRentStabilized(
           available data sources indicate that your building receives the{" "}
           {activeJ51 ? "421a" : "J51"} tax incentive, which means your apartment
           should be rent stabilized. {subsidyLink} If those sources are correct,
-          then you may already have stronger tenant protections than Good Cause
-          Eviction provides. {guideLink}
+          then you may already have stronger tenant protections than{" "}
+          <span className="good-cause-text-group">Good Cause</span> Eviction
+          provides. {guideLink}
         </Trans>
       );
     } else {
@@ -444,7 +448,8 @@ function eligibilityBuildingClass(
       ) : (
         <Trans>
           Public data sources indicate that your building is {bldgTypeName}, and
-          so is not covered by Good Cause Eviction.
+          so is not covered by{" "}
+          <span className="good-cause-text-group">Good Cause</span> Eviction.
         </Trans>
       )}{" "}
       <JFCLLinkExternal to={urlZOLA(bbl)} className="source-link">
@@ -540,8 +545,10 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
     } else if (housingType === "SUBSIDIZED") {
       requirement = (
         <Trans>
-          NYCHA and PACT/RAD apartments are not covered by Good Cause because
-          they already have stronger tenant protections than Good Cause.
+          NYCHA and PACT/RAD apartments are not covered by{" "}
+          <span className="good-cause-text-group">Good Cause</span> because they
+          already have stronger tenant protections than{" "}
+          <span className="good-cause-text-group">Good Cause</span>.
         </Trans>
       );
       determination = "OTHER_PROTECTION";
@@ -549,9 +556,10 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
     } else {
       requirement = (
         <Trans>
-          Subsidized buildings are not covered by Good Cause Eviction because
-          they already have similar, and sometimes stronger, existing tenant
-          protections.
+          Subsidized buildings are not covered by{" "}
+          <span className="good-cause-text-group">Good Cause</span> Eviction
+          because they already have similar, and sometimes stronger, existing
+          tenant protections.
         </Trans>
       );
       determination = "ELIGIBLE";
@@ -566,8 +574,10 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
     if (housingType === "NYCHA") {
       requirement = (
         <Trans>
-          NYCHA and PACT/RAD apartments are not covered by Good Cause because
-          they already have stronger tenant protections than Good Cause.
+          NYCHA and PACT/RAD apartments are not covered by{" "}
+          <span className="good-cause-text-group">Good Cause</span> because they
+          already have stronger tenant protections than{" "}
+          <span className="good-cause-text-group">Good Cause</span>.
         </Trans>
       );
       determination = "OTHER_PROTECTION";
@@ -627,9 +637,10 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
     if (housingType === "NYCHA") {
       requirement = (
         <Trans>
-          NYCHA and PACT/RAD apartments are not covered by Good Cause because
-          they already have stronger tenant protections than Good Cause
-          provides.
+          NYCHA and PACT/RAD apartments are not covered by{" "}
+          <span className="good-cause-text-group">Good Cause</span> because they
+          already have stronger tenant protections than{" "}
+          <span className="good-cause-text-group">Good Cause</span> provides.
         </Trans>
       );
       determination = "OTHER_PROTECTION";
@@ -647,9 +658,10 @@ function eligibilitySubsidy(criteriaData: CriteriaData): CriterionDetails {
     } else if (housingType === "SUBSIDIZED") {
       requirement = (
         <Trans>
-          Subsidized buildings are not covered by Good Cause Eviction because
-          they already have similar, and sometimes stronger, existing tenant
-          protections.
+          Subsidized buildings are not covered by{" "}
+          <span className="good-cause-text-group">Good Cause</span> Eviction
+          because they already have similar, and sometimes stronger, existing
+          tenant protections.
         </Trans>
       );
       determination = "OTHER_PROTECTION";

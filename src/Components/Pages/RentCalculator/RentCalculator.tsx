@@ -65,9 +65,16 @@ export const RentCalculator: React.FC = () => {
       <Header
         showProgressBar={false}
         title={_(msg`Calculate your rent increase`)}
-        subtitle={_(
-          msg`If you are covered by Good Cause legislation, you have a right to limited rent increases. Use this calculator to determine the allowable rent increase for your apartment under Good Cause.`
-        )}
+        subtitle={
+          <Trans>
+            If you are covered by{" "}
+            <span className="good-cause-text-group">Good Cause</span>{" "}
+            legislation, you have a right to limited rent increases. Use this
+            calculator to determine the allowable rent increase for your
+            apartment under{" "}
+            <span className="good-cause-text-group">Good Cause</span>.
+          </Trans>
+        }
       ></Header>
       <PhoneNumberModal
         modalIsOpen={showPhoneModal}
@@ -144,11 +151,12 @@ export const RentCalculator: React.FC = () => {
             </p>
             <p>
               <Trans>
-                The Good Cause law establishes a Reasonable Rent Increase, which
-                is set every year at the rate of inflation plus 5%, with a
-                maximum of 10% total. As of {_(CPI_EFFECTIVE_DATE)}, the rate of
-                inflation for New York City is {CPI}%, meaning that the current
-                local Reasonable Rent Increase is {CPI + 5}%.
+                The <span className="good-cause-text-group">Good Cause</span>{" "}
+                law establishes a Reasonable Rent Increase, which is set every
+                year at the rate of inflation plus 5%, with a maximum of 10%
+                total. As of {_(CPI_EFFECTIVE_DATE)}, the rate of inflation for
+                New York City is {CPI}%, meaning that the current local
+                Reasonable Rent Increase is {CPI + 5}%.
               </Trans>
             </p>
             <p>
@@ -160,7 +168,10 @@ export const RentCalculator: React.FC = () => {
               </Trans>
             </p>
             <strong>
-              <Trans>Find out if you’re covered by Good Cause</Trans>
+              <Trans>
+                Find out if you’re covered by{" "}
+                <span className="good-cause-text-group">Good Cause</span>
+              </Trans>
             </strong>{" "}
             <p className="mobile-breakpoint"></p>
             <JFCLLinkInternal
@@ -185,17 +196,25 @@ export const RentCalculator: React.FC = () => {
 
           <GoodCauseProtections
             rent={showRentInput ? Number(rentInput) : undefined}
-            title={_(msg`Protections under Good Cause`)}
+            title={
+              <Trans>
+                Protections under{" "}
+                <span className="good-cause-text-group">Good Cause</span>
+              </Trans>
+            }
             headingLevel={3}
           >
             <ContentBoxFooter
-              message={_(msg`Find out if you’re covered by Good Cause`)}
+              message={
+                <Trans>
+                  Find out if you’re covered by{" "}
+                  <span className="good-cause-text-group">Good Cause</span>
+                </Trans>
+              }
               linkText={_(msg`Take the survey`)}
-              linkTo={`/${i18n.locale}}`}
+              linkTo={`/${i18n.locale}`}
               linkOnClick={() =>
-                gtmPush("gce_return_survey", {
-                  from: "rent-calculator-page",
-                })
+                gtmPush("gce_return_survey", { from: "rent-calculator-page" })
               }
             />
           </GoodCauseProtections>
@@ -212,10 +231,13 @@ const LetterSenderCallout = () => {
     <Notice icon="circleInfo" className="letter-callout" color="off-white-100">
       <p>
         <Trans>
-          <strong>If you’re covered by Good Cause</strong> and your landlord is
-          planning to raise your rent beyond this amount, you can send a
-          legally-vetted letter to your landlord to ask for a lower rent
-          increase.
+          <strong>
+            If you’re covered by{" "}
+            <span className="good-cause-text-group">Good Cause</span>
+          </strong>{" "}
+          and your landlord is planning to raise your rent beyond this amount,
+          you can send a legally-vetted letter to your landlord to ask for a
+          lower rent increase.
         </Trans>
       </p>
       <ul>

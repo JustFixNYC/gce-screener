@@ -279,7 +279,12 @@ export const GoodCauseProtections: React.FC<
   KYRContentBoxProps & { rent?: number }
 > = ({ title, rent, children, coverageResult, headingLevel, ...props }) => {
   const { i18n, _ } = useLingui();
-  const defaultTitle = _(msg`Protections if you’re covered by Good Cause`);
+  const defaultTitle = (
+    <Trans>
+      Protections if you're covered by{" "}
+      <span className="good-cause-text-group">Good Cause</span>
+    </Trans>
+  );
   const increase_pct = CPI + 5;
   const itemProps = {
     coverageResult: coverageResult,
@@ -352,10 +357,13 @@ export const GoodCauseProtections: React.FC<
                   </Trans>
                 ) : (
                   <Trans>
-                    <strong>If you’re covered by Good Cause</strong> and your
-                    landlord is planning to raise your rent beyond this amount,
-                    you can send a legally-vetted letter to your landlord to ask
-                    for a lower rent increase.
+                    <strong>
+                      If you’re covered by{" "}
+                      <span className="good-cause-text-group">Good Cause</span>
+                    </strong>{" "}
+                    and your landlord is planning to raise your rent beyond this
+                    amount, you can send a legally-vetted letter to your
+                    landlord to ask for a lower rent increase.
                   </Trans>
                 )}
               </p>
@@ -399,8 +407,12 @@ export const GoodCauseProtections: React.FC<
             <section>
               <h5 id="good-cause-eviction-reasons">
                 <Trans>
-                  Under the Good Cause Eviction law, landlords are allowed to
-                  evict tenants for the following “good cause” reasons:
+                  Under the{" "}
+                  <span className="good-cause-text-group">Good Cause</span>{" "}
+                  Eviction law, landlords are allowed to evict tenants for the
+                  following{" "}
+                  <span className="good-cause-text-group">“good cause”</span>{" "}
+                  reasons:
                 </Trans>
               </h5>
               <ul
@@ -439,16 +451,23 @@ export const GoodCauseProtections: React.FC<
               className="has-label"
               to="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page#:~:text=What%20are%20the%20“good%20cause”%20reasons%20for%20eviction%2C%20nonrenewal%20of%20lease%2C%20or%20termination%20of%20tenancy%3F"
             >
-              <Trans>Learn more about Good Cause reasons for eviction</Trans>
+              <Trans>
+                Learn more about{" "}
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                reasons for eviction
+              </Trans>
             </JFCLLinkExternal>
             <Notice icon="circleInfo" className="letter-callout" color="white">
               <p>
                 {coverageResult == "COVERED" ? (
                   <Trans>
-                    <strong>If you’re covered by Good Cause</strong> and your
-                    landlord is not offering you a lease renewal, you can send a
-                    legally-vetted letter to your landlord to assert your right
-                    to a renewal.
+                    <strong>
+                      If you’re covered by{" "}
+                      <span className="good-cause-text-group">Good Cause</span>
+                    </strong>{" "}
+                    and your landlord is not offering you a lease renewal, you
+                    can send a legally-vetted letter to your landlord to assert
+                    your right to a renewal.
                   </Trans>
                 ) : (
                   <Trans>
@@ -465,21 +484,35 @@ export const GoodCauseProtections: React.FC<
           </>
         </ContentBoxItem>
         <ContentBoxItem
-          title={_(msg`Learn more about Good Cause Eviction Law protections`)}
+          title={
+            <Trans>
+              Learn more about{" "}
+              <span className="good-cause-text-group">Good Cause</span> Eviction
+              Law protections
+            </Trans>
+          }
           gtmId="gce-protections_learn"
           {...itemProps}
         >
           <JFCLLinkExternal to="https://housingjusticeforall.org/kyr-good-cause">
             <Trans>
-              Housing Justice for All Good Cause Eviction fact sheet
+              Housing Justice for All{" "}
+              <span className="good-cause-text-group">Good Cause</span> Eviction
+              fact sheet
             </Trans>
           </JFCLLinkExternal>
           <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction">
-            <Trans>Met Council on Housing Good Cause Eviction fact sheet</Trans>
+            <Trans>
+              Met Council on Housing{" "}
+              <span className="good-cause-text-group">Good Cause</span> Eviction
+              fact sheet
+            </Trans>
           </JFCLLinkExternal>
           <JFCLLinkExternal to="https://www.nyc.gov/content/tenantprotection/pages/good-cause-eviction-information-for-tenants">
             <Trans>
-              NYC Tenant Protection Cabinet’s Good Cause Eviction Guide
+              NYC Tenant Protection Cabinet’s{" "}
+              <span className="good-cause-text-group">Good Cause</span> Eviction
+              Guide
             </Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -501,7 +534,12 @@ export const GoodCauseExercisingRights: React.FC<
   ...props
 }) => {
   const { _ } = useLingui();
-  const defaultTitle = _(msg`How to assert your Good Cause rights`);
+  const defaultTitle = (
+    <Trans>
+      How to assert your{" "}
+      <span className="good-cause-text-group">Good Cause</span> rights
+    </Trans>
+  );
   const itemProps = {
     coverageResult: coverageResult,
     headingLevel: headingLevel + 1,
@@ -514,7 +552,12 @@ export const GoodCauseExercisingRights: React.FC<
         headingLevel={headingLevel}
       >
         <ContentBoxItem
-          title={_(msg`Use Good Cause to stay in your home`)}
+          title={
+            <Trans>
+              Use <span className="good-cause-text-group">Good Cause</span> to
+              stay in your home
+            </Trans>
+          }
           gtmId="gce-exercise_eviction"
           {...itemProps}
         >
@@ -529,19 +572,23 @@ export const GoodCauseExercisingRights: React.FC<
           <p>
             <Trans>
               Tell your landlord you have a right to stay unless your landlord
-              has a “Good Cause” to evict you. If your landlord then tries to
-              formally evict you in court, you can raise a Good Cause defense
-              and require your landlord to demonstrate they have a “Good Cause”
-              to evict you.
+              has a <span className="good-cause-text-group">“Good Cause”</span>{" "}
+              to evict you. If your landlord then tries to formally evict you in
+              court, you can raise a{" "}
+              <span className="good-cause-text-group">Good Cause</span> defense
+              and require your landlord to demonstrate they have a{" "}
+              <span className="good-cause-text-group">“Good Cause”</span> to
+              evict you.
             </Trans>
           </p>
 
           <p>
             <Trans>
-              Since your apartment is covered by Good Cause Eviction, there is a
-              good chance other apartments in your building are covered as well.
-              Organizing with your neighbors can help you assert your rights as
-              a group.
+              Since your apartment is covered by{" "}
+              <span className="good-cause-text-group">Good Cause</span>{" "}
+              Eviction, there is a good chance other apartments in your building
+              are covered as well. Organizing with your neighbors can help you
+              assert your rights as a group.
             </Trans>
           </p>
 
@@ -552,7 +599,12 @@ export const GoodCauseExercisingRights: React.FC<
           </JFCLLinkExternal>
         </ContentBoxItem>
         <ContentBoxItem
-          title={_(msg`Use Good Cause to fight your rent hike`)}
+          title={
+            <Trans>
+              Use <span className="good-cause-text-group">Good Cause</span> to
+              fight your rent hike
+            </Trans>
+          }
           gtmId="gce-exercise_rent"
           {...itemProps}
         >
@@ -605,13 +657,18 @@ export const GoodCauseExercisingRights: React.FC<
             </li>
             <li>
               <strong>
-                <Trans>Invoke “Good Cause” to a judge</Trans>
+                <Trans>
+                  Invoke{" "}
+                  <span className="good-cause-text-group">“Good Cause”</span> to
+                  a judge
+                </Trans>
               </strong>
               <br />
               <Trans>
-                If your landlord takes you to court, you can raise a “Good
-                Cause” defense. Your landlord would then have to demonstrate to
-                the judge that they raised the rent because of increased costs
+                If your landlord takes you to court, you can raise a{" "}
+                <span className="good-cause-text-group">“Good Cause”</span>{" "}
+                defense. Your landlord would then have to demonstrate to the
+                judge that they raised the rent because of increased costs
                 (taxes, maintenance costs, etc.) or be forced to lower the
                 increase.
               </Trans>
@@ -627,7 +684,9 @@ export const GoodCauseExercisingRights: React.FC<
             <Trans>
               Assert your rights by printing your coverage results and sharing
               with your landlord. You can use these results as an indicator that
-              your apartment is covered by Good Cause Eviction Law.
+              your apartment is covered by{" "}
+              <span className="good-cause-text-group">Good Cause</span> Eviction
+              Law.
             </Trans>
           </p>
           {shareButtons}
@@ -882,10 +941,12 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
 export const SubsidizedProtections: React.FC<
   KYRContentBoxProps & { lngLat?: string }
 > = ({ title, children, coverageResult, lngLat, ...props }) => {
-  const { _ } = useLingui();
-
-  const defaultTitle = _(
-    msg`You are not covered by Good Cause because you have existing eviction protections through your building’s subsidy program`
+  const defaultTitle = (
+    <Trans>
+      You are not covered by{" "}
+      <span className="good-cause-text-group">Good Cause</span> because you have
+      existing eviction protections through your building's subsidy program
+    </Trans>
   );
   return (
     <ContentBox {...props} title={title || defaultTitle}>
@@ -897,8 +958,9 @@ export const SubsidizedProtections: React.FC<
         <p>
           <Trans>
             You told us that that you live subsidized housing. If your building
-            is subsidized then you are not covered by Good Cause Eviction law
-            because you should already have important tenant protections
+            is subsidized then you are not covered by{" "}
+            <span className="good-cause-text-group">Good Cause</span> Eviction
+            law because you should already have important tenant protections
             associated with your building’s subsidy.
           </Trans>
         </p>
@@ -928,10 +990,14 @@ export const UnknownProtections: React.FC<KYRContentBoxProps> = ({
   coverageResult,
   ...props
 }) => {
-  const { _, i18n } = useLingui();
+  const { i18n } = useLingui();
 
-  const defaultTitle = _(
-    msg`Whether or not you are covered by Good Cause, you still have important tenant rights`
+  const defaultTitle = (
+    <Trans>
+      Whether or not you are covered by{" "}
+      <span className="good-cause-text-group">Good Cause</span>, you still have
+      important tenant rights
+    </Trans>
   );
   return (
     <ContentBox {...props} title={title || defaultTitle}>

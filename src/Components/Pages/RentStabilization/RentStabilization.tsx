@@ -48,17 +48,21 @@ export const RentStabilization: React.FC = () => {
       <div className="content-section">
         <div className="content-section__content">
           <ContentBox
-            title={_(
-              msg`Good Cause Eviction only applies to tenants who are not rent stabilized.`
-            )}
+            title={
+              <Trans>
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                Eviction only applies to tenants who are not rent stabilized.
+              </Trans>
+            }
             headingLevel={3}
           >
             <ContentBoxItem accordion={false}>
               <p>
                 <Trans>
-                  If your apartment is rent stabilized, you are not covered by
-                  Good Cause because you already have stronger existing
-                  protections through rent stabilization law.
+                  If your apartment is rent stabilized, you are not covered by{" "}
+                  <span className="good-cause-text-group">Good Cause</span>{" "}
+                  because you already have stronger existing protections through
+                  rent stabilization law.
                 </Trans>
               </p>
             </ContentBoxItem>
@@ -92,7 +96,8 @@ export const RentStabilization: React.FC = () => {
                   receive get an email the day after you submit your request
                   letting you know that New York State does not have a
                   registration on file. This means your apartment is not rent
-                  stabilized, and therefore you may be eligible for Good Cause
+                  stabilized, and therefore you may be eligible for{" "}
+                  <span className="good-cause-text-group">Good Cause</span>{" "}
                   Eviction protections.
                 </Trans>
               </p>

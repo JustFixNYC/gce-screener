@@ -5,7 +5,7 @@
 
 #letter-sender-landing-page {
   .headline-section {
-    padding: 2.5rem 0;
+    padding: 2.5rem 3rem;
     @include for-phone-only {
       padding: 1rem 1rem 2rem;
     }
@@ -28,7 +28,7 @@
           flex-direction: column;
           align-items: flex-start;
           button {
-            width: 250px;
+            width: 100%;
           }
         }
       }
@@ -36,23 +36,22 @@
   }
 
   .content-section {
-    padding-top: 1rem;
-    padding-bottom: 4rem;
+    padding: unset;
+    padding: 4.5rem 2rem;
     @include for-phone-only {
-      padding-top: 0;
-      padding-bottom: 2rem;
+      padding: unset;
+      padding: 2rem 1.5rem;
     }
     &:last-of-type {
-      padding-top: 2rem;
       border-top: 1px solid $OFF_BLACK;
     }
 
     h3 {
       @include h3_desktop;
-      margin-top: 1.75rem;
-      margin-bottom: 2rem;
+      margin: 0 0 1rem 0;
       @include for-phone-only {
         @include h3_mobile;
+        margin: 0 0 1rem 0;
       }
     }
 
@@ -80,14 +79,21 @@
       }
     }
 
+    .about-section + .callout-box {
+      margin-top: 3rem;
+    }
+
     .callout-box {
       background-color: $OFF_WHITE_200;
       border-radius: 4px;
+      margin-top: 1.5rem;
       padding: 2rem;
-      margin-top: 3rem;
+
+      @include for-phone-only {
+        padding: 1.5rem;
+      }
 
       &.outside-nyc {
-        margin-bottom: 2.25rem;
         p {
           width: 85%;
           margin-bottom: 1.5rem;
@@ -105,6 +111,12 @@
       }
     }
 
+    .reasons-section {
+      h3 {
+        margin: 0 0 2rem 0;
+      }
+    }
+
     ol {
       margin: 0;
       padding: 0;
@@ -117,7 +129,7 @@
         padding-left: 3.5rem;
         margin-bottom: 2rem;
         &:last-of-type {
-          margin-bottom: 2.25rem;
+          margin-bottom: 0;
         }
 
         // numbered list with circles

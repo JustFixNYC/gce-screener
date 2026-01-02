@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
       <hr />
       <div className="footer__bottom-bar">
         <div className="footer__name">
-          <Link to={`/${i18n.locale}`} className="jfcl-link">
+          <Link to={`/${i18n.locale}/`} className="jfcl-link">
             <Trans>Good Cause NYC</Trans>
           </Link>
         </div>
