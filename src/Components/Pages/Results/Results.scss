@@ -11,6 +11,9 @@
 
   .headline-section {
     padding-bottom: 2rem;
+    @include for-tablet-portrait-up {
+      padding-top: 2rem;
+    }
     .share-button__container {
       margin-top: 1.5rem;
     }
@@ -323,7 +326,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 1rem 0 3rem; //margin top accounts for content items above having 2rem margin bottoms
+    margin-top: 1rem; //margin top accounts for content items above having 2rem margin bottoms
     position: relative;
 
     @include for-phone-only() {

@@ -5,6 +5,11 @@
 $mapImgHeight: 285px;
 
 #confirm-address-page {
+  .headline-section {
+    @include for-tablet-portrait-up {
+      padding-top: 2rem;
+    }
+  }
   .headline-section__subtitle {
     @include for-tablet-portrait-up {
       width: 75%;
