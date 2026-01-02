@@ -205,13 +205,16 @@ export const RentCalculator: React.FC = () => {
             headingLevel={3}
           >
             <ContentBoxFooter
-              message={_(msg`Find out if you’re covered by Good Cause`)}
+              message={
+                <Trans>
+                  Find out if you’re covered by{" "}
+                  <span className="good-cause-text-group">Good Cause</span>
+                </Trans>
+              }
               linkText={_(msg`Take the survey`)}
-              linkTo={`/${i18n.locale}}`}
+              linkTo={`/${i18n.locale}`}
               linkOnClick={() =>
-                gtmPush("gce_return_survey", {
-                  from: "rent-calculator-page",
-                })
+                gtmPush("gce_return_survey", { from: "rent-calculator-page" })
               }
             />
           </GoodCauseProtections>

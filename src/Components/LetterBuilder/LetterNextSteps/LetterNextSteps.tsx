@@ -335,7 +335,12 @@ export const ClaimsNotCoveredByGCE: React.FC<NextStepItemProps> = ({
   const sectionLevel = headingLevel + 1;
   return (
     <ContentBoxItem
-      title={<Trans>Your landlord says you’re not covered by Good Cause</Trans>}
+      title={
+        <Trans>
+          Your landlord says you’re not covered by{" "}
+          <span className="good-cause-text-group">Good Cause</span>{" "}
+        </Trans>
+      }
       headingLevel={headingLevel}
       {...props}
     >

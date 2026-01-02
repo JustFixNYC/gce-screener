@@ -484,7 +484,13 @@ export const GoodCauseProtections: React.FC<
           </>
         </ContentBoxItem>
         <ContentBoxItem
-          title={_(msg`Learn more about Good Cause Eviction Law protections`)}
+          title={
+            <Trans>
+              Learn more about{" "}
+              <span className="good-cause-text-group">Good Cause</span> Eviction
+              Law protections
+            </Trans>
+          }
           gtmId="gce-protections_learn"
           {...itemProps}
         >
@@ -546,7 +552,12 @@ export const GoodCauseExercisingRights: React.FC<
         headingLevel={headingLevel}
       >
         <ContentBoxItem
-          title={_(msg`Use Good Cause to stay in your home`)}
+          title={
+            <Trans>
+              Use <span className="good-cause-text-group">Good Cause</span> to
+              stay in your home
+            </Trans>
+          }
           gtmId="gce-exercise_eviction"
           {...itemProps}
         >
@@ -588,7 +599,12 @@ export const GoodCauseExercisingRights: React.FC<
           </JFCLLinkExternal>
         </ContentBoxItem>
         <ContentBoxItem
-          title={_(msg`Use Good Cause to fight your rent hike`)}
+          title={
+            <Trans>
+              Use <span className="good-cause-text-group">Good Cause</span> to
+              fight your rent hike
+            </Trans>
+          }
           gtmId="gce-exercise_rent"
           {...itemProps}
         >
