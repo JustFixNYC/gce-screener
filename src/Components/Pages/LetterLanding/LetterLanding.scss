@@ -39,7 +39,7 @@
       padding: 3rem !important;
     }
     @include for-phone-only {
-      padding: 2rem 1.5rem;
+      padding: 2rem 1.5rem !important;
     }
     &:last-of-type {
       border-top: 1px solid $OFF_BLACK;
