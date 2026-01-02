@@ -1,6 +1,12 @@
 @use "../../../mixins" as *;
 
 #tenant-rights-page {
+  .headline-section {
+    @include for-phone-only {
+      padding: 2rem 1.5rem;
+    }
+  }
+
   .headline-section__content {
     margin: 0;
   }

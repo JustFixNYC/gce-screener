@@ -4,6 +4,9 @@
 #rent-calculator-page {
   .headline-section {
     padding-top: 2.5rem;
+    @include for-phone-only {
+      padding: 2rem 1.5rem;
+    }
 
     .headline-section__subtitle {
       width: 85%;
@@ -15,7 +18,7 @@
       padding: 2.25rem 3rem 0;
     }
     @include for-phone-only {
-      padding: 0 1rem;
+      padding: 0 1.5rem;
     }
 
     .rent-increase-explanation {
