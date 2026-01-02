@@ -3,6 +3,9 @@
 @use "../../../colors" as *;
 
 #home-page {
+  .headline-section {
+    padding-top: 2rem;
+  }
   .geo-search-form {
     display: inline-flex;
     align-items: end;

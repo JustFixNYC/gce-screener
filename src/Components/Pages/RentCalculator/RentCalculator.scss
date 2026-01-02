@@ -3,7 +3,6 @@
 
 #rent-calculator-page {
   .headline-section {
-    padding-top: 2.5rem;
     @include for-phone-only {
       padding: 2rem 1.5rem;
     }
