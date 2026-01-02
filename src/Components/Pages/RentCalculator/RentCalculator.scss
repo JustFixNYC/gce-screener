@@ -23,12 +23,16 @@
       @include body_large_desktop;
       font-weight: 500;
       @include for-phone-only {
-        @include body_large_mobile;
+        @include body_standard_mobile;
         font-weight: 500;
       }
       .jfcl-link {
-        @include body_large_desktop;
         font-weight: 500;
+        @include body_large_desktop;
+        @include for-phone-only {
+          @include body_standard_mobile;
+        }
+        
         svg {
           display: none; // hide internal link arrow icon
         }
