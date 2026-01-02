@@ -67,6 +67,7 @@
 .content-section {
   background-color: $OFF_WHITE_100;
   padding-top: 3rem; // 48px
+  padding-bottom: 3rem; // 48px
 
   .content-section__content {
     max-width: $contentBoxWidth;
@@ -90,7 +91,7 @@
 @media screen {
   .headline-section,
   .content-section {
-    @media (max-width: 772px) {
+    @include for-phone-only {
       padding: 1rem 1.5rem 2rem;
     }
   }

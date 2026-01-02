@@ -12,10 +12,6 @@
     }
   }
   .content-section {
-    padding-top: 2.25rem;
-    @media (min-width: 773px) {
-      padding: 2.25rem 3rem 0;
-    }
     @include for-phone-only {
       padding: 0 1.5rem;
     }

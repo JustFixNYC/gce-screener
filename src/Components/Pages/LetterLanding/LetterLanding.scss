@@ -35,10 +35,10 @@
   }
 
   .content-section {
-    padding: unset;
-    padding: 4.5rem 2rem;
+    @include for-tablet-portrait-up {
+      padding: 3rem !important;
+    }
     @include for-phone-only {
-      padding: unset;
       padding: 2rem 1.5rem;
     }
     &:last-of-type {
