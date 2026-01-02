@@ -480,10 +480,10 @@ const EligibilityNextSteps: React.FC<{
           >
             <p>
               <Trans>
-                Good Cause Eviction law only covers tenants whose landlord owns
-                more than 10 apartments. Your building has only{" "}
-                {bldgData.unitsres} apartments, but your landlord may own other
-                buildings.
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                Eviction law only covers tenants whose landlord owns more than
+                10 apartments. Your building has only {bldgData.unitsres}{" "}
+                apartments, but your landlord may own other buildings.
               </Trans>
             </p>
             <JFCLLinkInternal

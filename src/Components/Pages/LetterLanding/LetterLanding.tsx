@@ -24,9 +24,10 @@ export const LetterLanding: React.FC = () => {
         }
         subtitle={
           <Trans>
-            If you’re covered by Good Cause and your landlord is planning to
-            raise your rent or not offer you a new lease, you can send a letter
-            defending your{" "}
+            If you’re covered by{" "}
+            <span className="good-cause-text-group">Good Cause</span> and your
+            landlord is planning to raise your rent or not offer you a new
+            lease, you can send a letter defending your{" "}
             <span className="good-cause-text-group">Good Cause</span> rights. We
             will even send it for you, for free.
           </Trans>
@@ -88,8 +89,9 @@ export const LetterLanding: React.FC = () => {
             </h4>
             <p>
               <Trans>
-                The Good Cause Letter Sender was developed with housing
-                attorneys, tenant organizers, community leaders, and tenants.
+                The <span className="good-cause-text-group">Good Cause</span>{" "}
+                Letter Sender was developed with housing attorneys, tenant
+                organizers, community leaders, and tenants.
               </Trans>
             </p>
           </section>

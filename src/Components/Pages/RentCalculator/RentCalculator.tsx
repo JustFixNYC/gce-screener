@@ -151,11 +151,12 @@ export const RentCalculator: React.FC = () => {
             </p>
             <p>
               <Trans>
-                The Good Cause law establishes a Reasonable Rent Increase, which
-                is set every year at the rate of inflation plus 5%, with a
-                maximum of 10% total. As of {_(CPI_EFFECTIVE_DATE)}, the rate of
-                inflation for New York City is {CPI}%, meaning that the current
-                local Reasonable Rent Increase is {CPI + 5}%.
+                The <span className="good-cause-text-group">Good Cause</span>{" "}
+                law establishes a Reasonable Rent Increase, which is set every
+                year at the rate of inflation plus 5%, with a maximum of 10%
+                total. As of {_(CPI_EFFECTIVE_DATE)}, the rate of inflation for
+                New York City is {CPI}%, meaning that the current local
+                Reasonable Rent Increase is {CPI + 5}%.
               </Trans>
             </p>
             <p>

@@ -1063,7 +1063,8 @@ export const ProofForNonRenewalReason: React.FC<NextStepItemProps> = ({
             <Trans>
               Contact a legal aid provider or tenant support organization right
               away for help reviewing whether the landlord’s claimed reason
-              qualifies as a valid “good cause.”
+              qualifies as a valid{" "}
+              <span className="good-cause-text-group">“good cause.”</span>
             </Trans>
           </li>
         </ul>

@@ -451,7 +451,11 @@ export const GoodCauseProtections: React.FC<
               className="has-label"
               to="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page#:~:text=What%20are%20the%20“good%20cause”%20reasons%20for%20eviction%2C%20nonrenewal%20of%20lease%2C%20or%20termination%20of%20tenancy%3F"
             >
-              <Trans>Learn more about Good Cause reasons for eviction</Trans>
+              <Trans>
+                Learn more about{" "}
+                <span className="good-cause-text-group">Good Cause</span>{" "}
+                reasons for eviction
+              </Trans>
             </JFCLLinkExternal>
             <Notice icon="circleInfo" className="letter-callout" color="white">
               <p>
