@@ -4,7 +4,9 @@
 
 #home-page {
   .headline-section {
-    padding-top: 2rem;
+    @include for-tablet-portrait-up {
+      padding-top: 2rem;
+    }
   }
   .geo-search-form {
     display: inline-flex;
