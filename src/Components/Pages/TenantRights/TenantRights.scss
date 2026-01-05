@@ -17,7 +17,7 @@
 
   // last instance of content-box. :last-child doesn't work bc dividers returned after fragments
   .content-box:has(+ .divider__print:last-child) {
-      margin-bottom: 0;
+    margin-bottom: 0;
   }
 
   @include for-phone-only {
