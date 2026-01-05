@@ -13,7 +13,7 @@
   }
   .content-section {
     @include for-phone-only {
-      padding: 0 1.5rem;
+      padding: 0 1.5rem 1rem;
     }
 
     .rent-increase-explanation {
@@ -44,14 +44,15 @@
 
     .content-box {
       margin: 1.5rem 0;
-      // last instance of content-box. :last-child doesn't work bc dividers returned
-      &:not(:has(+ .content-box)) {
-        @include for-tablet-portrait-up {
-          margin-bottom: 0;
-        }
-      }
       @include for-phone-only {
         margin: 1rem 0;
+      }
+    }
+    
+    // last instance of content-box. :last-child doesn't work bc dividers returned after fragments
+    .content-box:has(+ .divider__print:last-child) {
+      @include for-tablet-portrait-up {
+        margin-bottom: 0;
       }
     }
   }
