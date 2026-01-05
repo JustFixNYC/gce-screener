@@ -44,6 +44,12 @@
 
     .content-box {
       margin: 1.5rem 0;
+      // last instance of content-box. :last-child doesn't work bc dividers returned
+      &:not(:has(+ .content-box)) {
+        @include for-tablet-portrait-up {
+          margin-bottom: 0;
+        }
+      }
       @include for-phone-only {
         margin: 1rem 0;
       }
