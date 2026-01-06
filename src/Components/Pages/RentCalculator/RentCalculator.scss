@@ -3,19 +3,17 @@
 
 #rent-calculator-page {
   .headline-section {
-    padding-top: 2.5rem;
+    @include for-phone-only {
+      padding: 2rem 1.5rem;
+    }
 
     .headline-section__subtitle {
       width: 85%;
     }
   }
   .content-section {
-    padding-top: 2.25rem;
-    @media (min-width: 773px) {
-      padding: 2.25rem 3rem 0;
-    }
     @include for-phone-only {
-      padding: 0 1rem;
+      padding: 0 1.5rem 1rem;
     }
 
     .rent-increase-explanation {
@@ -23,12 +21,16 @@
       @include body_large_desktop;
       font-weight: 500;
       @include for-phone-only {
-        @include body_large_mobile;
+        @include body_standard_mobile;
         font-weight: 500;
       }
       .jfcl-link {
-        @include body_large_desktop;
         font-weight: 500;
+        @include body_large_desktop;
+        @include for-phone-only {
+          @include body_standard_mobile;
+        }
+
         svg {
           display: none; // hide internal link arrow icon
         }
@@ -44,6 +46,13 @@
       margin: 1.5rem 0;
       @include for-phone-only {
         margin: 1rem 0;
+      }
+    }
+
+    // last instance of content-box. :last-child doesn't work bc dividers returned after fragments
+    .content-box:has(+ .divider__print:last-child) {
+      @include for-tablet-portrait-up {
+        margin-bottom: 0;
       }
     }
   }

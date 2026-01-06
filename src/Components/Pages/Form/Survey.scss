@@ -3,6 +3,11 @@
 @use "../../../colors" as *;
 
 #survey-page {
+  .headline-section {
+    @include for-tablet-portrait-up {
+      padding-top: 2rem;
+    }
+  }
   .headline-section__subtitle {
     @include for-tablet-portrait-up {
       width: 75%;
@@ -11,7 +16,7 @@
 
   .content-section {
     @include for-phone-only() {
-      padding-bottom: 0;
+      padding: 2rem 1.5rem 0 !important;
     }
   }
   .jfcl-input-header__label {
