@@ -4,14 +4,17 @@ import classNames from "classnames";
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { gtmPush } from "../../google-tag-manager";
-import { JFCLLink, JFCLLinkInternal } from "../JFCLLink";
+import { JFCLLink } from "../JFCLLink";
 import "./Navigation.scss";
 import { removeLocalePrefix } from "../../i18n";
 import { LocaleToggle } from "../LocaleToggle/LocaleToggle";
 import { Icon } from "@justfixnyc/component-library";
 import { useHideHeader } from "../../hooks/useHideHeader";
 
-export const TopBar: React.FC = () => {
+export const TopBar: React.FC<{
+  isMobileMenuOpen: boolean;
+  onMenuClick: () => void;
+}> = ({ isMobileMenuOpen, onMenuClick }) => {
   const { i18n } = useLingui();
   const headerRef = useRef<HTMLElement>(null);
   const hideHeader = useHideHeader(headerRef);
@@ -22,26 +25,50 @@ export const TopBar: React.FC = () => {
       id="topbar"
       className={classNames({ hide: hideHeader })}
     >
-      <div className="topbar__name">
+      <div
+        className={classNames("topbar__name", {
+          "topbar__name--es": i18n.locale === "es",
+        })}
+      >
         <h1>
           <Link to={`/${i18n.locale}/`}>
             <Trans>Good Cause NYC</Trans>
           </Link>
         </h1>
       </div>
-      <div className="topbar__rent-calculator">
-        <JFCLLinkInternal
-          to={`/${i18n.locale}/rent_calculator`}
-          onClick={() => gtmPush("gce_rent_calculator", { from: "navbar" })}
+      <div
+        className={classNames("topbar__menu", {
+          "topbar__menu--open": isMobileMenuOpen,
+        })}
+      >
+        <button
+          className={classNames("topbar__menu-button", {
+            "topbar__menu-button--close": isMobileMenuOpen,
+          })}
+          onClick={onMenuClick}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Menu"}
         >
-          <Trans>Rent increase calculator</Trans>
-        </JFCLLinkInternal>
+          {isMobileMenuOpen ? (
+            <>
+              <Icon icon="xmark" />
+              <Trans>Close</Trans>
+            </>
+          ) : (
+            <>
+              <Icon icon="bars" />
+              <Trans>Menu</Trans>
+            </>
+          )}
+        </button>
       </div>
     </header>
   );
 };
 
-export const Sidebar: React.FC = () => {
+export const Sidebar: React.FC<{
+  isMobileMenuOpen?: boolean;
+  onCloseMobileMenu?: () => void;
+}> = ({ isMobileMenuOpen = false }) => {
   const { i18n } = useLingui();
   const { pathname } = useLocation();
   const cleanedPathname = pathname.toLowerCase();
@@ -61,7 +88,10 @@ export const Sidebar: React.FC = () => {
     screenerPath.some((path) => cleanedPathname.includes(path));
 
   return (
-    <div id="sidebar">
+    <div
+      id="sidebar"
+      className={classNames({ "mobile-menu-open": isMobileMenuOpen })}
+    >
       <div className="sidebar__content">
         <NamePlate />
         <nav id="site-nav">
