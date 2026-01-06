@@ -8,11 +8,8 @@ html {
 }
 
 body {
-  font-family: "Degular";
+  font-family: "Degular Text";
   margin: 0;
-  @include for-tablet-landscape-down {
-    margin: $headerH 0 0;
-  }
   height: 100%;
   // Ensures visual parity with figma (otherwise appears too heavy)
   -webkit-font-smoothing: antialiased;
