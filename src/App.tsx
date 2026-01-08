@@ -68,13 +68,13 @@ const Layout = () => {
           isMobileMenuOpen={isMobileMenuOpen}
           onCloseMobileMenu={() => setIsMobileMenuOpen(false)}
         />
+        <TopBar
+          isMobileMenuOpen={isMobileMenuOpen}
+          onMenuClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        />
         <main id="main">
           <div id="content">
             <CollabHeader />
-            <TopBar
-              isMobileMenuOpen={isMobileMenuOpen}
-              onMenuClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            />
             <Outlet />
             <Footer />
           </div>

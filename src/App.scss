@@ -40,7 +40,9 @@
   overflow-y: auto;
   overflow-x: hidden;
   background-color: $OFF_WHITE_200;
-
+  @include for-tablet-landscape-down {
+    margin: $headerH 0 0;
+  }
   #content {
     height: 100%;
     width: 100%;
