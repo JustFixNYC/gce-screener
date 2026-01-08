@@ -12,20 +12,20 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
 
 #topbar {
   @include for-tablet-landscape-down {
-    position: fixed;
+    position: sticky;
     top: 0;
     background-color: $OFF_WHITE_200;
     border-bottom: 1px solid $OFF_BLACK;
-    width: -webkit-fill-available;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-wrap: nowrap;
     z-index: 100;
-    transition: top 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, margin-top 0.2s ease-in-out;
 
     &.hide {
-      top: -$headerH;
+      transform: translateY(-100%);
     }
 
     div {
