@@ -120,7 +120,7 @@ export const Home: React.FC = () => {
                 to how much your landlord can raise your rent.{" "}
               </Trans>
               <JFCLLink
-                to={`${i18n.locale}/rent_calculator`}
+                to={`/${i18n.locale}/rent_calculator`}
                 onClick={() =>
                   gtmPush("gce_rent_calculator", { from: "home-page" })
                 }
