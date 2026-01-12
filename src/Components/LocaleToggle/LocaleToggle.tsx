@@ -4,7 +4,10 @@ import { removeLocalePrefix } from "../../i18n";
 import type { SupportedLocale } from "../../i18n-base";
 import "./LocaleToggle.scss";
 
-export const LocaleToggle: React.FC = () => {
+export const LocaleToggle: React.FC<{
+  tabIndex?: number;
+  isHiddenOnMobile?: boolean;
+}> = ({ tabIndex, isHiddenOnMobile }) => {
   const { i18n } = useLingui();
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,6 +17,8 @@ export const LocaleToggle: React.FC = () => {
     navigate(`/${locale}${pathWithoutLocale}${location.search}`);
   };
 
+  const buttonTabIndex = isHiddenOnMobile ? -1 : tabIndex;
+
   return (
     <div className="locale-toggle">
       <button
@@ -21,6 +26,7 @@ export const LocaleToggle: React.FC = () => {
         type="button"
         onClick={() => switchToLocale("en")}
         disabled={i18n.locale === "en"}
+        tabIndex={buttonTabIndex}
       >
         English
       </button>
@@ -30,6 +36,7 @@ export const LocaleToggle: React.FC = () => {
         type="button"
         onClick={() => switchToLocale("es")}
         disabled={i18n.locale === "es"}
+        tabIndex={buttonTabIndex}
       >
         Español
       </button>
