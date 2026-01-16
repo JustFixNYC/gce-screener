@@ -11,11 +11,16 @@ export const useHideHeader = (
   const pageBottomProximity = 100;
 
   useEffect(() => {
-    let lastScrollY = window.scrollY || window.pageYOffset;
+    const mainElement = document.getElementById("main");
+    if (!mainElement) {
+      return;
+    }
+
+    let lastScrollY = mainElement.scrollTop;
     let ticking = false;
 
     const updateScrollDir = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
+      const scrollY = mainElement.scrollTop;
 
       // Prevents possible jitter from tiny scroll changes
       if (Math.abs(scrollY - lastScrollY) < threshold) {
@@ -25,8 +30,8 @@ export const useHideHeader = (
 
       const headerHeight = headerRef?.current?.offsetHeight;
       const closeToPageBottom =
-        scrollY + window.innerHeight >
-        document.documentElement.scrollHeight - pageBottomProximity;
+        scrollY + mainElement.clientHeight >
+        mainElement.scrollHeight - pageBottomProximity;
 
       if (headerHeight && scrollY < headerHeight) {
         // prevents seeing "behind" the header
@@ -48,9 +53,11 @@ export const useHideHeader = (
       }
     };
 
-    window.addEventListener("scroll", onScroll);
+    mainElement.addEventListener("scroll", onScroll);
 
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      mainElement.removeEventListener("scroll", onScroll);
+    };
   }, [headerRef, threshold]);
 
   return hideHeader;
