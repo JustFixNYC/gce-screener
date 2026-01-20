@@ -3580,8 +3580,12 @@ msgstr "We couldn’t finish your letter"
 #~ msgstr "We have sent a text message to you at {0} with the USPS tracking number for your letter."
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:122
-msgid "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if your normally correspond to your landlord via email. You can also send a copy to other people you trust."
-msgstr "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if your normally correspond to your landlord via email. You can also send a copy to other people you trust."
+msgid "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if you normally correspond to your landlord via email. You can also send a copy to other people you trust."
+msgstr "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if you normally correspond to your landlord via email. You can also send a copy to other people you trust."
+
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:122
+#~ msgid "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if your normally correspond to your landlord via email. You can also send a copy to other people you trust."
+#~ msgstr "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if your normally correspond to your landlord via email. You can also send a copy to other people you trust."
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:93
 #~ msgid "We highly recommend emailing a copy of the letter to yourself and your landlord. You can also send a copy to other people you trust."

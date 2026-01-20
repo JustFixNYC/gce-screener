@@ -121,7 +121,7 @@ export const MailChoiceStep: React.FC = () => {
           <InfoBox>
             <Trans>
               We highly recommend emailing a copy of the letter to yourself and
-              your landlord, especially if your normally correspond to your
+              your landlord, especially if you normally correspond to your
               landlord via email. You can also send a copy to other people you
               trust.
             </Trans>

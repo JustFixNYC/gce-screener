@@ -3585,8 +3585,12 @@ msgstr "No pudimos terminar su carta"
 #~ msgstr "We have sent a text message to you at {0} with the USPS tracking number for your letter."
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:122
-msgid "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if your normally correspond to your landlord via email. You can also send a copy to other people you trust."
-msgstr "Le recomendamos encarecidamente que envíe una copia de la carta por correo electrónico a usted mismo y a su arrendador, especialmente si normalmente se comunica con él por correo electrónico. También puede enviar una copia a otras personas de su confianza."
+msgid "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if you normally correspond to your landlord via email. You can also send a copy to other people you trust."
+msgstr ""
+
+#: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:122
+#~ msgid "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if your normally correspond to your landlord via email. You can also send a copy to other people you trust."
+#~ msgstr "Le recomendamos encarecidamente que envíe una copia de la carta por correo electrónico a usted mismo y a su arrendador, especialmente si normalmente se comunica con él por correo electrónico. También puede enviar una copia a otras personas de su confianza."
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:93
 #~ msgid "We highly recommend emailing a copy of the letter to yourself and your landlord. You can also send a copy to other people you trust."
