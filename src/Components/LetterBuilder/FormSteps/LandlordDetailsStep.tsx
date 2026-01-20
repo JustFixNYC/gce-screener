@@ -298,7 +298,6 @@ const LandlordFormGroup: React.FC<{
                 >
                   use the recommended landlord information.
                 </button>
-                
               </Trans>
             </InfoBox>
           ) : (

@@ -6,6 +6,15 @@
   align-items: center;
   gap: 0.75rem;
 
+  @include for-phone-only() {
+    .jfcl-variant-primary {
+      width: 200px;
+    }
+    .jfcl-button.back-link {
+      padding-left: 0;
+    }
+  }
+
   .jfcl-button.back-link {
     @include body_standard_desktop;
     text-decoration: underline;

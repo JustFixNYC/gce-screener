@@ -135,7 +135,7 @@ export const PreviewStep: React.FC = () => {
         button2Props={{
           type: "button",
           onClick: () => next("mail_choice"),
-          labelText: _(msg`Choose mailing method`),
+          labelText: _(msg`Choose your mailing method`),
         }}
       />
     </div>
