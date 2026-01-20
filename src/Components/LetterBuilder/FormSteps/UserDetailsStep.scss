@@ -3,12 +3,95 @@
 
 .user-details-step {
   .modal__content {
+    
+    .info-box {
+      margin-bottom: 1rem;
+    }
     p {
       margin-top: unset;
     }
     button {
       width: auto;
       margin-top: 1rem;
+    }
+  }
+  .no-copy {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10 and IE 11 */
+    user-select: none;         /* Standard syntax */
+}
+  .sample-letter {
+    .header__user-address {
+      padding-bottom: 0.5rem;
+    }
+    .header__date {
+      padding-bottom: 0.5rem;
+    }
+    .intro {
+      padding-bottom: 2.5rem;
+
+      .intro__salutation {
+        padding: 2.5rem 0 1.5rem 0;
+      }
+    }
+    .reason {
+      padding-bottom: 2.5rem;
+      .reason__title {
+        padding-bottom: 0.5rem;
+        font-weight: 600;
+      }
+    }
+    .request {
+      padding-bottom: 2.5rem;
+      .request__title {
+        padding-bottom: 0.5rem;
+        font-weight: 600;
+      }
+      ul {
+        margin-top: unset;
+      }
+    }
+
+    .rights {
+      padding-bottom: 1rem;
+      .rights__title {
+        padding-bottom: 0.5rem;
+        font-weight: 600;
+      }
+      ol {
+        margin: unset;
+        margin-left: -1rem;
+
+        li {
+          margin-bottom: 1.5rem;
+          font-weight: 500 !important;
+          span {
+            font-weight: 500 !important;
+            strong {
+              font-weight: 500 !important;
+            }
+          }
+          li {
+            margin: 0.25rem 0;
+          }
+        }
+      }
+    }
+    .outro {
+      .outro__paragraph {
+        margin: unset !important;
+        padding-bottom: 2.5rem;
+      }
+      .outro__paragraph:nth-of-type(3) {
+        padding-bottom: 1rem;
+      }
+    }
+    footer {
+      text-align: left !important;
+      p {
+        margin-bottom: 0.5rem !important;
+        margin-top: unset !important;
+      }
     }
   }
 }
