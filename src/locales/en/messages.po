@@ -62,6 +62,14 @@ msgstr "(Your current monthly rent {0} + {increase_pct}%)"
 msgid "[Date]"
 msgstr "[Date]"
 
+#: src/Components/LetterBuilder/Letter/Letter.tsx:416
+msgid "[Your email address]"
+msgstr "[Your email address]"
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:413
+msgid "[Your name]"
+msgstr "[Your name]"
+
 #. placeholder {0}: formatMoney(rent * (1 + increase_pct / 100))
 #: src/Components/KYRContent/KYRContent.tsx:324
 msgid "{0} "
@@ -2323,12 +2331,12 @@ msgstr "Please confirm in writing that this unit is covered under Good Cause Evi
 #~ msgstr "Please confirm in writing that this unit is covered under the Good Cause Eviction law."
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:273
-msgid "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific \"good cause\" ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
-msgstr "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific \"good cause\" ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
+#~ msgid "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific \"good cause\" ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
+#~ msgstr "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific \"good cause\" ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:268
-#~ msgid "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific “good cause” ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
-#~ msgstr "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific “good cause” ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
+#: src/Components/LetterBuilder/Letter/Letter.tsx:273
+msgid "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific “good cause” ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
+msgstr "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific “good cause” ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:222
 #~ msgid "Please confirm whether you intend to renew my lease, and if not, provide the specific good cause reason in writing as required by law. If you do not provide such reason, I will assume I retain the right to continue my tenancy under existing terms."
@@ -3369,12 +3377,12 @@ msgid "Under the Good Cause Eviction law, landlords are allowed to evict tenants
 msgstr "Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:243
-msgid "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid \"good cause\" reason for non-renewal."
-msgstr "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid \"good cause\" reason for non-renewal."
+#~ msgid "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid \"good cause\" reason for non-renewal."
+#~ msgstr "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid \"good cause\" reason for non-renewal."
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:238
-#~ msgid "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid “good cause” reason for non-renewal."
-#~ msgstr "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid “good cause” reason for non-renewal."
+#: src/Components/LetterBuilder/Letter/Letter.tsx:243
+msgid "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid “good cause” reason for non-renewal."
+msgstr "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid “good cause” reason for non-renewal."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:689
 #~ msgid "Under the Good Cause law, landlords can only raise rent above the local rent standard (annual inflation + 5%, or a maximum of 10%) if they can prove there’s a legitimate “good cause” reason for doing so. The reason must be specific, factual, and reasonable, not just a general claim of higher expenses."

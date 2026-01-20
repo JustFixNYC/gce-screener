@@ -67,6 +67,14 @@ msgstr "(Su renta mensual actual {0} + {increase_pct} %)"
 msgid "[Date]"
 msgstr ""
 
+#: src/Components/LetterBuilder/Letter/Letter.tsx:416
+msgid "[Your email address]"
+msgstr ""
+
+#: src/Components/LetterBuilder/Letter/Letter.tsx:413
+msgid "[Your name]"
+msgstr ""
+
 #. placeholder {0}: formatMoney(rent * (1 + increase_pct / 100))
 #: src/Components/KYRContent/KYRContent.tsx:324
 msgid "{0} "
@@ -2328,12 +2336,12 @@ msgstr "Confirme por escrito que esta unidad está cubierta por la Ley de Desalo
 #~ msgstr "Please confirm in writing that this unit is covered under the Good Cause Eviction law."
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:273
-msgid "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific \"good cause\" ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
-msgstr ""
+#~ msgid "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific \"good cause\" ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
+#~ msgstr ""
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:268
-#~ msgid "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific “good cause” ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
-#~ msgstr "Por favor, confirme si tiene intención de renovar mi contrato de arrendamiento. Si no tiene intención de renovarlo, le ruego que me comunique el motivo específico, tal y como exigen los artículos 216 de la Ley de Propiedad Inmobiliaria (RPL). Si no me comunica dicho motivo, daré por sentado que conservo el derecho a continuar con mi arrendamiento en las condiciones actuales."
+#: src/Components/LetterBuilder/Letter/Letter.tsx:273
+msgid "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific “good cause” ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
+msgstr "Por favor, confirme si tiene intención de renovar mi contrato de arrendamiento. Si no tiene intención de renovarlo, le ruego que me comunique el motivo específico, tal y como exigen los artículos 216 de la Ley de Propiedad Inmobiliaria (RPL). Si no me comunica dicho motivo, daré por sentado que conservo el derecho a continuar con mi arrendamiento en las condiciones actuales."
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:222
 #~ msgid "Please confirm whether you intend to renew my lease, and if not, provide the specific good cause reason in writing as required by law. If you do not provide such reason, I will assume I retain the right to continue my tenancy under existing terms."
@@ -3374,12 +3382,12 @@ msgid "Under the Good Cause Eviction law, landlords are allowed to evict tenants
 msgstr "Según la Ley de Desalojo por Justa Causa, los arrendadores pueden desalojar a los inquilinos por las siguientes \"causas justificadas\":"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:243
-msgid "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid \"good cause\" reason for non-renewal."
-msgstr ""
+#~ msgid "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid \"good cause\" reason for non-renewal."
+#~ msgstr ""
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:238
-#~ msgid "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid “good cause” reason for non-renewal."
-#~ msgstr "Según la Ley de Desalojo por Justa Causa, los inquilinos tienen derecho a renovar su contrato de arrendamiento, a menos que el arrendador pueda demostrar una \"justa causa\" válida para no renovarlo."
+#: src/Components/LetterBuilder/Letter/Letter.tsx:243
+msgid "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid “good cause” reason for non-renewal."
+msgstr "Según la Ley de Desalojo por Justa Causa, los inquilinos tienen derecho a renovar su contrato de arrendamiento, a menos que el arrendador pueda demostrar una \"justa causa\" válida para no renovarlo."
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:689
 #~ msgid "Under the Good Cause law, landlords can only raise rent above the local rent standard (annual inflation + 5%, or a maximum of 10%) if they can prove there’s a legitimate “good cause” reason for doing so. The reason must be specific, factual, and reasonable, not just a general claim of higher expenses."
