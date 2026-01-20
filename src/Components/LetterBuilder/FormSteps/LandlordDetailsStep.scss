@@ -2,6 +2,10 @@
 @use "../../../mixins.scss" as *;
 
 .landlord-details-step {
+  .text-link-button {
+    text-align: left;
+  }
+
   .hpd-invalid-modal .modal__content {
     @include body_large_desktop;
   }

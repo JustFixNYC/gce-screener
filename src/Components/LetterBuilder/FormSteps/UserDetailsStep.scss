@@ -2,6 +2,9 @@
 @use "../../../variables" as *;
 
 .user-details-step {
+  .jfcl-link {
+    text-align: left;
+  }
   .modal__content {
     .info-box {
       margin-bottom: 1rem;

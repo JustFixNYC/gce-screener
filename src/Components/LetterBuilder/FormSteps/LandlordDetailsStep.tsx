@@ -296,9 +296,9 @@ const LandlordFormGroup: React.FC<{
                   className="text-link-button"
                   onClick={onBackToHpdLookup}
                 >
-                  use the recommended landlord information
+                  use the recommended landlord information.
                 </button>
-                .
+                
               </Trans>
             </InfoBox>
           ) : (
