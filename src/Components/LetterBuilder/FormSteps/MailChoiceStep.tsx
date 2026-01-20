@@ -59,7 +59,7 @@ export const MailChoiceStep: React.FC = () => {
       <FormGroup
         legendText={
           <h4>
-            <Trans>Select a mailing method</Trans>
+            <Trans>Choose your mailing method</Trans>
           </h4>
         }
         invalid={!!errors?.mail_choice}
@@ -215,8 +215,8 @@ export const MailChoiceStep: React.FC = () => {
         button2Props={{
           labelText:
             mailChoice === "USER_WILL_MAIL"
-              ? _(msg`Download my letter`)
-              : _(msg`Mail my letter`),
+              ? _(msg`Download your letter`)
+              : _(msg`Mail your letter`),
         }}
       />
     </LetterStepForm>

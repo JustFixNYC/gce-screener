@@ -410,10 +410,10 @@ const SampleLetterFooter = () => {
         <Trans>Regards</Trans>,
       </p>
       <p>
-        <Trans>[Your name]</Trans>
+        <Trans>Your name</Trans>
       </p>
       <p>
-        <Trans>[Your email address]</Trans>
+        <Trans>Your email address</Trans>
       </p>
     </footer>
   );

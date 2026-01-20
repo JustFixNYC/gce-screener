@@ -80,6 +80,7 @@
       .outro__paragraph {
         margin: unset !important;
         padding-bottom: 2.5rem;
+        overflow-wrap: break-word;
       }
       .outro__paragraph:nth-of-type(3) {
         padding-bottom: 1rem;
