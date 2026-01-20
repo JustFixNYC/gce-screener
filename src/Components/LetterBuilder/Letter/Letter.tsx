@@ -242,7 +242,7 @@ const LetterReason: React.FC<{ reason: LetterReasonType }> = ({ reason }) => (
       ) : (
         <Trans>
           Under the Good Cause Eviction law, tenants are entitled to renewal of
-          their lease unless the landlord can establish a valid "good cause"
+          their lease unless the landlord can establish a valid “good cause”
           reason for non-renewal.
         </Trans>
       )}
@@ -272,7 +272,7 @@ const LetterRequest: React.FC<{ reason: LetterReasonType }> = ({ reason }) => (
         ) : (
           <Trans>
             Please confirm that you intend to renew my lease, If you do not
-            intend to renew, please provide the specific "good cause" ground, as
+            intend to renew, please provide the specific “good cause” ground, as
             required under RPL § 216. If you do not provide a valid, good cause
             reason, I will assume I retain the right to continue my tenancy
             under existing terms.
@@ -409,8 +409,12 @@ const SampleLetterFooter = () => {
       <p>
         <Trans>Regards</Trans>,
       </p>
-      <p>[Your name]</p>
-      [Your email address]
+      <p>
+        <Trans>[Your name]</Trans>
+      </p>
+      <p>
+        <Trans>[Your email address]</Trans>
+      </p>
     </footer>
   );
 };
