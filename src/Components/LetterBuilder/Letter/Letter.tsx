@@ -307,6 +307,7 @@ const LetterOutro = () => (
           href="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page"
           target="_blank"
           rel="noopener noreferrer"
+          style={{ overflowWrap: "break-word" }}
         >
           https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page
         </a>
@@ -318,6 +319,7 @@ const LetterOutro = () => (
         href="https://www.nysenate.gov/legislation/laws/RPP/A6-A"
         target="_blank"
         rel="noopener noreferrer"
+        style={{ overflowWrap: "break-word" }}
       >
         https://www.nysenate.gov/legislation/laws/RPP/A6-A
       </a>
