@@ -364,11 +364,14 @@ $headerH: 4.5rem; // H1 line-height (1.5rem) + vertical padding (1.5rem x 2)
           margin-left: 0.5rem;
           button {
             color: $WHITE;
-            text-decoration: underline;
-
+            &:hover {
+              color: $GREY_200;
+              text-decoration: underline;
+            }
             &:disabled {
-              text-decoration: none;
-              font-weight: 600;
+              text-decoration: underline;
+              cursor: default;
+              color: $WHITE;
             }
           }
         }
