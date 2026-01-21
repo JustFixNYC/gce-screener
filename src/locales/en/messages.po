@@ -23,7 +23,7 @@ msgid " Letter Builder"
 msgstr " Letter Builder"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:118
-#: src/Components/LetterBuilder/Letter/Letter.tsx:398
+#: src/Components/LetterBuilder/Letter/Letter.tsx:400
 msgid ", outline my housing protections, and our mutual responsibilities."
 msgstr ", outline my housing protections, and our mutual responsibilities."
 
@@ -58,7 +58,7 @@ msgstr "(optional)"
 msgid "(Your current monthly rent {0} + {increase_pct}%)"
 msgstr "(Your current monthly rent {0} + {increase_pct}%)"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:368
+#: src/Components/LetterBuilder/Letter/Letter.tsx:370
 msgid "[Date]"
 msgstr "[Date]"
 
@@ -737,7 +737,7 @@ msgstr "Create a paper trail"
 #~ msgid "Creates a paper trail"
 #~ msgstr "Creates a paper trail"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:383
+#: src/Components/LetterBuilder/Letter/Letter.tsx:385
 msgid "Dear [landlord name],"
 msgstr "Dear [landlord name],"
 
@@ -1204,7 +1204,7 @@ msgstr "How to find out if your apartment is rent stabilized"
 msgid "How we determined your coverage"
 msgstr "How we determined your coverage"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:386
+#: src/Components/LetterBuilder/Letter/Letter.tsx:388
 msgid "I am writing to inform you that my tenancy at [your address] is covered under New York State Real Property Law (RPL) Article 6-A, also known as the Good Cause Eviction Law, which took effect in New York City on April 20, 2024. As a tenant covered by Good Cause, I want to address your "
 msgstr "I am writing to inform you that my tenancy at [your address] is covered under New York State Real Property Law (RPL) Article 6-A, also known as the Good Cause Eviction Law, which took effect in New York City on April 20, 2024. As a tenant covered by Good Cause, I want to address your "
 
@@ -1615,7 +1615,7 @@ msgid "Ineligible"
 msgstr "Ineligible"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:116
-#: src/Components/LetterBuilder/Letter/Letter.tsx:396
+#: src/Components/LetterBuilder/Letter/Letter.tsx:398
 msgid "intent to end my tenancy"
 msgstr "intent to end my tenancy"
 
@@ -1742,11 +1742,11 @@ msgstr "Landlord personal use/removal from market"
 msgid "Landlord portfolio size"
 msgstr "Landlord portfolio size"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:373
+#: src/Components/LetterBuilder/Letter/Letter.tsx:375
 msgid "Landlord's address"
 msgstr "Landlord's address"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:371
+#: src/Components/LetterBuilder/Letter/Letter.tsx:373
 msgid "Landlord's name"
 msgstr "Landlord's name"
 
@@ -2518,7 +2518,7 @@ msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:114
-#: src/Components/LetterBuilder/Letter/Letter.tsx:394
+#: src/Components/LetterBuilder/Letter/Letter.tsx:396
 msgid "proposed rent increase"
 msgstr "proposed rent increase"
 
@@ -2661,8 +2661,8 @@ msgstr "receives a HUD Project-Based subsidy"
 msgid "receives the Low-Income Housing Tax Credit (LIHTC)"
 msgstr "receives the Low-Income Housing Tax Credit (LIHTC)"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:333
-#: src/Components/LetterBuilder/Letter/Letter.tsx:410
+#: src/Components/LetterBuilder/Letter/Letter.tsx:335
+#: src/Components/LetterBuilder/Letter/Letter.tsx:412
 msgid "Regards"
 msgstr "Regards"
 
@@ -3309,7 +3309,7 @@ msgstr "To meet <0>Good Cause</0> Eviction’s “Landlord Portfolio Size” req
 #~ msgid "To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments"
 #~ msgstr "To meet Good Cause Eviction’s “Landlord Portfolio Size” requirement, you need to find out if your landlord owns more than 10 apartments"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:316
+#: src/Components/LetterBuilder/Letter/Letter.tsx:317
 msgid "To read the full law, visit:"
 msgstr "To read the full law, visit:"
 
@@ -4143,7 +4143,7 @@ msgstr "You’ve received a <0>notice of termination</0>"
 msgid "You’ve shared that your landlord has provided a reason for ending your tenancy. If the reason that your landlord provided is legitimate, <0>you may not be guaranteed a new lease by law.</0>"
 msgstr "You’ve shared that your landlord has provided a reason for ending your tenancy. If the reason that your landlord provided is legitimate, <0>you may not be guaranteed a new lease by law.</0>"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:363
+#: src/Components/LetterBuilder/Letter/Letter.tsx:365
 msgid "Your address"
 msgstr "Your address"
 
@@ -4222,7 +4222,7 @@ msgstr "Your current monthly rent + {increase_pct}%"
 #~ msgstr "Your current monthly rent + ${increase_pct}%"
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:136
-#: src/Components/LetterBuilder/Letter/Letter.tsx:365
+#: src/Components/LetterBuilder/Letter/Letter.tsx:367
 msgid "Your email"
 msgstr "Your email"
 
@@ -4230,7 +4230,7 @@ msgstr "Your email"
 #~ msgid "Your email (optional)"
 #~ msgstr "Your email (optional)"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:416
+#: src/Components/LetterBuilder/Letter/Letter.tsx:418
 msgid "Your email address"
 msgstr "Your email address"
 
@@ -4442,8 +4442,8 @@ msgstr "Your local City Council representative"
 msgid "Your mailing address"
 msgstr "Your mailing address"
 
-#: src/Components/LetterBuilder/Letter/Letter.tsx:361
-#: src/Components/LetterBuilder/Letter/Letter.tsx:413
+#: src/Components/LetterBuilder/Letter/Letter.tsx:363
+#: src/Components/LetterBuilder/Letter/Letter.tsx:415
 msgid "Your name"
 msgstr "Your name"
 
