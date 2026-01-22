@@ -209,7 +209,8 @@ export const LandlordDetailsStep: React.FC = () => {
         <BackNextButtons
           {...(hpdLandlord && showManual
             ? { button1Props: { onClick: onBackToHpdLookup } }
-            : { backStepName: "contact_info" })}
+            : { backStepName: "contact_info" as const })}
+          button2Props={{ labelText: _(msg`Review your letter`) }}
         />
       )}
       <Modal
@@ -448,6 +449,7 @@ const LandlordEmailFormGroup: React.FC = () => {
         className="form-group__section-header landlord-email-group"
         invalid={!!errors.landlord_details?.email}
       >
+        <LandlordEmailHelperText onClick={() => setShowModal(true)} />
         <TextInput
           {...register("landlord_details.email")}
           id={`landlord-email`}
@@ -457,18 +459,6 @@ const LandlordEmailFormGroup: React.FC = () => {
           invalidRole="status"
           type="email"
         />
-        <div className="form-group__footer">
-          <span className="form-group__footer-text">
-            <Trans>Why are we asking for this information?</Trans>
-          </span>
-          <button
-            type="button"
-            className="text-link-button jfcl-link"
-            onClick={() => setShowModal(true)}
-          >
-            <Trans>Learn more</Trans>
-          </button>
-        </div>
       </FormGroup>
 
       <Modal
@@ -500,7 +490,25 @@ const LandlordEmailFormGroup: React.FC = () => {
     </>
   );
 };
-
+const LandlordEmailHelperText: React.FC<{ onClick: () => void }> = ({
+  onClick,
+}) => {
+  return (
+    <InfoBox>
+      <Trans>
+        We ask for your landlord’s email address address so we can send them a
+        PDF copy of your letter via email.{" "}
+        <button
+          type="button"
+          className="text-link-button jfcl-link"
+          onClick={onClick}
+        >
+          <Trans>Learn More</Trans>
+        </button>
+      </Trans>
+    </InfoBox>
+  );
+};
 export const FormattedLandlordAddress: React.FC<{
   landlordDetails: FormFields["landlord_details"];
 }> = ({ landlordDetails: ld }) => {
