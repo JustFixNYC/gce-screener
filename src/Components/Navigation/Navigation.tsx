@@ -23,7 +23,7 @@ export const TopBar: React.FC<{
     <header
       ref={headerRef}
       id="topbar"
-      className={classNames({ hide: hideHeader })}
+      className={classNames({ hide: hideHeader, "menu-open": isMobileMenuOpen })}
     >
       <div
         className={classNames("topbar__name", {
