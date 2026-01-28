@@ -7,7 +7,7 @@ import {
   createRoutesFromElements,
   useLocation,
 } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { SWRConfig } from "swr";
 import { useRollbar } from "@rollbar/react";
 
@@ -47,6 +47,7 @@ import "./App.scss";
 
 const Layout = () => {
   const { pathname } = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const mainElement = document.getElementById("main");
@@ -55,14 +56,25 @@ const Layout = () => {
     }
   }, [pathname]);
 
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
   return (
     <I18n>
       <div id="grid">
-        <Sidebar />
+        <Sidebar
+          isMobileMenuOpen={isMobileMenuOpen}
+          onCloseMobileMenu={() => setIsMobileMenuOpen(false)}
+        />
         <main id="main">
+          <TopBar
+            isMobileMenuOpen={isMobileMenuOpen}
+            onMenuClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          />
           <div id="content">
             <CollabHeader />
-            <TopBar />
             <Outlet />
             <Footer />
           </div>

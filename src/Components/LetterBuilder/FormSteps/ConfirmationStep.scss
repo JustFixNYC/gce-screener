@@ -12,9 +12,14 @@
   .success-notice,
   .loading-notice,
   .error-notice {
-    .notice__icon-container svg {
-      width: 3.375rem;
-      height: 2.625rem;
+    .notice__icon-container {
+      @include for-phone-only() {
+        display: none;
+      }
+      svg {
+        width: 3.375rem;
+        height: 2.625rem;
+      }
     }
   }
 
@@ -28,8 +33,18 @@
   .error-letter-buttons {
     display: flex;
     gap: 1.5rem;
+    @include for-phone-only() {
+      flex-direction: column;
+      gap: 1rem;
+    }
     a.jfcl-button {
       text-decoration: none;
+      @include for-phone-only() {
+        width: auto;
+      }
+    }
+    .jfcl-button__label {
+      align-items: center;
     }
   }
 
@@ -37,6 +52,12 @@
     .notice__body {
       a:not(.jfcl-button) {
         @include body_large_desktop;
+        @include for-phone-only() {
+          @include body_standard_mobile;
+        }
+      }
+      p {
+        overflow-wrap: anywhere;
       }
       .usps-delay {
         padding: 0.75rem;
@@ -62,9 +83,14 @@
 
   .emails-sent-notice {
     padding: 1.5rem 2rem;
-    .notice__icon-container svg {
-      width: 1.95419rem;
-      height: 1.95394rem;
+    .notice__icon-container {
+      @include for-phone-only() {
+        display: none;
+      }
+      svg {
+        width: 1.95419rem;
+        height: 1.95394rem;
+      }
     }
     .notice__content-container {
       .notice__header {

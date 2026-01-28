@@ -26,8 +26,10 @@
   width: $sidebarWidth;
   flex-shrink: 0; // Prevent sidebar from shrinking
 
+  // Mobile menu is handled in Navigation.scss with transform
+  // Keep it in the DOM so transform animations work
   @include for-tablet-landscape-down {
-    display: none;
+    width: 100%;
   }
 }
 
@@ -38,10 +40,9 @@
   overflow-y: auto;
   overflow-x: hidden;
   background-color: $OFF_WHITE_200;
-
   #content {
-    height: 100%;
     width: 100%;
+    min-height: 0;
   }
 }
 

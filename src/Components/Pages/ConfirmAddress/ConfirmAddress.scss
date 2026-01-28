@@ -5,9 +5,19 @@
 $mapImgHeight: 285px;
 
 #confirm-address-page {
+  .headline-section {
+    @include for-tablet-portrait-up {
+      padding-top: 2rem;
+    }
+  }
   .headline-section__subtitle {
     @include for-tablet-portrait-up {
       width: 75%;
+    }
+  }
+  .content-section {
+    @include for-phone-only {
+      padding: 2rem 1.5rem !important;
     }
   }
 
@@ -135,6 +145,9 @@ $mapImgHeight: 285px;
 
     @include for-phone-only() {
       margin: unset;
+      .jfcl-variant-primary {
+        width: 12.5rem; //200px
+      }
     }
   }
 }

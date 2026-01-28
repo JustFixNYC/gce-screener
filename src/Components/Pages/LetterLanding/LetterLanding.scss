@@ -5,9 +5,8 @@
 
 #letter-sender-landing-page {
   .headline-section {
-    padding: 2.5rem 3rem;
     @include for-phone-only {
-      padding: 1rem 1rem 2rem;
+      padding: 2rem 1.5rem;
     }
     .headline-section__subtitle {
       width: 85%;
@@ -36,11 +35,11 @@
   }
 
   .content-section {
-    padding: unset;
-    padding: 4.5rem 2rem;
+    @include for-tablet-portrait-up {
+      padding: 3rem !important;
+    }
     @include for-phone-only {
-      padding: unset;
-      padding: 2rem 1.5rem;
+      padding: 2rem 1.5rem !important;
     }
     &:last-of-type {
       border-top: 1px solid $OFF_BLACK;

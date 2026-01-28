@@ -3,6 +3,11 @@
 @use "../../../colors" as *;
 
 #home-page {
+  .headline-section {
+    @include for-tablet-portrait-up {
+      padding-top: 2rem;
+    }
+  }
   .geo-search-form {
     display: inline-flex;
     align-items: end;
@@ -30,7 +35,6 @@
   }
 
   .content-section {
-    padding: 4.5rem 2rem;
     @include for-phone-only() {
       padding: 2rem 1.5rem;
     }

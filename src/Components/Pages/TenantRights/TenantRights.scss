@@ -1,6 +1,12 @@
 @use "../../../mixins" as *;
 
 #tenant-rights-page {
+  .headline-section {
+    @include for-phone-only {
+      padding: 2rem 1.5rem;
+    }
+  }
+
   .headline-section__content {
     margin: 0;
   }
@@ -9,15 +15,21 @@
     margin: 0 0 2rem;
   }
 
+  // last instance of content-box. :last-child doesn't work bc dividers returned after fragments
+  .content-box:has(+ .divider__print:last-child) {
+    margin-bottom: 0;
+  }
+
   @include for-phone-only {
     .content-section {
-      padding-bottom: 1rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
     }
     .content-box__header-title {
       @include h3_mobile;
     }
     .content-box {
-      margin: 0 0 1rem;
+      margin: 0 0 2rem;
     }
     .content-box__footer {
       .content-box__footer__message,

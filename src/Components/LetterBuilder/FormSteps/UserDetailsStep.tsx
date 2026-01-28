@@ -24,6 +24,7 @@ import { BackNextButtons } from "../BackNextButtons/BackNextButtons";
 import { LetterStepForm } from "../LetterBuilderForm";
 import "./FormSteps.scss";
 import "./UserDetailsStep.scss";
+import { SampleLetter } from "../Letter/Letter";
 
 const geosearchToLOBAddressWithBBL = (
   addr: Address
@@ -57,7 +58,8 @@ export const UserDetailsStep: React.FC = () => {
 
   const { _ } = useLingui();
 
-  const [showModal, setShowModal] = useState(false);
+  const [showContactInfoModal, setShowContactInfoModal] = useState(false);
+  const [showSampleLetterModal, setShowSampleLetterModal] = useState(false);
 
   const prevStep =
     watch("reason") === "PLANNED_INCREASE" ? "rent_increase" : "non_renewal";
@@ -94,12 +96,9 @@ export const UserDetailsStep: React.FC = () => {
           </h4>
         }
         helperElement={
-          <InfoBox>
-            <Trans>
-              Please use the address that is associated with your lease. This is
-              the address that we will use as the return address in your letter.
-            </Trans>
-          </InfoBox>
+          <MailingAddressHelperText
+            onClick={() => setShowSampleLetterModal(true)}
+          />
         }
         invalid={anyAddressErrors}
       >
@@ -189,6 +188,11 @@ export const UserDetailsStep: React.FC = () => {
             <Trans>Your contact information</Trans>
           </h4>
         }
+        helperElement={
+          <ContactInfoHelperText
+            onClick={() => setShowContactInfoModal(true)}
+          />
+        }
         className="form-group__section-header"
         invalid={anyContactErrors}
       >
@@ -220,26 +224,42 @@ export const UserDetailsStep: React.FC = () => {
           invalidRole="status"
           type="email"
         />
-        <div className="form-group__footer">
-          <span className="form-group__footer-text">
-            <Trans>Why are we asking for this information?</Trans>
-          </span>
-          <button
-            type="button"
-            className="text-link-button jfcl-link"
-            onClick={() => setShowModal(true)}
-          >
-            <Trans>Learn more</Trans>
-          </button>
-        </div>
       </FormGroup>
       <BackNextButtons backStepName={prevStep} />
 
       <Modal
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
+        isOpen={showSampleLetterModal}
+        onClose={() => setShowSampleLetterModal(false)}
         hasCloseBtn={true}
-        header={_(msg`Why we ask for your phone number and email`)}
+        header={_(msg`Sample letter to landlord`)}
+      >
+        <section>
+          <InfoBox color="blue">
+            <Trans>
+              Below is an example of the letter we will send to your landlord if
+              they are trying to raise your rent. The official letter will
+              include your name, your address, your landlord’s name, and your
+              landlord’s address.
+            </Trans>
+          </InfoBox>
+        </section>
+        <section>
+          <div className="callout-box">
+            <SampleLetter reason={watch("reason")} />
+          </div>
+        </section>
+
+        <Button
+          variant="secondary"
+          labelText={_(msg`Close`)}
+          onClick={() => setShowSampleLetterModal(false)}
+        />
+      </Modal>
+      <Modal
+        isOpen={showContactInfoModal}
+        onClose={() => setShowContactInfoModal(false)}
+        hasCloseBtn={true}
+        header={_(msg`Why we ask for your contact information`)}
       >
         <section>
           <Trans>
@@ -259,18 +279,58 @@ export const UserDetailsStep: React.FC = () => {
           </Trans>
           <p>
             <Trans>
-              We’ll email you a PDF copy of your letter. We’ll also include your
-              email in the letter to your landlord so they can contact you. We
-              will only share your email if you tell us to.
+              We’ll email you a PDF copy of your letter, and include your email
+              in the letter to help keep communication with your landlord
+              documented. We will never share your email outside of the letter.
             </Trans>
           </p>
         </section>
         <Button
           variant="secondary"
           labelText={_(msg`Close`)}
-          onClick={() => setShowModal(false)}
+          onClick={() => setShowContactInfoModal(false)}
         />
       </Modal>
     </LetterStepForm>
+  );
+};
+
+const MailingAddressHelperText: React.FC<{ onClick: () => void }> = ({
+  onClick,
+}) => {
+  return (
+    <InfoBox>
+      <Trans>
+        We’ll include this info in your letter, and use it to lookup your
+        landlord’s official mailing address.{" "}
+        <button
+          type="button"
+          className="text-link-button jfcl-link"
+          onClick={onClick}
+        >
+          <Trans>Preview a sample letter</Trans>
+        </button>
+      </Trans>
+    </InfoBox>
+  );
+};
+
+const ContactInfoHelperText: React.FC<{ onClick: () => void }> = ({
+  onClick,
+}) => {
+  return (
+    <InfoBox>
+      <Trans>
+        We’ll text you with your USPS tracking number and check in after your
+        letter is mailed. We’ll also email you a pdf copy of your letter.{" "}
+        <button
+          type="button"
+          className="text-link-button jfcl-link"
+          onClick={onClick}
+        >
+          <Trans>Learn More</Trans>
+        </button>
+      </Trans>
+    </InfoBox>
   );
 };

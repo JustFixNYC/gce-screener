@@ -14,7 +14,7 @@
 
 .headline-section {
   position: relative;
-  padding-top: 1.5rem;
+  padding-top: 3rem;
   padding-bottom: 3rem; // 48px
   background-color: $OFF_WHITE_200;
 
@@ -66,7 +66,8 @@
 
 .content-section {
   background-color: $OFF_WHITE_100;
-  padding-top: 2.25rem; // 36px
+  padding-top: 3rem; // 48px
+  padding-bottom: 3rem; // 48px
 
   .content-section__content {
     max-width: $contentBoxWidth;
@@ -90,8 +91,8 @@
 @media screen {
   .headline-section,
   .content-section {
-    @media (max-width: 772px) {
-      padding: 1rem 1rem 2rem;
+    @include for-phone-only {
+      padding: 1rem 1.5rem 2rem;
     }
   }
   .headline-section__address__print {
