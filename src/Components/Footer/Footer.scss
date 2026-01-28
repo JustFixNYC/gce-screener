@@ -45,6 +45,22 @@
     @include for-tablet-landscape-up() {
       display: none;
     }
+    button.jfcl-link {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: $GREY_600;
+      font-weight: 600;
+      &:hover {
+        color: $GREY_700;
+        text-decoration: underline;
+      }
+      &:disabled {
+        text-decoration: underline;
+        cursor: default;
+        color: $OFF_BLACK;
+      }
+    }
   }
 
   .footer__legal-pages {

@@ -132,7 +132,11 @@ export const PreviewStep: React.FC = () => {
       </div>
       <BackNextButtons
         backStepName="landlord_details"
-        button2Props={{ type: "button", onClick: () => next("mail_choice") }}
+        button2Props={{
+          type: "button",
+          onClick: () => next("mail_choice"),
+          labelText: _(msg`Choose your mailing method`),
+        }}
       />
     </div>
   );

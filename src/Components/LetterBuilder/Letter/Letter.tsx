@@ -12,6 +12,8 @@ import {
 import letterStyles from "./letter-styles.css?raw";
 
 type LetterData = { letterData: FormFields };
+type SampleLetterData = { reason: "PLANNED_INCREASE" | "NON_RENEWAL" };
+type LetterReasonType = FormFields["reason"] | SampleLetterData["reason"];
 
 export const Letter: React.FC<LetterData> = ({ letterData }) => {
   return (
@@ -30,8 +32,8 @@ export const Letter: React.FC<LetterData> = ({ letterData }) => {
           <LetterHeader letterData={letterData} />
           <main id="letter">
             <LetterIntro letterData={letterData} />
-            <LetterReason letterData={letterData} />
-            <LetterRequest letterData={letterData} />
+            <LetterReason reason={letterData.reason} />
+            <LetterRequest reason={letterData.reason} />
             <LetterRightsList />
             <LetterOutro />
           </main>
@@ -127,7 +129,7 @@ const LetterRightsList = () => {
 
   return (
     <section className="rights">
-      <h2 style={{ fontSize: "1.125rem" }}>
+      <h2 style={{ fontSize: "1.125rem" }} className="rights__title">
         <Trans>Protections I have as a tenant covered by Good Cause:</Trans>
       </h2>
 
@@ -217,17 +219,20 @@ const LetterRightsList = () => {
   );
 };
 
-const LetterReason: React.FC<LetterData> = ({ letterData }) => (
+const LetterReason: React.FC<{ reason: LetterReasonType }> = ({ reason }) => (
   <section className="reason">
-    <h2 style={{ margin: "unset", fontSize: "1.125rem" }}>
-      {letterData.reason === "PLANNED_INCREASE" ? (
+    <h2
+      style={{ margin: "unset", fontSize: "1.125rem" }}
+      className="reason__title"
+    >
+      {reason === "PLANNED_INCREASE" ? (
         <Trans>Concerning the proposed rent increase:</Trans>
       ) : (
         <Trans>Concerning your intent to end my tenancy:</Trans>
       )}
     </h2>
     <p>
-      {letterData.reason === "PLANNED_INCREASE" ? (
+      {reason === "PLANNED_INCREASE" ? (
         <Trans>
           Based on the rent amount stated in your recent lease offer, the
           increase appears to exceed the lawful limit under Good Cause Eviction
@@ -245,9 +250,9 @@ const LetterReason: React.FC<LetterData> = ({ letterData }) => (
   </section>
 );
 
-const LetterRequest: React.FC<LetterData> = ({ letterData }) => (
+const LetterRequest: React.FC<{ reason: LetterReasonType }> = ({ reason }) => (
   <section className="request">
-    <h2 style={{ fontSize: "1.125rem" }}>
+    <h2 style={{ fontSize: "1.125rem" }} className="request__title">
       <Trans>I respectfully request the following:</Trans>
     </h2>
     <ul>
@@ -258,7 +263,7 @@ const LetterRequest: React.FC<LetterData> = ({ letterData }) => (
         </Trans>
       </li>
       <li>
-        {letterData.reason === "PLANNED_INCREASE" ? (
+        {reason === "PLANNED_INCREASE" ? (
           <Trans>
             Please send me a new lease with a rent increase of less than{" "}
             {CPI + 5}%, consistent with the limits established under RPL §
@@ -280,7 +285,7 @@ const LetterRequest: React.FC<LetterData> = ({ letterData }) => (
 
 const LetterOutro = () => (
   <section className="outro">
-    <p>
+    <p className="outro__paragraph">
       <Trans>
         I value our landlord–tenant relationship and wish to continue it on
         clear and lawful terms. Please let me know if you’d like to discuss or
@@ -288,13 +293,13 @@ const LetterOutro = () => (
         uphold both legal obligations and good-faith communication.{" "}
       </Trans>
     </p>
-    <p>
+    <p className="outro__paragraph">
       <Trans>
         Thank you for your attention to this matter. I look forward to hearing
         from you.
       </Trans>
     </p>
-    <p>
+    <p className="outro__paragraph">
       <Trans>
         To learn more about tenant and landlord responsibilities under Good
         Cause Eviction law, visit:{" "}
@@ -302,17 +307,19 @@ const LetterOutro = () => (
           href="https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page"
           target="_blank"
           rel="noopener noreferrer"
+          style={{ overflowWrap: "break-word" }}
         >
           https://www.nyc.gov/site/hpd/services-and-information/good-cause-eviction.page
         </a>
       </Trans>
     </p>
-    <p>
+    <p className="outro__paragraph">
       <Trans>To read the full law, visit:</Trans>{" "}
       <a
         href="https://www.nysenate.gov/legislation/laws/RPP/A6-A"
         target="_blank"
         rel="noopener noreferrer"
+        style={{ overflowWrap: "break-word" }}
       >
         https://www.nysenate.gov/legislation/laws/RPP/A6-A
       </a>
@@ -331,6 +338,85 @@ const LetterFooter: React.FC<LetterData> = ({ letterData }) => {
         {ud.first_name} {ud.last_name}
       </p>
       {ud.email && <p>{ud.email}</p>}
+    </footer>
+  );
+};
+
+export const SampleLetter: React.FC<SampleLetterData> = ({ reason }) => {
+  return (
+    <div className="sample-letter no-copy">
+      <SampleLetterHeader />
+      <SampleLetterIntro reason={reason} />
+      <LetterReason reason={reason} />
+      <LetterRequest reason={reason} />
+      <LetterRightsList />
+      <LetterOutro />
+      <SampleLetterFooter />
+    </div>
+  );
+};
+
+const SampleLetterHeader = () => {
+  return (
+    <section className="header">
+      <div className="header__user-address">
+        <Trans>Your name</Trans>
+        <br />
+        <Trans>Your address</Trans>
+        <br />
+        <Trans>Your email</Trans>
+      </div>
+      <div className="header__date">
+        <Trans>[Date]</Trans>
+      </div>
+      <div className="header__landlord-address">
+        <Trans>Landlord's name</Trans>
+        <br />
+        <Trans>Landlord's address</Trans>
+      </div>
+    </section>
+  );
+};
+
+const SampleLetterIntro: React.FC<SampleLetterData> = ({ reason }) => {
+  return (
+    <section className="intro">
+      <p className="intro__salutation">
+        <Trans>Dear [landlord name],</Trans>
+      </p>
+      <p>
+        <Trans>
+          I am writing to inform you that my tenancy at [your address] is
+          covered under New York State Real Property Law (RPL) Article 6-A, also
+          known as the Good Cause Eviction Law, which took effect in New York
+          City on April 20, 2024. As a tenant covered by Good Cause, I want to
+          address your{" "}
+        </Trans>
+        {reason === "PLANNED_INCREASE" ? (
+          <Trans>proposed rent increase</Trans>
+        ) : (
+          <Trans>intent to end my tenancy</Trans>
+        )}
+        <Trans>
+          , outline my housing protections, and our mutual responsibilities.
+        </Trans>
+      </p>
+    </section>
+  );
+};
+
+const SampleLetterFooter = () => {
+  return (
+    <footer style={{ display: "block", textAlign: "right" }}>
+      <p>
+        <Trans>Regards</Trans>,
+      </p>
+      <p>
+        <Trans>Your name</Trans>
+      </p>
+      <p>
+        <Trans>Your email address</Trans>
+      </p>
     </footer>
   );
 };
