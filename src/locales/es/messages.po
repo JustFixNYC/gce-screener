@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-01-02 20:06\n"
+"PO-Revision-Date: 2026-01-28 18:40\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -65,15 +65,15 @@ msgstr "(Su renta mensual actual {0} + {increase_pct} %)"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:370
 msgid "[Date]"
-msgstr ""
+msgstr "[Fecha]"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:416
 #~ msgid "[Your email address]"
-#~ msgstr ""
+#~ msgstr "[Your email address]"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:413
 #~ msgid "[Your name]"
-#~ msgstr ""
+#~ msgstr "[Your name]"
 
 #. placeholder {0}: formatMoney(rent * (1 + increase_pct / 100))
 #: src/Components/KYRContent/KYRContent.tsx:324
@@ -500,7 +500,7 @@ msgstr "Comience a reunir toda la documentación necesaria para defender su caso
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:238
 msgid "Below is an example of the letter we will send to your landlord if they are trying to raise your rent. The official letter will include your name, your address, your landlord’s name, and your landlord’s address."
-msgstr ""
+msgstr "A continuación, se muestra un ejemplo de la carta que enviaremos a su arrendador si intenta aumentar su renta. La carta oficial incluirá su nombre, su dirección, el nombre de su arrendador y la dirección de este."
 
 #: src/Components/LetterBuilder/ProgressBar/ProgressBar.tsx:23
 #~ msgid "Build your letter"
@@ -581,7 +581,7 @@ msgstr "Consultar los registros municipales para obtener información sobre su a
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:62
 #: src/Components/LetterBuilder/FormSteps/PreviewStep.tsx:138
 msgid "Choose your mailing method"
-msgstr ""
+msgstr "Elija su método de envío"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:378
 msgid "City"
@@ -744,7 +744,7 @@ msgstr "Crear un registro documental"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:385
 msgid "Dear [landlord name],"
-msgstr ""
+msgstr "Estimado [nombre del propietario],"
 
 #. placeholder {0}: ld.name
 #: src/Components/LetterBuilder/Letter/Letter.tsx:99
@@ -799,11 +799,11 @@ msgstr "Descargar carta (PDF)"
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:218
 #~ msgid "Download my letter"
-#~ msgstr "Descargar mi carta"
+#~ msgstr "Download my letter"
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:218
 msgid "Download your letter"
-msgstr ""
+msgstr "Descargar mi carta"
 
 #: src/Components/Navigation/Navigation.tsx:135
 msgid "Draft your Good Cause letter"
@@ -1211,7 +1211,7 @@ msgstr "Cómo determinamos su cobertura"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:388
 msgid "I am writing to inform you that my tenancy at [your address] is covered under New York State Real Property Law (RPL) Article 6-A, also known as the Good Cause Eviction Law, which took effect in New York City on April 20, 2024. As a tenant covered by Good Cause, I want to address your "
-msgstr ""
+msgstr "Le escribo para informarle que mi arrendamiento en [tu dirección] está cubierto por el artículo 6-A de la Ley de Bienes Inmuebles del Estado de Nueva York (RPL), también conocida como Ley de Desalojo por Justa Causa, que entró en vigor en la ciudad de Nueva York el 20 de abril de 2024. Como inquilino cubierto por esta ley, deseo "
 
 #. placeholder {0}: toTitleCase(ud.primary_line)
 #. placeholder {1}: ud.secondary_line ? ` ${toTitleCase(ud.secondary_line)}` : ""
@@ -1749,11 +1749,11 @@ msgstr "Tamaño de la cartera del arrendador"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:375
 msgid "Landlord's address"
-msgstr ""
+msgstr "Dirección de correo del dueño de tu edificio"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:373
 msgid "Landlord's name"
-msgstr ""
+msgstr "Nombre del arrendador"
 
 #: src/Components/KYRContent/KYRContent.tsx:380
 msgid "Landlords can increase the rent more than the reasonable rent increase but they must explain why and must point to increases in their costs or substantial repairs they did to the apartment or building."
@@ -2010,7 +2010,7 @@ msgstr "Esté atento a un mensaje de JustFix"
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:219
 #~ msgid "Mail my letter"
-#~ msgstr "Enviar mi carta"
+#~ msgstr "Mail my letter"
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:94
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:100
@@ -2023,7 +2023,7 @@ msgstr "Envíe la carta por correo o entréguela usted mismo"
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:219
 msgid "Mail your letter"
-msgstr ""
+msgstr "Enviar su carta"
 
 #: src/Components/LetterBuilder/LetterSteps.tsx:92
 msgid "Mailing method"
@@ -2047,7 +2047,7 @@ msgstr "Mapa que muestra la ubicación de la dirección ingresada."
 
 #: src/Components/Navigation/Navigation.tsx:62
 msgid "Menu"
-msgstr "Menu"
+msgstr "Menú"
 
 #: src/Components/KYRContent/KYRContent.tsx:262
 #: src/Components/KYRContent/KYRContent.tsx:710
@@ -2349,7 +2349,7 @@ msgstr "Confirme por escrito que esta unidad está cubierta por la Ley de Desalo
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:273
 #~ msgid "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific \"good cause\" ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
-#~ msgstr ""
+#~ msgstr "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific \"good cause\" ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:273
 msgid "Please confirm that you intend to renew my lease, If you do not intend to renew, please provide the specific “good cause” ground, as required under RPL § 216. If you do not provide a valid, good cause reason, I will assume I retain the right to continue my tenancy under existing terms."
@@ -2498,7 +2498,7 @@ msgstr "Por favor, especifique si su arrendador es propietario de más de 10 dep
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:98
 #~ msgid "Please use the address that is associated with your lease. This is the address that we will use as the return address in your letter."
-#~ msgstr "Utilice la dirección asociada a su contrato de arrendamiento. Esta es la dirección que utilizaremos como remitente en su carta."
+#~ msgstr "Please use the address that is associated with your lease. This is the address that we will use as the return address in your letter."
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:133
 msgid "Politely ask your landlord to explain the reason for the increase. For example, higher property taxes or maintenance costs."
@@ -2698,7 +2698,7 @@ msgstr "Importe de la renta"
 
 #: src/Components/Navigation/Navigation.tsx:37
 #~ msgid "Rent increase calculator"
-#~ msgstr "Calculadora de aumento de renta"
+#~ msgstr "Rent increase calculator"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:121
 #~ msgid "Rent increases are presumptively unreasonable if they exceed the lower of:"
@@ -2787,7 +2787,7 @@ msgstr "Imagen de ejemplo de contrato de arrendamiento con renta estabilizada en
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:234
 msgid "Sample letter to landlord"
-msgstr ""
+msgstr "Modelo de carta al propietario"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:214
 #~ msgid "Save"
@@ -2863,7 +2863,7 @@ msgstr "Seleccione <0>\"Su arrendador tiene previsto aumentar el alquiler\"</0> 
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:62
 #~ msgid "Select a mailing method"
-#~ msgstr "Seleccione un método de envío"
+#~ msgstr "Select a mailing method"
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:54
 #~ msgid "Select a mailing method and provide email addresses to receive a copy of your letter."
@@ -3396,7 +3396,7 @@ msgstr "Según la Ley de Desalojo por Justa Causa, los arrendadores pueden desal
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:243
 #~ msgid "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid \"good cause\" reason for non-renewal."
-#~ msgstr ""
+#~ msgstr "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid \"good cause\" reason for non-renewal."
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:243
 msgid "Under the Good Cause Eviction law, tenants are entitled to renewal of their lease unless the landlord can establish a valid “good cause” reason for non-renewal."
@@ -3579,7 +3579,7 @@ msgstr "No podemos enlazar directamente con documentos específicos de propiedad
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:498
 msgid "We ask for your landlord’s email address address so we can send them a PDF copy of your letter via email. <0>Learn More</0>"
-msgstr ""
+msgstr "Le pedimos la dirección de correo electrónico de su arrendador para poder enviarle una copia en PDF de su carta por correo electrónico. <0>Más información</0>"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:467
 #~ msgid "We ask for your landlord's email address so that we can send them a PDF copy of your letter. This helps ensure that the landlord sees your letter."
@@ -3603,11 +3603,11 @@ msgstr "No pudimos terminar su carta"
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:122
 msgid "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if you normally correspond to your landlord via email. You can also send a copy to other people you trust."
-msgstr ""
+msgstr "Le recomendamos encarecidamente que envíe una copia de la carta por correo electrónico a usted mismo y a su arrendador, especialmente si normalmente se comunica con él por correo electrónico. También puede enviar una copia a otras personas de su confianza."
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:122
 #~ msgid "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if your normally correspond to your landlord via email. You can also send a copy to other people you trust."
-#~ msgstr "Le recomendamos encarecidamente que envíe una copia de la carta por correo electrónico a usted mismo y a su arrendador, especialmente si normalmente se comunica con él por correo electrónico. También puede enviar una copia a otras personas de su confianza."
+#~ msgstr "We highly recommend emailing a copy of the letter to yourself and your landlord, especially if your normally correspond to your landlord via email. You can also send a copy to other people you trust."
 
 #: src/Components/LetterBuilder/FormSteps/MailChoiceStep.tsx:93
 #~ msgid "We highly recommend emailing a copy of the letter to yourself and your landlord. You can also send a copy to other people you trust."
@@ -3707,7 +3707,7 @@ msgstr "También le informaremos cuando la ciudad de Nueva York modifique el mon
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:281
 msgid "We’ll email you a PDF copy of your letter, and include your email in the letter to help keep communication with your landlord documented. We will never share your email outside of the letter."
-msgstr ""
+msgstr "Te enviaremos por correo electrónico una copia en PDF de tu carta e incluiremos tu correo electrónico en la carta para ayudar a documentar la comunicación con tu arrendador. Nunca compartiremos tu correo electrónico fuera de la carta."
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:254
 #~ msgid "We’ll email you a PDF copy of your letter. We'll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to."
@@ -3715,11 +3715,11 @@ msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:261
 #~ msgid "We’ll email you a PDF copy of your letter. We’ll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to."
-#~ msgstr "Le enviaremos por correo electrónico una copia en PDF de su carta. También incluiremos su correo electrónico en la carta que enviemos a su arrendador para que pueda ponerse en contacto contigo. Solo compartiremos su correo electrónico si nos lo pide."
+#~ msgstr "We’ll email you a PDF copy of your letter. We’ll also include your email in the letter to your landlord so they can contact you. We will only share your email if you tell us to."
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:303
 msgid "We’ll include this info in your letter, and use it to lookup your landlord’s official mailing address. <0>Preview a sample letter</0>"
-msgstr ""
+msgstr "Incluiremos esta información en tu carta y la utilizaremos para buscar la dirección postal oficial de tu arrendador. <0>Vista previa de una carta de muestra</0>"
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:152
 #~ msgid "We’ll text you once a year to learn about your housing conditions. We’ll use your answers to better advocate for your rights."
@@ -3727,11 +3727,11 @@ msgstr ""
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:285
 #~ msgid "We’ll text you with your USPS tracking number and check in after your letter is mailed. We’ll also email you a pdf copy of your letter.             <0>Learn More</0>"
-#~ msgstr ""
+#~ msgstr "We’ll text you with your USPS tracking number and check in after your letter is mailed. We’ll also email you a pdf copy of your letter.             <0>Learn More</0>"
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:323
 msgid "We’ll text you with your USPS tracking number and check in after your letter is mailed. We’ll also email you a pdf copy of your letter. <0>Learn More</0>"
-msgstr ""
+msgstr "Le enviaremos un mensaje de texto con su número de seguimiento de USPS y le informaremos una vez que su carta haya sido enviada. También le enviaremos por correo electrónico una copia en PDF de su carta. <0>Más información</0>"
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:269
 msgid "We’ll text you with your USPS tracking number. We will also check in after your letter is mailed. We will never call you or share your phone number."
@@ -3841,7 +3841,7 @@ msgstr "¿Quién puede ayudar?"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:462
 #~ msgid "Why are we asking for this information?"
-#~ msgstr "¿Por qué solicitamos esta información?"
+#~ msgstr "Why are we asking for this information?"
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:125
 msgid "Why send a letter to your landlord?"
@@ -3849,7 +3849,7 @@ msgstr "¿Por qué enviar una carta a su arrendador?"
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:262
 msgid "Why we ask for your contact information"
-msgstr ""
+msgstr "Por qué solicitamos su información de contacto"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:464
 #~ msgid "Why we ask for your landlord's email"
@@ -3861,7 +3861,7 @@ msgstr "¿Por qué solicitamos el correo electrónico de su arrendador?"
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:242
 #~ msgid "Why we ask for your phone number and email"
-#~ msgstr "¿Por qué le pedimos su número de teléfono y correo electrónico?"
+#~ msgstr "Why we ask for your phone number and email"
 
 #: src/Components/KYRContent/KYRContent.tsx:648
 msgid "Withhold the unreasonable increase"
@@ -3958,11 +3958,11 @@ msgstr "Tiene derecho legal a aumentos limitados de la renta y el derecho a perm
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:292
 msgid "You have chosen to overwrite the landlord information on record with the city. Please provide your own details below, or <0>use the recommended landlord information.</0>"
-msgstr ""
+msgstr "Ha elegido sobrescribir la información del arrendador que figura en los registros municipales. Indique sus datos a continuación o <0>utilice la información recomendada sobre el arrendador.</0>"
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:291
 #~ msgid "You have chosen to overwrite the landlord information on record with the city. Please provide your own details below, or <0>use the recommended landlord information</0>."
-#~ msgstr "Ha elegido sobrescribir la información del arrendador que figura en los registros municipales. Indique sus datos a continuación o <0>utilice la información recomendada sobre el arrendador</0>."
+#~ msgstr "You have chosen to overwrite the landlord information on record with the city. Please provide your own details below, or <0>use the recommended landlord information</0>."
 
 #: src/Components/LetterBuilder/FormSteps/LandlordDetailsStep.tsx:286
 #~ msgid "You have chosen to overwrite the landlord information recommended by JustFix. Please provide your own details below, or use the <0>recommended landlord information</0>."
@@ -4154,7 +4154,7 @@ msgstr "Usted ha compartido que su arrendador le ha dado una razón para rescind
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:365
 msgid "Your address"
-msgstr ""
+msgstr "Tu dirección"
 
 #: src/hooks/useCriteriaResults.tsx:346
 #~ msgid "your apartment is not"
@@ -4241,7 +4241,7 @@ msgstr "Su correo electrónico"
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:418
 msgid "Your email address"
-msgstr ""
+msgstr "Tu dirección de correo electrónico"
 
 #: src/Components/AddressConfirmationModal/AddressConfirmationModal.tsx:88
 #~ msgid "Your entered address:"
@@ -4454,7 +4454,7 @@ msgstr "Su dirección postal"
 #: src/Components/LetterBuilder/Letter/Letter.tsx:363
 #: src/Components/LetterBuilder/Letter/Letter.tsx:415
 msgid "Your name"
-msgstr ""
+msgstr "Tu nombre"
 
 #: src/Components/LetterBuilder/FormSteps/UserDetailsStep.tsx:199
 #~ msgid "Your phone number"
