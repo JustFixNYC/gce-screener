@@ -1,5 +1,5 @@
 @mixin body_standard_desktop {
-  font-family: "Degular", Arial, Helvetica, sans-serif;
+  font-family: "Degular Text", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 1.125rem; // 18px
@@ -31,7 +31,7 @@
 }
 
 @mixin page_header {
-  font-family: Degular;
+  font-family: "Degular Text";
   font-size: 3.25rem; // 52px;
   font-style: normal;
   font-weight: 500;
@@ -40,7 +40,7 @@
 }
 
 @mixin body_large_desktop {
-  font-family: "Degular", Arial, Helvetica, sans-serif;
+  font-family: "Degular Text", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 1.5rem; // 24px
@@ -49,7 +49,7 @@
 }
 
 @mixin small_text_desktop {
-  font-family: "Degular", Arial, Helvetica, sans-serif;
+  font-family: "Degular Text", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 0.875rem; // 14px
@@ -78,7 +78,7 @@
 }
 
 @mixin body_standard_mobile {
-  font-family: Degular;
+  font-family: "Degular Text";
   font-size: 1.125rem; // 18px
   font-style: normal;
   font-weight: 500;
@@ -87,7 +87,7 @@
 }
 
 @mixin h3_mobile {
-  font-family: Degular;
+  font-family: "Degular Text";
   font-size: 1.5rem; // 24px
   font-style: normal;
   font-weight: 600;
@@ -104,7 +104,7 @@
 }
 
 @mixin body_large_mobile {
-  font-family: Degular;
+  font-family: "Degular Text";
   font-size: 1.5rem; // 24px
   font-style: normal;
   font-weight: 500;
@@ -113,7 +113,7 @@
 }
 
 @mixin small_text_mobile {
-  font-family: Degular;
+  font-family: "Degular Text";
   font-size: 0.875rem; // 14px
   font-style: normal;
   font-weight: 500;
