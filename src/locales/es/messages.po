@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-02-23 17:45\n"
+"PO-Revision-Date: 2026-02-23 19:05\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -3259,11 +3259,11 @@ msgstr "Esta es la información de su arrendador tal y como figura registrada en
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:210
 msgid "This notice must state whether the unit is covered by Article 6-A and explain the tenant’s rights."
-msgstr "Este aviso debe indicar si la unidad está cubierta por el artículo 6-A y explicar los derechos del inquilino."
+msgstr "Este aviso debe indicar si la unidad está amparada por el artículo 6-A y explicar los derechos del inquilino."
 
 #: src/Components/Pages/Home/Home.tsx:224
 msgid "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for <0>Good Cause</0> protections."
-msgstr "Este sitio es una colaboración entre Housing Justice for All y JustFix. Agradecemos a todas las personas que contribuyeron a este sitio y a todos los inquilinos y defensores que luchan por las protecciones de <0>Justa Causa</0>."
+msgstr "Este sitio es una colaboración entre Housing Justice for All y JustFix. Agradecemos a todas las personas que contribuyeron a este sitio y a todos los inquilinos y defensores que luchan por las protecciones de la <0>Justa Causa</0>."
 
 #: src/Components/Pages/Home/Home.tsx:207
 #~ msgid "This site is a collaboration between the Housing Justice for All Coalition and JustFix. We thank all individuals who contributed to this site and to all the tenants and advocates who fight for Good Cause protections."
@@ -3693,7 +3693,7 @@ msgstr "Le enviaremos un mensaje de texto con un enlace para descargar una copia
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:98
 msgid "We will text you with:"
-msgstr "Te enviaremos un mensaje de texto con:"
+msgstr "Le enviaremos un mensaje de texto con:"
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:76
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:179
@@ -4110,7 +4110,7 @@ msgstr "Nos dijo que vive en una vivienda subsidiada. Si su edificio está subsi
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:23
 msgid "You told us that the landlord’s proposed rent increase is within the <0>Good Cause</0> legal limit."
-msgstr "Nos ha informado de que el aumento de renta propuesto por el propietario se encuentra dentro del límite legal por <0>Justa Causa</0>."
+msgstr "Nos ha informado que el aumento de renta propuesto por el propietario se encuentra dentro del límite legal por <0>Justa Causa</0>."
 
 #: src/Components/LetterBuilder/FormSteps/AllowedIncreaseStep.tsx:22
 #~ msgid "You told us that the landlord's proposed rent increase is within the Good Cause legal limit."
@@ -4163,7 +4163,7 @@ msgstr "Su dirección"
 #. placeholder {0}: formatNumber(unitsres)
 #: src/hooks/useCriteriaResults.tsx:152
 msgid "Your building has {0} apartments and you reported that your landlord does not own other buildings."
-msgstr "Su edificio tiene {0} apartamentos y usted ha informado de que su arrendador no es propietario de otros edificios."
+msgstr "Su edificio tiene {0} departamentos y usted ha informado de que su arrendador no es propietario de otros edificios."
 
 #. placeholder {0}: formatNumber(unitsres)
 #: src/hooks/useCriteriaResults.tsx:216
@@ -4192,7 +4192,7 @@ msgstr "Su edificio tiene {unitsres, plural, one {# departamentos} other {# depa
 #. placeholder {0}: formatNumber(unitsres)
 #: src/hooks/useCriteriaResults.tsx:224
 msgid "Your building has ${0} apartments and you reported that your landlord does not live in the building."
-msgstr "Su edificio tiene ${0} apartamentos y usted ha informado de que su arrendador no vive en el edificio."
+msgstr "Su edificio tiene ${0} departamentos y usted ha informado de que su arrendador no vive en el edificio."
 
 #: src/hooks/useCriteriaResults.tsx:492
 msgid "Your building has no new recorded certificate of occupancy since 2009."
