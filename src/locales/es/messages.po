@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-02-23 19:05\n"
+"PO-Revision-Date: 2026-02-25 17:57\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -129,7 +129,7 @@ msgstr "<0>Si usted está amparado por la <1>Justa Causa</1></0> y su arrendador
 #: src/Components/KYRContent/KYRContent.tsx:359
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:233
 msgid "<0>If you’re covered by <1>Good Cause</1></0> and your landlord is planning to raise your rent beyond this amount, you can send a legally-vetted letter to your landlord to ask for a lower rent increase."
-msgstr "<0>Si está cubierto por la <1>Justa Causa</1></0> y su arrendador tiene previsto aumentar su renta por encima de este monto, puede enviarle una carta revisada legalmente para solicitarle un aumento menor."
+msgstr "<0>Si está protegido por la <1>Justa Causa</1></0> y su arrendador tiene previsto aumentar su renta por encima de este monto, puede enviarle una carta revisada legalmente para solicitarle un aumento menor."
 
 #: src/Components/KYRContent/KYRContent.tsx:447
 #~ msgid "<0>If you’re covered by Good Cause</0> and your landlord is not offering you a lease renewal, you can send a legally-vetted letter to your landlord to assert your right to a renewal."
@@ -957,7 +957,7 @@ msgstr "Averiguar si estoy protegido"
 
 #: src/Components/Navigation/Navigation.tsx:105
 msgid "Find out if you're covered"
-msgstr "Averigüe si estás cubierto"
+msgstr "Averigüe si está cubierto"
 
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:171
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:209
@@ -1428,11 +1428,11 @@ msgstr "Si se siente cómodo, puede evitar firmar un contrato de arrendamiento c
 
 #: src/Components/Pages/Home/Home.tsx:147
 msgid "If you’re covered by <0>Good Cause</0>"
-msgstr "Si está cubierto por la <0>Justa Causa</0>"
+msgstr "Si está protegido por la <0>Justa Causa</0>"
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:26
 msgid "If you’re covered by <0>Good Cause</0> and your landlord is planning to raise your rent or not offer you a new lease, you can send a letter defending your <1>Good Cause</1> rights. We will even send it for you, for free."
-msgstr "Si está cubierto por la <0>Justa Causa</0> y su arrendador tiene previsto aumentar la renta o no renovarle el contrato, puede enviarle una carta defendiendo sus derechos por <1>Justa Causa</1>. Incluso se la enviaremos por usted, sin costo alguno."
+msgstr "Si está protegido por la <0>Justa Causa</0> y su arrendador tiene previsto aumentar la renta o no renovarle el contrato, puede enviarle una carta defendiendo sus derechos por <1>Justa Causa</1>. Incluso se la enviaremos por usted, sin costo alguno."
 
 #: src/Components/Pages/Home/Home.tsx:145
 #~ msgid "If you’re covered by Good Cause"
