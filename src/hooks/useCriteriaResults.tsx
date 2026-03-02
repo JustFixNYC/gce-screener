@@ -158,7 +158,7 @@ function eligibilityPortfolioSize(
     determination = "UNKNOWN";
     userValue = (
       <>
-        <Trans>Your building has only {pluralApartments}, but</Trans>
+        <Trans>Your building has only {pluralApartments}, but</Trans>{" "}
         {relatedProperties ? (
           <Trans>
             publicly available data sources indicate that your landlord may be
