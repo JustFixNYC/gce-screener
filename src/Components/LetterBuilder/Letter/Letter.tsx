@@ -158,8 +158,8 @@ const LetterRightsList = () => {
             </ul>
             <p>
               <Trans>
-                For New York City, the CPI change is {CPI + 5}% as of{" "}
-                {_(CPI_EFFECTIVE_DATE)}, meaning increases above this level
+                For New York City, the CPI is {CPI}% as of{" "}
+                {_(CPI_EFFECTIVE_DATE)}, meaning increases above {CPI + 5}%
                 require justification under the statute.
               </Trans>
             </p>
