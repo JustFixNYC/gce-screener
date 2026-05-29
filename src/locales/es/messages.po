@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-02-25 19:41\n"
+"PO-Revision-Date: 2026-05-29 20:48\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -1024,11 +1024,15 @@ msgstr "Para los arrendamientos ofrecidos después del {0}, los arrendadores no 
 #~ msgid "For leases offered on or after {0}, landlords cannot increase rent more than {1}% without legitimate justification. You can use our <0>rent increase calculator</0> to learn more and determine if your landlord’s proposed rent exceeds the allowable rent increase amount."
 #~ msgstr "For leases offered on or after {0}, landlords cannot increase rent more than {1}% without legitimate justification. You can use our <0>rent increase calculator</0> to learn more and determine if your landlord’s proposed rent exceeds the allowable rent increase amount."
 
-#. placeholder {0}: CPI + 5
-#. placeholder {1}: _(CPI_EFFECTIVE_DATE)
 #: src/Components/LetterBuilder/Letter/Letter.tsx:160
-msgid "For New York City, the CPI change is {0}% as of {1}, meaning increases above this level require justification under the statute."
-msgstr "Para la ciudad de Nueva York, la variación del IPC es del {0} % a fecha de {1}, lo que significa que los aumentos por encima de este nivel requieren una justificación según la ley."
+#~ msgid "For New York City, the CPI change is {0}% as of {1}, meaning increases above this level require justification under the statute."
+#~ msgstr "For New York City, the CPI change is {0}% as of {1}, meaning increases above this level require justification under the statute."
+
+#. placeholder {0}: _(CPI_EFFECTIVE_DATE)
+#. placeholder {1}: CPI + 5
+#: src/Components/LetterBuilder/Letter/Letter.tsx:160
+msgid "For New York City, the CPI is {CPI}% as of {0}, meaning increases above {1}% require justification under the statute."
+msgstr ""
 
 #: src/Components/KYRContent/KYRContent.tsx:752
 msgid "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
