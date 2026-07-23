@@ -18,13 +18,15 @@ import {
 } from "../helpers";
 import { useLingui } from "@lingui/react";
 
-// These values need to be updated annually. They are published by DHCR on or before August 1 each year
+// These values need to be updated annually. They are published by DHCR on or before August 1 each year. 245% of HUD FMR.
+// Published in https://hcr.ny.gov/system/files/documents/2026/07/gce-fact-sheet-05.04.26-update.pdf
+// Effective as of May 4 2026
 const RENT_CUTOFFS = {
-  STUDIO: 5895,
-  "1": 6152,
-  "2": 6811,
-  "3": 8489,
-  "4+": 9158,
+  STUDIO: 6193,
+  "1": 6505,
+  "2": 7130,
+  "3": 8928,
+  "4+": 9700,
 };
 
 export type Criteria =
