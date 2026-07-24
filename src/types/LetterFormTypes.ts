@@ -4,7 +4,7 @@ import { I18n } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import z from "zod";
 
-import { CPI } from "../Components/Pages/RentCalculator/RentIncreaseValues";
+import { INCREASE_PCT_STR } from "../Components/Pages/RentCalculator/RentIncreaseValues";
 import { flattenExtraEmails, looseOptional } from "../form-utils";
 import { GCELetterConfirmation } from "./APIDataTypes";
 import { StepRouteName } from "../Components/LetterBuilder/LetterSteps";
@@ -179,7 +179,9 @@ const plannedIncreaseLetterSchema = (i18n: I18n) =>
     ...letterExtrasSchema(i18n).shape,
     reason: z.literal("PLANNED_INCREASE"),
     unreasonable_increase: z.boolean(
-      i18n._(msg`Please select whether the increase is beyond ${CPI + 5}%`)
+      i18n._(
+        msg`Please select whether the increase is beyond ${INCREASE_PCT_STR}%`
+      )
     ),
   });
 
