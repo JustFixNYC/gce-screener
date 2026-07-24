@@ -14,7 +14,11 @@ import {
 } from "../../KYRContent/KYRContent";
 import { formatMoney, getCookie, setCookie } from "../../../helpers";
 import { gtmPush } from "../../../google-tag-manager";
-import { CPI, CPI_EFFECTIVE_DATE } from "./RentIncreaseValues";
+import {
+  CPI,
+  CPI_EFFECTIVE_DATE,
+  INCREASE_PCT_STR,
+} from "./RentIncreaseValues";
 import { Notice } from "../../Notice/Notice";
 import {
   PhoneNumberCallout,
@@ -25,8 +29,6 @@ import "./RentCalculator.scss";
 export const RentCalculator: React.FC = () => {
   const { _, i18n } = useLingui();
   useAccordionsOpenForPrint();
-
-  const increase_pct = CPI + 5;
 
   const [rentInput, setRentInput] = useState("");
   const [showRentInput, setShowRentInput] = useState(false);
@@ -124,11 +126,13 @@ export const RentCalculator: React.FC = () => {
                 <>
                   <p className="rent-increase-result">
                     <span className="rent-increase-formula">
-                      {`${formatMoney(Number(rentInput))} + ${increase_pct}% =`}{" "}
+                      {`${formatMoney(
+                        Number(rentInput)
+                      )} + ${INCREASE_PCT_STR}% =`}{" "}
                     </span>
                     <span className="rent-increase-amount">
                       {`${formatMoney(
-                        Number(rentInput) * (1 + increase_pct / 100)
+                        Number(rentInput) * (1 + (5 + CPI) / 100)
                       )} `}
                     </span>
                   </p>
@@ -136,7 +140,7 @@ export const RentCalculator: React.FC = () => {
                 </>
               ) : (
                 <p className="rent-increase-result">
-                  <Trans>Your current monthly rent</Trans> + {increase_pct}%
+                  <Trans>Your current monthly rent</Trans> + {INCREASE_PCT_STR}%
                 </p>
               )}
             </div>
@@ -156,7 +160,7 @@ export const RentCalculator: React.FC = () => {
                 year at the rate of inflation plus 5%, with a maximum of 10%
                 total. As of {_(CPI_EFFECTIVE_DATE)}, the rate of inflation for
                 New York City is {CPI}%, meaning that the current local
-                Reasonable Rent Increase is {CPI + 5}%.
+                Reasonable Rent Increase is {INCREASE_PCT_STR}%.
               </Trans>
             </p>
             <p>

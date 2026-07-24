@@ -10,7 +10,11 @@ import {
 import { formatMoney, urlMyGov } from "../../helpers";
 import { JFCLLinkExternal, JFCLLinkInternal } from "../JFCLLink";
 import { CoverageResult } from "../../types/APIDataTypes";
-import { CPI } from "../Pages/RentCalculator/RentIncreaseValues";
+import {
+  CPI,
+  CPI_EFFECTIVE_DATE,
+  INCREASE_PCT_STR,
+} from "../Pages/RentCalculator/RentIncreaseValues";
 import { Notice } from "../Notice/Notice";
 import "./KYRContent.scss";
 
@@ -285,7 +289,6 @@ export const GoodCauseProtections: React.FC<
       <span className="good-cause-text-group">Good Cause</span>
     </Trans>
   );
-  const increase_pct = CPI + 5;
   const itemProps = {
     coverageResult: coverageResult,
     headingLevel: headingLevel + 1,
@@ -306,25 +309,26 @@ export const GoodCauseProtections: React.FC<
             <Trans>
               The state housing agency must publish each year’s "Reasonable Rent
               Increases" by August. The current maximum that your landlord can
-              increase your rent by is ${increase_pct}%.
+              increase your rent by is {INCREASE_PCT_STR}%.
             </Trans>
           </p>
 
           <div className="callout-box">
             <p>
               <Trans>
-                If you are offered a new lease after April 20th, 2024, then your
-                landlord can’t raise your apartment’s monthly rent higher than:
+                If you are offered a new lease after {_(CPI_EFFECTIVE_DATE)},
+                then your landlord can’t raise your apartment’s monthly rent
+                higher than:
               </Trans>
             </p>
             <span className="rent-increase">
               <span className="amount">
                 {rent ? (
-                  <>
-                    {_(msg`${formatMoney(rent * (1 + increase_pct / 100))} `)}
-                  </>
+                  <>{_(msg`${formatMoney(rent * (1 + (5 + CPI) / 100))} `)}</>
                 ) : (
-                  <>{_(msg`Your current monthly rent + ${increase_pct}%`)}</>
+                  <>
+                    {_(msg`Your current monthly rent + ${INCREASE_PCT_STR}%`)}
+                  </>
                 )}
               </span>
               {!!rent && (
@@ -334,7 +338,7 @@ export const GoodCauseProtections: React.FC<
                     {_(
                       msg`(Your current monthly rent ${formatMoney(
                         rent
-                      )} + ${increase_pct}%)`
+                      )} + ${INCREASE_PCT_STR}%)`
                     )}
                   </span>
                 </>

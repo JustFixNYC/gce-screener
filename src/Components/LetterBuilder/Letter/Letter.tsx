@@ -7,6 +7,7 @@ import { currentDateLong, toTitleCase } from "../../../helpers";
 import {
   CPI,
   CPI_EFFECTIVE_DATE,
+  INCREASE_PCT_STR,
 } from "../../Pages/RentCalculator/RentIncreaseValues";
 
 import letterStyles from "./letter-styles.css?raw";
@@ -159,8 +160,8 @@ const LetterRightsList = () => {
             <p>
               <Trans>
                 For New York City, the CPI is {CPI}% as of{" "}
-                {_(CPI_EFFECTIVE_DATE)}, meaning increases above {CPI + 5}%
-                require justification under the statute.
+                {_(CPI_EFFECTIVE_DATE)}, meaning increases above{" "}
+                {INCREASE_PCT_STR}% require justification under the statute.
               </Trans>
             </p>
           </span>
@@ -237,7 +238,7 @@ const LetterReason: React.FC<{ reason: LetterReasonType }> = ({ reason }) => (
           Based on the rent amount stated in your recent lease offer, the
           increase appears to exceed the lawful limit under Good Cause Eviction
           Law. The difference between my current rent and the proposed rent
-          appears to exceed {CPI + 5}%.
+          appears to exceed {INCREASE_PCT_STR}%.
         </Trans>
       ) : (
         <Trans>
@@ -266,8 +267,8 @@ const LetterRequest: React.FC<{ reason: LetterReasonType }> = ({ reason }) => (
         {reason === "PLANNED_INCREASE" ? (
           <Trans>
             Please send me a new lease with a rent increase of less than{" "}
-            {CPI + 5}%, consistent with the limits established under RPL §
-            211(7) and 216(1)(a)(i).
+            {INCREASE_PCT_STR}%, consistent with the limits established under
+            RPL § 211(7) and 216(1)(a)(i).
           </Trans>
         ) : (
           <Trans>

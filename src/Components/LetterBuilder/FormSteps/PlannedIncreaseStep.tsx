@@ -11,7 +11,7 @@ import {
 } from "../../../types/LetterFormTypes";
 import { InfoBox } from "../../InfoBox/InfoBox";
 import {
-  CPI,
+  INCREASE_PCT_STR,
   CPI_EFFECTIVE_DATE,
 } from "../../Pages/RentCalculator/RentIncreaseValues";
 import { JFCLLinkExternal } from "../../JFCLLink";
@@ -48,9 +48,7 @@ export const PlannedIncreaseStep: React.FC = () => {
           legendText={
             <h4>
               {_(
-                msg`Is your landlord increasing your monthly rent more than ${
-                  CPI + 5
-                }%?`
+                msg`Is your landlord increasing your monthly rent more than ${INCREASE_PCT_STR}%?`
               )}
             </h4>
           }
@@ -100,12 +98,13 @@ const IncreaseHelperText: React.FC = () => {
     <InfoBox>
       <Trans>
         For leases offered after {_(CPI_EFFECTIVE_DATE)}, landlords cannot
-        increase rent more than {CPI + 5}% without legitimate justification. You
-        can use our{" "}
+        increase rent more than {INCREASE_PCT_STR}% without legitimate
+        justification. You can use our{" "}
         <JFCLLinkExternal to={`/${i18n.locale}/rent_calculator`}>
           rent increase calculator
         </JFCLLinkExternal>{" "}
-        to determine if your landlord’s proposed rent exceeds {CPI + 5}%.
+        to determine if your landlord’s proposed rent exceeds {INCREASE_PCT_STR}
+        %.
       </Trans>
     </InfoBox>
   );
