@@ -8,7 +8,7 @@ msgstr ""
 "Language: es_419\n"
 "Project-Id-Version: good-cause-nyc\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-07-24 15:55\n"
+"PO-Revision-Date: 2026-07-24 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Latin America\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -61,7 +61,7 @@ msgstr "(opcional)"
 #. placeholder {0}: formatMoney( rent )
 #: src/Components/KYRContent/KYRContent.tsx:339
 msgid "(Your current monthly rent {0} + {INCREASE_PCT_STR}%)"
-msgstr ""
+msgstr "(Su renta mensual actual {0} + {INCREASE_PCT_STR} %)"
 
 #: src/Components/KYRContent/KYRContent.tsx:335
 #~ msgid "(Your current monthly rent {0} + {increase_pct}%)"
@@ -487,7 +487,7 @@ msgstr "Basándonos en los datos del sitio web {wowLink}, hemos recopilado una l
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:237
 msgid "Based on the rent amount stated in your recent lease offer, the increase appears to exceed the lawful limit under Good Cause Eviction Law. The difference between my current rent and the proposed rent appears to exceed {INCREASE_PCT_STR}%."
-msgstr ""
+msgstr "Según el importe de renta indicado en su reciente oferta de arrendamiento, el aumento parece superar el límite legal establecido en la Ley de Desalojo por Justa Causa. La diferencia entre mi renta actual y la renta propuesta parece superar el {INCREASE_PCT_STR} %."
 
 #: src/Components/Pages/Form/Survey.tsx:555
 msgid "Because your building has fewer than 6 units and was built after 1974, it is very unlikely that your apartment is rent stabilized. Additionally, based on publicly available data, no rent stabilized apartments were registered in your building in recent years."
@@ -1027,7 +1027,7 @@ msgstr "Para cualquiera de las direcciones que se enumeran a continuación, solo
 #. placeholder {0}: _(CPI_EFFECTIVE_DATE)
 #: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:99
 msgid "For leases offered after {0}, landlords cannot increase rent more than {INCREASE_PCT_STR}% without legitimate justification. You can use our <0>rent increase calculator</0> to determine if your landlord’s proposed rent exceeds {INCREASE_PCT_STR}%."
-msgstr ""
+msgstr "Para los arrendamientos ofrecidos después del {0}, los arrendadores no pueden aumentar la renta más del {INCREASE_PCT_STR} % sin una justificación legítima. Puede utilizar nuestra <0>calculadora de aumento de rentas</0> para determinar si la renta propuesta por su arrendador supera el {INCREASE_PCT_STR} %."
 
 #: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:97
 #~ msgid "For leases offered on or after {0}, landlords cannot increase rent more than {1}% without legitimate justification. You can use our <0>rent increase calculator</0> to learn more and determine if your landlord’s proposed rent exceeds the allowable rent increase amount."
@@ -1044,7 +1044,7 @@ msgstr ""
 #. placeholder {0}: _(CPI_EFFECTIVE_DATE)
 #: src/Components/LetterBuilder/Letter/Letter.tsx:161
 msgid "For New York City, the CPI is {CPI}% as of {0}, meaning increases above {INCREASE_PCT_STR}% require justification under the statute."
-msgstr ""
+msgstr "Para la ciudad de Nueva York, el IPC es {CPI}% a partir del {0}, lo que significa que los aumentos superiores al {INCREASE_PCT_STR}% requieren justificación según la ley."
 
 #: src/Components/KYRContent/KYRContent.tsx:756
 msgid "For rent-stabilized leases being renewed between October 1, 2024 and September 30, 2025 the legal rent may be increased at the following levels: for a one-year renewal there is a 2.75% increase, or for a two-year renewal there is a 5.25% increase."
@@ -1351,7 +1351,7 @@ msgstr "Si usted está protegido por la <0>Justa Causa</0>, tiene derecho legal 
 #. placeholder {0}: _(CPI_EFFECTIVE_DATE)
 #: src/Components/KYRContent/KYRContent.tsx:318
 msgid "If you are offered a new lease after {0}, then your landlord can’t raise your apartment’s monthly rent higher than:"
-msgstr ""
+msgstr "Si le ofrecen un nuevo contrato de arrendamiento después del {0}, su arrendador no podrá aumentar la renta mensual de su departamento por encima de:"
 
 #: src/Components/KYRContent/KYRContent.tsx:315
 #~ msgid "If you are offered a new lease after April 20th, 2024, then your landlord can’t raise your apartment’s monthly rent higher than:"
@@ -1679,7 +1679,7 @@ msgstr "forma parte de NYCHA o PACT/RAD"
 
 #: src/Components/LetterBuilder/FormSteps/PlannedIncreaseStep.tsx:51
 msgid "Is your landlord increasing your monthly rent more than {INCREASE_PCT_STR}%?"
-msgstr ""
+msgstr "¿Su arrendador está aumentando su renta mensual más del {INCREASE_PCT_STR} %?"
 
 #: src/Components/LetterBuilder/LetterNextSteps/LetterNextSteps.tsx:227
 msgid "It’s often more effective to approach these problems together, by sharing information, comparing experiences, and contacting your landlord together."
@@ -2484,7 +2484,7 @@ msgstr "Seleccione el motivo de su carta."
 
 #: src/types/LetterFormTypes.ts:183
 msgid "Please select whether the increase is beyond {INCREASE_PCT_STR}%"
-msgstr ""
+msgstr "Seleccione si el aumento supera el {INCREASE_PCT_STR} %"
 
 #: src/types/LetterFormTypes.ts:196
 msgid "Please select whether your landlord provided one of the listed reasons for not renewing your lease"
@@ -2508,7 +2508,7 @@ msgstr "Seleccione si su arrendador le proporcionó alguna de las razones enumer
 
 #: src/Components/LetterBuilder/Letter/Letter.tsx:268
 msgid "Please send me a new lease with a rent increase of less than {INCREASE_PCT_STR}%, consistent with the limits established under RPL § 211(7) and 216(1)(a)(i)."
-msgstr ""
+msgstr "Por favor, envíeme un nuevo contrato de arrendamiento con un aumento de renta inferior al {INCREASE_PCT_STR} %, de conformidad con los límites establecidos en las secciones 211(7) y 216(1)(a)(i) de la RPL."
 
 #: src/Components/Pages/Form/Survey.tsx:260
 msgid "Please specify if your apartment is part of any subsidized housing programs."
@@ -3134,7 +3134,7 @@ msgstr "Gracias por su atención en este asunto. Espero su respuesta."
 #. placeholder {0}: _(CPI_EFFECTIVE_DATE)
 #: src/Components/Pages/RentCalculator/RentCalculator.tsx:157
 msgid "The <0>Good Cause</0> law establishes a Reasonable Rent Increase, which is set every year at the rate of inflation plus 5%, with a maximum of 10% total. As of {0}, the rate of inflation for New York City is {CPI}%, meaning that the current local Reasonable Rent Increase is {INCREASE_PCT_STR}%."
-msgstr ""
+msgstr "La Ley por <0>Justa Causa</0> establece un aumento razonable del alquiler, que se fija cada año según la tasa de inflación más un 5 %, con un máximo del 10 % en total. Según {0}, la tasa de inflación de la ciudad de Nueva York es del {CPI} %, lo que significa que el aumento razonable de la renta local actual es del {INCREASE_PCT_STR} %."
 
 #: src/Components/Pages/LetterLanding/LetterLanding.tsx:91
 msgid "The <0>Good Cause</0> Letter Sender was developed with housing attorneys, tenant organizers, community leaders, and tenants."
@@ -3201,7 +3201,7 @@ msgstr "El propietario del edificio puede ser diferente de la persona que figura
 
 #: src/Components/KYRContent/KYRContent.tsx:309
 msgid "The state housing agency must publish each year’s \"Reasonable Rent Increases\" by August. The current maximum that your landlord can increase your rent by is {INCREASE_PCT_STR}%."
-msgstr ""
+msgstr "La agencia estatal de vivienda debe publicar cada año, antes de agosto, los \"aumentos razonables de renta\". El máximo actual que su arrendador puede aumentar su renta es del {INCREASE_PCT_STR} %."
 
 #: src/Components/KYRContent/KYRContent.tsx:306
 #~ msgid "The state housing agency must publish each year’s \"Reasonable Rent Increases\" by August. The current maximum that your landlord can increase your rent by is ${increase_pct}%."
@@ -4265,7 +4265,7 @@ msgstr "Su alquiler mensual actual"
 
 #: src/Components/KYRContent/KYRContent.tsx:330
 msgid "Your current monthly rent + {INCREASE_PCT_STR}%"
-msgstr ""
+msgstr "Su alquiler mensual actual + {INCREASE_PCT_STR} %"
 
 #: src/Components/KYRContent/KYRContent.tsx:327
 #~ msgid "Your current monthly rent + {increase_pct}%"
