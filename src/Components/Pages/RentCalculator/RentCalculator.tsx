@@ -207,7 +207,7 @@ export const RentCalculator: React.FC = () => {
               </Trans>
             }
             headingLevel={3}
-            hideIntroCopy
+            onCalculator
           >
             <ContentBoxFooter
               message={
