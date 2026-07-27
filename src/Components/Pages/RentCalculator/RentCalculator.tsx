@@ -207,6 +207,7 @@ export const RentCalculator: React.FC = () => {
               </Trans>
             }
             headingLevel={3}
+            onCalculator
           >
             <ContentBoxFooter
               message={
