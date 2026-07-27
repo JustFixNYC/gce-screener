@@ -280,8 +280,16 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
 };
 
 export const GoodCauseProtections: React.FC<
-  KYRContentBoxProps & { rent?: number }
-> = ({ title, rent, children, coverageResult, headingLevel, ...props }) => {
+  KYRContentBoxProps & { rent?: number; hideIntroCopy?: boolean }
+> = ({
+  title,
+  rent,
+  hideIntroCopy,
+  children,
+  coverageResult,
+  headingLevel,
+  ...props
+}) => {
   const { i18n, _ } = useLingui();
   const defaultTitle = (
     <Trans>
@@ -305,13 +313,15 @@ export const GoodCauseProtections: React.FC<
           gtmId="gce-protections_rent"
           {...itemProps}
         >
-          <p>
-            <Trans>
-              The state housing agency must publish each year’s "Reasonable Rent
-              Increases" by August. The current maximum that your landlord can
-              increase your rent by is {INCREASE_PCT_STR}%.
-            </Trans>
-          </p>
+          {!hideIntroCopy && (
+            <p>
+              <Trans>
+                The state housing agency must publish each year’s "Reasonable
+                Rent Increases" by August. The current maximum that your
+                landlord can increase your rent by is {INCREASE_PCT_STR}%.
+              </Trans>
+            </p>
+          )}
 
           <div className="callout-box">
             <p>
@@ -344,6 +354,7 @@ export const GoodCauseProtections: React.FC<
                 </>
               )}
             </span>
+            {/* TODO: hide this if already on th rent calc page */}
             <JFCLLinkInternal to={`/${i18n.locale}/rent_calculator`}>
               Calculate your maximum rent increase
             </JFCLLinkInternal>
