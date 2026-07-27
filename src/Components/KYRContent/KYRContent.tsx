@@ -354,10 +354,11 @@ export const GoodCauseProtections: React.FC<
                 </>
               )}
             </span>
-            {/* TODO: hide this if already on th rent calc page */}
-            <JFCLLinkInternal to={`/${i18n.locale}/rent_calculator`}>
-              Calculate your maximum rent increase
-            </JFCLLinkInternal>
+            {!hideIntroCopy && (
+              <JFCLLinkInternal to={`/${i18n.locale}/rent_calculator`}>
+                Calculate your maximum rent increase
+              </JFCLLinkInternal>
+            )}
             <Notice
               icon="circleInfo"
               className="letter-callout"
