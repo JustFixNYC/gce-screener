@@ -280,11 +280,11 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
 };
 
 export const GoodCauseProtections: React.FC<
-  KYRContentBoxProps & { rent?: number; hideIntroCopy?: boolean }
+  KYRContentBoxProps & { rent?: number; onCalculator?: boolean }
 > = ({
   title,
   rent,
-  hideIntroCopy,
+  onCalculator,
   children,
   coverageResult,
   headingLevel,
@@ -313,7 +313,7 @@ export const GoodCauseProtections: React.FC<
           gtmId="gce-protections_rent"
           {...itemProps}
         >
-          {!hideIntroCopy && (
+          {!onCalculator && (
             <p>
               <Trans>
                 The state housing agency must publish each year’s "Reasonable
@@ -354,7 +354,7 @@ export const GoodCauseProtections: React.FC<
                 </>
               )}
             </span>
-            {!hideIntroCopy && (
+            {!onCalculator && (
               <JFCLLinkInternal to={`/${i18n.locale}/rent_calculator`}>
                 Calculate your maximum rent increase
               </JFCLLinkInternal>
