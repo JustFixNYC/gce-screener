@@ -44,6 +44,7 @@ export const GeoSearchInput: React.FC<GeoSearchInputProps> = ({
   const requester = useMemo(
     () =>
       new GeoSearchRequester({
+        throttleMs: 0,
         onError: (e) => {
           console.log("ERROR", e);
         },
