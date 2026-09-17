@@ -1,15 +1,19 @@
 on:
   schedule:
-  - cron: "0 5 1 * *"
+    # Monthly: 1st of each month at 05:00 UTC
+    - cron: "0 5 1 * *"
   workflow_dispatch:
 
 jobs:
   find_dead_links:
     runs-on: ubuntu-latest
-    name: Deadlink crawler
+    name: Deadlink checker
     steps:
-      - name: Scan Good Cause NYC Dead Links
-        uses: JustFixNYC/deadlink-crawler@v2.1
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Scan Good Cause NYC dead links
+        uses: JustFixNYC/deadlink-crawler@v3.0
         with:
-          site-url: "http://goodcausenyc.org"
+          config-path: deadlink.config.yml
           token: ${{ secrets.GITHUB_TOKEN }}

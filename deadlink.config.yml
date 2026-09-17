@@ -1,0 +1,31 @@
+siteUrl: https://goodcausenyc.org
+locales: [en, es]
+
+publicRoutes:
+  - /
+  - /tenant_rights
+  - /privacy_policy
+  - /terms_of_use
+  - /letter
+  - /letter/next_steps
+  - /rent_stabilization
+  - /portfolio_size
+  - /rent_calculator
+  - /api_docs
+
+sourceGlobs:
+  - src/**/*.{tsx,ts,json,po}
+  - src/data/*.json
+
+skipPatterns:
+  - images\.ctfassets\.net
+  - linkedin\.com
+  - x\.com
+  - googletagmanager\.com
+  - rollbar\.com
+  - netlify\.com
+  - youtube\.com
+  - google\.com/maps
+
+dynamicUrlSamples:
+  locale: en
