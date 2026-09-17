@@ -56,6 +56,18 @@
   }
 }
 
+#universal_organize {
+  .accordion__content {
+    p.bold {
+      margin-bottom: 0.5rem;
+    }
+
+    .organize-building-resources-heading {
+      margin-top: 1.5rem;
+    }
+  }
+}
+
 #gce-protections_rent,
 #gce-protections_eviction {
   .accordion__content {
