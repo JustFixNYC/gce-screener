@@ -14,7 +14,7 @@ publicRoutes:
   - /api_docs
 
 sourceGlobs:
-  - src/**/*.{tsx,ts,json,po}
+  - src/**/*.{tsx,ts,json}
   - src/data/*.json
 
 skipPatterns:
