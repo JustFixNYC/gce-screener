@@ -143,7 +143,7 @@ export const RentStabilization: React.FC = () => {
                   landlord-tenant disputes.
                 </Trans>
               </p>
-              <JFCLLinkExternal to="https://www.metcouncilonhousing.org/program/tenants-rights-hotline/">
+              <JFCLLinkExternal to="https://www.metcouncilonhousing.org/copy-of-campaigns-for-fun">
                 <Trans>Call Met Council on Housing Hotline</Trans>
               </JFCLLinkExternal>
             </ContentBoxItem>

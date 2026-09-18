@@ -122,7 +122,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
             <Trans>Learn about Warranty of Habitability</Trans>
           </p>
           <JFCLLinkExternal
-            to="https://nycourts.gov/COURTS/nyc//housing/pdfs/warrantyofhabitability.pdf"
+            to="https://webfiles.nycourts.gov/public/2026-01/warrantyofhabitability.pdf"
             className="has-label"
           >
             <Trans>NY Courts Warranty of Habitability fact sheet</Trans>
@@ -144,7 +144,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
             <Trans>Learn more about requesting repairs</Trans>
           </p>
           <JFCLLinkExternal
-            to="https://www.metcouncilonhousing.org/help-answers/getting-repairs/"
+            to="https://www.metcouncilonhousing.org/getting-repairs"
             className="has-label"
           >
             <Trans>Met Council on Housing guide to getting repairs</Trans>
@@ -209,7 +209,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
             </Trans>
           </p>
           <JFCLLinkExternal
-            to="https://www.nyc.gov/site/fairhousing/renters/lawful-source-of-income.page"
+            to="https://www.nyc.gov/assets/cchr/downloads/pdf/materials/SourceOfIncomeFactSheet.pdf"
             className="has-label"
           >
             <Trans>Lawful source of income</Trans>
@@ -307,7 +307,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           <JFCLLinkExternal to="https://ag.ny.gov/publications/residential-tenants-rights-guide">
             <Trans>Residential Tenants Guide</Trans>
           </JFCLLinkExternal>
-          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/">
+          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help---answers">
             <Trans>Met Council on Housing</Trans>
           </JFCLLinkExternal>
           <JFCLLinkExternal to="https://housingcourtanswers.org/answers/for-tenants/">
@@ -770,7 +770,7 @@ export const GoodCauseExercisingRights: React.FC<
           <JFCLLinkExternal to="https://www.metcouncilonhousing.org/">
             <Trans>Met Council on Housing</Trans>
           </JFCLLinkExternal>
-          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/program/tenants-rights-hotline/">
+          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/copy-of-campaigns-for-fun">
             <Trans>Call Met Council on Housing Hotline</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -817,7 +817,7 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
               increase, or for a two-year renewal there is a 5.25% increase.
             </Trans>
           </p>
-          <JFCLLinkExternal to="https://hcr.ny.gov/system/files/documents/2024/10/fact-sheet-26-10-2024.pdf">
+          <JFCLLinkExternal to="https://hcr.ny.gov/system/files/documents/2026/07/fact-sheet-26-07-2026.pdf">
             <Trans>Learn about rent increase rights</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -849,7 +849,7 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
               or passing away, you might be entitled to take over the lease.
             </Trans>
           </p>
-          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/succession-rights-in-rent-stabilized-and-rent-controlled-apartments/">
+          <JFCLLinkExternal to="https://hcr.ny.gov/succession">
             <Trans>Learn about succession rights</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -988,7 +988,7 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
           <JFCLLinkExternal to="https://nylag.org/tenants-rights/public-housing-justice-project/">
             <Trans>PACT Fact Sheet</Trans>
           </JFCLLinkExternal>
-          <JFCLLinkExternal to="hhttps://www.nyc.gov/assets/nycha/downloads/pdf/PACT-Rights-Responsibilities-English.pdf">
+          <JFCLLinkExternal to="https://www.nyc.gov/assets/nycha/downloads/pdf/PACT-Rights-Responsibilities-English.pdf">
             <Trans>PACT Rights and Responsibilities Fact Sheet</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -1036,7 +1036,7 @@ export const SubsidizedProtections: React.FC<
         <JFCLLinkExternal to={urlMyGov(lngLat)}>
           <Trans>Your local City Council representative</Trans>
         </JFCLLinkExternal>
-        <JFCLLinkExternal to="https://www.metcouncilonhousing.org/program/tenants-rights-hotline/">
+        <JFCLLinkExternal to="https://www.metcouncilonhousing.org/copy-of-campaigns-for-fun">
           <Trans>Met Council on Housing’s Hotline</Trans>
         </JFCLLinkExternal>
       </ContentBoxItem>
