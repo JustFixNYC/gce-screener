@@ -229,29 +229,74 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         >
           <p>
             <Trans>
-              Has your landlord raised your rent? Is your landlord refusing to
-              do basic repairs? Are you worried about getting evicted or
-              non-renewed?
+              You may not be the only person in your building dealing with the
+              same problems. Talking with your neighbors can help you find out
+              if similar things are happening to them too.
             </Trans>
           </p>
 
+          <p className="bold">
+            <Trans>What you might learn</Trans>
+          </p>
           <p>
             <Trans>
-              You’re not alone. Too many landlords care more about getting rich
-              off our rent money than providing us with decent homes.
+              You might learn that your neighbors also received large rent
+              increases around the same time, had their rent stabilized status
+              changed, are living with the same unsafe conditions, or are also
+              being ignored or harassed by your landlord.
             </Trans>
           </p>
 
+          <p className="bold">
+            <Trans>What you can do</Trans>
+          </p>
           <p>
             <Trans>
-              When tenants come together, we have power. Tenants across our
-              state are forming tenant unions to fight back. If you’re
-              interested in organizing a tenant union with your neighbors, fill
-              out this form to get support from a tenant group near you.
+              If your neighbors are facing similar problems, you can work
+              together to document what is happening, raise concerns with your
+              landlord, contact government agencies, or take action as a group.
+              When tenants come together, you have power.
             </Trans>
           </p>
-          <JFCLLinkExternal to="https://actionnetwork.org/forms/are-you-worried-about-your-housing">
-            <Trans>Housing Justice for All tenant organizing form</Trans>
+
+          <p className="bold">
+            <Trans>Your legal right</Trans>
+          </p>
+          <p>
+            <Trans>
+              You have a legal right to talk with your neighbors and organize
+              with other tenants. It is illegal for your landlord to interfere
+              with tenant organizing or retaliate against you for taking part.
+            </Trans>
+          </p>
+          <JFCLLinkExternal to="https://www.nyc.gov/assets/tenantprotection/downloads/pdf/MOPT-Right-to-Organize-Letter.pdf">
+            <Trans>Learn about your right to organize</Trans>
+          </JFCLLinkExternal>
+          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/forming-a-tenants-association/">
+            <Trans>Learn about how to form a tenants' association</Trans>
+          </JFCLLinkExternal>
+
+          <p className="bold organize-building-resources-heading">
+            <Trans>More ways to learn about your building</Trans>
+          </p>
+          <p>
+            <Trans>
+              You can also look up your building's history to see past
+              violations, eviction cases, landlord information, and changes in
+              the number of rent-stabilized apartments.
+            </Trans>
+          </p>
+          <p>
+            <Trans>
+              You can also sign up for updates about new issues in your
+              building.
+            </Trans>
+          </p>
+          <JFCLLinkExternal to="https://whoownswhat.justfix.org/en/">
+            <Trans>Research your building and landlord</Trans>
+          </JFCLLinkExternal>
+          <JFCLLinkExternal to="https://whoownswhat.justfix.org/building-alerts">
+            <Trans>Get updates about problems in your building</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
         <ContentBoxItem
@@ -268,7 +313,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           <JFCLLinkExternal to="https://housingcourtanswers.org/answers/for-tenants/">
             <Trans>Housing Court Answers</Trans>
           </JFCLLinkExternal>
-          <JFCLLinkExternal to="https://www.justfix.org/en/learn">
+          <JFCLLinkExternal to="https://www.justfix.org/learn">
             <Trans>JustFix</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
