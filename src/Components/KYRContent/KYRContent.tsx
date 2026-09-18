@@ -289,16 +289,8 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           <p>
             <Trans>
               You can also sign up for updates about new issues in your
-              building.{" "}
+              building.
             </Trans>
-            <a
-              href="https://whoownswhat.justfix.org/building-alerts"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="jfcl-link"
-            >
-              <Trans>Get building alerts</Trans>
-            </a>
           </p>
           <JFCLLinkExternal to="https://whoownswhat.justfix.org/en/">
             <Trans>Research your building and landlord</Trans>
