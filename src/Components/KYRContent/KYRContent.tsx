@@ -122,7 +122,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
             <Trans>Learn about Warranty of Habitability</Trans>
           </p>
           <JFCLLinkExternal
-            to="https://nycourts.gov/COURTS/nyc//housing/pdfs/warrantyofhabitability.pdf"
+            to="https://webfiles.nycourts.gov/public/2026-01/warrantyofhabitability.pdf"
             className="has-label"
           >
             <Trans>NY Courts Warranty of Habitability fact sheet</Trans>
@@ -144,7 +144,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
             <Trans>Learn more about requesting repairs</Trans>
           </p>
           <JFCLLinkExternal
-            to="https://www.metcouncilonhousing.org/help-answers/getting-repairs/"
+            to="https://www.metcouncilonhousing.org/getting-repairs"
             className="has-label"
           >
             <Trans>Met Council on Housing guide to getting repairs</Trans>
@@ -209,7 +209,7 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
             </Trans>
           </p>
           <JFCLLinkExternal
-            to="https://www.nyc.gov/site/fairhousing/renters/lawful-source-of-income.page"
+            to="https://www.nyc.gov/assets/cchr/downloads/pdf/materials/SourceOfIncomeFactSheet.pdf"
             className="has-label"
           >
             <Trans>Lawful source of income</Trans>
@@ -229,29 +229,74 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
         >
           <p>
             <Trans>
-              Has your landlord raised your rent? Is your landlord refusing to
-              do basic repairs? Are you worried about getting evicted or
-              non-renewed?
+              You may not be the only person in your building dealing with the
+              same problems. Talking with your neighbors can help you find out
+              if similar things are happening to them too.
             </Trans>
           </p>
 
+          <p className="bold">
+            <Trans>What you might learn</Trans>
+          </p>
           <p>
             <Trans>
-              You’re not alone. Too many landlords care more about getting rich
-              off our rent money than providing us with decent homes.
+              You might learn that your neighbors also received large rent
+              increases around the same time, had their rent stabilized status
+              changed, are living with the same unsafe conditions, or are also
+              being ignored or harassed by your landlord.
             </Trans>
           </p>
 
+          <p className="bold">
+            <Trans>What you can do</Trans>
+          </p>
           <p>
             <Trans>
-              When tenants come together, we have power. Tenants across our
-              state are forming tenant unions to fight back. If you’re
-              interested in organizing a tenant union with your neighbors, fill
-              out this form to get support from a tenant group near you.
+              If your neighbors are facing similar problems, you can work
+              together to document what is happening, raise concerns with your
+              landlord, contact government agencies, or take action as a group.
+              When tenants come together, you have power.
             </Trans>
           </p>
-          <JFCLLinkExternal to="https://actionnetwork.org/forms/are-you-worried-about-your-housing">
-            <Trans>Housing Justice for All tenant organizing form</Trans>
+
+          <p className="bold">
+            <Trans>Your legal right</Trans>
+          </p>
+          <p>
+            <Trans>
+              You have a legal right to talk with your neighbors and organize
+              with other tenants. It is illegal for your landlord to interfere
+              with tenant organizing or retaliate against you for taking part.
+            </Trans>
+          </p>
+          <JFCLLinkExternal to="https://www.nyc.gov/assets/tenantprotection/downloads/pdf/MOPT-Right-to-Organize-Letter.pdf">
+            <Trans>Learn about your right to organize</Trans>
+          </JFCLLinkExternal>
+          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/forming-a-tenants-association/">
+            <Trans>Learn about how to form a tenants' association</Trans>
+          </JFCLLinkExternal>
+
+          <p className="bold organize-building-resources-heading">
+            <Trans>More ways to learn about your building</Trans>
+          </p>
+          <p>
+            <Trans>
+              You can also look up your building's history to see past
+              violations, eviction cases, landlord information, and changes in
+              the number of rent-stabilized apartments.
+            </Trans>
+          </p>
+          <p>
+            <Trans>
+              You can also sign up for updates about new issues in your
+              building.
+            </Trans>
+          </p>
+          <JFCLLinkExternal to="https://whoownswhat.justfix.org/en/">
+            <Trans>Research your building and landlord</Trans>
+          </JFCLLinkExternal>
+          <JFCLLinkExternal to="https://whoownswhat.justfix.org/building-alerts">
+            <Trans>Get updates about problems in your building</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
         <ContentBoxItem
@@ -262,13 +307,13 @@ export const UniversalProtections: React.FC<KYRContentBoxProps> = ({
           <JFCLLinkExternal to="https://ag.ny.gov/publications/residential-tenants-rights-guide">
             <Trans>Residential Tenants Guide</Trans>
           </JFCLLinkExternal>
-          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/">
+          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help---answers">
             <Trans>Met Council on Housing</Trans>
           </JFCLLinkExternal>
           <JFCLLinkExternal to="https://housingcourtanswers.org/answers/for-tenants/">
             <Trans>Housing Court Answers</Trans>
           </JFCLLinkExternal>
-          <JFCLLinkExternal to="https://www.justfix.org/en/learn">
+          <JFCLLinkExternal to="https://www.justfix.org/learn">
             <Trans>JustFix</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -725,7 +770,7 @@ export const GoodCauseExercisingRights: React.FC<
           <JFCLLinkExternal to="https://www.metcouncilonhousing.org/">
             <Trans>Met Council on Housing</Trans>
           </JFCLLinkExternal>
-          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/program/tenants-rights-hotline/">
+          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/copy-of-campaigns-for-fun">
             <Trans>Call Met Council on Housing Hotline</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -772,7 +817,7 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
               increase, or for a two-year renewal there is a 5.25% increase.
             </Trans>
           </p>
-          <JFCLLinkExternal to="https://hcr.ny.gov/system/files/documents/2024/10/fact-sheet-26-10-2024.pdf">
+          <JFCLLinkExternal to="https://hcr.ny.gov/system/files/documents/2026/07/fact-sheet-26-07-2026.pdf">
             <Trans>Learn about rent increase rights</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -804,7 +849,7 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
               or passing away, you might be entitled to take over the lease.
             </Trans>
           </p>
-          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/succession-rights-in-rent-stabilized-and-rent-controlled-apartments/">
+          <JFCLLinkExternal to="https://hcr.ny.gov/succession">
             <Trans>Learn about succession rights</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -943,7 +988,7 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
           <JFCLLinkExternal to="https://nylag.org/tenants-rights/public-housing-justice-project/">
             <Trans>PACT Fact Sheet</Trans>
           </JFCLLinkExternal>
-          <JFCLLinkExternal to="hhttps://www.nyc.gov/assets/nycha/downloads/pdf/PACT-Rights-Responsibilities-English.pdf">
+          <JFCLLinkExternal to="https://www.nyc.gov/assets/nycha/downloads/pdf/PACT-Rights-Responsibilities-English.pdf">
             <Trans>PACT Rights and Responsibilities Fact Sheet</Trans>
           </JFCLLinkExternal>
         </ContentBoxItem>
@@ -991,7 +1036,7 @@ export const SubsidizedProtections: React.FC<
         <JFCLLinkExternal to={urlMyGov(lngLat)}>
           <Trans>Your local City Council representative</Trans>
         </JFCLLinkExternal>
-        <JFCLLinkExternal to="https://www.metcouncilonhousing.org/program/tenants-rights-hotline/">
+        <JFCLLinkExternal to="https://www.metcouncilonhousing.org/copy-of-campaigns-for-fun">
           <Trans>Met Council on Housing’s Hotline</Trans>
         </JFCLLinkExternal>
       </ContentBoxItem>

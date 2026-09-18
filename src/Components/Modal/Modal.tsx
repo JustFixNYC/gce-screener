@@ -119,7 +119,7 @@ export const RentStabLeaseModal: React.FC<Omit<ModalProps, "children">> = (
         <figcaption>
           <Trans>
             Full image of this example lease can be viewed on{" "}
-            <JFCLLinkExternal to="https://hcr.ny.gov/system/files/documents/2024/07/rtp-8-07-2024-fillable_1.pdf">
+            <JFCLLinkExternal to="https://hcr.ny.gov/system/files/documents/2026/06/rtp-8-06-2026-fillable.pdf">
               hcr.ny.gov
             </JFCLLinkExternal>
           </Trans>
