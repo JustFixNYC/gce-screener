@@ -392,8 +392,8 @@ export const GoodCauseProtections: React.FC<
                   <span className="formula">
                     {_(
                       msg`(Your current monthly rent ${formatMoney(
-                        rent
-                      )} + ${INCREASE_PCT_STR}%)`
+                        rent,
+                      )} + ${INCREASE_PCT_STR}%)`,
                     )}
                   </span>
                 </>
@@ -479,7 +479,7 @@ export const GoodCauseProtections: React.FC<
               <ul
                 id="good-cause-eviction-reasons-list"
                 aria-label={_(
-                  msg`Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:`
+                  msg`Under the Good Cause Eviction law, landlords are allowed to evict tenants for the following “good cause” reasons:`,
                 )}
               >
                 <li>
@@ -562,7 +562,7 @@ export const GoodCauseProtections: React.FC<
               fact sheet
             </Trans>
           </JFCLLinkExternal>
-          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/help-answers/good-cause-eviction">
+          <JFCLLinkExternal to="https://www.metcouncilonhousing.org/paying-the-rent">
             <Trans>
               Met Council on Housing{" "}
               <span className="good-cause-text-group">Good Cause</span> Eviction
@@ -791,7 +791,7 @@ export const RentStabilizedProtections: React.FC<KYRContentBoxProps> = ({
   const { _ } = useLingui();
 
   const defaultTitle = _(
-    msg`Protections if you live in a rent stabilized apartment`
+    msg`Protections if you live in a rent stabilized apartment`,
   );
   const itemProps = {
     coverageResult: coverageResult,
@@ -886,7 +886,7 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
   const { _ } = useLingui();
 
   const defaultTitle = _(
-    msg`Protections if you live in NYCHA or PACT/RAD housing`
+    msg`Protections if you live in NYCHA or PACT/RAD housing`,
   );
   const itemProps = {
     coverageResult: coverageResult,
@@ -974,7 +974,7 @@ export const NYCHAProtections: React.FC<KYRContentBoxProps> = ({
         </ContentBoxItem>
         <ContentBoxItem
           title={_(
-            msg`Learn more about NYCHA and PACT/RAD’s tenant protections`
+            msg`Learn more about NYCHA and PACT/RAD’s tenant protections`,
           )}
           gtmId="nycha_learn"
           {...itemProps}
